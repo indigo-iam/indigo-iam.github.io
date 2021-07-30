@@ -1,0 +1,2091 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.86.0" /><link rel="canonical" type="text/html" href="/v/v1.7.0/docs/reference/api/">
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+
+
+<link rel="shortcut icon" href="/v/v1.7.0/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/v/v1.7.0/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/v/v1.7.0/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/v/v1.7.0/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/v/v1.7.0/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/v/v1.7.0/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/v/v1.7.0/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/v/v1.7.0/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/v/v1.7.0/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/v/v1.7.0/favicons/android-192x192.png" sizes="192x192">
+
+<title>APIs | INDIGO IAM</title><meta property="og:title" content="APIs" />
+<meta property="og:description" content="IAM APIs
+" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/v/v1.7.0/docs/reference/api/" /><meta property="og:site_name" content="INDIGO IAM" />
+
+<meta itemprop="name" content="APIs">
+<meta itemprop="description" content="IAM APIs
+"><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="APIs"/>
+<meta name="twitter:description" content="IAM APIs
+"/>
+
+
+
+
+
+
+
+<link rel="preload" href="/v/v1.7.0/scss/main.min.8c56a5db29a8a7bfd7c31c587d450fd15c23c45c8cd6e72142c8ed5b2ef43bd5.css" as="style">
+<link href="/v/v1.7.0/scss/main.min.8c56a5db29a8a7bfd7c31c587d450fd15c23c45c8cd6e72142c8ed5b2ef43bd5.css" rel="stylesheet" integrity="">
+
+
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+
+
+
+  </head>
+  <body class="td-section">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="/v/v1.7.0/">
+		<span class="navbar-logo"></span><span class="text-uppercase font-weight-bold">INDIGO IAM</span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a  class="nav-link active" href="/v/v1.7.0/docs/" ><span class="active">Documentation</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a  class="nav-link" href="/v/v1.7.0/blog/" ><span>Blog</span></a>
+			</li>
+			
+			
+			<li class="nav-item dropdown d-none d-lg-block">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Releases
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.0">v1.7.0</a>
+	
+</div>
+
+			</li>
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block">
+
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/v/v1.7.0/offline-search-index.30732720026bec7b09119621ee755447.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="10"
+>
+
+</div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/v/v1.7.0/docs/reference/api/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">APIs</h1>
+<div class="lead">IAM APIs</div>
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>1: <a href="#pg-86d47510999bc2977fb7970cadcf54cc">AUP management API</a></li>
+
+
+    
+  
+    
+    
+	
+<li>2: <a href="#pg-5f98ef65599be38eb06ad3a9f70307f1">Group requests API</a></li>
+
+
+    
+  
+    
+    
+	
+<li>3: <a href="#pg-6bac9b32bfac99dba534d199b6900374">Health checks</a></li>
+
+
+    
+  
+    
+    
+	
+<li>4: <a href="#pg-ae2dfdac8f1e824e219096bb20fbe4dd">IAM Token management API</a></li>
+
+
+    
+  
+    
+    
+	
+<li>5: <a href="#pg-79982fb90b690ba4430ec5123ea2927a">OAuth token exchange API</a></li>
+
+
+    
+  
+    
+    
+	
+<li>6: <a href="#pg-167ff098c8b010fb17614df7ba73694d">OAuth token introspection API</a></li>
+
+
+    
+  
+    
+    
+	
+<li>7: <a href="#pg-e9e5ebcd88b6ff930c7d37a637080e40">OpenID Connect client management API</a></li>
+
+
+    
+  
+    
+    
+	
+<li>8: <a href="#pg-49efb320846282f9e6c68fa2debefad5">OpenID Connect client registration API</a></li>
+
+
+    
+  
+    
+    
+	
+<li>9: <a href="#pg-ff5f4511d04c6e9b13f1c49c32e2c50d">SCIM API</a></li>
+
+
+    
+  
+
+    </ul>
+
+
+<div class="content">
+      <p>IAM provides a set of APIs that can be used for authentication, authorization
+and IAM administration purposes.</p>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="">
+    
+	<h1 id="pg-86d47510999bc2977fb7970cadcf54cc">1 - AUP management API</h1>
+    
+	<p>IAM provides a RESTful API that can be used to manage the IAM
+Acceptable Usage Policy (AUP) configuration.</p>
+<h3 id="get-iamaup">GET /iam/aup</h3>
+<p>Returns a JSON representation of the Acceptable Usage Policy (AUP) for the
+organization.</p>
+<p><strong>Authentication required</strong>: no</p>
+<h4 id="success-response">Success response</h4>
+<p><strong>Condition</strong>: The AUP is defined for the organization</p>
+<p><strong>Code</strong>: <code>200 OK</code></p>
+<p><strong>Content</strong>: A JSON representation of the AUP</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;url&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;http://somehost.example.org/aup&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;text&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;This is my AUP text&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;signatureValidityInDays&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">365</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;creationTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2018-02-27T07:26:21.000+01:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;lastUpdateTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2018-02-27T07:26:21.000+01:00&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p>Note: <code>text</code> is returned for backward compatible calls.</p>
+<h4 id="error-response">Error response</h4>
+<p><strong>Condition</strong>: The AUP is not defined for the organization</p>
+<p><strong>Code</strong>: <code>404 NOT FOUND</code></p>
+<p><strong>Content</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;AUP is not defined for this organization&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h3 id="post-iamaup">POST /iam/aup</h3>
+<p>Creates the AUP for the organization</p>
+<p><strong>Authentication required</strong>: yes</p>
+<p><strong>Authorization required</strong>: ROLE_ADMIN</p>
+<p><strong>Data constraints</strong></p>
+<p>Provide a representation of the AUP to be created</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;url&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#a40000">url</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#a40000">not</span> <span style="color:#a40000">blank</span><span style="color:#000;font-weight:bold">],</span>
+  <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#a40000">text</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#a40000">optional</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#a40000">at</span> <span style="color:#a40000">most</span> <span style="color:#0000cf;font-weight:bold">128</span> <span style="color:#a40000">chars</span><span style="color:#000;font-weight:bold">],</span>
+  <span style="color:#204a87;font-weight:bold">&#34;signatureValidityInDays&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#a40000">integer</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#a40000">&gt;=</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p><strong>Data example</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;url&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;http://somehost.example.org/aup&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;signatureValidityInDays&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">365</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h4 id="success-response-1">Success response</h4>
+<p><strong>Condition</strong>: The AUP is created for the organization</p>
+<p><strong>Code</strong>: <code>201 CREATED</code></p>
+<h4 id="error-responses">Error responses</h4>
+<p><strong>Condition</strong>: The AUP already exists</p>
+<p><strong>Code</strong>: <code>409 CONFLICT</code></p>
+<p><strong>Content</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;AUP already exists&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p><strong>Or</strong></p>
+<p><strong>Condition</strong>: Missing or invalid fields in the AUP representation</p>
+<p><strong>Code</strong>: <code>400 BAD REQUEST</code></p>
+<p><strong>Or</strong></p>
+<p><strong>Condition</strong>: Unauthenticated access</p>
+<p><strong>Code</strong>: <code>401 UNAUTHORIZED</code></p>
+<p><strong>Content</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;unauthorized&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error_description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Full authentication is required to access this resource&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p><strong>Or</strong></p>
+<p><strong>Condition</strong>: Authorization error</p>
+<p><strong>Code</strong>: <code>403 FORBIDDEN</code></p>
+<p><strong>Content</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Access is denied&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h3 id="patch-iamaup">PATCH /iam/aup</h3>
+<p>Updates the AUP for the organization</p>
+<p><strong>Authentication required</strong>: yes</p>
+<p><strong>Authorization required</strong>: ROLE_ADMIN</p>
+<p><strong>Data constraints</strong></p>
+<p>Provide a representation of the AUP to be patched</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;url&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#a40000">url</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#a40000">not</span> <span style="color:#a40000">blank</span><span style="color:#000;font-weight:bold">],</span>
+  <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#a40000">text</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#a40000">optional</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#a40000">at</span> <span style="color:#a40000">most</span> <span style="color:#0000cf;font-weight:bold">128</span> <span style="color:#a40000">chars</span><span style="color:#000;font-weight:bold">],</span>
+  <span style="color:#204a87;font-weight:bold">&#34;signatureValidityInDays&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#a40000">integer</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#a40000">&gt;=</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p><strong>Data example</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;url&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;http://somehost.example.org/aup&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;signatureValidityInDays&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">365</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h4 id="success-response-2">Success response</h4>
+<p><strong>Condition</strong>: The AUP is modified for the organization</p>
+<p><strong>Code</strong>: <code>200 OK</code></p>
+<p><strong>Content example</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;creationTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2018-02-27T19:51:39.083+01:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;lastUpdateTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2018-02-27T19:53:49.557+01:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;signatureValidityInDays&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;url&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;http://somehost.example.org/aup&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h4 id="error-responses-1">Error responses</h4>
+<p><strong>Condition</strong>: Missing or invalid fields in the AUP representation</p>
+<p><strong>Code</strong>: <code>400 BAD REQUEST</code></p>
+<p><strong>Or</strong></p>
+<p><strong>Condition</strong>: Unauthenticated access</p>
+<p><strong>Code</strong>: <code>401 UNAUTHORIZED</code></p>
+<p><strong>Content</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;unauthorized&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error_description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Full authentication is required to access this resource&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p><strong>Or</strong></p>
+<p><strong>Condition</strong>: Authorization error</p>
+<p><strong>Code</strong>: <code>403 FORBIDDEN</code></p>
+<p><strong>Content</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Access is denied&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h3 id="delete-iamaup">DELETE /iam/aup</h3>
+<p>Deletes the AUP for the organization.</p>
+<p><strong>Authentication required</strong>: yes</p>
+<p><strong>Authorization required</strong>: ROLE_ADMIN</p>
+<h4 id="success-response-3">Success response</h4>
+<p><strong>Condition</strong>: The AUP is defined for the organization</p>
+<p><strong>Code</strong>: <code>204 NO CONTENT</code></p>
+<h4 id="error-responses-2">Error responses</h4>
+<p><strong>Condition</strong>: The AUP is not defined for the organization</p>
+<p><strong>Code</strong>: <code>404 NOT FOUND</code></p>
+<p><strong>Content</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;AUP is not defined for this organization&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p><strong>Or</strong></p>
+<p><strong>Condition</strong>: Unauthenticated access</p>
+<p><strong>Code</strong>: <code>401 UNAUTHORIZED</code></p>
+<p><strong>Content</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;unauthorized&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error_description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Full authentication is required to access this resource&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p><strong>Or</strong></p>
+<p><strong>Condition</strong>: Authorization error</p>
+<p><strong>Code</strong>: <code>403 FORBIDDEN</code></p>
+<p><strong>Content</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Access is denied&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div>
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-5f98ef65599be38eb06ad3a9f70307f1">2 - Group requests API</h1>
+    
+	<p>IAM Login Service provides a RESTful API to create and manage group membership requests.</p>
+<h2 id="post-iamgroup_requests">POST /iam/group_requests</h2>
+<p>Create a new group membership request.
+The body of the request must contain a JSON with the group name and a motivation
+of the submitted request.</p>
+<p><strong>Authentication required</strong>: true</p>
+<h3 id="success-response">Success response</h3>
+<p><strong>Conditions</strong>:</p>
+<ul>
+<li>The user is authenticated;</li>
+<li>the user is not already member of the requested group;</li>
+<li>a request from the user for such group does not exist.</li>
+</ul>
+<p><strong>Code</strong>: <code>200 Ok</code></p>
+<p><strong>Content</strong>: A JSON representation of the new request.</p>
+<h3 id="error-response">Error response</h3>
+<p><strong>Condition</strong>: The user is not authenticated.</p>
+<p><strong>Code</strong>: <code>401 Unauthorized</code></p>
+<p><strong>Content</strong>: A JSON with the error description.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span> <span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;unauthorized&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error_description&#34;</span> <span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Full authentication is required to access this resource&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p><strong>Condition</strong>: The request already exists.</p>
+<p><strong>Code</strong>: <code>400 Bad Request</code></p>
+<p><strong>Content</strong>: A JSON with the error description.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Group membership request already exist for [test, Test-001]&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h4 id="example">Example</h4>
+<p>Request:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#000">POST</span> <span style="color:#000">/iam/group_requests</span> <span style="color:#204a87;font-weight:bold">HTTP</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#0000cf;font-weight:bold">1.1</span>
+<span style="color:#000">Host</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">iam.local.io</span>
+<span style="color:#000">Content-Type</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">application/json</span>
+<span style="color:#000">Cache-Control</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">no-cache</span>
+
+<span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;groupName&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;Test-001&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;notes&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;Test API&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p>Response:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;uuid&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;d5b652b2-4bb5-401a-bfb9-a795353798b3&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;username&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;test&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;status&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PENDING&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;notes&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Test API&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;groupName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Test-001&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;creationTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1524233011676</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h2 id="get-iamgroup_requests">GET /iam/group_requests</h2>
+<p>Returns a paginated list of group requests.
+The list can be filtered by username, group name or request status.
+Users with administrative privileges can list all requests;
+other users only the requests they submitted.</p>
+<p><strong>Authentication required</strong>: true</p>
+<h3 id="success-response-1">Success response</h3>
+<p><strong>Condition</strong>: The user is authenticated.</p>
+<p><strong>Code</strong>: <code>200 Ok</code></p>
+<p><strong>Content</strong>: A JSON representation of the request list.</p>
+<h3 id="error-response-1">Error response</h3>
+<p><strong>Condition</strong>: The user is not autheticated.</p>
+<p><strong>Code</strong>: <code>401 Unauthorized</code></p>
+<p><strong>Content</strong>: A JSON with an error message representation.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;unauthorized&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error_description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Full authentication is required to access this resource&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h4 id="example-1">Example</h4>
+<p>Request:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#000">GET</span> <span style="color:#000">/iam/group_requests/?groupName=Test-001&amp;status=PENDING</span> <span style="color:#204a87;font-weight:bold">HTTP</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#0000cf;font-weight:bold">1.1</span>
+<span style="color:#000">Host</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">iam.local.io</span>
+<span style="color:#000">Content-Type</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">application/json</span>
+<span style="color:#000">Cache-Control</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">no-cache</span>
+
+</code></pre></div><p>Response:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;Resources&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+        <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;uuid&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;d5b652b2-4bb5-401a-bfb9-a795353798b3&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;username&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;test&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;status&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PENDING&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;notes&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Test API&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;groupName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Test-001&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;creationTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1524233011000</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;lastUpdateTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1524233012000</span>
+        <span style="color:#000;font-weight:bold">},</span>
+        <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;uuid&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;b28790d4-90d4-471f-8b85-79d5fd761b8c&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;username&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;test_100&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;status&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PENDING&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;notes&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Test API&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;groupName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Test-001&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;creationTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1524237532000</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;lastUpdateTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1524237532000</span>
+        <span style="color:#000;font-weight:bold">}</span>
+    <span style="color:#000;font-weight:bold">],</span>
+    <span style="color:#204a87;font-weight:bold">&#34;totalResults&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;startIndex&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;itemsPerPage&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">2</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h2 id="get-iamgroup_requestsuuid">GET /iam/group_requests/{uuid}</h2>
+<p>Returns the details about a group request.</p>
+<p><strong>Authentication required</strong>: true</p>
+<h3 id="success-response-2">Success response</h3>
+<p><strong>Condition</strong>: The user is authenticated and can access the request
+(privileged users can access all request, other users only the requests they submitted).</p>
+<p><strong>Code</strong>: <code>200 Ok</code></p>
+<p><strong>Content</strong>: The JSON representation of the group membership request.</p>
+<h3 id="error-response-2">Error response</h3>
+<p><strong>Condition</strong>: The user is not authenticated.</p>
+<p><strong>Code</strong>: <code>401 Unauthorized</code></p>
+<p><strong>Content</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;unauthorized&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error_description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Full authentication is required to access this resource&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p><strong>Condition</strong>: User is not authorized to access the group request.</p>
+<p><strong>Code</strong>: <code>403 Forbidden</code></p>
+<p><strong>Content</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#a40000">Access is denied
+</span></code></pre></div><p><strong>Condition</strong>: A request linked to the given id does not exist.</p>
+<p><strong>Code</strong>: <code>400 Bad request</code></p>
+<p><strong>Content</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Group request with UUID [d5b652b2-4bb5-401a] does not exist&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h4 id="example-2">Example</h4>
+<p>Request:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#000">GET</span> <span style="color:#000">/iam/group_requests/d5b652b2-4bb5-401a-bfb9-a795353798b3</span> <span style="color:#204a87;font-weight:bold">HTTP</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#0000cf;font-weight:bold">1.1</span>
+<span style="color:#000">Host</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">iam.local.io</span>
+<span style="color:#000">Content-Type</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">application/json</span>
+<span style="color:#000">Cache-Control</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">no-cache</span>
+</code></pre></div><p>Response:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;uuid&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;d5b652b2-4bb5-401a-bfb9-a795353798b3&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;username&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;test&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;status&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PENDING&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;notes&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Test API&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;groupName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Test-001&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;creationTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1524233011000</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;lastUpdateTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1524233012000</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h2 id="delete-iamgroup_requestsuuid">DELETE /iam/group_requests/{uuid}</h2>
+<p>Deletes a group request.
+Administrators can delete any request, users can only delete the <code>PENDING</code> requests
+they previously submitted.</p>
+<p><strong>Authentication required</strong>: true</p>
+<h3 id="success-response-3">Success response</h3>
+<p><strong>Condition</strong>: A request linked to the given id exists.</p>
+<p><strong>Code</strong>: <code>204 No Content</code></p>
+<p><strong>Content</strong>: Empty body</p>
+<h3 id="error-response-3">Error response</h3>
+<p><strong>Condition</strong>: A request linked to the given id does not exist.</p>
+<p><strong>Code</strong>: <code>400 Bad Request</code></p>
+<p><strong>Content</strong>: A JSON with an error message representation.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Group request with UUID [b28790d4-90d4-471f-8b85-79d5fd761b8c] does not exist&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h4 id="example-3">Example</h4>
+<p>Request:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#000">DELETE</span> <span style="color:#000">/iam/group_requests/b28790d4-90d4-471f-8b85-79d5fd761b8c</span> <span style="color:#204a87;font-weight:bold">HTTP</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#0000cf;font-weight:bold">1.1</span>
+<span style="color:#000">Host</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">iam.local.io</span>
+<span style="color:#000">Content-Type</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">application/json</span>
+<span style="color:#000">Cache-Control</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">no-cache</span>
+</code></pre></div><h2 id="post-iamgroup_requestsuuidapprove">POST /iam/group_requests/{uuid}/approve</h2>
+<p>Approves a group request.
+Only administrators can approve requests.</p>
+<p><strong>Authentication required</strong>: true</p>
+<h3 id="success-response-4">Success response</h3>
+<p><strong>Condition</strong>:</p>
+<ul>
+<li>The user is authenticated and has administrative privileges;</li>
+<li>the request is in <code>PENDING</code> status.</li>
+</ul>
+<p><strong>Code</strong>: <code>200 Ok</code></p>
+<p><strong>Content</strong>: The JSON representation of the updated group membership request.</p>
+<h3 id="error-response-4">Error response</h3>
+<p><strong>Condition</strong>:</p>
+<ul>
+<li>The request doesn&rsquo;t exist;</li>
+<li>The request isn&rsquo;t in <code>PENDING</code> status.</li>
+</ul>
+<p><strong>Code</strong>: <code>400 Bad Request</code></p>
+<p><strong>Content</strong>: A JSON with an error message representation.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Group request with UUID [b28790d4-90d4-471f-8b85-79d5fd761b8c] does not exist&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Invalid group request transition: APPROVED -&gt; APPROVED&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h4 id="example-4">Example</h4>
+<p>Request:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#000">POST</span> <span style="color:#000">/iam/group_requests/d5b652b2-4bb5-401a-bfb9-a795353798b3/approve</span> <span style="color:#204a87;font-weight:bold">HTTP</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#0000cf;font-weight:bold">1.1</span>
+<span style="color:#000">Host</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">iam.local.io</span>
+<span style="color:#000">Content-Type</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">application/json</span>
+<span style="color:#000">Cache-Control</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">no-cache</span>
+</code></pre></div><p>Response:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;uuid&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;d5b652b2-4bb5-401a-bfb9-a795353798b3&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;username&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;test&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;status&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;APPROVED&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;notes&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Test API&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;groupName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Test-001&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;creationTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1524233011000</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;lastUpdateTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1524238898590</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h2 id="post-iamgroup_requestsuuidreject">POST /iam/group_requests/{uuid}/reject</h2>
+<p>Rejects a group request.
+A <code>motivation</code> parameter is required.
+Only administrators can reject requests.</p>
+<p><strong>Authentication required</strong>: true</p>
+<h3 id="success-response-5">Success response</h3>
+<p><strong>Condition</strong>:</p>
+<ul>
+<li>The user is authenticated and has administrative privileges;</li>
+<li>the request is in <code>PENDING</code> status.</li>
+</ul>
+<p><strong>Code</strong>: <code>200 Ok</code></p>
+<p><strong>Content</strong>: The JSON representation of the updated group membership request.</p>
+<h3 id="error-response-5">Error response</h3>
+<p><strong>Condition</strong>:</p>
+<ul>
+<li>The request doesn&rsquo;t exist;</li>
+<li>The request isn&rsquo;t in <code>PENDING</code> status;</li>
+<li>The motivation required request parameter is missing.</li>
+</ul>
+<p><strong>Code</strong>: <code>400 Bad Request</code></p>
+<p><strong>Content</strong>: A JSON with an error message representation.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Invalid group request transition: APPROVED -&gt; REJECTED&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Group request with UUID [d5b652b2-4bb5-401a-bfb9-a79535379b3] does not exist&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h4 id="example-5">Example</h4>
+<p>Request:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#a40000">POST /iam/group_requests/b28790d4-90d4-471f-8b85-79d5fd761b8c/reject?motivation=Test API HTTP/1.1
+</span><span style="color:#a40000">Host: iam.local.io
+</span><span style="color:#a40000">Content-Type: application/json
+</span><span style="color:#a40000">Cache-Control: no-cache
+</span></code></pre></div><p>Response:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;uuid&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;b28790d4-90d4-471f-8b85-79d5fd761b8c&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;username&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;test_100&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;status&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;REJECTED&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;notes&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Test API&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;motivation&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Test API&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;groupName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Test-001&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;creationTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1524237532000</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;lastUpdateTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1524238811254</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div>
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-6bac9b32bfac99dba534d199b6900374">3 - Health checks</h1>
+    
+	<p>The IAM Login Service exposes a set of health endpoints that can be used to
+monitor the status of the service.</p>
+<p>Health endpoints expose a different set of information depending on the user
+privileges; users with administrator privileges will see more details, while
+anonymous requests typically receive only a summary of the health status.</p>
+<p>The health endpoints return:</p>
+<ul>
+<li>HTTP status code 200 if everything is ok;</li>
+<li>HTTP status code 500 if any health check fails.</li>
+</ul>
+<h2 id="health"><code>/health</code></h2>
+<p>This is a general application health check endpoint which composes disk space
+and database health checks.</p>
+<p>Examples.</p>
+<pre><code class="language-console" data-lang="console">$ curl -s https://iam.local.io/health | jq
+{
+  &quot;status&quot;: &quot;UP&quot;
+}
+</code></pre><p>Sending basic authentication, the endpoint returns a response with more details:</p>
+<pre><code class="language-console" data-lang="console">$ curl -s -u $ADMINUSER:$ADMINPASSWORD https://iam.local.io/health | jq
+{
+  &quot;status&quot;: &quot;UP&quot;,
+  &quot;diskSpace&quot;: {
+    &quot;status&quot;: &quot;UP&quot;,
+    &quot;total&quot;: 10725883904,
+    &quot;free&quot;: 9872744448,
+    &quot;threshold&quot;: 10485760
+  },
+  &quot;db&quot;: {
+    &quot;status&quot;: &quot;UP&quot;,
+    &quot;database&quot;: &quot;MySQL&quot;,
+    &quot;hello&quot;: 1
+  }
+}
+</code></pre><h2 id="healthmail"><code>/health/mail</code></h2>
+<p>This endpoint monitors the connection to the SMTP server configured for the
+IAM Notification Service.</p>
+<pre><code class="language-console" data-lang="console">$ curl -s https://iam.local.io/health/mail | jq
+{
+  &quot;status&quot;: &quot;UP&quot;
+}
+</code></pre><p>With an authenticated request, the SMTP server details are returned:</p>
+<pre><code class="language-console" data-lang="console">$ curl -u $ADMINUSER:$ADMINPASSWORD https://iam.local.io/health/mail | jq
+{
+  &quot;status&quot;: &quot;UP&quot;,
+  &quot;mail&quot;: {
+    &quot;status&quot;: &quot;UP&quot;,
+    &quot;location&quot;: &quot;smtp.local.io:25&quot;
+  }
+}
+</code></pre><h2 id="healthexternal"><code>/health/external</code></h2>
+<p>This endpoint checks service connectivity to the Internet. By default, the
+endpoint triggers a check on the connectivity to Google.</p>
+<pre><code class="language-console" data-lang="console">$ curl -s https://iam.local.io/health/external | jq
+{
+  &quot;status&quot;: &quot;UP&quot;
+}
+</code></pre><p>With an authenticated request, the external service URL is shown in the details.</p>
+<pre><code class="language-console" data-lang="console">$ curl -s -u $ADMINUSER:$ADMINPASSWORD https://iam.local.io/health/external | jq
+{
+  &quot;status&quot;: &quot;UP&quot;,
+  &quot;google&quot;: {
+    &quot;status&quot;: &quot;UP&quot;,
+    &quot;location&quot;: &quot;http://www.google.it&quot;
+  }
+}
+</code></pre>
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-ae2dfdac8f1e824e219096bb20fbe4dd">4 - IAM Token management API</h1>
+    
+	<p>The IAM server has a RESTful API used to list and revoke active access and
+refresh tokens.</p>
+<p>Access to the API is limited to users with administrator privileges (either
+authenticated via a web session or through OAuth). All examples assume
+authorization via OAuth2 bearer token; e.g.</p>
+<pre><code>GET /access-tokens/13 HTTP/1.1
+Host: example.com
+Authorization: Bearer h480djs93hd8
+</code></pre><p>These are the tokens REST API endpoints:</p>
+<p><strong>Accessing tokens</strong>:</p>
+<ul>
+<li><a href="#get-access-tokens">GET /access-tokens</a></li>
+<li><a href="#get-access-tokensid">GET /access-tokens/:id</a></li>
+<li><a href="#get-refresh-tokens">GET /refresh-tokens</a></li>
+<li><a href="#get-refresh-tokensid">GET /refresh-tokens/:id</a></li>
+</ul>
+<p><strong>Deleting tokens</strong>:</p>
+<ul>
+<li><a href="#delete-access-tokensid">DELETE /access-tokens/:id</a></li>
+<li><a href="#delete-refresh-tokensid">DELETE /refresh-tokens/:id</a></li>
+</ul>
+<h2 id="get-access-tokens">GET /access-tokens</h2>
+<p>Retrieves the paginated list of all the active access tokens. Returns results in <em>application/json</em>.</p>
+<p>Requires <strong>ROLE_ADMIN</strong>.</p>
+<p>Parameters:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>count</code><br/><strong>integer</strong></td>
+<td>Specifies the desired maximum number of query results per page.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>startIndex</code><br/><strong>integer</strong></td>
+<td>The 1-based index of the first query result.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>userId</code><br/><strong>string</strong></td>
+<td>Filters by userId.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>clientId</code><br/><strong>string</strong></td>
+<td>Filters by clientId.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<pre><code>GET http://example.com:8080/access-tokens
+</code></pre><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;totalResults&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;itemsPerPage&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;startIndex&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;resources&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+    <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">6</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;eyJhbGciOiJSUzI1NiJ9.eyJleHAiOjE0MDEzMTQ1MjksImF1ZCI6WyJhOGFmNzUzYy1mMzI0LTRlNDAtYTE3Ny04N2RmYzA2MjQ5YjciXSwiaXNzIjoiaHR0cDpcL1wvbG9jYWxob3N0OjgwODBcL29wZW5pZC1jb25uZWN0LXNlcnZlci13ZWJhcHBcLyIsImp0aSI6Ijg4ZjM4OGE4LTk1NzctNGQyMC1hZTZjLWMyMDMxOGQ1OWJjNiIsImlhdCI6MTQwMTMxMDkyOX0.HYnNxRvGRdKFykVChL-hdxszcFBvygkeUmc8_iv2Jl4MU-jPJVzMnTwKJbCMWBjeBp8hrb0Dgd9XbnHUDyXxwj8MDrWQEH3QnwYJGRW9JFWjHMGfKDQDFY6Ffl3OFERVbyoB2ObiGTUgbw4Nkl1L1ihuMpMAc5nKi0rk3QXcS1M&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;scopes&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+        <span style="color:#4e9a06">&#34;openid&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#4e9a06">&#34;phone&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#4e9a06">&#34;email&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#4e9a06">&#34;address&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#4e9a06">&#34;profile&#34;</span>
+      <span style="color:#000;font-weight:bold">],</span>
+      <span style="color:#204a87;font-weight:bold">&#34;expiration&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2014-05-28T18:02:09-0400&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;client&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;clientId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;iam-test-client&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;contacts&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+          <span style="color:#4e9a06">&#34;andrea.ceccanti@cnaf.infn.it&#34;</span>
+        <span style="color:#000;font-weight:bold">],</span>
+        <span style="color:#204a87;font-weight:bold">&#34;ref&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://iam-test.indigo-datacloud.eu/api/clients/2&#34;</span>
+      <span style="color:#000;font-weight:bold">},</span>
+      <span style="color:#204a87;font-weight:bold">&#34;user&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;e1eb758b-b73c-4761-bfff-adc793da409c&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;userName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;andrea&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;ref&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://iam-test.indigo-datacloud.eu/scim/Users/e1eb758b-b73c-4761-bfff-adc793da409c&#34;</span>
+      <span style="color:#000;font-weight:bold">},</span>
+      <span style="color:#204a87;font-weight:bold">&#34;idToken&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;ref&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://iam-test.indigo-datacloud.eu/access-tokens/5&#34;</span>
+      <span style="color:#000;font-weight:bold">}</span>
+    <span style="color:#000;font-weight:bold">}</span>
+  <span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h2 id="get-access-tokensid">GET /access-tokens/:id</h2>
+<p>Retrieves all the information about the access token identified by <strong>id</strong> and returns results in <em>application/json</em>.</p>
+<p>Requires <strong>ROLE_ADMIN</strong>.</p>
+<pre><code>GET http://example.com:8080/access-tokens/6
+</code></pre><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">6</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;eyJhbGciOiJSUzI1NiJ9.eyJleHAiOjE0MDEzMTQ1MjksImF1ZCI6WyJhOGFmNzUzYy1mMzI0LTRlNDAtYTE3Ny04N2RmYzA2MjQ5YjciXSwiaXNzIjoiaHR0cDpcL1wvbG9jYWxob3N0OjgwODBcL29wZW5pZC1jb25uZWN0LXNlcnZlci13ZWJhcHBcLyIsImp0aSI6Ijg4ZjM4OGE4LTk1NzctNGQyMC1hZTZjLWMyMDMxOGQ1OWJjNiIsImlhdCI6MTQwMTMxMDkyOX0.HYnNxRvGRdKFykVChL-hdxszcFBvygkeUmc8_iv2Jl4MU-jPJVzMnTwKJbCMWBjeBp8hrb0Dgd9XbnHUDyXxwj8MDrWQEH3QnwYJGRW9JFWjHMGfKDQDFY6Ffl3OFERVbyoB2ObiGTUgbw4Nkl1L1ihuMpMAc5nKi0rk3QXcS1M&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;scopes&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+    <span style="color:#4e9a06">&#34;openid&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#4e9a06">&#34;phone&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#4e9a06">&#34;email&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#4e9a06">&#34;address&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#4e9a06">&#34;profile&#34;</span>
+  <span style="color:#000;font-weight:bold">],</span>
+  <span style="color:#204a87;font-weight:bold">&#34;expiration&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2014-05-28T18:02:09-0400&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;client&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;clientId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;iam-test-client&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;contacts&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+      <span style="color:#4e9a06">&#34;andrea.ceccanti@cnaf.infn.it&#34;</span>
+    <span style="color:#000;font-weight:bold">],</span>
+    <span style="color:#204a87;font-weight:bold">&#34;ref&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://iam-test.indigo-datacloud.eu/api/clients/2&#34;</span>
+  <span style="color:#000;font-weight:bold">},</span>
+  <span style="color:#204a87;font-weight:bold">&#34;user&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;e1eb758b-b73c-4761-bfff-adc793da409c&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;userName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;andrea&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;ref&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://iam-test.indigo-datacloud.eu/scim/Users/e1eb758b-b73c-4761-bfff-adc793da409c&#34;</span>
+  <span style="color:#000;font-weight:bold">},</span>
+  <span style="color:#204a87;font-weight:bold">&#34;idToken&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;ref&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://iam-test.indigo-datacloud.eu/access-tokens/5&#34;</span>
+  <span style="color:#000;font-weight:bold">}</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h2 id="get-refresh-tokens">GET /refresh-tokens</h2>
+<p>Retrieves the paginated list of all the active refresh tokens. Returns results in <em>application/json</em>.</p>
+<p>Requires <strong>ROLE_ADMIN</strong>.</p>
+<p>Parameters:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>count</code><br/><strong>integer</strong></td>
+<td>Specifies the desired maximum number of query results per page.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>startIndex</code><br/><strong>integer</strong></td>
+<td>The 1-based index of the first query result.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>userId</code><br/><strong>string</strong></td>
+<td>Filters by userId.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>clientId</code><br/><strong>string</strong></td>
+<td>Filters by clientId.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<pre><code>GET http://example.com:8080/refresh-tokens
+</code></pre><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;totalResults&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;itemsPerPage&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;startIndex&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;resources&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+  	 <span style="color:#000;font-weight:bold">{</span>
+	  <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1083</span><span style="color:#000;font-weight:bold">,</span>
+	  <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;eyJhbGciOiJub25lIn0.eyJqdGkiOiIxMTdmMWRkOS1iOWViLTQ5MjctYThkMS1hYzQ4NjIwYWQzOWYifQ.&#34;</span><span style="color:#000;font-weight:bold">,</span>
+	  <span style="color:#204a87;font-weight:bold">&#34;scopes&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+	    <span style="color:#4e9a06">&#34;openid&#34;</span><span style="color:#000;font-weight:bold">,</span>
+	    <span style="color:#4e9a06">&#34;phone&#34;</span><span style="color:#000;font-weight:bold">,</span>
+	    <span style="color:#4e9a06">&#34;email&#34;</span><span style="color:#000;font-weight:bold">,</span>
+	    <span style="color:#4e9a06">&#34;address&#34;</span><span style="color:#000;font-weight:bold">,</span>
+	    <span style="color:#4e9a06">&#34;profile&#34;</span>
+	  <span style="color:#000;font-weight:bold">],</span>
+	  <span style="color:#204a87;font-weight:bold">&#34;expiration&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2014-05-28T18:02:09-0400&#34;</span><span style="color:#000;font-weight:bold">,</span>
+	  <span style="color:#204a87;font-weight:bold">&#34;client&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+	    <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span>
+	    <span style="color:#204a87;font-weight:bold">&#34;clientId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;iam-test-client&#34;</span><span style="color:#000;font-weight:bold">,</span>
+	    <span style="color:#204a87;font-weight:bold">&#34;contacts&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+	      <span style="color:#4e9a06">&#34;andrea.ceccanti@cnaf.infn.it&#34;</span>
+	    <span style="color:#000;font-weight:bold">],</span>
+	    <span style="color:#204a87;font-weight:bold">&#34;ref&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://iam-test.indigo-datacloud.eu/api/clients/2&#34;</span>
+	  <span style="color:#000;font-weight:bold">},</span>
+	  <span style="color:#204a87;font-weight:bold">&#34;user&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+	    <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;e1eb758b-b73c-4761-bfff-adc793da409c&#34;</span><span style="color:#000;font-weight:bold">,</span>
+	    <span style="color:#204a87;font-weight:bold">&#34;userName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;andrea&#34;</span><span style="color:#000;font-weight:bold">,</span>
+	    <span style="color:#204a87;font-weight:bold">&#34;ref&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://iam-test.indigo-datacloud.eu/scim/Users/e1eb758b-b73c-4761-bfff-adc793da409c&#34;</span>
+	  <span style="color:#000;font-weight:bold">}</span>
+	<span style="color:#000;font-weight:bold">}</span>
+  <span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h2 id="get-refresh-tokensid">GET /refresh-tokens/:id</h2>
+<p>Retrieves all the information about the refresh token identified by <strong>id</strong> and returns results in <em>application/json</em>.</p>
+<p>Requires <strong>ROLE_ADMIN</strong>.</p>
+<pre><code>GET http://example.com:8080/refresh-tokens/1083
+</code></pre><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1083</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;eyJhbGciOiJub25lIn0.eyJqdGkiOiIxMTdmMWRkOS1iOWViLTQ5MjctYThkMS1hYzQ4NjIwYWQzOWYifQ.&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;scopes&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+    <span style="color:#4e9a06">&#34;openid&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#4e9a06">&#34;phone&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#4e9a06">&#34;email&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#4e9a06">&#34;address&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#4e9a06">&#34;profile&#34;</span>
+  <span style="color:#000;font-weight:bold">],</span>
+  <span style="color:#204a87;font-weight:bold">&#34;expiration&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2014-05-28T18:02:09-0400&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;client&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;clientId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;iam-test-client&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;contacts&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+      <span style="color:#4e9a06">&#34;andrea.ceccanti@cnaf.infn.it&#34;</span>
+    <span style="color:#000;font-weight:bold">],</span>
+    <span style="color:#204a87;font-weight:bold">&#34;ref&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://iam-test.indigo-datacloud.eu/api/clients/2&#34;</span>
+  <span style="color:#000;font-weight:bold">},</span>
+  <span style="color:#204a87;font-weight:bold">&#34;user&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;e1eb758b-b73c-4761-bfff-adc793da409c&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;userName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;andrea&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;ref&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://iam-test.indigo-datacloud.eu/scim/Users/e1eb758b-b73c-4761-bfff-adc793da409c&#34;</span>
+  <span style="color:#000;font-weight:bold">}</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h2 id="delete-access-tokensid">DELETE /access-tokens/:id</h2>
+<p>Revoke the access token identified by <strong>id</strong>.</p>
+<p>Requires <strong>ROLE_ADMIN</strong>.</p>
+<pre><code>DELETE http://example.com:8080/access-tokens/6
+</code></pre><pre><code>204  AccessToken revoked
+</code></pre><h2 id="delete-refresh-tokensid">DELETE /refresh-tokens/:id</h2>
+<p>Revoke the access token identified by <strong>id</strong>.</p>
+<p>Requires <strong>ROLE_ADMIN</strong>.</p>
+<pre><code>DELETE http://example.com:8080/refresh-tokens/1083
+</code></pre><pre><code>204  RefreshToken revoked
+</code></pre><p>More details can be read at the <a href="tokens_api/index.html">complete API Reference</a>.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-79982fb90b690ba4430ec5123ea2927a">5 - OAuth token exchange API</h1>
+    
+	<p>The current release of the INDIGO IAM implements part of the <a href="https://tools.ietf.org/html/draft-ietf-oauth-token-exchange-05">Token Exchange
+OAuth
+specification</a>.
+The Token Exchange OAuth specification defines &ldquo;a lightweigth protocol that
+enables clients to request and obtain security tokens from authorization
+servers&rdquo;.</p>
+<p>OAuth 2.0 was designed to solve the problem of a delegated access to resources
+across services, mediated by an authorization server, as shown in the following
+picture:</p>
+<img src="/images/oauth-delegation-1.png" alt="OAuth delegation">
+<p>In the picture above we have the usual OAuth roles:</p>
+<ul>
+<li>The user (or <em>resource owner</em>, in OAuth terminology);</li>
+<li>A resource server, ie. a service hosting user resources, capable of
+accepting and responding to protected resource requests using access tokens.</li>
+<li>A client: this is an agent that has received a permission from the user to
+act on his behalf on his resources hosted on a resource server;</li>
+<li>An authorization server: a service that issues access token to clients after
+having authenticated the user and obtained an authorization from the user
+that the client is entitled to act on user&rsquo;s resources</li>
+</ul>
+<p>There are scenarios when a resource server, in order to satisfy a client
+request, needs to access resources hosted by other downstream services on
+behalf of the user, like in the following picture:</p>
+<img src="/images/oauth-token-exchange-1.png" alt="OAuth delegation" height="200">
+<p>In OAuth, access tokens are bearer tokens, so the first resource server could
+simply use the access token received from the client to interact, on behalf
+of the user, with the downstream resource server.</p>
+<p>There are, however, situations in which just using the received access token
+against the downstream service is not possible, like for instance if the token
+audience was scoped to be valid only on the first resource server.</p>
+<p>Moreover, the resource server could need the ability to act on behalf of the
+user for an unbounded amount of time (e.g., to implement long-running
+computations), not limited by the validity of the received access token.</p>
+<p>The token exchange specification was designed to provide a protocol in support
+of these scenarios, where a client can exchange an access token received from
+antoher client with a new token (or a set of tokens, as we will see) by
+interacting with a trusted OAuth authorization server.</p>
+<h2 id="impersonation-vs-delegation">Impersonation vs delegation</h2>
+<p>As specified in the <a href="https://tools.ietf.org/html/draft-ietf-oauth-token-exchange-05">Token Exchange OAuth
+specification</a>,
+when a subject A impersonates B, A has all the rights of B and it is
+indistinguishable from B. So, when A interacts within any other entity, A is B.</p>
+<p>With delegation A still has its own identity, separate from B. So when A
+interacts within another entity, it is explicit that A is representing B,
+because B has delegated some of its rights to A.</p>
+<p>More details about the difference from this two semantics can be found in
+<a href="https://tools.ietf.org/html/draft-ietf-oauth-token-exchange-05#section-1.1">this section of the specification</a>.</p>
+<p>The INDIGO IAM token exchange implementation currently supports only
+impersonation semantics.</p>
+<h2 id="client-configuration-requirements">Client configuration requirements</h2>
+<p>In order to request a token exchange, a client must be configured with the
+<code>urn:ietf:params:oauth:grant-type:token-exchange</code> grant type enabled. The token
+exchange grant type is <strong>disabled</strong> by default for dynamically registered
+clients, and can be enabled only by users with administrative privileges.</p>
+<h2 id="the-token-exchange-request">The token exchange request</h2>
+<p>A client who wants to exchange an access token with a new one (or a couple of
+new tokens, in case a refresh token is requested), must send an authenticated
+request to the IAM <code>/token</code> endpoint, specifying the following properties:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>grant_type</td>
+<td><code>urn:ietf:params:oauth:grant-type:token-exchange</code></td>
+</tr>
+<tr>
+<td>subject_token</td>
+<td>The subject access token that the client wants to exchange</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>The set of scopes requested for the new access token</td>
+</tr>
+<tr>
+<td>audience</td>
+<td>Optional. A space-separated list of resource identifiers that will be used to limit the audience of the issued token</td>
+</tr>
+</tbody>
+</table>
+<h3 id="scopes-in-exchanged-tokens">Scopes in exchanged tokens</h3>
+<p>A client, when requesting a token exchange, can request any of the scopes
+enabled by its client configuration. IAM system scopes are however handled in a
+special way. These scopes, in order to be &ldquo;exchanged&rdquo; across clients, need to
+be</p>
+<ul>
+<li>enabled for the client requesting the token exchange</li>
+<li>linked to the subject token presented for the token exchange</li>
+</ul>
+<p>The list of system scopes currently defined in the IAM can be obtained by
+registered users by issuing a request to the IAM system scopes API:</p>
+<pre><code>curl -H &quot;Authorization: Bearer ...&quot; https://iam.example/api/scopes
+</code></pre><h3 id="token-exchange-example">Token Exchange example</h3>
+<p>This section describes a token exchange flow.</p>
+<p>We start with a normal OAuth flow where a client, <code>token-exchange-subject</code>,
+requests an access token from the IAM using the resource owner password
+credential flow. The <code>token-exchange-subject</code> client is configured to use HTTP
+basic authentication against the IAM token endpoint, and in this example acts
+on behalf of the <code>test</code> user. We use the resource owner password credentials
+flow for convenience, but any other OAuth or OpenID connect flow that involves
+a user identity would be fine (i.e., authorization code).</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#204a87">export</span> <span style="color:#000">IAM_TOKEN_ENDPOINT</span><span style="color:#ce5c00;font-weight:bold">=</span>https://iam.local.io/token
+$ <span style="color:#204a87">export</span> <span style="color:#000">SUBJECT_ID</span><span style="color:#ce5c00;font-weight:bold">=</span>token-exchange-subject
+$ <span style="color:#204a87">export</span> <span style="color:#000">SUBJECT_SECRET</span><span style="color:#ce5c00;font-weight:bold">=</span>...
+$ <span style="color:#204a87">export</span> <span style="color:#000">USERNAME</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">test</span>
+$ <span style="color:#204a87">export</span> <span style="color:#000">PASSWORD</span><span style="color:#ce5c00;font-weight:bold">=</span>...
+
+$ curl -s -u <span style="color:#000">$SUBJECT_ID</span>:<span style="color:#000">$SUBJECT_SECRET</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -d <span style="color:#000">username</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">$USERNAME</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -d <span style="color:#000">password</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">$PASSWORD</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -d <span style="color:#000">grant_type</span><span style="color:#ce5c00;font-weight:bold">=</span>password <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -d <span style="color:#000">scope</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;openid profile&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  <span style="color:#000">$IAM_TOKEN_ENDPOINT</span> <span style="color:#000;font-weight:bold">|</span> tee /tmp/response <span style="color:#000;font-weight:bold">|</span> jq
+</code></pre></div><p>Note that the only scopes requested in this first request are <code>openid</code> and
+<code>profile</code>, i.e. the scopes required to access user identity information. IAM
+token endpoint returns a JSON containing an access token and other info:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;access_token&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;eyJraWQiOiJyc2ExIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJhY2JjY2QwOC1kNzNkLTQxZjItODk3MS1iNjA4ZmNjNjYyNmQiLCJpc3MiOiJodHRwczpcL1wvaWFtLmxvY2FsLmlvXC8iLCJleHAiOjE0NzY5NTcxMDIsImlhdCI6MTQ3Njk1MzUwMiwianRpIjoiMjBiZThlNjYtNmNmOS00YzE0LWI4ZDEtZjJmZTc0NDk0YjAxIn0.kqAhZ2MNmBLYIA_-xW9356kD-ndqJ7jKUZRPb7ox_4iXbjcnV6oZYAHZzTH_uBTXA2WsVIJJ-Qicm5JQ0ydb2ewgECAmGkKfL3X4qnnRq2_GgZZof3zlM_rIz3QrDB3v1eIt42YeMdUgODUYGKeDwntT5a7wPDtxe-GM2uL5fik&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;token_type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Bearer&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;expires_in&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">3599</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;scope&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;openid profile&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;id_token&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;eyJraWQiOiJyc2ExIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJhY2JjY2QwOC1kNzNkLTQxZjItODk3MS1iNjA4ZmNjNjYyNmQiLCJhdWQiOiIzMmMzMTUyOS05YmM2LTQ1ZWQtYjU0YS0wNGEyNThiMDRmYmYiLCJraWQiOiJyc2ExIiwiaXNzIjoiaHR0cHM6XC9cL2lhbS5sb2NhbC5pb1wvIiwiZXhwIjoxNDc2OTU0MTAyLCJpYXQiOjE0NzY5NTM1MDIsImp0aSI6IjhhMzk1OTM5LTM1N2QtNGY5My04MmEzLTJkMTBkM2ZhMzgzZCJ9.DtNR-ob8kMIUMa2x6TW7krSYMt78tfr5fnTK4aeoIY-wmEWcjPRx1_vT6_lesjMr9w0B_OCALXfOoDBfbF7DhmV7vpbotirkMxvowFBzgppmtBTZNAzLc_Wiwr4IAiGydwjy_UbYrxx6qlWJAKRwzSbDDd3oDVpU-KM8gtLIEa8&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p>We put this access token in an environment variable:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> $ <span style="color:#204a87">export</span> <span style="color:#000">SUBJECT_TOKEN</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">$(</span>cat /tmp/response <span style="color:#000;font-weight:bold">|</span> jq -r .access_token<span style="color:#204a87;font-weight:bold">)</span>
+</code></pre></div><p>We use this access token to access the <code>app</code> API, which only requires access to
+user identity to grant access:</p>
+<pre><code>curl -H &quot;Authorization: Bearer $SUBJECT_TOKEN&quot; https://app.example.org/api
+</code></pre><p>Suppose now that the <code>app</code> API needs, to properly answer the request from the
+client, to interact with another downstream service, <a href="https://tasks.example.org">https://tasks.example.org</a>,
+on behalf of the user. Unfortunately the set of scopes linked to the access
+token received are not sufficient to do this, and so <code>app</code> decides to exchange
+the token received with another one granting enough privileges.</p>
+<p>In Token Exchange terms, here <code>app</code> is the <code>actor</code>, the subject identity linked
+to the token is the <code>test</code> user, and the audience for the new token being
+requested would be the <code>https://tasks.app.example.org/api</code> API.</p>
+<p>So <code>app</code> would do a request like the following:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#204a87">export</span> <span style="color:#000">ACTOR_ID</span><span style="color:#ce5c00;font-weight:bold">=</span>https://app.example.org/api
+$ <span style="color:#204a87">export</span> <span style="color:#000">ACTOR_SECRET</span><span style="color:#ce5c00;font-weight:bold">=</span>...
+$ <span style="color:#204a87">export</span> <span style="color:#000">AUDIENCE</span><span style="color:#ce5c00;font-weight:bold">=</span>https://tasks.example.org/api
+
+$ curl -s -u <span style="color:#000">$ACTOR_ID</span>:<span style="color:#000">$ACTOR_SECRET</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    -d <span style="color:#000">grant_type</span><span style="color:#ce5c00;font-weight:bold">=</span>urn:ietf:params:oauth:grant-type:token-exchange <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    -d <span style="color:#000">audience</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">$AUDIENCE</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    -d <span style="color:#000">subject_token</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">$SUBJECT_TOKEN</span> <span style="color:#4e9a06">\ </span><span style="color:#8f5902;font-style:italic"># This token was received from the initial client </span>
+    -d <span style="color:#000">scope</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;openid profile read-tasks&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    <span style="color:#000">$IAM_TOKEN_ENDPOINT</span> <span style="color:#000;font-weight:bold">|</span> tee /tmp/response <span style="color:#000;font-weight:bold">|</span> jq
+
+
+</code></pre></div><p>Note that <code>app</code> requests an additional scope, <code>read-tasks</code>, to interact with
+the downstream service.</p>
+<p>Since <code>app</code> is a trusted client for token exchange, the IAM responds with the
+following JSON:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;access_token&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;eyJra...&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;token_type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Bearer&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;expires_in&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">3599</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;scope&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;openid profile read-tasks&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;issued_token_type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;urn:ietf:params:oauth:token-type:jwt&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p>And <code>app</code> can use the newly issued access token to invoke services on
+<a href="https://task-app.example.org/api">https://task-app.example.org/api</a> on behalf of user <code>test</code>:</p>
+<pre><code>$ curl -H &quot;Authorization: Bearer eyJra...&quot; http://tasks.example.org/api
+
+</code></pre><h3 id="trust">Trust</h3>
+<p>Clients that have the token exchange grant enabled are considered trusted
+clients i.e., no explicit grant from the user is needed to grant access to
+client scopes. For IAM system scopes, however, these can be &ldquo;exchanged&rdquo; only if
+linked to the original subject token.</p>
+<h3 id="limitation-and-known-issues">Limitation and known issues</h3>
+<p>The current implementation of Token Exchange in Indigo IAM has the following limitations:</p>
+<ul>
+<li>Delegation is not yet supported: if <code>actor_token</code> or the <code>want_composite</code>
+parameters are specified within the request, an error response is returned by
+the authorization server;</li>
+<li>The <code>resource</code> field is ignored.</li>
+</ul>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-167ff098c8b010fb17614df7ba73694d">6 - OAuth token introspection API</h1>
+    
+	<p>IAM, through the <a href="https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server/wiki">MitreID OpenID Connect server implementation</a>,
+supports the <a href="https://tools.ietf.org/html/rfc7662">OAuth token introspection API</a> API at
+the <code>/introspect</code> endpoint.</p>
+<p>The <code>/introspect</code> endpoint <strong>requires</strong> client authentication.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-e9e5ebcd88b6ff930c7d37a637080e40">7 - OpenID Connect client management API</h1>
+    
+	<p>IAM, through the <a href="https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server/wiki">MitreID OpenID Connect server implementation</a>,
+provides an OAuth/OpenID connect client management API at the <code>/api/clients</code>
+endpoint.</p>
+<p>Documentation for this API can be found on the <a href="https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server/wiki/API">MitreID connect
+wiki</a>.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-49efb320846282f9e6c68fa2debefad5">8 - OpenID Connect client registration API</h1>
+    
+	<p>IAM, through the <a href="https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server/wiki">MitreID OpenID Connect server implementation</a>,
+supports the <a href="https://openid.net/specs/openid-connect-registration-1_0.html">OpenID Connect Dynamic Client Registration
+API</a> API at the <code>/register</code> endpoint.</p>
+<p>Client registration does not require authentication.</p>
+<h2 id="example-registering-and-deleting-a-client-from-the-command-line">Example: registering and deleting a client from the command line</h2>
+<p>With the following template JSON you can easily register a client in the IAM:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;redirect_uris&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+    <span style="color:#4e9a06">&#34;https://another.client.example/oidc&#34;</span>
+  <span style="color:#000;font-weight:bold">],</span>
+  <span style="color:#204a87;font-weight:bold">&#34;client_name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;another-example-client&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;contacts&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+    <span style="color:#4e9a06">&#34;test@iam.test&#34;</span>
+  <span style="color:#000;font-weight:bold">],</span>
+  <span style="color:#204a87;font-weight:bold">&#34;token_endpoint_auth_method&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;client_secret_basic&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;scope&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;address phone openid email profile offline_access&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;grant_types&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+    <span style="color:#4e9a06">&#34;refresh_token&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#4e9a06">&#34;authorization_code&#34;</span>
+  <span style="color:#000;font-weight:bold">],</span>
+  <span style="color:#204a87;font-weight:bold">&#34;response_types&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+    <span style="color:#4e9a06">&#34;code&#34;</span>
+  <span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p>Save the above JSON into a file (after changing the relevant fields, like
+contact, rediret_uris, etc&hellip;). We will use the <code>client-req.json</code> file name for
+this example. You can then use <a href="https://httpie.org/">httpie</a> as  follows to generate the
+client on the IAM</p>
+<pre><code>http https://iam.local.io/register &lt; client-req.json &gt; client.json
+</code></pre><p>If the command terminates correctly, you will have the client configuration
+saved in the <code>client.json</code> file. You can use <a href="https://stedolan.github.io/jq/">jq</a> to display in a pretty
+way its contents:</p>
+<pre><code>$ jq . client.json
+{
+  &quot;client_id&quot;: &quot;4b2556d7-65c5-4a15-81c0-7b80c604940e&quot;,
+  &quot;client_secret&quot;: &quot;R4u3v-SUqKX1XTFQbGGr-S5qcOAA8JrLT0xAOHYZl1Up65ChHYNsl-8y6gv7qJLaxVI5Z6UXBmSkwSDZLtAAWw&quot;,
+  &quot;client_secret_expires_at&quot;: 0,
+  &quot;client_id_issued_at&quot;: 1507223860,
+  &quot;registration_access_token&quot;: &quot;eyJraWQiOiJyc2ExIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiI0YjI1NTZkNy02NWM1LTRhMTUtODFjMC03YjgwYzYwNDk0MGUiLCJpc3MiOiJodHRwczpcL1wvaWFtLmxvY2FsLmlvXC8iLCJpYXQiOjE1MDcyMjM4NjAsImp0aSI6IjRmNTQ2YmEyLWE3ZWEtNDA4ZC1iYWI1LTdlZGMyNDZlOWJhMiJ9.Iyr7fwKy3OSl3wVjaw5HVVxBFl62A-vDlrKJpJA2W2t1GmPMcz5ZZOhp9PStd2RbMpuu6WwVhhDMN706IOzk03dGD3wPy_ag2MaiJfdT0-AT2nMviuPNylgU4bK0wFs9r9cwxBI0PpJ5pkkQE__z_lfWHylKMf9mLrZp81WUvt8&quot;,
+  &quot;registration_client_uri&quot;: &quot;https://iam.local.io/register/4b2556d7-65c5-4a15-81c0-7b80c604940e&quot;,
+  &quot;redirect_uris&quot;: [
+    &quot;https://another.client.example/oidc&quot;
+  ],
+  &quot;client_name&quot;: &quot;another-example-client&quot;,
+  &quot;contacts&quot;: [
+    &quot;test@iam.test&quot;
+  ],
+  &quot;token_endpoint_auth_method&quot;: &quot;client_secret_basic&quot;,
+  &quot;scope&quot;: &quot;address phone openid email profile offline_access&quot;,
+  &quot;grant_types&quot;: [
+    &quot;refresh_token&quot;,
+    &quot;authorization_code&quot;
+  ],
+  &quot;response_types&quot;: [
+    &quot;code&quot;
+  ]
+}
+</code></pre><p>and also to extract information from it conveniently from the command line.
+For example, you can extract the <code>client_id</code> and <code>registration_access_token</code>
+with the following commands:</p>
+<pre><code>$ export CID=$(jq -r .client_id client.json)
+$ export RAT=$(jq -r .registration_access_token client.json)
+</code></pre><p>and use them to delete the client:</p>
+<pre><code>$ http DELETE https://iam.local.io/register/${CID} Authorization:&quot;Bearer ${RAT}&quot;
+HTTP/1.1 204 No Content
+Access-Control-Allow-Origin: *
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Connection: keep-alive
+Content-Language: en-US
+Date: Thu, 05 Oct 2017 17:10:42 GMT
+Expires: 0
+Pragma: no-cache
+Server: nginx/1.13.1
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Application-Context: INDIGO IAM:mysql,google,registration,saml,mysql-test:8080
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-XSS-Protection: 1; mode=block
+</code></pre>
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-ff5f4511d04c6e9b13f1c49c32e2c50d">9 - SCIM API</h1>
+    
+	<p>The IAM server provides a RESTful API, based on the <a href="http://www.simplecloud.info/">System for Cross-domain
+Identity Management (SCIM) standard</a>, that
+can be used to manage users, change their personal information, manage their
+group membership, etc.</p>
+<p>Access to the API is restricted to administrator users or OAuth clients that
+have access to the <code>scim:read</code> (for read access) or <code>scim:write</code> (for write
+access) OAuth scopes.</p>
+<p>Examples below assume OAuth authorization via bearer token: e.g.</p>
+<pre><code>GET /Users/2819c223-7f76-453a-919d-413861904646 HTTP/1.1
+Host: example.com
+Authorization: Bearer h480djs93hd8
+</code></pre><p>The SCIM protocol specifies well known endpoints and HTTP methods for managing
+Resources defined in the <a href="https://tools.ietf.org/html/rfc7643">SCIM core schema specification</a>.</p>
+<h2 id="iam-scim-endpoints">IAM SCIM Endpoints</h2>
+<p>IAM maps User and Group resource endpoints to the following endpoints:</p>
+<ul>
+<li><code>/scim/Users</code></li>
+<li><code>/scim/Groups</code></li>
+</ul>
+<p>For each endpoint, the following methods are allowed:</p>
+<table>
+<thead>
+<tr>
+<th>HTTP Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td>Retrieves a complete or partial Resource.</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>Create new Resource or bulk modify Resources.</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>Replace completely a Resource.</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>Modifies a Resource with a set of specified changes (partial update).</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>Deletes a Resource.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="get-scimusersid">GET <code>/scim/Users/{id}</code></h2>
+<p>Retrieves all the information about the user identified by <code>id</code> and returns results in application/json.</p>
+<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:read</code>.</p>
+<pre><code>GET http://localhost:8080/scim/Users/2cb10ac5-5b1a-47a0-8f60-48995999f18d
+</code></pre><pre><code>{
+    &quot;id&quot;: &quot;2cb10ac5-5b1a-47a0-8f60-48995999f18d&quot;,
+    &quot;meta&quot;: {
+        &quot;created&quot;: &quot;2016-07-13T18:38:16.314+02:00&quot;,
+        &quot;lastModified&quot;: &quot;2016-07-13T18:38:16.314+02:00&quot;,
+        &quot;location&quot;: &quot;http://localhost:8080/scim/Users/2cb10ac5-5b1a-47a0-8f60-48995999f18d&quot;,
+        &quot;resourceType&quot;: &quot;User&quot;
+    },
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:schemas:core:2.0:User&quot;,
+        &quot;urn:indigo-dc:scim:schemas:IndigoUser&quot;
+    ],
+    &quot;userName&quot;: &quot;paul_mccartney&quot;,
+    &quot;name&quot;: {
+        &quot;givenName&quot;: &quot;Paul&quot;,
+        &quot;familyName&quot;: &quot;McCartney&quot;,
+        &quot;formatted&quot;: &quot;Paul McCartney&quot;
+    },
+    &quot;displayName&quot;: &quot;paul_mccartney&quot;,
+    &quot;active&quot;: false,
+    &quot;emails&quot;: [
+        {
+            &quot;type&quot;: &quot;work&quot;,
+            &quot;value&quot;: &quot;paul@beatles.uk&quot;,
+            &quot;primary&quot;: true
+        }
+    ]
+}
+</code></pre><h2 id="post-scimusers">POST <code>/scim/Users</code></h2>
+<p>Creates a new user, using the info specified within the request body, sent as application/json.</p>
+<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:write</code>.</p>
+<pre><code>POST http://localhost:8080/scim/Users/
+</code></pre><pre><code>{
+    &quot;userName&quot;: &quot;paul_mccartney&quot;,
+    &quot;name&quot;: {
+        &quot;givenName&quot;: &quot;Paul&quot;,
+        &quot;familyName&quot;: &quot;McCartney&quot;,
+        &quot;formatted&quot;: &quot;Paul McCartney&quot;
+    },
+    &quot;emails&quot;: [
+        {
+            &quot;type&quot;: &quot;work&quot;,
+            &quot;value&quot;: &quot;paul@beatles.uk&quot;,
+            &quot;primary&quot;: true
+        }
+    ]
+}
+</code></pre><p>Successful Resource creation is indicated with a <code>201 Created</code> response code.
+Upon successful creation, the response body contains the newly created User.</p>
+<pre><code>{
+    &quot;id&quot;: &quot;2cb10ac5-5b1a-47a0-8f60-48995999f18d&quot;,
+    &quot;meta&quot;: {
+        &quot;created&quot;: &quot;2016-07-13T18:38:16.314+02:00&quot;,
+        &quot;lastModified&quot;: &quot;2016-07-13T18:38:16.314+02:00&quot;,
+        &quot;location&quot;: &quot;http://localhost:8080/scim/Users/2cb10ac5-5b1a-47a0-8f60-48995999f18d&quot;,
+        &quot;resourceType&quot;: &quot;User&quot;
+    },
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:schemas:core:2.0:User&quot;,
+        &quot;urn:indigo-dc:scim:schemas:IndigoUser&quot;
+    ],
+    &quot;userName&quot;: &quot;paul_mccartney&quot;,
+    &quot;name&quot;: {
+        &quot;givenName&quot;: &quot;Paul&quot;,
+        &quot;familyName&quot;: &quot;McCartney&quot;,
+        &quot;formatted&quot;: &quot;Paul McCartney&quot;
+    },
+    &quot;displayName&quot;: &quot;paul_mccartney&quot;,
+    &quot;active&quot;: false,
+    &quot;emails&quot;: [
+        {
+            &quot;type&quot;: &quot;work&quot;,
+            &quot;value&quot;: &quot;paul@beatles.uk&quot;,
+            &quot;primary&quot;: true
+        }
+    ]
+}
+</code></pre><h2 id="get-scimusers">GET <code>/scim/Users</code></h2>
+<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:read</code>.</p>
+<p>SCIM defines a standard set of operations that can be used to filter, sort, and
+paginate response results. The operations are specified by adding query
+parameters to the Resource&rsquo;s endpoint.</p>
+<p><strong>Pagination</strong> parameters can be used together to &ldquo;page through&rdquo; large numbers
+of Resources. Pagination is not session based so clients must never assume
+repeatable results.</p>
+<p>The following table describes the URL pagination parameters.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>startIndex</td>
+<td>The 1-based index of the first search result.</td>
+<td>1</td>
+</tr>
+<tr>
+<td>count</td>
+<td>Non-negative Integer. Specifies the desired maximum number of search results per page; e.g., 10.</td>
+<td>None.</td>
+</tr>
+</tbody>
+</table>
+<p>The following table describes the query response pagination attributes.</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>itemsPerPage</td>
+<td>Non-negative Integer. Specifies the number of search results returned in a query response page; e.g., 10.</td>
+</tr>
+<tr>
+<td>totalResults</td>
+<td>Non-negative Integer. Specifies the total number of results matching the client query; e.g., 1000.</td>
+</tr>
+<tr>
+<td>startIndex</td>
+<td>The 1-based index of the first result in the current set of search results; e.g., 1.</td>
+</tr>
+</tbody>
+</table>
+<p>The below example returns the first 10 users (implicit startIndex as 1):</p>
+<pre><code>GET /scim/Users?count=10
+</code></pre><pre><code>{
+    &quot;totalResults&quot;: 250,
+    &quot;itemsPerPage&quot;: 10,
+    &quot;startIndex&quot;: 1,
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:api:messages:2.0:ListResponse&quot;
+    ],
+    &quot;Resources&quot;: [
+        {
+            &quot;id&quot;: &quot;80e5fb8d-b7c8-451a-89ba-346ae278a66f&quot;,
+            &quot;meta&quot;: {
+                &quot;created&quot;: &quot;2016-07-14T12:22:46.376+02:00&quot;,
+                &quot;lastModified&quot;: &quot;2016-07-14T12:22:46.376+02:00&quot;,
+                &quot;location&quot;: &quot;http://localhost:8080/scim/Users/80e5fb8d-b7c8-451a-89ba-346ae278a66f&quot;,
+                &quot;resourceType&quot;: &quot;User&quot;
+            },
+            &quot;schemas&quot;: [
+                &quot;urn:ietf:params:scim:schemas:core:2.0:User&quot;,
+                &quot;urn:indigo-dc:scim:schemas:IndigoUser&quot;
+            ],
+            &quot;userName&quot;: &quot;test&quot;,
+            &quot;name&quot;: {
+                &quot;givenName&quot;: &quot;Test&quot;,
+                &quot;familyName&quot;: &quot;User&quot;,
+                &quot;formatted&quot;: &quot;Test User&quot;
+            },
+            &quot;displayName&quot;: &quot;test&quot;,
+            &quot;active&quot;: true,
+            &quot;emails&quot;: [
+                {
+                    &quot;type&quot;: &quot;work&quot;,
+                    &quot;value&quot;: &quot;test@iam.test&quot;,
+                    &quot;primary&quot;: true
+                }
+            ],
+            &quot;groups&quot;: [
+                {
+                    &quot;display&quot;: &quot;Production&quot;,
+                    &quot;value&quot;: &quot;c617d586-54e6-411d-8e38-64967798fa8a&quot;,
+                    &quot;$ref&quot;: &quot;http://localhost:8080/scim/Groups/c617d586-54e6-411d-8e38-64967798fa8a&quot;
+                },
+                {
+                    &quot;display&quot;: &quot;Analysis&quot;,
+                    &quot;value&quot;: &quot;6a384bcd-d4b3-4b7f-a2fe-7d897ada0dd1&quot;,
+                    &quot;$ref&quot;: &quot;http://localhost:8080/scim/Groups/6a384bcd-d4b3-4b7f-a2fe-7d897ada0dd1&quot;
+                }
+            ],
+            &quot;urn:indigo-dc:scim:schemas:IndigoUser&quot;: {
+                &quot;oidcIds&quot;: [
+                    {
+                        &quot;issuer&quot;: &quot;https://accounts.google.com&quot;,
+                        &quot;subject&quot;: &quot;105440632287425289613&quot;
+                    }
+                ],
+                &quot;samlIds&quot;: [
+                    {
+                        &quot;idpId&quot;: &quot;https://idptestbed/idp/shibboleth&quot;,
+                        &quot;userId&quot;: &quot;andrea.ceccanti@example.org&quot;
+                    }
+                ]
+            }
+        },
+        [...]
+    ]
+}
+</code></pre><p>The details of the returned users can be reduced/filtered by specifying the
+needed attribute(s). The below example returns only the userName for all Users:</p>
+<pre><code>GET http://localhost:8080/scim/Users?attributes=userName
+</code></pre><pre><code>{
+    &quot;totalResults&quot;: 250,
+    &quot;itemsPerPage&quot;: 100,
+    &quot;startIndex&quot;: 1,
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:api:messages:2.0:ListResponse&quot;
+    ],
+    &quot;Resources&quot;: [
+        {
+            &quot;id&quot;: &quot;80e5fb8d-b7c8-451a-89ba-346ae278a66f&quot;,
+            &quot;schemas&quot;: [
+                &quot;urn:ietf:params:scim:schemas:core:2.0:User&quot;,
+                &quot;urn:indigo-dc:scim:schemas:IndigoUser&quot;
+            ],
+            &quot;userName&quot;: &quot;test&quot;
+        },
+        {
+            &quot;id&quot;: &quot;73f16d93-2441-4a50-88ff-85360d78c6b5&quot;,
+            &quot;schemas&quot;: [
+                &quot;urn:ietf:params:scim:schemas:core:2.0:User&quot;,
+                &quot;urn:indigo-dc:scim:schemas:IndigoUser&quot;
+            ],
+            &quot;userName&quot;: &quot;admin&quot;
+        },
+        [...]
+    ]
+}
+</code></pre><p>Multiple attributes are also supported:</p>
+<pre><code>GET http://localhost:8080/scim/Users?count=2&amp;attributes=userName%2Cemails%2Curn%3Aindigo-dc%3Ascim%3Aschemas%3AIndigoUser
+</code></pre><p>Request params:</p>
+<ul>
+<li><code>count=2</code></li>
+<li><code>attributes=userName,emails,urn:indigo-dc:scim:schemas:IndigoUser</code></li>
+</ul>
+<pre><code>{
+    &quot;totalResults&quot;: 250,
+    &quot;itemsPerPage&quot;: 2,
+    &quot;startIndex&quot;: 1,
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:api:messages:2.0:ListResponse&quot;
+    ],
+    &quot;Resources&quot;: [
+        {
+            &quot;id&quot;: &quot;80e5fb8d-b7c8-451a-89ba-346ae278a66f&quot;,
+            &quot;schemas&quot;: [
+                &quot;urn:ietf:params:scim:schemas:core:2.0:User&quot;,
+                &quot;urn:indigo-dc:scim:schemas:IndigoUser&quot;
+            ],
+            &quot;userName&quot;: &quot;test&quot;,
+            &quot;emails&quot;: [
+                {
+                    &quot;type&quot;: &quot;work&quot;,
+                    &quot;value&quot;: &quot;test@iam.test&quot;,
+                    &quot;primary&quot;: true
+                }
+            ],
+            &quot;urn:indigo-dc:scim:schemas:IndigoUser&quot;: {
+                &quot;oidcIds&quot;: [
+                    {
+                        &quot;issuer&quot;: &quot;https://accounts.google.com&quot;,
+                        &quot;subject&quot;: &quot;105440632287425289613&quot;
+                    }
+                ],
+                &quot;samlIds&quot;: [
+                    {
+                        &quot;idpId&quot;: &quot;https://idptestbed/idp/shibboleth&quot;,
+                        &quot;userId&quot;: &quot;andrea.ceccanti@example.org&quot;
+                    }
+                ]
+            }
+        },
+        {
+            &quot;id&quot;: &quot;73f16d93-2441-4a50-88ff-85360d78c6b5&quot;,
+            &quot;schemas&quot;: [
+                &quot;urn:ietf:params:scim:schemas:core:2.0:User&quot;,
+                &quot;urn:indigo-dc:scim:schemas:IndigoUser&quot;
+            ],
+            &quot;userName&quot;: &quot;admin&quot;,
+            &quot;emails&quot;: [
+                {
+                    &quot;type&quot;: &quot;work&quot;,
+                    &quot;value&quot;: &quot;admin@iam.test&quot;,
+                    &quot;primary&quot;: true
+                }
+            ],
+            &quot;urn:indigo-dc:scim:schemas:IndigoUser&quot;: {
+                &quot;oidcIds&quot;: [
+                    {
+                        &quot;issuer&quot;: &quot;https://accounts.google.com&quot;,
+                        &quot;subject&quot;: &quot;114132403455520317223&quot;
+                    }
+                ],
+                &quot;samlIds&quot;: [
+                    {
+                        &quot;idpId&quot;: &quot;https://idptestbed/idp/shibboleth&quot;,
+                        &quot;userId&quot;: &quot;ciccio.paglia@example.org&quot;
+                    }
+                ]
+            }
+        }
+    ]
+}
+</code></pre><p>SCIM <strong>Filtering</strong> and <strong>sorting</strong> of results are currently not supported.</p>
+<h2 id="put-scimusersid">PUT <code>/scim/Users/{id}</code></h2>
+<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:write</code>.</p>
+<p>PUT performs a full update. Clients should retrieve the entire resource and
+then PUT the desired modifications as the operation overwrites all previously
+stored data. A successful PUT operation returns a 200 OK response code and the
+entire resource within the response body.</p>
+<p>Example of changing the userName from <code>john_lennon</code> to <code>j.lennon</code> and setting <code>active</code> as true:</p>
+<pre><code>GET http://localhost:8080/scim/Users/e380b4e3-7b63-47c2-b156-3699be9ebcfe
+</code></pre><pre><code>{
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:schemas:core:2.0:User&quot;,
+        &quot;urn:indigo-dc:scim:schemas:IndigoUser&quot;
+    ],
+    &quot;userName&quot;: &quot;john_lennon&quot;,
+    &quot;name&quot;: {
+        &quot;givenName&quot;: &quot;John&quot;,
+        &quot;familyName&quot;: &quot;Lennon&quot;,
+        &quot;formatted&quot;: &quot;John Lennon&quot;
+    },
+    &quot;emails&quot;: [
+        {
+            &quot;type&quot;: &quot;work&quot;,
+            &quot;value&quot;: &quot;lennon@email.test&quot;,
+            &quot;primary&quot;: true
+        }
+    ]
+}
+</code></pre><p>Retrieved the user&rsquo;s info, update userName as <code>&quot;userName&quot;: &quot;j.lennon&quot;</code> and add <code>&quot;active&quot;: true</code>:</p>
+<pre><code>PUT http://localhost:8080/scim/Users/e380b4e3-7b63-47c2-b156-3699be9ebcfe
+</code></pre><pre><code>{
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:schemas:core:2.0:User&quot;,
+        &quot;urn:indigo-dc:scim:schemas:IndigoUser&quot;
+    ],
+    &quot;userName&quot;: &quot;j.lennon&quot;,
+    &quot;name&quot;: {
+        &quot;givenName&quot;: &quot;John&quot;,
+        &quot;familyName&quot;: &quot;Lennon&quot;,
+        &quot;formatted&quot;: &quot;John Lennon&quot;
+    },
+    &quot;active&quot;: true,
+    &quot;emails&quot;: [
+        {
+            &quot;type&quot;: &quot;work&quot;,
+            &quot;value&quot;: &quot;lennon@email.test&quot;,
+            &quot;primary&quot;: true
+        }
+    ]
+}
+</code></pre><p>The returned answer is:</p>
+<pre><code>HTTP/1.1 200 OK
+Content-Type: application/scim+json;charset=UTF-8
+{
+    &quot;id&quot;: &quot;e380b4e3-7b63-47c2-b156-3699be9ebcfe&quot;,
+    &quot;meta&quot;: {
+        &quot;created&quot;: &quot;2016-07-14T15:42:56.275+02:00&quot;,
+        &quot;lastModified&quot;: &quot;2016-07-14T15:42:56.445+02:00&quot;,
+        &quot;location&quot;: &quot;http://localhost:8080/scim/Users/e380b4e3-7b63-47c2-b156-3699be9ebcfe&quot;,
+        &quot;resourceType&quot;: &quot;User&quot;
+    },
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:schemas:core:2.0:User&quot;,
+        &quot;urn:indigo-dc:scim:schemas:IndigoUser&quot;
+    ],
+    &quot;userName&quot;: &quot;j.lennon&quot;,
+    &quot;name&quot;: {
+        &quot;givenName&quot;: &quot;John&quot;,
+        &quot;familyName&quot;: &quot;Lennon&quot;,
+        &quot;formatted&quot;: &quot;John Lennon&quot;
+    },
+    &quot;displayName&quot;: &quot;j.lennon&quot;,
+    &quot;active&quot;: true,
+    &quot;emails&quot;: [
+        {
+            &quot;type&quot;: &quot;work&quot;,
+            &quot;value&quot;: &quot;lennon@email.test&quot;,
+            &quot;primary&quot;: true
+        }
+    ]
+}
+</code></pre><h2 id="patch-scimusersid">PATCH <code>/scim/Users/{id}</code></h2>
+<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:write</code>.</p>
+<p>PATCH enables consumers to send only the attributes requiring modification,
+reducing network and processing overhead. Attributes may be deleted, replaced,
+merged, or added in a single request. The body of a PATCH request MUST contain
+a partial resource with the desired modifications. The server MUST return
+either a 200 OK response code and the entire Resource within the response body,
+or a 204 No Content response code and the appropriate response headers for a
+successful PATCH request.</p>
+<p>The following example shows how to replace the userName:</p>
+<pre><code>PATCH http://localhost:8080/scim/Users/b6769dd1-3d7d-416d-be6d-020be23ba904
+Body:
+{
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
+    ],
+    &quot;operations&quot;: [
+        {
+            &quot;op&quot;: &quot;replace&quot;,
+            &quot;value&quot;: {
+                &quot;userName&quot;: &quot;john_lennon_jr&quot;,
+            }
+        }
+    ]
+}
+</code></pre><p>The following example shows how to add an OpenID Connect account and a ssh key:</p>
+<pre><code>PATCH http://localhost:8080/scim/Users/b6769dd1-3d7d-416d-be6d-020be23ba904
+Body:
+{
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
+    ],
+    &quot;operations&quot;: [
+        {
+            &quot;op&quot;: &quot;add&quot;,
+            &quot;value&quot;: {
+                &quot;urn:indigo-dc:scim:schemas:IndigoUser&quot;: {
+                    &quot;oidcIds&quot;: [
+                        {
+                            &quot;issuer&quot;: &quot;test_issuer&quot;,
+                            &quot;subject&quot;: &quot;test_subject&quot;
+                        }
+                    ],
+                    &quot;sshKeys&quot;: [
+                        {
+                            &quot;display&quot;: &quot;Personal&quot;,
+                            &quot;primary&quot;: true,
+                            &quot;value&quot;: &quot;AAAAB3NzaC1yc2EAAAADAQABAAABAQC4tjz4mfMLvJsM8RXIgdRYPBhH//VXLXbeLbUsJpm5ARIQPY6Gu1befPA3jqKacvdcBrMsYGiMp/DOhpkAwWclSnzMdvYLbYWkrOPwBVrRh7lvFtXFLaQZ6do4uMZHb5zU2ViTFacrJ6zJ/GLltjk4nBea7Z4qHaQdWou3Fk/108oMQGx7jqW44m+TA+HYo6rEbVWbimWVXyyiKchO2LTLKUbK6GBSWJiItezwAWR3KKs3FXKRmbJDiKESh3mDccJidfkjzNLPyDf3JHI2b/C/mcvtJsoAtkIWuVll2BhBBiqkYt3tX2llZCYGtF7rZOYTsqhw+LPnsJtsX+W7e4iN&quot;
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
+</code></pre><h2 id="delete-scimusersid">DELETE <code>/scim/Users/{id}</code></h2>
+<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:write</code>.</p>
+<p>Clients request user removal via DELETE.</p>
+<pre><code>DELETE /scim/Users/4380e98c-02f2-4d10-85ba-9fbbdb819ed8
+</code></pre><pre><code>HTTP/1.1 200 OK
+</code></pre><p>Example: Client attempt to retrieve the previously deleted User:</p>
+<pre><code>GET /scim/Users/4380e98c-02f2-4d10-85ba-9fbbdb819ed8
+{
+    &quot;status&quot;: &quot;404&quot;,
+    &quot;detail&quot;: &quot;No user mapped to id '4380e98c-02f2-4d10-85ba-9fbbdb819ed8'&quot;,
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;
+    ]
+}
+</code></pre><h2 id="get-scimgroupsid">GET <code>/scim/Groups/{id}</code></h2>
+<p>Retrieves all the information about the group identified by <code>id</code> and returns results in application/json.</p>
+<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:read</code>.</p>
+<pre><code>GET /scim/Groups/c617d586-54e6-411d-8e38-64967798fa8a
+</code></pre><pre><code>{
+    &quot;id&quot;: &quot;c617d586-54e6-411d-8e38-64967798fa8a&quot;,
+    &quot;meta&quot;: {
+        &quot;created&quot;: &quot;2016-07-14T16:22:05.170+02:00&quot;,
+        &quot;lastModified&quot;: &quot;2016-07-14T16:22:05.170+02:00&quot;,
+        &quot;location&quot;: &quot;http://localhost:8080/scim/Groups/c617d586-54e6-411d-8e38-64967798fa8a&quot;,
+        &quot;resourceType&quot;: &quot;Group&quot;
+    },
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:schemas:core:2.0:Group&quot;
+    ],
+    &quot;displayName&quot;: &quot;Production&quot;,
+    &quot;members&quot;: [
+        {
+            &quot;display&quot;: &quot;test&quot;,
+            &quot;value&quot;: &quot;80e5fb8d-b7c8-451a-89ba-346ae278a66f&quot;,
+            &quot;$ref&quot;: &quot;http://localhost:8080/scim/Users/80e5fb8d-b7c8-451a-89ba-346ae278a66f&quot;
+        },
+        {
+            &quot;display&quot;: &quot;admin&quot;,
+            &quot;value&quot;: &quot;73f16d93-2441-4a50-88ff-85360d78c6b5&quot;,
+            &quot;$ref&quot;: &quot;http://localhost:8080/scim/Users/73f16d93-2441-4a50-88ff-85360d78c6b5&quot;
+        }
+    ]
+}
+</code></pre><h2 id="post-scimgroups">POST <code>/scim/Groups</code></h2>
+<p>Creates a new group, using the info specified within the request body, sent as application/json.</p>
+<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:write</code>.</p>
+<pre><code>POST http://localhost:8080/scim/Groups/
+</code></pre><pre><code>{
+    &quot;id&quot;: &quot;7b427ebe-9058-479e-95b6-f3cebec91731&quot;,
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:schemas:core:2.0:Group&quot;
+    ],
+    &quot;displayName&quot;: &quot;engineers&quot;
+}
+</code></pre><p>Successful Resource creation is indicated with a 201 (&ldquo;Created&rdquo;) response code. Upon successful creation, the response body contains the newly created User.</p>
+<pre><code>{
+    &quot;id&quot;: &quot;7b427ebe-9058-479e-95b6-f3cebec91731&quot;,
+    &quot;meta&quot;: {
+        &quot;created&quot;: &quot;2016-07-14T16:24:50.941+02:00&quot;,
+        &quot;lastModified&quot;: &quot;2016-07-14T16:24:50.941+02:00&quot;,
+        &quot;location&quot;: &quot;http://localhost:8080/scim/Groups/7b427ebe-9058-479e-95b6-f3cebec91731&quot;,
+        &quot;resourceType&quot;: &quot;Group&quot;
+    },
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:schemas:core:2.0:Group&quot;
+    ],
+    &quot;displayName&quot;: &quot;engineers&quot;
+}
+</code></pre><h2 id="get-scimgroups">GET <code>/scim/Groups</code></h2>
+<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:read</code>.</p>
+<p>The pagination seen for users can be applied also to groups:</p>
+<p>Example: retrieve the 22nd group</p>
+<pre><code>GET http://localhost:8080/scim/Groups?startIndex=22&amp;count=1
+</code></pre><pre><code>{
+    &quot;totalResults&quot;: 22,
+    &quot;itemsPerPage&quot;: 1,
+    &quot;startIndex&quot;: 22,
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:api:messages:2.0:ListResponse&quot;
+    ],
+    &quot;Resources&quot;: [
+        {
+            &quot;id&quot;: &quot;c617d586-54e6-411d-8e38-649677980020&quot;,
+            &quot;meta&quot;: {
+                &quot;created&quot;: &quot;2016-07-14T16:33:20.135+02:00&quot;,
+                &quot;lastModified&quot;: &quot;2016-07-14T16:33:20.135+02:00&quot;,
+                &quot;location&quot;: &quot;http://localhost:8080/scim/Groups/c617d586-54e6-411d-8e38-649677980020&quot;,
+                &quot;resourceType&quot;: &quot;Group&quot;
+            },
+            &quot;schemas&quot;: [
+                &quot;urn:ietf:params:scim:schemas:core:2.0:Group&quot;
+            ],
+            &quot;displayName&quot;: &quot;Test-020&quot;
+        }
+    ]
+}
+</code></pre><h2 id="put-scimgroupsid">PUT <code>/scim/Groups/{id}</code></h2>
+<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:write</code>.</p>
+<p>PUT performs a full update. Clients should retrieve the entire resource and
+then PUT the desired modifications as the operation overwrites all previously
+stored data. A successful PUT operation returns a 200 OK response code and the
+entire resource within the response body.</p>
+<p>Example of replacing group with a different displayName:</p>
+<pre><code>PUT http://localhost:8080/scim/Groups/891d042d-fc6e-4408-8a3a-ad9dfdf5db89
+{
+    &quot;id&quot;: &quot;891d042d-fc6e-4408-8a3a-ad9dfdf5db89&quot;,
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:schemas:core:2.0:Group&quot;
+    ],
+    &quot;displayName&quot;: &quot;engineers_updated&quot;
+}
+</code></pre><pre><code>{
+    &quot;id&quot;: &quot;891d042d-fc6e-4408-8a3a-ad9dfdf5db89&quot;,
+    &quot;meta&quot;: {
+        &quot;created&quot;: &quot;2016-07-14T16:37:18.302+02:00&quot;,
+        &quot;lastModified&quot;: &quot;2016-07-14T16:37:18.411+02:00&quot;,
+        &quot;location&quot;: &quot;http://localhost:8080/scim/Groups/891d042d-fc6e-4408-8a3a-ad9dfdf5db89&quot;,
+        &quot;resourceType&quot;: &quot;Group&quot;
+    },
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:schemas:core:2.0:Group&quot;
+    ],
+    &quot;displayName&quot;: &quot;engineers_updated&quot;
+}
+</code></pre><h2 id="patch-scimgroupsid">PATCH <code>/scim/Groups/{id}</code></h2>
+<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:write</code>.</p>
+<p>The following example shows how to add member to a group:</p>
+<pre><code>PATCH http://localhost:8080/scim/Groups/4ca7fa98-0875-4eb3-a71f-0f88ce5632cf
+{
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
+    ],
+    &quot;operations&quot;: [
+        {
+            &quot;op&quot;: &quot;add&quot;,
+            &quot;path&quot;: &quot;members&quot;,
+            &quot;value&quot;: [
+                {
+                    &quot;display&quot;: &quot;john_lennon&quot;,
+                    &quot;value&quot;: &quot;e9c8cfca-7158-4a0d-9684-4abdede617cd&quot;,
+                    &quot;$ref&quot;: &quot;http://localhost:8080/scim/Users/e9c8cfca-7158-4a0d-9684-4abdede617cd&quot;
+                }
+            ]
+        }
+    ]
+}
+</code></pre><h2 id="delete-scimgroupsid">DELETE <code>/scim/Groups/{id}</code></h2>
+<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:write</code>.</p>
+<p>Clients request group removal via DELETE.</p>
+<pre><code>DELETE /scim/Groups/5bae2407-08e3-4171-b180-4b4a0196e7b6
+</code></pre><pre><code>HTTP/1.1 200 OK
+</code></pre><p>Example: Client attempt to retrieve the previously deleted User:</p>
+<pre><code>GET /scim/Groups/5bae2407-08e3-4171-b180-4b4a0196e7b6
+{
+    &quot;status&quot;: &quot;404&quot;,
+    &quot;detail&quot;: &quot;No group mapped to id '5bae2407-08e3-4171-b180-4b4a0196e7b6'&quot;,
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:api:messages:2.0:Error&quot;
+    ]
+}
+</code></pre>
+</div>
+
+
+
+    
+	
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-4 text-xs-center order-sm-2">
+        
+        
+        
+      </div>
+      <div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://github.com/indigoiam/iam">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
+    <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://indigo-iam.slack.com">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+        <small class="text-white">&copy; 2021 INFN All Rights Reserved</small>
+        <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a></small>
+	
+		
+	
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/v/v1.7.0/js/main.min.63db3e552bd0543be17ce4a79a18b744e9cb72256bec42b540e3ab0cd43722d0.js" integrity="sha256-Y9s&#43;VSvQVDvhfOSnmhi3ROnLciVr7EK1QOOrDNQ3ItA=" crossorigin="anonymous"></script>
+
+
+
+
+  </body>
+</html>

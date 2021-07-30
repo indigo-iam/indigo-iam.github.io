@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.86.0" /><link rel="alternate" type="application/rss&#43;xml" href="/v/v1.7.0/index.xml">
-<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.86.0" /><link rel="canonical" type="text/html" href="/v/v1.7.0/docs/overview/">
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
 
 <link rel="shortcut icon" href="/v/v1.7.0/favicons/favicon.ico" >
@@ -18,15 +18,18 @@
 <link rel="icon" type="image/png" href="/v/v1.7.0/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/v/v1.7.0/favicons/android-192x192.png" sizes="192x192">
 
-<title>INDIGO IAM</title><meta property="og:title" content="INDIGO IAM" />
-<meta property="og:description" content="The INDIGO Identity and Access Management (IAM) Service" />
+<title>Overview | INDIGO IAM</title><meta property="og:title" content="Overview" />
+<meta property="og:description" content="A brief overview of the INDIGO IAM service
+" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="/v/v1.7.0/" /><meta property="og:site_name" content="INDIGO IAM" />
+<meta property="og:url" content="/v/v1.7.0/docs/overview/" /><meta property="og:site_name" content="INDIGO IAM" />
 
-<meta itemprop="name" content="INDIGO IAM">
-<meta itemprop="description" content="The INDIGO Identity and Access Management (IAM) Service"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="INDIGO IAM"/>
-<meta name="twitter:description" content="The INDIGO Identity and Access Management (IAM) Service"/>
+<meta itemprop="name" content="Overview">
+<meta itemprop="description" content="A brief overview of the INDIGO IAM service
+"><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Overview"/>
+<meta name="twitter:description" content="A brief overview of the INDIGO IAM service
+"/>
 
 
 
@@ -52,10 +55,10 @@
 
 
   </head>
-  <body class="td-home">
+  <body class="td-section">
     <header>
       
-<nav class="js-navbar-scroll navbar navbar-expand navbar-dark  td-navbar-cover flex-column flex-md-row td-navbar">
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
         <a class="navbar-brand" href="/v/v1.7.0/">
 		<span class="navbar-logo"></span><span class="text-uppercase font-weight-bold">INDIGO IAM</span>
 	</a>
@@ -70,7 +73,7 @@
 				
 				
 				
-				<a  class="nav-link" href="/v/v1.7.0/docs/" ><span>Documentation</span></a>
+				<a  class="nav-link active" href="/v/v1.7.0/docs/" ><span class="active">Documentation</span></a>
 			</li>
 			
 			<li class="nav-item mr-4 mb-2 mb-lg-0">
@@ -119,53 +122,112 @@
 </nav>
 
     </header>
-    <div class="container-fluid td-default td-outer">
-      <main role="main" class="td-main">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-<section id="td-cover-block-0" class="row td-cover-block td-cover-block--height-full js-td-cover td-overlay td-overlay--dark -bg-orange">
-  <div class="container td-overlay__inner">
-    <div class="row">
-      <div class="col-12">
-        <div class="text-center">
-          <h1 class="display-1 mt-0 mt-md-5 pb-4">Welcome to the INDIGO IAM service website!</h1>
-          
-          <div class="pt-3 lead">
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
             
-                
-<div class="mx-auto">
-	<p class="lead mt-5">The open source, self-contained Identity And Access Management (IAM) solution for Scientific computing!</p>
 
-	<a class="btn btn-lg btn-primary mr-3 mb-4" href="/v/v1.7.0/docs/">
-		Learn More <i class="fas fa-arrow-alt-circle-right ml-2"></i>
-	</a>
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/v/v1.7.0/docs/overview/">Return to the regular view of this page</a>.
+</p>
 </div>
 
-            
-          </div>
+
+
+<h1 class="title">Overview</h1>
+<div class="lead">A brief overview of the INDIGO IAM service</div>
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+
+    </ul>
+
+
+<div class="content">
+      <p>The INDIGO Identity and Access Management (IAM) Service provides a layer where
+identities, enrollment, group membership and other attributes and authorization
+policies on distributed resources can be managed in an homogeneous way,
+supporting identity federations and other authentication mechanisms (X.509
+certificates and social logins).</p>
+<p>IAM implements the Virtual Organization (VO) concept, and is the developed by
+the same team behind <a href="https://italiangrid.github.io/voms">VOMS</a>.</p>
+<p>IAM is the AAI solution chosen to power the next generation <a href="https://wlcg.web.cern.ch/">WLCG</a>
+Authentication and Authorization infrastructure.</p>
+<h2 id="functions">Functions</h2>
+<ul>
+<li><strong>Flexible authentication</strong>: The IAM supports user authentication via local
+username and password credentials as well as SAML Identity Federations,
+OpenID Connect providers and X.509.</li>
+<li><strong>Enrollment</strong>: The IAM provides VO enrollment and registration functionalities,
+so that users can join groups/collaborations according to well-defined flows.</li>
+<li><strong>Attribute and identity management</strong>: The IAM provides services to manage
+group membership, attributes assignment and account linking functionality.</li>
+<li><strong>User provisioning</strong>: the IAM provides endpoints to provision information
+about users identities to other services, so that consistent local account
+provisioning, for example, can be implemented.</li>
+</ul>
+<h2 id="integrations">Integrations</h2>
+<p>The IAM service has been succesfully integrated with many off-the-shelf
+components like Openstack, Kubernetes, Atlassian JIRA and Confluence, Grafana
+and with key Grid computing middleware services (e.g., <a href="https://rucio.cern.ch/">RUCIO</a>,
+<a href="https://fts.web.cern.ch/fts/">FTS</a>, <a href="https://www.dcache.org/">dCache</a>, <a href="https://italiangrid.github.io/storm">StoRM</a>, <a href="https://xrootd.slac.stanford.edu/index.html">XRootD</a>,
+<a href="https://research.cs.wisc.edu/htcondor/">HTCondor</a>).</p>
+<h2 id="service-access-options">Service access options</h2>
+<h3 id="iam-as-a-service">IAM as a service</h3>
+<p>INFN provides IAM as a service to partner research communities. In this
+scenario, a dedicated IAM instance is deployed on the INFN infrastructure and
+configured according to the community needs. INFN takes care of keeping the
+service operational and up-to-date, while administrative control on the IAM
+instance is granted to the community.</p>
+<p>For more information on how to access IAM as a service, click
+<a href="/docs/iam-aas/">here</a>.</p>
+<h3 id="on-premise-deployment">On-premise deployment</h3>
+<p>IAM is an Apache-licensed identity solution, for which we provide a Docker
+image on dockerhub and RPM and Debian packages.</p>
+<p>IAM can be deployed on-premises following the advice in the <a href="/docs/administrator-guide/">Deployment and
+administration guide</a>.</p>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+
+
+
+          </main>
         </div>
       </div>
-    </div>
-  </div>
-  
-</section>
-
-
-
-
-      </main>
       
 <footer class="bg-dark py-5 row d-print-none">
   <div class="container-fluid mx-sm-5">

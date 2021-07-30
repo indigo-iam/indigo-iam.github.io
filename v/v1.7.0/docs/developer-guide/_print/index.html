@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.86.0" /><link rel="alternate" type="application/rss&#43;xml" href="/v/v1.7.0/index.xml">
-<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.86.0" /><link rel="canonical" type="text/html" href="/v/v1.7.0/docs/developer-guide/">
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
 
 <link rel="shortcut icon" href="/v/v1.7.0/favicons/favicon.ico" >
@@ -18,14 +18,14 @@
 <link rel="icon" type="image/png" href="/v/v1.7.0/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/v/v1.7.0/favicons/android-192x192.png" sizes="192x192">
 
-<title>INDIGO IAM</title><meta property="og:title" content="INDIGO IAM" />
+<title>Developer guide | INDIGO IAM</title><meta property="og:title" content="Developer guide" />
 <meta property="og:description" content="The INDIGO Identity and Access Management (IAM) Service" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="/v/v1.7.0/" /><meta property="og:site_name" content="INDIGO IAM" />
+<meta property="og:url" content="/v/v1.7.0/docs/developer-guide/" /><meta property="og:site_name" content="INDIGO IAM" />
 
-<meta itemprop="name" content="INDIGO IAM">
+<meta itemprop="name" content="Developer guide">
 <meta itemprop="description" content="The INDIGO Identity and Access Management (IAM) Service"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="INDIGO IAM"/>
+<meta name="twitter:title" content="Developer guide"/>
 <meta name="twitter:description" content="The INDIGO Identity and Access Management (IAM) Service"/>
 
 
@@ -52,10 +52,10 @@
 
 
   </head>
-  <body class="td-home">
+  <body class="td-section">
     <header>
       
-<nav class="js-navbar-scroll navbar navbar-expand navbar-dark  td-navbar-cover flex-column flex-md-row td-navbar">
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
         <a class="navbar-brand" href="/v/v1.7.0/">
 		<span class="navbar-logo"></span><span class="text-uppercase font-weight-bold">INDIGO IAM</span>
 	</a>
@@ -70,7 +70,7 @@
 				
 				
 				
-				<a  class="nav-link" href="/v/v1.7.0/docs/" ><span>Documentation</span></a>
+				<a  class="nav-link active" href="/v/v1.7.0/docs/" ><span class="active">Documentation</span></a>
 			</li>
 			
 			<li class="nav-item mr-4 mb-2 mb-lg-0">
@@ -119,53 +119,127 @@
 </nav>
 
     </header>
-    <div class="container-fluid td-default td-outer">
-      <main role="main" class="td-main">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-<section id="td-cover-block-0" class="row td-cover-block td-cover-block--height-full js-td-cover td-overlay td-overlay--dark -bg-orange">
-  <div class="container td-overlay__inner">
-    <div class="row">
-      <div class="col-12">
-        <div class="text-center">
-          <h1 class="display-1 mt-0 mt-md-5 pb-4">Welcome to the INDIGO IAM service website!</h1>
-          
-          <div class="pt-3 lead">
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
             
-                
-<div class="mx-auto">
-	<p class="lead mt-5">The open source, self-contained Identity And Access Management (IAM) solution for Scientific computing!</p>
 
-	<a class="btn btn-lg btn-primary mr-3 mb-4" href="/v/v1.7.0/docs/">
-		Learn More <i class="fas fa-arrow-alt-circle-right ml-2"></i>
-	</a>
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/v/v1.7.0/docs/developer-guide/">Return to the regular view of this page</a>.
+</p>
 </div>
 
-            
-          </div>
+
+
+<h1 class="title">Developer guide</h1>
+
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+
+    </ul>
+
+
+<div class="content">
+      <h2 id="iam-build-requirements">IAM build requirements</h2>
+<p>The IAM is a Spring Boot Java application.</p>
+<p>To build it, you will need:</p>
+<ul>
+<li>Java 8</li>
+<li>Maven 3.3.x or greater</li>
+<li>Git</li>
+</ul>
+<h2 id="checking-out-the-iam-code">Checking out the IAM code</h2>
+<p>You can check out the IAM code as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  git clone https://github.com/indigo-iam/iam.git
+</code></pre></div><h2 id="building-the-iam">Building the IAM</h2>
+<p>You can build the IAM packages with the following command:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">  mvn package
+</code></pre></div><h2 id="setting-up-the-docker-based-development-environment">Setting up the docker-based development environment</h2>
+<p>You will need:</p>
+<ul>
+<li>Docker 1.11.1 or greater</li>
+<li>Docker compose 1.7 or greater</li>
+</ul>
+<p>You can start a development/testing environment with the following command:</p>
+<pre><code>  docker-compose build
+  docker-compose up
+</code></pre><p>The docker-compose.yml file requires that you set some environment variables
+for it to run properly, mainly to provide OAuth client credentials for external
+authentication mechanisms (Google).</p>
+<p>The setup also assumes that you have an entry in your DNS server (complex) or
+/etc/hosts (simpler) that maps iam.local.io to the machine (or VM) where docker
+is running, e.g.:</p>
+<pre><code>$ cat /etc/hosts
+...
+
+192.168.99.100 iam.local.io
+</code></pre><h2 id="how-to-run-tests-against-the-mysql-database">How to run tests against the mysql database</h2>
+<p>IAM JUnit integration tests can (and should) be run against mysql database.</p>
+<p>To do so, boostrap the database instance with docker-compose:</p>
+<pre><code>docker-compose up db
+</code></pre><p>And then run the tests with the following command:</p>
+<pre><code>mvn -Dspring.profiles.active=mysql-test test
+</code></pre><h2 id="building-docker-production-images">Building Docker production images</h2>
+<p>To build the docker images for the iam-service and iam-test client,
+use the following commands:</p>
+<pre><code>sh iam-login-service/docker/build-prod-image.sh
+sh iam-test-client/docker/build-prod-image.sh
+</code></pre><p>These commands should run <strong>after</strong> war and jar archives have been built, i.e.
+after a <code>mvn package</code>.</p>
+<p>For more details on the image build scripts see the following folders:</p>
+<ul>
+<li><a href="iam-login-service/docker">iam-login-service</a></li>
+<li><a href="iam-test-client/docker">iam-test-client</a></li>
+</ul>
+<h2 id="related-projects">Related projects</h2>
+<p>This project builds upon the following projects/technologies:</p>
+<ul>
+<li><a href="http://projects.spring.io/spring-boot/">Spring Boot</a></li>
+<li><a href="https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server">MitreID OpenID-Connect client and server libraries</a></li>
+</ul>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+
+
+
+          </main>
         </div>
       </div>
-    </div>
-  </div>
-  
-</section>
-
-
-
-
-      </main>
       
 <footer class="bg-dark py-5 row d-print-none">
   <div class="container-fluid mx-sm-5">
