@@ -6,16 +6,16 @@
 <meta name="generator" content="Hugo 0.86.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
 
-<link rel="shortcut icon" href="/favicons/favicon.ico" >
-<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
-<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
-<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
-<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
-<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
-<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
-<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
-<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+<link rel="shortcut icon" href="/v/master/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/v/master/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/v/master/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/v/master/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/v/master/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/v/master/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/v/master/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/v/master/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/v/master/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/v/master/favicons/android-192x192.png" sizes="192x192">
 
 <title>JSON Web Keys configuration | INDIGO IAM</title><meta property="og:title" content="JSON Web Keys configuration" />
 <meta property="og:description" content="JSON web keys are used by the IAM to sign and verify token signatures.
@@ -25,7 +25,7 @@ git clone https://github.com/mitreid-connect/json-web-key-generator Build the co
 mvn package You can then generate a key with the following command:
 java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \  -t RSA -s 1024 -S -i rsa1 Full key: { &#34;keys&#34;: [ { &#34;p&#34;: &#34;3oh7ex6zgdmJh5NBD0IplmBDDGC2ECu2A1vcp8e8DqE7OSSpAc1T9tTjJioCGqkNM51JK_MtgCJz1CiysVDOQQ&#34;, &#34;kty&#34;: &#34;RSA&#34;, &#34;q&#34;: &#34;nRmBm5tQ2wmOtd1XUYDRH2qWai6eElt-1cvO5tnTdWZkFaAeaHQ3_xf_PFOjyAv5Y5rNLgf_Xbu9UCo_mSrDMQ&#34;, &#34;d&#34;: &#34;BGHRhQP6ADqqSrM8_mI0YhjGStj1aW9rLi7wXQMJ122kegPxIT7dfP-5UScxykD_BrCCHQVPxdJl5wXy-giZnhaL9wtDkOXb8D8RCi1n02cs3Z1T23xONi_AG47QPBZjM5GcX-oOGCENByuEIdkU_Bn6vvqM3oyVlj5sio7tNAE&#34;, &#34;e&#34;: &#34;AQAB&#34;, &#34;kid&#34;: &#34;rsa1&#34;, &#34;qi&#34;: &#34;RarXtTFCE3hk5ZanLWEapDnn7SLSxAvDcBTmG5SpCI9Eix7cfTigaK6N7OQIN0uGO1GJ-KVWL2v8dyI1jMoU6g&#34;, &#34;dp&#34;: &#34;MtBtieavzMXUzr2ETKyp_GmMxeXLjRO-IzQ1xaYpPhn5AQprATtWofVozQ0on9fcaN3QmJWV3T2Av4BvlWfDQQ&#34;, &#34;dq&#34;: &#34;CWJ7rpsBooQYpV6al8DVPUY1xBQS10_l7MmnC31Zt3qtYelVx7GhoriBQ85PS2UDueKGfUh3BddwQLi1YeX_EQ&#34;, &#34;n&#34;: &#34;iI_fuJq4z_9VQY5EH41sQWOAYUsjtxAFjRnAc1P5-GPOx3Izg9V7yKNmudLUt-jIkv6D5h-AzrhEV6DOdBRoiN4el1mCZ95jiJkjU2kpVOmutDysZkrn667zPd43w7E6IqHnahmMrVUjUyx6pie1SqJHLUXghz8Gle-1yi08_XE&#34; } ] } Save the output of the above command (minus the Full key: initial text) in a file, e." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/getting-started/jwk/" /><meta property="article:section" content="docs" />
+<meta property="og:url" content="/v/master/docs/getting-started/jwk/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2017-01-05T00:00:00+00:00" />
 <meta property="article:modified_time" content="2021-07-30T17:14:03+02:00" /><meta property="og:site_name" content="INDIGO IAM" />
 
@@ -53,8 +53,8 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
 
 
 
-<link rel="preload" href="/scss/main.min.8c56a5db29a8a7bfd7c31c587d450fd15c23c45c8cd6e72142c8ed5b2ef43bd5.css" as="style">
-<link href="/scss/main.min.8c56a5db29a8a7bfd7c31c587d450fd15c23c45c8cd6e72142c8ed5b2ef43bd5.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/v/master/scss/main.min.8c56a5db29a8a7bfd7c31c587d450fd15c23c45c8cd6e72142c8ed5b2ef43bd5.css" as="style">
+<link href="/v/master/scss/main.min.8c56a5db29a8a7bfd7c31c587d450fd15c23c45c8cd6e72142c8ed5b2ef43bd5.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -75,7 +75,7 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="/v/master/">
 		<span class="navbar-logo"></span><span class="text-uppercase font-weight-bold">INDIGO IAM</span>
 	</a>
 	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
@@ -89,7 +89,7 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
 				
 				
 				
-				<a  class="nav-link active" href="/docs/" ><span class="active">Documentation</span></a>
+				<a  class="nav-link active" href="/v/master/docs/" ><span class="active">Documentation</span></a>
 			</li>
 			
 			<li class="nav-item mr-4 mb-2 mb-lg-0">
@@ -99,7 +99,7 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
 				
 				
 				
-				<a  class="nav-link" href="/blog/" ><span>Blog</span></a>
+				<a  class="nav-link" href="/v/master/blog/" ><span>Blog</span></a>
 			</li>
 			
 			
@@ -131,7 +131,7 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.f14b3294ee1a013bdccaff198726b1bd.json"
+  data-offline-search-index-json-src="/v/master/offline-search-index.5128a17f55c5f441e73dca59e04597ab.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -163,7 +163,7 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.f14b3294ee1a013bdccaff198726b1bd.json"
+  data-offline-search-index-json-src="/v/master/offline-search-index.5128a17f55c5f441e73dca59e04597ab.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -185,10 +185,10 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Documentation</a>
+    <a  href="/v/master/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Documentation</a>
   </li>
   <ul>
-    <li class="collapse show" id="docs">
+    <li class="collapse show" id="vmasterdocs">
       
       
       
@@ -203,10 +203,10 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/overview/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Overview</a>
+    <a  href="/v/master/docs/overview/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Overview</a>
   </li>
   <ul>
-    <li class="collapse " id="docsoverview">
+    <li class="collapse " id="vmasterdocsoverview">
       
       
       
@@ -228,10 +228,10 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/getting-started/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Getting Started</a>
+    <a  href="/v/master/docs/getting-started/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Getting Started</a>
   </li>
   <ul>
-    <li class="collapse show" id="docsgetting-started">
+    <li class="collapse show" id="vmasterdocsgetting-started">
       
       
       
@@ -239,7 +239,7 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsgetting-startednginx" href="/docs/getting-started/nginx/">NGINX configuration</a>
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocsgetting-startednginx" href="/v/master/docs/getting-started/nginx/">NGINX configuration</a>
         
       
       
@@ -247,7 +247,7 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsgetting-startedmariadb" href="/docs/getting-started/mariadb/">Database configuration</a>
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocsgetting-startedmariadb" href="/v/master/docs/getting-started/mariadb/">Database configuration</a>
         
       
       
@@ -255,7 +255,7 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docsgetting-startedjwk" href="/docs/getting-started/jwk/">JSON Web Keys configuration</a>
+          <a class="td-sidebar-link td-sidebar-link__page  active" id="m-vmasterdocsgetting-startedjwk" href="/v/master/docs/getting-started/jwk/">JSON Web Keys configuration</a>
         
       
       
@@ -263,7 +263,7 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsgetting-starteddocker" href="/docs/getting-started/docker/">Deployment with Docker</a>
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocsgetting-starteddocker" href="/v/master/docs/getting-started/docker/">Deployment with Docker</a>
         
       
       
@@ -271,7 +271,7 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsgetting-startedpackages" href="/docs/getting-started/packages/">Deployment with packages</a>
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocsgetting-startedpackages" href="/v/master/docs/getting-started/packages/">Deployment with packages</a>
         
       
       
@@ -279,7 +279,7 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsgetting-startedbasic_setup" href="/docs/getting-started/basic_setup/">Basic IAM setup</a>
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocsgetting-startedbasic_setup" href="/v/master/docs/getting-started/basic_setup/">Basic IAM setup</a>
         
       
       
@@ -301,10 +301,10 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/concepts/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Concepts</a>
+    <a  href="/v/master/docs/concepts/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Concepts</a>
   </li>
   <ul>
-    <li class="collapse " id="docsconcepts">
+    <li class="collapse " id="vmasterdocsconcepts">
       
       
       
@@ -326,10 +326,10 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/reference/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Reference</a>
+    <a  href="/v/master/docs/reference/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Reference</a>
   </li>
   <ul>
-    <li class="collapse " id="docsreference">
+    <li class="collapse " id="vmasterdocsreference">
       
       
       
@@ -344,10 +344,10 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/reference/api/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">APIs</a>
+    <a  href="/v/master/docs/reference/api/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">APIs</a>
   </li>
   <ul>
-    <li class="collapse " id="docsreferenceapi">
+    <li class="collapse " id="vmasterdocsreferenceapi">
       
       
       
@@ -355,7 +355,7 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceapiaup-api" href="/docs/reference/api/aup-api/">AUP management API</a>
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocsreferenceapiaup-api" href="/v/master/docs/reference/api/aup-api/">AUP management API</a>
         
       
       
@@ -363,7 +363,7 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceapigroup-requests" href="/docs/reference/api/group-requests/">Group requests API</a>
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocsreferenceapigroup-requests" href="/v/master/docs/reference/api/group-requests/">Group requests API</a>
         
       
       
@@ -371,7 +371,7 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceapihealth_endpoints" href="/docs/reference/api/health_endpoints/">Health checks</a>
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocsreferenceapihealth_endpoints" href="/v/master/docs/reference/api/health_endpoints/">Health checks</a>
         
       
       
@@ -379,7 +379,7 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceapitokens-api" href="/docs/reference/api/tokens-api/">IAM Token management API</a>
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocsreferenceapitokens-api" href="/v/master/docs/reference/api/tokens-api/">IAM Token management API</a>
         
       
       
@@ -387,7 +387,7 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceapioauth-token-exchange" href="/docs/reference/api/oauth-token-exchange/">OAuth token exchange API</a>
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocsreferenceapioauth-token-exchange" href="/v/master/docs/reference/api/oauth-token-exchange/">OAuth token exchange API</a>
         
       
       
@@ -395,7 +395,7 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceapioauth-token-introspection" href="/docs/reference/api/oauth-token-introspection/">OAuth token introspection API</a>
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocsreferenceapioauth-token-introspection" href="/v/master/docs/reference/api/oauth-token-introspection/">OAuth token introspection API</a>
         
       
       
@@ -403,7 +403,7 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceapioidc-client-management" href="/docs/reference/api/oidc-client-management/">OpenID Connect client management API</a>
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocsreferenceapioidc-client-management" href="/v/master/docs/reference/api/oidc-client-management/">OpenID Connect client management API</a>
         
       
       
@@ -411,7 +411,7 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceapioidc-client-registration" href="/docs/reference/api/oidc-client-registration/">OpenID Connect client registration API</a>
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocsreferenceapioidc-client-registration" href="/v/master/docs/reference/api/oidc-client-registration/">OpenID Connect client registration API</a>
         
       
       
@@ -419,7 +419,7 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceapiscim-api" href="/docs/reference/api/scim-api/">SCIM API</a>
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocsreferenceapiscim-api" href="/v/master/docs/reference/api/scim-api/">SCIM API</a>
         
       
       
@@ -441,10 +441,10 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/reference/configuration/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Configuration</a>
+    <a  href="/v/master/docs/reference/configuration/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Configuration</a>
   </li>
   <ul>
-    <li class="collapse " id="docsreferenceconfiguration">
+    <li class="collapse " id="vmasterdocsreferenceconfiguration">
       
       
       
@@ -452,7 +452,7 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceconfigurationjwt-profiles" href="/docs/reference/configuration/jwt-profiles/">JWT profiles support</a>
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocsreferenceconfigurationjwt-profiles" href="/v/master/docs/reference/configuration/jwt-profiles/">JWT profiles support</a>
         
       
       
@@ -460,7 +460,7 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceconfigurationlifecycle" href="/docs/reference/configuration/lifecycle/">Membership lifecycle</a>
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocsreferenceconfigurationlifecycle" href="/v/master/docs/reference/configuration/lifecycle/">Membership lifecycle</a>
         
       
       
@@ -468,7 +468,7 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceconfigurationregistration" href="/docs/reference/configuration/registration/">Registration &amp; Enrollment</a>
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocsreferenceconfigurationregistration" href="/v/master/docs/reference/configuration/registration/">Registration &amp; Enrollment</a>
         
       
       
@@ -476,7 +476,7 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceconfigurationlocal_authn" href="/docs/reference/configuration/local_authn/">Local authentication</a>
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocsreferenceconfigurationlocal_authn" href="/v/master/docs/reference/configuration/local_authn/">Local authentication</a>
         
       
       
@@ -491,10 +491,10 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/reference/configuration/external-authentication/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">External authentication</a>
+    <a  href="/v/master/docs/reference/configuration/external-authentication/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">External authentication</a>
   </li>
   <ul>
-    <li class="collapse " id="docsreferenceconfigurationexternal-authentication">
+    <li class="collapse " id="vmasterdocsreferenceconfigurationexternal-authentication">
       
       
       
@@ -502,7 +502,7 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceconfigurationexternal-authenticationoidc" href="/docs/reference/configuration/external-authentication/oidc/">OpenID-Connect authentication</a>
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocsreferenceconfigurationexternal-authenticationoidc" href="/v/master/docs/reference/configuration/external-authentication/oidc/">OpenID-Connect authentication</a>
         
       
       
@@ -510,7 +510,7 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceconfigurationexternal-authenticationsaml" href="/docs/reference/configuration/external-authentication/saml/">SAML authentication</a>
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocsreferenceconfigurationexternal-authenticationsaml" href="/v/master/docs/reference/configuration/external-authentication/saml/">SAML authentication</a>
         
       
       
@@ -518,7 +518,7 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
         
           
           
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceconfigurationexternal-authenticationx509" href="/docs/reference/configuration/external-authentication/x509/">X.509 authentication</a>
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocsreferenceconfigurationexternal-authenticationx509" href="/v/master/docs/reference/configuration/external-authentication/x509/">X.509 authentication</a>
         
       
       
@@ -526,234 +526,6 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
   </ul>
 </ul>
 
-        
-      
-      
-    </li>
-  </ul>
-</ul>
-
-        
-      
-      
-    </li>
-  </ul>
-</ul>
-
-        
-      
-      
-      
-        
-          
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/tasks/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Tasks</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docstasks">
-      
-      
-      
-      
-        
-          
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/tasks/administration/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">IAM organization administration</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docstasksadministration">
-      
-      
-      
-      
-        
-          
-          
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstasksadministrationuser-management" href="/docs/tasks/administration/user-management/">User management</a>
-        
-      
-      
-      
-        
-          
-          
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstasksadministrationgroup-management" href="/docs/tasks/administration/group-management/">Group Management</a>
-        
-      
-      
-      
-        
-          
-          
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstasksadministrationaup-management" href="/docs/tasks/administration/aup-management/">Acceptable Usage Policy (AUP) management</a>
-        
-      
-      
-    </li>
-  </ul>
-</ul>
-
-        
-      
-      
-      
-        
-          
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/tasks/deployment/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">IAM service deployment</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docstasksdeployment">
-      
-      
-      
-      
-        
-          
-          
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstasksdeploymentbackup_restore" href="/docs/tasks/deployment/backup_restore/">Backup &amp; Restore</a>
-        
-      
-      
-      
-        
-          
-          
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstasksdeploymentaudit-log" href="/docs/tasks/deployment/audit-log/">Audit log</a>
-        
-      
-      
-      
-        
-          
-          
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstasksdeploymentupgrade" href="/docs/tasks/deployment/upgrade/">Upgrade</a>
-        
-      
-      
-    </li>
-  </ul>
-</ul>
-
-        
-      
-      
-      
-        
-          
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/tasks/user/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">User</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docstasksuser">
-      
-      
-      
-      
-        
-          
-          
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstasksuserjoining-a-collaboration" href="/docs/tasks/user/joining-a-collaboration/">Joining an IAM-managed organization</a>
-        
-      
-      
-      
-        
-          
-          
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstasksusergetting-a-token" href="/docs/tasks/user/getting-a-token/">Obtaining an IAM access token from a CLI</a>
-        
-      
-      
-      
-        
-          
-          
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstasksuserclient-registration" href="/docs/tasks/user/client-registration/">Registering a client</a>
-        
-      
-      
-      
-        
-          
-          
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstasksuserchange-details" href="/docs/tasks/user/change-details/">Change account information</a>
-        
-      
-      
-      
-        
-          
-          
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstasksuserchange-password" href="/docs/tasks/user/change-password/">Changing the account password</a>
-        
-      
-      
-      
-        
-          
-          
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstasksuserexternal-account-linking" href="/docs/tasks/user/external-account-linking/">Linking an external account</a>
-        
-      
-      
-      
-        
-          
-          
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstasksuserx509-linking" href="/docs/tasks/user/x509-linking/">Linking an X.509 certificate</a>
-        
-      
-      
-      
-        
-          
-          
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstasksusermanage-active-tokens" href="/docs/tasks/user/manage-active-tokens/">Managing active tokens</a>
-        
-      
-      
-      
-        
-          
-          
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstasksusermanage-approved-sites" href="/docs/tasks/user/manage-approved-sites/">Managing approved sites</a>
-        
-      
-      
-      
-        
-          
-          
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docstasksuserreset-password" href="/docs/tasks/user/reset-password/">Reset an account password</a>
         
       
       
@@ -782,10 +554,238 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/developer-guide/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Developer guide</a>
+    <a  href="/v/master/docs/tasks/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Tasks</a>
   </li>
   <ul>
-    <li class="collapse " id="docsdeveloper-guide">
+    <li class="collapse " id="vmasterdocstasks">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/master/docs/tasks/administration/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">IAM organization administration</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vmasterdocstasksadministration">
+      
+      
+      
+      
+        
+          
+          
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocstasksadministrationuser-management" href="/v/master/docs/tasks/administration/user-management/">User management</a>
+        
+      
+      
+      
+        
+          
+          
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocstasksadministrationgroup-management" href="/v/master/docs/tasks/administration/group-management/">Group Management</a>
+        
+      
+      
+      
+        
+          
+          
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocstasksadministrationaup-management" href="/v/master/docs/tasks/administration/aup-management/">Acceptable Usage Policy (AUP) management</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/master/docs/tasks/deployment/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">IAM service deployment</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vmasterdocstasksdeployment">
+      
+      
+      
+      
+        
+          
+          
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocstasksdeploymentbackup_restore" href="/v/master/docs/tasks/deployment/backup_restore/">Backup &amp; Restore</a>
+        
+      
+      
+      
+        
+          
+          
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocstasksdeploymentaudit-log" href="/v/master/docs/tasks/deployment/audit-log/">Audit log</a>
+        
+      
+      
+      
+        
+          
+          
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocstasksdeploymentupgrade" href="/v/master/docs/tasks/deployment/upgrade/">Upgrade</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/master/docs/tasks/user/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">User</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vmasterdocstasksuser">
+      
+      
+      
+      
+        
+          
+          
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocstasksuserjoining-a-collaboration" href="/v/master/docs/tasks/user/joining-a-collaboration/">Joining an IAM-managed organization</a>
+        
+      
+      
+      
+        
+          
+          
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocstasksusergetting-a-token" href="/v/master/docs/tasks/user/getting-a-token/">Obtaining an IAM access token from a CLI</a>
+        
+      
+      
+      
+        
+          
+          
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocstasksuserclient-registration" href="/v/master/docs/tasks/user/client-registration/">Registering a client</a>
+        
+      
+      
+      
+        
+          
+          
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocstasksuserchange-details" href="/v/master/docs/tasks/user/change-details/">Change account information</a>
+        
+      
+      
+      
+        
+          
+          
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocstasksuserchange-password" href="/v/master/docs/tasks/user/change-password/">Changing the account password</a>
+        
+      
+      
+      
+        
+          
+          
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocstasksuserexternal-account-linking" href="/v/master/docs/tasks/user/external-account-linking/">Linking an external account</a>
+        
+      
+      
+      
+        
+          
+          
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocstasksuserx509-linking" href="/v/master/docs/tasks/user/x509-linking/">Linking an X.509 certificate</a>
+        
+      
+      
+      
+        
+          
+          
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocstasksusermanage-active-tokens" href="/v/master/docs/tasks/user/manage-active-tokens/">Managing active tokens</a>
+        
+      
+      
+      
+        
+          
+          
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocstasksusermanage-approved-sites" href="/v/master/docs/tasks/user/manage-approved-sites/">Managing approved sites</a>
+        
+      
+      
+      
+        
+          
+          
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-vmasterdocstasksuserreset-password" href="/v/master/docs/tasks/user/reset-password/">Reset an account password</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/master/docs/developer-guide/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Developer guide</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vmasterdocsdeveloper-guide">
       
       
       
@@ -807,10 +807,10 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/iam-aas/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">IAM as a service</a>
+    <a  href="/v/master/docs/iam-aas/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">IAM as a service</a>
   </li>
   <ul>
-    <li class="collapse " id="docsiam-aas">
+    <li class="collapse " id="vmasterdocsiam-aas">
       
       
       
@@ -861,7 +861,7 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
 
 
 
-<a id="print" href="/docs/getting-started/_print/"><i class="fa fa-print fa-fw"></i> Print entire section</a>
+<a id="print" href="/v/master/docs/getting-started/_print/"><i class="fa fa-print fa-fw"></i> Print entire section</a>
 
 
 
@@ -893,21 +893,21 @@ java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar \
 
 
 <li class="breadcrumb-item" >
-	<a href="/docs/">Documentation</a>
+	<a href="/v/master/docs/">Documentation</a>
 </li>
 
 
 
 
 <li class="breadcrumb-item" >
-	<a href="/docs/getting-started/">Getting Started</a>
+	<a href="/v/master/docs/getting-started/">Getting Started</a>
 </li>
 
 
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="/docs/getting-started/jwk/">JSON Web Keys configuration</a>
+	<a href="/v/master/docs/getting-started/jwk/">JSON Web Keys configuration</a>
 </li>
 
 	</ol>
@@ -1022,7 +1022,7 @@ file, e.g. <code>iam-keystore.jwks</code>.</p>
 
 
 
-<script src="/js/main.min.63db3e552bd0543be17ce4a79a18b744e9cb72256bec42b540e3ab0cd43722d0.js" integrity="sha256-Y9s&#43;VSvQVDvhfOSnmhi3ROnLciVr7EK1QOOrDNQ3ItA=" crossorigin="anonymous"></script>
+<script src="/v/master/js/main.min.63db3e552bd0543be17ce4a79a18b744e9cb72256bec42b540e3ab0cd43722d0.js" integrity="sha256-Y9s&#43;VSvQVDvhfOSnmhi3ROnLciVr7EK1QOOrDNQ3ItA=" crossorigin="anonymous"></script>
 
 
 
