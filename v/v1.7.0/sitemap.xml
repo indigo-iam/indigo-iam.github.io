@@ -48,8 +48,6 @@
   </url><url>
     <loc>/v/v1.7.0/docs/reference/configuration/external-authentication/x509/</loc>
   </url><url>
-    <loc>/v/v1.7.0/docs/concepts/</loc>
-  </url><url>
     <loc>/v/v1.7.0/docs/getting-started/docker/</loc>
     <lastmod>2021-07-30T17:14:03+02:00</lastmod>
   </url><url>
@@ -127,11 +125,24 @@
   </url><url>
     <loc>/v/v1.7.0/docs/reference/api/oidc-client-registration/</loc>
   </url><url>
+    <loc>/v/v1.7.0/docs/iam-aas/privacy-policy/</loc>
+    <lastmod>2021-08-05T11:22:43+02:00</lastmod>
+  </url><url>
     <loc>/v/v1.7.0/docs/tasks/user/reset-password/</loc>
   </url><url>
     <loc>/v/v1.7.0/docs/reference/api/scim-api/</loc>
   </url><url>
+    <loc>/v/v1.7.0/docs/reference/api/scope-policy-api/</loc>
+  </url><url>
     <loc>/v/v1.7.0/search/</loc>
     <lastmod>2021-07-28T16:46:31+02:00</lastmod>
+  </url><url>
+    <loc>/v/v1.7.0/docs/iam-aas/sla/</loc>
+    <lastmod>2021-08-05T11:22:43+02:00</lastmod>
+  </url><url>
+    <loc>/v/v1.7.0/docs/iam-aas/terms-of-service/</loc>
+    <lastmod>2021-08-05T11:22:43+02:00</lastmod>
+  </url><url>
+    <loc>/v/v1.7.0/docs/reference/api/token-exchange-policy-api/</loc>
   </url>
 </urlset>
