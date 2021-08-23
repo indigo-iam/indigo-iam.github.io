@@ -115,7 +115,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.7.0/offline-search-index.619fad421896f66e25fa3cf34bcda60b.json"
+  data-offline-search-index-json-src="/v/v1.7.0/offline-search-index.dbd0e8df591ea793553f14be0e0c975c.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -230,9 +230,20 @@ This the multi-page printable view of this section.
     
     
 	
-<li>9: <a href="#pg-ff5f4511d04c6e9b13f1c49c32e2c50d">SCIM API</a></li>
+<li>9: <a href="#pg-33f82d3baa8becb8dd9398d40b988474">SCIM API</a></li>
 
 
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
     
   
     
@@ -1382,7 +1393,7 @@ X-XSS-Protection: 1; mode=block
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-ff5f4511d04c6e9b13f1c49c32e2c50d">9 - SCIM API</h1>
+	<h1 id="pg-33f82d3baa8becb8dd9398d40b988474">9 - SCIM API</h1>
     
 	<p>The IAM server provides a RESTful API, based on the <a href="http://www.simplecloud.info/">System for Cross-domain
 Identity Management (SCIM) standard</a>, that
@@ -1390,7 +1401,9 @@ can be used to manage users, change their personal information, manage their
 group membership, etc.</p>
 <p>Access to the API is restricted to administrator users or OAuth clients that
 have access to the <code>scim:read</code> (for read access) or <code>scim:write</code> (for write
-access) OAuth scopes.</p>
+access) OAuth scopes.
+Note that these scopes are restricted in the default IAM configuration, i.e.
+can be assigned to clients only by IAM administrators.</p>
 <p>Examples below assume OAuth authorization via bearer token: e.g.</p>
 <pre><code>GET /Users/2819c223-7f76-453a-919d-413861904646 HTTP/1.1
 Host: example.com
@@ -1434,96 +1447,34 @@ Resources defined in the <a href="https://tools.ietf.org/html/rfc7643">SCIM core
 </tr>
 </tbody>
 </table>
-<h2 id="get-scimusersid">GET <code>/scim/Users/{id}</code></h2>
-<p>Retrieves all the information about the user identified by <code>id</code> and returns results in application/json.</p>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:read</code>.</p>
-<pre><code>GET http://localhost:8080/scim/Users/2cb10ac5-5b1a-47a0-8f60-48995999f18d
-</code></pre><pre><code>{
-    &quot;id&quot;: &quot;2cb10ac5-5b1a-47a0-8f60-48995999f18d&quot;,
-    &quot;meta&quot;: {
-        &quot;created&quot;: &quot;2016-07-13T18:38:16.314+02:00&quot;,
-        &quot;lastModified&quot;: &quot;2016-07-13T18:38:16.314+02:00&quot;,
-        &quot;location&quot;: &quot;http://localhost:8080/scim/Users/2cb10ac5-5b1a-47a0-8f60-48995999f18d&quot;,
-        &quot;resourceType&quot;: &quot;User&quot;
-    },
-    &quot;schemas&quot;: [
-        &quot;urn:ietf:params:scim:schemas:core:2.0:User&quot;,
-        &quot;urn:indigo-dc:scim:schemas:IndigoUser&quot;
-    ],
-    &quot;userName&quot;: &quot;paul_mccartney&quot;,
-    &quot;name&quot;: {
-        &quot;givenName&quot;: &quot;Paul&quot;,
-        &quot;familyName&quot;: &quot;McCartney&quot;,
-        &quot;formatted&quot;: &quot;Paul McCartney&quot;
-    },
-    &quot;displayName&quot;: &quot;paul_mccartney&quot;,
-    &quot;active&quot;: false,
-    &quot;emails&quot;: [
-        {
-            &quot;type&quot;: &quot;work&quot;,
-            &quot;value&quot;: &quot;paul@beatles.uk&quot;,
-            &quot;primary&quot;: true
-        }
-    ]
-}
-</code></pre><h2 id="post-scimusers">POST <code>/scim/Users</code></h2>
-<p>Creates a new user, using the info specified within the request body, sent as application/json.</p>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:write</code>.</p>
-<pre><code>POST http://localhost:8080/scim/Users/
-</code></pre><pre><code>{
-    &quot;userName&quot;: &quot;paul_mccartney&quot;,
-    &quot;name&quot;: {
-        &quot;givenName&quot;: &quot;Paul&quot;,
-        &quot;familyName&quot;: &quot;McCartney&quot;,
-        &quot;formatted&quot;: &quot;Paul McCartney&quot;
-    },
-    &quot;emails&quot;: [
-        {
-            &quot;type&quot;: &quot;work&quot;,
-            &quot;value&quot;: &quot;paul@beatles.uk&quot;,
-            &quot;primary&quot;: true
-        }
-    ]
-}
-</code></pre><p>Successful Resource creation is indicated with a <code>201 Created</code> response code.
-Upon successful creation, the response body contains the newly created User.</p>
-<pre><code>{
-    &quot;id&quot;: &quot;2cb10ac5-5b1a-47a0-8f60-48995999f18d&quot;,
-    &quot;meta&quot;: {
-        &quot;created&quot;: &quot;2016-07-13T18:38:16.314+02:00&quot;,
-        &quot;lastModified&quot;: &quot;2016-07-13T18:38:16.314+02:00&quot;,
-        &quot;location&quot;: &quot;http://localhost:8080/scim/Users/2cb10ac5-5b1a-47a0-8f60-48995999f18d&quot;,
-        &quot;resourceType&quot;: &quot;User&quot;
-    },
-    &quot;schemas&quot;: [
-        &quot;urn:ietf:params:scim:schemas:core:2.0:User&quot;,
-        &quot;urn:indigo-dc:scim:schemas:IndigoUser&quot;
-    ],
-    &quot;userName&quot;: &quot;paul_mccartney&quot;,
-    &quot;name&quot;: {
-        &quot;givenName&quot;: &quot;Paul&quot;,
-        &quot;familyName&quot;: &quot;McCartney&quot;,
-        &quot;formatted&quot;: &quot;Paul McCartney&quot;
-    },
-    &quot;displayName&quot;: &quot;paul_mccartney&quot;,
-    &quot;active&quot;: false,
-    &quot;emails&quot;: [
-        {
-            &quot;type&quot;: &quot;work&quot;,
-            &quot;value&quot;: &quot;paul@beatles.uk&quot;,
-            &quot;primary&quot;: true
-        }
-    ]
-}
-</code></pre><h2 id="get-scimusers">GET <code>/scim/Users</code></h2>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:read</code>.</p>
-<p>SCIM defines a standard set of operations that can be used to filter, sort, and
-paginate response results. The operations are specified by adding query
-parameters to the Resource&rsquo;s endpoint.</p>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Warning</h4>
+
+    <p>For scalability reasons, IAM no longer returns the <code>members</code> claim for the SCIM
+Group resources, as the SCIM standard does not currently describe a way to
+implement pagination on group members.</p>
+<p>For this reason, IAM provides two additional resources:</p>
+<ul>
+<li>the <code>members</code> resource, which returns a paginated view of users belonging to
+a given group;</li>
+<li>the <code>sugroups</code> resource, which returns a paginated view of subgroups of a
+given group.</li>
+</ul>
+
+
+</div>
+
+<h2 id="pagination">Pagination</h2>
+<p>IAM SCIM implementation supports <a href="https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.4">pagination</a> on the
+<code>/scim/Users</code>, <code>/scim/Groups</code> resources, as mandated by the standard, but also
+on the non-standard <code>/scim/Groups/{id}/members</code> and
+<code>/scim/Groups/{id}/subgroups</code> endpoints.</p>
 <p><strong>Pagination</strong> parameters can be used together to &ldquo;page through&rdquo; large numbers
 of Resources. Pagination is not session based so clients must never assume
 repeatable results.</p>
-<p>The following table describes the URL pagination parameters.</p>
+<p>The following table describes URL pagination parameters:</p>
 <table>
 <thead>
 <tr>
@@ -1545,7 +1496,7 @@ repeatable results.</p>
 </tr>
 </tbody>
 </table>
-<p>The following table describes the query response pagination attributes.</p>
+<p>The following table describes the query response pagination attributes:</p>
 <table>
 <thead>
 <tr>
@@ -1568,179 +1519,265 @@ repeatable results.</p>
 </tr>
 </tbody>
 </table>
-<p>The below example returns the first 10 users (implicit startIndex as 1):</p>
+<h2 id="get-scimusersid">GET <code>/scim/Users/{id}</code></h2>
+<p>Retrieves all the information about the user identified by <code>id</code> and returns results in application/json.</p>
+<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:read</code>.</p>
+<pre><code>GET http://localhost:8080/scim/Users/2cb10ac5-5b1a-47a0-8f60-48995999f18d
+</code></pre><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2cb10ac5-5b1a-47a0-8f60-48995999f18d&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;meta&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">&#34;created&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2016-07-13T18:38:16.314+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;lastModified&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2016-07-13T18:38:16.314+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;location&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;http://localhost:8080/scim/Users/2cb10ac5-5b1a-47a0-8f60-48995999f18d&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;resourceType&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;User&#34;</span>
+    <span style="color:#000;font-weight:bold">},</span>
+    <span style="color:#204a87;font-weight:bold">&#34;schemas&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+        <span style="color:#4e9a06">&#34;urn:ietf:params:scim:schemas:core:2.0:User&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#4e9a06">&#34;urn:indigo-dc:scim:schemas:IndigoUser&#34;</span>
+    <span style="color:#000;font-weight:bold">],</span>
+    <span style="color:#204a87;font-weight:bold">&#34;userName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;paul_mccartney&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">&#34;givenName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Paul&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;familyName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;McCartney&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;formatted&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Paul McCartney&#34;</span>
+    <span style="color:#000;font-weight:bold">},</span>
+    <span style="color:#204a87;font-weight:bold">&#34;displayName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;paul_mccartney&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;active&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">false</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;emails&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+        <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;work&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;paul@beatles.uk&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;primary&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">true</span>
+        <span style="color:#000;font-weight:bold">}</span>
+    <span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h2 id="post-scimusers">POST <code>/scim/Users</code></h2>
+<p>Creates a new user, using the info specified within the request body, sent as application/json.</p>
+<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:write</code>.</p>
+<pre><code>POST http://localhost:8080/scim/Users/
+</code></pre><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;userName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;paul_mccartney&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">&#34;givenName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Paul&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;familyName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;McCartney&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;formatted&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Paul McCartney&#34;</span>
+    <span style="color:#000;font-weight:bold">},</span>
+    <span style="color:#204a87;font-weight:bold">&#34;emails&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+        <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;work&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;paul@beatles.uk&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;primary&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">true</span>
+        <span style="color:#000;font-weight:bold">}</span>
+    <span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p>Successful Resource creation is indicated with a <code>201 Created</code> response code.
+Upon successful creation, the response body contains the newly created User.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2cb10ac5-5b1a-47a0-8f60-48995999f18d&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;meta&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">&#34;created&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2016-07-13T18:38:16.314+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;lastModified&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2016-07-13T18:38:16.314+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;location&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;http://localhost:8080/scim/Users/2cb10ac5-5b1a-47a0-8f60-48995999f18d&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;resourceType&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;User&#34;</span>
+    <span style="color:#000;font-weight:bold">},</span>
+    <span style="color:#204a87;font-weight:bold">&#34;schemas&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+        <span style="color:#4e9a06">&#34;urn:ietf:params:scim:schemas:core:2.0:User&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#4e9a06">&#34;urn:indigo-dc:scim:schemas:IndigoUser&#34;</span>
+    <span style="color:#000;font-weight:bold">],</span>
+    <span style="color:#204a87;font-weight:bold">&#34;userName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;paul_mccartney&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">&#34;givenName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Paul&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;familyName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;McCartney&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;formatted&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Paul McCartney&#34;</span>
+    <span style="color:#000;font-weight:bold">},</span>
+    <span style="color:#204a87;font-weight:bold">&#34;displayName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;paul_mccartney&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;active&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">false</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;emails&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+        <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;work&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;paul@beatles.uk&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;primary&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">true</span>
+        <span style="color:#000;font-weight:bold">}</span>
+    <span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h2 id="get-scimusers">GET <code>/scim/Users</code></h2>
+<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:read</code>.</p>
+<p>SCIM defines a standard set of operations that can be used to filter, sort, and
+paginate response results. The operations are specified by adding query
+parameters to the Resource&rsquo;s endpoint.</p>
+<p>The example below returns the first 10 users (implicit startIndex as 1):</p>
 <pre><code>GET /scim/Users?count=10
-</code></pre><pre><code>{
-    &quot;totalResults&quot;: 250,
-    &quot;itemsPerPage&quot;: 10,
-    &quot;startIndex&quot;: 1,
-    &quot;schemas&quot;: [
-        &quot;urn:ietf:params:scim:api:messages:2.0:ListResponse&quot;
-    ],
-    &quot;Resources&quot;: [
-        {
-            &quot;id&quot;: &quot;80e5fb8d-b7c8-451a-89ba-346ae278a66f&quot;,
-            &quot;meta&quot;: {
-                &quot;created&quot;: &quot;2016-07-14T12:22:46.376+02:00&quot;,
-                &quot;lastModified&quot;: &quot;2016-07-14T12:22:46.376+02:00&quot;,
-                &quot;location&quot;: &quot;http://localhost:8080/scim/Users/80e5fb8d-b7c8-451a-89ba-346ae278a66f&quot;,
-                &quot;resourceType&quot;: &quot;User&quot;
-            },
-            &quot;schemas&quot;: [
-                &quot;urn:ietf:params:scim:schemas:core:2.0:User&quot;,
-                &quot;urn:indigo-dc:scim:schemas:IndigoUser&quot;
-            ],
-            &quot;userName&quot;: &quot;test&quot;,
-            &quot;name&quot;: {
-                &quot;givenName&quot;: &quot;Test&quot;,
-                &quot;familyName&quot;: &quot;User&quot;,
-                &quot;formatted&quot;: &quot;Test User&quot;
-            },
-            &quot;displayName&quot;: &quot;test&quot;,
-            &quot;active&quot;: true,
-            &quot;emails&quot;: [
-                {
-                    &quot;type&quot;: &quot;work&quot;,
-                    &quot;value&quot;: &quot;test@iam.test&quot;,
-                    &quot;primary&quot;: true
-                }
-            ],
-            &quot;groups&quot;: [
-                {
-                    &quot;display&quot;: &quot;Production&quot;,
-                    &quot;value&quot;: &quot;c617d586-54e6-411d-8e38-64967798fa8a&quot;,
-                    &quot;$ref&quot;: &quot;http://localhost:8080/scim/Groups/c617d586-54e6-411d-8e38-64967798fa8a&quot;
-                },
-                {
-                    &quot;display&quot;: &quot;Analysis&quot;,
-                    &quot;value&quot;: &quot;6a384bcd-d4b3-4b7f-a2fe-7d897ada0dd1&quot;,
-                    &quot;$ref&quot;: &quot;http://localhost:8080/scim/Groups/6a384bcd-d4b3-4b7f-a2fe-7d897ada0dd1&quot;
-                }
-            ],
-            &quot;urn:indigo-dc:scim:schemas:IndigoUser&quot;: {
-                &quot;oidcIds&quot;: [
-                    {
-                        &quot;issuer&quot;: &quot;https://accounts.google.com&quot;,
-                        &quot;subject&quot;: &quot;105440632287425289613&quot;
-                    }
-                ],
-                &quot;samlIds&quot;: [
-                    {
-                        &quot;idpId&quot;: &quot;https://idptestbed/idp/shibboleth&quot;,
-                        &quot;userId&quot;: &quot;andrea.ceccanti@example.org&quot;
-                    }
-                ]
-            }
-        },
-        [...]
-    ]
-}
-</code></pre><p>The details of the returned users can be reduced/filtered by specifying the
+</code></pre><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;totalResults&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">250</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;itemsPerPage&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">10</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;startIndex&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;schemas&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+        <span style="color:#4e9a06">&#34;urn:ietf:params:scim:api:messages:2.0:ListResponse&#34;</span>
+    <span style="color:#000;font-weight:bold">],</span>
+    <span style="color:#204a87;font-weight:bold">&#34;Resources&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+        <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;80e5fb8d-b7c8-451a-89ba-346ae278a66f&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;meta&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                <span style="color:#204a87;font-weight:bold">&#34;created&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2016-07-14T12:22:46.376+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;lastModified&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2016-07-14T12:22:46.376+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;location&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;http://localhost:8080/scim/Users/80e5fb8d-b7c8-451a-89ba-346ae278a66f&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;resourceType&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;User&#34;</span>
+            <span style="color:#000;font-weight:bold">},</span>
+            <span style="color:#204a87;font-weight:bold">&#34;schemas&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                <span style="color:#4e9a06">&#34;urn:ietf:params:scim:schemas:core:2.0:User&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#4e9a06">&#34;urn:indigo-dc:scim:schemas:IndigoUser&#34;</span>
+            <span style="color:#000;font-weight:bold">],</span>
+            <span style="color:#204a87;font-weight:bold">&#34;userName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;test&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                <span style="color:#204a87;font-weight:bold">&#34;givenName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Test&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;familyName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;User&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;formatted&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Test User&#34;</span>
+            <span style="color:#000;font-weight:bold">},</span>
+            <span style="color:#204a87;font-weight:bold">&#34;displayName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;test&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;active&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">true</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;emails&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;work&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;test@iam.test&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;primary&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">true</span>
+                <span style="color:#000;font-weight:bold">}</span>
+            <span style="color:#000;font-weight:bold">],</span>
+            <span style="color:#204a87;font-weight:bold">&#34;groups&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;display&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Production&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;c617d586-54e6-411d-8e38-64967798fa8a&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;$ref&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;http://localhost:8080/scim/Groups/c617d586-54e6-411d-8e38-64967798fa8a&#34;</span>
+                <span style="color:#000;font-weight:bold">},</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;display&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Analysis&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;6a384bcd-d4b3-4b7f-a2fe-7d897ada0dd1&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;$ref&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;http://localhost:8080/scim/Groups/6a384bcd-d4b3-4b7f-a2fe-7d897ada0dd1&#34;</span>
+                <span style="color:#000;font-weight:bold">}</span>
+            <span style="color:#000;font-weight:bold">],</span>
+            <span style="color:#204a87;font-weight:bold">&#34;urn:indigo-dc:scim:schemas:IndigoUser&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                <span style="color:#204a87;font-weight:bold">&#34;oidcIds&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                    <span style="color:#000;font-weight:bold">{</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;issuer&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://accounts.google.com&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;subject&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;105440632287425289613&#34;</span>
+                    <span style="color:#000;font-weight:bold">}</span>
+                <span style="color:#000;font-weight:bold">],</span>
+                <span style="color:#204a87;font-weight:bold">&#34;samlIds&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                    <span style="color:#000;font-weight:bold">{</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;idpId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://idptestbed/idp/shibboleth&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;userId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;andrea.ceccanti@example.org&#34;</span>
+                    <span style="color:#000;font-weight:bold">}</span>
+                <span style="color:#000;font-weight:bold">]</span>
+            <span style="color:#000;font-weight:bold">}</span>
+        <span style="color:#000;font-weight:bold">},</span>
+        <span style="color:#000;font-weight:bold">[</span><span style="color:#a40000">...</span><span style="color:#000;font-weight:bold">]</span>
+    <span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p>The details of the returned users can be reduced/filtered by specifying the
 needed attribute(s). The below example returns only the userName for all Users:</p>
 <pre><code>GET http://localhost:8080/scim/Users?attributes=userName
-</code></pre><pre><code>{
-    &quot;totalResults&quot;: 250,
-    &quot;itemsPerPage&quot;: 100,
-    &quot;startIndex&quot;: 1,
-    &quot;schemas&quot;: [
-        &quot;urn:ietf:params:scim:api:messages:2.0:ListResponse&quot;
-    ],
-    &quot;Resources&quot;: [
-        {
-            &quot;id&quot;: &quot;80e5fb8d-b7c8-451a-89ba-346ae278a66f&quot;,
-            &quot;schemas&quot;: [
-                &quot;urn:ietf:params:scim:schemas:core:2.0:User&quot;,
-                &quot;urn:indigo-dc:scim:schemas:IndigoUser&quot;
-            ],
-            &quot;userName&quot;: &quot;test&quot;
-        },
-        {
-            &quot;id&quot;: &quot;73f16d93-2441-4a50-88ff-85360d78c6b5&quot;,
-            &quot;schemas&quot;: [
-                &quot;urn:ietf:params:scim:schemas:core:2.0:User&quot;,
-                &quot;urn:indigo-dc:scim:schemas:IndigoUser&quot;
-            ],
-            &quot;userName&quot;: &quot;admin&quot;
-        },
-        [...]
-    ]
-}
-</code></pre><p>Multiple attributes are also supported:</p>
+</code></pre><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;totalResults&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">250</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;itemsPerPage&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">100</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;startIndex&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;schemas&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+        <span style="color:#4e9a06">&#34;urn:ietf:params:scim:api:messages:2.0:ListResponse&#34;</span>
+    <span style="color:#000;font-weight:bold">],</span>
+    <span style="color:#204a87;font-weight:bold">&#34;Resources&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+        <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;80e5fb8d-b7c8-451a-89ba-346ae278a66f&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;schemas&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                <span style="color:#4e9a06">&#34;urn:ietf:params:scim:schemas:core:2.0:User&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#4e9a06">&#34;urn:indigo-dc:scim:schemas:IndigoUser&#34;</span>
+            <span style="color:#000;font-weight:bold">],</span>
+            <span style="color:#204a87;font-weight:bold">&#34;userName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;test&#34;</span>
+        <span style="color:#000;font-weight:bold">},</span>
+        <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;73f16d93-2441-4a50-88ff-85360d78c6b5&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;schemas&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                <span style="color:#4e9a06">&#34;urn:ietf:params:scim:schemas:core:2.0:User&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#4e9a06">&#34;urn:indigo-dc:scim:schemas:IndigoUser&#34;</span>
+            <span style="color:#000;font-weight:bold">],</span>
+            <span style="color:#204a87;font-weight:bold">&#34;userName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;admin&#34;</span>
+        <span style="color:#000;font-weight:bold">},</span>
+        <span style="color:#000;font-weight:bold">[</span><span style="color:#a40000">...</span><span style="color:#000;font-weight:bold">]</span>
+    <span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p>Multiple attributes are also supported:</p>
 <pre><code>GET http://localhost:8080/scim/Users?count=2&amp;attributes=userName%2Cemails%2Curn%3Aindigo-dc%3Ascim%3Aschemas%3AIndigoUser
 </code></pre><p>Request params:</p>
 <ul>
 <li><code>count=2</code></li>
 <li><code>attributes=userName,emails,urn:indigo-dc:scim:schemas:IndigoUser</code></li>
 </ul>
-<pre><code>{
-    &quot;totalResults&quot;: 250,
-    &quot;itemsPerPage&quot;: 2,
-    &quot;startIndex&quot;: 1,
-    &quot;schemas&quot;: [
-        &quot;urn:ietf:params:scim:api:messages:2.0:ListResponse&quot;
-    ],
-    &quot;Resources&quot;: [
-        {
-            &quot;id&quot;: &quot;80e5fb8d-b7c8-451a-89ba-346ae278a66f&quot;,
-            &quot;schemas&quot;: [
-                &quot;urn:ietf:params:scim:schemas:core:2.0:User&quot;,
-                &quot;urn:indigo-dc:scim:schemas:IndigoUser&quot;
-            ],
-            &quot;userName&quot;: &quot;test&quot;,
-            &quot;emails&quot;: [
-                {
-                    &quot;type&quot;: &quot;work&quot;,
-                    &quot;value&quot;: &quot;test@iam.test&quot;,
-                    &quot;primary&quot;: true
-                }
-            ],
-            &quot;urn:indigo-dc:scim:schemas:IndigoUser&quot;: {
-                &quot;oidcIds&quot;: [
-                    {
-                        &quot;issuer&quot;: &quot;https://accounts.google.com&quot;,
-                        &quot;subject&quot;: &quot;105440632287425289613&quot;
-                    }
-                ],
-                &quot;samlIds&quot;: [
-                    {
-                        &quot;idpId&quot;: &quot;https://idptestbed/idp/shibboleth&quot;,
-                        &quot;userId&quot;: &quot;andrea.ceccanti@example.org&quot;
-                    }
-                ]
-            }
-        },
-        {
-            &quot;id&quot;: &quot;73f16d93-2441-4a50-88ff-85360d78c6b5&quot;,
-            &quot;schemas&quot;: [
-                &quot;urn:ietf:params:scim:schemas:core:2.0:User&quot;,
-                &quot;urn:indigo-dc:scim:schemas:IndigoUser&quot;
-            ],
-            &quot;userName&quot;: &quot;admin&quot;,
-            &quot;emails&quot;: [
-                {
-                    &quot;type&quot;: &quot;work&quot;,
-                    &quot;value&quot;: &quot;admin@iam.test&quot;,
-                    &quot;primary&quot;: true
-                }
-            ],
-            &quot;urn:indigo-dc:scim:schemas:IndigoUser&quot;: {
-                &quot;oidcIds&quot;: [
-                    {
-                        &quot;issuer&quot;: &quot;https://accounts.google.com&quot;,
-                        &quot;subject&quot;: &quot;114132403455520317223&quot;
-                    }
-                ],
-                &quot;samlIds&quot;: [
-                    {
-                        &quot;idpId&quot;: &quot;https://idptestbed/idp/shibboleth&quot;,
-                        &quot;userId&quot;: &quot;ciccio.paglia@example.org&quot;
-                    }
-                ]
-            }
-        }
-    ]
-}
-</code></pre><p>SCIM <strong>Filtering</strong> and <strong>sorting</strong> of results are currently not supported.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;totalResults&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">250</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;itemsPerPage&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;startIndex&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;schemas&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+        <span style="color:#4e9a06">&#34;urn:ietf:params:scim:api:messages:2.0:ListResponse&#34;</span>
+    <span style="color:#000;font-weight:bold">],</span>
+    <span style="color:#204a87;font-weight:bold">&#34;Resources&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+        <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;80e5fb8d-b7c8-451a-89ba-346ae278a66f&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;schemas&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                <span style="color:#4e9a06">&#34;urn:ietf:params:scim:schemas:core:2.0:User&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#4e9a06">&#34;urn:indigo-dc:scim:schemas:IndigoUser&#34;</span>
+            <span style="color:#000;font-weight:bold">],</span>
+            <span style="color:#204a87;font-weight:bold">&#34;userName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;test&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;emails&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;work&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;test@iam.test&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;primary&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">true</span>
+                <span style="color:#000;font-weight:bold">}</span>
+            <span style="color:#000;font-weight:bold">],</span>
+            <span style="color:#204a87;font-weight:bold">&#34;urn:indigo-dc:scim:schemas:IndigoUser&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                <span style="color:#204a87;font-weight:bold">&#34;oidcIds&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                    <span style="color:#000;font-weight:bold">{</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;issuer&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://accounts.google.com&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;subject&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;105440632287425289613&#34;</span>
+                    <span style="color:#000;font-weight:bold">}</span>
+                <span style="color:#000;font-weight:bold">],</span>
+                <span style="color:#204a87;font-weight:bold">&#34;samlIds&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                    <span style="color:#000;font-weight:bold">{</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;idpId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://idptestbed/idp/shibboleth&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;userId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;andrea.ceccanti@example.org&#34;</span>
+                    <span style="color:#000;font-weight:bold">}</span>
+                <span style="color:#000;font-weight:bold">]</span>
+            <span style="color:#000;font-weight:bold">}</span>
+        <span style="color:#000;font-weight:bold">},</span>
+        <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;73f16d93-2441-4a50-88ff-85360d78c6b5&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;schemas&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                <span style="color:#4e9a06">&#34;urn:ietf:params:scim:schemas:core:2.0:User&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#4e9a06">&#34;urn:indigo-dc:scim:schemas:IndigoUser&#34;</span>
+            <span style="color:#000;font-weight:bold">],</span>
+            <span style="color:#204a87;font-weight:bold">&#34;userName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;admin&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;emails&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;work&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;admin@iam.test&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;primary&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">true</span>
+                <span style="color:#000;font-weight:bold">}</span>
+            <span style="color:#000;font-weight:bold">],</span>
+            <span style="color:#204a87;font-weight:bold">&#34;urn:indigo-dc:scim:schemas:IndigoUser&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                <span style="color:#204a87;font-weight:bold">&#34;oidcIds&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                    <span style="color:#000;font-weight:bold">{</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;issuer&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://accounts.google.com&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;subject&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;114132403455520317223&#34;</span>
+                    <span style="color:#000;font-weight:bold">}</span>
+                <span style="color:#000;font-weight:bold">],</span>
+                <span style="color:#204a87;font-weight:bold">&#34;samlIds&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                    <span style="color:#000;font-weight:bold">{</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;idpId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://idptestbed/idp/shibboleth&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;userId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ciccio.paglia@example.org&#34;</span>
+                    <span style="color:#000;font-weight:bold">}</span>
+                <span style="color:#000;font-weight:bold">]</span>
+            <span style="color:#000;font-weight:bold">}</span>
+        <span style="color:#000;font-weight:bold">}</span>
+    <span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p>SCIM <strong>Filtering</strong> and <strong>sorting</strong> of results are currently not supported.</p>
 <h2 id="put-scimusersid">PUT <code>/scim/Users/{id}</code></h2>
 <p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:write</code>.</p>
 <p>PUT performs a full update. Clients should retrieve the entire resource and
@@ -1749,48 +1786,48 @@ stored data. A successful PUT operation returns a 200 OK response code and the
 entire resource within the response body.</p>
 <p>Example of changing the userName from <code>john_lennon</code> to <code>j.lennon</code> and setting <code>active</code> as true:</p>
 <pre><code>GET http://localhost:8080/scim/Users/e380b4e3-7b63-47c2-b156-3699be9ebcfe
-</code></pre><pre><code>{
-    &quot;schemas&quot;: [
-        &quot;urn:ietf:params:scim:schemas:core:2.0:User&quot;,
-        &quot;urn:indigo-dc:scim:schemas:IndigoUser&quot;
-    ],
-    &quot;userName&quot;: &quot;john_lennon&quot;,
-    &quot;name&quot;: {
-        &quot;givenName&quot;: &quot;John&quot;,
-        &quot;familyName&quot;: &quot;Lennon&quot;,
-        &quot;formatted&quot;: &quot;John Lennon&quot;
-    },
-    &quot;emails&quot;: [
-        {
-            &quot;type&quot;: &quot;work&quot;,
-            &quot;value&quot;: &quot;lennon@email.test&quot;,
-            &quot;primary&quot;: true
-        }
-    ]
-}
-</code></pre><p>Retrieved the user&rsquo;s info, update userName as <code>&quot;userName&quot;: &quot;j.lennon&quot;</code> and add <code>&quot;active&quot;: true</code>:</p>
+</code></pre><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;schemas&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+        <span style="color:#4e9a06">&#34;urn:ietf:params:scim:schemas:core:2.0:User&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#4e9a06">&#34;urn:indigo-dc:scim:schemas:IndigoUser&#34;</span>
+    <span style="color:#000;font-weight:bold">],</span>
+    <span style="color:#204a87;font-weight:bold">&#34;userName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;john_lennon&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">&#34;givenName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;John&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;familyName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Lennon&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;formatted&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;John Lennon&#34;</span>
+    <span style="color:#000;font-weight:bold">},</span>
+    <span style="color:#204a87;font-weight:bold">&#34;emails&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+        <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;work&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;lennon@email.test&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;primary&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">true</span>
+        <span style="color:#000;font-weight:bold">}</span>
+    <span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p>Retrieved the user&rsquo;s info, update userName as <code>&quot;userName&quot;: &quot;j.lennon&quot;</code> and add <code>&quot;active&quot;: true</code>:</p>
 <pre><code>PUT http://localhost:8080/scim/Users/e380b4e3-7b63-47c2-b156-3699be9ebcfe
-</code></pre><pre><code>{
-    &quot;schemas&quot;: [
-        &quot;urn:ietf:params:scim:schemas:core:2.0:User&quot;,
-        &quot;urn:indigo-dc:scim:schemas:IndigoUser&quot;
-    ],
-    &quot;userName&quot;: &quot;j.lennon&quot;,
-    &quot;name&quot;: {
-        &quot;givenName&quot;: &quot;John&quot;,
-        &quot;familyName&quot;: &quot;Lennon&quot;,
-        &quot;formatted&quot;: &quot;John Lennon&quot;
-    },
-    &quot;active&quot;: true,
-    &quot;emails&quot;: [
-        {
-            &quot;type&quot;: &quot;work&quot;,
-            &quot;value&quot;: &quot;lennon@email.test&quot;,
-            &quot;primary&quot;: true
-        }
-    ]
-}
-</code></pre><p>The returned answer is:</p>
+</code></pre><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;schemas&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+        <span style="color:#4e9a06">&#34;urn:ietf:params:scim:schemas:core:2.0:User&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#4e9a06">&#34;urn:indigo-dc:scim:schemas:IndigoUser&#34;</span>
+    <span style="color:#000;font-weight:bold">],</span>
+    <span style="color:#204a87;font-weight:bold">&#34;userName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;j.lennon&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">&#34;givenName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;John&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;familyName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Lennon&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;formatted&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;John Lennon&#34;</span>
+    <span style="color:#000;font-weight:bold">},</span>
+    <span style="color:#204a87;font-weight:bold">&#34;active&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">true</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;emails&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+        <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;work&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;lennon@email.test&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;primary&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">true</span>
+        <span style="color:#000;font-weight:bold">}</span>
+    <span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p>The returned answer is:</p>
 <pre><code>HTTP/1.1 200 OK
 Content-Type: application/scim+json;charset=UTF-8
 {
@@ -1891,35 +1928,109 @@ Body:
     ]
 }
 </code></pre><h2 id="get-scimgroupsid">GET <code>/scim/Groups/{id}</code></h2>
-<p>Retrieves all the information about the group identified by <code>id</code> and returns results in application/json.</p>
+<p>Retrieves information about the group identified by <code>id</code> and returns results in
+application/json.</p>
 <p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:read</code>.</p>
 <pre><code>GET /scim/Groups/c617d586-54e6-411d-8e38-64967798fa8a
-</code></pre><pre><code>{
-    &quot;id&quot;: &quot;c617d586-54e6-411d-8e38-64967798fa8a&quot;,
-    &quot;meta&quot;: {
-        &quot;created&quot;: &quot;2016-07-14T16:22:05.170+02:00&quot;,
-        &quot;lastModified&quot;: &quot;2016-07-14T16:22:05.170+02:00&quot;,
-        &quot;location&quot;: &quot;http://localhost:8080/scim/Groups/c617d586-54e6-411d-8e38-64967798fa8a&quot;,
-        &quot;resourceType&quot;: &quot;Group&quot;
-    },
-    &quot;schemas&quot;: [
-        &quot;urn:ietf:params:scim:schemas:core:2.0:Group&quot;
-    ],
-    &quot;displayName&quot;: &quot;Production&quot;,
-    &quot;members&quot;: [
-        {
-            &quot;display&quot;: &quot;test&quot;,
-            &quot;value&quot;: &quot;80e5fb8d-b7c8-451a-89ba-346ae278a66f&quot;,
-            &quot;$ref&quot;: &quot;http://localhost:8080/scim/Users/80e5fb8d-b7c8-451a-89ba-346ae278a66f&quot;
-        },
-        {
-            &quot;display&quot;: &quot;admin&quot;,
-            &quot;value&quot;: &quot;73f16d93-2441-4a50-88ff-85360d78c6b5&quot;,
-            &quot;$ref&quot;: &quot;http://localhost:8080/scim/Users/73f16d93-2441-4a50-88ff-85360d78c6b5&quot;
-        }
-    ]
-}
-</code></pre><h2 id="post-scimgroups">POST <code>/scim/Groups</code></h2>
+</code></pre><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;c617d586-54e6-411d-8e38-64967798fa8a&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;meta&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">&#34;created&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2016-07-14T16:22:05.170+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;lastModified&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2016-07-14T16:22:05.170+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;location&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;http://localhost:8080/scim/Groups/c617d586-54e6-411d-8e38-64967798fa8a&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;resourceType&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Group&#34;</span>
+    <span style="color:#000;font-weight:bold">},</span>
+    <span style="color:#204a87;font-weight:bold">&#34;schemas&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+        <span style="color:#4e9a06">&#34;urn:ietf:params:scim:schemas:core:2.0:Group&#34;</span>
+    <span style="color:#000;font-weight:bold">],</span>
+    <span style="color:#204a87;font-weight:bold">&#34;displayName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Production&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div>
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Warning</h4>
+
+    <p>To provide scalable management of group membership, IAM does no longer return
+the <code>members</code> claim for the SCIM Group resources, as the SCIM standard does not
+currently describe a way to implement pagination on group members.</p>
+<p>See the <code>members</code> and <code>subgroups</code> sub-resources.</p>
+
+
+</div>
+
+<h2 id="get-scimgroupsidmembers">GET <code>/scim/Groups/{id}/members</code></h2>
+<p>Returns a paginated list of user accounts, ordered by username, which are
+members of the group identified by <code>id</code>. To know about more about pagination
+parameters, see the <a href="#pagination">Pagination section</a>.</p>
+<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:read</code>.</p>
+<pre><code>GET https://wlcg.cloud.cnaf.infn.it/scim/Groups/b86a9e99-9f0e-478f-999c-2046c764aa14/members?count=5
+</code></pre><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;totalResults&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">151</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;itemsPerPage&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;startIndex&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;schemas&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+    <span style="color:#4e9a06">&#34;urn:ietf:params:scim:api:messages:2.0:ListResponse&#34;</span>
+  <span style="color:#000;font-weight:bold">],</span>
+  <span style="color:#204a87;font-weight:bold">&#34;Resources&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+    <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;display&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Example User 1&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;92287eed-80eb-4702-be59-a9e313d7b85e&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;$ref&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://wlcg.cloud.cnaf.infn.it/scim/Users/92287eed-80eb-4702-be59-a9e313d7b85e&#34;</span>
+    <span style="color:#000;font-weight:bold">},</span>
+    <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;display&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Example User 2&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;bda5a5af-4067-4814-9b59-fd7265978cc4&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;$ref&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://wlcg.cloud.cnaf.infn.it/scim/Users/bda5a5af-4067-4814-9b59-fd7265978cc4&#34;</span>
+    <span style="color:#000;font-weight:bold">},</span>
+    <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;display&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Example User 3&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;7489bf81-65db-4457-8ea6-6707d6405681&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;$ref&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://wlcg.cloud.cnaf.infn.it/scim/Users/7489bf81-65db-4457-8ea6-6707d6405681&#34;</span>
+    <span style="color:#000;font-weight:bold">},</span>
+    <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;display&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Example User 4&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;90cc5097-d904-4290-97b9-08a2646326b3&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;$ref&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://wlcg.cloud.cnaf.infn.it/scim/Users/90cc5097-d904-4290-97b9-08a2646326b3&#34;</span>
+    <span style="color:#000;font-weight:bold">},</span>
+    <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;display&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Example User 5&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;e83eec5a-e2e3-43c6-bb67-df8f5ec3e8d0&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;$ref&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://wlcg.cloud.cnaf.infn.it/scim/Users/e83eec5a-e2e3-43c6-bb67-df8f5ec3e8d0&#34;</span>
+    <span style="color:#000;font-weight:bold">}</span>
+  <span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h2 id="get-scimgroupsidsubgroups">GET <code>/scim/Groups/{id}/subgroups</code></h2>
+<p>Returns a paginated list of groups, ordered by name, which are direct sub-groups of the group
+identified by <code>id</code>. To know about more about pagination parameters, see the
+<a href="#pagination">Pagination section</a>.</p>
+<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:read</code>.</p>
+<pre><code>GET https://wlcg.cloud.cnaf.infn.it/scim/Groups/b86a9e99-9f0e-478f-999c-2046c764aa14/subgroups?count=10
+</code></pre><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;totalResults&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;itemsPerPage&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;startIndex&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;schemas&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+    <span style="color:#4e9a06">&#34;urn:ietf:params:scim:api:messages:2.0:ListResponse&#34;</span>
+  <span style="color:#000;font-weight:bold">],</span>
+  <span style="color:#204a87;font-weight:bold">&#34;Resources&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+    <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;display&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;wlcg/pilots&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;25084f30-1d71-4ab2-91e8-11148af16682&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;$ref&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://wlcg.cloud.cnaf.infn.it/scim/Groups/25084f30-1d71-4ab2-91e8-11148af16682&#34;</span>
+    <span style="color:#000;font-weight:bold">},</span>
+    <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;display&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;wlcg/test&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;34bdcf9e-fc17-4a80-a4b7-19f7964439e6&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;$ref&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://wlcg.cloud.cnaf.infn.it/scim/Groups/34bdcf9e-fc17-4a80-a4b7-19f7964439e6&#34;</span>
+    <span style="color:#000;font-weight:bold">},</span>
+    <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;display&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;wlcg/xfers&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;f356885a-9d06-4687-b5fe-57322430f111&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;$ref&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://wlcg.cloud.cnaf.infn.it/scim/Groups/f356885a-9d06-4687-b5fe-57322430f111&#34;</span>
+    <span style="color:#000;font-weight:bold">}</span>
+  <span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h2 id="post-scimgroups">POST <code>/scim/Groups</code></h2>
 <p>Creates a new group, using the info specified within the request body, sent as application/json.</p>
 <p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:write</code>.</p>
 <pre><code>POST http://localhost:8080/scim/Groups/
@@ -2040,6 +2151,18 @@ entire resource within the response body.</p>
 </div>
 
 
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
 
     
 	
