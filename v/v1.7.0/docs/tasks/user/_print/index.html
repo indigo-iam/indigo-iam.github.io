@@ -115,7 +115,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.7.0/offline-search-index.dbd0e8df591ea793553f14be0e0c975c.json"
+  data-offline-search-index-json-src="/v/v1.7.0/offline-search-index.34214b85e00a0c6196cd5e55d91b3a02.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -238,7 +238,15 @@ This the multi-page printable view of this section.
     
     
 	
-<li>10: <a href="#pg-18d43a62d9d80a6d77ca13d5f9613c6a">Reset an account password</a></li>
+<li>10: <a href="#pg-37886874f7be56017c985f194ab52a8f">Managing SSH keys</a></li>
+
+
+    
+  
+    
+    
+	
+<li>11: <a href="#pg-18d43a62d9d80a6d77ca13d5f9613c6a">Reset an account password</a></li>
 
 
     
@@ -685,7 +693,73 @@ authenticating at the IAM) from the MitreID dashboard following the &ldquo;Manag
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-18d43a62d9d80a6d77ca13d5f9613c6a">10 - Reset an account password</h1>
+	<h1 id="pg-37886874f7be56017c985f194ab52a8f">10 - Managing SSH keys</h1>
+    
+	<p>Starting with version <code>v1.7.0</code>, IAM allows users to link SSH public keys to
+their accounts.</p>
+<p>SSH keys are then exposed to relying parties in two ways:</p>
+<ul>
+<li>through the IAM <a href="/docs/reference/api/scim-api">SCIM APIs</a>;</li>
+<li>as a claim in the OpenID Connect <code>userinfo</code> endpoint response, if the token
+has the <code>ssh-keys</code> scope.</li>
+</ul>
+<h2 id="managing-account-ssh-keys">Managing account SSH keys</h2>
+<p>The IAM dashboard allows a user to link one or more SSH keys to their account,
+as shown below:</p>
+<p><img src="../images/ssh-keys-0.png" alt="ssh key management"></p>
+<h2 id="accessing-account-ssh-keys-via-scim-apis">Accessing account SSH keys via SCIM APIs</h2>
+<p>As clarified in the <a href="/docs/reference/api/scim-api">SCIM APIs documentation</a>, ssh keys are exposed
+in the user information returned to authorized clients, as in the following
+fragment:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;80e5fb8d-b7c8-451a-89ba-346ae278a66f&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#a40000">...</span>
+  <span style="color:#204a87;font-weight:bold">&#34;userName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;test&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;urn:indigo-dc:scim:schemas:IndigoUser&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;sshKeys&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+      <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">&#34;display&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;my-key&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;primary&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">true</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ssh-rsa AAAAB...&#34;</span><span style="color:#000;font-weight:bold">,</span> 
+        <span style="color:#204a87;font-weight:bold">&#34;fingerprint&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;M9vqQeuPrPI0wiaT6sftgfxu1/kowbb37fcLU2+R7yk=&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;created&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-08-25T15:18:45.978+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;lastModified&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-08-25T15:18:45.978+02:00&#34;</span>
+      <span style="color:#000;font-weight:bold">}</span>
+    <span style="color:#000;font-weight:bold">],</span>
+  <span style="color:#000;font-weight:bold">}</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h2 id="accessing-account-ssh-keys-via-the-userinfo-endpoint">Accessing account SSH keys via the userinfo endpoint</h2>
+<p>SSH keys linked to a user account are returned in the userinfo endpoint
+response if the token used to access the endpoint has the <code>ssh-keys</code> scope, as
+in the following example:</p>
+<pre><code class="language-console" data-lang="console">❯ curl -s -L -H &quot;Authorization: Bearer ${AT}&quot; https://iam.local.io/userinfo | jq .
+{
+  &quot;sub&quot;: &quot;80e5fb8d-b7c8-451a-89ba-346ae278a66f&quot;,
+  &quot;ssh_keys&quot;: [
+    {
+      &quot;fingerprint&quot;: &quot;M9vqQeuPrPI0wiaT6sftgfxu1/kowbb37fcLU2+R7yk=&quot;,
+      &quot;value&quot;: &quot;ssh-rsa AAAAB3NzaC1yc2E...&quot;
+    }
+  ]
+}
+</code></pre><p>Note that the <code>ssh-keys</code> scope is a <strong>restricted</strong> scope, i.e., it can be
+assigned to client registered in IAM only by IAM administrators.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-18d43a62d9d80a6d77ca13d5f9613c6a">11 - Reset an account password</h1>
     
 	<p>Users can reset their password from the IAM login page by clicking on the
 <em>Forgot your password?</em> link, which opens a dialog where users can then enter

@@ -117,6 +117,8 @@
   </url><url>
     <loc>/v/v1.7.0/docs/tasks/user/manage-approved-sites/</loc>
   </url><url>
+    <loc>/v/v1.7.0/docs/tasks/user/manage-ssh-keys/</loc>
+  </url><url>
     <loc>/v/v1.7.0/docs/reference/api/oauth-token-exchange/</loc>
   </url><url>
     <loc>/v/v1.7.0/docs/reference/api/oauth-token-introspection/</loc>
