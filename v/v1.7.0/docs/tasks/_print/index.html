@@ -115,7 +115,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.7.0/offline-search-index.34214b85e00a0c6196cd5e55d91b3a02.json"
+  data-offline-search-index-json-src="/v/v1.7.0/offline-search-index.d0f32376e5a8e9bb5929723db3f3c42f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -486,9 +486,12 @@ In the <em>Groups</em> section, click on the <em>Add to group</em> button:</p>
 <p><img src="../images/IAM-groups-06.png" alt="INDIGO IAM Add group to user button"></p>
 <p>Choose one or more groups and confirm the operation:</p>
 <p><img src="../images/IAM-groups-07.png" alt="INDIGO IAM Add group membership"></p>
-<p>When a user is added as member of a group, he/she does not inherit the
-membership in the parent group, i.e. the user must be explicitly associated
-with all the groups.</p>
+<p>Starting with version 1.7.0, when a user is added as member of group <code>g</code>, IAM
+takes care of adding him/her to all the parent groups leading to <code>g</code> that
+he/she is not already a member of.  In previous versions this had to be done
+manually by the IAM administrator. Following the same rationale, when a user is
+removed from a group, it is also automatically removed from any children groups
+he is a member of.</p>
 <p>To remove a user from a group, click the <em>Remove</em> button.</p>
 <p>Members can also be removed from the group details page, as shown in the
 following screenshot:</p>
