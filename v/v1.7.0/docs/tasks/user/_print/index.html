@@ -699,7 +699,7 @@ authenticating at the IAM) from the MitreID dashboard following the &ldquo;Manag
 their accounts.</p>
 <p>SSH keys are then exposed to relying parties in two ways:</p>
 <ul>
-<li>through the IAM <a href="/docs/reference/api/scim-api">SCIM APIs</a>;</li>
+<li>through the IAM <a href="/v/v1.7.0/docs/reference/api/scim-api/">SCIM APIs</a>;</li>
 <li>as a claim in the OpenID Connect <code>userinfo</code> endpoint response, if the token
 has the <code>ssh-keys</code> scope.</li>
 </ul>
@@ -708,7 +708,7 @@ has the <code>ssh-keys</code> scope.</li>
 as shown below:</p>
 <p><img src="../images/ssh-keys-0.png" alt="ssh key management"></p>
 <h2 id="accessing-account-ssh-keys-via-scim-apis">Accessing account SSH keys via SCIM APIs</h2>
-<p>As clarified in the <a href="/docs/reference/api/scim-api">SCIM APIs documentation</a>, ssh keys are exposed
+<p>As clarified in the <a href="/v/v1.7.0/docs/reference/api/scim-api/">SCIM APIs documentation</a>, ssh keys are exposed
 in the user information returned to authorized clients, as in the following
 fragment:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
