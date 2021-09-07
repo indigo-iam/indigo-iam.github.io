@@ -14,14 +14,60 @@
     
     <item>
       <title>Blog: New IAM website!</title>
-      <link>/v/v1.7.0/blog/2021/07/30/new-iam-website/</link>
-      <pubDate>Fri, 30 Jul 2021 00:00:00 +0000</pubDate>
+      <link>/v/v1.7.0/blog/2021/09/07/new-iam-website/</link>
+      <pubDate>Tue, 07 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>/v/v1.7.0/blog/2021/07/30/new-iam-website/</guid>
+      <guid>/v/v1.7.0/blog/2021/09/07/new-iam-website/</guid>
       <description>
         
         
-        &lt;p&gt;The new IAM website is almost up (still WIP).&lt;/p&gt;
+        &lt;p&gt;The IAM website and documentation has &lt;a href=&#34;https://indigo-iam.github.io&#34;&gt;moved&lt;/a&gt;,
+and if you&amp;rsquo;re reading this you already know.&lt;/p&gt;
+&lt;p&gt;The new IAM website is powered by &lt;a href=&#34;https://www.docsy.dev/&#34;&gt;Docsy&lt;/a&gt;, a &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; theme for
+creating technical documentation sites, which is increasingly popular in Open
+Source projects.&lt;/p&gt;
+&lt;p&gt;We think moving to Docsy improved the quality of IAM documentation. If you find
+something is missing or broken, let us know by opening an issue on the &lt;a href=&#34;https://github.com/indigo-iam/iam-website&#34;&gt;IAM
+Website GitHub repo&lt;/a&gt;.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Blog: IAM v1.7.0</title>
+      <link>/v/v1.7.0/blog/2021/09/07/iam-v1.7.0/</link>
+      <pubDate>Tue, 07 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/v/v1.7.0/blog/2021/09/07/iam-v1.7.0/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The IAM development team is pleased to announce the release of INDIGO IAM v.1.7.0.&lt;/p&gt;
+&lt;p&gt;This release provides many bug fixes and enhancements, as can be seen in the &lt;a href=&#34;https://github.com/indigo-iam/iam/releases/tag/v1.7.0&#34;&gt;release notes&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The highlights of this release are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Scalability improvements&lt;/strong&gt;: the group membership persistence management has
+been refactored to improve scalability; SCIM APIs have also been changed to
+support pagination over group members (see the new &lt;a href=&#34;/v/v1.7.0/docs/reference/api/scim-api/&#34;&gt;SCIM API&lt;/a&gt;
+documentation for more information);&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Improved token exchange flexibility&lt;/strong&gt;: token exchange can now be controlled
+in more detail using &lt;a href=&#34;/v/v1.7.0/docs/reference/api/scope-policy-api/&#34;&gt;scope&lt;/a&gt; and &lt;a href=&#34;/v/v1.7.0/docs/reference/api/token-exchange-policy-api/&#34;&gt;token
+exchange&lt;/a&gt; policies;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SSH key management&lt;/strong&gt;: IAM now allows users to link SSH keys to their account;
+ssh keys are then exposed to relying parties either via the SCIM APIs or via
+the OpenID connect userinfo endpoint; see the &lt;a href=&#34;/v/v1.7.0/docs/tasks/user/manage-ssh-keys/&#34;&gt;documentation&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As usual, the IAM docker images can be obtained from DockerHub, while RPM
+packages for CENTOS 7can be obtained from our &lt;a href=&#34;https://indigo-iam.github.io/repo/&#34;&gt;package repository&lt;/a&gt;.&lt;/p&gt;
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Warning&lt;/h4&gt;
+
+    Starting from this release, we no longer provide packages for the Ubuntu platform.
+
+&lt;/div&gt;
+
 
       </description>
     </item>

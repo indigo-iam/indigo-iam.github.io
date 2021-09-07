@@ -112,7 +112,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.7.0/offline-search-index.d0f32376e5a8e9bb5929723db3f3c42f.json"
+  data-offline-search-index-json-src="/v/v1.7.0/offline-search-index.efe0353da727fcf841e612448cef157c.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -160,6 +160,16 @@ This the multi-page printable view of this section.
   
 
   
+    
+    
+	
+
+    <li><a href="#pg-40f1261f1506d775161b3e4e229cf43b">IAM v1.7.0</a></li>
+
+
+
+    
+  
 
     </ul>
 
@@ -178,6 +188,59 @@ This the multi-page printable view of this section.
   
   
 
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="">
+    <h1 id="pg-40f1261f1506d775161b3e4e229cf43b">IAM v1.7.0</h1>
+	<div class="lead">The v1.7.0 release provides numerous bug fixes and enhancements</div>
+	<div class="td-byline mb-4">
+		By <b>Andrea Ceccanti</b> |
+        
+		<time datetime="2021-09-07" class="text-muted">Tuesday, September 07, 2021</time>
+        
+	</div>
+	<p>The IAM development team is pleased to announce the release of INDIGO IAM v.1.7.0.</p>
+<p>This release provides many bug fixes and enhancements, as can be seen in the <a href="https://github.com/indigo-iam/iam/releases/tag/v1.7.0">release notes</a>.</p>
+<p>The highlights of this release are:</p>
+<ul>
+<li><strong>Scalability improvements</strong>: the group membership persistence management has
+been refactored to improve scalability; SCIM APIs have also been changed to
+support pagination over group members (see the new <a href="/docs/reference/api/scim-api/">SCIM API</a>
+documentation for more information);</li>
+<li><strong>Improved token exchange flexibility</strong>: token exchange can now be controlled
+in more detail using <a href="/docs/reference/api/scope-policy-api/">scope</a> and <a href="/docs/reference/api/token-exchange-policy-api/">token
+exchange</a> policies;</li>
+<li><strong>SSH key management</strong>: IAM now allows users to link SSH keys to their account;
+ssh keys are then exposed to relying parties either via the SCIM APIs or via
+the OpenID connect userinfo endpoint; see the <a href="/docs/tasks/user/manage-ssh-keys/">documentation</a>.</li>
+</ul>
+<p>As usual, the IAM docker images can be obtained from DockerHub, while RPM
+packages for CENTOS 7can be obtained from our <a href="https://indigo-iam.github.io/repo/">package repository</a>.</p>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Warning</h4>
+
+    Starting from this release, we no longer provide packages for the Ubuntu platform.
+
+</div>
+
+
+</div>
+
+
+
+
+
+    
+	
   
 
 
