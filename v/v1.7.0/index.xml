@@ -26,9 +26,10 @@ and if you&amp;rsquo;re reading this you already know.&lt;/p&gt;
 &lt;p&gt;The new IAM website is powered by &lt;a href=&#34;https://www.docsy.dev/&#34;&gt;Docsy&lt;/a&gt;, a &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; theme for
 creating technical documentation sites, which is increasingly popular in Open
 Source projects.&lt;/p&gt;
-&lt;p&gt;We think moving to Docsy improved the quality of IAM documentation. If you find
-something is missing or broken, let us know by opening an issue on the &lt;a href=&#34;https://github.com/indigo-iam/iam-website&#34;&gt;IAM
-Website GitHub repo&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The new site provides new and improved documentation.&lt;/p&gt;
+&lt;p&gt;If you find something is missing or broken, let us know by opening an issue
+or suggest changes. The new Docsy website makes this very easy to anyone with a
+Github account, just see the tab on the rigth of each page.&lt;/p&gt;
 
       </description>
     </item>
