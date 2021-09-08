@@ -166,49 +166,115 @@ This the multi-page printable view of this section.
     
     
 	
-<li>1: <a href="#pg-42f041991d0b1099049789121a1a0e30">NGINX configuration</a></li>
+<li>1: <a href="#pg-fc6236dfeced575346afab985c274cf6">NGINX configuration</a></li>
 
 
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
     
   
     
     
 	
-<li>2: <a href="#pg-980bb6b8f4caf192ab4ad321d15c254c">Database configuration</a></li>
+<li>2: <a href="#pg-35c1b78df94e37b0c6b6685e8bdf38f1">Database configuration</a></li>
 
 
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
     
   
     
     
 	
-<li>3: <a href="#pg-fdf064a7010ecbaa1fbf4241d74375cb">JSON Web Keys configuration</a></li>
+<li>3: <a href="#pg-c3b64a508ec118f9b76138f613e9ea55">JSON Web Keys configuration</a></li>
 
 
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
     
   
     
     
 	
-<li>4: <a href="#pg-d4954573f74248cc2cf402a430af4a23">Deployment with Docker</a></li>
+<li>4: <a href="#pg-8c741cbaae2d27334f02af82eefdd613">Deployment with Docker</a></li>
 
 
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
     
   
     
     
 	
-<li>5: <a href="#pg-e6965747ca75cbeed664615ee54c8647">Deployment with packages</a></li>
+<li>5: <a href="#pg-15a25685d0805dee99efe788f6a68856">Deployment with packages</a></li>
 
 
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
     
   
     
     
 	
-<li>6: <a href="#pg-be6d46da99ec93fad0e93382c3763c05">Basic IAM setup</a></li>
+<li>6: <a href="#pg-0fbad79c516bfe14f345bc8ffa80c959">Basic IAM setup</a></li>
 
 
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
     
   
 
@@ -266,7 +332,7 @@ administrator password for the newly configured IAM service; more on this
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-42f041991d0b1099049789121a1a0e30">1 - NGINX configuration</h1>
+	<h1 id="pg-fc6236dfeced575346afab985c274cf6">1 - NGINX configuration</h1>
     
 	<p>IAM relies on NGINX for TLS termination and load balancing.</p>
 <p>The example configuration below provides the minimal configuration needed to
@@ -310,6 +376,18 @@ directory as follows:</p>
 
 
     
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
 	
   
     
@@ -319,7 +397,7 @@ directory as follows:</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-980bb6b8f4caf192ab4ad321d15c254c">2 - Database configuration</h1>
+	<h1 id="pg-35c1b78df94e37b0c6b6685e8bdf38f1">2 - Database configuration</h1>
     
 	<p>IAM keeps state in a MariaDB/MySQL database, and will need its own schema and a
 user that has read/write/schema change privileges on such database.</p>
@@ -342,6 +420,18 @@ to the database with the above credentials according to your deployment needs.</
 
 
     
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
 	
   
     
@@ -351,7 +441,7 @@ to the database with the above credentials according to your deployment needs.</
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-fdf064a7010ecbaa1fbf4241d74375cb">3 - JSON Web Keys configuration</h1>
+	<h1 id="pg-c3b64a508ec118f9b76138f613e9ea55">3 - JSON Web Keys configuration</h1>
     
 	<p>JSON web keys are used by the IAM to sign and verify token signatures.</p>
 <p>To generate a JSON web key for your IAM deployment, you can use the
@@ -391,6 +481,18 @@ file, e.g. <code>iam-keystore.jwks</code>.</p>
 
 
     
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
 	
   
     
@@ -400,7 +502,7 @@ file, e.g. <code>iam-keystore.jwks</code>.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-d4954573f74248cc2cf402a430af4a23">4 - Deployment with Docker</h1>
+	<h1 id="pg-8c741cbaae2d27334f02af82eefdd613">4 - Deployment with Docker</h1>
     
 	<p>The IAM service is provided on the following DockerHub repositories:</p>
 <ul>
@@ -433,6 +535,18 @@ reference</a> for a description of the variables.</p>
 
 
     
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
 	
   
     
@@ -442,7 +556,7 @@ reference</a> for a description of the variables.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-e6965747ca75cbeed664615ee54c8647">5 - Deployment with packages</h1>
+	<h1 id="pg-15a25685d0805dee99efe788f6a68856">5 - Deployment with packages</h1>
     
 	<p>IAM can be deployed from packages on the CentOS 7 platform.
 Packages and repo files are hosted on the <a href="https://indigo-iam.github.io/repo">INDIGO IAM package repository</a>.</p>
@@ -500,6 +614,18 @@ documentation in the <a href="https://github.com/indigo-iam/puppet-indigo-iam">G
 
 
     
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
 	
   
     
@@ -509,7 +635,7 @@ documentation in the <a href="https://github.com/indigo-iam/puppet-indigo-iam">G
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-be6d46da99ec93fad0e93382c3763c05">6 - Basic IAM setup</h1>
+	<h1 id="pg-0fbad79c516bfe14f345bc8ffa80c959">6 - Basic IAM setup</h1>
     
 	<p>Most configurable aspects of the IAM are configured via environment variables
 and Spring profile directives. For a detailed reference of all the options, see
@@ -580,6 +706,18 @@ button from the admin home page, as shown in the following picture:</p>
 </div>
 
 
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
 
     
 	
