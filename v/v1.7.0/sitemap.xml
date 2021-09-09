@@ -3,27 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/v/v1.7.0/docs/reference/api/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/reference/api/aup-api/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/tasks/administration/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/tasks/user/joining-a-collaboration/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/reference/configuration/jwt-profiles/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/getting-started/nginx/</loc>
     <lastmod>2021-09-08T12:46:16+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/tasks/user/getting-a-token/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/reference/configuration/external-authentication/oidc/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/overview/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/tasks/administration/user-management/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/reference/configuration/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/getting-started/mariadb/</loc>
     <lastmod>2021-09-08T12:46:16+02:00</lastmod>
@@ -32,44 +42,58 @@
     <lastmod>2021-07-30T17:14:03+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/tasks/administration/group-management/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/tasks/deployment/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/tasks/user/client-registration/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/reference/configuration/external-authentication/saml/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/tasks/user/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/getting-started/jwk/</loc>
     <lastmod>2021-09-08T12:46:16+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/tasks/administration/aup-management/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/reference/configuration/external-authentication/x509/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/getting-started/docker/</loc>
     <lastmod>2021-09-08T12:46:16+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/tasks/deployment/backup_restore/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/getting-started/packages/</loc>
     <lastmod>2021-09-08T12:46:16+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/reference/configuration/lifecycle/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/reference/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/reference/configuration/registration/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/tasks/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/getting-started/basic_setup/</loc>
     <lastmod>2021-09-08T12:46:16+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/reference/configuration/local_authn/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/tasks/deployment/audit-log/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/developer-guide/</loc>
     <lastmod>2021-09-06T11:05:45+02:00</lastmod>
@@ -87,8 +111,10 @@
     <lastmod>2021-07-30T17:14:03+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/tasks/deployment/upgrade/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/tasks/deployment/voms/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/blog/2021/09/07/new-iam-website/</loc>
     <lastmod>2021-09-07T11:30:17+02:00</lastmod>
@@ -100,46 +126,64 @@
     <lastmod>2021-07-30T18:38:21+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/tasks/user/change-details/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/tasks/user/change-password/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/reference/configuration/external-authentication/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/reference/api/group-requests/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/reference/api/health_endpoints/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/reference/api/tokens-api/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/</loc>
     <lastmod>2021-07-30T18:24:31+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/tasks/user/external-account-linking/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/tasks/user/x509-linking/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/tasks/user/manage-active-tokens/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/tasks/user/manage-approved-sites/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/tasks/user/manage-ssh-keys/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/reference/api/oauth-token-exchange/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/reference/api/oauth-token-introspection/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/reference/api/oidc-client-management/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/reference/api/oidc-client-registration/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/iam-aas/privacy-policy/</loc>
     <lastmod>2021-09-08T13:05:14+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/tasks/user/reset-password/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/reference/api/scim-api/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/reference/api/scope-policy-api/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/search/</loc>
     <lastmod>2021-07-28T16:46:31+02:00</lastmod>
@@ -151,5 +195,6 @@
     <lastmod>2021-09-08T13:05:14+02:00</lastmod>
   </url><url>
     <loc>/v/v1.7.0/docs/reference/api/token-exchange-policy-api/</loc>
+    <lastmod>2021-09-09T16:24:47+02:00</lastmod>
   </url>
 </urlset>
