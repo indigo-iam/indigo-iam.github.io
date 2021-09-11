@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.88.1" /><link rel="alternate" type="text/html" href="/v/v1.7.1/docs/developer-guide/_print/">
+<meta name="generator" content="Hugo 0.86.0" /><link rel="alternate" type="text/html" href="/v/v1.7.1/docs/developer-guide/_print/">
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
 
@@ -117,7 +117,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.7.1/offline-search-index.3e0e3249392b4ee3ecc11f65b3fac681.json"
+  data-offline-search-index-json-src="/v/v1.7.1/offline-search-index.b9811863195014f54932a98f11bd6b73.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -149,7 +149,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.7.1/offline-search-index.3e0e3249392b4ee3ecc11f65b3fac681.json"
+  data-offline-search-index-json-src="/v/v1.7.1/offline-search-index.b9811863195014f54932a98f11bd6b73.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -1723,7 +1723,7 @@
 <li>Docker compose 1.7 or greater</li>
 </ul>
 <p>You can start a development/testing environment with the following command:</p>
-<pre tabindex="0"><code>  docker-compose build
+<pre><code>  docker-compose build
   docker-compose up
 </code></pre><p>The docker-compose.yml file requires that you set some environment variables
 for it to run properly, mainly to provide OAuth client credentials for external
@@ -1731,20 +1731,20 @@ authentication mechanisms (Google).</p>
 <p>The setup also assumes that you have an entry in your DNS server (complex) or
 /etc/hosts (simpler) that maps iam.local.io to the machine (or VM) where docker
 is running, e.g.:</p>
-<pre tabindex="0"><code>$ cat /etc/hosts
+<pre><code>$ cat /etc/hosts
 ...
 
 192.168.99.100 iam.local.io
 </code></pre><h2 id="how-to-run-tests-against-the-mysql-database">How to run tests against the mysql database</h2>
 <p>IAM JUnit integration tests can (and should) be run against mysql database.</p>
 <p>To do so, boostrap the database instance with docker-compose:</p>
-<pre tabindex="0"><code>docker-compose up db
+<pre><code>docker-compose up db
 </code></pre><p>And then run the tests with the following command:</p>
-<pre tabindex="0"><code>mvn -Dspring.profiles.active=mysql-test test
+<pre><code>mvn -Dspring.profiles.active=mysql-test test
 </code></pre><h2 id="building-docker-production-images">Building Docker production images</h2>
 <p>To build the docker images for the iam-service and iam-test client,
 use the following commands:</p>
-<pre tabindex="0"><code>sh iam-login-service/docker/build-prod-image.sh
+<pre><code>sh iam-login-service/docker/build-prod-image.sh
 sh iam-test-client/docker/build-prod-image.sh
 </code></pre><p>These commands should run <strong>after</strong> war and jar archives have been built, i.e.
 after a <code>mvn package</code>.</p>

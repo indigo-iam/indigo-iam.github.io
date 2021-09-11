@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.88.1" /><link rel="canonical" type="text/html" href="/v/v1.7.1/docs/tasks/deployment/voms/">
+<meta name="generator" content="Hugo 0.86.0" /><link rel="canonical" type="text/html" href="/v/v1.7.1/docs/tasks/deployment/voms/">
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
 
@@ -117,7 +117,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.7.1/offline-search-index.3e0e3249392b4ee3ecc11f65b3fac681.json"
+  data-offline-search-index-json-src="/v/v1.7.1/offline-search-index.b9811863195014f54932a98f11bd6b73.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -206,7 +206,7 @@ VOMS AA X.509 credential and put them in a file named as the fully qualified
 domain name of the VOMS attribute authority with the <code>.lsc</code> extension.</p>
 <p>The following command does exactly that (<code>X509_VOMS_DIR</code> can be set to any
 directory where you have writing privileges):</p>
-<pre tabindex="0"><code class="language-console" data-lang="console">&gt; mkdir -p ${X509_VOMS_DIR}/example.vo
+<pre><code class="language-console" data-lang="console">&gt; mkdir -p ${X509_VOMS_DIR}/example.vo
 &gt; openssl x509 -in voms_local_io.cert.pem -noout -subject -issuer -nameopt compat | \
   gsed -e 's/^subject=//' -e 's/^issuer=//' &gt; \
   ${X509_VOMS_DIR}/example.vo/voms.local.io.lsc

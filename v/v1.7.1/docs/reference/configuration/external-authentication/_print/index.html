@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.88.1" /><link rel="canonical" type="text/html" href="/v/v1.7.1/docs/reference/configuration/external-authentication/">
+<meta name="generator" content="Hugo 0.86.0" /><link rel="canonical" type="text/html" href="/v/v1.7.1/docs/reference/configuration/external-authentication/">
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
 
@@ -114,7 +114,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.7.1/offline-search-index.3e0e3249392b4ee3ecc11f65b3fac681.json"
+  data-offline-search-index-json-src="/v/v1.7.1/offline-search-index.b9811863195014f54932a98f11bd6b73.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -395,7 +395,7 @@ appropriate environment variables.</li>
 <h2 id="generate-a-self-signed-certificate">Generate a Self-signed certificate</h2>
 <p>To generate a self-signed certificate that lasts 5 years use the following
 openssl command:</p>
-<pre tabindex="0"><code class="language-console" data-lang="console">openssl req -newkey rsa:2048 -nodes -x509 -days 1825  -keyout self-signed.key.pem \
+<pre><code class="language-console" data-lang="console">openssl req -newkey rsa:2048 -nodes -x509 -days 1825  -keyout self-signed.key.pem \
   -out self-signed.cert.pem
 </code></pre><p>The above command will generate a private key and the corresponding certificate
 in PEM format. You will be asked to provide a subject for the certificate being
@@ -403,7 +403,7 @@ generated.</p>
 <p>To import this certificate in a Java keystore we need in in p12 format. Use the
 following commands to convert the certificate in p12 format and import it in a
 Java keystore:</p>
-<pre tabindex="0"><code class="language-console" data-lang="console">openssl pkcs12 -export -inkey self-signed.key.pem \
+<pre><code class="language-console" data-lang="console">openssl pkcs12 -export -inkey self-signed.key.pem \
     -name self-signed \
     -in self-signed.cert.pem \
     -out self-signed.p12
@@ -415,7 +415,7 @@ keytool -importkeystore -destkeystore self-signed.jks \
 a keystore password. Use the same password, at least 6 characters long,
 otherwise it will not work for the java keystore.</p>
 <p>You can list the contents of the keystore with the following command:</p>
-<pre tabindex="0"><code class="language-console" data-lang="console">keytool -list -keystore self-signed.jks
+<pre><code class="language-console" data-lang="console">keytool -list -keystore self-signed.jks
 </code></pre><h2 id="obtain-saml-metadata-for-your-idp-or-identity-federation">Obtain SAML metadata for your IdP or identity federation</h2>
 <p>You IdP or identity federation will have a SAML metadata document describing,
 in SAML terms, which authentication flows are enabled and providing access to
@@ -433,7 +433,7 @@ certificate in the Java keystore created above.</p>
 certificate in a Java keystore you will need it in DER format.</p>
 <p>The following commands show how to import a PEM certificate into a Java
 keystore:</p>
-<pre tabindex="0"><code class="language-console" data-lang="console">openssl x509 -outform der -in idem_signer_2019.pem -out idem_signer_2019.der
+<pre><code class="language-console" data-lang="console">openssl x509 -outform der -in idem_signer_2019.pem -out idem_signer_2019.der
 keytool -import -alias idem_signer_2019 -keystore self-signed.jks -file idem_signer_2019.der
 </code></pre><h3 id="metadata-configuration">Metadata configuration</h3>
 <p>The IdP or federation metadata to be trusted can be specified with the

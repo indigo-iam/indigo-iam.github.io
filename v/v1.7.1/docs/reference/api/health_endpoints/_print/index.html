@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.88.1" /><link rel="canonical" type="text/html" href="/v/v1.7.1/docs/reference/api/health_endpoints/">
+<meta name="generator" content="Hugo 0.86.0" /><link rel="canonical" type="text/html" href="/v/v1.7.1/docs/reference/api/health_endpoints/">
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
 
@@ -114,7 +114,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.7.1/offline-search-index.3e0e3249392b4ee3ecc11f65b3fac681.json"
+  data-offline-search-index-json-src="/v/v1.7.1/offline-search-index.b9811863195014f54932a98f11bd6b73.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -181,12 +181,12 @@ anonymous requests typically receive only a summary of the health status.</p>
 <p>This is a general application health check endpoint which composes disk space
 and database health checks.</p>
 <p>Examples.</p>
-<pre tabindex="0"><code class="language-console" data-lang="console">$ curl -s https://iam.local.io/health | jq
+<pre><code class="language-console" data-lang="console">$ curl -s https://iam.local.io/health | jq
 {
   &quot;status&quot;: &quot;UP&quot;
 }
 </code></pre><p>Sending basic authentication, the endpoint returns a response with more details:</p>
-<pre tabindex="0"><code class="language-console" data-lang="console">$ curl -s -u $ADMINUSER:$ADMINPASSWORD https://iam.local.io/health | jq
+<pre><code class="language-console" data-lang="console">$ curl -s -u $ADMINUSER:$ADMINPASSWORD https://iam.local.io/health | jq
 {
   &quot;status&quot;: &quot;UP&quot;,
   &quot;diskSpace&quot;: {
@@ -204,12 +204,12 @@ and database health checks.</p>
 </code></pre><h2 id="healthmail"><code>/health/mail</code></h2>
 <p>This endpoint monitors the connection to the SMTP server configured for the
 IAM Notification Service.</p>
-<pre tabindex="0"><code class="language-console" data-lang="console">$ curl -s https://iam.local.io/health/mail | jq
+<pre><code class="language-console" data-lang="console">$ curl -s https://iam.local.io/health/mail | jq
 {
   &quot;status&quot;: &quot;UP&quot;
 }
 </code></pre><p>With an authenticated request, the SMTP server details are returned:</p>
-<pre tabindex="0"><code class="language-console" data-lang="console">$ curl -u $ADMINUSER:$ADMINPASSWORD https://iam.local.io/health/mail | jq
+<pre><code class="language-console" data-lang="console">$ curl -u $ADMINUSER:$ADMINPASSWORD https://iam.local.io/health/mail | jq
 {
   &quot;status&quot;: &quot;UP&quot;,
   &quot;mail&quot;: {
@@ -220,12 +220,12 @@ IAM Notification Service.</p>
 </code></pre><h2 id="healthexternal"><code>/health/external</code></h2>
 <p>This endpoint checks service connectivity to the Internet. By default, the
 endpoint triggers a check on the connectivity to Google.</p>
-<pre tabindex="0"><code class="language-console" data-lang="console">$ curl -s https://iam.local.io/health/external | jq
+<pre><code class="language-console" data-lang="console">$ curl -s https://iam.local.io/health/external | jq
 {
   &quot;status&quot;: &quot;UP&quot;
 }
 </code></pre><p>With an authenticated request, the external service URL is shown in the details.</p>
-<pre tabindex="0"><code class="language-console" data-lang="console">$ curl -s -u $ADMINUSER:$ADMINPASSWORD https://iam.local.io/health/external | jq
+<pre><code class="language-console" data-lang="console">$ curl -s -u $ADMINUSER:$ADMINPASSWORD https://iam.local.io/health/external | jq
 {
   &quot;status&quot;: &quot;UP&quot;,
   &quot;google&quot;: {

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.88.1" /><link rel="alternate" type="text/html" href="/v/v1.7.1/docs/reference/api/oauth-token-exchange/_print/">
+<meta name="generator" content="Hugo 0.86.0" /><link rel="alternate" type="text/html" href="/v/v1.7.1/docs/reference/api/oauth-token-exchange/_print/">
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
 
@@ -114,7 +114,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.7.1/offline-search-index.3e0e3249392b4ee3ecc11f65b3fac681.json"
+  data-offline-search-index-json-src="/v/v1.7.1/offline-search-index.b9811863195014f54932a98f11bd6b73.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -146,7 +146,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.7.1/offline-search-index.3e0e3249392b4ee3ecc11f65b3fac681.json"
+  data-offline-search-index-json-src="/v/v1.7.1/offline-search-index.b9811863195014f54932a98f11bd6b73.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -1818,7 +1818,7 @@ be</p>
 </ul>
 <p>The list of system scopes currently defined in the IAM can be obtained by
 registered users by issuing a request to the IAM system scopes API:</p>
-<pre tabindex="0"><code>curl -H &quot;Authorization: Bearer ...&quot; https://iam.example/api/scopes
+<pre><code>curl -H &quot;Authorization: Bearer ...&quot; https://iam.example/api/scopes
 </code></pre><h3 id="token-exchange-example">Token Exchange example</h3>
 <p>This section describes a token exchange flow.</p>
 <p>We start with a normal OAuth flow where a client, <code>token-exchange-subject</code>,
@@ -1854,7 +1854,7 @@ token endpoint returns a JSON containing an access token and other info:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> $ <span style="color:#204a87">export</span> <span style="color:#000">SUBJECT_TOKEN</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">$(</span>cat /tmp/response <span style="color:#000;font-weight:bold">|</span> jq -r .access_token<span style="color:#204a87;font-weight:bold">)</span>
 </code></pre></div><p>We use this access token to access the <code>app</code> API, which only requires access to
 user identity to grant access:</p>
-<pre tabindex="0"><code>curl -H &quot;Authorization: Bearer $SUBJECT_TOKEN&quot; https://app.example.org/api
+<pre><code>curl -H &quot;Authorization: Bearer $SUBJECT_TOKEN&quot; https://app.example.org/api
 </code></pre><p>Suppose now that the <code>app</code> API needs, to properly answer the request from the
 client, to interact with another downstream service, <a href="https://tasks.example.org">https://tasks.example.org</a>,
 on behalf of the user. Unfortunately the set of scopes linked to the access
@@ -1889,7 +1889,7 @@ following JSON:</p>
 <span style="color:#000;font-weight:bold">}</span>
 </code></pre></div><p>And <code>app</code> can use the newly issued access token to invoke services on
 <a href="https://task-app.example.org/api">https://task-app.example.org/api</a> on behalf of user <code>test</code>:</p>
-<pre tabindex="0"><code>$ curl -H &quot;Authorization: Bearer eyJra...&quot; http://tasks.example.org/api
+<pre><code>$ curl -H &quot;Authorization: Bearer eyJra...&quot; http://tasks.example.org/api
 
 </code></pre><h3 id="trust">Trust</h3>
 <p>Clients that have the token exchange grant enabled are considered trusted

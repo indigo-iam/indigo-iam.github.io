@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.88.1" /><link rel="canonical" type="text/html" href="/v/v1.7.1/docs/reference/api/scope-policy-api/">
+<meta name="generator" content="Hugo 0.86.0" /><link rel="canonical" type="text/html" href="/v/v1.7.1/docs/reference/api/scope-policy-api/">
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
 
@@ -114,7 +114,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.7.1/offline-search-index.3e0e3249392b4ee3ecc11f65b3fac681.json"
+  data-offline-search-index-json-src="/v/v1.7.1/offline-search-index.b9811863195014f54932a98f11bd6b73.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -355,7 +355,7 @@ compliant with the <a href="https://github.com/WLCG-AuthZ-WG/common-jwt-profile/
 matching</a>, which allow a scope to contain a parametric part
 describing a path. Following the <a href="https://scitokens.org/technical_docs/Claims">Scitokens model</a>, permissions granted on a path
 apply transitively to subpaths. To give an example:</p>
-<pre tabindex="0"><code>storage.read:/cms
+<pre><code>storage.read:/cms
 </code></pre><p>will grant read access to the <code>/cms</code> directory and all its content and
 subdirectories, but does not grant access to the <code>/atlas</code> directory.</p>
 <p>Following the same logic, a client allowed to request <code>storage.read:/example</code>,
