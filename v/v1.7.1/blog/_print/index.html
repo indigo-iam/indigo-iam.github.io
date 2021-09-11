@@ -114,7 +114,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.7.1/offline-search-index.b9811863195014f54932a98f11bd6b73.json"
+  data-offline-search-index-json-src="/v/v1.7.1/offline-search-index.3e0e3249392b4ee3ecc11f65b3fac681.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -209,6 +209,16 @@ This the multi-page printable view of this section.
   
   
 
+  
+    
+    
+	
+
+    <li><a href="#pg-a8ae29fff226e8cf12ba56b846dc1fd1">IAM v1.7.1</a></li>
+
+
+
+    
   
     
     
@@ -358,6 +368,46 @@ Github account, just see the tab on the rigth of each page.</p>
   
 
 <div class="td-content" style="">
+    <h1 id="pg-a8ae29fff226e8cf12ba56b846dc1fd1">IAM v1.7.1</h1>
+	<div class="lead">The v1.7.1 fixes a problem in the IAM test client application</div>
+	<div class="td-byline mb-4">
+		By <b>Andrea Ceccanti</b> |
+        
+		<time datetime="2021-09-13" class="text-muted">Monday, September 13, 2021</time>
+        
+	</div>
+	<p>The IAM development team is pleased to announce the release of INDIGO IAM v.1.7.1.</p>
+<p>This release fixes a problem introduced in v1.7.0 of the IAM test client
+application released last week that prevented its correct behaviour.</p>
+<p>Also starting with this release IAM test client does not expose received tokens
+in the default configuration. In order to restore the previous behaviour, set
+the following envirnoment variable:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000">IAM_CLIENT_HIDE_TOKENS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">false</span>
+</code></pre></div><p>or, in the <code>application.yml</code> file use:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">hide-tokens</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><p>More information in the <a href="https://github.com/indigo-iam/iam/releases/tag/v1.7.1">release notes</a>.</p>
+<p>This release provide updates only for the iam-test-client application, which is
+only released as a Docker image on DockerHub.</p>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
     <h1 id="pg-40f1261f1506d775161b3e4e229cf43b">IAM v1.7.0</h1>
 	<div class="lead">The v1.7.0 release provides numerous bug fixes and enhancements</div>
 	<div class="td-byline mb-4">
