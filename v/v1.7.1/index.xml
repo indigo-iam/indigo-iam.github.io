@@ -75,14 +75,14 @@ Github account, just see the tab on the rigth of each page.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Scalability improvements&lt;/strong&gt;: the group membership persistence management has
 been refactored to improve scalability; SCIM APIs have also been changed to
-support pagination over group members (see the new &lt;a href=&#34;/v/v1.7.1/docs/reference/api/scim-api/&#34;&gt;SCIM API&lt;/a&gt;
+support pagination over group members (see the new &lt;a href=&#34;/v/v1.7.1/v/v1.7.1/docs/reference/api/scim-api/&#34;&gt;SCIM API&lt;/a&gt;
 documentation for more information);&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Improved token exchange flexibility&lt;/strong&gt;: token exchange can now be controlled
-in more detail using &lt;a href=&#34;/v/v1.7.1/docs/reference/api/scope-policy-api/&#34;&gt;scope&lt;/a&gt; and &lt;a href=&#34;/v/v1.7.1/docs/reference/api/token-exchange-policy-api/&#34;&gt;token
+in more detail using &lt;a href=&#34;/v/v1.7.1/v/v1.7.1/docs/reference/api/scope-policy-api/&#34;&gt;scope&lt;/a&gt; and &lt;a href=&#34;/v/v1.7.1/v/v1.7.1/docs/reference/api/token-exchange-policy-api/&#34;&gt;token
 exchange&lt;/a&gt; policies;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;SSH key management&lt;/strong&gt;: IAM now allows users to link SSH keys to their account;
 ssh keys are then exposed to relying parties either via the SCIM APIs or via
-the OpenID connect userinfo endpoint; see the &lt;a href=&#34;/v/v1.7.1/docs/tasks/user/manage-ssh-keys/&#34;&gt;documentation&lt;/a&gt;.&lt;/li&gt;
+the OpenID connect userinfo endpoint; see the &lt;a href=&#34;/v/v1.7.1/v/v1.7.1/docs/tasks/user/manage-ssh-keys/&#34;&gt;documentation&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;As usual, the IAM docker images can be obtained from DockerHub, while RPM
 packages for CENTOS 7can be obtained from our &lt;a href=&#34;https://indigo-iam.github.io/repo/&#34;&gt;package repository&lt;/a&gt;.&lt;/p&gt;

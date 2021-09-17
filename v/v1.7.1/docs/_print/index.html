@@ -114,7 +114,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.7.1/offline-search-index.457effc5c2fe9f8abaa9f4b6bc8bb5b6.json"
+  data-offline-search-index-json-src="/v/v1.7.1/offline-search-index.4a67c7cc565109d279651b142f43ed72.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -1583,7 +1583,7 @@ file, e.g. <code>iam-keystore.jwks</code>.</p>
 
 <h3 id="configuration-and-run">Configuration and run</h3>
 <p>Prepare an environment file that will contain the environment variables
-settings for the IAM service container. See <a href="/docs/reference/configuration">the configuration
+settings for the IAM service container. See <a href="/v/v1.7.1/docs/reference/configuration/">the configuration
 reference</a> for a description of the variables.</p>
 <p>The IAM service is run starting the docker container with the following command:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker run <span style="color:#4e9a06">\
@@ -1651,7 +1651,7 @@ $ sudo yum install -y iam-login-service
 </code></pre></div><h2 id="iam-service-configuration">IAM service configuration</h2>
 <p>The IAM service is configured via a configuration file named <code>iam-login-service</code>
 which holds the settings for the environment variables that drive its
-configuration (as described in the <a href="/docs/reference/configuration">configuration reference
+configuration (as described in the <a href="/v/v1.7.1/docs/reference/configuration/">configuration reference
 section</a>).</p>
 <p>The file is located in the following path:</p>
 <pre><code>/etc/sysconfig/iam-login-service
@@ -1704,7 +1704,7 @@ documentation in the <a href="https://github.com/indigo-iam/puppet-indigo-iam">G
     
 	<p>Most configurable aspects of the IAM are configured via environment variables
 and Spring profile directives. For a detailed reference of all the options, see
-<a href="/docs/reference/configuration">the configuration reference</a>.</p>
+<a href="/v/v1.7.1/docs/reference/configuration/">the configuration reference</a>.</p>
 <p>At the bare minimum you should enable the registration service to let users
 register at your organisation (but you can leave it disabled and add users
 manually to the organisation using the IAM dashboard if you prefer).</p>
@@ -1746,7 +1746,7 @@ administrative notifications from the IAM;</li>
 <li><code>IAM_MAIL_HOST</code> is the SMTP server that IAM will use to deliver
 notifications.</li>
 </ul>
-<p>For a detailed reference of all available configuration options, see <a href="/docs/reference/configuration">the
+<p>For a detailed reference of all available configuration options, see <a href="/v/v1.7.1/docs/reference/configuration/">the
 configuration reference</a>.</p>
 <p>Deploying and starting the IAM service with the above configuration will give
 you an empty service with just one user registered, the <code>admin</code> user.</p>
@@ -4786,7 +4786,7 @@ passed as a parameter</li>
 started by a client allowed to request the <code>storage.write:/</code> scope when
 exchanging a token issued to <code>origin-client</code>.</p>
 <h3 id="token-exchange-scope-policies">Token exchange scope policies</h3>
-<p>Token exchange scope policies (not to be confused with <a href="/docs/reference/api/scope-policy-api/#scope-policies">Scope
+<p>Token exchange scope policies (not to be confused with <a href="/v/v1.7.1/docs/reference/api/scope-policy-api/#scope-policies">Scope
 policies</a>) define which scopes are authorized or blocked in a
 token exchange policy. When scope policies are not defined in an exchange
 policy, the meaning is that all scopes allowed by the origin and destination
@@ -4841,7 +4841,7 @@ evaluation would block at client level) and would not make sense.</p>
 <h2 id="token-exchange-policy-ranking">Token exchange policy ranking</h2>
 <p>The engine that evaluates token exchange policies implements a policy ranking
 algorithm to determine which policy should be applied for an exchange. As with
-<a href="/docs/reference/api/scope-policy-api/#scope-policies">scope policies</a>, the ranking algorithm is based on how
+<a href="/v/v1.7.1/docs/reference/api/scope-policy-api/#scope-policies">scope policies</a>, the ranking algorithm is based on how
 specific the policies are for the input origin and destination clients in a
 token exchange.</p>
 <p>As we have seen, origin and destination clients can be matched in three ways:</p>
@@ -5170,7 +5170,7 @@ scenarios not served by the default templates.</p>
 
 <span style="color:#8f5902;font-style:italic"># The OAuth client secret</span>
 <span style="color:#000">IAM_GOOGLE_CLIENT_SECRET</span><span style="color:#ce5c00;font-weight:bold">=</span>
-</code></pre></div><p>For more information and examples, see the <a href="/docs/reference/configuration/external-authentication/oidc">OpenID Connect
+</code></pre></div><p>For more information and examples, see the <a href="/v/v1.7.1/docs/reference/configuration/external-authentication/oidc/">OpenID Connect
 Authentication section</a>.</p>
 <h2 id="saml-authentication-settings">SAML authentication settings</h2>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># The SAML entity ID for this IAM instance</span>
@@ -5224,7 +5224,7 @@ Authentication section</a>.</p>
 <span style="color:#8f5902;font-style:italic"># List of attribute aliases that are looked up in assertion to identify the </span>
 <span style="color:#8f5902;font-style:italic"># user authenticated with SAML</span>
 <span style="color:#000">IAM_SAML_ID_RESOLVERS</span><span style="color:#ce5c00;font-weight:bold">=</span>eduPersonUniqueId,eduPersonTargetedId,eduPersonPrincipalName
-</code></pre></div><p>For more information and examples, see the <a href="/docs/reference/configuration/external-authentication/saml">SAML Authentication
+</code></pre></div><p>For more information and examples, see the <a href="/v/v1.7.1/docs/reference/configuration/external-authentication/saml/">SAML Authentication
 section</a>.</p>
 <h2 id="notification-service-settings">Notification service settings</h2>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic">## SMTP mail server settings </span>
@@ -5435,7 +5435,7 @@ unbounded.</p>
 <p>A default account validity period (e.g., 12 months) can be configured and will
 be set for users at registration time.</p>
 <p>The relevant settings are managed  by placing <code>lifecycle</code> directives in a
-<a href="/docs/reference/configuration/#overriding-default-configuration-templates">custom configuration
+<a href="/v/v1.7.1/docs/reference/configuration/#overriding-default-configuration-templates">custom configuration
 file</a>:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">lifecycle</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">account</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -5522,8 +5522,8 @@ profile fields are defined as follows:</p>
 </span></code></pre></div><p>To prevent modifications to any of the fields remove the field name from
 <code>editable-fields</code> list.</p>
 <p>External configuration can be managed by placing directives as shown above in a
-<a href="/docs/reference/configuration/#overriding-default-configuration-templates">custom configuration
-file</a>.</p>
+<a href="/v/v1.7.1/docs/reference/configuration/#overriding-default-configuration-templates">custom configuration
+file</a></p>
 
 </div>
 
@@ -5567,7 +5567,7 @@ VO administrators, no users).</p>
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">login-page-visibility</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">hidden </span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div><p>Local authentication settings are configured providing a custom configuration
 file, as described
-<a href="/docs/reference/configuration/#overriding-default-configuration-templates">here</a>.</p>
+<a href="/v/v1.7.1/docs/reference/configuration/#overriding-default-configuration-templates">here</a></p>
 
 </div>
 
@@ -5721,7 +5721,7 @@ variables to provide the Google client credentials;</li>
 </span></code></pre></div><p>The example configuration above shows how to configure support for Google and
 the <code>EGI CheckIn</code> provider, with a custom button configuration for the CheckIn
 provider.</p>
-<p>See the <a href="/docs/reference/configuration/#overriding-default-configuration-templates">configuration reference</a> for instructions on how to override
+<p>See the <a href="/v/v1.7.1/docs/reference/configuration/#overriding-default-configuration-templates">configuration reference</a> for instructions on how to override
 the default IAM configuration.</p>
 
 </div>
@@ -5919,7 +5919,7 @@ template</a> that fits most use cases embedded in the IAM war
 file.</p>
 <p>To have full control on the SAML configuration, provide a custom
 <code>application-saml.yml</code> file in the IAM configuration directory.</p>
-<p>See the <a href="/docs/reference/configuration">configuration reference</a> for more SAML metadata options and
+<p>See the <a href="/v/v1.7.1/docs/reference/configuration/">configuration reference</a> for more SAML metadata options and
 instructions on how to override the default IAM configuration.</p>
 
 </div>
@@ -6174,7 +6174,7 @@ Document (AUP)</strong> for a managed organization. The AUP is presented to appl
 at registration time or periodically.</p>
 <h2 id="managing-the-aup">Managing the AUP</h2>
 <p>The AUP can be managed from the &ldquo;AUP&rdquo; section in the IAM dashboard, or via the
-<a href="/docs/reference/api/aup-api">AUP management API</a>.</p>
+<a href="/v/v1.7.1/docs/reference/api/aup-api/">AUP management API</a>.</p>
 <p>Administrator privileges are required.</p>
 <h3 id="creating-the-aup">Creating the AUP</h3>
 <p>By default, the AUP is not defined for an organization, i.e. it must be
@@ -6888,7 +6888,7 @@ offered by the <a href="https://github.com/mitreid-connect/OpenID-Connect-Java-S
 with an authorisation server for authentication/authorization purposes.</p>
 <p>A new client can be registered in the IAM in two ways:</p>
 <ul>
-<li>using the <a href="/docs/reference/api/oidc-client-registration/">dynamic client registration API</a>;</li>
+<li>using the <a href="/v/v1.7.1/docs/reference/api/oidc-client-registration/">dynamic client registration API</a>;</li>
 <li>via the IAM dashboard (which simply acts as a client to the API mentioned
 above).</li>
 </ul>
@@ -7069,7 +7069,7 @@ Google</strong> button.</p>
 account linking works if:</p>
 <ul>
 <li>X.509 certificate authentication is enabled for the IAM instance in use; for
-more information on this see the <a href="/docs/getting-started/nginx">Getting started guide</a>;</li>
+more information on this see the <a href="/v/v1.7.1/docs/getting-started/nginx/">Getting started guide</a></li>
 <li>The certificate is correctly installed in the browser used to access the IAM;</li>
 <li>The certificate is trusted by the IAM (i.e. is signed by a certificate
 authority known and trusted by the IAM)</li>
