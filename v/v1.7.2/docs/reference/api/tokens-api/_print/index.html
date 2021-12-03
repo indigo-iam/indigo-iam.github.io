@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.89.4" /><link rel="canonical" type="text/html" href="/v/v1.7.2/docs/reference/api/tokens-api/">
+<meta name="generator" content="Hugo 0.86.0" /><link rel="canonical" type="text/html" href="/v/v1.7.2/docs/reference/api/tokens-api/">
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
 
@@ -174,7 +174,7 @@ refresh tokens.</p>
 <p>Access to the API is limited to users with administrator privileges (either
 authenticated via a web session or through OAuth). All examples assume
 authorization via OAuth2 bearer token; e.g.</p>
-<pre tabindex="0"><code>GET /access-tokens/13 HTTP/1.1
+<pre><code>GET /access-tokens/13 HTTP/1.1
 Host: example.com
 Authorization: Bearer h480djs93hd8
 </code></pre><p>These are the tokens REST API endpoints:</p>
@@ -221,7 +221,7 @@ Authorization: Bearer h480djs93hd8
 </tbody>
 </table>
 <p>Example:</p>
-<pre tabindex="0"><code>GET http://example.com:8080/access-tokens
+<pre><code>GET http://example.com:8080/access-tokens
 </code></pre><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
   <span style="color:#204a87;font-weight:bold">&#34;totalResults&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
   <span style="color:#204a87;font-weight:bold">&#34;itemsPerPage&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
@@ -261,7 +261,7 @@ Authorization: Bearer h480djs93hd8
 </code></pre></div><h2 id="get-access-tokensid">GET /access-tokens/:id</h2>
 <p>Retrieves all the information about the access token identified by <strong>id</strong> and returns results in <em>application/json</em>.</p>
 <p>Requires <strong>ROLE_ADMIN</strong>.</p>
-<pre tabindex="0"><code>GET http://example.com:8080/access-tokens/6
+<pre><code>GET http://example.com:8080/access-tokens/6
 </code></pre><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
   <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">6</span><span style="color:#000;font-weight:bold">,</span>
   <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;eyJhbGciOiJSUzI1NiJ9.eyJleHAiOjE0MDEzMTQ1MjksImF1ZCI6WyJhOGFmNzUzYy1mMzI0LTRlNDAtYTE3Ny04N2RmYzA2MjQ5YjciXSwiaXNzIjoiaHR0cDpcL1wvbG9jYWxob3N0OjgwODBcL29wZW5pZC1jb25uZWN0LXNlcnZlci13ZWJhcHBcLyIsImp0aSI6Ijg4ZjM4OGE4LTk1NzctNGQyMC1hZTZjLWMyMDMxOGQ1OWJjNiIsImlhdCI6MTQwMTMxMDkyOX0.HYnNxRvGRdKFykVChL-hdxszcFBvygkeUmc8_iv2Jl4MU-jPJVzMnTwKJbCMWBjeBp8hrb0Dgd9XbnHUDyXxwj8MDrWQEH3QnwYJGRW9JFWjHMGfKDQDFY6Ffl3OFERVbyoB2ObiGTUgbw4Nkl1L1ihuMpMAc5nKi0rk3QXcS1M&#34;</span><span style="color:#000;font-weight:bold">,</span>
@@ -322,7 +322,7 @@ Authorization: Bearer h480djs93hd8
 </tbody>
 </table>
 <p>Example:</p>
-<pre tabindex="0"><code>GET http://example.com:8080/refresh-tokens
+<pre><code>GET http://example.com:8080/refresh-tokens
 </code></pre><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
   <span style="color:#204a87;font-weight:bold">&#34;totalResults&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
   <span style="color:#204a87;font-weight:bold">&#34;itemsPerPage&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
@@ -358,7 +358,7 @@ Authorization: Bearer h480djs93hd8
 </code></pre></div><h2 id="get-refresh-tokensid">GET /refresh-tokens/:id</h2>
 <p>Retrieves all the information about the refresh token identified by <strong>id</strong> and returns results in <em>application/json</em>.</p>
 <p>Requires <strong>ROLE_ADMIN</strong>.</p>
-<pre tabindex="0"><code>GET http://example.com:8080/refresh-tokens/1083
+<pre><code>GET http://example.com:8080/refresh-tokens/1083
 </code></pre><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
   <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1083</span><span style="color:#000;font-weight:bold">,</span>
   <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;eyJhbGciOiJub25lIn0.eyJqdGkiOiIxMTdmMWRkOS1iOWViLTQ5MjctYThkMS1hYzQ4NjIwYWQzOWYifQ.&#34;</span><span style="color:#000;font-weight:bold">,</span>
@@ -387,13 +387,13 @@ Authorization: Bearer h480djs93hd8
 </code></pre></div><h2 id="delete-access-tokensid">DELETE /access-tokens/:id</h2>
 <p>Revoke the access token identified by <strong>id</strong>.</p>
 <p>Requires <strong>ROLE_ADMIN</strong>.</p>
-<pre tabindex="0"><code>DELETE http://example.com:8080/access-tokens/6
-</code></pre><pre tabindex="0"><code>204  AccessToken revoked
+<pre><code>DELETE http://example.com:8080/access-tokens/6
+</code></pre><pre><code>204  AccessToken revoked
 </code></pre><h2 id="delete-refresh-tokensid">DELETE /refresh-tokens/:id</h2>
 <p>Revoke the access token identified by <strong>id</strong>.</p>
 <p>Requires <strong>ROLE_ADMIN</strong>.</p>
-<pre tabindex="0"><code>DELETE http://example.com:8080/refresh-tokens/1083
-</code></pre><pre tabindex="0"><code>204  RefreshToken revoked
+<pre><code>DELETE http://example.com:8080/refresh-tokens/1083
+</code></pre><pre><code>204  RefreshToken revoked
 </code></pre><p>More details can be read at the <a href="tokens_api/index.html">complete API Reference</a>.</p>
 
 </div>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.89.4" /><link rel="canonical" type="text/html" href="/v/v1.7.2/docs/reference/api/">
+<meta name="generator" content="Hugo 0.86.0" /><link rel="canonical" type="text/html" href="/v/v1.7.2/docs/reference/api/">
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
 
@@ -873,59 +873,59 @@ anonymous requests typically receive only a summary of the health status.</p>
 <p>This is a general application health check endpoint which composes disk space
 and database health checks.</p>
 <p>Examples.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="color:#8f5902">$ </span>curl -s https://iam.local.io/health <span style="color:#000;font-weight:bold">|</span> jq
-<span style="color:#000;font-style:italic">{
-</span><span style="color:#000;font-style:italic">  &#34;status&#34;: &#34;UP&#34;
-</span><span style="color:#000;font-style:italic">}
-</span></code></pre></div><p>Sending basic authentication, the endpoint returns a response with more details:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="color:#8f5902">$ </span>curl -s -u <span style="color:#000">$ADMINUSER</span>:<span style="color:#000">$ADMINPASSWORD</span> https://iam.local.io/health <span style="color:#000;font-weight:bold">|</span> jq
-<span style="color:#000;font-style:italic">{
-</span><span style="color:#000;font-style:italic">  &#34;status&#34;: &#34;UP&#34;,
-</span><span style="color:#000;font-style:italic">  &#34;diskSpace&#34;: {
-</span><span style="color:#000;font-style:italic">    &#34;status&#34;: &#34;UP&#34;,
-</span><span style="color:#000;font-style:italic">    &#34;total&#34;: 10725883904,
-</span><span style="color:#000;font-style:italic">    &#34;free&#34;: 9872744448,
-</span><span style="color:#000;font-style:italic">    &#34;threshold&#34;: 10485760
-</span><span style="color:#000;font-style:italic">  },
-</span><span style="color:#000;font-style:italic">  &#34;db&#34;: {
-</span><span style="color:#000;font-style:italic">    &#34;status&#34;: &#34;UP&#34;,
-</span><span style="color:#000;font-style:italic">    &#34;database&#34;: &#34;MySQL&#34;,
-</span><span style="color:#000;font-style:italic">    &#34;hello&#34;: 1
-</span><span style="color:#000;font-style:italic">  }
-</span><span style="color:#000;font-style:italic">}
-</span></code></pre></div><h2 id="healthmail"><code>/health/mail</code></h2>
+<pre><code class="language-console" data-lang="console">$ curl -s https://iam.local.io/health | jq
+{
+  &quot;status&quot;: &quot;UP&quot;
+}
+</code></pre><p>Sending basic authentication, the endpoint returns a response with more details:</p>
+<pre><code class="language-console" data-lang="console">$ curl -s -u $ADMINUSER:$ADMINPASSWORD https://iam.local.io/health | jq
+{
+  &quot;status&quot;: &quot;UP&quot;,
+  &quot;diskSpace&quot;: {
+    &quot;status&quot;: &quot;UP&quot;,
+    &quot;total&quot;: 10725883904,
+    &quot;free&quot;: 9872744448,
+    &quot;threshold&quot;: 10485760
+  },
+  &quot;db&quot;: {
+    &quot;status&quot;: &quot;UP&quot;,
+    &quot;database&quot;: &quot;MySQL&quot;,
+    &quot;hello&quot;: 1
+  }
+}
+</code></pre><h2 id="healthmail"><code>/health/mail</code></h2>
 <p>This endpoint monitors the connection to the SMTP server configured for the
 IAM Notification Service.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="color:#8f5902">$ </span>curl -s https://iam.local.io/health/mail <span style="color:#000;font-weight:bold">|</span> jq
-<span style="color:#000;font-style:italic">{
-</span><span style="color:#000;font-style:italic">  &#34;status&#34;: &#34;UP&#34;
-</span><span style="color:#000;font-style:italic">}
-</span></code></pre></div><p>With an authenticated request, the SMTP server details are returned:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="color:#8f5902">$ </span>curl -u <span style="color:#000">$ADMINUSER</span>:<span style="color:#000">$ADMINPASSWORD</span> https://iam.local.io/health/mail <span style="color:#000;font-weight:bold">|</span> jq
-<span style="color:#000;font-style:italic">{
-</span><span style="color:#000;font-style:italic">  &#34;status&#34;: &#34;UP&#34;,
-</span><span style="color:#000;font-style:italic">  &#34;mail&#34;: {
-</span><span style="color:#000;font-style:italic">    &#34;status&#34;: &#34;UP&#34;,
-</span><span style="color:#000;font-style:italic">    &#34;location&#34;: &#34;smtp.local.io:25&#34;
-</span><span style="color:#000;font-style:italic">  }
-</span><span style="color:#000;font-style:italic">}
-</span></code></pre></div><h2 id="healthexternal"><code>/health/external</code></h2>
+<pre><code class="language-console" data-lang="console">$ curl -s https://iam.local.io/health/mail | jq
+{
+  &quot;status&quot;: &quot;UP&quot;
+}
+</code></pre><p>With an authenticated request, the SMTP server details are returned:</p>
+<pre><code class="language-console" data-lang="console">$ curl -u $ADMINUSER:$ADMINPASSWORD https://iam.local.io/health/mail | jq
+{
+  &quot;status&quot;: &quot;UP&quot;,
+  &quot;mail&quot;: {
+    &quot;status&quot;: &quot;UP&quot;,
+    &quot;location&quot;: &quot;smtp.local.io:25&quot;
+  }
+}
+</code></pre><h2 id="healthexternal"><code>/health/external</code></h2>
 <p>This endpoint checks service connectivity to the Internet. By default, the
 endpoint triggers a check on the connectivity to Google.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="color:#8f5902">$ </span>curl -s https://iam.local.io/health/external <span style="color:#000;font-weight:bold">|</span> jq
-<span style="color:#000;font-style:italic">{
-</span><span style="color:#000;font-style:italic">  &#34;status&#34;: &#34;UP&#34;
-</span><span style="color:#000;font-style:italic">}
-</span></code></pre></div><p>With an authenticated request, the external service URL is shown in the details.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="color:#8f5902">$ </span>curl -s -u <span style="color:#000">$ADMINUSER</span>:<span style="color:#000">$ADMINPASSWORD</span> https://iam.local.io/health/external <span style="color:#000;font-weight:bold">|</span> jq
-<span style="color:#000;font-style:italic">{
-</span><span style="color:#000;font-style:italic">  &#34;status&#34;: &#34;UP&#34;,
-</span><span style="color:#000;font-style:italic">  &#34;google&#34;: {
-</span><span style="color:#000;font-style:italic">    &#34;status&#34;: &#34;UP&#34;,
-</span><span style="color:#000;font-style:italic">    &#34;location&#34;: &#34;http://www.google.it&#34;
-</span><span style="color:#000;font-style:italic">  }
-</span><span style="color:#000;font-style:italic">}
-</span></code></pre></div>
+<pre><code class="language-console" data-lang="console">$ curl -s https://iam.local.io/health/external | jq
+{
+  &quot;status&quot;: &quot;UP&quot;
+}
+</code></pre><p>With an authenticated request, the external service URL is shown in the details.</p>
+<pre><code class="language-console" data-lang="console">$ curl -s -u $ADMINUSER:$ADMINPASSWORD https://iam.local.io/health/external | jq
+{
+  &quot;status&quot;: &quot;UP&quot;,
+  &quot;google&quot;: {
+    &quot;status&quot;: &quot;UP&quot;,
+    &quot;location&quot;: &quot;http://www.google.it&quot;
+  }
+}
+</code></pre>
 </div>
 
 
@@ -959,7 +959,7 @@ refresh tokens.</p>
 <p>Access to the API is limited to users with administrator privileges (either
 authenticated via a web session or through OAuth). All examples assume
 authorization via OAuth2 bearer token; e.g.</p>
-<pre tabindex="0"><code>GET /access-tokens/13 HTTP/1.1
+<pre><code>GET /access-tokens/13 HTTP/1.1
 Host: example.com
 Authorization: Bearer h480djs93hd8
 </code></pre><p>These are the tokens REST API endpoints:</p>
@@ -1006,7 +1006,7 @@ Authorization: Bearer h480djs93hd8
 </tbody>
 </table>
 <p>Example:</p>
-<pre tabindex="0"><code>GET http://example.com:8080/access-tokens
+<pre><code>GET http://example.com:8080/access-tokens
 </code></pre><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
   <span style="color:#204a87;font-weight:bold">&#34;totalResults&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
   <span style="color:#204a87;font-weight:bold">&#34;itemsPerPage&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
@@ -1046,7 +1046,7 @@ Authorization: Bearer h480djs93hd8
 </code></pre></div><h2 id="get-access-tokensid">GET /access-tokens/:id</h2>
 <p>Retrieves all the information about the access token identified by <strong>id</strong> and returns results in <em>application/json</em>.</p>
 <p>Requires <strong>ROLE_ADMIN</strong>.</p>
-<pre tabindex="0"><code>GET http://example.com:8080/access-tokens/6
+<pre><code>GET http://example.com:8080/access-tokens/6
 </code></pre><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
   <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">6</span><span style="color:#000;font-weight:bold">,</span>
   <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;eyJhbGciOiJSUzI1NiJ9.eyJleHAiOjE0MDEzMTQ1MjksImF1ZCI6WyJhOGFmNzUzYy1mMzI0LTRlNDAtYTE3Ny04N2RmYzA2MjQ5YjciXSwiaXNzIjoiaHR0cDpcL1wvbG9jYWxob3N0OjgwODBcL29wZW5pZC1jb25uZWN0LXNlcnZlci13ZWJhcHBcLyIsImp0aSI6Ijg4ZjM4OGE4LTk1NzctNGQyMC1hZTZjLWMyMDMxOGQ1OWJjNiIsImlhdCI6MTQwMTMxMDkyOX0.HYnNxRvGRdKFykVChL-hdxszcFBvygkeUmc8_iv2Jl4MU-jPJVzMnTwKJbCMWBjeBp8hrb0Dgd9XbnHUDyXxwj8MDrWQEH3QnwYJGRW9JFWjHMGfKDQDFY6Ffl3OFERVbyoB2ObiGTUgbw4Nkl1L1ihuMpMAc5nKi0rk3QXcS1M&#34;</span><span style="color:#000;font-weight:bold">,</span>
@@ -1107,7 +1107,7 @@ Authorization: Bearer h480djs93hd8
 </tbody>
 </table>
 <p>Example:</p>
-<pre tabindex="0"><code>GET http://example.com:8080/refresh-tokens
+<pre><code>GET http://example.com:8080/refresh-tokens
 </code></pre><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
   <span style="color:#204a87;font-weight:bold">&#34;totalResults&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
   <span style="color:#204a87;font-weight:bold">&#34;itemsPerPage&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
@@ -1143,7 +1143,7 @@ Authorization: Bearer h480djs93hd8
 </code></pre></div><h2 id="get-refresh-tokensid">GET /refresh-tokens/:id</h2>
 <p>Retrieves all the information about the refresh token identified by <strong>id</strong> and returns results in <em>application/json</em>.</p>
 <p>Requires <strong>ROLE_ADMIN</strong>.</p>
-<pre tabindex="0"><code>GET http://example.com:8080/refresh-tokens/1083
+<pre><code>GET http://example.com:8080/refresh-tokens/1083
 </code></pre><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
   <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1083</span><span style="color:#000;font-weight:bold">,</span>
   <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;eyJhbGciOiJub25lIn0.eyJqdGkiOiIxMTdmMWRkOS1iOWViLTQ5MjctYThkMS1hYzQ4NjIwYWQzOWYifQ.&#34;</span><span style="color:#000;font-weight:bold">,</span>
@@ -1172,13 +1172,13 @@ Authorization: Bearer h480djs93hd8
 </code></pre></div><h2 id="delete-access-tokensid">DELETE /access-tokens/:id</h2>
 <p>Revoke the access token identified by <strong>id</strong>.</p>
 <p>Requires <strong>ROLE_ADMIN</strong>.</p>
-<pre tabindex="0"><code>DELETE http://example.com:8080/access-tokens/6
-</code></pre><pre tabindex="0"><code>204  AccessToken revoked
+<pre><code>DELETE http://example.com:8080/access-tokens/6
+</code></pre><pre><code>204  AccessToken revoked
 </code></pre><h2 id="delete-refresh-tokensid">DELETE /refresh-tokens/:id</h2>
 <p>Revoke the access token identified by <strong>id</strong>.</p>
 <p>Requires <strong>ROLE_ADMIN</strong>.</p>
-<pre tabindex="0"><code>DELETE http://example.com:8080/refresh-tokens/1083
-</code></pre><pre tabindex="0"><code>204  RefreshToken revoked
+<pre><code>DELETE http://example.com:8080/refresh-tokens/1083
+</code></pre><pre><code>204  RefreshToken revoked
 </code></pre><p>More details can be read at the <a href="tokens_api/index.html">complete API Reference</a>.</p>
 
 </div>
@@ -1305,7 +1305,7 @@ be</p>
 </ul>
 <p>The list of system scopes currently defined in the IAM can be obtained by
 registered users by issuing a request to the IAM system scopes API:</p>
-<pre tabindex="0"><code>curl -H &quot;Authorization: Bearer ...&quot; https://iam.example/api/scopes
+<pre><code>curl -H &quot;Authorization: Bearer ...&quot; https://iam.example/api/scopes
 </code></pre><h3 id="token-exchange-example">Token Exchange example</h3>
 <p>This section describes a token exchange flow.</p>
 <p>We start with a normal OAuth flow where a client, <code>token-exchange-subject</code>,
@@ -1341,7 +1341,7 @@ token endpoint returns a JSON containing an access token and other info:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> $ <span style="color:#204a87">export</span> <span style="color:#000">SUBJECT_TOKEN</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">$(</span>cat /tmp/response <span style="color:#000;font-weight:bold">|</span> jq -r .access_token<span style="color:#204a87;font-weight:bold">)</span>
 </code></pre></div><p>We use this access token to access the <code>app</code> API, which only requires access to
 user identity to grant access:</p>
-<pre tabindex="0"><code>curl -H &quot;Authorization: Bearer $SUBJECT_TOKEN&quot; https://app.example.org/api
+<pre><code>curl -H &quot;Authorization: Bearer $SUBJECT_TOKEN&quot; https://app.example.org/api
 </code></pre><p>Suppose now that the <code>app</code> API needs, to properly answer the request from the
 client, to interact with another downstream service, <a href="https://tasks.example.org">https://tasks.example.org</a>,
 on behalf of the user. Unfortunately the set of scopes linked to the access
@@ -1376,7 +1376,7 @@ following JSON:</p>
 <span style="color:#000;font-weight:bold">}</span>
 </code></pre></div><p>And <code>app</code> can use the newly issued access token to invoke services on
 <a href="https://task-app.example.org/api">https://task-app.example.org/api</a> on behalf of user <code>test</code>:</p>
-<pre tabindex="0"><code>$ curl -H &quot;Authorization: Bearer eyJra...&quot; http://tasks.example.org/api
+<pre><code>$ curl -H &quot;Authorization: Bearer eyJra...&quot; http://tasks.example.org/api
 
 </code></pre><h3 id="trust">Trust</h3>
 <p>Clients that have the token exchange grant enabled are considered trusted
@@ -1515,11 +1515,11 @@ API</a> API at the <code>/register</code> endpoint.</p>
 contact, rediret_uris, etc&hellip;). We will use the <code>client-req.json</code> file name for
 this example. You can then use <a href="https://httpie.org/">httpie</a> as  follows to generate the
 client on the IAM</p>
-<pre tabindex="0"><code>http https://iam.local.io/register &lt; client-req.json &gt; client.json
+<pre><code>http https://iam.local.io/register &lt; client-req.json &gt; client.json
 </code></pre><p>If the command terminates correctly, you will have the client configuration
 saved in the <code>client.json</code> file. You can use <a href="https://stedolan.github.io/jq/">jq</a> to display in a pretty
 way its contents:</p>
-<pre tabindex="0"><code>$ jq . client.json
+<pre><code>$ jq . client.json
 {
   &quot;client_id&quot;: &quot;4b2556d7-65c5-4a15-81c0-7b80c604940e&quot;,
   &quot;client_secret&quot;: &quot;R4u3v-SUqKX1XTFQbGGr-S5qcOAA8JrLT0xAOHYZl1Up65ChHYNsl-8y6gv7qJLaxVI5Z6UXBmSkwSDZLtAAWw&quot;,
@@ -1547,10 +1547,10 @@ way its contents:</p>
 </code></pre><p>and also to extract information from it conveniently from the command line.
 For example, you can extract the <code>client_id</code> and <code>registration_access_token</code>
 with the following commands:</p>
-<pre tabindex="0"><code>$ export CID=$(jq -r .client_id client.json)
+<pre><code>$ export CID=$(jq -r .client_id client.json)
 $ export RAT=$(jq -r .registration_access_token client.json)
 </code></pre><p>and use them to delete the client:</p>
-<pre tabindex="0"><code>$ http DELETE https://iam.local.io/register/${CID} Authorization:&quot;Bearer ${RAT}&quot;
+<pre><code>$ http DELETE https://iam.local.io/register/${CID} Authorization:&quot;Bearer ${RAT}&quot;
 HTTP/1.1 204 No Content
 Access-Control-Allow-Origin: *
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
@@ -2982,7 +2982,7 @@ compliant with the <a href="https://github.com/WLCG-AuthZ-WG/common-jwt-profile/
 matching</a>, which allow a scope to contain a parametric part
 describing a path. Following the <a href="https://scitokens.org/technical_docs/Claims">Scitokens model</a>, permissions granted on a path
 apply transitively to subpaths. To give an example:</p>
-<pre tabindex="0"><code>storage.read:/cms
+<pre><code>storage.read:/cms
 </code></pre><p>will grant read access to the <code>/cms</code> directory and all its content and
 subdirectories, but does not grant access to the <code>/atlas</code> directory.</p>
 <p>Following the same logic, a client allowed to request <code>storage.read:/example</code>,
@@ -3432,7 +3432,7 @@ following table:</p>
 </table>
 <p>The rank of a policy <code>P</code> is computed as the sum of rank of the origin and
 destination client selectors:</p>
-<pre tabindex="0"><code>rank(P) = rank(origin) + rank(destination)
+<pre><code>rank(P) = rank(origin) + rank(destination)
 </code></pre><p>At the same rank, DENY policies will win.
 Let&rsquo;s assume we have two exchange policies defined:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">[</span>
@@ -3477,7 +3477,7 @@ Let&rsquo;s assume we have two exchange policies defined:</p>
 apply to the exchange, in this case both policy <code>2</code> and <code>3</code>.</p>
 <p>Then IAM would rank the policy according to the specificity of the client
 selectors, which would be</p>
-<pre tabindex="0"><code>rank(p_2)=0
+<pre><code>rank(p_2)=0
 rank(p_3)=4
 </code></pre><p>so policy <code>3</code> would be selected, which would allow the exchange.</p>
 

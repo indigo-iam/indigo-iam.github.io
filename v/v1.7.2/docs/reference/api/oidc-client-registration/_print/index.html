@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.89.4" /><link rel="canonical" type="text/html" href="/v/v1.7.2/docs/reference/api/oidc-client-registration/">
+<meta name="generator" content="Hugo 0.86.0" /><link rel="canonical" type="text/html" href="/v/v1.7.2/docs/reference/api/oidc-client-registration/">
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
 
@@ -197,11 +197,11 @@ API</a> API at the <code>/register</code> endpoint.</p>
 contact, rediret_uris, etc&hellip;). We will use the <code>client-req.json</code> file name for
 this example. You can then use <a href="https://httpie.org/">httpie</a> as  follows to generate the
 client on the IAM</p>
-<pre tabindex="0"><code>http https://iam.local.io/register &lt; client-req.json &gt; client.json
+<pre><code>http https://iam.local.io/register &lt; client-req.json &gt; client.json
 </code></pre><p>If the command terminates correctly, you will have the client configuration
 saved in the <code>client.json</code> file. You can use <a href="https://stedolan.github.io/jq/">jq</a> to display in a pretty
 way its contents:</p>
-<pre tabindex="0"><code>$ jq . client.json
+<pre><code>$ jq . client.json
 {
   &quot;client_id&quot;: &quot;4b2556d7-65c5-4a15-81c0-7b80c604940e&quot;,
   &quot;client_secret&quot;: &quot;R4u3v-SUqKX1XTFQbGGr-S5qcOAA8JrLT0xAOHYZl1Up65ChHYNsl-8y6gv7qJLaxVI5Z6UXBmSkwSDZLtAAWw&quot;,
@@ -229,10 +229,10 @@ way its contents:</p>
 </code></pre><p>and also to extract information from it conveniently from the command line.
 For example, you can extract the <code>client_id</code> and <code>registration_access_token</code>
 with the following commands:</p>
-<pre tabindex="0"><code>$ export CID=$(jq -r .client_id client.json)
+<pre><code>$ export CID=$(jq -r .client_id client.json)
 $ export RAT=$(jq -r .registration_access_token client.json)
 </code></pre><p>and use them to delete the client:</p>
-<pre tabindex="0"><code>$ http DELETE https://iam.local.io/register/${CID} Authorization:&quot;Bearer ${RAT}&quot;
+<pre><code>$ http DELETE https://iam.local.io/register/${CID} Authorization:&quot;Bearer ${RAT}&quot;
 HTTP/1.1 204 No Content
 Access-Control-Allow-Origin: *
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate

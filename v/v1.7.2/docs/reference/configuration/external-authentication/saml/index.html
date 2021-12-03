@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.89.4" /><link rel="alternate" type="text/html" href="/v/v1.7.2/docs/reference/configuration/external-authentication/saml/_print/">
+<meta name="generator" content="Hugo 0.86.0" /><link rel="alternate" type="text/html" href="/v/v1.7.2/docs/reference/configuration/external-authentication/saml/_print/">
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
 
@@ -1658,8 +1658,8 @@
 
 
 
-<a href="https://github.com/indigo-iam/iam-website/edit/v1.7.1/content/en/docs/reference/configuration/external-authentication/saml/_index.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-<a href="https://github.com/indigo-iam/iam-website/new/v1.7.1/content/en/docs/reference/configuration/external-authentication/saml/_index.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
+<a href="https://github.com/indigo-iam/iam-website/edit/v1.7.2/content/en/docs/reference/configuration/external-authentication/saml/_index.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+<a href="https://github.com/indigo-iam/iam-website/new/v1.7.2/content/en/docs/reference/configuration/external-authentication/saml/_index.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
 <a href="https://github.com/indigo-iam/iam-website/issues/new?title=SAML%20authentication" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
 
 
@@ -1785,28 +1785,28 @@ appropriate environment variables.</li>
 <h2 id="generate-a-self-signed-certificate">Generate a Self-signed certificate</h2>
 <p>To generate a self-signed certificate that lasts 5 years use the following
 openssl command:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="color:#000;font-style:italic">openssl req -newkey rsa:2048 -nodes -x509 -days 1825  -keyout self-signed.key.pem \
-</span><span style="color:#000;font-style:italic">  -out self-signed.cert.pem
-</span></code></pre></div><p>The above command will generate a private key and the corresponding certificate
+<pre><code class="language-console" data-lang="console">openssl req -newkey rsa:2048 -nodes -x509 -days 1825  -keyout self-signed.key.pem \
+  -out self-signed.cert.pem
+</code></pre><p>The above command will generate a private key and the corresponding certificate
 in PEM format. You will be asked to provide a subject for the certificate being
 generated.</p>
 <p>To import this certificate in a Java keystore we need in in p12 format. Use the
 following commands to convert the certificate in p12 format and import it in a
 Java keystore:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="color:#000;font-style:italic">openssl pkcs12 -export -inkey self-signed.key.pem \
-</span><span style="color:#000;font-style:italic">    -name self-signed \
-</span><span style="color:#000;font-style:italic">    -in self-signed.cert.pem \
-</span><span style="color:#000;font-style:italic">    -out self-signed.p12
-</span><span style="color:#000;font-style:italic"></span><span style="color:#a40000">
-</span><span style="color:#a40000"></span><span style="color:#000;font-style:italic">keytool -importkeystore -destkeystore self-signed.jks \
-</span><span style="color:#000;font-style:italic">    -srckeystore self-signed.p12 \
-</span><span style="color:#000;font-style:italic">    -srcstoretype PKCS12
-</span></code></pre></div><p>During the above process you will be asked to provide a p12 export password and
+<pre><code class="language-console" data-lang="console">openssl pkcs12 -export -inkey self-signed.key.pem \
+    -name self-signed \
+    -in self-signed.cert.pem \
+    -out self-signed.p12
+
+keytool -importkeystore -destkeystore self-signed.jks \
+    -srckeystore self-signed.p12 \
+    -srcstoretype PKCS12
+</code></pre><p>During the above process you will be asked to provide a p12 export password and
 a keystore password. Use the same password, at least 6 characters long,
 otherwise it will not work for the java keystore.</p>
 <p>You can list the contents of the keystore with the following command:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="color:#000;font-style:italic">keytool -list -keystore self-signed.jks
-</span></code></pre></div><h2 id="obtain-saml-metadata-for-your-idp-or-identity-federation">Obtain SAML metadata for your IdP or identity federation</h2>
+<pre><code class="language-console" data-lang="console">keytool -list -keystore self-signed.jks
+</code></pre><h2 id="obtain-saml-metadata-for-your-idp-or-identity-federation">Obtain SAML metadata for your IdP or identity federation</h2>
 <p>You IdP or identity federation will have a SAML metadata document describing,
 in SAML terms, which authentication flows are enabled and providing access to
 cryptographic material and other information that make the federated
@@ -1823,9 +1823,9 @@ certificate in the Java keystore created above.</p>
 certificate in a Java keystore you will need it in DER format.</p>
 <p>The following commands show how to import a PEM certificate into a Java
 keystore:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="color:#000;font-style:italic">openssl x509 -outform der -in idem_signer_2019.pem -out idem_signer_2019.der
-</span><span style="color:#000;font-style:italic">keytool -import -alias idem_signer_2019 -keystore self-signed.jks -file idem_signer_2019.der
-</span></code></pre></div><h3 id="metadata-configuration">Metadata configuration</h3>
+<pre><code class="language-console" data-lang="console">openssl x509 -outform der -in idem_signer_2019.pem -out idem_signer_2019.der
+keytool -import -alias idem_signer_2019 -keystore self-signed.jks -file idem_signer_2019.der
+</code></pre><h3 id="metadata-configuration">Metadata configuration</h3>
 <p>The IdP or federation metadata to be trusted can be specified with the
 <code>IAM_SAML_IDP_METADATA</code> environment variable, which contains an URL pointing to
 the metadata.</p>

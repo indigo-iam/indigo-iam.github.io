@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.89.4" /><link rel="canonical" type="text/html" href="/v/v1.7.2/docs/tasks/user/">
+<meta name="generator" content="Hugo 0.86.0" /><link rel="canonical" type="text/html" href="/v/v1.7.2/docs/tasks/user/">
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
 
@@ -1016,17 +1016,17 @@ fragment:</p>
 <p>SSH keys linked to a user account are returned in the userinfo endpoint
 response if the token used to access the endpoint has the <code>ssh-keys</code> scope, as
 in the following example:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="color:#000;font-style:italic">❯ curl -s -L -H &#34;Authorization: Bearer ${AT}&#34; https://iam.local.io/userinfo | jq .
-</span><span style="color:#000;font-style:italic">{
-</span><span style="color:#000;font-style:italic">  &#34;sub&#34;: &#34;80e5fb8d-b7c8-451a-89ba-346ae278a66f&#34;,
-</span><span style="color:#000;font-style:italic">  &#34;ssh_keys&#34;: [
-</span><span style="color:#000;font-style:italic">    {
-</span><span style="color:#000;font-style:italic">      &#34;fingerprint&#34;: &#34;M9vqQeuPrPI0wiaT6sftgfxu1/kowbb37fcLU2+R7yk=&#34;,
-</span><span style="color:#000;font-style:italic">      &#34;value&#34;: &#34;ssh-rsa AAAAB3NzaC1yc2E...&#34;
-</span><span style="color:#000;font-style:italic">    }
-</span><span style="color:#000;font-style:italic">  ]
-</span><span style="color:#000;font-style:italic">}
-</span></code></pre></div><p>Note that the <code>ssh-keys</code> scope is a <strong>restricted</strong> scope, i.e., it can be
+<pre><code class="language-console" data-lang="console">❯ curl -s -L -H &quot;Authorization: Bearer ${AT}&quot; https://iam.local.io/userinfo | jq .
+{
+  &quot;sub&quot;: &quot;80e5fb8d-b7c8-451a-89ba-346ae278a66f&quot;,
+  &quot;ssh_keys&quot;: [
+    {
+      &quot;fingerprint&quot;: &quot;M9vqQeuPrPI0wiaT6sftgfxu1/kowbb37fcLU2+R7yk=&quot;,
+      &quot;value&quot;: &quot;ssh-rsa AAAAB3NzaC1yc2E...&quot;
+    }
+  ]
+}
+</code></pre><p>Note that the <code>ssh-keys</code> scope is a <strong>restricted</strong> scope, i.e., it can be
 assigned to client registered in IAM only by IAM administrators.</p>
 
 </div>

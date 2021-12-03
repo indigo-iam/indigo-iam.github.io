@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.89.4" /><link rel="canonical" type="text/html" href="/v/v1.7.2/docs/reference/api/token-exchange-policy-api/">
+<meta name="generator" content="Hugo 0.86.0" /><link rel="canonical" type="text/html" href="/v/v1.7.2/docs/reference/api/token-exchange-policy-api/">
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
 
@@ -353,7 +353,7 @@ following table:</p>
 </table>
 <p>The rank of a policy <code>P</code> is computed as the sum of rank of the origin and
 destination client selectors:</p>
-<pre tabindex="0"><code>rank(P) = rank(origin) + rank(destination)
+<pre><code>rank(P) = rank(origin) + rank(destination)
 </code></pre><p>At the same rank, DENY policies will win.
 Let&rsquo;s assume we have two exchange policies defined:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">[</span>
@@ -398,7 +398,7 @@ Let&rsquo;s assume we have two exchange policies defined:</p>
 apply to the exchange, in this case both policy <code>2</code> and <code>3</code>.</p>
 <p>Then IAM would rank the policy according to the specificity of the client
 selectors, which would be</p>
-<pre tabindex="0"><code>rank(p_2)=0
+<pre><code>rank(p_2)=0
 rank(p_3)=4
 </code></pre><p>so policy <code>3</code> would be selected, which would allow the exchange.</p>
 
