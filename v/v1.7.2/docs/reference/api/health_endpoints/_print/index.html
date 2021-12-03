@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.86.0" /><link rel="canonical" type="text/html" href="/v/v1.7.2/docs/reference/api/health_endpoints/">
+<meta name="generator" content="Hugo 0.89.4" /><link rel="canonical" type="text/html" href="/v/v1.7.2/docs/reference/api/health_endpoints/">
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
 
@@ -183,59 +183,59 @@ anonymous requests typically receive only a summary of the health status.</p>
 <p>This is a general application health check endpoint which composes disk space
 and database health checks.</p>
 <p>Examples.</p>
-<pre><code class="language-console" data-lang="console">$ curl -s https://iam.local.io/health | jq
-{
-  &quot;status&quot;: &quot;UP&quot;
-}
-</code></pre><p>Sending basic authentication, the endpoint returns a response with more details:</p>
-<pre><code class="language-console" data-lang="console">$ curl -s -u $ADMINUSER:$ADMINPASSWORD https://iam.local.io/health | jq
-{
-  &quot;status&quot;: &quot;UP&quot;,
-  &quot;diskSpace&quot;: {
-    &quot;status&quot;: &quot;UP&quot;,
-    &quot;total&quot;: 10725883904,
-    &quot;free&quot;: 9872744448,
-    &quot;threshold&quot;: 10485760
-  },
-  &quot;db&quot;: {
-    &quot;status&quot;: &quot;UP&quot;,
-    &quot;database&quot;: &quot;MySQL&quot;,
-    &quot;hello&quot;: 1
-  }
-}
-</code></pre><h2 id="healthmail"><code>/health/mail</code></h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="color:#8f5902">$ </span>curl -s https://iam.local.io/health <span style="color:#000;font-weight:bold">|</span> jq
+<span style="color:#000;font-style:italic">{
+</span><span style="color:#000;font-style:italic">  &#34;status&#34;: &#34;UP&#34;
+</span><span style="color:#000;font-style:italic">}
+</span></code></pre></div><p>Sending basic authentication, the endpoint returns a response with more details:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="color:#8f5902">$ </span>curl -s -u <span style="color:#000">$ADMINUSER</span>:<span style="color:#000">$ADMINPASSWORD</span> https://iam.local.io/health <span style="color:#000;font-weight:bold">|</span> jq
+<span style="color:#000;font-style:italic">{
+</span><span style="color:#000;font-style:italic">  &#34;status&#34;: &#34;UP&#34;,
+</span><span style="color:#000;font-style:italic">  &#34;diskSpace&#34;: {
+</span><span style="color:#000;font-style:italic">    &#34;status&#34;: &#34;UP&#34;,
+</span><span style="color:#000;font-style:italic">    &#34;total&#34;: 10725883904,
+</span><span style="color:#000;font-style:italic">    &#34;free&#34;: 9872744448,
+</span><span style="color:#000;font-style:italic">    &#34;threshold&#34;: 10485760
+</span><span style="color:#000;font-style:italic">  },
+</span><span style="color:#000;font-style:italic">  &#34;db&#34;: {
+</span><span style="color:#000;font-style:italic">    &#34;status&#34;: &#34;UP&#34;,
+</span><span style="color:#000;font-style:italic">    &#34;database&#34;: &#34;MySQL&#34;,
+</span><span style="color:#000;font-style:italic">    &#34;hello&#34;: 1
+</span><span style="color:#000;font-style:italic">  }
+</span><span style="color:#000;font-style:italic">}
+</span></code></pre></div><h2 id="healthmail"><code>/health/mail</code></h2>
 <p>This endpoint monitors the connection to the SMTP server configured for the
 IAM Notification Service.</p>
-<pre><code class="language-console" data-lang="console">$ curl -s https://iam.local.io/health/mail | jq
-{
-  &quot;status&quot;: &quot;UP&quot;
-}
-</code></pre><p>With an authenticated request, the SMTP server details are returned:</p>
-<pre><code class="language-console" data-lang="console">$ curl -u $ADMINUSER:$ADMINPASSWORD https://iam.local.io/health/mail | jq
-{
-  &quot;status&quot;: &quot;UP&quot;,
-  &quot;mail&quot;: {
-    &quot;status&quot;: &quot;UP&quot;,
-    &quot;location&quot;: &quot;smtp.local.io:25&quot;
-  }
-}
-</code></pre><h2 id="healthexternal"><code>/health/external</code></h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="color:#8f5902">$ </span>curl -s https://iam.local.io/health/mail <span style="color:#000;font-weight:bold">|</span> jq
+<span style="color:#000;font-style:italic">{
+</span><span style="color:#000;font-style:italic">  &#34;status&#34;: &#34;UP&#34;
+</span><span style="color:#000;font-style:italic">}
+</span></code></pre></div><p>With an authenticated request, the SMTP server details are returned:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="color:#8f5902">$ </span>curl -u <span style="color:#000">$ADMINUSER</span>:<span style="color:#000">$ADMINPASSWORD</span> https://iam.local.io/health/mail <span style="color:#000;font-weight:bold">|</span> jq
+<span style="color:#000;font-style:italic">{
+</span><span style="color:#000;font-style:italic">  &#34;status&#34;: &#34;UP&#34;,
+</span><span style="color:#000;font-style:italic">  &#34;mail&#34;: {
+</span><span style="color:#000;font-style:italic">    &#34;status&#34;: &#34;UP&#34;,
+</span><span style="color:#000;font-style:italic">    &#34;location&#34;: &#34;smtp.local.io:25&#34;
+</span><span style="color:#000;font-style:italic">  }
+</span><span style="color:#000;font-style:italic">}
+</span></code></pre></div><h2 id="healthexternal"><code>/health/external</code></h2>
 <p>This endpoint checks service connectivity to the Internet. By default, the
 endpoint triggers a check on the connectivity to Google.</p>
-<pre><code class="language-console" data-lang="console">$ curl -s https://iam.local.io/health/external | jq
-{
-  &quot;status&quot;: &quot;UP&quot;
-}
-</code></pre><p>With an authenticated request, the external service URL is shown in the details.</p>
-<pre><code class="language-console" data-lang="console">$ curl -s -u $ADMINUSER:$ADMINPASSWORD https://iam.local.io/health/external | jq
-{
-  &quot;status&quot;: &quot;UP&quot;,
-  &quot;google&quot;: {
-    &quot;status&quot;: &quot;UP&quot;,
-    &quot;location&quot;: &quot;http://www.google.it&quot;
-  }
-}
-</code></pre>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="color:#8f5902">$ </span>curl -s https://iam.local.io/health/external <span style="color:#000;font-weight:bold">|</span> jq
+<span style="color:#000;font-style:italic">{
+</span><span style="color:#000;font-style:italic">  &#34;status&#34;: &#34;UP&#34;
+</span><span style="color:#000;font-style:italic">}
+</span></code></pre></div><p>With an authenticated request, the external service URL is shown in the details.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="color:#8f5902">$ </span>curl -s -u <span style="color:#000">$ADMINUSER</span>:<span style="color:#000">$ADMINPASSWORD</span> https://iam.local.io/health/external <span style="color:#000;font-weight:bold">|</span> jq
+<span style="color:#000;font-style:italic">{
+</span><span style="color:#000;font-style:italic">  &#34;status&#34;: &#34;UP&#34;,
+</span><span style="color:#000;font-style:italic">  &#34;google&#34;: {
+</span><span style="color:#000;font-style:italic">    &#34;status&#34;: &#34;UP&#34;,
+</span><span style="color:#000;font-style:italic">    &#34;location&#34;: &#34;http://www.google.it&#34;
+</span><span style="color:#000;font-style:italic">  }
+</span><span style="color:#000;font-style:italic">}
+</span></code></pre></div>
 </div>
 </div>
 

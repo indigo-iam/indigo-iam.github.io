@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.86.0" /><link rel="alternate" type="text/html" href="/v/v1.7.2/docs/tasks/deployment/voms/_print/">
+<meta name="generator" content="Hugo 0.89.4" /><link rel="alternate" type="text/html" href="/v/v1.7.2/docs/tasks/deployment/voms/_print/">
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
 
@@ -1783,11 +1783,11 @@ VOMS AA X.509 credential and put them in a file named as the fully qualified
 domain name of the VOMS attribute authority with the <code>.lsc</code> extension.</p>
 <p>The following command does exactly that (<code>X509_VOMS_DIR</code> can be set to any
 directory where you have writing privileges):</p>
-<pre><code class="language-console" data-lang="console">&gt; mkdir -p ${X509_VOMS_DIR}/example.vo
-&gt; openssl x509 -in voms_local_io.cert.pem -noout -subject -issuer -nameopt compat | \
-  gsed -e 's/^subject=//' -e 's/^issuer=//' &gt; \
-  ${X509_VOMS_DIR}/example.vo/voms.local.io.lsc
-</code></pre><p>For an example nginx configuration, see the <a href="https://github.com/indigo-iam/voms-aa/blob/master/compose/assets/openresty-voms/conf.d/voms.local.io.conf">VOMS AA docker compose
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console"><span style="color:#8f5902">&gt; </span>mkdir -p <span style="color:#4e9a06">${</span><span style="color:#000">X509_VOMS_DIR</span><span style="color:#4e9a06">}</span>/example.vo
+<span style="color:#8f5902">&gt; </span>openssl x509 -in voms_local_io.cert.pem -noout -subject -issuer -nameopt compat <span style="color:#000;font-weight:bold">|</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span><span style="color:#000;font-style:italic">  gsed -e &#39;s/^subject=//&#39; -e &#39;s/^issuer=//&#39; &gt; \
+</span><span style="color:#000;font-style:italic">  ${X509_VOMS_DIR}/example.vo/voms.local.io.lsc
+</span></code></pre></div><p>For an example nginx configuration, see the <a href="https://github.com/indigo-iam/voms-aa/blob/master/compose/assets/openresty-voms/conf.d/voms.local.io.conf">VOMS AA docker compose
 file</a>.</p>
 <h4 id="voms-aa-configuration">VOMS AA configuration</h4>
 <p>The VOMS AA is a spring boot application that shares the persistence
