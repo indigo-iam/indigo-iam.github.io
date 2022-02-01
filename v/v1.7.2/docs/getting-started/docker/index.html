@@ -1745,7 +1745,7 @@ reference</a> for a description of the variables.</p>
 </span><span style="color:#4e9a06"></span>  --name iam-login-service <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  --net<span style="color:#ce5c00;font-weight:bold">=</span>iam -p 8080:8080 <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  --env-file<span style="color:#ce5c00;font-weight:bold">=</span>/path/to/iam-login-service/env <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  -v /path/to/keystore.jks:/keystore.jks:ro <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -v /path/to/iam-keystore.jks:/keystore.jks:ro <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  indigoiam/iam-login-service:v1.7.2
 </code></pre></div><p>Check the logs with:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker logs -f iam-login-service
