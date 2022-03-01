@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.86.0" /><link rel="canonical" type="text/html" href="/v/v1.8.0/docs/reference/api/scope-policy-api/">
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+
+
+<link rel="shortcut icon" href="/v/v1.8.0/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/v/v1.8.0/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/v/v1.8.0/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/v/v1.8.0/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/v/v1.8.0/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/v/v1.8.0/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/v/v1.8.0/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/v/v1.8.0/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/v/v1.8.0/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/v/v1.8.0/favicons/android-192x192.png" sizes="192x192">
+
+<title>Scope Policy API | INDIGO IAM</title><meta property="og:title" content="Scope Policy API" />
+<meta property="og:description" content="The INDIGO Identity and Access Management (IAM) Service" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/v/v1.8.0/docs/reference/api/scope-policy-api/" /><meta property="og:site_name" content="INDIGO IAM" />
+
+<meta itemprop="name" content="Scope Policy API">
+<meta itemprop="description" content="The INDIGO Identity and Access Management (IAM) Service"><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Scope Policy API"/>
+<meta name="twitter:description" content="The INDIGO Identity and Access Management (IAM) Service"/>
+
+
+
+
+
+
+
+<link rel="preload" href="/v/v1.8.0/scss/main.min.8c56a5db29a8a7bfd7c31c587d450fd15c23c45c8cd6e72142c8ed5b2ef43bd5.css" as="style">
+<link href="/v/v1.8.0/scss/main.min.8c56a5db29a8a7bfd7c31c587d450fd15c23c45c8cd6e72142c8ed5b2ef43bd5.css" rel="stylesheet" integrity="">
+
+
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+
+
+
+  </head>
+  <body class="td-section">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="/v/v1.8.0/">
+		<span class="navbar-logo"></span><span class="text-uppercase font-weight-bold">INDIGO IAM</span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a  class="nav-link active" href="/v/v1.8.0/docs/" ><span class="active">Documentation</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a  class="nav-link" href="/v/v1.8.0/blog/" ><span>Blog</span></a>
+			</li>
+			
+			
+			<li class="nav-item dropdown d-none d-lg-block">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Releases
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="https://indigo-iam.github.io/v/current">v1.8.0</a>
+	
+	<a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.2">v1.7.2</a>
+	
+	<a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.1">v1.7.1</a>
+	
+	<a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.0">v1.7.0</a>
+	
+	<a class="dropdown-item" href="https://indigo-iam.github.io/docs/v/current/">older releases</a>
+	
+</div>
+
+			</li>
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block">
+
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.192cee216cf9d76febec1ed6a8a92be4.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="10"
+>
+
+</div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/v/v1.8.0/docs/reference/api/scope-policy-api/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">Scope Policy API</h1>
+
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+
+    </ul>
+
+
+<div class="content">
+      <p>In OpenID Connect and OAuth, <a href="https://datatracker.ietf.org/doc/html/rfc6749#section-3.3">scopes</a> are used to determine the
+privileges granted to a client application for a given session. For example,
+the <code>openid</code> and <code>profile</code> scope are used to obtain access to identity
+information about a user, but applications can define their own scopes to
+implement domain-specifc authorization (e.g., the WLCG <code>storage.read</code>  and
+<code>storage.modify</code> scopes are examples of domain-specific OAuth scopes).</p>
+<p>IAM implements two levels of access control on OAuth scopes:</p>
+<ul>
+<li>
+<p>a client-level vetting, implemented through the <a href="https://github.com/mitreid-connect/">MitreID
+connect</a> library, so that each registered client has a list
+of allowed scopes. When a client requests a scope that is not allowed to get,
+it gets an <code>invalid_scope</code> error.</p>
+</li>
+<li>
+<p>an identity-related vetting, implemented through the concept of <strong>Scope
+policies</strong>, that can be used to limit access to scopes based on user
+identity.</p>
+</li>
+</ul>
+<p>This behaviour is described in the following picture:</p>
+
+
+
+
+
+
+
+<div class="card rounded p-2 td-post-card mb-4 mt-4" style="max-width: 510px">
+	<img class="card-img-top" src="/v/v1.8.0/docs/reference/api/scope-policy-api/scope-access-control_hu6e763215bf70a10084d1e80c7ceecc51_62387_500x0_resize_catmullrom_3.png" width="500" height="833">
+	
+	<div class="card-body px-0 pt-2 pb-0">
+		<p class="card-text">
+</p>
+	</div>
+	
+</div>
+<h2 id="scope-policies">Scope policies</h2>
+<p>IAM Scope policies provide a mechanism to control access to OAuth
+scopes. A scope policy defines:</p>
+<ul>
+<li>
+<p>a <code>rule</code>, which can be <code>PERMIT</code> or <code>DENY</code>, that determines the behaviour of
+the policy. <code>PERMIT</code> policies are used to allow access to scopes, while
+<code>DENY</code> policies are used to block access to scopes;</p>
+</li>
+<li>
+<p>a scopes selector, i.e. a set of scopes for which the policy applies (and a
+scope <code>matchingPolicy</code> used to determine the scope matching algorithm used);</p>
+</li>
+<li>
+<p>an <code>account</code> or <code>group</code> selector, used to determine for which user account or
+group of accounts the policy should apply.</p>
+</li>
+</ul>
+<p>An example scope policy is given below:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Default Permit ALL policy&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;creationTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2019-10-08T13:52:20.000+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;lastUpdateTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2019-10-08T13:52:20.000+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;rule&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PERMIT&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;matchingPolicy&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;EQ&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;account&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;group&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;scopes&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span>
+  <span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p>The policy above is a <code>PERMIT</code> policy that allow access to all the scopes to
+any account, as clarified by the policy <code>description</code>.</p>
+<p>In the policy, the <code>account</code> and <code>group</code> selector are not specified, which
+means that the policy would apply to any user account. Also the <code>scopes</code>
+selector is not specified, which means that the policy would apply to any
+scope.</p>
+
+
+<div class="alert alert-primary" role="alert">
+
+
+    The policies that are not explicitly bound to an account or a group are called
+<strong>default scope policies</strong>.
+
+</div>
+
+<p>The example policy above is enabled by the default IAM configuration, which in practice
+limits the default scope vetting only to the client level.</p>
+<p>Here&rsquo;s an another example, now showing two policies:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">[{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Deny access to compute.* scopes to normal users&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;creationTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2019-12-18T15:11:04.000+01:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;lastUpdateTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2019-12-18T15:11:04.000+01:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;rule&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;DENY&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;matchingPolicy&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;EQ&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;account&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;group&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;scopes&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+      <span style="color:#4e9a06">&#34;compute.create&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#4e9a06">&#34;compute.read&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#4e9a06">&#34;compute.cancel&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#4e9a06">&#34;compute.modify&#34;</span>
+    <span style="color:#000;font-weight:bold">]</span>
+  <span style="color:#000;font-weight:bold">},</span>
+  <span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">13</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Allow access to compute.* scopes to wlcg/pilot users&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;creationTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2019-12-18T15:19:20.000+01:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;lastUpdateTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2019-12-18T15:19:20.000+01:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;rule&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PERMIT&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;matchingPolicy&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;EQ&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;account&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;group&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;uuid&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;25084f30-1d71-4ab2-91e8-11148af16682&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;wlcg/pilots&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;location&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://wlcg.cloud.cnaf.infn.it/scim/Groups/25084f30-1d71-4ab2-91e8-11148af16682&#34;</span>
+    <span style="color:#000;font-weight:bold">},</span>
+    <span style="color:#204a87;font-weight:bold">&#34;scopes&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+      <span style="color:#4e9a06">&#34;compute.create&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#4e9a06">&#34;compute.read&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#4e9a06">&#34;compute.cancel&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#4e9a06">&#34;compute.modify&#34;</span>
+    <span style="color:#000;font-weight:bold">]</span>
+  <span style="color:#000;font-weight:bold">}]</span>
+</code></pre></div><p>The first policy, as clarified in the description, would block access to the
+<code>compute.create</code>, <code>compute.read</code>, <code>compute.cancel</code> and <code>compute.modify</code> scopes
+to any authenticated user. The second policy would instead allow access to
+<code>compute.*</code> scopes only to members of the <code>wlcg/pilot</code> group (again, as written
+in the policy <code>description</code>).</p>
+<p>The two policy can work together because the IAM policy engine evaluates the
+policy in a specific order: account-level policies are applied first, then
+group-level policies are applied and finally policies that are not bound to any
+specific account or group are applied. This means that a policy defined to
+apply at the account or group-level typically wins over a more general one, as
+in the example above. Also, scopes being vetted are evaluated only once across
+different levels. This means, for example, that a scope that was evaluated at
+account-level will not be re-evaluated at group-level: the decision taken for
+such scope is not reconsidered.</p>
+<p>In more technical terms, the policy engine implements a deny-override policy
+composition logic, which means that a deny policy which matches a request at a
+given level wins over a permit policy at that same level. For example, if there
+are two account-level policies that would apply for scope <code>s</code>, one which would
+yield a <code>PERMIT</code> result, and one that would yield a <code>DENY</code>, the <code>DENY</code> will
+win.</p>
+<h3 id="scope-matching-algorithms">Scope matching algorithms</h3>
+<p>IAM currently supports three scope matching algorithms:</p>
+<ul>
+<li>
+<p><code>EQ</code>: which is the default, uses string equality when comparing requested
+scopes to scopes allowed by the client configuration or by the scope
+policies;</p>
+</li>
+<li>
+<p><code>REGEXP</code>: which uses a regular expression evaluation when comparting
+requested scopes to scopes allowed by the client configuration or scope
+policies;</p>
+</li>
+<li>
+<p><code>PATH</code>: which uses a WLCG-specific path-matching logic, described in more
+detail below,  to compare requested scopes to scopes allowed by the client
+configuration or by the scope policies.</p>
+</li>
+</ul>
+<p><code>REGEXP</code> and <code>PATH</code> matching algorithms are configured by adding a
+<code>scope.matchers</code> section to the IAM configuration, as shown in the following
+fragment which defines the scope matching algorithm for <a href="https://github.com/WLCG-AuthZ-WG/common-jwt-profile/blob/master/profile.md#capability-based-authorization-scope">WLCG profile
+scopes</a>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">scope</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">matchers</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">storage.read</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">path</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">prefix</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">storage.read</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">path</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">storage.create</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">path</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">prefix</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">storage.create</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">path</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">storage.modify</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">path</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">prefix</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">storage.modify</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">path</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">wlcg.groups</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">regexp</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">regexp</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">^wlcg\.groups(?::((?:\/[a-zA-Z0-9][a-zA-Z0-9_.-]*)+))?$</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><h4 id="path-scope-matching">PATH scope matching</h4>
+<p>The <code>PATH</code> scope matching algorithm is used to implement a scope-matching logic
+compliant with the <a href="https://github.com/WLCG-AuthZ-WG/common-jwt-profile/blob/master/profile.md#capability-based-authorization-scope">WLCG JWT profile rules for storage scope
+matching</a>, which allow a scope to contain a parametric part
+describing a path. Following the <a href="https://scitokens.org/technical_docs/Claims">Scitokens model</a>, permissions granted on a path
+apply transitively to subpaths. To give an example:</p>
+<pre><code>storage.read:/cms
+</code></pre><p>will grant read access to the <code>/cms</code> directory and all its content and
+subdirectories, but does not grant access to the <code>/atlas</code> directory.</p>
+<p>Following the same logic, a client allowed to request <code>storage.read:/example</code>,
+when <code>PATH</code> scope matching is configured as described above for the
+<code>storage.read</code> parametric scope, will be allowed to request the
+<code>storage.read:/example</code> but also any scope containing subpaths of <code>/example</code>,
+e.g., <code>storage.read:/example/subdir/file</code>.</p>
+<h4 id="regexp-scope-matching">REGEXP scope matching</h4>
+<p>The <code>REGEXP</code> scope matching algorithms uses regular expression matching to
+determine whether a scope is allowed for a given client or user.</p>
+<p>Taking the parametric <code>wlcg.groups</code> scope described above:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">wlcg.groups</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">regexp</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">regexp</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">^wlcg\.groups(?::((?:\/[a-zA-Z0-9][a-zA-Z0-9_.-]*)+))?$</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><p>A client allowed to request the scope <code>wlcg.groups</code> will also be allowed for
+the scope <code>wlcg.groups:/a/group</code> or any other group name matching the regexp.</p>
+<h2 id="the-scope-policy-api">The Scope policy API</h2>
+<p>The Scope Policy API is a REST API that allows to manage scope policies.
+API requires IAM administrator privileges.</p>
+<h3 id="get-iamscope_policies">GET /iam/scope_policies</h3>
+<p>Returns a JSON representation of the Scope Policies defined for the
+organization.</p>
+<p><strong>Authentication required</strong>: yes</p>
+<p><strong>Authorization required</strong>: ROLE_ADMIN</p>
+<p><strong>Command example</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ curl -i -H <span style="color:#4e9a06">&#34;Accept: application/json&#34;</span> -H <span style="color:#4e9a06">&#34;Content-Type: application/json&#34;</span> -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#000">$TOKEN</span><span style="color:#4e9a06">&#34;</span> -X GET https://example.com/iam/scope_policies/
+</code></pre></div><h4 id="success-response">Success response</h4>
+<p><strong>Condition</strong>: Being Authenticated and authorized</p>
+<p><strong>Code</strong>: <code>200 OK</code></p>
+<p><strong>Content</strong>: An array of JSON representations for the scope policies defined in
+the orgazionation</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">[{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;creationTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2018-02-27T07:26:21.000+01:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;lastUpdateTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2018-02-27T07:26:21.000+01:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;rule&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;PERMIT&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;matchingPolicy&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;EQ&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;account&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;group&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;scopes&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#204a87;font-weight:bold">null</span>
+<span style="color:#000;font-weight:bold">}]</span>
+</code></pre></div><h4 id="error-responses">Error responses</h4>
+<p><strong>Condition</strong>: User is not authenticated</p>
+<p><strong>Code</strong>: <code>401 Unauthorized</code></p>
+<p><strong>Content</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;unauthorized&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;error_description&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;Full authentication is required to access this resource&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p><strong>OR</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;invalid_token&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;error_description&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;Invalid access token: &lt;Access Token&gt;&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p>If an invalid token is provided or no token is provided.</p>
+<h3 id="get-iamscope_policiesid">GET /iam/scope_policies/{id}</h3>
+<p>Returns the JSON representation for the scope policy identified by <code>id</code>.</p>
+<p><strong>Authentication required</strong>: yes</p>
+<p><strong>Authorization required</strong>: ROLE_ADMIN</p>
+<p><strong>Command example</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ curl -i -H <span style="color:#4e9a06">&#34;Accept: application/json&#34;</span> -H <span style="color:#4e9a06">&#34;Content-Type: application/json&#34;</span> -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#000">$TOKEN</span><span style="color:#4e9a06">&#34;</span> -X GET https://example.com/iam/scope_policies/1
+</code></pre></div><h4 id="success-response-1">Success response</h4>
+<p><strong>Condition</strong>: Being Authenticated</p>
+<p><strong>Code</strong>: <code>200 OK</code></p>
+<p><strong>Content</strong>: The JSON representation for the scope policy</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;creationTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2018-02-27T07:26:21.000+01:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;lastUpdateTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2018-02-27T07:26:21.000+01:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;rule&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;PERMIT&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;matchingPolicy&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;EQ&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;account&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;group&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;scopes&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#204a87;font-weight:bold">null</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h4 id="error-responses-1">Error responses</h4>
+<p><strong>Condition</strong>: User is not authenticated</p>
+<p><strong>Code</strong>: <code>401 Unauthorized</code></p>
+<p><strong>Content</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;unauthorized&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;error_description&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;Full authentication is required to access this resource&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p><strong>OR</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;invalid_token&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;error_description&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;Invalid access token: &lt;Access Token&gt;&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p>If an invalid token is provided or no token is provided.</p>
+<p><strong>Condition</strong>: The Scope Policy {id} is not defined for the organization</p>
+<p><strong>Code</strong>: <code>404 NOT FOUND</code></p>
+<p><strong>Content</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;No scope policy found for id: {id}&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h3 id="put-iamscope_policiesid">PUT /iam/scope_policies/{id}</h3>
+<p>Changes an existing Scope Policy.</p>
+<p><strong>Authentication required</strong>: yes</p>
+<p><strong>Authorization required</strong>: ROLE_ADMIN</p>
+<p><strong>Data constraints</strong></p>
+<p>Provide a representation of the Scope Policy to be modified.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#a40000">positive</span> <span style="color:#a40000">integer</span><span style="color:#000;font-weight:bold">],</span>
+  <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#a40000">text</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#a40000">optional</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#a40000">at</span> <span style="color:#a40000">most</span> <span style="color:#0000cf;font-weight:bold">512</span> <span style="color:#a40000">chars</span><span style="color:#000;font-weight:bold">],</span>
+  <span style="color:#204a87;font-weight:bold">&#34;rule&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#a40000">text</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#a40000">allowed</span> <span style="color:#a40000">values:</span> <span style="color:#4e9a06">&#34;PERMIT&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;DENY&#34;</span><span style="color:#000;font-weight:bold">],</span>
+  <span style="color:#204a87;font-weight:bold">&#34;matchingPolicy&#34;</span><span style="color:#000;font-weight:bold">:[</span><span style="color:#a40000">text</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#a40000">allowed</span> <span style="color:#a40000">values:</span> <span style="color:#4e9a06">&#34;EQ&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;REGEXP&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;PATH&#34;</span><span style="color:#000;font-weight:bold">],</span>
+  <span style="color:#204a87;font-weight:bold">&#34;account&#34;</span><span style="color:#000;font-weight:bold">:[</span><span style="color:#a40000">a</span> <span style="color:#a40000">valid</span> <span style="color:#a40000">account</span> <span style="color:#a40000">selector</span><span style="color:#000;font-weight:bold">],</span>
+  <span style="color:#204a87;font-weight:bold">&#34;group&#34;</span><span style="color:#000;font-weight:bold">:[</span><span style="color:#a40000">a</span> <span style="color:#a40000">valid</span> <span style="color:#a40000">group</span> <span style="color:#a40000">selector</span> <span style="color:#000;font-weight:bold">],</span>
+  <span style="color:#204a87;font-weight:bold">&#34;scopes&#34;</span><span style="color:#000;font-weight:bold">:[</span><span style="color:#a40000">a</span> <span style="color:#a40000">list</span> <span style="color:#a40000">of</span> <span style="color:#a40000">scopes</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#a40000">minimum</span> <span style="color:#0000cf;font-weight:bold">1</span> <span style="color:#a40000">and</span> <span style="color:#a40000">maximum</span> <span style="color:#0000cf;font-weight:bold">255</span> <span style="color:#a40000">chars</span><span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h4 id="success-response-2">Success response</h4>
+<p><strong>Condition</strong>: The Scope Policy is modified for the organization</p>
+<p><strong>Code</strong>: <code>204 No Content</code></p>
+<h4 id="error-responses-2">Error responses</h4>
+<p><strong>Condition</strong>: Policy validation error</p>
+<p><strong>Code</strong>: <code>400 BAD REQUEST</code></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;Invalid scope policy: rule cannot be empty&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p><strong>Or</strong></p>
+<p><strong>Condition</strong>: Unauthenticated access</p>
+<p><strong>Code</strong>: <code>401 UNAUTHORIZED</code></p>
+<p><strong>Content</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;unauthorized&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error_description&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;Full authentication is required to access this resource&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p><strong>OR</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;invalid_token&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;error_description&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;Invalid access token: &lt;Access Token&gt;&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p>If an invalid token is provided or no token is provided at all</p>
+<p><strong>Or</strong></p>
+<p><strong>Condition</strong>: Authorization error</p>
+<p><strong>Code</strong>: <code>403 FORBIDDEN</code></p>
+<p><strong>Content</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;access_denied&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error_description&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;Access is denied&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h3 id="post-iamscope_policies">POST /iam/scope_policies</h3>
+<p>Creates a Scope Policy for the organization</p>
+<p><strong>Authentication required</strong>: yes</p>
+<p><strong>Authorization required</strong>: ROLE_ADMIN</p>
+<p><strong>Data constraints</strong></p>
+<p>Provide a representation of the Scope Policy to be created</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#a40000">text</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#a40000">optional</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#a40000">at</span> <span style="color:#a40000">most</span> <span style="color:#0000cf;font-weight:bold">512</span> <span style="color:#a40000">chars</span><span style="color:#000;font-weight:bold">],</span>
+  <span style="color:#204a87;font-weight:bold">&#34;rule&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#a40000">text</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#a40000">allowed</span> <span style="color:#a40000">values:</span> <span style="color:#4e9a06">&#34;PERMIT&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;DENY&#34;</span><span style="color:#000;font-weight:bold">],</span>
+  <span style="color:#204a87;font-weight:bold">&#34;matchingPolicy&#34;</span><span style="color:#000;font-weight:bold">:[</span><span style="color:#a40000">text</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#a40000">allowed</span> <span style="color:#a40000">values:</span> <span style="color:#4e9a06">&#34;EQ&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;REGEXP&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;PATH&#34;</span><span style="color:#000;font-weight:bold">],</span>
+  <span style="color:#204a87;font-weight:bold">&#34;account&#34;</span><span style="color:#000;font-weight:bold">:[</span><span style="color:#a40000">a</span> <span style="color:#a40000">valid</span> <span style="color:#a40000">account</span> <span style="color:#a40000">selector</span><span style="color:#000;font-weight:bold">],</span>
+  <span style="color:#204a87;font-weight:bold">&#34;group&#34;</span><span style="color:#000;font-weight:bold">:[</span><span style="color:#a40000">a</span> <span style="color:#a40000">valid</span> <span style="color:#a40000">group</span> <span style="color:#a40000">selector</span><span style="color:#000;font-weight:bold">],</span>
+  <span style="color:#204a87;font-weight:bold">&#34;scopes&#34;</span><span style="color:#000;font-weight:bold">:[</span><span style="color:#a40000">a</span> <span style="color:#a40000">list</span> <span style="color:#a40000">of</span> <span style="color:#a40000">scopes</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#a40000">each</span> <span style="color:#a40000">scope</span> <span style="color:#a40000">string</span> <span style="color:#a40000">should</span> <span style="color:#a40000">be</span> <span style="color:#a40000">no</span> <span style="color:#a40000">longer</span> <span style="color:#a40000">than</span> <span style="color:#0000cf;font-weight:bold">255</span> <span style="color:#a40000">chars</span><span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p><strong>Data example</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Allow access to compute.* scopes to wlcg/pilot users&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;rule&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PERMIT&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;scopes&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;compute.read&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;compute.modify&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;compute.create&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;compute.cancel&#34;</span><span style="color:#000;font-weight:bold">],</span>
+  <span style="color:#204a87;font-weight:bold">&#34;matchingPolicy&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;EQ&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;group&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+       <span style="color:#204a87;font-weight:bold">&#34;uuid&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;25084f30-1d71-4ab2-91e8-11148af16682&#34;</span>
+  <span style="color:#000;font-weight:bold">}</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h4 id="success-response-3">Success response</h4>
+<p><strong>Condition</strong>: The Scope Policy is created for the organization</p>
+<p><strong>Code</strong>: <code>201 Created</code></p>
+<h4 id="error-responses-3">Error responses</h4>
+<p><strong>Condition</strong>: Policy validation error</p>
+<p><strong>Code</strong>: <code>400 BAD REQUEST</code></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;Invalid scope policy: rule cannot be empty&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p><strong>Or</strong></p>
+<p><strong>Condition</strong>: Unauthenticated access</p>
+<p><strong>Code</strong>: <code>401 UNAUTHORIZED</code></p>
+<p><strong>Content</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;unauthorized&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error_description&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;Full authentication is required to access this resource&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p><strong>OR</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;invalid_token&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;error_description&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;Invalid access token: &lt;Access Token&gt;&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p>If an invalid token is provided or no token is provided at all</p>
+<p><strong>Or</strong></p>
+<p><strong>Condition</strong>: Authorization error</p>
+<p><strong>Code</strong>: <code>403 FORBIDDEN</code></p>
+<p><strong>Content</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;access_denied&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error_description&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;Access is denied&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h3 id="delete-iamscope_policiesid">DELETE /iam/scope_policies/{id}</h3>
+<p>Deletes the Scope Policy for the organization.</p>
+<p><strong>Authentication required</strong>: yes</p>
+<p><strong>Authorization required</strong>: ROLE_ADMIN</p>
+<p><strong>Command example</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ curl -i -H <span style="color:#4e9a06">&#34;Accept: application/json&#34;</span> -H <span style="color:#4e9a06">&#34;Content-Type: application/json&#34;</span> -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#000">$TOKEN</span><span style="color:#4e9a06">&#34;</span> -X DELETE https://example.com/iam/scope_policies/<span style="color:#ce5c00;font-weight:bold">{</span>id<span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><p>Where {id} is the Scope Policy id number</p>
+<h4 id="success-response-4">Success response</h4>
+<p><strong>Condition</strong>: The Scope Policy is defined for the organization</p>
+<p><strong>Code</strong>: <code>204 NO CONTENT</code></p>
+<h4 id="error-responses-4">Error responses</h4>
+<p><strong>Condition</strong>: The Scope Policy {id} is not defined or inexistent for the organization</p>
+<p><strong>Code</strong>: <code>404 NOT FOUND</code></p>
+<p><strong>Content</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;No scope policy found for id: 1&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p><strong>Or</strong></p>
+<p><strong>Condition</strong>: Unauthenticated access</p>
+<p><strong>Code</strong>: <code>401 UNAUTHORIZED</code></p>
+<p><strong>Content</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;unauthorized&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error_description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Full authentication is required to access this resource&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p><strong>OR</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;invalid_token&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;error_description&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;Invalid access token: &lt;Access Token&gt;&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p>If an invalid token is provided or no token is provided.</p>
+<p><strong>Or</strong></p>
+<p><strong>Condition</strong>: Authorization error</p>
+<p><strong>Code</strong>: <code>403 FORBIDDEN</code></p>
+<p><strong>Content</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Access is denied&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div>
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-4 text-xs-center order-sm-2">
+        
+        
+        
+      </div>
+      <div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://github.com/indigo-iam/iam">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
+    <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://indigo-iam.slack.com">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+        <small class="text-white">&copy; 2022 INFN All Rights Reserved</small>
+        
+	
+		
+	
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/v/v1.8.0/js/main.min.63db3e552bd0543be17ce4a79a18b744e9cb72256bec42b540e3ab0cd43722d0.js" integrity="sha256-Y9s&#43;VSvQVDvhfOSnmhi3ROnLciVr7EK1QOOrDNQ3ItA=" crossorigin="anonymous"></script>
+
+
+
+
+  </body>
+</html>

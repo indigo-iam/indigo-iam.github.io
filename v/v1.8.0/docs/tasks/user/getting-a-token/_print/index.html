@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.86.0" /><link rel="canonical" type="text/html" href="/v/v1.8.0/docs/tasks/user/getting-a-token/">
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+
+
+<link rel="shortcut icon" href="/v/v1.8.0/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/v/v1.8.0/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/v/v1.8.0/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/v/v1.8.0/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/v/v1.8.0/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/v/v1.8.0/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/v/v1.8.0/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/v/v1.8.0/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/v/v1.8.0/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/v/v1.8.0/favicons/android-192x192.png" sizes="192x192">
+
+<title>Obtaining an IAM access token from a CLI | INDIGO IAM</title><meta property="og:title" content="Obtaining an IAM access token from a CLI" />
+<meta property="og:description" content="The INDIGO Identity and Access Management (IAM) Service" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/v/v1.8.0/docs/tasks/user/getting-a-token/" /><meta property="og:site_name" content="INDIGO IAM" />
+
+<meta itemprop="name" content="Obtaining an IAM access token from a CLI">
+<meta itemprop="description" content="The INDIGO Identity and Access Management (IAM) Service"><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Obtaining an IAM access token from a CLI"/>
+<meta name="twitter:description" content="The INDIGO Identity and Access Management (IAM) Service"/>
+
+
+
+
+
+
+
+<link rel="preload" href="/v/v1.8.0/scss/main.min.8c56a5db29a8a7bfd7c31c587d450fd15c23c45c8cd6e72142c8ed5b2ef43bd5.css" as="style">
+<link href="/v/v1.8.0/scss/main.min.8c56a5db29a8a7bfd7c31c587d450fd15c23c45c8cd6e72142c8ed5b2ef43bd5.css" rel="stylesheet" integrity="">
+
+
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+
+
+
+  </head>
+  <body class="td-section">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="/v/v1.8.0/">
+		<span class="navbar-logo"></span><span class="text-uppercase font-weight-bold">INDIGO IAM</span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a  class="nav-link active" href="/v/v1.8.0/docs/" ><span class="active">Documentation</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a  class="nav-link" href="/v/v1.8.0/blog/" ><span>Blog</span></a>
+			</li>
+			
+			
+			<li class="nav-item dropdown d-none d-lg-block">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Releases
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="https://indigo-iam.github.io/v/current">v1.8.0</a>
+	
+	<a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.2">v1.7.2</a>
+	
+	<a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.1">v1.7.1</a>
+	
+	<a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.0">v1.7.0</a>
+	
+	<a class="dropdown-item" href="https://indigo-iam.github.io/docs/v/current/">older releases</a>
+	
+</div>
+
+			</li>
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block">
+
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.192cee216cf9d76febec1ed6a8a92be4.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="10"
+>
+
+</div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/v/v1.8.0/docs/tasks/user/getting-a-token/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">Obtaining an IAM access token from a CLI</h1>
+
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+
+    </ul>
+
+
+<div class="content">
+      <p>A token can be obtained from a command-line interface (CLI) in two ways:</p>
+<ul>
+<li>using <code>oidc-agent</code></li>
+<li>using scripts linked to this page, using the resource-owner password
+credentials flow or the OAuth device flow</li>
+</ul>
+<p>In this section we recommend the installations of a set of tools that can help
+in managing tokens.</p>
+<h2 id="obtaining-a-token-using-oidc-agent">Obtaining a token using <code>oidc-agent</code></h2>
+<p><a href="https://github.com/indigo-dc/oidc-agent">oidc-agent</a> is a useful tool to easily get and manage access
+tokens for command-line applications.</p>
+<h3 id="installing-oidc-agent">Installing oidc-agent</h3>
+<p>See <a href="https://indigo-dc.gitbook.io/oidc-agent/installation/install">oidc-agent installation
+instructions</a>.</p>
+<h4 id="quick-centos7-installation-instructions">Quick CENTOS7 installation instructions</h4>
+<p>This recipe shows how to quickly install <code>oidc-agent</code> on CENTOS 7.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ yum -y install epel-release
+$ yum -y install https://github.com/indigo-dc/oidc-agent/releases/download/v3.3.1/oidc-agent-3.3.1-1.el7.x86_64.rpm
+</code></pre></div><h3 id="bootstrapping-oidc-agent">Bootstrapping oidc-agent</h3>
+<p>The first thing to do is to start <code>oidc-agent</code>.
+This can be done issuing the following command:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#204a87">eval</span> <span style="color:#204a87;font-weight:bold">$(</span>oidc-agent<span style="color:#204a87;font-weight:bold">)</span>
+Agent pid <span style="color:#0000cf;font-weight:bold">62088</span>
+</code></pre></div><h3 id="registering-a-client">Registering a client</h3>
+<p>In order to obtain a token out of IAM, a user needs a client registered.
+<code>oidc-agent</code> can automate this step and store client credentials securely
+on the user machine. This is a one-time operation, you do not need a new
+client every time you need a token.</p>
+<p>A new client can be registered using the <code>oidc-gen</code> command, as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ oidc-gen -w device wlcg
+</code></pre></div><p>The <code>-w device</code> instructs <code>oidc-agent</code> to use the device code flow for the
+authentication, which is the recommended way with IAM.</p>
+<p>oidc-agent will display a list of different providers that can be used for
+registration:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ce5c00;font-weight:bold">[</span>1<span style="color:#ce5c00;font-weight:bold">]</span> https://wlcg.cloud.cnaf.infn.it/
+<span style="color:#ce5c00;font-weight:bold">[</span>2<span style="color:#ce5c00;font-weight:bold">]</span> https://iam-test.indigo-datacloud.eu/
+...
+<span style="color:#ce5c00;font-weight:bold">[</span>20<span style="color:#ce5c00;font-weight:bold">]</span> https://oidc.scc.kit.edu/auth/realms/kit/
+</code></pre></div><p>Select one of the registered providers, or type a custom issuer (for IAM, the
+last character of the issuer string is always a <code>/</code>, e.g.
+<code>https://wlcg.cloud.cnaf.infn.it/</code>).</p>
+<p>Then oidc-agent asks for the scopes, typing <code>max</code> (without quotes) allows to
+get all the allowed scopes.</p>
+<p>oidc-agent will register a new client and store the client credentials and a
+refresh token locally in encrypted form (the agent will ask for a password from
+the user).</p>
+<p>As mentioned, <code>oidc-gen</code> is meant to be used only once, when you need a client registered.</p>
+<h3 id="managing-oidc-agent-account-configurations">Managing oidc-agent account configurations</h3>
+<p>To see the list of locally configured accounts use the following command:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">&gt; oidc-add -l
+
+The following account configurations are usable:
+DEEP-ac
+XDC
+atlas
+...
+cms-voms-importer
+escape
+escape-monitoring
+iam-test
+infn-cloud
+wlcg
+</code></pre></div><p>You can then load an account in the agent again with the oidc-add command, as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oidc-add wlcg
+</code></pre></div><p>Once you&rsquo;ve loaded the account, you can use <code>oidc-token</code> to get tokens for that account.</p>
+<h3 id="getting-tokens-with-oidc-token">Getting tokens with <code>oidc-token</code></h3>
+<p>Tokens can be obtained using the <code>oidc-token</code> command, as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oidc-token wlcg
+</code></pre></div><p>This will request a token with all the scopes requested at client registration
+time. To limit the scopes included in the token, the <code>-s</code> flag can be used, as
+follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oidc-token -s storage.read:/ wlcg
+</code></pre></div><p>The token audience can be limited using the <code>--aud</code> flag,</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oidc-token --aud example.audience -s storage.read:/ wlcg
+</code></pre></div><h3 id="accessing-oidc-agent-client-configuration">Accessing oidc-agent client configuration</h3>
+<p>Often is useful to get details about the client configuration generated
+by oidc-agent. This can be done with the <code>oidc-gen -p</code> command, that is
+used to print a client configuration, as in the following example:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">❯ oidc-gen -p wlcg
+Enter decryption password <span style="color:#204a87;font-weight:bold">for</span> account config <span style="color:#4e9a06">&#39;wlcg&#39;</span>:******
+<span style="color:#ce5c00;font-weight:bold">{</span>
+	<span style="color:#4e9a06">&#34;name&#34;</span>:	<span style="color:#4e9a06">&#34;wlcg&#34;</span>,
+	<span style="color:#4e9a06">&#34;client_name&#34;</span>:	<span style="color:#4e9a06">&#34;oidc-agent:wlcg&#34;</span>,
+	<span style="color:#4e9a06">&#34;issuer_url&#34;</span>:	<span style="color:#4e9a06">&#34;https://wlcg.cloud.cnaf.infn.it/&#34;</span>,
+	<span style="color:#4e9a06">&#34;device_authorization_endpoint&#34;</span>:	<span style="color:#4e9a06">&#34;https://wlcg.cloud.cnaf.infn.it/devicecode&#34;</span>,
+	<span style="color:#4e9a06">&#34;daeSetByUser&#34;</span>:	0,
+	<span style="color:#4e9a06">&#34;client_id&#34;</span>:	<span style="color:#4e9a06">&#34;*****&#34;</span>,
+	<span style="color:#4e9a06">&#34;client_secret&#34;</span>:	<span style="color:#4e9a06">&#34;*****&#34;</span>,
+	<span style="color:#4e9a06">&#34;refresh_token&#34;</span>:	<span style="color:#4e9a06">&#34;****.*****.&#34;</span>,
+	<span style="color:#4e9a06">&#34;cert_path&#34;</span>:	<span style="color:#4e9a06">&#34;&#34;</span>,
+	<span style="color:#4e9a06">&#34;scope&#34;</span>:	<span style="color:#4e9a06">&#34;storage.create:/ openid offline_access storage.read:/ eduperson_scoped_affiliation storage.modify:/ wlcg wlcg.groups eduperson_entitlement&#34;</span>,
+	<span style="color:#4e9a06">&#34;audience&#34;</span>:	<span style="color:#4e9a06">&#34;&#34;</span>,
+	<span style="color:#4e9a06">&#34;redirect_uris&#34;</span>:	<span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#4e9a06">&#34;edu.kit.data.oidc-agent:/redirect&#34;</span>, <span style="color:#4e9a06">&#34;http://localhost:8080&#34;</span>, <span style="color:#4e9a06">&#34;http://localhost:47947&#34;</span>, <span style="color:#4e9a06">&#34;http://localhost:4242&#34;</span><span style="color:#ce5c00;font-weight:bold">]</span>,
+	<span style="color:#4e9a06">&#34;username&#34;</span>:	<span style="color:#4e9a06">&#34;&#34;</span>,
+	<span style="color:#4e9a06">&#34;password&#34;</span>:	<span style="color:#4e9a06">&#34;&#34;</span>,
+	<span style="color:#4e9a06">&#34;client_id_issued_at&#34;</span>:	1600444894,
+	<span style="color:#4e9a06">&#34;registration_access_token&#34;</span>:	<span style="color:#4e9a06">&#34;****&#34;</span>,
+	<span style="color:#4e9a06">&#34;registration_client_uri&#34;</span>:	<span style="color:#4e9a06">&#34;https://wlcg.cloud.cnaf.infn.it/register/****&#34;</span>,
+	<span style="color:#4e9a06">&#34;token_endpoint_auth_method&#34;</span>:	<span style="color:#4e9a06">&#34;client_secret_basic&#34;</span>,
+	<span style="color:#4e9a06">&#34;grant_types&#34;</span>:	<span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#4e9a06">&#34;urn:ietf:params:oauth:grant-type:device_code&#34;</span>, <span style="color:#4e9a06">&#34;refresh_token&#34;</span><span style="color:#ce5c00;font-weight:bold">]</span>,
+	<span style="color:#4e9a06">&#34;response_types&#34;</span>:	<span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#4e9a06">&#34;token&#34;</span><span style="color:#ce5c00;font-weight:bold">]</span>,
+	<span style="color:#4e9a06">&#34;application_type&#34;</span>:	<span style="color:#4e9a06">&#34;web&#34;</span>,
+	<span style="color:#4e9a06">&#34;cert_path&#34;</span>:	<span style="color:#4e9a06">&#34;&#34;</span>,
+	<span style="color:#4e9a06">&#34;audience&#34;</span>:	<span style="color:#4e9a06">&#34;&#34;</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><h2 id="obtaining-a-token-with-the-password-flow">Obtaining a token with the password flow</h2>
+<p>The <a href="https://tools.ietf.org/html/rfc6749#section-4.3">password flow</a> allows a user to get a token from the
+IAM by using the IAM local credentials (i.e. the username/password credentials
+setup at IAM registration time).</p>
+<p>In order to use the password flow, a non-privileged user has to:</p>
+<ol>
+<li>register a client following the instructions given in [the client
+registration][client-registration] section</li>
+<li>Note down the <code>client_id</code> of the generated client and ask an IAM
+administrator to enable the password flow for such client</li>
+<li>Wait until the client as the password flow enabled</li>
+<li>Use a script similar to the one given <a href="https://gist.github.com/andreaceccanti/7d863db5ce3f43c74123a2cea8b8f9ff">here</a> (or write
+your own following the recommendations of the <a href="https://tools.ietf.org/html/rfc6749#section-4.3">RFC</a>) to
+obtain a token out of the IAM</li>
+</ol>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Warning</h4>
+
+    <p>While this approach is viable, it is <strong>deprecated</strong> since:</p>
+<ul>
+<li>it forces the user to request the activation of the password flow for the
+client (it is disabled by default for dynamically registered clients)</li>
+<li>it forces the user to authenticate with the local IAM credentials (external
+authentication mechanisms such as Google or SAML cannot be used)</li>
+<li>it exposes the user credentials to the client application</li>
+</ul>
+<p>The device code flow, described in the next section, does not have these
+limitations and should be preferred over the password flow.</p>
+
+
+</div>
+
+<h2 id="obtaining-a-token-with-the-device-code-flow">Obtaining a token with the device code flow</h2>
+<p>The <a href="https://tools.ietf.org/html/draft-ietf-oauth-device-flow-09">device code flow</a> allows a user to get a token
+from the IAM from a CLI interface while using an external browser for the
+authentication step. This is convenient since:</p>
+<ul>
+<li>it does not require any authorization from administrators (the device code
+flow can be requested by the user at client registration time)</li>
+<li>it allows the user to authenticate with any of the authentication mechanisms
+supported by the IAM</li>
+<li>it <strong>does not</strong> expose the user credentials to the client application</li>
+</ul>
+<p>For nitty and gritty details on how the flow works, see the
+<a href="https://tools.ietf.org/html/draft-ietf-oauth-device-flow-09">RFC</a>.</p>
+<p>After having registered a client with the device flow enabled (see <a href="client-registration.md">client
+registration section</a>), the device code flow can be
+used to obtain a token using a script like the one <a href="https://gist.github.com/andreaceccanti/5b69323b89ce08321e7b5236de503600">here</a>
+which does the following:</p>
+<ul>
+<li>contacts the device flow endpoint to start a device flow authentication and
+authorization</li>
+<li>prints code information on the terminal</li>
+<li>waits for user input to proceed and obtain the token(s)</li>
+</ul>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-4 text-xs-center order-sm-2">
+        
+        
+        
+      </div>
+      <div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://github.com/indigo-iam/iam">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
+    <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://indigo-iam.slack.com">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+        <small class="text-white">&copy; 2022 INFN All Rights Reserved</small>
+        
+	
+		
+	
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/v/v1.8.0/js/main.min.63db3e552bd0543be17ce4a79a18b744e9cb72256bec42b540e3ab0cd43722d0.js" integrity="sha256-Y9s&#43;VSvQVDvhfOSnmhi3ROnLciVr7EK1QOOrDNQ3ItA=" crossorigin="anonymous"></script>
+
+
+
+
+  </body>
+</html>
