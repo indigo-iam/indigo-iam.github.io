@@ -121,7 +121,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.b0492d1cc43c4f39399e1cbf2cf155b4.json"
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.57fcd63f60ddd8a940a4664e476e77ca.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -1000,7 +1000,7 @@ Authorization: Bearer h480djs93hd8
 </tr>
 <tr>
 <td style="text-align:center"><code>userId</code><br/><strong>string</strong></td>
-<td>Filters by userId.</td>
+<td>Filters by userName.</td>
 </tr>
 <tr>
 <td style="text-align:center"><code>clientId</code><br/><strong>string</strong></td>
@@ -2831,9 +2831,9 @@ HTTP/1.1 200 OK
     
 	<p>In OpenID Connect and OAuth, <a href="https://datatracker.ietf.org/doc/html/rfc6749#section-3.3">scopes</a> are used to determine the
 privileges granted to a client application for a given session. For example,
-the <code>openid</code> and <code>profile</code> scope are used to obtain access to identity
+the <code>openid</code> and <code>profile</code> scopes are used to obtain access to identity
 information about a user, but applications can define their own scopes to
-implement domain-specifc authorization (e.g., the WLCG <code>storage.read</code>  and
+implement domain-specific authorization (e.g., the WLCG <code>storage.read</code>  and
 <code>storage.modify</code> scopes are examples of domain-specific OAuth scopes).</p>
 <p>IAM implements two levels of access control on OAuth scopes:</p>
 <ul>
@@ -2896,7 +2896,7 @@ group of accounts the policy should apply.</p>
     <span style="color:#204a87;font-weight:bold">&#34;group&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
     <span style="color:#204a87;font-weight:bold">&#34;scopes&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span>
   <span style="color:#000;font-weight:bold">}</span>
-</code></pre></div><p>The policy above is a <code>PERMIT</code> policy that allow access to all the scopes to
+</code></pre></div><p>The policy above is a <code>PERMIT</code> policy that allows access to all the scopes to
 any account, as clarified by the policy <code>description</code>.</p>
 <p>In the policy, the <code>account</code> and <code>group</code> selector are not specified, which
 means that the policy would apply to any user account. Also the <code>scopes</code>
@@ -2956,7 +2956,7 @@ limits the default scope vetting only to the client level.</p>
 to any authenticated user. The second policy would instead allow access to
 <code>compute.*</code> scopes only to members of the <code>wlcg/pilot</code> group (again, as written
 in the policy <code>description</code>).</p>
-<p>The two policy can work together because the IAM policy engine evaluates the
+<p>The two policies can work together because the IAM policy engine evaluates the
 policy in a specific order: account-level policies are applied first, then
 group-level policies are applied and finally policies that are not bound to any
 specific account or group are applied. This means that a policy defined to
@@ -2980,7 +2980,7 @@ scopes to scopes allowed by the client configuration or by the scope
 policies;</p>
 </li>
 <li>
-<p><code>REGEXP</code>: which uses a regular expression evaluation when comparting
+<p><code>REGEXP</code>: which uses a regular expression evaluation when comparing
 requested scopes to scopes allowed by the client configuration or scope
 policies;</p>
 </li>
@@ -3048,7 +3048,7 @@ organization.</p>
 <p><strong>Condition</strong>: Being Authenticated and authorized</p>
 <p><strong>Code</strong>: <code>200 OK</code></p>
 <p><strong>Content</strong>: An array of JSON representations for the scope policies defined in
-the orgazionation</p>
+the organization</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">[{</span>
   <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
   <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>

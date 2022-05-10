@@ -121,7 +121,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.b0492d1cc43c4f39399e1cbf2cf155b4.json"
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.57fcd63f60ddd8a940a4664e476e77ca.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -312,8 +312,6 @@ in the <a href="jwk">JWK section</a>;</li>
 <p>You will also need to choose whether you want to deploy you service as a
 <a href="docker">docker container</a> (recommended) or install from
 <a href="packages">packages</a>.</p>
-<p>In case you chose to install from <a href="packages">packages</a> you can have a look
-at the <a href="puppet-module">IAM puppet module to deploy and configure the service</a>.</p>
 <p>And finally, you will have to setup a minimal IAM configuration and change the
 administrator password for the newly configured IAM service; more on this
 <a href="basic_setup">in the basic configuration section</a>.</p>
@@ -344,6 +342,13 @@ administrator password for the newly configured IAM service; more on this
 <p>The example configuration below provides the minimal configuration needed to
 have NGINX working as a reverse proxy for the IAM web application:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#204a87;font-weight:bold">server</span> <span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">listen</span> <span style="color:#0000cf;font-weight:bold">80</span><span style="color:#000;font-weight:bold">;</span>
+  <span style="color:#204a87;font-weight:bold">listen</span> <span style="color:#4e9a06">[::]:80</span><span style="color:#000;font-weight:bold">;</span>
+  <span style="color:#204a87;font-weight:bold">server_name</span> <span style="color:#4e9a06">_</span><span style="color:#000;font-weight:bold">;</span>
+  <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#0000cf;font-weight:bold">301</span> <span style="color:#4e9a06">https://</span><span style="color:#000">$host$request_uri</span><span style="color:#000;font-weight:bold">;</span>
+<span style="color:#000;font-weight:bold">}</span>
+
+<span style="color:#204a87;font-weight:bold">server</span> <span style="color:#000;font-weight:bold">{</span>
   <span style="color:#204a87;font-weight:bold">listen</span>        <span style="color:#0000cf;font-weight:bold">443</span> <span style="color:#4e9a06">ssl</span><span style="color:#000;font-weight:bold">;</span>
   <span style="color:#204a87;font-weight:bold">server_name</span>   <span style="color:#4e9a06">YOUR_HOSTNAME_HERE</span><span style="color:#000;font-weight:bold">;</span>
   <span style="color:#204a87;font-weight:bold">access_log</span>   <span style="color:#4e9a06">/var/log/nginx/iam.access.log</span>  <span style="color:#4e9a06">combined</span><span style="color:#000;font-weight:bold">;</span>
@@ -354,12 +359,13 @@ have NGINX working as a reverse proxy for the IAM web application:</p>
   <span style="color:#204a87;font-weight:bold">ssl_certificate_key</span>  <span style="color:#4e9a06">/path/to/your/ssl/key.pem</span><span style="color:#000;font-weight:bold">;</span>
 
   <span style="color:#204a87;font-weight:bold">location</span> <span style="color:#4e9a06">/</span> <span style="color:#000;font-weight:bold">{</span>
-    <span style="color:#204a87;font-weight:bold">proxy_pass</span>              <span style="color:#4e9a06">THE_IAM_APP_HOSTNAME_HERE:8080</span><span style="color:#000;font-weight:bold">;</span>
+    <span style="color:#204a87;font-weight:bold">proxy_pass</span>              <span style="color:#4e9a06">http://THE_IAM_APP_HOSTNAME_HERE:8080</span><span style="color:#000;font-weight:bold">;</span>
     <span style="color:#204a87;font-weight:bold">proxy_set_header</span>        <span style="color:#4e9a06">X-Real-IP</span> <span style="color:#000">$remote_addr</span><span style="color:#000;font-weight:bold">;</span>
     <span style="color:#204a87;font-weight:bold">proxy_set_header</span>        <span style="color:#4e9a06">X-Forwarded-For</span> <span style="color:#000">$proxy_add_x_forwarded_for</span><span style="color:#000;font-weight:bold">;</span>
     <span style="color:#204a87;font-weight:bold">proxy_set_header</span>        <span style="color:#4e9a06">X-Forwarded-Proto</span> <span style="color:#4e9a06">https</span><span style="color:#000;font-weight:bold">;</span>
     <span style="color:#204a87;font-weight:bold">proxy_set_header</span>        <span style="color:#4e9a06">Host</span> <span style="color:#000">$http_host</span><span style="color:#000;font-weight:bold">;</span>
   <span style="color:#000;font-weight:bold">}</span>
+<span style="color:#000;font-weight:bold">}</span>
 </code></pre></div><h2 id="x509-client-authentication">X.509 client authentication</h2>
 <p>IAM supports X.509 client certificate authentication. To enable X.509 client
 certificate authentication use a configuration similar to the
@@ -457,7 +463,8 @@ local directory:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/mitreid-connect/json-web-key-generator
 </code></pre></div><p>Build the code with:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mvn package
-</code></pre></div><p>You can then generate a key with the following command:</p>
+</code></pre></div><p>Maven 3.6.x or greater supporting Java 11 is required.</p>
+<p>You can then generate a key with the following command:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">java -jar target/json-web-key-generator-0.4-SNAPSHOT-jar-with-dependencies.jar <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  -t RSA -s <span style="color:#0000cf;font-weight:bold">1024</span> -S -i rsa1
 
@@ -480,7 +487,7 @@ Full key:
   <span style="color:#ce5c00;font-weight:bold">]</span>
 <span style="color:#ce5c00;font-weight:bold">}</span>
 </code></pre></div><p>Save the output of the above command (minus the <code>Full key:</code> initial text) in a
-file, e.g. <code>iam-keystore.jwks</code>.</p>
+file, e.g. <code>keystore.jwks</code>.</p>
 
 </div>
 
@@ -604,17 +611,19 @@ section</a>).</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sudo systemctl start iam-login-service
 </code></pre></div><p>To access the service logs, use the following command:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sudo journalctl -fu iam-login-service
-</code></pre></div><h2 id="automated-provisioning-with-puppet">Automated provisioning with Puppet</h2>
-<p>The IAM login service Puppet module can be  found <a href="https://github.com/indigo-iam/puppet-indigo-iam">here</a>.
-The module configures the IAM Login Service packages installation,
-configuration and the automatic generation of the JWK keystore.</p>
-<p>The setup of the MySQL database used by the service as well as the setup of the
-reverse proxy are <strong>not covered</strong> by this module.</p>
-<p>However, the module provides an example of setup of both the Login Service and
-NginX as reverse proxy, using the official NginX Puppet module.</p>
-<p>For more detailed information about the Indigo IAM Puppet module usage, see the
-documentation in the <a href="https://github.com/indigo-iam/puppet-indigo-iam">Github repository</a>.</p>
-
+</code></pre></div><h3 id="deployment-tips">Deployment Tips</h3>
+<p>In headless servers, running <code>haveged</code> daemon is recommended to generate more entropy.
+Before running the IAM login service, check the available entropy with:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cat /proc/sys/kernel/random/entropy_avail
+</code></pre></div><p>If the obtained value is less than 1000, then <code>haveged</code> daemon is mandatory.</p>
+<p>Install EPEL repository:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sudo yum install -y epel-release
+</code></pre></div><p>Install Haveged:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sudo yum install -y haveged
+</code></pre></div><p>Enable and run the <code>haveged</code> daemon with:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sudo systemctl <span style="color:#204a87">enable</span> haveged
+$ sudo systemctl start haveged
+</code></pre></div>
 </div>
 
 
@@ -654,8 +663,8 @@ manually to the organisation using the IAM dashboard if you prefer).</p>
 <span style="color:#000">IAM_HOST</span><span style="color:#ce5c00;font-weight:bold">=</span>iam.local.io
 <span style="color:#000">IAM_BASE_URL</span><span style="color:#ce5c00;font-weight:bold">=</span>https://iam.local.io
 <span style="color:#000">IAM_ISSUER</span><span style="color:#ce5c00;font-weight:bold">=</span>https://iam.local.io
-<span style="color:#000">IAM_USE_FORWARDED_HEADERS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">true</span>
-<span style="color:#000">IAM_KEY_STORE_LOCATION</span><span style="color:#ce5c00;font-weight:bold">=</span>file:/iam-keystore.jwks
+<span style="color:#000">IAM_FORWARD_HEADERS_STRATEGY</span><span style="color:#ce5c00;font-weight:bold">=</span>native
+<span style="color:#000">IAM_KEY_STORE_LOCATION</span><span style="color:#ce5c00;font-weight:bold">=</span>file:/keystore.jwks
 <span style="color:#000">IAM_DB_HOST</span><span style="color:#ce5c00;font-weight:bold">=</span>db
 <span style="color:#000">IAM_DB_NAME</span><span style="color:#ce5c00;font-weight:bold">=</span>iam
 <span style="color:#000">IAM_DB_USERNAME</span><span style="color:#ce5c00;font-weight:bold">=</span>iam
@@ -674,10 +683,10 @@ value for this is typically <code>https://${IAM_HOST}</code>;</li>
 <li><code>IAM_ISSUER</code> is the OpenID-connect issuer for the tokens issued by the IAM;
 we recommend using the same setting as <code>IAM_BASE_URL</code>, i.e.
 <code>https://${IAM_HOST}</code>;</li>
-<li><code>IAM_USE_FORWARDED_HEADERS</code> tells the IAM that whether it lives behind a reverse
-proxy (i.e., NGINX); in production the value is typically <code>true</code>;</li>
+<li><code>IAM_FORWARD_HEADERS_STRATEGY</code> tells the IAM that whether it lives behind a reverse
+proxy (i.e., NGINX); in production the value is typically <code>native</code>;</li>
 <li><code>IAM_KEY_STORE_LOCATION</code> is the location of the JSON Web keystore generated
-as explained <a href="docs/getting-started/jwk">here</a>;</li>
+as explained <a href="/v/v1.8.0/docs/getting-started/jwk/">here</a>;</li>
 <li><code>IAM_DB_*</code> are variables used to set the database endpoint and provide
 database access credentials;</li>
 <li><code>IAM_NOTIFICATION_FROM</code> sets the sender of administrative notification sent

@@ -121,7 +121,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.b0492d1cc43c4f39399e1cbf2cf155b4.json"
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.57fcd63f60ddd8a940a4664e476e77ca.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -434,7 +434,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>2.2: <a href="#pg-ee84b111d6aee6b44b8e068e0995e8c2">Membership lifecycle</a></li>
+<li>2.2: <a href="#pg-371b1935a2a5c2cbff937a267fe80317">MitreID System Scopes</a></li>
 
 
     
@@ -453,7 +453,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>2.3: <a href="#pg-2501923ff9f1258a5dc95b7435579a75">Registration &amp; Enrollment</a></li>
+<li>2.3: <a href="#pg-ee84b111d6aee6b44b8e068e0995e8c2">Membership lifecycle</a></li>
 
 
     
@@ -472,7 +472,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>2.4: <a href="#pg-b153a1aec7140b2aa27a0ba03e8dc3fd">Local authentication</a></li>
+<li>2.4: <a href="#pg-2501923ff9f1258a5dc95b7435579a75">Registration &amp; Enrollment</a></li>
 
 
     
@@ -491,22 +491,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>2.5: <a href="#pg-359104377f9341d4c326d45fb209b4c2">External authentication</a></li>
-
-
-    
-    <ul>
-        
-  
-  
-  
-  
-
-  
-    
-    
-	
-<li>2.5.1: <a href="#pg-ac3ba36ba3318b338bcbf439e1b79e60">OpenID-Connect authentication</a></li>
+<li>2.5: <a href="#pg-b153a1aec7140b2aa27a0ba03e8dc3fd">Local authentication</a></li>
 
 
     
@@ -525,7 +510,22 @@ This the multi-page printable view of this section.
     
     
 	
-<li>2.5.2: <a href="#pg-af611b856fca4d6771e3e3ed962701b5">SAML authentication</a></li>
+<li>2.6: <a href="#pg-359104377f9341d4c326d45fb209b4c2">External authentication</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>2.6.1: <a href="#pg-ac3ba36ba3318b338bcbf439e1b79e60">OpenID-Connect authentication</a></li>
 
 
     
@@ -544,7 +544,26 @@ This the multi-page printable view of this section.
     
     
 	
-<li>2.5.3: <a href="#pg-86d359d1731c5e164863d1bbe93a7bcf">X.509 authentication</a></li>
+<li>2.6.2: <a href="#pg-af611b856fca4d6771e3e3ed962701b5">SAML authentication</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>2.6.3: <a href="#pg-86d359d1731c5e164863d1bbe93a7bcf">X.509 authentication</a></li>
 
 
     
@@ -1215,7 +1234,7 @@ Authorization: Bearer h480djs93hd8
 </tr>
 <tr>
 <td style="text-align:center"><code>userId</code><br/><strong>string</strong></td>
-<td>Filters by userId.</td>
+<td>Filters by userName.</td>
 </tr>
 <tr>
 <td style="text-align:center"><code>clientId</code><br/><strong>string</strong></td>
@@ -3046,9 +3065,9 @@ HTTP/1.1 200 OK
     
 	<p>In OpenID Connect and OAuth, <a href="https://datatracker.ietf.org/doc/html/rfc6749#section-3.3">scopes</a> are used to determine the
 privileges granted to a client application for a given session. For example,
-the <code>openid</code> and <code>profile</code> scope are used to obtain access to identity
+the <code>openid</code> and <code>profile</code> scopes are used to obtain access to identity
 information about a user, but applications can define their own scopes to
-implement domain-specifc authorization (e.g., the WLCG <code>storage.read</code>  and
+implement domain-specific authorization (e.g., the WLCG <code>storage.read</code>  and
 <code>storage.modify</code> scopes are examples of domain-specific OAuth scopes).</p>
 <p>IAM implements two levels of access control on OAuth scopes:</p>
 <ul>
@@ -3111,7 +3130,7 @@ group of accounts the policy should apply.</p>
     <span style="color:#204a87;font-weight:bold">&#34;group&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
     <span style="color:#204a87;font-weight:bold">&#34;scopes&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span>
   <span style="color:#000;font-weight:bold">}</span>
-</code></pre></div><p>The policy above is a <code>PERMIT</code> policy that allow access to all the scopes to
+</code></pre></div><p>The policy above is a <code>PERMIT</code> policy that allows access to all the scopes to
 any account, as clarified by the policy <code>description</code>.</p>
 <p>In the policy, the <code>account</code> and <code>group</code> selector are not specified, which
 means that the policy would apply to any user account. Also the <code>scopes</code>
@@ -3171,7 +3190,7 @@ limits the default scope vetting only to the client level.</p>
 to any authenticated user. The second policy would instead allow access to
 <code>compute.*</code> scopes only to members of the <code>wlcg/pilot</code> group (again, as written
 in the policy <code>description</code>).</p>
-<p>The two policy can work together because the IAM policy engine evaluates the
+<p>The two policies can work together because the IAM policy engine evaluates the
 policy in a specific order: account-level policies are applied first, then
 group-level policies are applied and finally policies that are not bound to any
 specific account or group are applied. This means that a policy defined to
@@ -3195,7 +3214,7 @@ scopes to scopes allowed by the client configuration or by the scope
 policies;</p>
 </li>
 <li>
-<p><code>REGEXP</code>: which uses a regular expression evaluation when comparting
+<p><code>REGEXP</code>: which uses a regular expression evaluation when comparing
 requested scopes to scopes allowed by the client configuration or scope
 policies;</p>
 </li>
@@ -3263,7 +3282,7 @@ organization.</p>
 <p><strong>Condition</strong>: Being Authenticated and authorized</p>
 <p><strong>Code</strong>: <code>200 OK</code></p>
 <p><strong>Content</strong>: An array of JSON representations for the scope policies defined in
-the orgazionation</p>
+the organization</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">[{</span>
   <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
   <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
@@ -3867,9 +3886,9 @@ scenarios not served by the default templates.</p>
 <span style="color:#8f5902;font-style:italic"># How frequently (in seconds) should trust anchors be refreshed</span>
 <span style="color:#000">IAM_X509_TRUST_ANCHORS_REFRESH</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">14400</span>
 
-<span style="color:#8f5902;font-style:italic"># Use forwarded headers from reverse proxy. Set this to true when deploying the</span>
+<span style="color:#8f5902;font-style:italic"># Use forwarded headers from reverse proxy. Set this to native when deploying the</span>
 <span style="color:#8f5902;font-style:italic"># service behind a reverse proxy.</span>
-<span style="color:#000">IAM_USE_FORWARDED_HEADERS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">false</span>
+<span style="color:#000">IAM_FORWARD_HEADERS_STRATEGY</span><span style="color:#ce5c00;font-weight:bold">=</span>none
 
 <span style="color:#8f5902;font-style:italic">## Tomcat embedded container settings</span>
 
@@ -4140,9 +4159,9 @@ in the list of scopes authorized for a client:</p>
 client, IAM falls back to the default profile configured for the IAM instance.</p>
 <h2 id="using-system-scopes-to-control-profile-selection">Using system scopes to control profile selection</h2>
 <p>MitreID <strong>System Scopes</strong> can be used to control access to profile selection.</p>
-<p>For example, by setting a profile scope as <code>restricted</code>, such scope will not be
-available to dynamically registered clients and can only be assigned to clients
-by IAM administrators.</p>
+<p>The scopes <code>iam</code>, <code>wlcg</code> and <code>aarc</code> used to select the JWT profile are not available in IAM
+by default; an administrator has to add all of them manually, as described in the
+in <a href="/v/v1.8.0/docs/reference/configuration/system-scopes/">System Scopes documentation</a>.</p>
 <h2 id="supported-jwt-profiles">Supported JWT profiles</h2>
 <h3 id="the-iam-profile">The IAM profile</h3>
 <p>This is the default profile for IAM.</p>
@@ -4179,14 +4198,15 @@ environment variable;</p>
 <p>This profile is assigned to clients using the <code>wlcg</code> scope.</p>
 <h4 id="requesting-groups-with-the-wlcg-profile">Requesting groups with the WLCG profile</h4>
 <p>When the WLCG profile is used, groups are not automatically included in access
-tokens and ID tokens, but can be requested using the <code>wlcg.groups</code> scope,
+tokens and ID tokens, but can be requested using the <code>wlcg.groups</code> scope
+(which has to be added among the <a href="/v/v1.8.0/docs/reference/configuration/system-scopes/">System Scopes</a>),
 following the rules described in the <a href="https://github.com/WLCG-AuthZ-WG/CommonJWTProfile/blob/master/profile.md#scope-based-group-selection">WLCG
 profile</a>.</p>
 <h4 id="optional-groups">Optional groups</h4>
 <p>Optional groups are groups whose membership is only asserted in tokens on
 explicit request coming from a user.</p>
-<p>In order to configure a IAM group as an optional group, add the
-<code>wlcg.optional-group</code> label to the group.</p>
+<p>In order to configure a IAM group as an optional group,
+add the <code>wlcg.optional-group</code> label to the group.</p>
 <h3 id="the-aarc-profile">The AARC profile</h3>
 <p>This profile encodes group membership information following the rules defined
 by the <a href="https://aarc-project.eu/guidelines/aarc-g002/">AARC G002</a> profile document.</p>
@@ -4225,7 +4245,49 @@ by the <a href="https://aarc-project.eu/guidelines/aarc-g002/">AARC G002</a> pro
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-ee84b111d6aee6b44b8e068e0995e8c2">2.2 - Membership lifecycle</h1>
+	<h1 id="pg-371b1935a2a5c2cbff937a267fe80317">2.2 - MitreID System Scopes</h1>
+    
+	<p>During the <a href="/v/v1.8.0/docs/tasks/user/client-registration/">client registration</a>, a user can assign any scope to the client,
+but IAM will grant only the list of scopes available among the MitreID <strong>System Scopes</strong>.</p>
+<p>In order to include a new scope into the System Scopes, an IAM administrator has to add it manually
+from the <code>System Scopes</code> tab on the left side of the MitreID dashboard:</p>
+<p><img src="system_scopes_mitre.png" alt="Mitre system scopes"></p>
+<ul>
+<li>if the box <code>default scope</code> is checked, the scope will be assigned to any newly regirested client,
+even if it is not explicitly requested;</li>
+<li>if the box <code>restricted</code> is checked, the scope will not be available to dynamically registered clients
+and can only be assigned to clients by IAM administrators;</li>
+<li>if no one box is checked, any dynamically registered client has to explicitly request for this scope
+at the registration time, and it will be granted without intervention of IAM administrators.</li>
+</ul>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-ee84b111d6aee6b44b8e068e0995e8c2">2.3 - Membership lifecycle</h1>
     
 	<p>Starting with version 1.6.0, IAM introduces support for basic account life
 cycle management.</p>
@@ -4279,7 +4341,7 @@ file</a>:</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-2501923ff9f1258a5dc95b7435579a75">2.3 - Registration &amp; Enrollment</h1>
+	<h1 id="pg-2501923ff9f1258a5dc95b7435579a75">2.4 - Registration &amp; Enrollment</h1>
     
 	<p>IAM implements a basic registration service that implements an
 administrator-vetted registration flow, where users apply for membership in an
@@ -4355,7 +4417,7 @@ file</a></p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-b153a1aec7140b2aa27a0ba03e8dc3fd">2.4 - Local authentication</h1>
+	<h1 id="pg-b153a1aec7140b2aa27a0ba03e8dc3fd">2.5 - Local authentication</h1>
     
 	<p>Starting with version 1.6.0, IAM introduces the ability to limit or disable
 authentication with local IAM credentials, so that external, brokered
@@ -4399,7 +4461,7 @@ file, as described
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-359104377f9341d4c326d45fb209b4c2">2.5 - External authentication</h1>
+	<h1 id="pg-359104377f9341d4c326d45fb209b4c2">2.6 - External authentication</h1>
     
 	<p>IAM supports brokered authentication via standard OpenID-Connect and SAML
 protocols as well as X.509 authentication.</p>
@@ -4426,7 +4488,7 @@ protocols as well as X.509 authentication.</p>
 
 <div class="td-content" style="">
     
-	<h1 id="pg-ac3ba36ba3318b338bcbf439e1b79e60">2.5.1 - OpenID-Connect authentication</h1>
+	<h1 id="pg-ac3ba36ba3318b338bcbf439e1b79e60">2.6.1 - OpenID-Connect authentication</h1>
     
 	<p>IAM supports brokered OpenID Connect authentication to external identity
 providers (e.g., Google).</p>
@@ -4554,7 +4616,7 @@ the default IAM configuration.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-af611b856fca4d6771e3e3ed962701b5">2.5.2 - SAML authentication</h1>
+	<h1 id="pg-af611b856fca4d6771e3e3ed962701b5">2.6.2 - SAML authentication</h1>
     
 	<p>IAM supports brokered SAML authentication. When SAML authentication is turned
 on for an IAM instance, users can log into the service using the home Identity
@@ -4591,7 +4653,7 @@ keytool -importkeystore -destkeystore self-signed.jks \
     -srckeystore self-signed.p12 \
     -srcstoretype PKCS12
 </code></pre><p>During the above process you will be asked to provide a p12 export password and
-a keystore password. Use the same password, at least 6 characters long,
+a keystore password. <strong>Use the same password</strong>, at least 6 characters long,
 otherwise it will not work for the java keystore.</p>
 <p>You can list the contents of the keystore with the following command:</p>
 <pre><code class="language-console" data-lang="console">keytool -list -keystore self-signed.jks
@@ -4704,6 +4766,34 @@ authentication.</p>
 </code></pre></div><h3 id="limiting-by-sirtfi-compliance">Limiting by SIRTFI compliance</h3>
 <p>To limit authentication only to IdPs that are <a href="https://refeds.org/sirtfi">SIRFTI</a>-compliant, set
 the the <code>IAM_SAML_METADATA_REQUIRE_SIRTFI</code> environment variable to true.</p>
+<h2 id="joining-a-saml-federation">Joining a SAML federation</h2>
+<p>An Indigo IAM instance can join a SAML federation as a service provider (SP).
+To join a feaderation you need to follow the following steps:</p>
+<ul>
+<li>Configure the <code>saml</code> profile in IAM</li>
+<li>Register the Indigo IAM instance into the federation, following the federation
+instructions (generally involves connecting to a registration portal to
+declare the SP)</li>
+<li>Wait for the federation metadata to be updated at the federation IdPs. This
+typically involves a 12h delay.</li>
+<li>Check if login in IAM works successfully through the federation: note that it
+will not work before the federation IdPs have updated their metadata. If the
+error persists after the delay, contact your federation or IdP support.</li>
+</ul>
+<p>When registering the Indigo IAM SP, there are a few critical parameters to supply:</p>
+<ul>
+<li>Assertion Consumer Service (ACS), consisting of 3 parameters:
+<ul>
+<li>Binding: must be <code>HTTP Post</code></li>
+<li>URL: it is the instance URL + <code>/saml/SSO</code>, e.g. <code>https://iam.example.com/saml/SSO</code></li>
+<li>Index: should be set to 0</li>
+</ul>
+</li>
+<li>X509 SAML certificate: the generated <code>self-signed</code> certificate</li>
+</ul>
+<p>Other, generally optional, parameters include the requested attribute. It is a good
+practice to declare as mandatory one of the attribute listed in
+<code>IAM_SAML_ID_RESOLVERS</code>.</p>
 <h2 id="customizing-saml-login-button-text">Customizing SAML login button text</h2>
 <p>You can customize the SAML login button text shown in the IAM login page with
 the <code>IAM_SAML_LOGIN_BUTTON_TEXT</code> environment variable.</p>
@@ -4752,9 +4842,17 @@ instructions on how to override the default IAM configuration.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-86d359d1731c5e164863d1bbe93a7bcf">2.5.3 - X.509 authentication</h1>
+	<h1 id="pg-86d359d1731c5e164863d1bbe93a7bcf">2.6.3 - X.509 authentication</h1>
     
-	
+	<p>X509 authentication in IAM doesn&rsquo;t require any specific configuration in IAM itself.
+It is enabled as soon as the proper options have been set in the Nginx configuration.</p>
+<p>For the X509 authentication to work, it is critical that the user certificate CA
+is known to Nginx. If it is not part of the CAs configured in <code>/etc/ssl</code>, you may need
+to add the following line to your Nginx configuration:</p>
+<pre><code>ssl_client_certificate  CA_certificates_file;
+</code></pre><p>where <code>CA_certificates_file</code> is the path to a file containing the certificates (in PEM
+format) of the CAs that must be accepted by Nginx.</p>
+
 </div>
 
 

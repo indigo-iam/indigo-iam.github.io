@@ -118,7 +118,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.b0492d1cc43c4f39399e1cbf2cf155b4.json"
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.57fcd63f60ddd8a940a4664e476e77ca.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -206,7 +206,7 @@ keytool -importkeystore -destkeystore self-signed.jks \
     -srckeystore self-signed.p12 \
     -srcstoretype PKCS12
 </code></pre><p>During the above process you will be asked to provide a p12 export password and
-a keystore password. Use the same password, at least 6 characters long,
+a keystore password. <strong>Use the same password</strong>, at least 6 characters long,
 otherwise it will not work for the java keystore.</p>
 <p>You can list the contents of the keystore with the following command:</p>
 <pre><code class="language-console" data-lang="console">keytool -list -keystore self-signed.jks
@@ -319,6 +319,34 @@ authentication.</p>
 </code></pre></div><h3 id="limiting-by-sirtfi-compliance">Limiting by SIRTFI compliance</h3>
 <p>To limit authentication only to IdPs that are <a href="https://refeds.org/sirtfi">SIRFTI</a>-compliant, set
 the the <code>IAM_SAML_METADATA_REQUIRE_SIRTFI</code> environment variable to true.</p>
+<h2 id="joining-a-saml-federation">Joining a SAML federation</h2>
+<p>An Indigo IAM instance can join a SAML federation as a service provider (SP).
+To join a feaderation you need to follow the following steps:</p>
+<ul>
+<li>Configure the <code>saml</code> profile in IAM</li>
+<li>Register the Indigo IAM instance into the federation, following the federation
+instructions (generally involves connecting to a registration portal to
+declare the SP)</li>
+<li>Wait for the federation metadata to be updated at the federation IdPs. This
+typically involves a 12h delay.</li>
+<li>Check if login in IAM works successfully through the federation: note that it
+will not work before the federation IdPs have updated their metadata. If the
+error persists after the delay, contact your federation or IdP support.</li>
+</ul>
+<p>When registering the Indigo IAM SP, there are a few critical parameters to supply:</p>
+<ul>
+<li>Assertion Consumer Service (ACS), consisting of 3 parameters:
+<ul>
+<li>Binding: must be <code>HTTP Post</code></li>
+<li>URL: it is the instance URL + <code>/saml/SSO</code>, e.g. <code>https://iam.example.com/saml/SSO</code></li>
+<li>Index: should be set to 0</li>
+</ul>
+</li>
+<li>X509 SAML certificate: the generated <code>self-signed</code> certificate</li>
+</ul>
+<p>Other, generally optional, parameters include the requested attribute. It is a good
+practice to declare as mandatory one of the attribute listed in
+<code>IAM_SAML_ID_RESOLVERS</code>.</p>
 <h2 id="customizing-saml-login-button-text">Customizing SAML login button text</h2>
 <p>You can customize the SAML login button text shown in the IAM login page with
 the <code>IAM_SAML_LOGIN_BUTTON_TEXT</code> environment variable.</p>

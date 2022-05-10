@@ -118,7 +118,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.b0492d1cc43c4f39399e1cbf2cf155b4.json"
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.57fcd63f60ddd8a940a4664e476e77ca.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -150,7 +150,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.b0492d1cc43c4f39399e1cbf2cf155b4.json"
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.57fcd63f60ddd8a940a4664e476e77ca.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -730,6 +730,31 @@
   </li>
   <ul>
     <li class="collapse " id="vv180docsreferenceconfigurationjwt-profiles">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.0/docs/reference/configuration/system-scopes/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">System scopes</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv180docsreferenceconfigurationsystem-scopes">
       
       
       
@@ -1730,6 +1755,13 @@
 <p>The example configuration below provides the minimal configuration needed to
 have NGINX working as a reverse proxy for the IAM web application:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#204a87;font-weight:bold">server</span> <span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">listen</span> <span style="color:#0000cf;font-weight:bold">80</span><span style="color:#000;font-weight:bold">;</span>
+  <span style="color:#204a87;font-weight:bold">listen</span> <span style="color:#4e9a06">[::]:80</span><span style="color:#000;font-weight:bold">;</span>
+  <span style="color:#204a87;font-weight:bold">server_name</span> <span style="color:#4e9a06">_</span><span style="color:#000;font-weight:bold">;</span>
+  <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#0000cf;font-weight:bold">301</span> <span style="color:#4e9a06">https://</span><span style="color:#000">$host$request_uri</span><span style="color:#000;font-weight:bold">;</span>
+<span style="color:#000;font-weight:bold">}</span>
+
+<span style="color:#204a87;font-weight:bold">server</span> <span style="color:#000;font-weight:bold">{</span>
   <span style="color:#204a87;font-weight:bold">listen</span>        <span style="color:#0000cf;font-weight:bold">443</span> <span style="color:#4e9a06">ssl</span><span style="color:#000;font-weight:bold">;</span>
   <span style="color:#204a87;font-weight:bold">server_name</span>   <span style="color:#4e9a06">YOUR_HOSTNAME_HERE</span><span style="color:#000;font-weight:bold">;</span>
   <span style="color:#204a87;font-weight:bold">access_log</span>   <span style="color:#4e9a06">/var/log/nginx/iam.access.log</span>  <span style="color:#4e9a06">combined</span><span style="color:#000;font-weight:bold">;</span>
@@ -1740,12 +1772,13 @@ have NGINX working as a reverse proxy for the IAM web application:</p>
   <span style="color:#204a87;font-weight:bold">ssl_certificate_key</span>  <span style="color:#4e9a06">/path/to/your/ssl/key.pem</span><span style="color:#000;font-weight:bold">;</span>
 
   <span style="color:#204a87;font-weight:bold">location</span> <span style="color:#4e9a06">/</span> <span style="color:#000;font-weight:bold">{</span>
-    <span style="color:#204a87;font-weight:bold">proxy_pass</span>              <span style="color:#4e9a06">THE_IAM_APP_HOSTNAME_HERE:8080</span><span style="color:#000;font-weight:bold">;</span>
+    <span style="color:#204a87;font-weight:bold">proxy_pass</span>              <span style="color:#4e9a06">http://THE_IAM_APP_HOSTNAME_HERE:8080</span><span style="color:#000;font-weight:bold">;</span>
     <span style="color:#204a87;font-weight:bold">proxy_set_header</span>        <span style="color:#4e9a06">X-Real-IP</span> <span style="color:#000">$remote_addr</span><span style="color:#000;font-weight:bold">;</span>
     <span style="color:#204a87;font-weight:bold">proxy_set_header</span>        <span style="color:#4e9a06">X-Forwarded-For</span> <span style="color:#000">$proxy_add_x_forwarded_for</span><span style="color:#000;font-weight:bold">;</span>
     <span style="color:#204a87;font-weight:bold">proxy_set_header</span>        <span style="color:#4e9a06">X-Forwarded-Proto</span> <span style="color:#4e9a06">https</span><span style="color:#000;font-weight:bold">;</span>
     <span style="color:#204a87;font-weight:bold">proxy_set_header</span>        <span style="color:#4e9a06">Host</span> <span style="color:#000">$http_host</span><span style="color:#000;font-weight:bold">;</span>
   <span style="color:#000;font-weight:bold">}</span>
+<span style="color:#000;font-weight:bold">}</span>
 </code></pre></div><h2 id="x509-client-authentication">X.509 client authentication</h2>
 <p>IAM supports X.509 client certificate authentication. To enable X.509 client
 certificate authentication use a configuration similar to the
@@ -1889,12 +1922,14 @@ directory as follows:</p>
         
             
         
+            
+        
     
 </div>
 
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified September 8, 2021: <a  href="https://github.com/indigo-iam/iam-website/commit/669a772e899eba1635ee2c9ed1ac989848eaa54b">Content refactoring (669a772)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified April 22, 2022: <a  href="https://github.com/indigo-iam/iam-website/commit/88136ce04114226d135da488c014f67136866b49">Temptative manual merge of branch v1.7.2 into v1.8.0 (88136ce)</a>
 </div>
 </div>
 

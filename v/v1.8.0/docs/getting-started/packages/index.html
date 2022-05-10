@@ -118,7 +118,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.b0492d1cc43c4f39399e1cbf2cf155b4.json"
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.57fcd63f60ddd8a940a4664e476e77ca.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -150,7 +150,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.b0492d1cc43c4f39399e1cbf2cf155b4.json"
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.57fcd63f60ddd8a940a4664e476e77ca.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -730,6 +730,31 @@
   </li>
   <ul>
     <li class="collapse " id="vv180docsreferenceconfigurationjwt-profiles">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.0/docs/reference/configuration/system-scopes/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">System scopes</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv180docsreferenceconfigurationsystem-scopes">
       
       
       
@@ -1684,8 +1709,11 @@
   <ul>
     <li><a href="#centos-7">CENTOS 7</a></li>
     <li><a href="#iam-service-configuration">IAM service configuration</a></li>
-    <li><a href="#run-the-service">Run the service</a></li>
-    <li><a href="#automated-provisioning-with-puppet">Automated provisioning with Puppet</a></li>
+    <li><a href="#run-the-service">Run the service</a>
+      <ul>
+        <li><a href="#deployment-tips">Deployment Tips</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -1775,17 +1803,19 @@ section</a>).</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sudo systemctl start iam-login-service
 </code></pre></div><p>To access the service logs, use the following command:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sudo journalctl -fu iam-login-service
-</code></pre></div><h2 id="automated-provisioning-with-puppet">Automated provisioning with Puppet</h2>
-<p>The IAM login service Puppet module can be  found <a href="https://github.com/indigo-iam/puppet-indigo-iam">here</a>.
-The module configures the IAM Login Service packages installation,
-configuration and the automatic generation of the JWK keystore.</p>
-<p>The setup of the MySQL database used by the service as well as the setup of the
-reverse proxy are <strong>not covered</strong> by this module.</p>
-<p>However, the module provides an example of setup of both the Login Service and
-NginX as reverse proxy, using the official NginX Puppet module.</p>
-<p>For more detailed information about the Indigo IAM Puppet module usage, see the
-documentation in the <a href="https://github.com/indigo-iam/puppet-indigo-iam">Github repository</a>.</p>
-
+</code></pre></div><h3 id="deployment-tips">Deployment Tips</h3>
+<p>In headless servers, running <code>haveged</code> daemon is recommended to generate more entropy.
+Before running the IAM login service, check the available entropy with:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cat /proc/sys/kernel/random/entropy_avail
+</code></pre></div><p>If the obtained value is less than 1000, then <code>haveged</code> daemon is mandatory.</p>
+<p>Install EPEL repository:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sudo yum install -y epel-release
+</code></pre></div><p>Install Haveged:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sudo yum install -y haveged
+</code></pre></div><p>Enable and run the <code>haveged</code> daemon with:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sudo systemctl <span style="color:#204a87">enable</span> haveged
+$ sudo systemctl start haveged
+</code></pre></div>
         <div class="section-index">
     
     
@@ -1912,12 +1942,14 @@ documentation in the <a href="https://github.com/indigo-iam/puppet-indigo-iam">G
         
             
         
+            
+        
     
 </div>
 
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified September 17, 2021: <a  href="https://github.com/indigo-iam/iam-website/commit/881a38a6d4464a4376c9c67bbd810a6ce33614f9">Fix some broken references (881a38a)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified April 1, 2022: <a  href="https://github.com/indigo-iam/iam-website/commit/702879283435a932e8615c1d7358633b9a56899e">Remove puppet references in the documentation (7028792)</a>
 </div>
 </div>
 

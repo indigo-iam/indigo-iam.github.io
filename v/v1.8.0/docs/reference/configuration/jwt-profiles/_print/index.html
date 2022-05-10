@@ -118,7 +118,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.b0492d1cc43c4f39399e1cbf2cf155b4.json"
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.57fcd63f60ddd8a940a4664e476e77ca.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -209,9 +209,9 @@ in the list of scopes authorized for a client:</p>
 client, IAM falls back to the default profile configured for the IAM instance.</p>
 <h2 id="using-system-scopes-to-control-profile-selection">Using system scopes to control profile selection</h2>
 <p>MitreID <strong>System Scopes</strong> can be used to control access to profile selection.</p>
-<p>For example, by setting a profile scope as <code>restricted</code>, such scope will not be
-available to dynamically registered clients and can only be assigned to clients
-by IAM administrators.</p>
+<p>The scopes <code>iam</code>, <code>wlcg</code> and <code>aarc</code> used to select the JWT profile are not available in IAM
+by default; an administrator has to add all of them manually, as described in the
+in <a href="/v/v1.8.0/docs/reference/configuration/system-scopes/">System Scopes documentation</a>.</p>
 <h2 id="supported-jwt-profiles">Supported JWT profiles</h2>
 <h3 id="the-iam-profile">The IAM profile</h3>
 <p>This is the default profile for IAM.</p>
@@ -248,14 +248,15 @@ environment variable;</p>
 <p>This profile is assigned to clients using the <code>wlcg</code> scope.</p>
 <h4 id="requesting-groups-with-the-wlcg-profile">Requesting groups with the WLCG profile</h4>
 <p>When the WLCG profile is used, groups are not automatically included in access
-tokens and ID tokens, but can be requested using the <code>wlcg.groups</code> scope,
+tokens and ID tokens, but can be requested using the <code>wlcg.groups</code> scope
+(which has to be added among the <a href="/v/v1.8.0/docs/reference/configuration/system-scopes/">System Scopes</a>),
 following the rules described in the <a href="https://github.com/WLCG-AuthZ-WG/CommonJWTProfile/blob/master/profile.md#scope-based-group-selection">WLCG
 profile</a>.</p>
 <h4 id="optional-groups">Optional groups</h4>
 <p>Optional groups are groups whose membership is only asserted in tokens on
 explicit request coming from a user.</p>
-<p>In order to configure a IAM group as an optional group, add the
-<code>wlcg.optional-group</code> label to the group.</p>
+<p>In order to configure a IAM group as an optional group,
+add the <code>wlcg.optional-group</code> label to the group.</p>
 <h3 id="the-aarc-profile">The AARC profile</h3>
 <p>This profile encodes group membership information following the rules defined
 by the <a href="https://aarc-project.eu/guidelines/aarc-g002/">AARC G002</a> profile document.</p>
