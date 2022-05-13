@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.86.0" /><link rel="canonical" type="text/html" href="/v/v1.8.0/docs/tasks/deployment/">
+<meta name="generator" content="Hugo 0.86.0" /><link rel="canonical" type="text/html" href="/v/v1.8.0/docs/tasks/deployment/ha/">
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
 
@@ -18,17 +18,17 @@
 <link rel="icon" type="image/png" href="/v/v1.8.0/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/v/v1.8.0/favicons/android-192x192.png" sizes="192x192">
 
-<title>IAM service deployment | INDIGO IAM</title><meta property="og:title" content="IAM service deployment" />
-<meta property="og:description" content="IAM service deployment tasks &amp; information
+<title>Deploying IAM in HA | INDIGO IAM</title><meta property="og:title" content="Deploying IAM in HA" />
+<meta property="og:description" content="Instructions on how to deploy the IAM service in High Availability on k8s
 " />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="/v/v1.8.0/docs/tasks/deployment/" /><meta property="og:site_name" content="INDIGO IAM" />
+<meta property="og:url" content="/v/v1.8.0/docs/tasks/deployment/ha/" /><meta property="og:site_name" content="INDIGO IAM" />
 
-<meta itemprop="name" content="IAM service deployment">
-<meta itemprop="description" content="IAM service deployment tasks &amp; information
+<meta itemprop="name" content="Deploying IAM in HA">
+<meta itemprop="description" content="Instructions on how to deploy the IAM service in High Availability on k8s
 "><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="IAM service deployment"/>
-<meta name="twitter:description" content="IAM service deployment tasks &amp; information
+<meta name="twitter:title" content="Deploying IAM in HA"/>
+<meta name="twitter:description" content="Instructions on how to deploy the IAM service in High Availability on k8s
 "/>
 
 
@@ -149,14 +149,14 @@
 This the multi-page printable view of this section.
 <a href="#" onclick="print();return false;">Click here to print</a>.
 </p><p>
-<a href="/v/v1.8.0/docs/tasks/deployment/">Return to the regular view of this page</a>.
+<a href="/v/v1.8.0/docs/tasks/deployment/ha/">Return to the regular view of this page</a>.
 </p>
 </div>
 
 
 
-<h1 class="title">IAM service deployment</h1>
-<div class="lead">IAM service deployment tasks &amp; information</div>
+<h1 class="title">Deploying IAM in HA</h1>
+<div class="lead">Instructions on how to deploy the IAM service in High Availability on k8s</div>
 
 
 
@@ -168,322 +168,13 @@ This the multi-page printable view of this section.
   
   
 
-  
-    
-    
-	
-<li>1: <a href="#pg-f9c47943a3e72ee39a36f76a84d7aef8">Backup &amp; Restore</a></li>
-
-
-    
-    <ul>
-        
-  
-  
-  
-  
-
-  
-
-    </ul>
-    
-  
-    
-    
-	
-<li>2: <a href="#pg-20612c101bee3438f511834eec95ece8">Audit log</a></li>
-
-
-    
-    <ul>
-        
-  
-  
-  
-  
-
-  
-
-    </ul>
-    
-  
-    
-    
-	
-<li>3: <a href="#pg-0f3983ccaecafb6944a18b6d8550a571">Upgrade</a></li>
-
-
-    
-    <ul>
-        
-  
-  
-  
-  
-
-  
-
-    </ul>
-    
-  
-    
-    
-	
-<li>4: <a href="#pg-c5846d016af443a2f547d87bba4a3f62">Deploying IAM in HA</a></li>
-
-
-    
-    <ul>
-        
-  
-  
-  
-  
-
-  
-
-    </ul>
-    
-  
-    
-    
-	
-<li>5: <a href="#pg-16b818f0193a0e55e0f1cffd093e8e01">Deploying the IAM VOMS attribute authority</a></li>
-
-
-    
-    <ul>
-        
-  
-  
-  
-  
-
-  
-
-    </ul>
-    
   
 
     </ul>
 
 
 <div class="content">
-      
-</div>
-</div>
-
-
-  
-  
-  
-  
-
-  
-  
-
-  
-    
-    
-	
-    
-
-<div class="td-content" style="">
-    
-	<h1 id="pg-f9c47943a3e72ee39a36f76a84d7aef8">1 - Backup &amp; Restore</h1>
-    
-	<h2 id="backup">Backup</h2>
-<p>The IAM data that needs to saved by a backup is:</p>
-<ul>
-<li>database data;</li>
-<li>service configuration, typically maintained in an environment file: <code>/etc/sysconfig/iam-login-service</code> on CentOS, <code>/etc/default/iam-login-service</code> on Ubuntuu;</li>
-<li>the keystore used to sign JWT tokens: <code>/var/lib/indigo/iam-login-service/keystore.jks</code>;</li>
-<li>the SAML keystore, used when SAML authentication is enabled: <code>/var/lib/indigo/iam/iam-login-service/example.ks</code>.</li>
-</ul>
-<p>The above locations apply when installing from packages on CentOS or Ubuntu.</p>
-<p>An example of backup script is given below:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000">timestamp</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">`</span>date +<span style="color:#4e9a06">&#39;%Y-%m-%d_%H%M%S&#39;</span><span style="color:#4e9a06">`</span>
-
-<span style="color:#000">MYSQL_HOST</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;mydbhost&#34;</span>
-<span style="color:#000">MYSQL_USER</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;iamloginserviceuser&#34;</span>
-<span style="color:#000">MYSQL_PWD</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;iamloginservicepassword&#34;</span>
-<span style="color:#000">MYSQL_DBNAME</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;iamloginservicedb&#34;</span>
-
-<span style="color:#000">MYSQL_DUMP_OPTS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;-u </span><span style="color:#4e9a06">${</span><span style="color:#000">MYSQL_USER</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06"> -p</span><span style="color:#4e9a06">${</span><span style="color:#000">MYSQL_PWD</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06"> --host </span><span style="color:#4e9a06">${</span><span style="color:#000">MYSQL_HOST</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span>
-
-<span style="color:#000">dumpfile</span><span style="color:#ce5c00;font-weight:bold">=</span>iam_dump.sql
-
-mysqldump <span style="color:#4e9a06">${</span><span style="color:#000">MYSQL_DUMP_OPTS</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">${</span><span style="color:#000">MYSQL_DBNAME</span><span style="color:#4e9a06">}</span> &gt; <span style="color:#4e9a06">${</span><span style="color:#000">dumpfile</span><span style="color:#4e9a06">}</span>
-
-tar czf iam_backup.tar.gz <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  <span style="color:#4e9a06">${</span><span style="color:#000">dumpfile</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  /etc/sysconfig/iam-login-service <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  /var/lib/indigo/iam-login-service/keystore.jks <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  /var/lib/indigo/iam/iam-login-service/example.ks
-</code></pre></div><p>The keystore paths can be customized, so adapt the backup script according your configuration.</p>
-<p>If you are deploying IAM with Docker and use a volume to provide configuration
-to the service, backup the contents of such volume.</p>
-<h2 id="restore">Restore</h2>
-<p>From the backup, import the database data from the SQL dump:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ <span style="color:#204a87">export</span> <span style="color:#000">MYSQL_HOST</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;mydbhost&#34;</span>
-$ <span style="color:#204a87">export</span> <span style="color:#000">MYSQL_USER</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;iamloginserviceuser&#34;</span>
-$ <span style="color:#204a87">export</span> <span style="color:#000">MYSQL_PWD</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;iamloginservicepassword&#34;</span>
-$ <span style="color:#204a87">export</span> <span style="color:#000">MYSQL_DBNAME</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;iamloginservicedb&#34;</span>
-
-$ mysql --host <span style="color:#4e9a06">${</span><span style="color:#000">MYSQL_HOST</span><span style="color:#4e9a06">}</span> -u <span style="color:#4e9a06">${</span><span style="color:#000">MYSQL_USER</span><span style="color:#4e9a06">}</span> -p<span style="color:#4e9a06">${</span><span style="color:#000">MYSQL_PWD</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">${</span><span style="color:#000">MYSQL_DBNAME</span><span style="color:#4e9a06">}</span> &lt; iam_backup/iam_dump.sql
-</code></pre></div><h3 id="deployment-from-packages">Deployment from packages</h3>
-<p>To restore the IAM service from scratch, install the package.</p>
-<p>On CentOS:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sudo yum install -y iam-login-service
-</code></pre></div><p>Restore the environment file.</p>
-<p>On CentOS:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sudo cp iam_backup/etc/sysconfig/iam-login-service /etc/sysconfig/iam-login-service
-</code></pre></div><p>On Ubuntu:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sudo cp iam_backup/etc/default/iam-login-service /etc/default/iam-login-service
-</code></pre></div><p>Copy the keystores in the correct path, according to your configuration:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sudo cp iam_backup/var/lib/indigo/iam-login-service/keystore.jks /var/lib/indigo/iam-login-service/keystore.jks
-$ sudo cp iam_backup/var/lib/indigo/iam/iam-login-service/example.ks /var/lib/indigo/iam/iam-login-service/example.ks
-</code></pre></div><p>Ensure the keystores have the right ownership:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sudo chown -R iam:iam /var/lib/indigo/iam-login-service
-</code></pre></div><p>Start the IAM Login Service daemon:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sudo systemctl start iam-login-service
-</code></pre></div><h3 id="deployment-with-docker">Deployment with Docker</h3>
-<p>Copy the files from the backup to the volume location:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cp iam_backup/iam-login-service/env /path/to/iam-login-service/env
-$ cp iam_backup/keystore.jks /path/to/keystore.jks
-</code></pre></div><p>Start the container:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker run <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  --name iam-login-service <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  --net<span style="color:#ce5c00;font-weight:bold">=</span>iam -p 8080:8080 <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  --env-file<span style="color:#ce5c00;font-weight:bold">=</span>/path/to/iam-login-service/env <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  -v /path/to/keystore.jks:/keystore.jks:ro <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  indigoiam/iam-login-service:latest
-</code></pre></div>
-</div>
-
-
-
-    
-      
-  
-  
-  
-  
-
-  
-  
-
-  
-
-    
-	
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-20612c101bee3438f511834eec95ece8">2 - Audit log</h1>
-    
-	<p>IAM Login Service traces interesting, security related events with an audit log.</p>
-<p>Audit log messages are marked with the tag <code>AUDIT</code> in the Java class name
-field.</p>
-<p>An example of audit log message is the following:</p>
-<pre><code class="language-console" data-lang="console">2017-09-11 09:58:14.560  INFO 13 --- [o-8080-exec-311] AUDIT : {&quot;@type&quot;:&quot;IamAuthenticationSuccessEvent&quot;,&quot;timestamp&quot;:1505116694560,&quot;category&quot;:&quot;AUTHENTICATION&quot;,&quot;principal&quot;:&quot;794fb313-6e93-4d02-9d0a-4ed773ee2c5e&quot;,&quot;message&quot;:&quot;794fb313-6e93-4d02-9d0a-4ed773ee2c5e authenticated succesfully&quot;,&quot;sourceEvent&quot;:{&quot;principal&quot;:&quot;794fb313-6e93-4d02-9d0a-4ed773ee2c5e&quot;,&quot;type&quot;:&quot;InteractiveAuthenticationSuccessEvent&quot;},&quot;source&quot;:&quot;UsernamePasswordAuthenticationToken&quot;}
-</code></pre><p>The IAM login service writes logs to standard output in the default
-configuration. When deployed from packages, all logs are collected by the
-system journal.</p>
-
-</div>
-
-
-
-    
-      
-  
-  
-  
-  
-
-  
-  
-
-  
-
-    
-	
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-0f3983ccaecafb6944a18b6d8550a571">3 - Upgrade</h1>
-    
-	<p>This section provides instructions to upgrade the IAM service to the latest
-available version.</p>
-<h3 id="deployment-from-packages">Deployment from packages</h3>
-<p>Stop the service:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ systemctl stop iam-login-service
-</code></pre></div><p>Update the package:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ yum update -y iam-login-service
-</code></pre></div><p>Restart the service:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ systemctl start iam-login-service
-</code></pre></div><h3 id="deployment-with-docker">Deployment with Docker</h3>
-<p>Stop and remove the running container:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker stop iam-login-service
-$ docker rm iam-login-service
-</code></pre></div><p>Pull the latest image:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker pull indigoiam/iam-login-service:latest
-</code></pre></div><p>Restart the container:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker run <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  --name iam-login-service <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  --net<span style="color:#ce5c00;font-weight:bold">=</span>iam -p 8080:8080 <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  --env-file<span style="color:#ce5c00;font-weight:bold">=</span>/path/to/iam-login-service/env <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  -v /path/to/keystore.jks:/keystore.jks:ro <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  indigoiam/iam-login-service:latest
-</code></pre></div><p>Otherwise, you can specify the exact tag version. For example, if the latest
-tag is <code>v1.1.0-latest</code>:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker run <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  --name iam-login-service <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  --net<span style="color:#ce5c00;font-weight:bold">=</span>iam -p 8080:8080 <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  --env-file<span style="color:#ce5c00;font-weight:bold">=</span>/path/to/iam-login-service/env <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  -v /path/to/keystore.jks:/keystore.jks:ro <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  indigoiam/iam-login-service:v1.1.0-latest
-</code></pre></div>
-</div>
-
-
-
-    
-      
-  
-  
-  
-  
-
-  
-  
-
-  
-
-    
-	
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-c5846d016af443a2f547d87bba4a3f62">4 - Deploying IAM in HA</h1>
-    <div class="lead">Instructions on how to deploy the IAM service in High Availability on k8s</div>
-	<p>Starting from version 1.8.0, the IAM service can be deployed in High Availability mode.<br>
+      <p>Starting from version 1.8.0, the IAM service can be deployed in High Availability mode.<br>
 It relies on <a href="https://redis.io/">redis</a> as external component used for storing the
 log-in sessions, which has to be deployed as well.</p>
 <p>Here is an example on how to deploy three IAM replicas on a <a href="https://kubernetes.io/">kubernetes</a> cluster.</p>
@@ -595,145 +286,9 @@ based on the <code>redis</code> <a href="https://hub.docker.com/_/redis">docker 
 </span><span style="color:#f8f8f8;text-decoration:underline">        </span>- <span style="color:#204a87;font-weight:bold">containerPort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">6379</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div>
 </div>
-
-
-
-    
-      
-  
-  
-  
-  
-
-  
-  
-
-  
-
-    
-	
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-16b818f0193a0e55e0f1cffd093e8e01">5 - Deploying the IAM VOMS attribute authority</h1>
-    <div class="lead">Instructions on how to deploy and configure the IAM VOMS attribute authority micro-service</div>
-	<h2 id="the-iam-voms-attribute-authority">The IAM VOMS attribute authority</h2>
-<p>The IAM <a href="https://github.com/indigo-iam/voms-aa">VOMS attribute authority</a> (AA) provide backward-compatible
-<a href="http://italiangrid.github.io/voms/">VOMS</a> support for a Virtual Organization managed with IAM.</p>
-<h3 id="deployment-architecture">Deployment architecture</h3>
-<p><img src="../img/iam-voms-aa.png" alt="VOMS AA deployment"></p>
-<p>The VOMS attribute authority can access the IAM database and encode IAM groups
-and other attributes in a standard VOMS attribute certificate. This means in
-practice that IAM can act both as an OAuth/OpenID Connect authorization server
-and as a VOMS server for a given organization. TLS termination and client VOMS
-atttribute certificate parsing and validation is delegated to <a href="https://github.com/indigo-iam/openresty-voms">OpenResty
-VOMS</a>, which can de deployed as a sidecar service that just protects the
-VOMS AA or also in front of the IAM backend application. The two scenarios are
-depicted above.</p>
-<p>In order to deploy a VOMS attribute authority, you can use the following docker
-images:</p>
-<ul>
-<li><code>indigoiam/openresty-voms</code>, for the OpenResty VOMS service</li>
-<li><code>indigoiam/voms-aa:v1.8.0</code>, for the VOMS AA service</li>
-</ul>
-<p>Deployment from packages is not currently supported for the VOMS attribute
-authority.</p>
-<h4 id="openresty-voms-configuration">OpenResty VOMS configuration</h4>
-<p>OpenResty VOMS requires:</p>
-<ul>
-<li>IGTF trust anchors properly configured; see the <a href="https://github.com/indigo-iam/egi-trust-anchors-container/">EGI trust anchors
-container</a> container</li>
-<li>the <code>vomsdir</code> folder, with the VOMS LSC configuration generated starting from
-the VOMS attribute authority X.509 credential</li>
-</ul>
-<h5 id="voms-lsc-configuration">VOMS LSC configuration</h5>
-<p>Let&rsquo;s assume that the IAM VOMS AA will answer on <code>voms.local.io</code> for the VO
-<code>example.vo</code>, to generate the LSC you need to get the subject and issuer of the
-VOMS AA X.509 credential and put them in a file named as the fully qualified
-domain name of the VOMS attribute authority with the <code>.lsc</code> extension.</p>
-<p>The following command does exactly that (<code>X509_VOMS_DIR</code> can be set to any
-directory where you have writing privileges):</p>
-<pre><code class="language-console" data-lang="console">&gt; mkdir -p ${X509_VOMS_DIR}/example.vo
-&gt; openssl x509 -in voms_local_io.cert.pem -noout -subject -issuer -nameopt compat | \
-  gsed -e 's/^subject=//' -e 's/^issuer=//' &gt; \
-  ${X509_VOMS_DIR}/example.vo/voms.local.io.lsc
-</code></pre><p>For an example nginx configuration, see the <a href="https://github.com/indigo-iam/voms-aa/blob/master/compose/assets/openresty-voms/conf.d/voms.local.io.conf">VOMS AA docker compose
-file</a>.</p>
-<h4 id="voms-aa-configuration">VOMS AA configuration</h4>
-<p>The VOMS AA is a spring boot application that shares the persistence
-layer implementation with IAM, and as such can inspect the IAM database.</p>
-<p>An example configuration for the VOMS AA service is given below, with comments
-to explain the meaning of the parameters:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">server</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">address</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0.0.0.0</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># bind on all IP addresses</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">port</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># listen on port 8080</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">use-forward-headers</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># assume you&#39;re behind a reverse proxy</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># change the default http header size limit to accomodate VOMS information passed </span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># down by the ngx-voms server</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">max-http-header-size</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">16000</span><span style="color:#f8f8f8;text-decoration:underline"> 
-</span><span style="color:#f8f8f8;text-decoration:underline">  
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spring</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">main</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">banner-mode</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;off&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> 
-</span><span style="color:#f8f8f8;text-decoration:underline">  
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">jpa</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">open-in-view</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic">## Database connection parameters</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">datasource</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">dataSourceClassName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">com.mysql.jdbc.jdbc2.optional.MysqlDataSource</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">url</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">jdbc:mysql://${IAM_DB_HOST}:${IAM_DB_PORT:3306}/${IAM_DB_NAME}?useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;useSSL=false</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">username</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${IAM_DB_USERNAME}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">password</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${IAM_DB_PASSWORD}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">flyway</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">enabled</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">      
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">voms</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">tls</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># The VOMS AA certificate </span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">certificate-path</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/certs/hostcert.pem</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># The VOMS AA certificate key</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">private-key-path</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/certs/hostkey.pem</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># Where to look for X.509 trust anchors</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">trust-anchors-dir</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/etc/grid-security/certificates</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># How often should trust anchors (and CRLs) be refreshed</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">trust-anchors-refresh-interval-secs</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">14400</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">aa</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># The VOMS attribute authority host</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">host</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">voms.example</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># The VOMS attribute authority port. Note that this is the port on </span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># the reverse proxy, not the local service port</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">port</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">443</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># The VOMS VO name</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">vo-name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${VOMS_AA_VO}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># Use FQAN legacy encoding, i.e.,</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># /voms/Role=NULL/Capability=NULL </span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># instead of</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># /voms</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">use-legacy-fqan-encoding</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><p>For an example configuration, see the <a href="https://github.com/indigo-iam/voms-aa/blob/master/compose/docker-compose.yml">VOMS AA docker compose
-file</a>.</p>
-
 </div>
 
 
-
-    
-      
   
   
   
@@ -742,10 +297,6 @@ file</a>.</p>
   
   
 
-  
-
-    
-	
   
 
 

@@ -118,7 +118,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.6e17174b8d919d734712515d13c3ed8e.json"
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.dbaf739faee6efba5fabd5b5b9aaa212.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -921,7 +921,26 @@ This the multi-page printable view of this section.
     
     
 	
-<li>4.2.4: <a href="#pg-16b818f0193a0e55e0f1cffd093e8e01">Deploying the IAM VOMS attribute authority</a></li>
+<li>4.2.4: <a href="#pg-c5846d016af443a2f547d87bba4a3f62">Deploying IAM in HA</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>4.2.5: <a href="#pg-16b818f0193a0e55e0f1cffd093e8e01">Deploying the IAM VOMS attribute authority</a></li>
 
 
     
@@ -2357,67 +2376,101 @@ Only administrators can reject requests.</p>
 	<p>The IAM Login Service exposes a set of health endpoints that can be used to
 monitor the status of the service.</p>
 <p>Health endpoints expose a different set of information depending on the user
-privileges; users with administrator privileges will see more details, while
+privileges; requests from the <em>Actuator</em> user will see more details, while
 anonymous requests typically receive only a summary of the health status.</p>
+<p>The Actuator role has been introduced in IAM starting with version 1.8.0,
+in order to access the following resources</p>
+<ul>
+<li><code>/actuator/health</code></li>
+<li><code>/actuator/info</code></li>
+</ul>
+<p>without being an IAM user and it is useful for deployment purposes.<br>
+The Actuator user credentials can be configured with the environment variables
+<code>IAM_ACTUATOR_USER_USERNAME</code> and <code>IAM_ACTUATOR_USER_PASSWORD</code>,
+as explained in <a href="../../configuration/#basic-service-configuration">Configuration</a>.</p>
 <p>The health endpoints return:</p>
 <ul>
 <li>HTTP status code 200 if everything is ok;</li>
 <li>HTTP status code 500 if any health check fails.</li>
 </ul>
-<h2 id="health"><code>/health</code></h2>
+<h2 id="actuatorhealth"><code>/actuator/health</code></h2>
 <p>This is a general application health check endpoint which composes disk space
 and database health checks.</p>
 <p>Examples.</p>
-<pre><code class="language-console" data-lang="console">$ curl -s https://iam.local.io/health | jq
-{
-  &quot;status&quot;: &quot;UP&quot;
-}
-</code></pre><p>Sending basic authentication, the endpoint returns a response with more details:</p>
-<pre><code class="language-console" data-lang="console">$ curl -s -u $ADMINUSER:$ADMINPASSWORD https://iam.local.io/health | jq
+<pre><code class="language-console" data-lang="console">$ curl -s https://iam.local.io/actuator/health | jq
 {
   &quot;status&quot;: &quot;UP&quot;,
-  &quot;diskSpace&quot;: {
-    &quot;status&quot;: &quot;UP&quot;,
-    &quot;total&quot;: 10725883904,
-    &quot;free&quot;: 9872744448,
-    &quot;threshold&quot;: 10485760
-  },
-  &quot;db&quot;: {
-    &quot;status&quot;: &quot;UP&quot;,
-    &quot;database&quot;: &quot;MySQL&quot;,
-    &quot;hello&quot;: 1
+  &quot;components&quot;: {
+    &quot;db&quot;: {
+      &quot;status&quot;: &quot;UP&quot;
+    },
+    &quot;diskSpace&quot;: {
+      &quot;status&quot;: &quot;UP&quot;
+    },
+    &quot;ping&quot;: {
+      &quot;status&quot;: &quot;UP&quot;
+    }
   }
 }
-</code></pre><h2 id="healthmail"><code>/health/mail</code></h2>
+</code></pre><p>Sending basic authentication, the endpoint returns a response with more details:</p>
+<pre><code class="language-console" data-lang="console">$ curl -s -u $IAM_ACTUATOR_USER_USERNAME:$IAM_ACTUATOR_USER_PASSWORD https://iam.local.io/actuator/health | jq
+{
+  &quot;status&quot;: &quot;UP&quot;,
+  &quot;components&quot;: {
+    &quot;db&quot;: {
+      &quot;status&quot;: &quot;UP&quot;,
+      &quot;details&quot;: {
+        &quot;database&quot;: &quot;H2&quot;,
+        &quot;validationQuery&quot;: &quot;isValid()&quot;
+      }
+    },
+    &quot;diskSpace&quot;: {
+      &quot;status&quot;: &quot;UP&quot;,
+      &quot;details&quot;: {
+        &quot;total&quot;: 502468108288,
+        &quot;free&quot;: 320953249792,
+        &quot;threshold&quot;: 10485760,
+        &quot;exists&quot;: true
+      }
+    },
+    &quot;ping&quot;: {
+      &quot;status&quot;: &quot;UP&quot;
+    }
+  }
+}
+
+</code></pre><h2 id="actuatorhealthmail"><code>/actuator/health/mail</code></h2>
 <p>This endpoint monitors the connection to the SMTP server configured for the
-IAM Notification Service.</p>
-<pre><code class="language-console" data-lang="console">$ curl -s https://iam.local.io/health/mail | jq
+IAM Notification Service.<br>
+In order to enable the SMTP server check, set the environment variable
+<code>IAM_HEALTH_MAIL_PROBE_ENABLED</code> to true.</p>
+<pre><code class="language-console" data-lang="console">$ curl -s https://iam.local.io/actuator/health/mail | jq
 {
   &quot;status&quot;: &quot;UP&quot;
 }
 </code></pre><p>With an authenticated request, the SMTP server details are returned:</p>
-<pre><code class="language-console" data-lang="console">$ curl -u $ADMINUSER:$ADMINPASSWORD https://iam.local.io/health/mail | jq
+<pre><code class="language-console" data-lang="console">$ curl -u $IAM_ACTUATOR_USER_USERNAME:$IAM_ACTUATOR_USER_PASSWORD https://iam.local.io/actuator/health/mail | jq
 {
   &quot;status&quot;: &quot;UP&quot;,
-  &quot;mail&quot;: {
-    &quot;status&quot;: &quot;UP&quot;,
+  &quot;details&quot;: {
     &quot;location&quot;: &quot;smtp.local.io:25&quot;
   }
 }
-</code></pre><h2 id="healthexternal"><code>/health/external</code></h2>
+</code></pre><h2 id="actuatorhealthexternalconnectivity"><code>/actuator/health/externalConnectivity</code></h2>
 <p>This endpoint checks service connectivity to the Internet. By default, the
-endpoint triggers a check on the connectivity to Google.</p>
-<pre><code class="language-console" data-lang="console">$ curl -s https://iam.local.io/health/external | jq
+endpoint triggers a check on the connectivity to Google.<br>
+In order to enable the external connectivity check, set the environment variable
+<code>IAM_HEALTH_EXTERNAL_CONNECTIVITY_PROBE_ENABLED</code> to true.</p>
+<pre><code class="language-console" data-lang="console">$ curl -s https://iam.local.io/actuator/health/externalConnectivity | jq
 {
   &quot;status&quot;: &quot;UP&quot;
 }
 </code></pre><p>With an authenticated request, the external service URL is shown in the details.</p>
-<pre><code class="language-console" data-lang="console">$ curl -s -u $ADMINUSER:$ADMINPASSWORD https://iam.local.io/health/external | jq
+<pre><code class="language-console" data-lang="console">$ curl -s -u $IAM_ACTUATOR_USER_USERNAME:$IAM_ACTUATOR_USER_PASSWORD https://iam.local.io/actuator/health/externalConnectivity | jq
 {
   &quot;status&quot;: &quot;UP&quot;,
-  &quot;google&quot;: {
-    &quot;status&quot;: &quot;UP&quot;,
-    &quot;location&quot;: &quot;http://www.google.it&quot;
+  &quot;details&quot;: {
+    &quot;endpoint&quot;: &quot;https://www.google.it&quot;
   }
 }
 </code></pre>
@@ -5165,11 +5218,11 @@ scenarios not served by the default templates.</p>
 
 <span style="color:#8f5902;font-style:italic"># Sets the username of the user allowed to have privileged access to actuator</span>
 <span style="color:#8f5902;font-style:italic"># endpoints</span>
-<span style="color:#000">IAM_SUPERUSER_USERNAME</span><span style="color:#ce5c00;font-weight:bold">=</span>whatever
+<span style="color:#000">IAM_ACTUATOR_USER_USERNAME</span><span style="color:#ce5c00;font-weight:bold">=</span>user
 
 <span style="color:#8f5902;font-style:italic"># Sets the password of the user allowed to have privileged access to actuator</span>
 <span style="color:#8f5902;font-style:italic"># endpoints</span>
-<span style="color:#000">IAM_SUPERUSER_PASSWORD</span><span style="color:#ce5c00;font-weight:bold">=</span>whatever
+<span style="color:#000">IAM_ACTUATOR_USER_PASSWORD</span><span style="color:#ce5c00;font-weight:bold">=</span>secret
 
 <span style="color:#8f5902;font-style:italic">## Local resources configuration</span>
 
@@ -5251,6 +5304,33 @@ scenarios not served by the default templates.</p>
 <span style="color:#8f5902;font-style:italic"># The minimum amount of time a connection may be idle in the pool</span>
 <span style="color:#8f5902;font-style:italic"># before it is considered for eviction (in msec)</span>
 <span style="color:#000">IAM_DB_MIN_EVICTABLE_IDLE_TIME_MILLIS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">60000</span>
+</code></pre></div><h2 id="redis-configuration">Redis configuration</h2>
+<p>Starting with version 1.8.0, IAM supports storing HTTP session
+information in an external <a href="https://redis.io/">redis</a> server.</p>
+<p>This can be useful when <a href="../../../docs/tasks/deployment/ha">deploying multiple replicas of the IAM
+service</a>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic">## Redis server settings</span>
+
+<span style="color:#8f5902;font-style:italic"># Redis server hostname</span>
+<span style="color:#000">IAM_SPRING_REDIS_HOST</span><span style="color:#ce5c00;font-weight:bold">=</span>localhost
+
+<span style="color:#8f5902;font-style:italic"># Redis server port</span>
+<span style="color:#000">IAM_SPRING_REDIS_PORT</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">6397</span>
+
+<span style="color:#8f5902;font-style:italic"># Redis server password.</span>
+<span style="color:#8f5902;font-style:italic"># Leave it empty in case the server does not require any password</span>
+<span style="color:#000">IAM_SPRING_REDIS_PASSWORD</span><span style="color:#ce5c00;font-weight:bold">=</span>secret
+
+<span style="color:#8f5902;font-style:italic"># Duration of an HTTP session</span>
+<span style="color:#000">IAM_SESSION_TIMEOUT_SECS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1800</span>
+
+<span style="color:#8f5902;font-style:italic"># Set to &#39;redis&#39; in order to handle HTTP session</span>
+<span style="color:#8f5902;font-style:italic"># with an external Redis service</span>
+<span style="color:#000">IAM_SPRING_SESSION_STORE_TYPE</span><span style="color:#ce5c00;font-weight:bold">=</span>none
+
+<span style="color:#8f5902;font-style:italic"># If set to &#39;true&#39; the status of the Redis service</span>
+<span style="color:#8f5902;font-style:italic"># will appear in the IAM Health check endpoint</span>
+<span style="color:#000">IAM_HEALTH_REDIS_PROBE_ENABLED</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">false</span>
 </code></pre></div><h2 id="google-authentication-settings">Google authentication settings</h2>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># The Google OAuth client id</span>
 <span style="color:#000">IAM_GOOGLE_CLIENT_ID</span><span style="color:#ce5c00;font-weight:bold">=</span>
@@ -6631,7 +6711,146 @@ tag is <code>v1.1.0-latest</code>:</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-16b818f0193a0e55e0f1cffd093e8e01">4.2.4 - Deploying the IAM VOMS attribute authority</h1>
+	<h1 id="pg-c5846d016af443a2f547d87bba4a3f62">4.2.4 - Deploying IAM in HA</h1>
+    <div class="lead">Instructions on how to deploy the IAM service in High Availability on k8s</div>
+	<p>Starting from version 1.8.0, the IAM service can be deployed in High Availability mode.<br>
+It relies on <a href="https://redis.io/">redis</a> as external component used for storing the
+log-in sessions, which has to be deployed as well.</p>
+<p>Here is an example on how to deploy three IAM replicas on a <a href="https://kubernetes.io/">kubernetes</a> cluster.</p>
+<h3 id="iam-deployment-in-ha">IAM Deployment in HA</h3>
+<p>An example of three replicas of the IAM service deployment on k8s is the following:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">apps/v1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Deployment</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">iam-login-service</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">selector</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">matchLabels</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">app</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">iam</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">tier</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">login-service</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">replicas</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">strategy</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">RollingUpdate</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">rollingUpdate</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">maxSurge</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">maxUnavailable</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">template</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">labels</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">app</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">iam</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">tier</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">login-service</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">affinity</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">podAntiAffinity</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">requiredDuringSchedulingIgnoredDuringExecution</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">            </span>- <span style="color:#204a87;font-weight:bold">labelSelector</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">                </span><span style="color:#204a87;font-weight:bold">matchExpressions</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span><span style="color:#f8f8f8;text-decoration:underline">                </span>- <span style="color:#204a87;font-weight:bold">key</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">tier</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">                  </span><span style="color:#204a87;font-weight:bold">operator</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">In</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">                  </span><span style="color:#204a87;font-weight:bold">values</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">                    </span>- <span style="color:#000">login-service</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">topologyKey</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kubernetes.io/hostname</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">volumes</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">json-keystore-secret-vol</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">secret</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">secretName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">json-keystore-secret</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">containers</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">iam-login-service</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">image</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">indigoiam/iam-login-service:v1.8.0</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">imagePullPolicy</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Always</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">ports</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">          </span>- <span style="color:#204a87;font-weight:bold">containerPort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">iam</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">          </span>- <span style="color:#204a87;font-weight:bold">containerPort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1044</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">iam-debug</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">volumeMounts</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">            </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">json-keystore-secret-vol</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">mountPath</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/secrets/json-keystore</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">readOnly</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">readinessProbe</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">httpGet</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">path</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/actuator/health</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">port</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">initialDelaySeconds</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">90</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">timeoutSeconds</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">10</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">resources</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">requests</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">cpu</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">500m</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">memory</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1Gi</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">limits</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">cpu</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">memory</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">2Gi</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">env</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">            </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">IAM_BASE_URL</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">value</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://iam.example</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">            </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">IAM_ISSUER</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">value</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://iam.example/</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">envFrom</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">            </span>- <span style="color:#204a87;font-weight:bold">configMapRef</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">                </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">login-service-env</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">            </span>- <span style="color:#204a87;font-weight:bold">secretRef</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">                </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">db-secret-env</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><p>Here a <a href="https://kubernetes.io/docs/concepts/configuration/configmap/">configMap</a> for the <code>login-service-env</code> file is used.<br>
+You can set there the <a href="../../../reference/configuration/#redis-configuration">Configuration properties</a>
+used to enable Redis. The minimal ones required, for a password less Redis service are</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000">IAM_SPRING_SESSION_STORE_TYPE</span><span style="color:#ce5c00;font-weight:bold">=</span>redis
+<span style="color:#000">IAM_SPRING_REDIS_HOST</span><span style="color:#ce5c00;font-weight:bold">=</span>redis.example
+</code></pre></div><h3 id="redis-service-deployment">Redis service Deployment</h3>
+<p>A basic example of the Redis deployment on k8s (without replicas)
+based on the <code>redis</code> <a href="https://hub.docker.com/_/redis">docker image</a> is the following:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">apps/v1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Deployment</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">redis</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">selector</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">matchLabels</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">app</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">redis</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">template</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">labels</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">app</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">redis</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">containers</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">redis</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">image</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">redis:6</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">resources</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">requests</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">memory</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;512Mi&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">cpu</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;2&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">limits</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">memory</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;512Mi&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">cpu</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;2&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">ports</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span>- <span style="color:#204a87;font-weight:bold">containerPort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">6379</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div>
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-16b818f0193a0e55e0f1cffd093e8e01">4.2.5 - Deploying the IAM VOMS attribute authority</h1>
     <div class="lead">Instructions on how to deploy and configure the IAM VOMS attribute authority micro-service</div>
 	<h2 id="the-iam-voms-attribute-authority">The IAM VOMS attribute authority</h2>
 <p>The IAM <a href="https://github.com/indigo-iam/voms-aa">VOMS attribute authority</a> (AA) provide backward-compatible
@@ -7009,7 +7228,7 @@ supported by the IAM</li>
 </ul>
 <p>For nitty and gritty details on how the flow works, see the
 <a href="https://tools.ietf.org/html/draft-ietf-oauth-device-flow-09">RFC</a>.</p>
-<p>After having registered a client with the device flow enabled (see <a href="client-registration.md">client
+<p>After having registered a client with the device flow enabled (see <a href="/v/v1.8.0/docs/tasks/user/client-registration/">client
 registration section</a>), the device code flow can be
 used to obtain a token using a script like the one <a href="https://gist.github.com/andreaceccanti/5b69323b89ce08321e7b5236de503600">here</a>
 which does the following:</p>

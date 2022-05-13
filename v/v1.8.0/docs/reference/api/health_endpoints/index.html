@@ -118,7 +118,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.6e17174b8d919d734712515d13c3ed8e.json"
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.dbaf739faee6efba5fabd5b5b9aaa212.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -150,7 +150,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.6e17174b8d919d734712515d13c3ed8e.json"
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.dbaf739faee6efba5fabd5b5b9aaa212.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -1176,6 +1176,31 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.0/docs/tasks/deployment/ha/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Deploying IAM in HA</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv180docstasksdeploymentha">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
     <a  href="/v/v1.8.0/docs/tasks/deployment/voms/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Deploying the IAM VOMS attribute authority</a>
   </li>
   <ul>
@@ -1707,9 +1732,9 @@
 
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#health"><code>/health</code></a></li>
-    <li><a href="#healthmail"><code>/health/mail</code></a></li>
-    <li><a href="#healthexternal"><code>/health/external</code></a></li>
+    <li><a href="#actuatorhealth"><code>/actuator/health</code></a></li>
+    <li><a href="#actuatorhealthmail"><code>/actuator/health/mail</code></a></li>
+    <li><a href="#actuatorhealthexternalconnectivity"><code>/actuator/health/externalConnectivity</code></a></li>
   </ul>
 </nav>
 
@@ -1772,67 +1797,101 @@
 	<p>The IAM Login Service exposes a set of health endpoints that can be used to
 monitor the status of the service.</p>
 <p>Health endpoints expose a different set of information depending on the user
-privileges; users with administrator privileges will see more details, while
+privileges; requests from the <em>Actuator</em> user will see more details, while
 anonymous requests typically receive only a summary of the health status.</p>
+<p>The Actuator role has been introduced in IAM starting with version 1.8.0,
+in order to access the following resources</p>
+<ul>
+<li><code>/actuator/health</code></li>
+<li><code>/actuator/info</code></li>
+</ul>
+<p>without being an IAM user and it is useful for deployment purposes.<br>
+The Actuator user credentials can be configured with the environment variables
+<code>IAM_ACTUATOR_USER_USERNAME</code> and <code>IAM_ACTUATOR_USER_PASSWORD</code>,
+as explained in <a href="../../configuration/#basic-service-configuration">Configuration</a>.</p>
 <p>The health endpoints return:</p>
 <ul>
 <li>HTTP status code 200 if everything is ok;</li>
 <li>HTTP status code 500 if any health check fails.</li>
 </ul>
-<h2 id="health"><code>/health</code></h2>
+<h2 id="actuatorhealth"><code>/actuator/health</code></h2>
 <p>This is a general application health check endpoint which composes disk space
 and database health checks.</p>
 <p>Examples.</p>
-<pre><code class="language-console" data-lang="console">$ curl -s https://iam.local.io/health | jq
-{
-  &quot;status&quot;: &quot;UP&quot;
-}
-</code></pre><p>Sending basic authentication, the endpoint returns a response with more details:</p>
-<pre><code class="language-console" data-lang="console">$ curl -s -u $ADMINUSER:$ADMINPASSWORD https://iam.local.io/health | jq
+<pre><code class="language-console" data-lang="console">$ curl -s https://iam.local.io/actuator/health | jq
 {
   &quot;status&quot;: &quot;UP&quot;,
-  &quot;diskSpace&quot;: {
-    &quot;status&quot;: &quot;UP&quot;,
-    &quot;total&quot;: 10725883904,
-    &quot;free&quot;: 9872744448,
-    &quot;threshold&quot;: 10485760
-  },
-  &quot;db&quot;: {
-    &quot;status&quot;: &quot;UP&quot;,
-    &quot;database&quot;: &quot;MySQL&quot;,
-    &quot;hello&quot;: 1
+  &quot;components&quot;: {
+    &quot;db&quot;: {
+      &quot;status&quot;: &quot;UP&quot;
+    },
+    &quot;diskSpace&quot;: {
+      &quot;status&quot;: &quot;UP&quot;
+    },
+    &quot;ping&quot;: {
+      &quot;status&quot;: &quot;UP&quot;
+    }
   }
 }
-</code></pre><h2 id="healthmail"><code>/health/mail</code></h2>
+</code></pre><p>Sending basic authentication, the endpoint returns a response with more details:</p>
+<pre><code class="language-console" data-lang="console">$ curl -s -u $IAM_ACTUATOR_USER_USERNAME:$IAM_ACTUATOR_USER_PASSWORD https://iam.local.io/actuator/health | jq
+{
+  &quot;status&quot;: &quot;UP&quot;,
+  &quot;components&quot;: {
+    &quot;db&quot;: {
+      &quot;status&quot;: &quot;UP&quot;,
+      &quot;details&quot;: {
+        &quot;database&quot;: &quot;H2&quot;,
+        &quot;validationQuery&quot;: &quot;isValid()&quot;
+      }
+    },
+    &quot;diskSpace&quot;: {
+      &quot;status&quot;: &quot;UP&quot;,
+      &quot;details&quot;: {
+        &quot;total&quot;: 502468108288,
+        &quot;free&quot;: 320953249792,
+        &quot;threshold&quot;: 10485760,
+        &quot;exists&quot;: true
+      }
+    },
+    &quot;ping&quot;: {
+      &quot;status&quot;: &quot;UP&quot;
+    }
+  }
+}
+
+</code></pre><h2 id="actuatorhealthmail"><code>/actuator/health/mail</code></h2>
 <p>This endpoint monitors the connection to the SMTP server configured for the
-IAM Notification Service.</p>
-<pre><code class="language-console" data-lang="console">$ curl -s https://iam.local.io/health/mail | jq
+IAM Notification Service.<br>
+In order to enable the SMTP server check, set the environment variable
+<code>IAM_HEALTH_MAIL_PROBE_ENABLED</code> to true.</p>
+<pre><code class="language-console" data-lang="console">$ curl -s https://iam.local.io/actuator/health/mail | jq
 {
   &quot;status&quot;: &quot;UP&quot;
 }
 </code></pre><p>With an authenticated request, the SMTP server details are returned:</p>
-<pre><code class="language-console" data-lang="console">$ curl -u $ADMINUSER:$ADMINPASSWORD https://iam.local.io/health/mail | jq
+<pre><code class="language-console" data-lang="console">$ curl -u $IAM_ACTUATOR_USER_USERNAME:$IAM_ACTUATOR_USER_PASSWORD https://iam.local.io/actuator/health/mail | jq
 {
   &quot;status&quot;: &quot;UP&quot;,
-  &quot;mail&quot;: {
-    &quot;status&quot;: &quot;UP&quot;,
+  &quot;details&quot;: {
     &quot;location&quot;: &quot;smtp.local.io:25&quot;
   }
 }
-</code></pre><h2 id="healthexternal"><code>/health/external</code></h2>
+</code></pre><h2 id="actuatorhealthexternalconnectivity"><code>/actuator/health/externalConnectivity</code></h2>
 <p>This endpoint checks service connectivity to the Internet. By default, the
-endpoint triggers a check on the connectivity to Google.</p>
-<pre><code class="language-console" data-lang="console">$ curl -s https://iam.local.io/health/external | jq
+endpoint triggers a check on the connectivity to Google.<br>
+In order to enable the external connectivity check, set the environment variable
+<code>IAM_HEALTH_EXTERNAL_CONNECTIVITY_PROBE_ENABLED</code> to true.</p>
+<pre><code class="language-console" data-lang="console">$ curl -s https://iam.local.io/actuator/health/externalConnectivity | jq
 {
   &quot;status&quot;: &quot;UP&quot;
 }
 </code></pre><p>With an authenticated request, the external service URL is shown in the details.</p>
-<pre><code class="language-console" data-lang="console">$ curl -s -u $ADMINUSER:$ADMINPASSWORD https://iam.local.io/health/external | jq
+<pre><code class="language-console" data-lang="console">$ curl -s -u $IAM_ACTUATOR_USER_USERNAME:$IAM_ACTUATOR_USER_PASSWORD https://iam.local.io/actuator/health/externalConnectivity | jq
 {
   &quot;status&quot;: &quot;UP&quot;,
-  &quot;google&quot;: {
-    &quot;status&quot;: &quot;UP&quot;,
-    &quot;location&quot;: &quot;http://www.google.it&quot;
+  &quot;details&quot;: {
+    &quot;endpoint&quot;: &quot;https://www.google.it&quot;
   }
 }
 </code></pre>
@@ -1964,12 +2023,14 @@ endpoint triggers a check on the connectivity to Google.</p>
         
             
         
+            
+        
     
 </div>
 
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified September 9, 2021: <a  href="https://github.com/indigo-iam/iam-website/commit/68307145e26f809943ca897c736ebd1faa190d03">Massive renaming (6830714)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified May 12, 2022: <a  href="https://github.com/indigo-iam/iam-website/commit/7df3fe3ad33f811ddd62ad091a73ac94a4f50a47">Explain the actuator role (7df3fe3)</a>
 </div>
 </div>
 
