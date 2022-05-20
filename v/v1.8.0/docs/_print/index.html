@@ -118,7 +118,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.75c2732ce0efcda4a654122fb1704a5f.json"
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.17cc9fc9f73de1471a25f47496b5183c.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -963,7 +963,15 @@ This the multi-page printable view of this section.
     
     
 	
-<li>4.3: <a href="#pg-dbcc046a6c208e0a089e20aecc2dbaec">User</a></li>
+<li>4.3: <a href="#pg-a269c2d262c442b90ac1c22456e5a44a">IAM Test Client application</a></li>
+
+
+    
+  
+    
+    
+	
+<li>4.4: <a href="#pg-dbcc046a6c208e0a089e20aecc2dbaec">User</a></li>
 
 
     
@@ -978,26 +986,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>4.3.1: <a href="#pg-fc4a8820c0610ad9186b42bb179cd4bf">Joining an IAM-managed organization</a></li>
-
-
-    
-    <ul>
-        
-  
-  
-  
-  
-
-  
-
-    </ul>
-    
-  
-    
-    
-	
-<li>4.3.2: <a href="#pg-afefc91265853008615d0ff910cb6bb9">Obtaining an IAM access token from a CLI</a></li>
+<li>4.4.1: <a href="#pg-fc4a8820c0610ad9186b42bb179cd4bf">Joining an IAM-managed organization</a></li>
 
 
     
@@ -1016,7 +1005,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>4.3.3: <a href="#pg-9a8717b724b3cc965f31246cbdd60946">Registering a client</a></li>
+<li>4.4.2: <a href="#pg-afefc91265853008615d0ff910cb6bb9">Obtaining an IAM access token from a CLI</a></li>
 
 
     
@@ -1035,7 +1024,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>4.3.4: <a href="#pg-5f7a8f5e4030289ede0cce345878ff5f">Change account information</a></li>
+<li>4.4.3: <a href="#pg-9a8717b724b3cc965f31246cbdd60946">Registering a client</a></li>
 
 
     
@@ -1054,7 +1043,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>4.3.5: <a href="#pg-9425af354278fe0b0806e2532bbb465a">Changing the account password</a></li>
+<li>4.4.4: <a href="#pg-5f7a8f5e4030289ede0cce345878ff5f">Change account information</a></li>
 
 
     
@@ -1073,7 +1062,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>4.3.6: <a href="#pg-e361335b1cc62574d28cc081294326a2">Linking an external account</a></li>
+<li>4.4.5: <a href="#pg-9425af354278fe0b0806e2532bbb465a">Changing the account password</a></li>
 
 
     
@@ -1092,7 +1081,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>4.3.7: <a href="#pg-93f6e460a9484b5a1f15cf389f229f2c">Linking an X.509 certificate</a></li>
+<li>4.4.6: <a href="#pg-e361335b1cc62574d28cc081294326a2">Linking an external account</a></li>
 
 
     
@@ -1111,7 +1100,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>4.3.8: <a href="#pg-725f368abb7a0345d6635f33b8848b53">Managing active tokens</a></li>
+<li>4.4.7: <a href="#pg-93f6e460a9484b5a1f15cf389f229f2c">Linking an X.509 certificate</a></li>
 
 
     
@@ -1130,7 +1119,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>4.3.9: <a href="#pg-56a163f5aefc17b464cd248874936cf9">Managing approved sites</a></li>
+<li>4.4.8: <a href="#pg-725f368abb7a0345d6635f33b8848b53">Managing active tokens</a></li>
 
 
     
@@ -1149,7 +1138,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>4.3.10: <a href="#pg-c0adc169e351e3ffdad1a9ceff1b6c19">Managing SSH keys</a></li>
+<li>4.4.9: <a href="#pg-56a163f5aefc17b464cd248874936cf9">Managing approved sites</a></li>
 
 
     
@@ -1168,7 +1157,26 @@ This the multi-page printable view of this section.
     
     
 	
-<li>4.3.11: <a href="#pg-b4fb7a916a4b238a27bb4f7882cb6eb6">Reset an account password</a></li>
+<li>4.4.10: <a href="#pg-c0adc169e351e3ffdad1a9ceff1b6c19">Managing SSH keys</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>4.4.11: <a href="#pg-b4fb7a916a4b238a27bb4f7882cb6eb6">Reset an account password</a></li>
 
 
     
@@ -5173,10 +5181,10 @@ directory, which depends on how you deployed IAM:</p>
 default configuration <strong>only if you know what you are doing</strong>, and for those
 scenarios not served by the default templates.</p>
 <h2 id="basic-service-configuration">Basic service configuration</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># The IAM service will list for requests on this host.</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># The IAM service will list for requests on this host</span>
 <span style="color:#000">IAM_HOST</span><span style="color:#ce5c00;font-weight:bold">=</span>localhost
 
-<span style="color:#8f5902;font-style:italic"># The IAM service webapp will bind on this port.</span>
+<span style="color:#8f5902;font-style:italic"># The IAM service webapp will bind on this port</span>
 <span style="color:#000">IAM_PORT</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">8080</span>
 
 <span style="color:#8f5902;font-style:italic"># The IAM web application base URL</span>
@@ -5194,7 +5202,7 @@ scenarios not served by the default templates.</p>
 <span style="color:#8f5902;font-style:italic"># The recommended lifetime according to the WLCG profile* is 6 hours</span>
 <span style="color:#000">IAM_JWK_CACHE_LIFETIME</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">21600</span>
 
-<span style="color:#8f5902;font-style:italic"># IAM will look for trust anchors in this directory.  These trust anchors are</span>
+<span style="color:#8f5902;font-style:italic"># IAM will look for trust anchors in this directory. These trust anchors are</span>
 <span style="color:#8f5902;font-style:italic"># needed for TLS operations where the IAM acts as a client (i.e., to</span>
 <span style="color:#8f5902;font-style:italic"># authenticate to remote SAML Identity providers)</span>
 <span style="color:#000">IAM_X509_TRUST_ANCHORS_DIR</span><span style="color:#ce5c00;font-weight:bold">=</span>/etc/grid-security/certificates
@@ -5203,7 +5211,7 @@ scenarios not served by the default templates.</p>
 <span style="color:#000">IAM_X509_TRUST_ANCHORS_REFRESH</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">14400</span>
 
 <span style="color:#8f5902;font-style:italic"># Use forwarded headers from reverse proxy. Set this to native when deploying the</span>
-<span style="color:#8f5902;font-style:italic"># service behind a reverse proxy.</span>
+<span style="color:#8f5902;font-style:italic"># service behind a reverse proxy</span>
 <span style="color:#000">IAM_FORWARD_HEADERS_STRATEGY</span><span style="color:#ce5c00;font-weight:bold">=</span>none
 
 <span style="color:#8f5902;font-style:italic">## Tomcat embedded container settings</span>
@@ -5233,7 +5241,7 @@ scenarios not served by the default templates.</p>
 <span style="color:#000">IAM_LOCAL_RESOURCES_LOCATION</span><span style="color:#ce5c00;font-weight:bold">=</span>file:/indigo-iam/local-resources
 </code></pre></div><p>(*) More information <a href="https://github.com/WLCG-AuthZ-WG/common-jwt-profile/blob/master/profile.md#token-validation">here</a>.</p>
 <h2 id="organization-configuration">Organization configuration</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># The name of the organization managed by this IAM instance.</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># The name of the organization managed by this IAM instance</span>
 <span style="color:#000">IAM_ORGANISATION_NAME</span><span style="color:#ce5c00;font-weight:bold">=</span>indigo-dc
 
 <span style="color:#8f5902;font-style:italic"># URL of logo image used in the IAM dashboard (by default the INDIGO-Datacloud</span>
@@ -5304,6 +5312,19 @@ scenarios not served by the default templates.</p>
 <span style="color:#8f5902;font-style:italic"># The minimum amount of time a connection may be idle in the pool</span>
 <span style="color:#8f5902;font-style:italic"># before it is considered for eviction (in msec)</span>
 <span style="color:#000">IAM_DB_MIN_EVICTABLE_IDLE_TIME_MILLIS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">60000</span>
+</code></pre></div><h2 id="test-client-configuration">Test Client configuration</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># Public identifier for client application</span>
+<span style="color:#000">IAM_CLIENT_ID</span><span style="color:#ce5c00;font-weight:bold">=</span>client
+
+<span style="color:#8f5902;font-style:italic"># Client application&#39;s own password</span>
+<span style="color:#000">IAM_CLIENT_SECRET</span><span style="color:#ce5c00;font-weight:bold">=</span>secret
+
+<span style="color:#8f5902;font-style:italic"># Default scopes allowed to the client application (optional)</span>
+<span style="color:#000">IAM_CLIENT_SCOPES</span><span style="color:#ce5c00;font-weight:bold">=</span>openid profile email
+
+<span style="color:#8f5902;font-style:italic"># Use forwarded headers from reverse proxy. Set this to native when deploying the</span>
+<span style="color:#8f5902;font-style:italic"># service behind a reverse proxy</span>
+<span style="color:#000">IAM_CLIENT_FORWARD_HEADERS_STRATEGY</span><span style="color:#ce5c00;font-weight:bold">=</span>none
 </code></pre></div><h2 id="redis-configuration">Redis configuration</h2>
 <p>Starting with version 1.8.0, IAM supports storing HTTP session
 information in an external <a href="https://redis.io/">redis</a> server.</p>
@@ -6988,7 +7009,32 @@ file</a>.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-dbcc046a6c208e0a089e20aecc2dbaec">4.3 - User</h1>
+	<h1 id="pg-a269c2d262c442b90ac1c22456e5a44a">4.3 - IAM Test Client application</h1>
+    <div class="lead">OpenID Connect client application example</div>
+	<p>IAM Test Client is a simple web application that demonstrates the use of the OpenID Connect client code and configuration.</p>
+<p>It lives at <code>https://your-IAM-instance/iam-test-client</code>.</p>
+<p><img src="/images/test-client.png" alt="Test Client App"></p>
+<p>Since Test Client uses OAuth Authorization Code Grant Type, after a successfull login you will be redirected to the consent page that the authorization server displays to confirm if the requested scopes can be shared with the client.</p>
+<p><img src="/images/consent-page.png" alt="Consent Page"></p>
+<p>If you authorize, the following information will be shown:</p>
+<p><img src="/images/test-client-info.png" alt="App info"></p>
+<p>In order to run the Test Client application you need to setup a minimal <a href="/v/v1.8.0/docs/reference/configuration/#test-client-configuration">configuration</a>.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-dbcc046a6c208e0a089e20aecc2dbaec">4.4 - User</h1>
     <div class="lead">Common user tasks</div>
 	
 </div>
@@ -7013,7 +7059,7 @@ file</a>.</p>
 
 <div class="td-content" style="">
     
-	<h1 id="pg-fc4a8820c0610ad9186b42bb179cd4bf">4.3.1 - Joining an IAM-managed organization</h1>
+	<h1 id="pg-fc4a8820c0610ad9186b42bb179cd4bf">4.4.1 - Joining an IAM-managed organization</h1>
     
 	<p>IAM provides a registration service that allows to have managed enrollment for
 the organization under control. This mean that access to the organization is
@@ -7074,7 +7120,7 @@ at registration time and the password.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-afefc91265853008615d0ff910cb6bb9">4.3.2 - Obtaining an IAM access token from a CLI</h1>
+	<h1 id="pg-afefc91265853008615d0ff910cb6bb9">4.4.2 - Obtaining an IAM access token from a CLI</h1>
     
 	<p>A token can be obtained from a command-line interface (CLI) in two ways:</p>
 <ul>
@@ -7265,7 +7311,7 @@ authorization</li>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-9a8717b724b3cc965f31246cbdd60946">4.3.3 - Registering a client</h1>
+	<h1 id="pg-9a8717b724b3cc965f31246cbdd60946">4.4.3 - Registering a client</h1>
     
 	<p>IAM exposes the OpenID Connect/OAuth dynamic client registration functionality
 offered by the <a href="https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server/wiki">MitreID OpenID Connect</a> server libraries.</p>
@@ -7336,7 +7382,7 @@ client.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-5f7a8f5e4030289ede0cce345878ff5f">4.3.4 - Change account information</h1>
+	<h1 id="pg-5f7a8f5e4030289ede0cce345878ff5f">4.4.4 - Change account information</h1>
     
 	<p>Once logged in, you can change information in your account (if allowed by the
 IAM configuration) by clicking the &ldquo;Edit Details&rdquo; from your home page:</p>
@@ -7368,7 +7414,7 @@ IAM configuration) by clicking the &ldquo;Edit Details&rdquo; from your home pag
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-9425af354278fe0b0806e2532bbb465a">4.3.5 - Changing the account password</h1>
+	<h1 id="pg-9425af354278fe0b0806e2532bbb465a">4.4.5 - Changing the account password</h1>
     
 	<p>Once logged in you can change your account password by clicking on the &ldquo;Change
 password&rdquo; button in your home page:</p>
@@ -7404,7 +7450,7 @@ section.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-e361335b1cc62574d28cc081294326a2">4.3.6 - Linking an external account</h1>
+	<h1 id="pg-e361335b1cc62574d28cc081294326a2">4.4.6 - Linking an external account</h1>
     
 	<p>A user can link an external account from the IAM dashboard (i.e., the user must
 be logged in the IAM service). The following sets of screenshots show the
@@ -7448,7 +7494,7 @@ Google</strong> button.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-93f6e460a9484b5a1f15cf389f229f2c">4.3.7 - Linking an X.509 certificate</h1>
+	<h1 id="pg-93f6e460a9484b5a1f15cf389f229f2c">4.4.7 - Linking an X.509 certificate</h1>
     
 	<p>IAM provides the ability to link X.509 certificates to a user account. X.509
 account linking works if:</p>
@@ -7523,7 +7569,7 @@ the certificate panel (see the image above).</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-725f368abb7a0345d6635f33b8848b53">4.3.8 - Managing active tokens</h1>
+	<h1 id="pg-725f368abb7a0345d6635f33b8848b53">4.4.8 - Managing active tokens</h1>
     
 	<p>You can see which access and refresh tokens bound to your identity are
 currently active from the MitreID dashboard following the &ldquo;Manage Active
@@ -7556,7 +7602,7 @@ Tokens&rdquo; link:</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-56a163f5aefc17b464cd248874936cf9">4.3.9 - Managing approved sites</h1>
+	<h1 id="pg-56a163f5aefc17b464cd248874936cf9">4.4.9 - Managing approved sites</h1>
     
 	<p>You can manage approved sites (i.e. sites and services that you approved when
 authenticating at the IAM) from the MitreID dashboard following the &ldquo;Manage Approved Sites&rdquo; link:</p>
@@ -7588,7 +7634,7 @@ authenticating at the IAM) from the MitreID dashboard following the &ldquo;Manag
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-c0adc169e351e3ffdad1a9ceff1b6c19">4.3.10 - Managing SSH keys</h1>
+	<h1 id="pg-c0adc169e351e3ffdad1a9ceff1b6c19">4.4.10 - Managing SSH keys</h1>
     
 	<p>Starting with version <code>v1.7.0</code>, IAM allows users to link SSH public keys to
 their accounts.</p>
@@ -7666,7 +7712,7 @@ assigned to client registered in IAM only by IAM administrators.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-b4fb7a916a4b238a27bb4f7882cb6eb6">4.3.11 - Reset an account password</h1>
+	<h1 id="pg-b4fb7a916a4b238a27bb4f7882cb6eb6">4.4.11 - Reset an account password</h1>
     
 	<p>Users can reset their password from the IAM login page by clicking on the
 <em>Forgot your password?</em> link, which opens a dialog where users can then enter
