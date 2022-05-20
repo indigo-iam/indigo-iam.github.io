@@ -121,7 +121,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.0f6bf616aedf3b016e1955aac3443171.json"
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.6295579d200daca02ea9fe624220feb4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -153,7 +153,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.0f6bf616aedf3b016e1955aac3443171.json"
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.6295579d200daca02ea9fe624220feb4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -1751,6 +1751,7 @@
     <li><a href="#database-configuration">Database configuration</a></li>
     <li><a href="#test-client-configuration">Test Client configuration</a></li>
     <li><a href="#redis-configuration">Redis configuration</a></li>
+    <li><a href="#local-authentication-settings">Local authentication settings</a></li>
     <li><a href="#google-authentication-settings">Google authentication settings</a></li>
     <li><a href="#saml-authentication-settings">SAML authentication settings</a></li>
     <li><a href="#notification-service-settings">Notification service settings</a></li>
@@ -2055,6 +2056,14 @@ service</a>.</p>
 <span style="color:#8f5902;font-style:italic"># If set to &#39;true&#39; the status of the Redis service</span>
 <span style="color:#8f5902;font-style:italic"># will appear in the IAM Health check endpoint</span>
 <span style="color:#000">IAM_HEALTH_REDIS_PROBE_ENABLED</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">false</span>
+</code></pre></div><h2 id="local-authentication-settings">Local authentication settings</h2>
+<p>It allows a user to log in with local credentials (username/password).<br>
+For more information, see the <a href="local_authn/">Local Authentication section</a>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># Set to &#39;hidden&#39; if you want to hide the local login form</span>
+<span style="color:#000">IAM_LOCAL_AUTHN_LOGIN_PAGE_VISIBILITY</span><span style="color:#ce5c00;font-weight:bold">=</span>visible
+<span style="color:#8f5902;font-style:italic"># Enables local login form to all users.</span>
+<span style="color:#8f5902;font-style:italic"># It can be restricted, changing the value to &#39;vo-admins&#39; or &#39;none&#39;</span>
+<span style="color:#000">IAM_LOCAL_AUTHN_ENABLED_FOR</span><span style="color:#ce5c00;font-weight:bold">=</span>all
 </code></pre></div><h2 id="google-authentication-settings">Google authentication settings</h2>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># The Google OAuth client id</span>
 <span style="color:#000">IAM_GOOGLE_CLIENT_ID</span><span style="color:#ce5c00;font-weight:bold">=</span>
@@ -2344,7 +2353,7 @@ section</a>.</p>
 
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified May 19, 2022: <a  href="https://github.com/indigo-iam/iam-website/commit/49ded9d02ef559a1dc6d8f77693eccfd4a70354b">Fix changes (49ded9d)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified May 20, 2022: <a  href="https://github.com/indigo-iam/iam-website/commit/0a9bbf94b5c2e364723ce99d681dafa481e87646">Define env variables for local authentication (0a9bbf9)</a>
 </div>
 </div>
 

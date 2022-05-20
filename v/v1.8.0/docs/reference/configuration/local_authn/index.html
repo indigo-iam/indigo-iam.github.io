@@ -118,7 +118,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.0f6bf616aedf3b016e1955aac3443171.json"
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.6295579d200daca02ea9fe624220feb4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -150,7 +150,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.0f6bf616aedf3b016e1955aac3443171.json"
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.6295579d200daca02ea9fe624220feb4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -1806,17 +1806,13 @@ VO administrators, no users).</p>
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">enabled-for</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">vo-admins </span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># possible values: hidden, visible</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">login-page-visibility</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">hidden </span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><p>Local authentication settings are configured by defining the following variables in the environment
-file:</p>
-<ul>
-<li><code>IAM_LOCAL_AUTHN_ENABLED_FOR</code> with valid values for <code>enabled-for</code> property</li>
-<li>``IAM_LOCAL_AUTHN_LOGIN_PAGE_VISIBILITY<code>with valid values for</code>login-page-visibility` property</li>
-</ul>
+</span></code></pre></div><p>In alternative, one can configure the local authentication settings using environment variables as
+described in the <a href="../#local-authentication-settings">Configuration</a> section.</p>
 <p>When the local authentication (username/password) fields are hidden on the login page, it is possible
 to display them by adding the query string <code>?sll=y</code> to the login page URL. It may be useful, for
 example, to access the <code>admin</code> account if only username/password authentication has been configured
-for it and it <code>enable-for</code> has been set to <code>vo-admins</code>.</p>
-<p>Not that hiding local authentication on the login page without restricting the category of users
+for it and if <code>enable-for</code> has been set to <code>vo-admins</code>.</p>
+<p>Note that hiding local authentication on the login page without restricting the category of users
 able to use it doesn&rsquo;t really provide additional security.</p>
 
         <div class="section-index">
@@ -1956,7 +1952,7 @@ able to use it doesn&rsquo;t really provide additional security.</p>
 
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified April 25, 2022: <a  href="https://github.com/indigo-iam/iam-website/commit/1714ba70fbc11c9fbb184bc625baca282f221aca">local authn: document how to access it when it is hidden (1714ba7)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified May 20, 2022: <a  href="https://github.com/indigo-iam/iam-website/commit/0a9bbf94b5c2e364723ce99d681dafa481e87646">Define env variables for local authentication (0a9bbf9)</a>
 </div>
 </div>
 
