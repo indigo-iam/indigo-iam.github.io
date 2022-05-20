@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.86.0" /><link rel="canonical" type="text/html" href="/v/v1.8.0/docs/getting-started/jwk/">
+<meta name="generator" content="Hugo 0.86.0" /><link rel="canonical" type="text/html" href="/v/v1.8.0/docs/tasks/clientapp/">
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
 
@@ -18,15 +18,18 @@
 <link rel="icon" type="image/png" href="/v/v1.8.0/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/v/v1.8.0/favicons/android-192x192.png" sizes="192x192">
 
-<title>JSON Web Keys configuration | INDIGO IAM</title><meta property="og:title" content="JSON Web Keys configuration" />
-<meta property="og:description" content="The INDIGO Identity and Access Management (IAM) Service" />
+<title>IAM Test Client application | INDIGO IAM</title><meta property="og:title" content="IAM Test Client application" />
+<meta property="og:description" content="OpenID Connect client application example
+" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="/v/v1.8.0/docs/getting-started/jwk/" /><meta property="og:site_name" content="INDIGO IAM" />
+<meta property="og:url" content="/v/v1.8.0/docs/tasks/clientapp/" /><meta property="og:site_name" content="INDIGO IAM" />
 
-<meta itemprop="name" content="JSON Web Keys configuration">
-<meta itemprop="description" content="The INDIGO Identity and Access Management (IAM) Service"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="JSON Web Keys configuration"/>
-<meta name="twitter:description" content="The INDIGO Identity and Access Management (IAM) Service"/>
+<meta itemprop="name" content="IAM Test Client application">
+<meta itemprop="description" content="OpenID Connect client application example
+"><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="IAM Test Client application"/>
+<meta name="twitter:description" content="OpenID Connect client application example
+"/>
 
 
 
@@ -146,14 +149,14 @@
 This the multi-page printable view of this section.
 <a href="#" onclick="print();return false;">Click here to print</a>.
 </p><p>
-<a href="/v/v1.8.0/docs/getting-started/jwk/">Return to the regular view of this page</a>.
+<a href="/v/v1.8.0/docs/tasks/clientapp/">Return to the regular view of this page</a>.
 </p>
 </div>
 
 
 
-<h1 class="title">JSON Web Keys configuration</h1>
-
+<h1 class="title">IAM Test Client application</h1>
+<div class="lead">OpenID Connect client application example</div>
 
 
 
@@ -171,39 +174,14 @@ This the multi-page printable view of this section.
 
 
 <div class="content">
-      <p>JSON web keys are used by the IAM to sign and verify token signatures.</p>
-<p>To generate a JSON web key for your IAM deployment, you can use the
-<a href="https://github.com/mitreid-connect/json-web-key-generator">json-web-key-generator</a> tool provided by MitreID connect.</p>
-<p>The following command clones the <code>json-web-key-generator</code> Git repository to a
-local directory:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/mitreid-connect/json-web-key-generator
-</code></pre></div><p>Build the code with:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mvn package
-</code></pre></div><p>Maven 3.6.x or greater supporting Java 11 is required.</p>
-<p>You can then generate a key with the following command:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">java -jar target/json-web-key-generator-0.9-SNAPSHOT-jar-with-dependencies.jar <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  -t RSA -s <span style="color:#0000cf;font-weight:bold">1024</span> -S -i rsa1
-
-
-Full key:
-<span style="color:#ce5c00;font-weight:bold">{</span>
-  <span style="color:#4e9a06">&#34;keys&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[</span>
-    <span style="color:#ce5c00;font-weight:bold">{</span>
-      <span style="color:#4e9a06">&#34;p&#34;</span>: <span style="color:#4e9a06">&#34;3oh7ex6zgdmJh5NBD0IplmBDDGC2ECu2A1vcp8e8DqE7OSSpAc1T9tTjJioCGqkNM51JK_MtgCJz1CiysVDOQQ&#34;</span>,
-      <span style="color:#4e9a06">&#34;kty&#34;</span>: <span style="color:#4e9a06">&#34;RSA&#34;</span>,
-      <span style="color:#4e9a06">&#34;q&#34;</span>: <span style="color:#4e9a06">&#34;nRmBm5tQ2wmOtd1XUYDRH2qWai6eElt-1cvO5tnTdWZkFaAeaHQ3_xf_PFOjyAv5Y5rNLgf_Xbu9UCo_mSrDMQ&#34;</span>,
-      <span style="color:#4e9a06">&#34;d&#34;</span>: <span style="color:#4e9a06">&#34;BGHRhQP6ADqqSrM8_mI0YhjGStj1aW9rLi7wXQMJ122kegPxIT7dfP-5UScxykD_BrCCHQVPxdJl5wXy-giZnhaL9wtDkOXb8D8RCi1n02cs3Z1T23xONi_AG47QPBZjM5GcX-oOGCENByuEIdkU_Bn6vvqM3oyVlj5sio7tNAE&#34;</span>,
-      <span style="color:#4e9a06">&#34;e&#34;</span>: <span style="color:#4e9a06">&#34;AQAB&#34;</span>,
-      <span style="color:#4e9a06">&#34;kid&#34;</span>: <span style="color:#4e9a06">&#34;rsa1&#34;</span>,
-      <span style="color:#4e9a06">&#34;qi&#34;</span>: <span style="color:#4e9a06">&#34;RarXtTFCE3hk5ZanLWEapDnn7SLSxAvDcBTmG5SpCI9Eix7cfTigaK6N7OQIN0uGO1GJ-KVWL2v8dyI1jMoU6g&#34;</span>,
-      <span style="color:#4e9a06">&#34;dp&#34;</span>: <span style="color:#4e9a06">&#34;MtBtieavzMXUzr2ETKyp_GmMxeXLjRO-IzQ1xaYpPhn5AQprATtWofVozQ0on9fcaN3QmJWV3T2Av4BvlWfDQQ&#34;</span>,
-      <span style="color:#4e9a06">&#34;dq&#34;</span>: <span style="color:#4e9a06">&#34;CWJ7rpsBooQYpV6al8DVPUY1xBQS10_l7MmnC31Zt3qtYelVx7GhoriBQ85PS2UDueKGfUh3BddwQLi1YeX_EQ&#34;</span>,
-      <span style="color:#4e9a06">&#34;n&#34;</span>: <span style="color:#4e9a06">&#34;iI_fuJq4z_9VQY5EH41sQWOAYUsjtxAFjRnAc1P5-GPOx3Izg9V7yKNmudLUt-jIkv6D5h-AzrhEV6DOdBRoiN4el1mCZ95jiJkjU2kpVOmutDysZkrn667zPd43w7E6IqHnahmMrVUjUyx6pie1SqJHLUXghz8Gle-1yi08_XE&#34;</span>
-    <span style="color:#ce5c00;font-weight:bold">}</span>
-  <span style="color:#ce5c00;font-weight:bold">]</span>
-<span style="color:#ce5c00;font-weight:bold">}</span>
-</code></pre></div><p>Save the output of the above command (minus the <code>Full key:</code> initial text) in a
-file, e.g. <code>keystore.jwks</code>.</p>
+      <p>IAM Test Client is a simple web application that demonstrates the use of the OpenID Connect client code and configuration.</p>
+<p>It lives at <code>https://your-IAM-instance/iam-test-client</code>.</p>
+<p><img src="images/test-client.png" alt="Test Client App"></p>
+<p>Since Test Client uses OAuth Authorization Code Grant Type, after a successfull login you will be redirected to the consent page that the authorization server displays to confirm if the requested scopes can be shared with the client.</p>
+<p><img src="images/consent-page.png" alt="Consent Page"></p>
+<p>If you authorize, the following information will be shown:</p>
+<p><img src="images/test-client-info.png" alt="App info"></p>
+<p>In order to run the Test Client application you need to setup a minimal <a href="/v/v1.8.0/docs/reference/configuration/#test-client-configuration">configuration</a>.</p>
 
 </div>
 </div>
