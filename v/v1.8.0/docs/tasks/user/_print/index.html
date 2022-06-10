@@ -121,7 +121,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.d66352d1f0f241fd44bab8b496712d96.json"
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.ae03eca5f641bd465bd4761a78b7e485.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -659,7 +659,7 @@ authorization</li>
 	<h1 id="pg-9a8717b724b3cc965f31246cbdd60946">3 - Registering a client</h1>
     
 	<p>IAM exposes the OpenID Connect/OAuth dynamic client registration functionality
-offered by the <a href="https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server/wiki">MitreID OpenID Connect</a> server libraries.</p>
+on its dashboard&rsquo;s main page (it has been migrated by dashboard).</p>
 <p>In OAuth terminology, a client is an application or service that can interact
 with an authorisation server for authentication/authorization purposes.</p>
 <p>A new client can be registered in the IAM in two ways:</p>
@@ -669,37 +669,33 @@ with an authorisation server for authentication/authorization purposes.</p>
 above).</li>
 </ul>
 <h2 id="registering-a-client-using-the-dashboard">Registering a client using the dashboard</h2>
-<p>Log into the service and click on the <em>MitreID dashboard</em> link on the left
+<p>Log into the service and click on the <em>My Clients</em> link on the left
 navigation bar:</p>
-<p><img src="../images/mitre-dashboard.png" alt="Mitre dashboard"></p>
-<p>From the MitreID dashboard, select <em>Client registration</em>:</p>
-<p><img src="../images/mitre-client-reg-0.png" alt="Mitre client reg"></p>
-<p>And then click on <em>New client</em>:</p>
-<p><img src="../images/mitre-client-reg-1.png" alt="Mitre client reg"></p>
+<p><img src="../images/my_client-dashboard.png" alt="dashboard"></p>
+<p>From the <em>My client</em> link, select <em>New client</em>:</p>
+<p><img src="../images/new-client-reg-0.png" alt="client reg"></p>
 <p>A form will open that enable you to configure your client:</p>
-<p><img src="../images/mitre-client-reg-2.png" alt="Mitre client reg"></p>
+<p><img src="../images/new-client-reg-1.png" alt="client reg"></p>
 <p>The minimum information you have to provide is:</p>
 <ul>
 <li><em>client name</em>: choose a name for your client</li>
 <li><em>Redirect URI(s)</em>: one or more redirect URIs for your client; these are
 required if you choose to enable the authorization code flow;</li>
 </ul>
-<p><img src="../images/mitre-client-reg-3.png" alt="Mitre client reg"></p>
-<p>Remember to select the <code>offline_access</code> scope from the <strong>Access tab</strong> if you
+<p><img src="../images/new-client-reg-2.png" alt="client reg"></p>
+<p>Remember to select the <code>offline_access</code> scope from the <strong>Scopes tab</strong> if you
 want to request refresh tokens for the client being created:</p>
-<p><img src="../images/mitre-client-reg-4.png" alt="Mitre client reg"></p>
-<p>You can then click the &ldquo;Save&rdquo; button at the bottom of the page:</p>
-<p><img src="../images/mitre-client-reg-5.png" alt="Mitre client reg"></p>
+<p><img src="../images/new-client-reg-3.png" alt="client reg"></p>
+<p>You can then click the <strong>Save</strong> button at the bottom of the page:</p>
+<p><img src="../images/new-client-reg-4.png" alt="client reg"></p>
 <p>IAM will then generate client credentials for your client and other information
 that will be displayed as follows:</p>
-<p><img src="../images/mitre-client-reg-6.png" alt="Mitre client reg"></p>
-<p>The JSON tab provides client information in JSON:</p>
-<p><img src="../images/mitre-client-reg-8.png" alt="Mitre client reg"></p>
-<p>Select the content of the text area and paste it in a local file, for future
-reference.</p>
-<p>The JSON file contains the client secret and the registration access token,
-which can be used later to change the client configuration or to delete the
-client.</p>
+<p><img src="../images/new-client-reg-5.png" alt="client reg"></p>
+<p>The JSON will look like this:</p>
+<p><img src="../images/new-client-reg-7.png" alt="client reg"></p>
+<p><img src="../images/new-client-reg-8.png" alt="client reg"></p>
+<p>It is reconmended to save this JSON in a local file for future reference</p>
+<p>The client secret and the registration access token, can be used later to change the client configuration, to delete the client and also to redeem a client</p>
 
 </div>
 
