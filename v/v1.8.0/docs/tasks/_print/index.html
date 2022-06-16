@@ -121,7 +121,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.ae03eca5f641bd465bd4761a78b7e485.json"
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.2b98d239c945fe6932a1cd3b93090e97.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -1677,9 +1677,9 @@ authorization</li>
 	<h1 id="pg-9a8717b724b3cc965f31246cbdd60946">4.3 - Registering a client</h1>
     
 	<p>IAM exposes the OpenID Connect/OAuth dynamic client registration functionality
-on its dashboard&rsquo;s main page (it has been migrated by dashboard).</p>
+on its own dashboard (it has been migrated by <a href="https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server/wiki">MitreID</a> dashboard).</p>
 <p>In OAuth terminology, a client is an application or service that can interact
-with an authorisation server for authentication/authorization purposes.</p>
+with an authorization server for authentication/authorization purposes.</p>
 <p>A new client can be registered in the IAM in two ways:</p>
 <ul>
 <li>using the <a href="/v/v1.8.0/docs/reference/api/oidc-client-registration/">dynamic client registration API</a>;</li>
@@ -1696,7 +1696,7 @@ navigation bar:</p>
 <p><img src="../images/new-client-reg-1.png" alt="client reg"></p>
 <p>The minimum information you have to provide is:</p>
 <ul>
-<li><em>client name</em>: choose a name for your client</li>
+<li><em>Client name</em>: choose a name for your client</li>
 <li><em>Redirect URI(s)</em>: one or more redirect URIs for your client; these are
 required if you choose to enable the authorization code flow;</li>
 </ul>
@@ -1709,11 +1709,6 @@ want to request refresh tokens for the client being created:</p>
 <p>IAM will then generate client credentials for your client and other information
 that will be displayed as follows:</p>
 <p><img src="../images/new-client-reg-5.png" alt="client reg"></p>
-<p>The JSON will look like this:</p>
-<p><img src="../images/new-client-reg-7.png" alt="client reg"></p>
-<p><img src="../images/new-client-reg-8.png" alt="client reg"></p>
-<p>It is reconmended to save this JSON in a local file for future reference</p>
-<p>The client secret and the registration access token, can be used later to change the client configuration, to delete the client and also to redeem a client</p>
 
 </div>
 
