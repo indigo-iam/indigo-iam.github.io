@@ -118,7 +118,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.8667f276ae1b5d57a2caeb11f9ccf5da.json"
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.adf8e13e8586c7452cf6eca9354b83b1.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -150,7 +150,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.8667f276ae1b5d57a2caeb11f9ccf5da.json"
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.adf8e13e8586c7452cf6eca9354b83b1.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -1909,11 +1909,8 @@ $ docker logs -f iam-login-service
 differences in options:</p>
 <ul>
 <li>
-<p><code>--restart</code> is silently ignored as start/stop of the container as boot time is controlled
-with <code>systemd</code>.</p>
-<ul>
-<li>See Podman documentation, in particular <code>podman generate systemd --help</code></li>
-</ul>
+<p><code>--restart</code> is silently ignored as start/stop of the container at boot time is controlled
+with <code>systemd</code> (see Podman documentation, <a href="https://docs.podman.io/en/latest/markdown/podman-generate-systemd.1.html">here</a>).</p>
 </li>
 <li>
 <p>You need to add option <code>Z</code> to third field of <code>-v</code> option so that the SELinux context
@@ -2077,7 +2074,7 @@ $ podman logs -f iam-login-service
 
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified April 25, 2022: <a  href="https://github.com/indigo-iam/iam-website/commit/02375a314c205859fd87eb8b7877ca4bae982349">Improve Docker documentation, add a section on using Podman (02375a3)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified July 28, 2022: <a  href="https://github.com/indigo-iam/iam-website/commit/ec7562933c499d78db473de6842c135b935ffc0b">Small fixes (ec75629)</a>
 </div>
 </div>
 
