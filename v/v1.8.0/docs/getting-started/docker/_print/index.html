@@ -118,7 +118,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.b4d827960f10df98a96496c194ea4de8.json"
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.8667f276ae1b5d57a2caeb11f9ccf5da.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -183,19 +183,66 @@ This the multi-page printable view of this section.
 
 </div>
 
-<h3 id="configuration-and-run">Configuration and run</h3>
+<p>The IAM image has been tested to run properly with either Docker or Podman. The configuration for the
+IAM service container is the same but the details to run the container slightly differ. Differences
+are covered in the next sections. In both cases, it is <strong>highly</strong> recommended to enable SELinux for
+increased security.</p>
+<h2 id="configuring-the-iam-service">Configuring the IAM service</h2>
 <p>Prepare an environment file that will contain the environment variables
 settings for the IAM service container. See <a href="/v/v1.8.0/docs/reference/configuration/">the configuration
 reference</a> for a description of the variables.</p>
-<p>The IAM service is run starting the docker container with the following command:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker run <span style="color:#4e9a06">\
+<p>This environment file will be passed to the container with the <code>--env-file</code> option of the
+container engine. You can choose whatever file path/name you want.</p>
+<h2 id="running-the-container">Running the container</h2>
+<h3 id="docker">Docker</h3>
+<p>First create a Docker network for the IAM service with the command (the example uses
+the network name <code>iam</code> but you are free to use another name as long as you use the same
+one in the <code>run</code>command). It has to be done once (not at every restart of the container):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker network create iam
+</code></pre></div><p>When using Docker the IAM service is run starting container with the following command:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker run -d <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  --name iam-login-service <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  --net<span style="color:#ce5c00;font-weight:bold">=</span>iam -p 8080:8080 <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  --env-file<span style="color:#ce5c00;font-weight:bold">=</span>/path/to/iam-login-service/env <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  -v /path/to/keystore.jks:/keystore.jks:ro <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  --restart unless-stopped <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  indigoiam/iam-login-service:v1.8.0
-</code></pre></div><p>Check the logs with:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ docker logs -f iam-login-service
+</code></pre></div><p><em>Note: <code>--restart</code> is recommended if you want the IAM service to restart automatically
+when the server running Docker is restarted.</em></p>
+<p>Check the logs with:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#8f5902;font-style:italic"># Adapt the container name to the value you provided to --name in previous command</span>
+$ docker logs -f iam-login-service
+</code></pre></div><h3 id="podman">Podman</h3>
+<p>When using Podman, the <code>docker</code> command must be replaced by <code>podman</code> with the following
+differences in options:</p>
+<ul>
+<li>
+<p><code>--restart</code> is silently ignored as start/stop of the container as boot time is controlled
+with <code>systemd</code>.</p>
+<ul>
+<li>See Podman documentation, in particular <code>podman generate systemd --help</code></li>
+</ul>
+</li>
+<li>
+<p>You need to add option <code>Z</code> to third field of <code>-v</code> option so that the SELinux context
+type is properly managed and the use of the volume by another container is prevented.</p>
+</li>
+<li>
+<p>Ensure that the directories containing the environment file and the keystore are
+labeled. It can be checked with <code>stat</code> command. If they are unlabeled use the following
+command to fix it:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ chcon -R -t default_t /path/to/directory
+</code></pre></div></li>
+</ul>
+<p>The required commands to start the container then become:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ podman network create iam      <span style="color:#8f5902;font-style:italic"># First time only</span>
+$ podman run -d <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  --name iam-login-service <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  --net<span style="color:#ce5c00;font-weight:bold">=</span>iam -p 8080:8080 <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  --env-file<span style="color:#ce5c00;font-weight:bold">=</span>/path/to/iam-login-service/env <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -v /path/to/keystore.jks:/keystore.jks:ro,Z <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  indigoiam/iam-login-service:v1.8.0
+$ podman logs -f iam-login-service
 </code></pre></div>
 </div>
 </div>
