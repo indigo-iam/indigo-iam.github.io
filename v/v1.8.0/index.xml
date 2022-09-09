@@ -13,6 +13,21 @@
     
     
     <item>
+      <title>Blog: IAM v1.8.0</title>
+      <link>/v/v1.8.0/blog/2022/09/09/iam-v1.8.0/</link>
+      <pubDate>Fri, 09 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/v/v1.8.0/blog/2022/09/09/iam-v1.8.0/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The IAM development team is pleased to announce the release of &lt;a href=&#34;https://github.com/indigo-iam/iam/releases/tag/v1.8.0&#34;&gt;INDIGO IAM
+v.1.8.0&lt;/a&gt;.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Blog: IAM v1.7.2</title>
       <link>/v/v1.8.0/blog/2021/12/03/iam-v1.7.2/</link>
       <pubDate>Fri, 03 Dec 2021 00:00:00 +0000</pubDate>
