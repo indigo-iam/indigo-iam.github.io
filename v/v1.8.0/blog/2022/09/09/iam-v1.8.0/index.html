@@ -22,12 +22,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/v/v1.8.0/blog/2022/09/09/iam-v1.8.0/" /><meta property="article:section" content="blog" />
 <meta property="article:published_time" content="2022-09-09T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-09-09T11:34:25+02:00" /><meta property="og:site_name" content="INDIGO IAM" />
+<meta property="article:modified_time" content="2022-11-18T17:12:11+01:00" /><meta property="og:site_name" content="INDIGO IAM" />
 
 <meta itemprop="name" content="IAM v1.8.0">
 <meta itemprop="description" content="The v1.8.0 release includes a spring boot upgrade and a new client management page"><meta itemprop="datePublished" content="2022-09-09T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2022-09-09T11:34:25+02:00" />
-<meta itemprop="wordCount" content="14">
+<meta itemprop="dateModified" content="2022-11-18T17:12:11+01:00" />
+<meta itemprop="wordCount" content="107">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="IAM v1.8.0"/>
 <meta name="twitter:description" content="The v1.8.0 release includes a spring boot upgrade and a new client management page"/>
@@ -122,7 +122,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.d9ae80d110aece8446ce1cb97e46f339.json"
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.9e5706414105f3d521f8c72ccc868f3d.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -154,7 +154,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.d9ae80d110aece8446ce1cb97e46f339.json"
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.9e5706414105f3d521f8c72ccc868f3d.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -337,8 +337,17 @@
 		<time datetime="2022-09-09" class="text-muted">Friday, September 09, 2022</time>
 	</div>
 	
-	<p>The IAM development team is pleased to announce the release of <a href="https://github.com/indigo-iam/iam/releases/tag/v1.8.0">INDIGO IAM
-v.1.8.0</a>.</p>
+	<p>The IAM development team is pleased to announce the release of INDIGO IAM v.1.8.0.</p>
+<p>This release provides many bug fixes and enchancements, but the major highlightes are:</p>
+<ul>
+<li>Spring Boot migration to 2.6.6 version and Flyway upgrade to 7.15.0 version</li>
+<li>New clients management and registration pages on IAM dashboard migrated away from MitreID</li>
+<li>New consent page in IAM migrated away from MitreID</li>
+<li>Support for JWT-based client authentication</li>
+<li>Compliance with some AARC guidelines, in particular G025 for expressing affiliation information and G021 on the exchange of specific assurance information between Infrastructures</li>
+<li>Persistence layer migrations for Multi-Factor Authentication support</li>
+</ul>
+<p>Significant changes and other details are described in the <a href="https://github.com/indigo-iam/iam/releases/tag/v1.8.0">release notes</a>.</p>
 
 	
 

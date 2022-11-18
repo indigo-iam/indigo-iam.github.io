@@ -21,8 +21,17 @@
       <description>
         
         
-        &lt;p&gt;The IAM development team is pleased to announce the release of &lt;a href=&#34;https://github.com/indigo-iam/iam/releases/tag/v1.8.0&#34;&gt;INDIGO IAM
-v.1.8.0&lt;/a&gt;.&lt;/p&gt;
+        &lt;p&gt;The IAM development team is pleased to announce the release of INDIGO IAM v.1.8.0.&lt;/p&gt;
+&lt;p&gt;This release provides many bug fixes and enchancements, but the major highlightes are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Spring Boot migration to 2.6.6 version and Flyway upgrade to 7.15.0 version&lt;/li&gt;
+&lt;li&gt;New clients management and registration pages on IAM dashboard migrated away from MitreID&lt;/li&gt;
+&lt;li&gt;New consent page in IAM migrated away from MitreID&lt;/li&gt;
+&lt;li&gt;Support for JWT-based client authentication&lt;/li&gt;
+&lt;li&gt;Compliance with some AARC guidelines, in particular G025 for expressing affiliation information and G021 on the exchange of specific assurance information between Infrastructures&lt;/li&gt;
+&lt;li&gt;Persistence layer migrations for Multi-Factor Authentication support&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Significant changes and other details are described in the &lt;a href=&#34;https://github.com/indigo-iam/iam/releases/tag/v1.8.0&#34;&gt;release notes&lt;/a&gt;.&lt;/p&gt;
 
       </description>
     </item>
