@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.86.0" /><link rel="canonical" type="text/html" href="/v/v1.8.0/docs/tasks/user/manage-approved-sites/">
+<meta name="generator" content="Hugo 0.86.0" /><link rel="canonical" type="text/html" href="/v/v1.8.0/docs/reference/api/proxycert-api/">
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
 
@@ -18,14 +18,14 @@
 <link rel="icon" type="image/png" href="/v/v1.8.0/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/v/v1.8.0/favicons/android-192x192.png" sizes="192x192">
 
-<title>Managing approved sites | INDIGO IAM</title><meta property="og:title" content="Managing approved sites" />
+<title>Proxy certificate API | INDIGO IAM</title><meta property="og:title" content="Proxy certificate API" />
 <meta property="og:description" content="The INDIGO Identity and Access Management (IAM) Service" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="/v/v1.8.0/docs/tasks/user/manage-approved-sites/" /><meta property="og:site_name" content="INDIGO IAM" />
+<meta property="og:url" content="/v/v1.8.0/docs/reference/api/proxycert-api/" /><meta property="og:site_name" content="INDIGO IAM" />
 
-<meta itemprop="name" content="Managing approved sites">
+<meta itemprop="name" content="Proxy certificate API">
 <meta itemprop="description" content="The INDIGO Identity and Access Management (IAM) Service"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Managing approved sites"/>
+<meta name="twitter:title" content="Proxy certificate API"/>
 <meta name="twitter:description" content="The INDIGO Identity and Access Management (IAM) Service"/>
 
 
@@ -146,13 +146,13 @@
 This the multi-page printable view of this section.
 <a href="#" onclick="print();return false;">Click here to print</a>.
 </p><p>
-<a href="/v/v1.8.0/docs/tasks/user/manage-approved-sites/">Return to the regular view of this page</a>.
+<a href="/v/v1.8.0/docs/reference/api/proxycert-api/">Return to the regular view of this page</a>.
 </p>
 </div>
 
 
 
-<h1 class="title">Managing approved sites</h1>
+<h1 class="title">Proxy certificate API</h1>
 
 
 
@@ -171,10 +171,30 @@ This the multi-page printable view of this section.
 
 
 <div class="content">
-      <p>You can manage approved sites (i.e. sites and services that you approved when
-authenticating at the IAM) from the MitreID dashboard following the &ldquo;Manage Approved Sites&rdquo; link:</p>
-<p><img src="../images/manage-approved-sites.png" alt="Manage approved sites"></p>
-
+      <p>IAM provides a RESTful API that can be used to download the X.509 proxy certificate previously uploaded in IAM dashboard by the user.<br>
+This is a plain proxy obtained by running <code>voms-proxy-init</code> command.</p>
+<p>The API has been added mainly for the integration of IAM with the <a href="http://rcauth.eu/">RCAuth.eu</a> online certificate authority.</p>
+<p>The <code>proxy:generate</code> OAuth scope is required to access this API.<br>
+Note that this scope is restricted in the default IAM configuration,
+i.e. can be assigned to clients only by IAM administrators.</p>
+<h2 id="post-iamproxycert">POST <code>/iam/proxycert</code></h2>
+<p>Returns a JSON representation of the proxy certificate of the user.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -s -X POST -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">BT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -d <span style="color:#000">client_id</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">${</span><span style="color:#000">CLIENT_ID</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -d <span style="color:#000">client_secret</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">${</span><span style="color:#000">CLIENT_SECRET</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -d <span style="color:#000">lifetimeSecs</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">${</span><span style="color:#000">PROXY_CERT_LIFETIME_SECS</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/proxycert
+</code></pre></div><p>The user can request a specific lifetime of the proxy
+that is less than or equal to the maximum lifetime of the proxy itself.</p>
+<p>IAM response:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;subject&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;CN=2050153474,CN=813462308,CN=John Doe jdoe@infn.it,O=Istituto Nazionale di Fisica Nucleare,C=IT,DC=tcs,DC=terena,DC=org&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;issuer&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;CN=813462308,CN=John Doe jdoe@infn.it,O=Istituto Nazionale di Fisica Nucleare,C=IT,DC=tcs,DC=terena,DC=org&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;identity&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;CN=John Doe jdoe@infn.it,O=Istituto Nazionale di Fisica Nucleare,C=IT,DC=tcs,DC=terena,DC=org&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;not_after&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;1663991299000&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;certificate_chain&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;-----BEGIN CERTIFICATE-----\nMI...lCU=\n-----END CERTIFICATE-----\n&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div>
 </div>
 </div>
 
