@@ -121,7 +121,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.a8d3174028cbbe501d4b27fa00f4c405.json"
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.3586bc811c45db8ca77e21e7ab95f095.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -1861,9 +1861,18 @@ wiki</a>.</p>
     
 	<h1 id="pg-ebe7e4e7e9878df8afa56df0d05e4322">1.9 - OpenID Connect client registration API</h1>
     
-	<p>IAM, through the <a href="https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server/wiki">MitreID OpenID Connect server implementation</a>,
-supports the <a href="https://openid.net/specs/openid-connect-registration-1_0.html">OpenID Connect Dynamic Client Registration
-API</a> API at the <code>/register</code> endpoint.</p>
+	<p>Starting from version 1.8.0, IAM supports the <a href="https://openid.net/specs/openid-connect-registration-1_0.html">OpenID Connect Dynamic Client Registration
+API</a> at the <code>/iam/api/client-registration</code> endpoint.</p>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Warning</h4>
+
+    Support to the dynamic client registration through the <a href="https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server/wiki">MitreID OpenID Connect server implementation</a>
+at the <code>/register</code> endpoint is deprecated.
+
+</div>
+
 <p>Client registration does not require authentication.</p>
 <h2 id="example-registering-and-deleting-a-client-from-the-command-line">Example: registering and deleting a client from the command line</h2>
 <p>With the following template JSON you can easily register a client in the IAM:</p>
@@ -1889,34 +1898,37 @@ API</a> API at the <code>/register</code> endpoint.</p>
 contact, rediret_uris, etc&hellip;). We will use the <code>client-req.json</code> file name for
 this example. You can then use <a href="https://httpie.org/">httpie</a> as  follows to generate the
 client on the IAM</p>
-<pre><code>http https://iam.local.io/register &lt; client-req.json &gt; client.json
+<pre><code>http https://iam.local.io/iam/api/client-registration &lt; client-req.json &gt; client.json
 </code></pre><p>If the command terminates correctly, you will have the client configuration
 saved in the <code>client.json</code> file. You can use <a href="https://stedolan.github.io/jq/">jq</a> to display in a pretty
 way its contents:</p>
 <pre><code>$ jq . client.json
 {
-  &quot;client_id&quot;: &quot;4b2556d7-65c5-4a15-81c0-7b80c604940e&quot;,
-  &quot;client_secret&quot;: &quot;R4u3v-SUqKX1XTFQbGGr-S5qcOAA8JrLT0xAOHYZl1Up65ChHYNsl-8y6gv7qJLaxVI5Z6UXBmSkwSDZLtAAWw&quot;,
-  &quot;client_secret_expires_at&quot;: 0,
-  &quot;client_id_issued_at&quot;: 1507223860,
-  &quot;registration_access_token&quot;: &quot;eyJraWQiOiJyc2ExIiwiYWxnIjoiUlMyNTYifQ.eyJhdWQiOiI0YjI1NTZkNy02NWM1LTRhMTUtODFjMC03YjgwYzYwNDk0MGUiLCJpc3MiOiJodHRwczpcL1wvaWFtLmxvY2FsLmlvXC8iLCJpYXQiOjE1MDcyMjM4NjAsImp0aSI6IjRmNTQ2YmEyLWE3ZWEtNDA4ZC1iYWI1LTdlZGMyNDZlOWJhMiJ9.Iyr7fwKy3OSl3wVjaw5HVVxBFl62A-vDlrKJpJA2W2t1GmPMcz5ZZOhp9PStd2RbMpuu6WwVhhDMN706IOzk03dGD3wPy_ag2MaiJfdT0-AT2nMviuPNylgU4bK0wFs9r9cwxBI0PpJ5pkkQE__z_lfWHylKMf9mLrZp81WUvt8&quot;,
-  &quot;registration_client_uri&quot;: &quot;https://iam.local.io/register/4b2556d7-65c5-4a15-81c0-7b80c604940e&quot;,
+  &quot;client_id&quot;: &quot;9bef3e68-f329-4dbf-9c3e-45647c08dfd5&quot;,
+  &quot;client_secret&quot;: &quot;ALMjVauX1tXtU2lZytbxfW7JrEx6-ZhZml8bZcEocYOf1enNdIQaWB0aDUmr-nilGjjrznzbWNNWdh8bP0neyUI&quot;,
+  &quot;client_name&quot;: &quot;another-example-client&quot;,
   &quot;redirect_uris&quot;: [
     &quot;https://another.client.example/oidc&quot;
   ],
-  &quot;client_name&quot;: &quot;another-example-client&quot;,
   &quot;contacts&quot;: [
     &quot;test@iam.test&quot;
   ],
-  &quot;token_endpoint_auth_method&quot;: &quot;client_secret_basic&quot;,
-  &quot;scope&quot;: &quot;address phone openid email profile offline_access&quot;,
   &quot;grant_types&quot;: [
-    &quot;refresh_token&quot;,
-    &quot;authorization_code&quot;
+    &quot;authorization_code&quot;,
+    &quot;refresh_token&quot;
   ],
   &quot;response_types&quot;: [
     &quot;code&quot;
-  ]
+  ],
+  &quot;token_endpoint_auth_method&quot;: &quot;client_secret_basic&quot;,
+  &quot;scope&quot;: &quot;address phone openid profile offline_access email&quot;,
+  &quot;reuse_refresh_token&quot;: true,
+  &quot;dynamically_registered&quot;: true,
+  &quot;clear_access_tokens_on_refresh&quot;: true,
+  &quot;require_auth_time&quot;: false,
+  &quot;registration_access_token&quot;: &quot;eyJraWQiOiJyc2ExIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODA4MFwvIiwiYXVkIjoiOWJlZjNlNjgtZjMyOS00ZGJmLTljM2UtNDU2NDdjMDhkZmQ1IiwiaWF0IjoxNjQ5MzM4OTcxLCJqdGkiOiJmNTFlZWIzMS1kY2RkLTQ5MDctYThlZC1jZTViMGU3ODRiODAifQ.Ec5PCjaaIveIpMPhTcYvJfsnJc9Ag_n46ICcaDhh8GDXupKAARv_fx4oCQPgomSKAz4j1bVRgzrmQsswR8lKmWQZv5fG2BMaRdh9epENArUbTsaPqdUfoMsqo-rqeN-eOcl4I1NChnfCPdBi2rSg2M5y4o9DSqhtQUUnig3-n77X8QhN8ES2i2MFgLkwBkc88nvPFdtSpNHvKjIlaXx6YRA3F7kqv7LHNP5OKfnfXNAFPhKweRRTXamEu_oN3-u0TQbxkg8YdNo4CN8hfMYMKsaCigND765zxFeRXSgNkpfZdV3d-8K5aU6TQoIOR41_kylbOh6rt6TGD4IIosEn5w&quot;,
+  &quot;registration_client_uri&quot;: &quot;https://iam.local.io/iam/api/client-registration/9bef3e68-f329-4dbf-9c3e-45647c08dfd5&quot;,
+  &quot;created_at&quot;: 1649338971207
 }
 </code></pre><p>and also to extract information from it conveniently from the command line.
 For example, you can extract the <code>client_id</code> and <code>registration_access_token</code>
@@ -1924,13 +1936,13 @@ with the following commands:</p>
 <pre><code>$ export CID=$(jq -r .client_id client.json)
 $ export RAT=$(jq -r .registration_access_token client.json)
 </code></pre><p>and use them to delete the client:</p>
-<pre><code>$ http DELETE https://iam.local.io/register/${CID} Authorization:&quot;Bearer ${RAT}&quot;
+<pre><code>$ http DELETE https://iam.local.io/iam/api/client-registration/${CID} Authorization:&quot;Bearer ${RAT}&quot;
 HTTP/1.1 204 No Content
 Access-Control-Allow-Origin: *
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Connection: keep-alive
 Content-Language: en-US
-Date: Thu, 05 Oct 2017 17:10:42 GMT
+Date: Thu, 07 Apr 2022 13:51:40 GMT
 Expires: 0
 Pragma: no-cache
 Server: nginx/1.13.1
