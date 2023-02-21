@@ -121,7 +121,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.f5e4ad4d70c6d429789a81bd3363408d.json"
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.a8d3174028cbbe501d4b27fa00f4c405.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -4234,6 +4234,16 @@ section</a>.</p>
 
 <span style="color:#8f5902;font-style:italic"># The email address used as the recipient in IAM email notifications</span>
 <span style="color:#000">IAM_NOTIFICATION_ADMIN_ADDRESS</span><span style="color:#ce5c00;font-weight:bold">=</span>indigo-alerts@localhost
+
+<span style="color:#8f5902;font-style:italic"># Notification policy for account requests. The default value is notify-address</span>
+<span style="color:#8f5902;font-style:italic"># meaning that notifications just arrive to the email address</span>
+<span style="color:#8f5902;font-style:italic"># specified above. Set to notify-admins if you want to notify</span>
+<span style="color:#8f5902;font-style:italic"># all IAM admins or to notify-address-and-admins to combine the two behaviors</span>
+<span style="color:#000">IAM_NOTIFICATION_ADMIN_NOTIFICATION_POLICY</span><span style="color:#ce5c00;font-weight:bold">=</span>notify-address
+
+<span style="color:#8f5902;font-style:italic"># Notification policy for group requests. Default value notifies both</span>
+<span style="color:#8f5902;font-style:italic"># admins and group managers. Set to notify-gms if you want to notify only group managers</span>
+<span style="color:#000">IAM_NOTIFICATION_GROUP_MANAGER_NOTIFICATION_POLICY</span><span style="color:#ce5c00;font-weight:bold">=</span>notify-gms-and-admins
 
 <span style="color:#8f5902;font-style:italic"># Time interval, in milliseconds, between two consecutive runs of IAM notification </span>
 <span style="color:#8f5902;font-style:italic"># dispatch task </span>
