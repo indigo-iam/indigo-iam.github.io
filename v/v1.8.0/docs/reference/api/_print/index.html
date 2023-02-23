@@ -121,7 +121,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.3586bc811c45db8ca77e21e7ab95f095.json"
+  data-offline-search-index-json-src="/v/v1.8.0/offline-search-index.e09cb5a5eac04a97ef36b826bc8a9448.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -248,7 +248,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>5: <a href="#pg-c30171a2167f0f6388c6c9ca09e24275">IAM Token management API</a></li>
+<li>5: <a href="#pg-7f5c1a9b140b9880ba6f9562e465ba3c">IAM account API</a></li>
 
 
     
@@ -267,7 +267,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>6: <a href="#pg-d7a16cf20db6b5db427da83d3a706289">OAuth token exchange API</a></li>
+<li>6: <a href="#pg-c30171a2167f0f6388c6c9ca09e24275">IAM Token management API</a></li>
 
 
     
@@ -286,7 +286,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>7: <a href="#pg-e7c3f1c0aafd5433deea6bb5120198f0">OAuth token introspection API</a></li>
+<li>7: <a href="#pg-d7a16cf20db6b5db427da83d3a706289">OAuth token exchange API</a></li>
 
 
     
@@ -305,7 +305,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>8: <a href="#pg-2210df1e33e69aae2033d3ad614cb1ac">OpenID Connect client management API</a></li>
+<li>8: <a href="#pg-e7c3f1c0aafd5433deea6bb5120198f0">OAuth token introspection API</a></li>
 
 
     
@@ -324,7 +324,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>9: <a href="#pg-ebe7e4e7e9878df8afa56df0d05e4322">OpenID Connect client registration API</a></li>
+<li>9: <a href="#pg-2210df1e33e69aae2033d3ad614cb1ac">OpenID Connect client management API</a></li>
 
 
     
@@ -343,7 +343,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>10: <a href="#pg-33f82d3baa8becb8dd9398d40b988474">SCIM API</a></li>
+<li>10: <a href="#pg-ebe7e4e7e9878df8afa56df0d05e4322">OpenID Connect client registration API</a></li>
 
 
     
@@ -362,7 +362,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>11: <a href="#pg-43a4bb7d0656895dfb5d3195932b03df">Scope Policy API</a></li>
+<li>11: <a href="#pg-33f82d3baa8becb8dd9398d40b988474">SCIM API</a></li>
 
 
     
@@ -381,7 +381,26 @@ This the multi-page printable view of this section.
     
     
 	
-<li>12: <a href="#pg-f53010d8ceeb59269840cbdb81da1bbb">Token exchange policy API</a></li>
+<li>12: <a href="#pg-43a4bb7d0656895dfb5d3195932b03df">Scope Policy API</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>13: <a href="#pg-f53010d8ceeb59269840cbdb81da1bbb">Token exchange policy API</a></li>
 
 
     
@@ -1059,7 +1078,399 @@ In order to enable the external connectivity check, set the environment variable
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-c30171a2167f0f6388c6c9ca09e24275">5 - IAM Token management API</h1>
+	<h1 id="pg-7f5c1a9b140b9880ba6f9562e465ba3c">5 - IAM account API</h1>
+    
+	<p>IAM provides a RESTful API that can be used to manage users, group membership, clients, etc.</p>
+<p>IAM implements the following endpoints:</p>
+<ul>
+<li><code>/iam/account/{id}/attributes</code>, providing access to user attributes</li>
+<li><code>/iam/account/{id}/authorities</code>, providing access to user authorities/roles</li>
+<li><code>/iam/account/me/clients</code>, providing access to clients owned by the user</li>
+<li><code>/iam/account/find/{option}</code>, searching users by username/label/e-mail/group/certificate subject</li>
+<li><code>/iam/account/{id}/groups/{groupId}</code>, providing access to user groups</li>
+<li><code>/iam/account/{id}/managed-groups</code>, providing access to groups to which a user is manager</li>
+<li><code>/iam/group/{groupId}/group-managers</code>, listing managers of a certain group</li>
+<li><code>/iam/account/{id}/labels</code>, providing access to user account labels</li>
+<li><code>/iam/account/{id}/endTime</code>, managing user membership end time</li>
+<li><code>/iam/account/me/proxycert</code>, managing user proxy certificate</li>
+<li><code>/iam/account/search</code>, listing user accounts.</li>
+</ul>
+<p>Authentication is required in all the endpoints and the access is based on IAM roles.
+Remember that there are three roles in Indigo IAM: Amdin, User, Group Manager.</p>
+<h2 id="user-attributes">User attributes</h2>
+<h3 id="get-iamaccountidattributes">GET <code>/iam/account/{id}/attributes</code></h3>
+<p>Retrieves user attributes. The {id} refers to the account identifier.</p>
+<p>Requires that the user has <code>ROLE_ADMIN</code>, <code>ROLE_GM</code>, or is the one represented by the {id}.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -s -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/attributes <span style="color:#000;font-weight:bold">|</span> jq
+<span style="color:#ce5c00;font-weight:bold">[</span>
+  <span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#4e9a06">&#34;name&#34;</span>: <span style="color:#4e9a06">&#34;Nickname&#34;</span>,
+    <span style="color:#4e9a06">&#34;value&#34;</span>: <span style="color:#4e9a06">&#34;Test&#34;</span>
+  <span style="color:#ce5c00;font-weight:bold">}</span>
+<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><h3 id="put-iamaccountidattributes">PUT <code>/iam/account/{id}/attributes</code></h3>
+<p>Adds attributes to the user account. It can be done directly through the IAM dashboard by clicking on &ldquo;Set attribute&rdquo; button in <em>Attributes</em> section of the user homepage.</p>
+<p>Requires <code>ROLE_ADMIN</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -X PUT -H <span style="color:#4e9a06">&#34;Accept: application/json&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -H <span style="color:#4e9a06">&#34;Content-Type: application/json&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> -d @attribute.json <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/attributes
+</code></pre></div><p>where <code>attribute.json</code> is:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+   <span style="color:#204a87;font-weight:bold">&#34;name&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;Nickname&#34;</span><span style="color:#000;font-weight:bold">,</span>
+   <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;Test&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h3 id="delete-iamaccountidattributes">DELETE <code>/iam/account/{id}/attributes</code></h3>
+<p>Deletes user attribute by adding the query parameter at the end of the endpoint.</p>
+<p>Requires <code>ROLE_ADMIN</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -X DELETE -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/attributes?name<span style="color:#ce5c00;font-weight:bold">=</span>Nickname
+</code></pre></div><h2 id="user-roles">User roles</h2>
+<h3 id="get-iamaccountidauthorities">GET <code>/iam/account/{id}/authorities</code></h3>
+<p>Retrieves user roles.</p>
+<p>Requires <code>ROLE_ADMIN</code> or <code>ROLE_GM</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -s -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/authorities <span style="color:#000;font-weight:bold">|</span> jq
+<span style="color:#ce5c00;font-weight:bold">{</span>
+  <span style="color:#4e9a06">&#34;authorities&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[</span>
+    <span style="color:#4e9a06">&#34;ROLE_GM:c617d586-54e6-411d-8e38-649677980001&#34;</span>,
+    <span style="color:#4e9a06">&#34;ROLE_USER&#34;</span>
+  <span style="color:#ce5c00;font-weight:bold">]</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><p>The above example shows that the Test User is also a group manager (of group with <code>c617d586-54e6-411d-8e38-649677980001</code> id).</p>
+<h3 id="post-iamaccountidauthorities">POST <code>/iam/account/{id}/authorities</code></h3>
+<p>Adds an authority to the user.</p>
+<p>Requires <code>ROLE_ADMIN</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -X POST -H <span style="color:#4e9a06">&#34;Content-Type: application/x-www-form-urlencoded&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> -d <span style="color:#4e9a06">&#34;authority=ROLE_ADMIN&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/authorities
+</code></pre></div><h3 id="delete-iamaccountidauthorities">DELETE <code>/iam/account/{id}/authorities</code></h3>
+<p>Revokes user authority by specifying the query parameter.</p>
+<p>Requires <code>ROLE_ADMIN</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -X DELETE -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/authorities?authority<span style="color:#ce5c00;font-weight:bold">=</span>ROLE_ADMIN
+</code></pre></div><h2 id="managed-clients">Managed clients</h2>
+<h3 id="get-iamaccountmeclients">GET <code>/iam/account/me/clients</code></h3>
+<p>Retrieves information about clients owned by the currently authenticated user.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -s -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/me/clients <span style="color:#000;font-weight:bold">|</span> jq
+<span style="color:#ce5c00;font-weight:bold">{</span>
+  <span style="color:#4e9a06">&#34;totalResults&#34;</span>: 1,
+  <span style="color:#4e9a06">&#34;itemsPerPage&#34;</span>: 1,
+  <span style="color:#4e9a06">&#34;startIndex&#34;</span>: 1,
+  <span style="color:#4e9a06">&#34;Resources&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[</span>
+    <span style="color:#ce5c00;font-weight:bold">{</span>
+      <span style="color:#4e9a06">&#34;client_id&#34;</span>: <span style="color:#4e9a06">&#34;client&#34;</span>,
+      <span style="color:#4e9a06">&#34;client_name&#34;</span>: <span style="color:#4e9a06">&#34;Test Client&#34;</span>,
+      <span style="color:#4e9a06">&#34;redirect_uris&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[</span>
+        <span style="color:#4e9a06">&#34;https://iam.local.io/iam-test-client/openid_connect_login&#34;</span>,
+        <span style="color:#4e9a06">&#34;http://localhost:9090/iam-test-client/openid_connect_login&#34;</span>
+      <span style="color:#ce5c00;font-weight:bold">]</span>,
+      <span style="color:#4e9a06">&#34;scope&#34;</span>: <span style="color:#4e9a06">&#34;address phone openid profile offline_access read-tasks attr write-tasks email read:/ write:/&#34;</span>,
+      <span style="color:#4e9a06">&#34;created_at&#34;</span>: <span style="color:#0000cf;font-weight:bold">1658764288643</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+  <span style="color:#ce5c00;font-weight:bold">]</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><h2 id="account-filtering">Account filtering</h2>
+<h3 id="get-iamaccountfindoption">GET <code>/iam/account/find/{option}</code></h3>
+<p>Filters user information by label, e-mail, username, certificate subject or group/notingroup.</p>
+<p>Requires <code>ROLE_ADMIN</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byusername</td>
+<td>username</td>
+<td>string</td>
+</tr>
+<tr>
+<td>bylabel</td>
+<td>name</td>
+<td>string</td>
+</tr>
+<tr>
+<td>byemail</td>
+<td>email</td>
+<td>string</td>
+</tr>
+<tr>
+<td>bycertsubject</td>
+<td>certificateSubject</td>
+<td>URL-encoded</td>
+</tr>
+</tbody>
+</table>
+<p>Examples of the available options:</p>
+<ul>
+<li>
+<p>byusername</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -s -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/find/byusername?username<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">test</span> <span style="color:#000;font-weight:bold">|</span> jq
+<span style="color:#ce5c00;font-weight:bold">{</span>
+  <span style="color:#4e9a06">&#34;totalResults&#34;</span>: 1,
+  <span style="color:#4e9a06">&#34;itemsPerPage&#34;</span>: 10,
+  <span style="color:#4e9a06">&#34;startIndex&#34;</span>: 1,
+  <span style="color:#4e9a06">&#34;schemas&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[</span>
+    <span style="color:#4e9a06">&#34;urn:ietf:params:scim:api:messages:2.0:ListResponse&#34;</span>
+  <span style="color:#ce5c00;font-weight:bold">]</span>,
+  <span style="color:#4e9a06">&#34;Resources&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[</span>
+    <span style="color:#ce5c00;font-weight:bold">{</span>
+      <span style="color:#4e9a06">&#34;id&#34;</span>: <span style="color:#4e9a06">&#34;80e5fb8d-b7c8-451a-89ba-346ae278a66f&#34;</span>,
+      <span style="color:#4e9a06">&#34;meta&#34;</span>: <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#4e9a06">&#34;created&#34;</span>: <span style="color:#4e9a06">&#34;2022-07-26T13:48:35.442+02:00&#34;</span>,
+        <span style="color:#4e9a06">&#34;lastModified&#34;</span>: <span style="color:#4e9a06">&#34;2022-07-26T13:48:35.442+02:00&#34;</span>,
+        <span style="color:#4e9a06">&#34;location&#34;</span>: <span style="color:#4e9a06">&#34;http://localhost:8080/scim/Users/80e5fb8d-b7c8-451a-89ba-346ae278a66f&#34;</span>,
+        <span style="color:#4e9a06">&#34;resourceType&#34;</span>: <span style="color:#4e9a06">&#34;User&#34;</span>
+      ...
+  <span style="color:#ce5c00;font-weight:bold">]</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div></li>
+<li>
+<p>bylabel</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -s -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/find/bylabel?name<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">test</span>
+</code></pre></div></li>
+<li>
+<p>byemail</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -s -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/find/byemail?email<span style="color:#ce5c00;font-weight:bold">=</span>test.user@gmail.com
+</code></pre></div></li>
+<li>
+<p>bycertsubject</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -s -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#000">$AT</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/find/bycertsubject?certificateSubject<span style="color:#ce5c00;font-weight:bold">=</span>CN%3dTest%20User%20test%40infn.it%2cO%3dIstituto%20Nazionale%20di%20Fisica%20Nucleare%2cC%3dIT%2cDC%3dtcs%2cDC%3dterena%2cDC<span style="color:#ce5c00;font-weight:bold">=</span>org
+</code></pre></div></li>
+<li>
+<p>bygroup/{groupId}</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -s -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/find/bygroup/6a384bcd-d4b3-4b7f-a2fe-7d897ada0dd1
+</code></pre></div></li>
+<li>
+<p>notingroup/{groupId}</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/find/notingroup/6a384bcd-d4b3-4b7f-a2fe-7d897ada0dd1
+</code></pre></div></li>
+</ul>
+<h2 id="group-members">Group members</h2>
+<h3 id="post-iamaccountidgroupsgroupid">POST <code>/iam/account/{id}/groups/{groupId}</code></h3>
+<p>Adds user to a group. It can be done directly through the IAM dashboard as explained <a href="/v/v1.8.0/docs/tasks/administration/group-management/#managing-membership-for-a-group">here</a>.</p>
+<p>Requires <code>ROLE_ADMIN</code> or <code>ROLE_GM</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -X POST -H <span style="color:#4e9a06">&#34;Content-Type: application/x-www-form-urlencoded&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/groups/c617d586-54e6-411d-8e38-649677980004
+</code></pre></div><h3 id="delete-iamaccountidgroupsgroupid">DELETE <code>/iam/account/{id}/groups/{groupId}</code></h3>
+<p>Removes user from a specific group.</p>
+<p>Requires <code>ROLE_ADMIN</code> or <code>ROLE_GM</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -X DELETE -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/groups/c617d586-54e6-411d-8e38-649677980004
+</code></pre></div><h2 id="group-managers">Group managers</h2>
+<h3 id="get-iamaccountidmanaged-groups">GET <code>/iam/account/{id}/managed-groups</code></h3>
+<p>Lists the user&rsquo;s managed and not managed groups.</p>
+<p>Requires that the user has <code>ROLE_ADMIN</code> or is the one represented by the {id}.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -s -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/managed-groups <span style="color:#000;font-weight:bold">|</span> jq
+<span style="color:#ce5c00;font-weight:bold">{</span>
+  <span style="color:#4e9a06">&#34;id&#34;</span>: <span style="color:#4e9a06">&#34;80e5fb8d-b7c8-451a-89ba-346ae278a66f&#34;</span>,
+  <span style="color:#4e9a06">&#34;username&#34;</span>: <span style="color:#4e9a06">&#34;test&#34;</span>,
+  <span style="color:#4e9a06">&#34;managedGroups&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[</span>
+    <span style="color:#ce5c00;font-weight:bold">{</span>
+      <span style="color:#4e9a06">&#34;name&#34;</span>: <span style="color:#4e9a06">&#34;Test-001&#34;</span>,
+      <span style="color:#4e9a06">&#34;id&#34;</span>: <span style="color:#4e9a06">&#34;c617d586-54e6-411d-8e38-649677980001&#34;</span>,
+      <span style="color:#4e9a06">&#34;description&#34;</span>: null,
+      <span style="color:#4e9a06">&#34;parent&#34;</span>: null
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+  <span style="color:#ce5c00;font-weight:bold">]</span>,
+  <span style="color:#4e9a06">&#34;unmanagedGroups&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[</span>
+    ...
+  <span style="color:#ce5c00;font-weight:bold">]</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
+</code></pre></div><h3 id="post-iamaccountidmanaged-groupsgroupid">POST <code>/iam/account/{id}/managed-groups/{groupId}</code></h3>
+<p>Gives a user represented by {id} <code>ROLE_GM</code> privileges of the group identified by {groupId}.</p>
+<p>Requires <code>ROLE_ADMIN</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -X POST -H <span style="color:#4e9a06">&#34;Content-Type: application/x-www-form-urlencoded&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/managed-groups/c617d586-54e6-411d-8e38-649677980004
+</code></pre></div><h3 id="delete-iamaccountidmanaged-groupsgroupid">DELETE <code>/iam/account/{id}/managed-groups/{groupId}</code></h3>
+<p>Removes a group manager from a certain group.</p>
+<p>Requires <code>ROLE_ADMIN</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -X DELETE -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/managed-groups/c617d586-54e6-411d-8e38-649677980004
+</code></pre></div><h3 id="get-iamgroupgroupidgroup-managers">GET <code>/iam/group/{groupId}/group-managers</code></h3>
+<p>Shows the information of managers in a certain group.</p>
+<p>Requires <code>ROLE_ADMIN</code> or <code>ROLE_GM</code> privileges of the group identified by {groupId}.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -s -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/group/c617d586-54e6-411d-8e38-649677980004/group-managers
+<span style="color:#ce5c00;font-weight:bold">[</span>
+  <span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#4e9a06">&#34;id&#34;</span>: <span style="color:#4e9a06">&#34;80e5fb8d-b7c8-451a-89ba-346ae278a66f&#34;</span>,
+    <span style="color:#4e9a06">&#34;meta&#34;</span>: <span style="color:#ce5c00;font-weight:bold">{</span>
+      <span style="color:#4e9a06">&#34;created&#34;</span>: <span style="color:#4e9a06">&#34;2022-07-26T13:48:35.442+02:00&#34;</span>,
+      <span style="color:#4e9a06">&#34;lastModified&#34;</span>: <span style="color:#4e9a06">&#34;2022-07-26T18:19:03.786+02:00&#34;</span>,
+      <span style="color:#4e9a06">&#34;location&#34;</span>: <span style="color:#4e9a06">&#34;http://localhost:8080/scim/Users/80e5fb8d-b7c8-451a-89ba-346ae278a66f&#34;</span>,
+      <span style="color:#4e9a06">&#34;resourceType&#34;</span>: <span style="color:#4e9a06">&#34;User&#34;</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>,
+    <span style="color:#4e9a06">&#34;schemas&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[</span>
+      <span style="color:#4e9a06">&#34;urn:ietf:params:scim:schemas:core:2.0:User&#34;</span>,
+      <span style="color:#4e9a06">&#34;urn:indigo-dc:scim:schemas:IndigoUser&#34;</span>
+    <span style="color:#ce5c00;font-weight:bold">]</span>,
+    <span style="color:#4e9a06">&#34;userName&#34;</span>: <span style="color:#4e9a06">&#34;test&#34;</span>,
+    <span style="color:#4e9a06">&#34;name&#34;</span>: <span style="color:#ce5c00;font-weight:bold">{</span>
+      <span style="color:#4e9a06">&#34;familyName&#34;</span>: <span style="color:#4e9a06">&#34;User&#34;</span>,
+      <span style="color:#4e9a06">&#34;formatted&#34;</span>: <span style="color:#4e9a06">&#34;Test User&#34;</span>,
+      <span style="color:#4e9a06">&#34;givenName&#34;</span>: <span style="color:#4e9a06">&#34;Test&#34;</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>,
+    ...
+  <span style="color:#ce5c00;font-weight:bold">}</span>
+<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><h2 id="account-labels">Account labels</h2>
+<h3 id="get-iamaccountidlabels">GET <code>/iam/account/{id}/labels</code></h3>
+<p>Shows the user account labels.</p>
+<p>Requires that the user has <code>ROLE_ADMIN</code>, <code>ROLE_GM</code>, or is the one represented by the {id}.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -s -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/labels
+<span style="color:#ce5c00;font-weight:bold">[</span>
+  <span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#4e9a06">&#34;prefix&#34;</span>: <span style="color:#4e9a06">&#34;hr.cern&#34;</span>,
+    <span style="color:#4e9a06">&#34;name&#34;</span>: <span style="color:#4e9a06">&#34;ignore&#34;</span>
+  <span style="color:#ce5c00;font-weight:bold">}</span>
+<span style="color:#ce5c00;font-weight:bold">]</span>
+</code></pre></div><h3 id="put-iamaccountidlabels">PUT <code>/iam/account/{id}/labels</code></h3>
+<p>Adds labels to user account.</p>
+<p>Requires <code>ROLE_ADMIN</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -X PUT -H <span style="color:#4e9a06">&#34;Content-Type: application/json&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> -d @labels.json <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/labels
+</code></pre></div><p>where <code>labels.json</code> is:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;prefix&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;hr.cern&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ignore&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h3 id="delete-iamaccountidlabels">DELETE <code>/iam/account/{id}/labels</code></h3>
+<p>Deletes an account label by adding the query parameter.</p>
+<p>Requires <code>ROLE_ADMIN</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -X DELETE -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/labels?name<span style="color:#ce5c00;font-weight:bold">=</span>ignore
+</code></pre></div><h2 id="user-account-expiration-time">User account expiration time</h2>
+<h3 id="put-iamaccountidendtime">PUT <code>/iam/account/{id}/endTime</code></h3>
+<p>Adds/changes the membership end time of the user. It can be done directly through the IAM dashboard
+by clicking on &ldquo;Change membership end time&rdquo; button in the user homepage.</p>
+<p>Requires <code>ROLE_ADMIN</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -X PUT -d @endTime.json <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -H <span style="color:#4e9a06">&#34;Content-Type: application/json&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/endTime
+</code></pre></div><p>where <code>endTime.json</code> is:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+   <span style="color:#204a87;font-weight:bold">&#34;endTime&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;2022-08-06T02:00:00.000+02:00&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h2 id="proxy-certificate">Proxy certificate</h2>
+<h3 id="put-iamaccountmeproxycert">PUT <code>/iam/account/me/proxycert</code></h3>
+<p>Adds user proxy certificate. It can be done directly through the IAM dashboard
+by clicking on &ldquo;Add managed proxy certificate&rdquo; button
+appearing on the user homepage after uploading the X.509 certificate.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -i -X PUT -d @proxy.json <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -H <span style="color:#4e9a06">&#34;Content-Type: application&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/me/proxycert
+</code></pre></div><p>where <code>proxy.json</code> includes only the <em>certificate_chain</em> key:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span><span style="color:#204a87;font-weight:bold">&#34;certificate_chain&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;-----BEGIN CERTIFICATE-----\nMIIFGT...FlCU=\n-----END CERTIFICATE-----&#34;</span><span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h2 id="list-accounts-and-groups">List accounts and groups</h2>
+<h3 id="get-iamaccountsearch">GET <code>/iam/account/search</code></h3>
+<p>Shows the list of IAM accounts.</p>
+<p>Requires <code>ROLE_ADMIN</code>, <code>ROLE_GM</code> or <code>scim:read</code> scope.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -s -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/search
+<span style="color:#ce5c00;font-weight:bold">{</span>
+  <span style="color:#4e9a06">&#34;totalResults&#34;</span>: 254,
+  <span style="color:#4e9a06">&#34;itemsPerPage&#34;</span>: 10,
+  <span style="color:#4e9a06">&#34;startIndex&#34;</span>: 1,
+  <span style="color:#4e9a06">&#34;Resources&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[</span>
+    <span style="color:#ce5c00;font-weight:bold">{</span>
+      <span style="color:#4e9a06">&#34;id&#34;</span>: <span style="color:#4e9a06">&#34;73f16d93-2441-4a50-88ff-85360d78c6b5&#34;</span>,
+      <span style="color:#4e9a06">&#34;meta&#34;</span>: <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#4e9a06">&#34;created&#34;</span>: <span style="color:#4e9a06">&#34;2022-09-21T17:20:14.034+02:00&#34;</span>,
+        <span style="color:#4e9a06">&#34;lastModified&#34;</span>: <span style="color:#4e9a06">&#34;2022-09-21T17:20:14.034+02:00&#34;</span>,
+        <span style="color:#4e9a06">&#34;location&#34;</span>: <span style="color:#4e9a06">&#34;http://localhost:8080/scim/Users/73f16d93-2441-4a50-88ff-85360d78c6b5&#34;</span>,
+        <span style="color:#4e9a06">&#34;resourceType&#34;</span>: <span style="color:#4e9a06">&#34;User&#34;</span>
+      <span style="color:#ce5c00;font-weight:bold">}</span>,
+      <span style="color:#4e9a06">&#34;userName&#34;</span>: <span style="color:#4e9a06">&#34;admin&#34;</span>,
+      <span style="color:#4e9a06">&#34;name&#34;</span>: <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#4e9a06">&#34;familyName&#34;</span>: <span style="color:#4e9a06">&#34;User&#34;</span>,
+        <span style="color:#4e9a06">&#34;formatted&#34;</span>: <span style="color:#4e9a06">&#34;Admin User&#34;</span>,
+        <span style="color:#4e9a06">&#34;givenName&#34;</span>: <span style="color:#4e9a06">&#34;Admin&#34;</span>
+      <span style="color:#ce5c00;font-weight:bold">}</span>,
+      <span style="color:#4e9a06">&#34;displayName&#34;</span>: <span style="color:#4e9a06">&#34;admin&#34;</span>,
+      <span style="color:#4e9a06">&#34;active&#34;</span>: true,
+      <span style="color:#4e9a06">&#34;emails&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[</span>
+        <span style="color:#ce5c00;font-weight:bold">{</span>
+          <span style="color:#4e9a06">&#34;type&#34;</span>: <span style="color:#4e9a06">&#34;work&#34;</span>,
+          <span style="color:#4e9a06">&#34;value&#34;</span>: <span style="color:#4e9a06">&#34;1_admin@iam.test&#34;</span>,
+          <span style="color:#4e9a06">&#34;primary&#34;</span>: <span style="color:#204a87">true</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span>
+      <span style="color:#ce5c00;font-weight:bold">]</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>,
+    ...
+</code></pre></div><h3 id="get-iamgroupsearch">GET <code>/iam/group/search</code></h3>
+<p>Shows the list of IAM groups.</p>
+<p>Access granted to all IAM users or <code>scim:read</code> scope.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -s -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/group/search
+<span style="color:#ce5c00;font-weight:bold">{</span>
+  <span style="color:#4e9a06">&#34;totalResults&#34;</span>: 22,
+  <span style="color:#4e9a06">&#34;itemsPerPage&#34;</span>: 10,
+  <span style="color:#4e9a06">&#34;startIndex&#34;</span>: 1,
+  <span style="color:#4e9a06">&#34;Resources&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[</span>
+    <span style="color:#ce5c00;font-weight:bold">{</span>
+      <span style="color:#4e9a06">&#34;id&#34;</span>: <span style="color:#4e9a06">&#34;6a384bcd-d4b3-4b7f-a2fe-7d897ada0dd1&#34;</span>,
+      <span style="color:#4e9a06">&#34;meta&#34;</span>: <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#4e9a06">&#34;created&#34;</span>: <span style="color:#4e9a06">&#34;2022-09-21T17:20:15.478+02:00&#34;</span>,
+        <span style="color:#4e9a06">&#34;lastModified&#34;</span>: <span style="color:#4e9a06">&#34;2022-09-21T17:20:15.478+02:00&#34;</span>,
+        <span style="color:#4e9a06">&#34;location&#34;</span>: <span style="color:#4e9a06">&#34;http://localhost:8080/scim/Groups/6a384bcd-d4b3-4b7f-a2fe-7d897ada0dd1&#34;</span>,
+        <span style="color:#4e9a06">&#34;resourceType&#34;</span>: <span style="color:#4e9a06">&#34;Group&#34;</span>
+      <span style="color:#ce5c00;font-weight:bold">}</span>,
+      <span style="color:#4e9a06">&#34;displayName&#34;</span>: <span style="color:#4e9a06">&#34;Analysis&#34;</span>,
+      <span style="color:#4e9a06">&#34;urn:indigo-dc:scim:schemas:IndigoGroup&#34;</span>: <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#4e9a06">&#34;parentGroup&#34;</span>: null,
+        <span style="color:#4e9a06">&#34;description&#34;</span>: <span style="color:#4e9a06">&#34;The analysis group&#34;</span>,
+        <span style="color:#4e9a06">&#34;labels&#34;</span>: null
+      <span style="color:#ce5c00;font-weight:bold">}</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>,
+    ...
+</code></pre></div>
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-c30171a2167f0f6388c6c9ca09e24275">6 - IAM Token management API</h1>
     
 	<p>The IAM server has a RESTful API used to list and revoke active access and
 refresh tokens.</p>
@@ -1315,7 +1726,7 @@ Authorization: Bearer h480djs93hd8
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-d7a16cf20db6b5db427da83d3a706289">6 - OAuth token exchange API</h1>
+	<h1 id="pg-d7a16cf20db6b5db427da83d3a706289">7 - OAuth token exchange API</h1>
     
 	<p>The current release of the INDIGO IAM implements part of the <a href="https://tools.ietf.org/html/draft-ietf-oauth-token-exchange-05">Token Exchange
 OAuth
@@ -1558,7 +1969,7 @@ the authorization server;</li>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-e7c3f1c0aafd5433deea6bb5120198f0">7 - OAuth token introspection API</h1>
+	<h1 id="pg-e7c3f1c0aafd5433deea6bb5120198f0">8 - OAuth token introspection API</h1>
     
 	<p>IAM, through the <a href="https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server/wiki">MitreID OpenID Connect server implementation</a>,
 supports the <a href="https://tools.ietf.org/html/rfc7662">OAuth token introspection API</a> API at
@@ -1591,7 +2002,7 @@ the <code>/introspect</code> endpoint.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-2210df1e33e69aae2033d3ad614cb1ac">8 - OpenID Connect client management API</h1>
+	<h1 id="pg-2210df1e33e69aae2033d3ad614cb1ac">9 - OpenID Connect client management API</h1>
     
 	<p>IAM, through the <a href="https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server/wiki">MitreID OpenID Connect server implementation</a>,
 provides an OAuth/OpenID connect client management API at the <code>/api/clients</code>
@@ -1625,7 +2036,7 @@ wiki</a>.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-ebe7e4e7e9878df8afa56df0d05e4322">9 - OpenID Connect client registration API</h1>
+	<h1 id="pg-ebe7e4e7e9878df8afa56df0d05e4322">10 - OpenID Connect client registration API</h1>
     
 	<p>Starting from version 1.8.0, IAM supports the <a href="https://openid.net/specs/openid-connect-registration-1_0.html">OpenID Connect Dynamic Client Registration
 API</a> at the <code>/iam/api/client-registration</code> endpoint.</p>
@@ -1744,7 +2155,7 @@ X-XSS-Protection: 1; mode=block
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-33f82d3baa8becb8dd9398d40b988474">10 - SCIM API</h1>
+	<h1 id="pg-33f82d3baa8becb8dd9398d40b988474">11 - SCIM API</h1>
     
 	<p>The IAM server provides a RESTful API, based on the <a href="http://www.simplecloud.info/">System for Cross-domain
 Identity Management (SCIM) standard</a>, that
@@ -2944,7 +3355,7 @@ HTTP/1.1 200 OK
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-43a4bb7d0656895dfb5d3195932b03df">11 - Scope Policy API</h1>
+	<h1 id="pg-43a4bb7d0656895dfb5d3195932b03df">12 - Scope Policy API</h1>
     
 	<p>In OpenID Connect and OAuth, <a href="https://datatracker.ietf.org/doc/html/rfc6749#section-3.3">scopes</a> are used to determine the
 privileges granted to a client application for a given session. For example,
@@ -3398,7 +3809,7 @@ the organization</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-f53010d8ceeb59269840cbdb81da1bbb">12 - Token exchange policy API</h1>
+	<h1 id="pg-f53010d8ceeb59269840cbdb81da1bbb">13 - Token exchange policy API</h1>
     
 	<p>The Token exchange policy API allows to define fine-grained policies to
 control:</p>
