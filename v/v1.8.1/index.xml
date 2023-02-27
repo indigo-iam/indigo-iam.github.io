@@ -1,0 +1,151 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>INDIGO IAM – INDIGO IAM</title>
+    <link>/v/v1.8.1/</link>
+    <description>Recent content on INDIGO IAM</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="/v/v1.8.1/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+      
+    
+    
+    <item>
+      <title>Blog: IAM v1.8.0</title>
+      <link>/v/v1.8.1/blog/2022/09/09/iam-v1.8.0/</link>
+      <pubDate>Fri, 09 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/v/v1.8.1/blog/2022/09/09/iam-v1.8.0/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The IAM development team is pleased to announce the release of INDIGO IAM v.1.8.0.&lt;/p&gt;
+&lt;p&gt;This release provides many bug fixes and enchancements, but the major highlightes are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Spring Boot migration to 2.6.6 version and Flyway upgrade to 7.15.0 version&lt;/li&gt;
+&lt;li&gt;New clients management and registration pages on IAM dashboard migrated away from MitreID&lt;/li&gt;
+&lt;li&gt;New consent page in IAM migrated away from MitreID&lt;/li&gt;
+&lt;li&gt;Support for JWT-based client authentication&lt;/li&gt;
+&lt;li&gt;Compliance with some AARC guidelines, in particular G025 for expressing affiliation information and G021 on the exchange of specific assurance information between Infrastructures&lt;/li&gt;
+&lt;li&gt;Persistence layer migrations for Multi-Factor Authentication support&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Significant changes and other details are described in the &lt;a href=&#34;https://github.com/indigo-iam/iam/releases/tag/v1.8.0&#34;&gt;release notes&lt;/a&gt;.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Blog: IAM v1.7.2</title>
+      <link>/v/v1.8.1/blog/2021/12/03/iam-v1.7.2/</link>
+      <pubDate>Fri, 03 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/v/v1.8.1/blog/2021/12/03/iam-v1.7.2/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The IAM development team is pleased to announce the release of &lt;a href=&#34;https://github.com/indigo-iam/iam/releases/tag/v1.7.2&#34;&gt;INDIGO IAM
+v.1.7.2&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This release paves the way for the upgrade to v1.8.0 which will provide an
+update of the core Spring dependencies IAM is built upon.&lt;/p&gt;
+&lt;p&gt;In order to enable a smooth transition without requiring manual interventions
+from deployers, we need to issue an intermediate release that just updates the
+version of the &lt;a href=&#34;https://flywaydb.org/&#34;&gt;flyway library&lt;/a&gt; that is used to manage the database
+schema updates.&lt;/p&gt;
+&lt;p&gt;No other change is introduced with this release.&lt;/p&gt;
+&lt;p&gt;As usual, the IAM docker images can be obtained from DockerHub, while RPM
+packages for CENTOS 7 can be obtained from our &lt;a href=&#34;https://indigo-iam.github.io/repo/&#34;&gt;package repository&lt;/a&gt;.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Blog: IAM v1.7.1</title>
+      <link>/v/v1.8.1/blog/2021/09/13/iam-v1.7.1/</link>
+      <pubDate>Mon, 13 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/v/v1.8.1/blog/2021/09/13/iam-v1.7.1/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The IAM development team is pleased to announce the release of INDIGO IAM v.1.7.1.&lt;/p&gt;
+&lt;p&gt;This release fixes a problem introduced in v1.7.0 of the IAM test client
+application released last week that prevented its correct behaviour.&lt;/p&gt;
+&lt;p&gt;Also starting with this release IAM test client does not expose received tokens
+in the default configuration. In order to restore the previous behaviour, set
+the following envirnoment variable:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#000&#34;&gt;IAM_CLIENT_HIDE_TOKENS&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;false&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;or, in the &lt;code&gt;application.yml&lt;/code&gt; file use:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;iam&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;hide-tokens&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;More information in the &lt;a href=&#34;https://github.com/indigo-iam/iam/releases/tag/v1.7.1&#34;&gt;release notes&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This release provide updates only for the iam-test-client application, which is
+only released as a Docker image on DockerHub.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Blog: New IAM website!</title>
+      <link>/v/v1.8.1/blog/2021/09/07/new-iam-website/</link>
+      <pubDate>Tue, 07 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/v/v1.8.1/blog/2021/09/07/new-iam-website/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The IAM website and documentation has &lt;a href=&#34;https://indigo-iam.github.io&#34;&gt;moved&lt;/a&gt;,
+and if you&amp;rsquo;re reading this you already know.&lt;/p&gt;
+&lt;p&gt;The new IAM website is powered by &lt;a href=&#34;https://www.docsy.dev/&#34;&gt;Docsy&lt;/a&gt;, a &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; theme for
+creating technical documentation sites, which is increasingly popular in Open
+Source projects.&lt;/p&gt;
+&lt;p&gt;The new site provides new and improved documentation.&lt;/p&gt;
+&lt;p&gt;If you find something is missing or broken, let us know by opening an issue
+or suggest changes. The new Docsy website makes this very easy to anyone with a
+Github account, just see the tab on the right of each page.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Blog: IAM v1.7.0</title>
+      <link>/v/v1.8.1/blog/2021/09/07/iam-v1.7.0/</link>
+      <pubDate>Tue, 07 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/v/v1.8.1/blog/2021/09/07/iam-v1.7.0/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The IAM development team is pleased to announce the release of INDIGO IAM v.1.7.0.&lt;/p&gt;
+&lt;p&gt;This release provides many bug fixes and enhancements, as can be seen in the &lt;a href=&#34;https://github.com/indigo-iam/iam/releases/tag/v1.7.0&#34;&gt;release notes&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The highlights of this release are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Scalability improvements&lt;/strong&gt;: the group membership persistence management has
+been refactored to improve scalability; SCIM APIs have also been changed to
+support pagination over group members (see the new &lt;a href=&#34;/v/v1.8.1/v/v1.8.1/docs/reference/api/scim-api/&#34;&gt;SCIM API&lt;/a&gt;
+documentation for more information);&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Improved token exchange flexibility&lt;/strong&gt;: token exchange can now be controlled
+in more detail using &lt;a href=&#34;/v/v1.8.1/v/v1.8.1/docs/reference/api/scope-policy-api/&#34;&gt;scope&lt;/a&gt; and &lt;a href=&#34;/v/v1.8.1/v/v1.8.1/docs/reference/api/token-exchange-policy-api/&#34;&gt;token
+exchange&lt;/a&gt; policies;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SSH key management&lt;/strong&gt;: IAM now allows users to link SSH keys to their account;
+ssh keys are then exposed to relying parties either via the SCIM APIs or via
+the OpenID connect userinfo endpoint; see the &lt;a href=&#34;/v/v1.8.1/v/v1.8.1/docs/tasks/user/manage-ssh-keys/&#34;&gt;documentation&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As usual, the IAM docker images can be obtained from DockerHub, while RPM
+packages for CENTOS 7can be obtained from our &lt;a href=&#34;https://indigo-iam.github.io/repo/&#34;&gt;package repository&lt;/a&gt;.&lt;/p&gt;
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Warning&lt;/h4&gt;
+
+    Starting from this release, we no longer provide packages for the Ubuntu platform.
+
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>
