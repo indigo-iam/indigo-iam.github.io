@@ -120,7 +120,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.1/offline-search-index.559e55be7ceaa4759a2cd3e72f89ebf8.json"
+  data-offline-search-index-json-src="/v/v1.8.1/offline-search-index.19f9cc93f951d5b73837f4d33a0fcea3.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -215,6 +215,16 @@ This the multi-page printable view of this section.
   
   
 
+  
+    
+    
+	
+
+    <li><a href="#pg-d1ad9cb7d81ee1014cd2dc215910ac4d">IAM v1.8.1</a></li>
+
+
+
+    
   
     
     
@@ -394,6 +404,58 @@ Github account, just see the tab on the right of each page.</p>
   
 
 <div class="td-content" style="">
+    <h1 id="pg-d1ad9cb7d81ee1014cd2dc215910ac4d">IAM v1.8.1</h1>
+	<div class="lead">The v1.8.1 release includes new group management and scope pages</div>
+	<div class="td-byline mb-4">
+		By <b>CNAF SD team</b> |
+        
+		<time datetime="2023-02-28" class="text-muted">Tuesday, February 28, 2023</time>
+        
+	</div>
+	<p>The IAM development team is pleased to announce the release of INDIGO IAM v.1.8.1.</p>
+<p>This release provides bug fixes and enhancements, as can be seen in the <a href="https://github.com/indigo-iam/iam/releases/tag/v1.8.1">release notes</a>.</p>
+<p>The main highlights are:</p>
+<ul>
+<li>Add a <strong>Scopes</strong> tab to the <em>Organization Management</em> section of the IAM dashboard, that basically replaces the functionality of the <strong>System Scope</strong> tab on the <em>ADMINISTRATIVE</em> section of the MitreID dashboard (only visible by Admins);</li>
+<li>Add a <strong>Managed groups</strong> tab to the <em>Organization Management</em> section of the IAM dashboard (visible by Group Managers), that allows to list the groups a user is manager of, their subgroups, their members, etc.;</li>
+<li>When a user lets the Acceptable Usage Policy to expired, IAM no longer issues refresh tokens and VOMS proxies;</li>
+<li>When a IAM account has been disabled, a user can no longer login with x509 certificates and request access tokens through the refresh token flow;</li>
+<li>IAM is more compliant with the guideline <a href="https://aarc-project.eu/guidelines/aarc-g069/">AARC-G069</a>, i.e., groups and roles membership information can be requested with the <code>entitlements</code> scope and appears in the <code>entitlements</code> claim of the access token.</li>
+</ul>
+<p>As usual, the IAM docker image can be obtained from <a href="https://hub.docker.com/r/indigoiam/iam-login-service/tags">DockerHub</a>.</p>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Warning</h4>
+
+    <p>Starting from this release, the following endpoints have been removed:</p>
+<ul>
+<li><code>health</code>, used to show the service status, is now <code>/actuator/health</code>;</li>
+<li><code>/register</code>, used for dynamic client registration in MitreID, is now <code>/iam/api/clients</code> in IAM.</li>
+</ul>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
     <h1 id="pg-1213eaabc8a68e0d6f87e7755384427c">IAM v1.8.0</h1>
 	<div class="lead">The v1.8.0 release includes a spring boot upgrade and a new client management page</div>
 	<div class="td-byline mb-4">
