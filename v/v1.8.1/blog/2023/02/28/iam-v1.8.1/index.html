@@ -22,12 +22,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/v/v1.8.1/blog/2023/02/28/iam-v1.8.1/" /><meta property="article:section" content="blog" />
 <meta property="article:published_time" content="2023-02-28T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-02-28T17:37:21+01:00" /><meta property="og:site_name" content="INDIGO IAM" />
+<meta property="article:modified_time" content="2023-03-09T18:13:20+01:00" /><meta property="og:site_name" content="INDIGO IAM" />
 
 <meta itemprop="name" content="IAM v1.8.1">
 <meta itemprop="description" content="The v1.8.1 release includes new Managed groups and Scope pages"><meta itemprop="datePublished" content="2023-02-28T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2023-02-28T17:37:21+01:00" />
-<meta itemprop="wordCount" content="232">
+<meta itemprop="dateModified" content="2023-03-09T18:13:20+01:00" />
+<meta itemprop="wordCount" content="276">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="IAM v1.8.1"/>
 <meta name="twitter:description" content="The v1.8.1 release includes new Managed groups and Scope pages"/>
@@ -124,7 +124,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.1/offline-search-index.292f708104b43da21a830f31251dd95b.json"
+  data-offline-search-index-json-src="/v/v1.8.1/offline-search-index.257a5a1d762c6ecf4c213f98a0bd2a75.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -156,7 +156,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.1/offline-search-index.292f708104b43da21a830f31251dd95b.json"
+  data-offline-search-index-json-src="/v/v1.8.1/offline-search-index.257a5a1d762c6ecf4c213f98a0bd2a75.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -353,6 +353,7 @@
 <ul>
 <li>Add a <strong>Scopes</strong> tab to the <em>Organization Management</em> section of the IAM dashboard, that basically replaces the functionality of the <strong>System Scope</strong> tab on the <em>ADMINISTRATIVE</em> section of the MitreID dashboard (only visible by Admins);</li>
 <li>Add a <strong>Managed groups</strong> tab to the <em>Organization Management</em> section of the IAM dashboard (visible by Group Managers), that allows to list the groups a user is manager of, their subgroups, their members, etc. Group Managers can also remove members from groups, but the ability to invite/add users to their managed groups will be included in future release;</li>
+<li>The default Refresh Token lifetime is set to 30 days for every new registered client (it does not change the lifetime of old clients). This default can be overridden from configuration, e.g. <code>client-registration.client-defaults.default-refresh-token-validity-seconds=-1</code> reverts to the previous behavior where the RT does not expire;</li>
 <li>When a user lets the Acceptable Usage Policy expire, IAM no longer issues refresh tokens and VOMS proxies;</li>
 <li>When a IAM account has been disabled, a user can no longer login with x509 certificates and request access tokens through the refresh token flow;</li>
 <li>IAM is more compliant with the guideline <a href="https://aarc-project.eu/guidelines/aarc-g069/">AARC-G069</a>, i.e., groups and roles membership information can be requested with the <code>entitlements</code> scope and appears in the <code>entitlements</code> claim of the access token.</li>
