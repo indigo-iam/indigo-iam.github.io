@@ -120,7 +120,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.1/offline-search-index.257a5a1d762c6ecf4c213f98a0bd2a75.json"
+  data-offline-search-index-json-src="/v/v1.8.1/offline-search-index.e8e2126b27bacf6f1b8d308cab4339bf.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -418,7 +418,7 @@ Github account, just see the tab on the right of each page.</p>
 <ul>
 <li>Add a <strong>Scopes</strong> tab to the <em>Organization Management</em> section of the IAM dashboard, that basically replaces the functionality of the <strong>System Scope</strong> tab on the <em>ADMINISTRATIVE</em> section of the MitreID dashboard (only visible by Admins);</li>
 <li>Add a <strong>Managed groups</strong> tab to the <em>Organization Management</em> section of the IAM dashboard (visible by Group Managers), that allows to list the groups a user is manager of, their subgroups, their members, etc. Group Managers can also remove members from groups, but the ability to invite/add users to their managed groups will be included in future release;</li>
-<li>The default Refresh Token lifetime is set to 30 days for every new registered client (it does not change the lifetime of old clients). This default can be overridden from configuration, e.g. <code>client-registration.client-defaults.default-refresh-token-validity-seconds=-1</code> reverts to the previous behavior where the RT does not expire;</li>
+<li>The default Refresh Token lifetime is set to 30 days for every newly registered client (it does not change the lifetime of old clients). This default can be overridden from configuration, e.g. <code>client-registration.client-defaults.default-refresh-token-validity-seconds=-1</code> reverts to the previous behavior where the RT does not expire;</li>
 <li>When a user lets the Acceptable Usage Policy expire, IAM no longer issues refresh tokens and VOMS proxies;</li>
 <li>When a IAM account has been disabled, a user can no longer login with x509 certificates and request access tokens through the refresh token flow;</li>
 <li>IAM is more compliant with the guideline <a href="https://aarc-project.eu/guidelines/aarc-g069/">AARC-G069</a>, i.e., groups and roles membership information can be requested with the <code>entitlements</code> scope and appears in the <code>entitlements</code> claim of the access token.</li>
