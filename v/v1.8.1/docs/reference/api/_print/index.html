@@ -123,7 +123,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.1/offline-search-index.5e005c9c392f858bfebc2615cd43d2fc.json"
+  data-offline-search-index-json-src="/v/v1.8.1/offline-search-index.6b0fa08f10dfddac3bcd26868381ce12.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -623,7 +623,7 @@ organization.</p>
     
 	<p>IAM provides a RESTful API that can be used to download the X.509 proxy certificate previously uploaded in IAM dashboard by the user.<br>
 This is a plain proxy obtained by running <code>voms-proxy-init</code> command.</p>
-<p>The API has been added mainly for the integration of IAM with the <a href="http://rcauth.eu/">RCAuth.eu</a> online certificate authority or to upload certificate users can use <a href="/docs/reference/api/account-api/#proxy-certificate">IAM Account Proxy Certificate API</a>.</p>
+<p>The API has been added mainly for the integration of IAM with the <a href="http://rcauth.eu/">RCAuth.eu</a> online certificate authority. The X.509 proxy certificate can be uploaded using the <a href="/docs/reference/api/account-api/#proxy-certificate">IAM Account Proxy Certificate API</a>.</p>
 <p>The <code>proxy:generate</code> OAuth scope is required to access this API.<br>
 Note that this scope is restricted in the default IAM configuration,
 i.e. can be assigned to clients only by IAM administrators.</p>
@@ -636,7 +636,8 @@ i.e. can be assigned to clients only by IAM administrators.</p>
 </span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/proxycert
 </code></pre></div><p>The user can request a specific lifetime of the proxy
 that is less than or equal to the maximum lifetime of the proxy itself
-and also limited by IAM configuration options <code>max-lifetime-seconds</code>.</p>
+and also limited by IAM configuration options <code>max-ac-lifetime-in-seconds</code>
+(as shown in <a href="/docs/tasks/deployment/voms/#voms-aa-configuration">VOMS AA configuration</a>).</p>
 <p>IAM response:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
   <span style="color:#204a87;font-weight:bold">&#34;subject&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;CN=2050153474,CN=813462308,CN=John Doe jdoe@infn.it,O=Istituto Nazionale di Fisica Nucleare,C=IT,DC=tcs,DC=terena,DC=org&#34;</span><span style="color:#000;font-weight:bold">,</span>
