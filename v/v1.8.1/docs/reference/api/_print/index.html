@@ -123,7 +123,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.1/offline-search-index.6b0fa08f10dfddac3bcd26868381ce12.json"
+  data-offline-search-index-json-src="/v/v1.8.1/offline-search-index.81cab9956037dbd0abdfe1688c559488.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -1358,10 +1358,11 @@ Remember that there are three roles in Indigo IAM: Amdin, User, Group Manager.</
   <span style="color:#204a87;font-weight:bold">&#34;name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ignore&#34;</span>
 <span style="color:#000;font-weight:bold">}</span>
 </code></pre></div><h3 id="delete-iamaccountidlabels">DELETE <code>/iam/account/{id}/labels</code></h3>
-<p>Deletes an account label by adding the query parameter.</p>
+<p>Deletes an account label by specifying the label name and the label prefix (if present).</p>
 <p>Requires <code>ROLE_ADMIN</code>.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -X DELETE -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/labels?name<span style="color:#ce5c00;font-weight:bold">=</span>ignore
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/labels <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -d <span style="color:#000">name</span><span style="color:#ce5c00;font-weight:bold">=</span>ignore -d <span style="color:#000">prefix</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;hr.cern&#34;</span>
 </code></pre></div><h2 id="user-account-expiration-time">User account expiration time</h2>
 <h3 id="put-iamaccountidendtime">PUT <code>/iam/account/{id}/endTime</code></h3>
 <p>Adds/changes the membership end time of the user. It can be done directly through the IAM dashboard
