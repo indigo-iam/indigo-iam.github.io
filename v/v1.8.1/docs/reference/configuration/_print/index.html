@@ -123,7 +123,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.1/offline-search-index.8bef3e1645fda0ab5a686eb3576d6e28.json"
+  data-offline-search-index-json-src="/v/v1.8.1/offline-search-index.beff89458a450039d15f4ea725d372a7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -231,7 +231,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>4: <a href="#pg-2501923ff9f1258a5dc95b7435579a75">Registration &amp; Enrollment</a></li>
+<li>4: <a href="#pg-5fd21a888f7bdca41388e3b3fa887277">Integration with RCAuth</a></li>
 
 
     
@@ -250,7 +250,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>5: <a href="#pg-63d7a6556648cdd8622cf2321f13a835">JSON Web Keys (JWK)</a></li>
+<li>5: <a href="#pg-2501923ff9f1258a5dc95b7435579a75">Registration &amp; Enrollment</a></li>
 
 
     
@@ -269,7 +269,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>6: <a href="#pg-b153a1aec7140b2aa27a0ba03e8dc3fd">Local authentication</a></li>
+<li>6: <a href="#pg-63d7a6556648cdd8622cf2321f13a835">JSON Web Keys (JWK)</a></li>
 
 
     
@@ -288,22 +288,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>7: <a href="#pg-359104377f9341d4c326d45fb209b4c2">External authentication</a></li>
-
-
-    
-    <ul>
-        
-  
-  
-  
-  
-
-  
-    
-    
-	
-<li>7.1: <a href="#pg-ac3ba36ba3318b338bcbf439e1b79e60">OpenID-Connect authentication</a></li>
+<li>7: <a href="#pg-b153a1aec7140b2aa27a0ba03e8dc3fd">Local authentication</a></li>
 
 
     
@@ -322,7 +307,22 @@ This the multi-page printable view of this section.
     
     
 	
-<li>7.2: <a href="#pg-af611b856fca4d6771e3e3ed962701b5">SAML authentication</a></li>
+<li>8: <a href="#pg-359104377f9341d4c326d45fb209b4c2">External authentication</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>8.1: <a href="#pg-ac3ba36ba3318b338bcbf439e1b79e60">OpenID-Connect authentication</a></li>
 
 
     
@@ -341,7 +341,26 @@ This the multi-page printable view of this section.
     
     
 	
-<li>7.3: <a href="#pg-86d359d1731c5e164863d1bbe93a7bcf">X.509 authentication</a></li>
+<li>8.2: <a href="#pg-af611b856fca4d6771e3e3ed962701b5">SAML authentication</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>8.3: <a href="#pg-86d359d1731c5e164863d1bbe93a7bcf">X.509 authentication</a></li>
 
 
     
@@ -1012,7 +1031,101 @@ file</a>:</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-2501923ff9f1258a5dc95b7435579a75">4 - Registration &amp; Enrollment</h1>
+	<h1 id="pg-5fd21a888f7bdca41388e3b3fa887277">4 - Integration with RCAuth</h1>
+    
+	<p><a href="https://rcauth.eu">RCAuth.eu</a> has been integrated with IAM in order to provide on-demand X.509
+certificates to users without a certificate.</p>
+<p>RCAuth is basically an online Certificate Authority, which issues certificates
+to end-entities based on a successful authentication to a Federated Identity Provider,
+operated by an academic or research organization.</p>
+<p>In particular, it extends the OAuth/OIDC specification to include the following endpoints:</p>
+<ul>
+<li>GetCert, to retrieve an X.509 end-entity certificate</li>
+<li>GetProxy, to retrieve a <a href="https://datatracker.ietf.org/doc/html/rfc3820">RFC3820</a> Proxy Certificate chain</li>
+</ul>
+<p>on behalf of the authenticated user.</p>
+<h2 id="iam-deployment">IAM deployment</h2>
+<h3 id="configuration">Configuration</h3>
+<p>The basic configuration required on your IAM deployment to enable the integration
+of the service with RCAuth is</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># Enable integration with RCAuth. Default to false</span>
+<span style="color:#000">IAM_RCAUTH_ENABLED</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">true</span>
+<span style="color:#8f5902;font-style:italic"># Select the hostname of your certificate authority, e.g. https://eir.nikhef.nl/oauth2</span>
+<span style="color:#000">IAM_RCAUTH_ISSUER</span><span style="color:#ce5c00;font-weight:bold">=</span>
+<span style="color:#8f5902;font-style:italic"># A label for the certificate authority (not mandatory)</span>
+<span style="color:#000">IAM_RCAUTH_LABEL</span><span style="color:#ce5c00;font-weight:bold">=</span>RCAuth.eu online CA
+<span style="color:#8f5902;font-style:italic"># Id of IAM client registered on RCAuth</span>
+<span style="color:#000">IAM_RCAUTH_CLIENT_ID</span><span style="color:#ce5c00;font-weight:bold">=</span>
+<span style="color:#8f5902;font-style:italic"># Secret of IAM client registered on RCAuth</span>
+<span style="color:#000">IAM_RCAUTH_CLIENT_SECRET</span><span style="color:#ce5c00;font-weight:bold">=</span>
+</code></pre></div><h3 id="client-registration">Client registration</h3>
+<p>An INDIGO IAM OAuth client has to be registered on the RCAuth service that will issue an
+X.509/proxy certificate.</p>
+<p>For instance, in case of the demo RCAuth hosted at <code>https://eir.nikhef.nl</code>,
+one has to follow the next steps:</p>
+<ul>
+<li>
+<p>go to the Client Registration Page <code>https://eir.nikhef.nl/oauth2/register</code> that will be
+shown after a successful login with your institutional Identity Provider (e.g. the INFN AAI);</p>
+</li>
+<li>
+<p>fill the form with the details of your client. Important fields are</p>
+<ul>
+<li>Callback URLs: <em>https://&lt;iam-hostname&gt;/rcauth/cb</em>;</li>
+<li>Scopes: <em>openid</em>, <em>edu.uiuc.ncsa.myproxy.getcert</em>;</li>
+</ul>
+</li>
+<li>
+<p>after the request has been submitted, the service will generate a client ID and
+secret that has to be set in the <code>IAM_RCAUTH_CLIENT_ID</code> and <code>IAM_RCAUTH_CLIENT_SECRET</code> environment
+variables respectively;</p>
+</li>
+<li>
+<p>wait for the manual approval of your client registration.</p>
+</li>
+</ul>
+<h2 id="iam-user-interface">IAM user interface</h2>
+<p>The RCAuth issued certificate is listed in the <strong>X.509 certificates</strong> tab
+of the IAM homepage.</p>
+<p>To add a new certificate click the <em>Request certificate</em> button.</p>
+<p><img src="RCAuth-request-certificate.png" alt="Request certificate to RCAuth"></p>
+<p>The user will be redirected to the RCAuth instance to authenticate and give consent
+for the generation of an X.509 certificate, which will be accessible by IAM.<br>
+Thus, IAM links the certificate to the user&rsquo;s dashboard, as shown in the example below.</p>
+<p><img src="RCAuth-linked-certificate.png" alt="Linked certificate issued by RCAuth"></p>
+<p>A long-lived plain proxy obtained by the linked X.509 certificate is automatically
+stored into the IAM database.<br>
+This is shown in the IAM dashboard when the &ldquo;<strong>Has managed proxy certificate</strong>&rdquo;
+string is set to <em>true</em> (as in the image above).</p>
+<p>The proxy certificate can be downloaded from IAM using the <a href="/docs/reference/api/proxycert-api/">Proxy certificate API</a>.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-2501923ff9f1258a5dc95b7435579a75">5 - Registration &amp; Enrollment</h1>
     
 	<p>IAM implements a basic registration service that implements an
 administrator-vetted registration flow, where users apply for membership in an
@@ -1088,7 +1201,7 @@ file</a></p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-63d7a6556648cdd8622cf2321f13a835">5 - JSON Web Keys (JWK)</h1>
+	<h1 id="pg-63d7a6556648cdd8622cf2321f13a835">6 - JSON Web Keys (JWK)</h1>
     
 	<p>JSON Web Key (JWK) is a JSON data structure that represents a single public key or a set of
 public keys. IAM uses private JWKs to sign tokens, and IAM clients use public JWKs to validate the tokens.
@@ -1235,7 +1348,7 @@ key will be valid after this.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-b153a1aec7140b2aa27a0ba03e8dc3fd">6 - Local authentication</h1>
+	<h1 id="pg-b153a1aec7140b2aa27a0ba03e8dc3fd">7 - Local authentication</h1>
     
 	<p>IAM has the ability to limit or disable
 authentication with local IAM credentials, so that external, brokered
@@ -1284,7 +1397,7 @@ able to use it doesn&rsquo;t really provide additional security.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-359104377f9341d4c326d45fb209b4c2">7 - External authentication</h1>
+	<h1 id="pg-359104377f9341d4c326d45fb209b4c2">8 - External authentication</h1>
     
 	<p>IAM supports brokered authentication via standard OpenID-Connect and SAML
 protocols as well as X.509 authentication.</p>
@@ -1311,7 +1424,7 @@ protocols as well as X.509 authentication.</p>
 
 <div class="td-content" style="">
     
-	<h1 id="pg-ac3ba36ba3318b338bcbf439e1b79e60">7.1 - OpenID-Connect authentication</h1>
+	<h1 id="pg-ac3ba36ba3318b338bcbf439e1b79e60">8.1 - OpenID-Connect authentication</h1>
     
 	<p>IAM supports brokered OpenID Connect authentication to external identity
 providers (e.g., Google).</p>
@@ -1439,7 +1552,7 @@ the default IAM configuration.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-af611b856fca4d6771e3e3ed962701b5">7.2 - SAML authentication</h1>
+	<h1 id="pg-af611b856fca4d6771e3e3ed962701b5">8.2 - SAML authentication</h1>
     
 	<p>IAM supports brokered SAML authentication. When SAML authentication is turned
 on for an IAM instance, users can log into the service using the home Identity
@@ -1665,7 +1778,7 @@ instructions on how to override the default IAM configuration.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-86d359d1731c5e164863d1bbe93a7bcf">7.3 - X.509 authentication</h1>
+	<h1 id="pg-86d359d1731c5e164863d1bbe93a7bcf">8.3 - X.509 authentication</h1>
     
 	<p>X509 authentication in IAM doesn&rsquo;t require any specific configuration in IAM itself.
 It is enabled as soon as the proper options have been set in the Nginx configuration.</p>
