@@ -1,0 +1,2245 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.86.0" /><link rel="alternate" type="text/html" href="/v/v1.8.2/docs/getting-started/basic_setup/_print/">
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+
+<link rel="shortcut icon" href="/v/v1.8.2/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/v/v1.8.2/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/v/v1.8.2/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/v/v1.8.2/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/v/v1.8.2/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/v/v1.8.2/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/v/v1.8.2/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/v/v1.8.2/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/v/v1.8.2/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/v/v1.8.2/favicons/android-192x192.png" sizes="192x192">
+
+<title>Basic IAM setup | INDIGO IAM</title><meta property="og:title" content="Basic IAM setup" />
+<meta property="og:description" content="The INDIGO Identity and Access Management (IAM) Service" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/v/v1.8.2/docs/getting-started/basic_setup/" /><meta property="og:site_name" content="INDIGO IAM" />
+
+<meta itemprop="name" content="Basic IAM setup">
+<meta itemprop="description" content="The INDIGO Identity and Access Management (IAM) Service"><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Basic IAM setup"/>
+<meta name="twitter:description" content="The INDIGO Identity and Access Management (IAM) Service"/>
+
+
+
+
+
+
+
+<link rel="preload" href="/v/v1.8.2/scss/main.min.8c56a5db29a8a7bfd7c31c587d450fd15c23c45c8cd6e72142c8ed5b2ef43bd5.css" as="style">
+<link href="/v/v1.8.2/scss/main.min.8c56a5db29a8a7bfd7c31c587d450fd15c23c45c8cd6e72142c8ed5b2ef43bd5.css" rel="stylesheet" integrity="">
+
+
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+
+
+
+  </head>
+  <body class="td-section">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="/v/v1.8.2/">
+		<span class="navbar-logo"></span><span class="text-uppercase font-weight-bold">INDIGO IAM</span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a  class="nav-link active" href="/v/v1.8.2/docs/" ><span class="active">Documentation</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a  class="nav-link" href="/v/v1.8.2/blog/" ><span>Blog</span></a>
+			</li>
+			
+			
+			<li class="nav-item dropdown d-none d-lg-block">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Releases
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="https://indigo-iam.github.io/v/current">v1.8.2</a>
+	
+	<a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.1">v1.8.1</a>
+	
+	<a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.0">v1.8.0</a>
+	
+	<a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.2">v1.7.2</a>
+	
+	<a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.1">v1.7.1</a>
+	
+	<a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.0">v1.7.0</a>
+	
+	<a class="dropdown-item" href="https://indigo-iam.github.io/docs/v/current/">older releases</a>
+	
+</div>
+
+			</li>
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block">
+
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/v/v1.8.2/offline-search-index.fca64ebb808b9fa5d4f922a749477b2e.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="10"
+>
+
+</div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+
+
+
+
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  
+  <form class="td-sidebar__search d-flex align-items-center d-lg-none">
+    
+
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/v/v1.8.2/offline-search-index.fca64ebb808b9fa5d4f922a749477b2e.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="10"
+>
+
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  
+  <nav class="collapse td-sidebar-nav" id="td-section-nav">
+    
+    
+    
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Documentation</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="vv182docs">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/overview/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Overview</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsoverview">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/getting-started/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Getting Started</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="vv182docsgetting-started">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/getting-started/nginx/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">NGINX configuration</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsgetting-startednginx">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/getting-started/mariadb/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Database configuration</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsgetting-startedmariadb">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/getting-started/jwk/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">JSON Web Keys configuration</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsgetting-startedjwk">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/getting-started/docker/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Deployment with Docker</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsgetting-starteddocker">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/getting-started/packages/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Deployment with packages</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsgetting-startedpackages">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/getting-started/basic_setup/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Basic IAM setup</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="vv182docsgetting-startedbasic_setup">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/reference/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Reference</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsreference">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/reference/api/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">APIs</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsreferenceapi">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/reference/api/aup-api/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">AUP management API</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsreferenceapiaup-api">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/reference/api/proxycert-api/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Proxy certificate API</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsreferenceapiproxycert-api">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/reference/api/group-requests/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Group requests API</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsreferenceapigroup-requests">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/reference/api/health_endpoints/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Health checks</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsreferenceapihealth_endpoints">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/reference/api/account-api/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">IAM account API</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsreferenceapiaccount-api">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/reference/api/tokens-api/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">IAM Token management API</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsreferenceapitokens-api">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/reference/api/oauth-token-exchange/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">OAuth token exchange API</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsreferenceapioauth-token-exchange">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/reference/api/oauth-token-introspection/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">OAuth token introspection API</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsreferenceapioauth-token-introspection">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/reference/api/oidc-client-management/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">OpenID Connect client management API</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsreferenceapioidc-client-management">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/reference/api/oidc-client-registration/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">OpenID Connect client registration API</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsreferenceapioidc-client-registration">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/reference/api/scim-api/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">SCIM API</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsreferenceapiscim-api">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/reference/api/scope-policy-api/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Scope Policy API</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsreferenceapiscope-policy-api">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/reference/api/token-exchange-policy-api/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Token exchange policy API</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsreferenceapitoken-exchange-policy-api">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/reference/configuration/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Configuration</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsreferenceconfiguration">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/reference/configuration/jwt-profiles/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">JWT profiles support</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsreferenceconfigurationjwt-profiles">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/reference/configuration/system-scopes/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">System scopes</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsreferenceconfigurationsystem-scopes">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/reference/configuration/lifecycle/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Membership lifecycle</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsreferenceconfigurationlifecycle">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/reference/configuration/rcauth/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Integration with RCAuth</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsreferenceconfigurationrcauth">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/reference/configuration/registration/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Registration &amp; Enrollment</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsreferenceconfigurationregistration">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/reference/configuration/jwk/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">JSON Web Keys (JWK)</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsreferenceconfigurationjwk">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/reference/configuration/local_authn/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Local authentication</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsreferenceconfigurationlocal_authn">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/reference/configuration/external-authentication/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">External authentication</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsreferenceconfigurationexternal-authentication">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/reference/configuration/external-authentication/oidc/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">OpenID-Connect authentication</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsreferenceconfigurationexternal-authenticationoidc">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/reference/configuration/external-authentication/saml/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">SAML authentication</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsreferenceconfigurationexternal-authenticationsaml">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/reference/configuration/external-authentication/x509/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">X.509 authentication</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsreferenceconfigurationexternal-authenticationx509">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/tasks/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Tasks</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docstasks">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/tasks/administration/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">IAM organization administration</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docstasksadministration">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/tasks/administration/user-management/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">User management</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docstasksadministrationuser-management">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/tasks/administration/group-management/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Group Management</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docstasksadministrationgroup-management">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/tasks/administration/aup-management/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Acceptable Usage Policy (AUP) management</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docstasksadministrationaup-management">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/tasks/deployment/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">IAM service deployment</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docstasksdeployment">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/tasks/deployment/backup_restore/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Backup &amp; Restore</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docstasksdeploymentbackup_restore">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/tasks/deployment/audit-log/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Audit log</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docstasksdeploymentaudit-log">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/tasks/deployment/upgrade/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Upgrade</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docstasksdeploymentupgrade">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/tasks/deployment/ha/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Deploying IAM in HA</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docstasksdeploymentha">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/tasks/deployment/voms/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Deploying the IAM VOMS attribute authority</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docstasksdeploymentvoms">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/tasks/deployment/voms_importer/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Importing VOMS information into IAM</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docstasksdeploymentvoms_importer">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/tasks/clientapp/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">IAM Test Client application</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docstasksclientapp">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/tasks/user/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">User</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docstasksuser">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/tasks/user/joining-a-collaboration/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Joining an IAM-managed organization</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docstasksuserjoining-a-collaboration">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/tasks/user/getting-a-token/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Obtaining an IAM access token from a CLI</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docstasksusergetting-a-token">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/tasks/user/client-registration/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Registering a client</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docstasksuserclient-registration">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/tasks/user/change-details/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Change account information</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docstasksuserchange-details">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/tasks/user/change-password/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Changing the account password</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docstasksuserchange-password">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/tasks/user/jwt-authn/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">JWT client authentication</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docstasksuserjwt-authn">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/tasks/user/external-account-linking/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Linking an external account</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docstasksuserexternal-account-linking">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/tasks/user/x509-linking/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Linking an X.509 certificate</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docstasksuserx509-linking">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/tasks/user/manage-active-tokens/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Managing active tokens</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docstasksusermanage-active-tokens">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/tasks/user/manage-approved-sites/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Managing approved sites</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docstasksusermanage-approved-sites">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/tasks/user/manage-ssh-keys/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Managing SSH keys</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docstasksusermanage-ssh-keys">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/tasks/user/reset-password/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Reset an account password</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docstasksuserreset-password">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/developer-guide/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Developer guide</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsdeveloper-guide">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/developer-guide/specs/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Specifications</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsdeveloper-guidespecs">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/iam-aas/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">IAM as a service</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsiam-aas">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/iam-aas/privacy-policy/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Privacy policy</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsiam-aasprivacy-policy">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/iam-aas/sla/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Service Level Agreement</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsiam-aassla">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v/v1.8.2/docs/iam-aas/terms-of-service/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Terms of service</a>
+  </li>
+  <ul>
+    <li class="collapse " id="vv182docsiam-aasterms-of-service">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+  </nav>
+</div>
+
+
+
+
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            
+
+
+
+
+
+
+<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+
+
+
+
+
+
+
+
+
+
+
+<a href="https://github.com/indigo-iam/iam-website/edit/v1.8.2/content/en/docs/getting-started/basic_setup/_index.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+<a href="https://github.com/indigo-iam/iam-website/new/v1.8.2/content/en/docs/getting-started/basic_setup/_index.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
+<a href="https://github.com/indigo-iam/iam-website/issues/new?title=Basic%20IAM%20setup" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+
+
+<a href="https://github.com/indigo-iam/iam/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
+
+
+
+<a id="print" href="/v/v1.8.2/docs/getting-started/basic_setup/_print/"><i class="fa fa-print fa-fw"></i> Print entire section</a>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="/v/v1.8.2/docs/">Documentation</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="/v/v1.8.2/docs/getting-started/">Getting Started</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="/v/v1.8.2/docs/getting-started/basic_setup/">Basic IAM setup</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>Basic IAM setup</h1>
+        
+	
+	<p>Most configurable aspects of the IAM are configured via environment variables
+and Spring profile directives. For a detailed reference of all the options, see
+<a href="/v/v1.8.2/docs/reference/configuration/">the configuration reference</a>.</p>
+<p>At the bare minimum you should enable the registration service to let users
+register at your organisation (but you can leave it disabled and add users
+manually to the organisation using the IAM dashboard if you prefer).</p>
+<p>A minimal example configuration is given below:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000">IAM_JAVA_OPTS</span><span style="color:#ce5c00;font-weight:bold">=</span>-Dspring.profiles.active<span style="color:#ce5c00;font-weight:bold">=</span>prod,registration -Djava.security.egd<span style="color:#ce5c00;font-weight:bold">=</span>file:/dev/./urandom
+<span style="color:#000">IAM_HOST</span><span style="color:#ce5c00;font-weight:bold">=</span>iam.local.io
+<span style="color:#000">IAM_BASE_URL</span><span style="color:#ce5c00;font-weight:bold">=</span>https://iam.local.io
+<span style="color:#000">IAM_ISSUER</span><span style="color:#ce5c00;font-weight:bold">=</span>https://iam.local.io
+<span style="color:#000">IAM_FORWARD_HEADERS_STRATEGY</span><span style="color:#ce5c00;font-weight:bold">=</span>native
+<span style="color:#000">IAM_KEY_STORE_LOCATION</span><span style="color:#ce5c00;font-weight:bold">=</span>file:/keystore.jwks
+<span style="color:#000">IAM_DB_HOST</span><span style="color:#ce5c00;font-weight:bold">=</span>db
+<span style="color:#000">IAM_DB_NAME</span><span style="color:#ce5c00;font-weight:bold">=</span>iam
+<span style="color:#000">IAM_DB_USERNAME</span><span style="color:#ce5c00;font-weight:bold">=</span>iam
+<span style="color:#000">IAM_DB_PASSWORD</span><span style="color:#ce5c00;font-weight:bold">=</span>***********
+<span style="color:#000">IAM_NOTIFICATION_FROM</span><span style="color:#ce5c00;font-weight:bold">=</span>iam@iam.local.io 
+<span style="color:#000">IAM_NOTIFICATION_ADMIN_ADDRESS</span><span style="color:#ce5c00;font-weight:bold">=</span>iam-administrators@mail.example
+<span style="color:#000">IAM_MAIL_HOST</span><span style="color:#ce5c00;font-weight:bold">=</span>smtp.mail.example
+</code></pre></div><p>and has the following meaning:</p>
+<ul>
+<li><code>IAM_JAVA_OPTS</code> is used to select active profiles (prod, registration) and
+tell the JVM to use /dev/urandom as the random number generator;</li>
+<li><code>IAM_HOST</code> is the host where the IAM will listen for request; this is the
+hostname of the machine exposed to the internet;</li>
+<li><code>IAM_BASE_URL</code> is the base URL where the IAM web application will live; the
+value for this is typically <code>https://${IAM_HOST}</code>;</li>
+<li><code>IAM_ISSUER</code> is the OpenID-connect issuer for the tokens issued by the IAM;
+we recommend using the same setting as <code>IAM_BASE_URL</code>, i.e.
+<code>https://${IAM_HOST}</code>;</li>
+<li><code>IAM_FORWARD_HEADERS_STRATEGY</code> tells the IAM that whether it lives behind a reverse
+proxy (i.e., NGINX); in production the value is typically <code>native</code>;</li>
+<li><code>IAM_KEY_STORE_LOCATION</code> is the location of the JSON Web keystore generated
+as explained <a href="/v/v1.8.2/docs/getting-started/jwk/">here</a>;</li>
+<li><code>IAM_DB_*</code> are variables used to set the database endpoint and provide
+database access credentials;</li>
+<li><code>IAM_NOTIFICATION_FROM</code> sets the sender of administrative notification sent
+by the IAM;</li>
+<li><code>IAM_NOTIFICATION_ADMIN_ADDRESS</code> sets the email address that will receive
+administrative notifications from the IAM;</li>
+<li><code>IAM_MAIL_HOST</code> is the SMTP server that IAM will use to deliver
+notifications.</li>
+</ul>
+<p>Deploying and starting the IAM service with the above configuration will give
+you an empty service with just one user registered, the <code>admin</code> user.</p>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Warning</h4>
+
+    <p>As a first thing you should login in the IAM with the following credentials:</p>
+<ul>
+<li>username: <code>admin</code></li>
+<li>password: <code>password</code></li>
+</ul>
+
+
+</div>
+
+<p>and change the password for the admin user, clicking on the <strong>Change password</strong>
+button from the admin home page, as shown in the following picture:</p>
+<p><img src="../images/admin-change-password.png" alt="Admin change password"></p>
+
+        <div class="section-index">
+    
+    
+    
+    
+    
+    <hr class="panel-line">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    
+</div>
+
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">Last modified April 22, 2022: <a  href="https://github.com/indigo-iam/iam-website/commit/88136ce04114226d135da488c014f67136866b49">Temptative manual merge of branch v1.7.2 into v1.8.0 (88136ce)</a>
+</div>
+</div>
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-4 text-xs-center order-sm-2">
+        
+        
+        
+      </div>
+      <div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://github.com/indigo-iam/iam">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
+    <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://indigo-iam.slack.com">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+        <small class="text-white">&copy; 2023 INFN All Rights Reserved</small>
+        
+	
+		
+	
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/v/v1.8.2/js/main.min.63db3e552bd0543be17ce4a79a18b744e9cb72256bec42b540e3ab0cd43722d0.js" integrity="sha256-Y9s&#43;VSvQVDvhfOSnmhi3ROnLciVr7EK1QOOrDNQ3ItA=" crossorigin="anonymous"></script>
+
+
+
+
+  </body>
+</html>

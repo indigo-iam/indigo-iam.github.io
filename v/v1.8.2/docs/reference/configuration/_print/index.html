@@ -1,0 +1,1890 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.86.0" /><link rel="canonical" type="text/html" href="/v/v1.8.2/docs/reference/configuration/">
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+
+
+<link rel="shortcut icon" href="/v/v1.8.2/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/v/v1.8.2/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/v/v1.8.2/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/v/v1.8.2/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/v/v1.8.2/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/v/v1.8.2/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/v/v1.8.2/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/v/v1.8.2/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/v/v1.8.2/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/v/v1.8.2/favicons/android-192x192.png" sizes="192x192">
+
+<title>Configuration | INDIGO IAM</title><meta property="og:title" content="Configuration" />
+<meta property="og:description" content="IAM service configuration reference
+" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/v/v1.8.2/docs/reference/configuration/" /><meta property="og:site_name" content="INDIGO IAM" />
+
+<meta itemprop="name" content="Configuration">
+<meta itemprop="description" content="IAM service configuration reference
+"><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Configuration"/>
+<meta name="twitter:description" content="IAM service configuration reference
+"/>
+
+
+
+
+
+
+
+<link rel="preload" href="/v/v1.8.2/scss/main.min.8c56a5db29a8a7bfd7c31c587d450fd15c23c45c8cd6e72142c8ed5b2ef43bd5.css" as="style">
+<link href="/v/v1.8.2/scss/main.min.8c56a5db29a8a7bfd7c31c587d450fd15c23c45c8cd6e72142c8ed5b2ef43bd5.css" rel="stylesheet" integrity="">
+
+
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+
+
+
+  </head>
+  <body class="td-section">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="/v/v1.8.2/">
+		<span class="navbar-logo"></span><span class="text-uppercase font-weight-bold">INDIGO IAM</span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a  class="nav-link active" href="/v/v1.8.2/docs/" ><span class="active">Documentation</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a  class="nav-link" href="/v/v1.8.2/blog/" ><span>Blog</span></a>
+			</li>
+			
+			
+			<li class="nav-item dropdown d-none d-lg-block">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Releases
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="https://indigo-iam.github.io/v/current">v1.8.2</a>
+	
+	<a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.1">v1.8.1</a>
+	
+	<a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.0">v1.8.0</a>
+	
+	<a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.2">v1.7.2</a>
+	
+	<a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.1">v1.7.1</a>
+	
+	<a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.0">v1.7.0</a>
+	
+	<a class="dropdown-item" href="https://indigo-iam.github.io/docs/v/current/">older releases</a>
+	
+</div>
+
+			</li>
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block">
+
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/v/v1.8.2/offline-search-index.fca64ebb808b9fa5d4f922a749477b2e.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="10"
+>
+
+</div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/v/v1.8.2/docs/reference/configuration/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">Configuration</h1>
+<div class="lead">IAM service configuration reference</div>
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>1: <a href="#pg-978b7edb20fd49ffb034f6d6573a9e60">JWT profiles support</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>2: <a href="#pg-371b1935a2a5c2cbff937a267fe80317">MitreID System Scopes</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>3: <a href="#pg-ee84b111d6aee6b44b8e068e0995e8c2">Membership lifecycle</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>4: <a href="#pg-5fd21a888f7bdca41388e3b3fa887277">Integration with RCAuth</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>5: <a href="#pg-2501923ff9f1258a5dc95b7435579a75">Registration &amp; Enrollment</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>6: <a href="#pg-63d7a6556648cdd8622cf2321f13a835">JSON Web Keys (JWK)</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>7: <a href="#pg-b153a1aec7140b2aa27a0ba03e8dc3fd">Local authentication</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>8: <a href="#pg-359104377f9341d4c326d45fb209b4c2">External authentication</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>8.1: <a href="#pg-ac3ba36ba3318b338bcbf439e1b79e60">OpenID-Connect authentication</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>8.2: <a href="#pg-af611b856fca4d6771e3e3ed962701b5">SAML authentication</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>8.3: <a href="#pg-86d359d1731c5e164863d1bbe93a7bcf">X.509 authentication</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+
+    </ul>
+    
+  
+
+    </ul>
+
+
+<div class="content">
+      <p>Most IAM configurable aspects are configured via environment variables and
+Spring profile directives.</p>
+<h2 id="spring-profiles">Spring profiles</h2>
+<p>Spring profiles are used to enable/disable group of IAM functionalities.
+Currently the following profiles are defined:</p>
+<table>
+<thead>
+<tr>
+<th>Profile name</th>
+<th>Active by default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prod</td>
+<td>no</td>
+<td>This is the profile you should enable when using IAM</td>
+</tr>
+<tr>
+<td>h2-test</td>
+<td>yes</td>
+<td>Enables h2 in-memory database, useful for development and testing</td>
+</tr>
+<tr>
+<td>mysql-test</td>
+<td>no</td>
+<td>Like h2-test, but used to develop against a MySQL database</td>
+</tr>
+<tr>
+<td>oidc</td>
+<td>no</td>
+<td>Enables Google authentication</td>
+</tr>
+<tr>
+<td>saml</td>
+<td>no</td>
+<td>Enables SAML authentication</td>
+</tr>
+<tr>
+<td>registration</td>
+<td>yes</td>
+<td>Enables user registration and reset password functionalities</td>
+</tr>
+</tbody>
+</table>
+<p>Profiles are enabled by setting the <code>spring.profiles.active</code> Java system
+property when starting the IAM service. This can be done, using the official
+IAM docker image, by setting the IAM_JAVA_OPTS environment variable as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000">IAM_JAVA_OPTS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;-Dspring.profiles.active=prod,oidc,saml&#34;</span>
+</code></pre></div><h2 id="overriding-default-configuration-templates">Overriding default configuration templates</h2>
+<p>Fine-grained control over configuration can be obtained following the rules for
+spring boot <a href="https://docs.spring.io/spring-boot/docs/1.3.8.RELEASE/reference/html/boot-features-external-config.html">externalized configuration</a>.
+This basically means defining one or more YAML files to override the default
+configuration files embedded in the IAM Web Archive (war) package for the Spring profiles
+activated for your instance.  The files must be placed in the IAM configuration
+directory, which depends on how you deployed IAM:</p>
+<table>
+<thead>
+<tr>
+<th>Deployment type</th>
+<th>Configuration directory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Docker</td>
+<td><code>/indigo-iam/config/</code></td>
+</tr>
+<tr>
+<td>Package (RPM)</td>
+<td><code>/etc/indigo-iam/config</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>IMPORTANT</strong>: the default configuration should solve most use cases, override
+default configuration <strong>only if you know what you are doing</strong>, and for those
+scenarios not served by the default templates.</p>
+<h2 id="basic-service-configuration">Basic service configuration</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># The IAM service will list for requests on this host</span>
+<span style="color:#000">IAM_HOST</span><span style="color:#ce5c00;font-weight:bold">=</span>localhost
+
+<span style="color:#8f5902;font-style:italic"># The IAM service webapp will bind on this port</span>
+<span style="color:#000">IAM_PORT</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">8080</span>
+
+<span style="color:#8f5902;font-style:italic"># The IAM web application base URL</span>
+<span style="color:#000">IAM_BASE_URL</span><span style="color:#ce5c00;font-weight:bold">=</span>http://<span style="color:#4e9a06">${</span><span style="color:#000">IAM_HOST</span><span style="color:#4e9a06">}</span>:8080
+
+<span style="color:#8f5902;font-style:italic"># The OpenID Connect issuer configured for this IAM instance.</span>
+<span style="color:#8f5902;font-style:italic"># This must be equal to IAM_BASE_URL</span>
+<span style="color:#000">IAM_ISSUER</span><span style="color:#ce5c00;font-weight:bold">=</span>http://<span style="color:#4e9a06">${</span><span style="color:#000">IAM_HOST</span><span style="color:#4e9a06">}</span>:8080
+
+<span style="color:#8f5902;font-style:italic"># The path to the JSON keystore that holds the keys IAM will use to sign and</span>
+<span style="color:#8f5902;font-style:italic"># verify token signatures</span>
+<span style="color:#000">IAM_KEY_STORE_LOCATION</span><span style="color:#ce5c00;font-weight:bold">=</span>
+
+<span style="color:#8f5902;font-style:italic"># HTTP caching header setting public key lifetime (in seconds).</span>
+<span style="color:#8f5902;font-style:italic"># The recommended lifetime according to the WLCG profile* is 6 hours</span>
+<span style="color:#000">IAM_JWK_CACHE_LIFETIME</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">21600</span>
+
+<span style="color:#8f5902;font-style:italic"># IAM will look for trust anchors in this directory. These trust anchors are</span>
+<span style="color:#8f5902;font-style:italic"># needed for TLS operations where the IAM acts as a client (i.e., to</span>
+<span style="color:#8f5902;font-style:italic"># authenticate to remote SAML Identity providers)</span>
+<span style="color:#000">IAM_X509_TRUST_ANCHORS_DIR</span><span style="color:#ce5c00;font-weight:bold">=</span>/etc/grid-security/certificates
+
+<span style="color:#8f5902;font-style:italic"># How frequently (in seconds) should trust anchors be refreshed</span>
+<span style="color:#000">IAM_X509_TRUST_ANCHORS_REFRESH</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">14400</span>
+
+<span style="color:#8f5902;font-style:italic"># Use forwarded headers from reverse proxy. Set this to native when deploying the</span>
+<span style="color:#8f5902;font-style:italic"># service behind a reverse proxy</span>
+<span style="color:#000">IAM_FORWARD_HEADERS_STRATEGY</span><span style="color:#ce5c00;font-weight:bold">=</span>none
+
+<span style="color:#8f5902;font-style:italic">## Tomcat embedded container settings</span>
+
+<span style="color:#8f5902;font-style:italic"># Enables the tomcat access log</span>
+<span style="color:#000">IAM_TOMCAT_ACCESS_LOG_ENABLED</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">false</span>
+
+<span style="color:#8f5902;font-style:italic"># Directory where the tomcat access log will be written (when enabled)</span>
+<span style="color:#000">IAM_TOMCAT_ACCESS_LOG_DIRECTORY</span><span style="color:#ce5c00;font-weight:bold">=</span>/tmp
+
+<span style="color:#8f5902;font-style:italic">## Actuator endpoint settings</span>
+
+<span style="color:#8f5902;font-style:italic"># Sets the username of the user allowed to have privileged access to actuator</span>
+<span style="color:#8f5902;font-style:italic"># endpoints</span>
+<span style="color:#000">IAM_ACTUATOR_USER_USERNAME</span><span style="color:#ce5c00;font-weight:bold">=</span>user
+
+<span style="color:#8f5902;font-style:italic"># Sets the password of the user allowed to have privileged access to actuator</span>
+<span style="color:#8f5902;font-style:italic"># endpoints</span>
+<span style="color:#000">IAM_ACTUATOR_USER_PASSWORD</span><span style="color:#ce5c00;font-weight:bold">=</span>secret
+
+<span style="color:#8f5902;font-style:italic">## Local resources configuration</span>
+
+<span style="color:#8f5902;font-style:italic"># Enables the serving of resources from the local file system </span>
+<span style="color:#000">IAM_LOCAL_RESOURCES_ENABLE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">false</span>
+
+<span style="color:#8f5902;font-style:italic"># Sets the directory that contains the local resources that should be exposed</span>
+<span style="color:#000">IAM_LOCAL_RESOURCES_LOCATION</span><span style="color:#ce5c00;font-weight:bold">=</span>file:/indigo-iam/local-resources
+</code></pre></div><p>(*) More information <a href="https://github.com/WLCG-AuthZ-WG/common-jwt-profile/blob/master/profile.md#token-validation">here</a>.</p>
+<h2 id="organization-configuration">Organization configuration</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># The name of the organization managed by this IAM instance</span>
+<span style="color:#000">IAM_ORGANISATION_NAME</span><span style="color:#ce5c00;font-weight:bold">=</span>indigo-dc
+
+<span style="color:#8f5902;font-style:italic"># URL of logo image used in the IAM dashboard (by default the INDIGO-Datacloud</span>
+<span style="color:#8f5902;font-style:italic"># project logo image is used)</span>
+<span style="color:#000">IAM_LOGO_URL</span><span style="color:#ce5c00;font-weight:bold">=</span>resources/images/indigo-logo.png
+
+<span style="color:#8f5902;font-style:italic"># Size of the logo image (in pixels)</span>
+<span style="color:#000">IAM_LOGO_DIMENSION</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">200</span>
+
+<span style="color:#8f5902;font-style:italic"># Height of the logo image (in pixels)</span>
+<span style="color:#000">IAM_LOGO_HEIGTH</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">150</span>
+
+<span style="color:#8f5902;font-style:italic"># Width of the logo image (in pixels)</span>
+<span style="color:#000">IAM_LOGO_WIDTH</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">200</span>
+
+<span style="color:#8f5902;font-style:italic"># String displayed into the brower top bar when accessing the IAM dashboard</span>
+<span style="color:#000">IAM_TOPBAR_TITLE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;INDIGO IAM for </span><span style="color:#4e9a06">${</span><span style="color:#000">IAM_ORGANISATION_NAME</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span>
+</code></pre></div><h2 id="access-token-contents-configuration">Access token contents configuration</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic">## Token content settings </span>
+
+<span style="color:#8f5902;font-style:italic"># Include authentication claims in issued access tokens</span>
+<span style="color:#000">IAM_ACCESS_TOKEN_INCLUDE_AUTHN_INFO</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">false</span>
+
+<span style="color:#8f5902;font-style:italic"># Includes the scope in issued access tokens</span>
+<span style="color:#000">IAM_ACCESS_TOKEN_INCLUDE_SCOPE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">false</span>
+
+<span style="color:#8f5902;font-style:italic"># Includes the nbf claim in issued access tokens</span>
+<span style="color:#000">IAM_ACCESS_TOKEN_INCLUDE_NBF</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">false</span>
+</code></pre></div><h2 id="database-configuration">Database configuration</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># The host where the MariaDB/MySQL daemon is running</span>
+<span style="color:#000">IAM_DB_HOST</span><span style="color:#ce5c00;font-weight:bold">=</span>
+
+<span style="color:#8f5902;font-style:italic"># The database port</span>
+<span style="color:#000">IAM_DB_PORT</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">3306</span>
+
+<span style="color:#8f5902;font-style:italic"># The database name</span>
+<span style="color:#000">IAM_DB_NAME</span><span style="color:#ce5c00;font-weight:bold">=</span>iam
+
+<span style="color:#8f5902;font-style:italic"># The database username</span>
+<span style="color:#000">IAM_DB_USERNAME</span><span style="color:#ce5c00;font-weight:bold">=</span>iam
+
+<span style="color:#8f5902;font-style:italic"># The database password </span>
+<span style="color:#000">IAM_DB_PASSWORD</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">pwd</span>
+
+<span style="color:#8f5902;font-style:italic">## Database connection pool options</span>
+
+<span style="color:#8f5902;font-style:italic"># Maximum number of active connections to the database</span>
+<span style="color:#000">IAM_DB_MAX_ACTIVE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">50</span>
+
+<span style="color:#8f5902;font-style:italic"># Maximum number of idle connections in the pool </span>
+<span style="color:#000">IAM_DB_MAX_IDLE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">5</span>
+
+<span style="color:#8f5902;font-style:italic"># Initial size of the database connection pool</span>
+<span style="color:#000">IAM_DB_INITIAL_SIZE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">8</span>
+
+<span style="color:#8f5902;font-style:italic"># Should idle connections in the pool be tested?</span>
+<span style="color:#000">IAM_DB_TEST_WHILE_IDLE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">true</span>
+
+<span style="color:#8f5902;font-style:italic"># Should connections in the pool be tested when borrowed?</span>
+<span style="color:#000">IAM_DB_TEST_ON_BORROW</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">true</span>
+
+<span style="color:#8f5902;font-style:italic"># Which SQL query should be used to test connections?</span>
+<span style="color:#000">IAM_DB_VALIDATION_QUERY</span><span style="color:#ce5c00;font-weight:bold">=</span>SELECT <span style="color:#0000cf;font-weight:bold">1</span>
+
+<span style="color:#8f5902;font-style:italic"># Time between database connection pool eviction runs (in msec)</span>
+<span style="color:#000">IAM_DB_TIME_BETWEEN_EVICTION_RUNS_MILLIS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">5000</span>
+
+<span style="color:#8f5902;font-style:italic"># The minimum amount of time a connection may be idle in the pool</span>
+<span style="color:#8f5902;font-style:italic"># before it is considered for eviction (in msec)</span>
+<span style="color:#000">IAM_DB_MIN_EVICTABLE_IDLE_TIME_MILLIS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">60000</span>
+</code></pre></div><h2 id="test-client-configuration">Test Client configuration</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># Public identifier for client application</span>
+<span style="color:#000">IAM_CLIENT_ID</span><span style="color:#ce5c00;font-weight:bold">=</span>client
+
+<span style="color:#8f5902;font-style:italic"># Client application&#39;s own password</span>
+<span style="color:#000">IAM_CLIENT_SECRET</span><span style="color:#ce5c00;font-weight:bold">=</span>secret
+
+<span style="color:#8f5902;font-style:italic"># Default scopes allowed to the client application (optional)</span>
+<span style="color:#000">IAM_CLIENT_SCOPES</span><span style="color:#ce5c00;font-weight:bold">=</span>openid profile email
+
+<span style="color:#8f5902;font-style:italic"># Use forwarded headers from reverse proxy. Set this to native when deploying the</span>
+<span style="color:#8f5902;font-style:italic"># service behind a reverse proxy</span>
+<span style="color:#000">IAM_CLIENT_FORWARD_HEADERS_STRATEGY</span><span style="color:#ce5c00;font-weight:bold">=</span>none
+</code></pre></div><h2 id="redis-configuration">Redis configuration</h2>
+<p>Starting with version 1.8.0, IAM supports storing HTTP session
+information in an external <a href="https://redis.io/">redis</a> server.</p>
+<p>This can be useful when <a href="../../../docs/tasks/deployment/ha">deploying multiple replicas of the IAM
+service</a>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic">## Redis server settings</span>
+
+<span style="color:#8f5902;font-style:italic"># Redis server hostname</span>
+<span style="color:#000">IAM_SPRING_REDIS_HOST</span><span style="color:#ce5c00;font-weight:bold">=</span>localhost
+
+<span style="color:#8f5902;font-style:italic"># Redis server port</span>
+<span style="color:#000">IAM_SPRING_REDIS_PORT</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">6397</span>
+
+<span style="color:#8f5902;font-style:italic"># Redis server password.</span>
+<span style="color:#8f5902;font-style:italic"># Leave it empty in case the server does not require any password</span>
+<span style="color:#000">IAM_SPRING_REDIS_PASSWORD</span><span style="color:#ce5c00;font-weight:bold">=</span>secret
+
+<span style="color:#8f5902;font-style:italic"># Duration of an HTTP session</span>
+<span style="color:#000">IAM_SESSION_TIMEOUT_SECS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1800</span>
+
+<span style="color:#8f5902;font-style:italic"># Set to &#39;redis&#39; in order to handle HTTP session</span>
+<span style="color:#8f5902;font-style:italic"># with an external Redis service</span>
+<span style="color:#000">IAM_SPRING_SESSION_STORE_TYPE</span><span style="color:#ce5c00;font-weight:bold">=</span>none
+
+<span style="color:#8f5902;font-style:italic"># If set to &#39;true&#39; the status of the Redis service</span>
+<span style="color:#8f5902;font-style:italic"># will appear in the IAM Health check endpoint</span>
+<span style="color:#000">IAM_HEALTH_REDIS_PROBE_ENABLED</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">false</span>
+</code></pre></div><h2 id="local-authentication-settings">Local authentication settings</h2>
+<p>It allows a user to log in with local credentials (username/password).<br>
+For more information, see the <a href="local_authn/">Local Authentication section</a>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># Set to &#39;hidden&#39; if you want to hide the local login form</span>
+<span style="color:#000">IAM_LOCAL_AUTHN_LOGIN_PAGE_VISIBILITY</span><span style="color:#ce5c00;font-weight:bold">=</span>visible
+<span style="color:#8f5902;font-style:italic"># Enables local login form to all users.</span>
+<span style="color:#8f5902;font-style:italic"># It can be restricted, changing the value to &#39;vo-admins&#39; or &#39;none&#39;</span>
+<span style="color:#000">IAM_LOCAL_AUTHN_ENABLED_FOR</span><span style="color:#ce5c00;font-weight:bold">=</span>all
+</code></pre></div><h2 id="google-authentication-settings">Google authentication settings</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># The Google OAuth client id</span>
+<span style="color:#000">IAM_GOOGLE_CLIENT_ID</span><span style="color:#ce5c00;font-weight:bold">=</span>
+
+<span style="color:#8f5902;font-style:italic"># The OAuth client secret</span>
+<span style="color:#000">IAM_GOOGLE_CLIENT_SECRET</span><span style="color:#ce5c00;font-weight:bold">=</span>
+</code></pre></div><p>For more information and examples, see the <a href="/v/v1.8.2/docs/reference/configuration/external-authentication/oidc/">OpenID Connect
+Authentication section</a>.</p>
+<h2 id="saml-authentication-settings">SAML authentication settings</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># The SAML entity ID for this IAM instance</span>
+<span style="color:#000">IAM_SAML_ENTITY_ID</span><span style="color:#ce5c00;font-weight:bold">=</span>
+
+<span style="color:#8f5902;font-style:italic"># Text shown in the SAML login button on the IAM login page</span>
+<span style="color:#000">IAM_SAML_LOGIN_BUTTON_TEXT</span><span style="color:#ce5c00;font-weight:bold">=</span>Sign in with SAML
+
+<span style="color:#8f5902;font-style:italic">## SAML keystore settings</span>
+
+<span style="color:#8f5902;font-style:italic"># The keystore holding certificates and keys used for SAML crypto</span>
+<span style="color:#000">IAM_SAML_KEYSTORE</span><span style="color:#ce5c00;font-weight:bold">=</span> 
+
+<span style="color:#8f5902;font-style:italic"># The SAML keystore password</span>
+<span style="color:#000">IAM_SAML_KEYSTORE_PASSWORD</span><span style="color:#ce5c00;font-weight:bold">=</span>
+
+<span style="color:#8f5902;font-style:italic"># The identifier of the key that should be used to sign requests/assertions</span>
+<span style="color:#000">IAM_SAML_KEY_ID</span><span style="color:#ce5c00;font-weight:bold">=</span>
+
+<span style="color:#8f5902;font-style:italic"># The password of the SAML key that will be used to sign requests/assertions</span>
+<span style="color:#000">IAM_SAML_KEY_PASSWORD</span><span style="color:#ce5c00;font-weight:bold">=</span>
+
+<span style="color:#8f5902;font-style:italic">## Metadata settings</span>
+
+<span style="color:#8f5902;font-style:italic"># a URL pointing to the SAML federation or IdP metadata</span>
+<span style="color:#000">IAM_SAML_IDP_METADATA</span><span style="color:#ce5c00;font-weight:bold">=</span>
+
+<span style="color:#8f5902;font-style:italic"># Metadata refresh period (in seconds)</span>
+<span style="color:#000">IAM_SAML_METADATA_LOOKUP_SERVICE_REFRESH_PERIOD_SEC</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">600</span>
+
+<span style="color:#8f5902;font-style:italic"># Should signature validity checks be enforced on metadata?</span>
+<span style="color:#000">IAM_SAML_METADATA_REQUIRE_VALID_SIGNATURE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">false</span>
+
+<span style="color:#8f5902;font-style:italic"># Trust only IdPs that have SIRTFI compliance</span>
+<span style="color:#000">IAM_SAML_METADATA_REQUIRE_SIRTFI</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">false</span>
+
+<span style="color:#8f5902;font-style:italic"># Comma-separated IDP entity ID whitelist. When empty</span>
+<span style="color:#8f5902;font-style:italic"># all IdPs included in the metadata are whitelisted</span>
+<span style="color:#000">IAM_SAML_IDP_ENTITY_ID_WHITELIST</span><span style="color:#ce5c00;font-weight:bold">=</span>
+
+<span style="color:#8f5902;font-style:italic">## Assertion validity settings</span>
+
+<span style="color:#8f5902;font-style:italic"># Maxixum allowed assertion time (in seconds)</span>
+<span style="color:#000">IAM_SAML_MAX_ASSERTION_TIME</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">3000</span>
+
+<span style="color:#8f5902;font-style:italic"># Maximum authentication age (in seconds)</span>
+<span style="color:#000">IAM_SAML_MAX_AUTHENTICATION_AGE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">86400</span>
+
+<span style="color:#8f5902;font-style:italic">## Other settings</span>
+
+<span style="color:#8f5902;font-style:italic"># List of attribute aliases that are looked up in assertion to identify the </span>
+<span style="color:#8f5902;font-style:italic"># user authenticated with SAML</span>
+<span style="color:#000">IAM_SAML_ID_RESOLVERS</span><span style="color:#ce5c00;font-weight:bold">=</span>eduPersonUniqueId,eduPersonTargetedId,eduPersonPrincipalName
+</code></pre></div><p>For more information and examples, see the <a href="/v/v1.8.2/docs/reference/configuration/external-authentication/saml/">SAML Authentication
+section</a>.</p>
+<h2 id="notification-service-settings">Notification service settings</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic">## SMTP mail server settings </span>
+
+<span style="color:#8f5902;font-style:italic"># SMTP server hostname </span>
+<span style="color:#000">IAM_MAIL_HOST</span><span style="color:#ce5c00;font-weight:bold">=</span>localhost
+
+<span style="color:#8f5902;font-style:italic"># SMTP server port </span>
+<span style="color:#000">IAM_MAIL_PORT</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">25</span>
+
+<span style="color:#8f5902;font-style:italic"># SMTP server username</span>
+<span style="color:#000">IAM_MAIL_USERNAME</span><span style="color:#ce5c00;font-weight:bold">=</span>
+
+<span style="color:#8f5902;font-style:italic"># SMTP server password</span>
+<span style="color:#000">IAM_MAIL_PASSWORD</span><span style="color:#ce5c00;font-weight:bold">=</span>
+
+<span style="color:#8f5902;font-style:italic">## IAM notification settings</span>
+
+<span style="color:#8f5902;font-style:italic"># Should the notification server be disabled?</span>
+<span style="color:#8f5902;font-style:italic"># When set to true, notifications are not sent to the mail server (but</span>
+<span style="color:#8f5902;font-style:italic"># printed to the logs)</span>
+<span style="color:#000">IAM_NOTIFICATION_DISABLE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">false</span>
+
+<span style="color:#8f5902;font-style:italic"># The email address used as the sender in IAM email notifications</span>
+<span style="color:#000">IAM_NOTIFICATION_FROM</span><span style="color:#ce5c00;font-weight:bold">=</span>indigo@localhost
+
+<span style="color:#8f5902;font-style:italic"># The email address used as the recipient in IAM email notifications</span>
+<span style="color:#000">IAM_NOTIFICATION_ADMIN_ADDRESS</span><span style="color:#ce5c00;font-weight:bold">=</span>indigo-alerts@localhost
+
+<span style="color:#8f5902;font-style:italic"># Notification policy for account requests. The default value is notify-address</span>
+<span style="color:#8f5902;font-style:italic"># meaning that notifications just arrive to the email address</span>
+<span style="color:#8f5902;font-style:italic"># specified above. Set to notify-admins if you want to notify</span>
+<span style="color:#8f5902;font-style:italic"># all IAM admins or to notify-address-and-admins to combine the two behaviors</span>
+<span style="color:#000">IAM_NOTIFICATION_ADMIN_NOTIFICATION_POLICY</span><span style="color:#ce5c00;font-weight:bold">=</span>notify-address
+
+<span style="color:#8f5902;font-style:italic"># Notification policy for group requests. Default value notifies both</span>
+<span style="color:#8f5902;font-style:italic"># admins and group managers. Set to notify-gms if you want to notify only group managers</span>
+<span style="color:#000">IAM_NOTIFICATION_GROUP_MANAGER_NOTIFICATION_POLICY</span><span style="color:#ce5c00;font-weight:bold">=</span>notify-gms-and-admins
+
+<span style="color:#8f5902;font-style:italic"># Time interval, in milliseconds, between two consecutive runs of IAM notification </span>
+<span style="color:#8f5902;font-style:italic"># dispatch task </span>
+<span style="color:#000">IAM_NOTIFICATION_TASK_DELAY</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">30000</span>
+
+<span style="color:#8f5902;font-style:italic"># Retention of delivered messages, in days</span>
+<span style="color:#000">IAM_NOTIFICATION_CLEANUP_AGE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">30</span>
+</code></pre></div><h2 id="account-linking-settings">Account linking settings</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># Should account linking be disabled? When set to true users cannot</span>
+<span style="color:#8f5902;font-style:italic"># link external accounts (Google, SAML) to their local IAM account</span>
+<span style="color:#000">IAM_ACCOUNT_LINKING_DISABLE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">false</span> 
+</code></pre></div><h2 id="privacy-policy-settings">Privacy policy settings</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># An URL pointing to a privacy policy document which applies</span>
+<span style="color:#8f5902;font-style:italic"># to this IAM instance. When left blank, no privacy policy link </span>
+<span style="color:#8f5902;font-style:italic"># is displayed in the login page</span>
+<span style="color:#000">IAM_PRIVACY_POLICY_URL</span><span style="color:#ce5c00;font-weight:bold">=</span>
+
+<span style="color:#8f5902;font-style:italic"># The text displayed in the login page for the privacy policy URL specified</span>
+<span style="color:#8f5902;font-style:italic"># above</span>
+<span style="color:#000">IAM_PRIVACY_POLICY_TEXT</span><span style="color:#ce5c00;font-weight:bold">=</span>Privacy policy
+</code></pre></div>
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-978b7edb20fd49ffb034f6d6573a9e60">1 - JWT profiles support</h1>
+    
+	<p>Starting with version 1.6.0, IAM introduces support for JWT <em>profiles</em>.</p>
+<p>A JWT profile is a named set of rules that defines which information is
+included in access tokens, id tokens,  userinfo and introspection responses
+issued by IAM in an OAuth/OIDC message exchanges.</p>
+<p>IAM allows to define a default profile that is used for all clients that are
+not explicitly bound to one. This allows to use the same profile across
+all clients in an organization.</p>
+<p>It&rsquo;s also possible to define the profile to be used at client level, using
+scopes, i.e. adding among the scope allowed for the client the name of the
+profile the client should use. The scope, in this context, does not identify a
+set of permissions but an encoding of authentication/authorization informations
+in tokens and responses issued by IAM.</p>
+<p>This mechanism enables integration of the same IAM instance with resources
+relying on different profiles.</p>
+<p>IAM currently supports three JWT profiles:</p>
+<ul>
+<li>the <code>iam</code> profile</li>
+<li>the <code>wlcg</code> WLCG profile</li>
+<li>the <code>aarc</code> profile</li>
+</ul>
+<h2 id="setting-the-default-profile">Setting the default profile</h2>
+<p>The IAM JWT default profile is set using the <code>IAM_JWT_DEFAULT_PROFILE</code>
+environment variable, e.g.:</p>
+<pre><code>IAM_JWT_DEFAULT_PROFILE=iam
+</code></pre><p>The default profile will be used for all clients that do not explicitly and
+correctly request the use of a profile using scopes.</p>
+<h2 id="using-scopes-to-select-the-jwt-profile-for-a-client">Using scopes to select the JWT profile for a client</h2>
+<p>To select the profile used by a client, include one of the following scopes
+in the list of scopes authorized for a client:</p>
+<ul>
+<li><code>iam</code>, for the IAM profile</li>
+<li><code>wlcg</code>, for the WLCG profile</li>
+<li><code>aarc</code> profile, for the AARC profile</li>
+</ul>
+<p>Clients should only link to one profile. When multiple profiles are linked to a
+client, IAM falls back to the default profile configured for the IAM instance.</p>
+<h2 id="using-system-scopes-to-control-profile-selection">Using system scopes to control profile selection</h2>
+<p>MitreID <strong>System Scopes</strong> can be used to control access to profile selection.</p>
+<p>The scopes <code>iam</code>, <code>wlcg</code> and <code>aarc</code> used to select the JWT profile are not available in IAM
+by default; an administrator has to add all of them manually, as described in the
+in <a href="/v/v1.8.2/docs/reference/configuration/system-scopes/">System Scopes documentation</a>.</p>
+<h2 id="supported-jwt-profiles">Supported JWT profiles</h2>
+<h3 id="the-iam-profile">The IAM profile</h3>
+<p>This is the default profile for IAM.</p>
+<p>With this profile:</p>
+<ul>
+<li>
+<p>groups are encoded in the <code>groups</code> claim; all the groups the user is member
+of are included in the groups claim;</p>
+</li>
+<li>
+<p>authentication information (username, email, groups) is not by default
+included in access tokens; this behaviour can be changed by setting the
+<code>IAM_ACCESS_TOKEN_INCLUDE_AUTHN_INFO=true</code> environment variable;</p>
+</li>
+<li>
+<p>scope information is not by default included in access tokens; this behaviour
+can be changed by setting the <code>IAM_ACCESS_TOKEN_INCLUDE_SCOPE=true</code>
+environment variable;</p>
+</li>
+<li>
+<p>the <code>nbf</code> (not before) claim is not set in access tokens; this behaviour
+can be changed by setting the <code>IAM_ACCESS_TOKEN_INCLUDE_NBF=true</code>
+environment variable;</p>
+</li>
+</ul>
+<p>This profile is assigned to clients using the <code>iam</code>  scope.</p>
+<h3 id="the-wlcg-profile">The WLCG profile</h3>
+<p>This profile implements the <a href="https://zenodo.org/record/3460258">Common JWT Token profile</a>.</p>
+<p>In particular:</p>
+<ul>
+<li>the <code>scope</code> claim is always included in access tokens;</li>
+<li>groups are not included by default in access and ID tokens;</li>
+</ul>
+<p>This profile is assigned to clients using the <code>wlcg</code> scope.</p>
+<p>With this profile:</p>
+<ul>
+<li>
+<p>groups are encoded in the <code>wlcg-groups</code> claim; all the non-optional groups the user is member
+of are included in the wlcg-groups claim;</p>
+</li>
+<li>
+<p>authentication information (username, email, groups) is not by default
+included in access tokens; this behaviour can be changed by setting the
+<code>IAM_ACCESS_TOKEN_INCLUDE_AUTHN_INFO=true</code> environment variable;</p>
+</li>
+<li>
+<p>the <code>nbf</code> (not before) claim is not set in access tokens; this behaviour
+can be changed by setting the <code>IAM_ACCESS_TOKEN_INCLUDE_NBF=true</code>
+environment variable;</p>
+</li>
+</ul>
+<h4 id="requesting-groups-with-the-wlcg-profile">Requesting groups with the WLCG profile</h4>
+<p>When the WLCG profile is used, groups are not automatically included in access
+tokens and ID tokens, but can be requested using the <code>wlcg.groups</code> scope
+(which has to be added among the <a href="/v/v1.8.2/docs/reference/configuration/system-scopes/">System Scopes</a>),
+following the rules described in the <a href="https://github.com/WLCG-AuthZ-WG/CommonJWTProfile/blob/master/profile.md#scope-based-group-selection">WLCG
+profile</a>.</p>
+<h4 id="optional-groups">Optional groups</h4>
+<p>Optional groups are groups whose membership is only asserted in tokens on
+explicit request coming from a user.</p>
+<p>In order to configure a IAM group as an optional group,
+add the <code>wlcg.optional-group</code> label to the group.</p>
+<h3 id="the-aarc-profile">The AARC profile</h3>
+<p>This profile encodes group membership information following the rules defined
+by the <a href="https://aarc-project.eu/guidelines/aarc-g002/">AARC G002</a> profile document.</p>
+<p>In particular:</p>
+<ul>
+<li>groups and organisation name are not included by default in access and ID tokens;</li>
+<li>organisation name can be requested using the <code>eduperson_scoped_affiliation</code> scope and it&rsquo;s encoded in the <code>eduperson_scoped_affiliation</code> claim;</li>
+<li>groups can be requested using the <code>eduperson_entitlement</code> scope and they&rsquo;re encoded as URN in the <code>eduperson_entitlement</code> claim;</li>
+</ul>
+<p>All the mapping rules are described in the <a href="https://docs.google.com/document/d/1b-Mlet3Lq7qKLEf1BnHJ4nL1fq-vMe7fzpXyrq2wp08/edit">White Paper for implementation mappings between SAML 2.0 and OpenID Connect in Research and Education</a>.</p>
+<p>This profile is assigned to clients using the <code>aarc</code> scope.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-371b1935a2a5c2cbff937a267fe80317">2 - MitreID System Scopes</h1>
+    
+	<p>During the <a href="/v/v1.8.2/docs/tasks/user/client-registration/">client registration</a>, a user can assign any scope to the client,
+but IAM will grant only the list of scopes available among the MitreID <strong>System Scopes</strong>.</p>
+<p>In order to include a new scope into the System Scopes, an IAM administrator has to add it manually
+from the <code>System Scopes</code> tab on the left side of the MitreID dashboard:</p>
+<p><img src="system_scopes_mitre.png" alt="Mitre system scopes"></p>
+<ul>
+<li>if the box <code>default scope</code> is checked, the scope will be assigned to any newly regirested client,
+even if it is not explicitly requested;</li>
+<li>if the box <code>restricted</code> is checked, the scope will not be available to dynamically registered clients
+and can only be assigned to clients by IAM administrators;</li>
+<li>if no one box is checked, any dynamically registered client has to explicitly request for this scope
+at the registration time, and it will be granted without intervention of IAM administrators.</li>
+</ul>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-ee84b111d6aee6b44b8e068e0995e8c2">3 - Membership lifecycle</h1>
+    
+	<p>Starting with version 1.6.0, IAM introduces support for basic account life
+cycle management.</p>
+<p>It&rsquo;s now possible to set an expiration time for IAM accounts. Once the account
+expires, login for the account is disabled.</p>
+<p>IAM can be configured to remove expired accounts after a configurable grace
+period.</p>
+<h2 id="account-end-time-settings">Account end time settings</h2>
+<p>By default, accounts in IAM do not have an end time set, i.e. the lifetime is
+unbounded.</p>
+<p>A default account validity period (e.g., 12 months) can be configured and will
+be set for users at registration time.</p>
+<p>The relevant settings are managed  by placing <code>lifecycle</code> directives in a
+<a href="/v/v1.8.2/docs/reference/configuration/#overriding-default-configuration-templates">custom configuration
+file</a>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">lifecycle</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">account</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># 0 means unbounded validity</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">account-lifetime-days</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># When true, the end time cannot be changed from IAM APIs and dashboard</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">read-only-end-time</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">expired-account-policy</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#8f5902;font-style:italic"># Accounts will be suspended after 7 days since expiration</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">suspension-grace-period-days</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">7</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#8f5902;font-style:italic"># When false, expired accounts are not removed</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">remove-expired-accounts</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#8f5902;font-style:italic"># Accounts will be removed after 30 days since expiration</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#8f5902;font-style:italic"># (if remove-expired-accounts is true)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">removal-grace-period-days</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">30</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">expired-accounts-task</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#8f5902;font-style:italic"># Internal cron schedule for the lifecycle task.</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#8f5902;font-style:italic"># Default setting is every 5 mins</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">cron-schedule</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">*/5</span><span style="color:#f8f8f8;text-decoration:underline"> </span>*<span style="color:#f8f8f8;text-decoration:underline"> </span>*<span style="color:#f8f8f8;text-decoration:underline"> </span>*<span style="color:#f8f8f8;text-decoration:underline"> </span>*<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#8f5902;font-style:italic"># To disable automatic account expiration set this to false</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">enabled</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div>
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-5fd21a888f7bdca41388e3b3fa887277">4 - Integration with RCAuth</h1>
+    
+	<p><a href="https://rcauth.eu">RCAuth.eu</a> has been integrated with IAM in order to provide on-demand X.509
+certificates to users without a certificate.</p>
+<p>RCAuth is basically an online Certificate Authority, which issues certificates
+to end-entities based on a successful authentication to a Federated Identity Provider,
+operated by an academic or research organization.</p>
+<p>In particular, it extends the OAuth/OIDC specification to include the following endpoints:</p>
+<ul>
+<li>GetCert, to retrieve an X.509 end-entity certificate</li>
+<li>GetProxy, to retrieve a <a href="https://datatracker.ietf.org/doc/html/rfc3820">RFC3820</a> Proxy Certificate chain</li>
+</ul>
+<p>on behalf of the authenticated user.</p>
+<h2 id="iam-deployment">IAM deployment</h2>
+<h3 id="configuration">Configuration</h3>
+<p>The basic configuration required on your IAM deployment to enable the integration
+of the service with RCAuth is</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># Enable integration with RCAuth. Default to false</span>
+<span style="color:#000">IAM_RCAUTH_ENABLED</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">true</span>
+<span style="color:#8f5902;font-style:italic"># Select the hostname of your certificate authority, e.g. https://eir.nikhef.nl/oauth2</span>
+<span style="color:#000">IAM_RCAUTH_ISSUER</span><span style="color:#ce5c00;font-weight:bold">=</span>
+<span style="color:#8f5902;font-style:italic"># A label for the certificate authority (not mandatory)</span>
+<span style="color:#000">IAM_RCAUTH_LABEL</span><span style="color:#ce5c00;font-weight:bold">=</span>RCAuth.eu online CA
+<span style="color:#8f5902;font-style:italic"># Id of IAM client registered on RCAuth</span>
+<span style="color:#000">IAM_RCAUTH_CLIENT_ID</span><span style="color:#ce5c00;font-weight:bold">=</span>
+<span style="color:#8f5902;font-style:italic"># Secret of IAM client registered on RCAuth</span>
+<span style="color:#000">IAM_RCAUTH_CLIENT_SECRET</span><span style="color:#ce5c00;font-weight:bold">=</span>
+</code></pre></div><h3 id="client-registration">Client registration</h3>
+<p>An INDIGO IAM OAuth client has to be registered on the RCAuth service that will issue an
+X.509/proxy certificate.</p>
+<p>For instance, in case of the demo RCAuth hosted at <code>https://eir.nikhef.nl</code>,
+one has to follow the next steps:</p>
+<ul>
+<li>
+<p>go to the Client Registration Page <code>https://eir.nikhef.nl/oauth2/register</code> that will be
+shown after a successful login with your institutional Identity Provider (e.g. the INFN AAI);</p>
+</li>
+<li>
+<p>fill the form with the details of your client. Important fields are</p>
+<ul>
+<li>Callback URLs: <em>https://&lt;iam-hostname&gt;/rcauth/cb</em>;</li>
+<li>Scopes: <em>openid</em>, <em>edu.uiuc.ncsa.myproxy.getcert</em>;</li>
+</ul>
+</li>
+<li>
+<p>after the request has been submitted, the service will generate a client ID and
+secret that has to be set in the <code>IAM_RCAUTH_CLIENT_ID</code> and <code>IAM_RCAUTH_CLIENT_SECRET</code> environment
+variables respectively;</p>
+</li>
+<li>
+<p>wait for the manual approval of your client registration.</p>
+</li>
+</ul>
+<h2 id="iam-user-interface">IAM user interface</h2>
+<p>The RCAuth issued certificate is listed in the <strong>X.509 certificates</strong> tab
+of the IAM homepage.</p>
+<p>To add a new certificate click the <em>Request certificate</em> button.</p>
+<p><img src="RCAuth-request-certificate.png" alt="Request certificate to RCAuth"></p>
+<p>The user will be redirected to the RCAuth instance to authenticate and give consent
+for the generation of an X.509 certificate, which will be accessible by IAM.<br>
+Thus, IAM links the certificate to the user&rsquo;s dashboard, as shown in the example below.</p>
+<p><img src="RCAuth-linked-certificate.png" alt="Linked certificate issued by RCAuth"></p>
+<p>A long-lived plain proxy obtained by the linked X.509 certificate is automatically
+stored into the IAM database.<br>
+This is shown in the IAM dashboard when the &ldquo;<strong>Has managed proxy certificate</strong>&rdquo;
+string is set to <em>true</em> (as in the image above).</p>
+<p>The proxy certificate can be downloaded from IAM using the <a href="/docs/reference/api/proxycert-api/">Proxy certificate API</a>.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-2501923ff9f1258a5dc95b7435579a75">5 - Registration &amp; Enrollment</h1>
+    
+	<p>IAM implements a basic registration service that implements an
+administrator-vetted registration flow, where users apply for membership in an
+organization and administrators are asked to validate membership requests.</p>
+<h2 id="requiring-external-authentication">Requiring external authentication</h2>
+<p>Starting with version 1.6.0, IAM allows to request that users are authenticated
+from a trusted identity provider (SAML or OIDC) in order to apply for
+membership. It&rsquo;s also possible to control how information in authentication
+tokens and assertions is mapped to IAM registration fields.</p>
+<p>For example, see the following fragment that requires authentication with the
+CERN SSO and defines how information from identity tokens issued by CERN SSO is
+mapped to IAM membership information</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">registration</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">require-external-authentication</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">oidc-issuer</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://auth.cern.ch/auth/realms/cern</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">authentication-type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">oidc</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">fields</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">read-only</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># When false, allows user to override what comes from the authentication information</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">external-auth-attribute</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">given_name</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">surname</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">read-only</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">external-auth-attribute</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">family_name</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">email</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">read-only</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">external-auth-attribute</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">email</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">username</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">read-only</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">external-auth-attribute</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">preferred_username</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><h2 id="user-editable-fields">User editable fields</h2>
+<p>Starting with version 1.6.0, IAM allows to limit which fields of the user profile are editable by users.</p>
+<p>The default, backward-compatible settings that allow users to edit all their
+profile fields are defined as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">user-profile</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">editable-fields</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#000">email</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#000">name</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#000">picture</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#000">surname</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><p>To prevent modifications to any of the fields remove the field name from
+<code>editable-fields</code> list.</p>
+<p>External configuration can be managed by placing directives as shown above in a
+<a href="/v/v1.8.2/docs/reference/configuration/#overriding-default-configuration-templates">custom configuration
+file</a></p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-63d7a6556648cdd8622cf2321f13a835">6 - JSON Web Keys (JWK)</h1>
+    
+	<p>JSON Web Key (JWK) is a JSON data structure that represents a single public key or a set of
+public keys. IAM uses private JWKs to sign tokens, and IAM clients use public JWKs to validate the tokens.
+A <a href="/v/v1.8.2/docs/getting-started/jwk/">JWK Generator</a> can be used to generate new keys.</p>
+<h3 id="keystore-location">Keystore Location</h3>
+<p>JWKs are stored in a file that is called keystore. All the keys in this file will be
+used for validating the tokens. Keystore location is set using the <code>IAM_KEY_STORE_LOCATION</code>
+environment variable, e.g.:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-env" data-lang="env"><span style="color:#000">IAM_KEY_STORE_LOCATION</span><span style="color:#ce5c00;font-weight:bold">=</span>file:///secrets/jwk/keystore.jwks
+</code></pre></div><h3 id="default-key-id-kid">Default Key ID (kid)</h3>
+<p>If there are multiple JWKs in the keystore, <code>IAM_JWK_DEFAULT_KEY</code> environment variable
+can be set to choose the key that signs the tokens, e.g.:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-env" data-lang="env"><span style="color:#000">IAM_JWK_DEFAULT_KEY</span><span style="color:#ce5c00;font-weight:bold">=</span>rsa2
+</code></pre></div><p>If this variable is not set it will use the default value <code>rsa1</code>.</p>
+<h3 id="default-jwe-keys">Default JWE Keys</h3>
+<p>JSON Web Encryption (JWE) represents encrypted content using JSON-based data structures.
+JWE allows to encrypt the JWT tokens so that only the intended recipient can decrypt
+and see the content.</p>
+<p>Default JWE decrypt key and encrypt key id can be set using the
+<code>IAM_JWK_DEFAULT_JWE_DECRYPT_KEY_ID</code> and <code>IAM_JWK_DEFAULT_JWE_ENCRYPT_KEY_ID</code>
+environment variables respectively, e.g.:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-env" data-lang="env"><span style="color:#000">IAM_JWK_DEFAULT_JWE_DECRYPT_KEY_ID</span><span style="color:#ce5c00;font-weight:bold">=</span>jwe-decrypt
+<span style="color:#000">IAM_JWK_DEFAULT_JWE_ENCRYPT_KEY_ID</span><span style="color:#ce5c00;font-weight:bold">=</span>jwe-encrypt
+</code></pre></div><h3 id="default-algorithms">Default Algorithms</h3>
+<p>Default alorithms used for signing and encrypting the key can be set using
+<code>IAM_JWK_DEFAULT_JWS_ALGORITHM</code> and <code>IAM_JWT_DEFAULT_JWE_ALGORITHM</code> environment variables
+respectively, default algorithms are like following:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-env" data-lang="env"><span style="color:#000">IAM_JWK_DEFAULT_JWS_ALGORITHM</span><span style="color:#ce5c00;font-weight:bold">=</span>RS256
+<span style="color:#000">IAM_JWT_DEFAULT_JWE_ALGORITHM</span><span style="color:#ce5c00;font-weight:bold">=</span>RSA_OAEP_256
+</code></pre></div><h2 id="rotating-keys">Rotating Keys</h2>
+<p>To change the JWKs without any interruption on the service, a rolling update can be done
+using these configurations. Below is an example of a rolling update.</p>
+<p>At the beginning there is one JWK in the keystore but it needs to be changed (e.g. regular
+update or because of a security instance, etc.). For example:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;keys&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+    <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;p&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;7IsuNM1T2G83isHFmV8zNUri2x3xLBBT3gbA5905owUTqzqHsj7QJw8GqnadNse9G3FRFLB-ShNq64yvr7hXPO35E5HSrRsWKxYgzdPKPdl-M5xc6O-QQlKmkmje_r82M5KGbDpV_uBjoQHPGMxME6MlFaYtCFSd_keKvzpkev8&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;kty&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;RSA&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;q&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;6Q5OunfOfXqkvKdh-mUysuS5jJY4t18MAO9KLcH5wIH4iV2FmasEeqB0g0LSNrgitv9icGhQiRUVR8dqpATBgrhZiQlB1KneUdIe8W_QQQVhA_tqJgEuAb_kl8QDHvIyXAs8onYCSDtgSD6gw-qDivGpf7TzXZcosWrgSQDYi9k&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;d&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;DUSnJ_OYFqBG9gDzcj20RLPJj-CT6kqH0nh4zQIRV9mB2XkVsWk0mlo4tauqBXT8lrTN5ACyaIhFMItDqkApJeBtvyMf3E8G3tBEQnwEa8HABcCd54ZzC94t-U-pazXvoqpNxEfu6qCFFdV7u-0OgDmYbTT6_c4jDQ9jTZozuzxoh_qv6iOijBJ62yJLf4kvIOB-ghYwig6Cz1OLSgh_Y8EIO-6wk-aSZWXS7l7xnM7_8BBOzKxVG73YfPQi-9fPVnee8Cijd3RU5_uUw4yh5I87wYZzPzN3gK6Pazf6BZ-9vs1SboEyeVtd3TiOB2aBOyS4Ntohj6eljsfXEHYN4Q&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;e&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;AQAB&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;kid&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;rsa1&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;qi&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;oMPC-4NyoDZge2bOL5SHaSNKyrcnpC1XKctcxN64lRql5zETC30Nuq0zJWwFQQfVgkS8fiMRV1NEMy98EbTAj8k63PBfp5jywIx5atQFjZ101tYEsxHG4bfAuTxIwUFALS3KLIHyGAlTognRZ3UWNX0FHwH2AJUS0LJdbCuHqGA&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;dp&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;fn0Kj1fA3zrRw5RMuvAKbRQHbU58mah9gHuyCgrleEQNuYGJ8IngOxKw6NSWyyVR_WvCBMNANRJfGWhYxilYFQ_YIlvXAZQ7bXzeu9HmEt7LuoOBt1nrlVunESGdJTJQpJFU6mjjdXC-NenGuab9g365JPOAnzTIa6IMEqgB9Tc&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;dq&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;134JQdXBsriSVnYW3GZySIPBJcNJUhSqjrqzxjeT7XLAEpPNEtfU3mY7FZvVsA722mqt5O4veXFrKeG0M1DKdUpsT4-ltTQUg2dcgTY4Q8bre7ke32E73xZGEiaGFDkyY3VobXfciFmOn355PG49j14AsjroxGMel14RYK9Ni5E&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;n&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;11flaUmrserMifKmz8ONBbWWfCRAFjerniHvW1kIXP62hVI8xDWipojhLo7Ai-tV0jA4WSyodlfaA1NRXzZbbAC8pOOpPGkwLBHyOhcB4zpwTykvz5Ype3Mex20XIdBAc0DR4i8d9ZEpnIBqmPcmwP0gANmX82RZd3gZKxQ-umfDXZdNJqy2g1kawRjIP_CpznYzX8MY1OCfjZYXXsZvVeC2v0pRRre9tJEilCZEBY42jJyf6bY2cZhu2KTIpIx1_8Y2JB6AAAdnPsEgNRxMe0g5ShCmDvc93m9GsLZSy4Nm0pOWWVbx7-JK6-QWBdaiG_fAT_2OOndDL-hL1Ry3Jw&#34;</span>
+    <span style="color:#000;font-weight:bold">}</span>
+  <span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><ul>
+<li>
+<p>Firstly, new JWK should be added to the keystore using the file in the <code>IAM_KEY_STORE_LOCATION</code>.
+The <code>IAM_JWK_DEFAULT_KEY</code> should still be left as the key id of the old key. This way all the
+clients can cache the new public key. Before the next step, waiting as long as the agreed policy for
+key caching for the infrastructure would be enough to make sure every client cached the new
+key.</p>
+<p>So new keystore in the example would be:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;keys&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+    <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;p&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;7IsuNM1T2G83isHFmV8zNUri2x3xLBBT3gbA5905owUTqzqHsj7QJw8GqnadNse9G3FRFLB-ShNq64yvr7hXPO35E5HSrRsWKxYgzdPKPdl-M5xc6O-QQlKmkmje_r82M5KGbDpV_uBjoQHPGMxME6MlFaYtCFSd_keKvzpkev8&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;kty&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;RSA&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;q&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;6Q5OunfOfXqkvKdh-mUysuS5jJY4t18MAO9KLcH5wIH4iV2FmasEeqB0g0LSNrgitv9icGhQiRUVR8dqpATBgrhZiQlB1KneUdIe8W_QQQVhA_tqJgEuAb_kl8QDHvIyXAs8onYCSDtgSD6gw-qDivGpf7TzXZcosWrgSQDYi9k&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;d&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;DUSnJ_OYFqBG9gDzcj20RLPJj-CT6kqH0nh4zQIRV9mB2XkVsWk0mlo4tauqBXT8lrTN5ACyaIhFMItDqkApJeBtvyMf3E8G3tBEQnwEa8HABcCd54ZzC94t-U-pazXvoqpNxEfu6qCFFdV7u-0OgDmYbTT6_c4jDQ9jTZozuzxoh_qv6iOijBJ62yJLf4kvIOB-ghYwig6Cz1OLSgh_Y8EIO-6wk-aSZWXS7l7xnM7_8BBOzKxVG73YfPQi-9fPVnee8Cijd3RU5_uUw4yh5I87wYZzPzN3gK6Pazf6BZ-9vs1SboEyeVtd3TiOB2aBOyS4Ntohj6eljsfXEHYN4Q&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;e&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;AQAB&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;kid&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;rsa1&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;qi&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;oMPC-4NyoDZge2bOL5SHaSNKyrcnpC1XKctcxN64lRql5zETC30Nuq0zJWwFQQfVgkS8fiMRV1NEMy98EbTAj8k63PBfp5jywIx5atQFjZ101tYEsxHG4bfAuTxIwUFALS3KLIHyGAlTognRZ3UWNX0FHwH2AJUS0LJdbCuHqGA&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;dp&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;fn0Kj1fA3zrRw5RMuvAKbRQHbU58mah9gHuyCgrleEQNuYGJ8IngOxKw6NSWyyVR_WvCBMNANRJfGWhYxilYFQ_YIlvXAZQ7bXzeu9HmEt7LuoOBt1nrlVunESGdJTJQpJFU6mjjdXC-NenGuab9g365JPOAnzTIa6IMEqgB9Tc&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;dq&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;134JQdXBsriSVnYW3GZySIPBJcNJUhSqjrqzxjeT7XLAEpPNEtfU3mY7FZvVsA722mqt5O4veXFrKeG0M1DKdUpsT4-ltTQUg2dcgTY4Q8bre7ke32E73xZGEiaGFDkyY3VobXfciFmOn355PG49j14AsjroxGMel14RYK9Ni5E&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;n&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;11flaUmrserMifKmz8ONBbWWfCRAFjerniHvW1kIXP62hVI8xDWipojhLo7Ai-tV0jA4WSyodlfaA1NRXzZbbAC8pOOpPGkwLBHyOhcB4zpwTykvz5Ype3Mex20XIdBAc0DR4i8d9ZEpnIBqmPcmwP0gANmX82RZd3gZKxQ-umfDXZdNJqy2g1kawRjIP_CpznYzX8MY1OCfjZYXXsZvVeC2v0pRRre9tJEilCZEBY42jJyf6bY2cZhu2KTIpIx1_8Y2JB6AAAdnPsEgNRxMe0g5ShCmDvc93m9GsLZSy4Nm0pOWWVbx7-JK6-QWBdaiG_fAT_2OOndDL-hL1Ry3Jw&#34;</span>
+    <span style="color:#000;font-weight:bold">},</span>
+    <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;p&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;04huYoKFVGrsAaJ2djo8YUnmdbz4_Dt5a3A1r32dZhcY6gJYLtQmLzzSt1m7Z3p8UsZ8eerDBYFQYWlMIDhmsNCeKw5kE6LuSi1JGE3boveKcIpBrI5oxIduZUTr8QBltcKuklzR_Nra-JIrR_Nkgd6nA7C7VPC3MDSmQpbAyx8&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;kty&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;RSA&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;q&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;0wOm2SerufATV0ZWKOZmAgWlQ9qPATVn-FuZsEKMw4LOjlYba63iuHPWhcvgEJEgqP4DKrCn49HI95eDbYpoCpfYDCBNN8K7Q_k3P8T7a_FN-xNc9OtG80lNiFb93CSwJndGhsXoaLjGFcTpIC9RnPzi_tC3OSvdHaXgymkwEyU&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;d&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;F02mbTRlQ9J5DKkCfCgkkE_KLOmAr5VTkh2fhOZwsZ78_CNlK1NBr1a0tNpdZbn0Rt31oKLHKhfw6DcV2koso3IZVJynHHvlX3DPI8f6csXLJZGKhG7Zh6X-WnibD65h9nZo8QUd_uRdEfx6aqxPNzVKxeAX6lh7pkvkSRB7zoX_H5Vf7pn9fWXzLDB1BQacFRtdqnEpiLur-Z1CcjC68DcRGrl-EqA37ZohnVPD7T7Lw14V_nfz5rrQZGqLImCOy5Daz4ZuRBXaiR47fkWfyy7PSLnwIAHIe24328zDygNSYohw84iY0440xlAutU8wSWhrMpn4PWB_fWKiFnbiCQ&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;e&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;AQAB&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;kid&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;rsa2&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;qi&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;CnkIYAjTvJ7FS0uQgzTDtdMhi87s5r2wbGjg82HUWyRDsb7Xadf85K0aqgc5UKiM-ZHA-uc9PMDyxxnxAz4MrxVr12Gx2SS_dPFoPYVnr2jE9nQLWDUqitES1NMozhTsngmfVfgux9Rr4-rJFHP10jU9hjh9ELyv4BGoopFaFYU&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;dp&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PKRMIOmSF5Vfe0h79YDUdn-dFfvK1WSndmmAuoKkcPQGLG_nn-Up3Tjun6mV1CCFK6XDYaAvsJBV3tc0_7ermNz1uxoxDoATGCjLX7BSWvHkOkcodLOOzWiV-Wo8yaZ3ghgBu-voNzj2tXQR_FqGYcTW1HQCAGPR4Hv3ffeB5bk&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;dq&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;T0fM9UPJane_3IeJsZ4270WNvTuthQe6w34u9SFb380SrDm_3aocR68GB4j861yLh9K__9cVjSvxtMyRTaO1yV0ZiBzOxkd8smI9FtF8oSatZMr2nvKS2q9M2Q_OG1sRb7JapiJPWqEpk15DNJtyr2f4JULnxCwtzIjZN1NkA50&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;n&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;rlx3cmO8jN3q32ndXusuoWb7MrMXgEcsJVQiU_BhgNpYEJyyA5QBmH01y04_itbCvBzGHll8y768Zv76ohgcOOW_XtdlPyF1-GgBxVg-Ro-tj5zdP4znFXfNRn6ZGY60lvCFfh3XX-eQp7EZQbHI-wRask991d2-56PzorrJWHiYLza-C87MG-i2hxyQUs5vsdl92J1pqm8_4mjRZhARBQWGXlB-80TdsG3Tl5MliaHdWNJWQ_f43TfG0OfbiCtFITIoHMESL4IO9AxygnYznPXWIoWMsXpsEKUcOgzNqhngQWe9rvJKG5Cy0O0Y0-IJexTEuF68CZpwGra75cCoew&#34;</span>
+    <span style="color:#000;font-weight:bold">}</span>
+  <span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p>In this example <code>IAM_JWK_DEFAULT_KEY=rsa1</code> is kept unchanged.</p>
+</li>
+<li>
+<p>Secondly, after the new key is cached by all of the clients, the signing key should be changed as the
+new key via the <code>IAM_JWK_DEFAULT_KEY</code> variable. The old key should still be kept in
+the keystore, otherwise all the current tokens would stop working. Before removing it from the
+key store, waiting as long the longest allowed token lifetime would be enough for the old tokens to expire
+and the clients will be left with only tokens that are signed with new key.</p>
+<p>So in the example default key should be set as <code>IAM_JWK_DEFAULT_KEY=rsa2</code>.</p>
+</li>
+<li>
+<p>As the last step, old key can be removed from the keystore. So only the tokens that were signed with the new
+key will be valid after this.</p>
+<p>So the keystore would be like following:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;keys&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+    <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;p&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;04huYoKFVGrsAaJ2djo8YUnmdbz4_Dt5a3A1r32dZhcY6gJYLtQmLzzSt1m7Z3p8UsZ8eerDBYFQYWlMIDhmsNCeKw5kE6LuSi1JGE3boveKcIpBrI5oxIduZUTr8QBltcKuklzR_Nra-JIrR_Nkgd6nA7C7VPC3MDSmQpbAyx8&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;kty&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;RSA&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;q&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;0wOm2SerufATV0ZWKOZmAgWlQ9qPATVn-FuZsEKMw4LOjlYba63iuHPWhcvgEJEgqP4DKrCn49HI95eDbYpoCpfYDCBNN8K7Q_k3P8T7a_FN-xNc9OtG80lNiFb93CSwJndGhsXoaLjGFcTpIC9RnPzi_tC3OSvdHaXgymkwEyU&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;d&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;F02mbTRlQ9J5DKkCfCgkkE_KLOmAr5VTkh2fhOZwsZ78_CNlK1NBr1a0tNpdZbn0Rt31oKLHKhfw6DcV2koso3IZVJynHHvlX3DPI8f6csXLJZGKhG7Zh6X-WnibD65h9nZo8QUd_uRdEfx6aqxPNzVKxeAX6lh7pkvkSRB7zoX_H5Vf7pn9fWXzLDB1BQacFRtdqnEpiLur-Z1CcjC68DcRGrl-EqA37ZohnVPD7T7Lw14V_nfz5rrQZGqLImCOy5Daz4ZuRBXaiR47fkWfyy7PSLnwIAHIe24328zDygNSYohw84iY0440xlAutU8wSWhrMpn4PWB_fWKiFnbiCQ&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;e&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;AQAB&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;kid&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;rsa2&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;qi&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;CnkIYAjTvJ7FS0uQgzTDtdMhi87s5r2wbGjg82HUWyRDsb7Xadf85K0aqgc5UKiM-ZHA-uc9PMDyxxnxAz4MrxVr12Gx2SS_dPFoPYVnr2jE9nQLWDUqitES1NMozhTsngmfVfgux9Rr4-rJFHP10jU9hjh9ELyv4BGoopFaFYU&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;dp&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PKRMIOmSF5Vfe0h79YDUdn-dFfvK1WSndmmAuoKkcPQGLG_nn-Up3Tjun6mV1CCFK6XDYaAvsJBV3tc0_7ermNz1uxoxDoATGCjLX7BSWvHkOkcodLOOzWiV-Wo8yaZ3ghgBu-voNzj2tXQR_FqGYcTW1HQCAGPR4Hv3ffeB5bk&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;dq&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;T0fM9UPJane_3IeJsZ4270WNvTuthQe6w34u9SFb380SrDm_3aocR68GB4j861yLh9K__9cVjSvxtMyRTaO1yV0ZiBzOxkd8smI9FtF8oSatZMr2nvKS2q9M2Q_OG1sRb7JapiJPWqEpk15DNJtyr2f4JULnxCwtzIjZN1NkA50&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;n&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;rlx3cmO8jN3q32ndXusuoWb7MrMXgEcsJVQiU_BhgNpYEJyyA5QBmH01y04_itbCvBzGHll8y768Zv76ohgcOOW_XtdlPyF1-GgBxVg-Ro-tj5zdP4znFXfNRn6ZGY60lvCFfh3XX-eQp7EZQbHI-wRask991d2-56PzorrJWHiYLza-C87MG-i2hxyQUs5vsdl92J1pqm8_4mjRZhARBQWGXlB-80TdsG3Tl5MliaHdWNJWQ_f43TfG0OfbiCtFITIoHMESL4IO9AxygnYznPXWIoWMsXpsEKUcOgzNqhngQWe9rvJKG5Cy0O0Y0-IJexTEuF68CZpwGra75cCoew&#34;</span>
+    <span style="color:#000;font-weight:bold">}</span>
+  <span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div></li>
+</ul>
+<p>With this update method, the service is not interrupted for any user and the key is replaced with a new one.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-b153a1aec7140b2aa27a0ba03e8dc3fd">7 - Local authentication</h1>
+    
+	<p>IAM has the ability to limit or disable
+authentication with local IAM credentials, so that external, brokered
+authentication is required.</p>
+<p>It&rsquo;s possible to hide the local login form from the IAM login page and also to
+control for which users local authentication is enabled (all users,
+VO administrators, no users).</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">local-authn</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># possible values for enabled-for: all, vo-admins, none</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">enabled-for</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">vo-admins </span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># possible values: hidden, hidden-with-link, visible</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">login-page-visibility</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">hidden </span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><p>In alternative, one can configure the local authentication settings using environment variables as
+described in the <a href="../#local-authentication-settings">Configuration</a> section.</p>
+<p>When the local authentication (username/password) fields are hidden on the login page, it is possible
+to display them by adding the query string <code>?sll=y</code> to the login page URL. It may be useful, for
+example, to access the <code>admin</code> account if only username/password authentication has been configured
+for it and if <code>enable-for</code> has been set to <code>vo-admins</code>.</p>
+<p>Note that hiding local authentication on the login page without restricting the category of users
+able to use it doesn&rsquo;t really provide additional security.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-359104377f9341d4c326d45fb209b4c2">8 - External authentication</h1>
+    
+	<p>IAM supports brokered authentication via standard OpenID-Connect and SAML
+protocols as well as X.509 authentication.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="">
+    
+	<h1 id="pg-ac3ba36ba3318b338bcbf439e1b79e60">8.1 - OpenID-Connect authentication</h1>
+    
+	<p>IAM supports brokered OpenID Connect authentication to external identity
+providers (e.g., Google).</p>
+<p>When brokered OpenID Connect authentication is turned on a IAM instance, users
+can log into the service delegating authentication to one of the supported
+OpenID Connect providers (OP).</p>
+<p>To enable brokered OpenID Connect authentication on your IAM instance you have to:</p>
+<ol>
+<li>Obtain client credentials and other configuration details for each of the
+external OpenID Connect providers;</li>
+<li>Provide the OIDC configuration file defining the configuration of the supported OPs;</li>
+<li>Enable the <code>oidc</code> profile.</li>
+</ol>
+<h2 id="obtain-op-configuration-and-client-credentials">Obtain OP configuration and client credentials</h2>
+<p>In order to act as a relying party (RP) for an external OpenID Connect provider (OP), IAM
+will need at least:</p>
+<ul>
+<li>client credentials (a clientId and clientSecret);</li>
+<li>an <a href="https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfig">OpenID Connect provider discovery endpoint URL</a>;</li>
+</ul>
+<p>As an example, see the the <a href="https://developers.google.com/identity/protocols/OpenIDConnect">Google identity platform OpenID Connect
+guide</a> for help on this.</p>
+<h2 id="provide-the-oidc-configuration">Provide the OIDC configuration</h2>
+<h3 id="google-configuration">Google configuration</h3>
+<p>If Google is the only OpenID Connect provider you want to support, the configuration
+embedded in the IAM war file already provides what you need, and you just need to:</p>
+<ul>
+<li>
+<p>Enable the <code>oidc</code> profile;</p>
+</li>
+<li>
+<p>Pass the google client credentials to IAM via the following environment
+variables:</p>
+<ul>
+<li><code>IAM_GOOGLE_CLIENT_ID</code></li>
+<li><code>IAM_GOOGLE_CLIENT_SECRET</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="multiple-providers-configuration">Multiple providers configuration</h3>
+<p>To configure multiple providers, or to override the default configuration, you must
+provide an <code>application-oidc.yaml</code> configuration file and make it available to IAM.</p>
+<p>Trusted OPs are configured for IAM via the <code>application-oidc.yaml</code> configuration file.</p>
+<p>This is a Spring Boot configuration file that is activated when the <code>oidc</code> profile is turned on.</p>
+<p>The default configuration file, embedded in the IAM war file, supports the
+configuration of a single provider, Google, for backward compatibility, and looks
+like this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">oidc</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">providers</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">google</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">issuer</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://accounts.google.com</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">client</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">clientId</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${IAM_GOOGLE_CLIENT_ID}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">clientSecret</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${IAM_GOOGLE_CLIENT_SECRET}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">redirectUris</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${iam.baseUrl}/openid_connect_login</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">scope</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">openid,profile,email,address,phone</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">loginButton</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">text</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Google</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">style</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">btn-social btn-google</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">image</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">fa-icon</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">google</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><p>This configuration allows to configure support for Google by:</p>
+<ul>
+<li>activating the <code>oidc</code> profile;</li>
+<li>Setting the <code>IAM_GOOGLE_CLIENT_ID</code> and <code>IAM_GOOGLE_CLIENT_SECRET</code> environment
+variables to provide the Google client credentials;</li>
+</ul>
+<p>To enable multiple providers, you need to override the default oidc configuration.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">oidc</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">providers</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">google</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">issuer</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://accounts.google.com</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">client</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">clientId</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${IAM_GOOGLE_CLIENT_ID}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">clientSecret</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${IAM_GOOGLE_CLIENT_SECRET}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">redirectUris</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${iam.baseUrl}/openid_connect_login</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">scope</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">openid,profile,email,address,phone</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">loginButton</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">text</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Google</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">style</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">btn-social btn-google</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">image</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">fa-icon</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">google</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">egi-checkin</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">issuer</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${IAM_CHECKIN_ISSUER}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">client</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">clientId</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${IAM_CHECKIN_CLIENT_ID}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">clientSecret</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${IAM_CHECKIN_CLIENT_SECRET}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">redirectUris</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${iam.baseUrl}/openid_connect_login</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">scope</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${IAM_CHECKIN_CLIENT_SCOPE:openid,profile,email}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">loginButton</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">text</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">EGI CheckIn</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">title</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Sign in with EGI CheckIn</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">image</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">url</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://egi.eu/wp-content/uploads/2016/05/cropped-logo_site-1-300x300.png</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">size</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">medium</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><p>The example configuration above shows how to configure support for Google and
+the <code>EGI CheckIn</code> provider, with a custom button configuration for the CheckIn
+provider.</p>
+<p>See the <a href="/v/v1.8.2/docs/reference/configuration/#overriding-default-configuration-templates">configuration reference</a> for instructions on how to override
+the default IAM configuration.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-af611b856fca4d6771e3e3ed962701b5">8.2 - SAML authentication</h1>
+    
+	<p>IAM supports brokered SAML authentication. When SAML authentication is turned
+on for an IAM instance, users can log into the service using the home Identity
+Provider (IdP) credentials.</p>
+<p>To enable SAML authentication for your IAM instance you have to:</p>
+<ul>
+<li>Choose an <code>entityId</code> for your IAM instance; see the <a href="https://wiki.shibboleth.net/confluence/display/CONCEPT/EntityNaming">Shibboleth
+docs</a> for guidance on this</li>
+<li>Generate a self-signed certificate for your IAM instance that will be used
+for SAML cryptographic operations and include it in a Java keystore;</li>
+<li>Obtain SAML metadata from your IdP or identity federation;</li>
+<li>If the metadata is signed, import the certificate that must be used to verify
+the signature in the Java keystore generated above;</li>
+<li>Enable the <code>saml</code> profile for the IAM and configure SAML support via the
+appropriate environment variables.</li>
+</ul>
+<h2 id="generate-a-self-signed-certificate">Generate a Self-signed certificate</h2>
+<p>To generate a self-signed certificate that lasts 5 years use the following
+openssl command:</p>
+<pre><code class="language-console" data-lang="console">openssl req -newkey rsa:2048 -nodes -x509 -days 1825  -keyout self-signed.key.pem \
+  -out self-signed.cert.pem
+</code></pre><p>The above command will generate a private key and the corresponding certificate
+in PEM format. You will be asked to provide a subject for the certificate being
+generated.</p>
+<p>To import this certificate in a Java keystore we need in in p12 format. Use the
+following commands to convert the certificate in p12 format and import it in a
+Java keystore:</p>
+<pre><code class="language-console" data-lang="console">openssl pkcs12 -export -inkey self-signed.key.pem \
+    -name self-signed \
+    -in self-signed.cert.pem \
+    -out self-signed.p12
+
+keytool -importkeystore -destkeystore self-signed.jks \
+    -srckeystore self-signed.p12 \
+    -srcstoretype PKCS12
+</code></pre><p>During the above process you will be asked to provide a p12 export password and
+a keystore password. <strong>Use the same password</strong>, at least 6 characters long,
+otherwise it will not work for the java keystore.</p>
+<p>You can list the contents of the keystore with the following command:</p>
+<pre><code class="language-console" data-lang="console">keytool -list -keystore self-signed.jks
+</code></pre><h2 id="obtain-saml-metadata-for-your-idp-or-identity-federation">Obtain SAML metadata for your IdP or identity federation</h2>
+<p>You IdP or identity federation will have a SAML metadata document describing,
+in SAML terms, which authentication flows are enabled and providing access to
+cryptographic material and other information that make the federated
+authentication schemes work reliably and securely. For more information on SAML
+metadata, see <a href="https://wiki.shibboleth.net/confluence/display/CONCEPT/Metadata">the Shibboleth metadata documentation</a>.</p>
+<h3 id="signed-metadata-advice">Signed metadata advice</h3>
+<p>Typically identity federations sign the SAML metadata for security reasons, and
+provide a certificate (and linked public key) that can be used to verify
+signatures on the metadata at a well-known location (e.g., the federation
+website).</p>
+<p>To support metadata signature verification you will need to import this
+certificate in the Java keystore created above.</p>
+<p>Certificates are typically published in PEM format, while to import a
+certificate in a Java keystore you will need it in DER format.</p>
+<p>The following commands show how to import a PEM certificate into a Java
+keystore:</p>
+<pre><code class="language-console" data-lang="console">openssl x509 -outform der -in idem_signer_2019.pem -out idem_signer_2019.der
+keytool -import -alias idem_signer_2019 -keystore self-signed.jks -file idem_signer_2019.der
+</code></pre><h3 id="metadata-configuration">Metadata configuration</h3>
+<p>The IdP or federation metadata to be trusted can be specified with the
+<code>IAM_SAML_IDP_METADATA</code> environment variable, which contains an URL pointing to
+the metadata.</p>
+<p>If the metadata is signed, you can enforce signature validation with the
+<code>IAM_SAML_METADATA_REQUIRE_VALID_SIGNATURE</code> variable.</p>
+<p>Metadata needs to be periodically refreshed to learn about new entities in the
+federation or updated key material. The metadata refresh interval can be
+specified with the <code>IAM_SAML_METADATA_LOOKUP_SERVICE_REFRESH_PERIOD_SEC</code>
+environment variable, which defines a refresh period in seconds (a reasonable
+value is typically refresh metadata every hour).</p>
+<p>An example metadata configuration could be:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-env" data-lang="env"><span style="color:#000">IAM_SAML_IDP_METADATA</span><span style="color:#ce5c00;font-weight:bold">=</span>http://www.garr.it/idem-metadata/idem-metadata-sha256.xml
+<span style="color:#000">IAM_SAML_METADATA_REQUIRE_VALID_SIGNATURE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">true</span>
+<span style="color:#000">IAM_SAML_METADATA_LOOKUP_SERVICE_REFRESH_PERIOD_SEC</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">3600</span>
+</code></pre></div><h2 id="iam-saml-attribute-requirements">IAM SAML attribute requirements</h2>
+<p>IAM requires that the IdP used for authentication releases a persistent
+identifier attribute that can be used to link the external identity to local
+IAM accounts. If the IdP does not release persistent identifier attributes, it
+<strong>cannot</strong> be integrated with the IAM.</p>
+<p>The attribute used to link the external SAML account is configurable. In the
+default configuration, IAM uses the following attributes (in the given order):</p>
+<ol>
+<li><a href="http://software.internet2.edu/eduperson/internet2-mace-dir-eduperson-201602.html#eduPersonUniqueId">EduPersonUniqueId</a></li>
+<li><a href="http://software.internet2.edu/eduperson/internet2-mace-dir-eduperson-201602.html#eduPersonTargetedID">EduPersonTargetedId</a></li>
+<li><a href="http://software.internet2.edu/eduperson/internet2-mace-dir-eduperson-201602.html#eduPersonPrincipalName">EduPersonPrincipalName</a></li>
+</ol>
+<p>The order of these can be changed with the <code>IAM_SAML_ID_RESOLVERS</code> environment variable,
+which accepts a list of aliases for the attributes to be searched.</p>
+<p>The following tables maps attribute names to the aliases currently supported:</p>
+<table>
+<thead>
+<tr>
+<th>SAML attribute</th>
+<th>Alias</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EduPersonUniqueId</td>
+<td>eduPersonUniqueId</td>
+</tr>
+<tr>
+<td>EduPersonTargetedId</td>
+<td>eduPersonTargetedId</td>
+</tr>
+<tr>
+<td>EduPersonPrincipalName</td>
+<td>eduPersonPrincipalName</td>
+</tr>
+<tr>
+<td>EduPersonOrcid</td>
+<td>eduPersonOrcid</td>
+</tr>
+<tr>
+<td>spidCode</td>
+<td>spidCode</td>
+</tr>
+</tbody>
+</table>
+<p>The default value for IAM_SAML_ID_RESOLVERS is:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-env" data-lang="env"><span style="color:#000">IAM_SAML_ID_RESOLVERS</span><span style="color:#ce5c00;font-weight:bold">=</span>eduPersonUniqueId,eduPersonTargetedId,eduPersonPrincipalName
+</code></pre></div><h2 id="checking-saml-assertion-and-authentication-freshness">Checking SAML assertion and authentication freshness</h2>
+<p>IAM provides the ability to set a maximum age for SAML assertion and
+authentication statements received from IdPs.</p>
+<p>The <code>IAM_SAML_MAX_ASSERTION_TIME</code> allows to define an upper bound (in seconds)
+on the SAML assertion lifetime, so that assertions that exceed such limit are
+considered invalid.</p>
+<p>The <code>IAM_SAML_MAX_AUTHENTICATION_AGE</code> allows to define an upper bound (in
+seconds) on the authentication age linked to SAML authentication statements, so
+that users are forced to reauthenticate when this limit is exceeded.</p>
+<h2 id="limiting-authentication-only-to-selected-idps">Limiting authentication only to selected IdPs</h2>
+<p>IAM provides the ability to define constraints on which IdPs will be allowed
+for authentication. This is useful when you want to limit which IdPs in a large
+federation (e.g., <a href="https://edugain.org/">EduGAIN</a>) will be trusted for authentication.</p>
+<p>Currently three types of IdPs limiting are supported:</p>
+<ul>
+<li>entity id whitelist</li>
+<li>SIRTFI compliance</li>
+<li>Research and Scholarship compliance</li>
+</ul>
+<h3 id="limiting-by-entity-id">Limiting by entity id</h3>
+<p>The <code>IAM_SAML_IDP_ENTITY_ID_WHITELIST</code> environment variable can be used to
+define a comma-separated whitelist of IdPs entity IDs that will be trusted for
+authentication.</p>
+<p>The following example limits trusted IdPs to the INFN IdP:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-env" data-lang="env"><span style="color:#000">IAM_SAML_IDP_ENTITY_ID_WHITELIST</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;https://idp.infn.it/saml2/idp/metadata.php&#34;</span>
+</code></pre></div><h3 id="limiting-by-sirtfi-compliance">Limiting by SIRTFI compliance</h3>
+<p>To limit authentication only to IdPs that are <a href="https://refeds.org/sirtfi">SIRFTI</a>-compliant, set
+the the <code>IAM_SAML_METADATA_REQUIRE_SIRTFI</code> environment variable to true.</p>
+<h2 id="joining-a-saml-federation">Joining a SAML federation</h2>
+<p>An Indigo IAM instance can join a SAML federation as a service provider (SP).
+To join a feaderation you need to follow the following steps:</p>
+<ul>
+<li>Configure the <code>saml</code> profile in IAM</li>
+<li>Register the Indigo IAM instance into the federation, following the federation
+instructions (generally involves connecting to a registration portal to
+declare the SP)</li>
+<li>Wait for the federation metadata to be updated at the federation IdPs. This
+typically involves a 12h delay.</li>
+<li>Check if login in IAM works successfully through the federation: note that it
+will not work before the federation IdPs have updated their metadata. If the
+error persists after the delay, contact your federation or IdP support.</li>
+</ul>
+<p>When registering the Indigo IAM SP, there are a few critical parameters to supply:</p>
+<ul>
+<li>Assertion Consumer Service (ACS), consisting of 3 parameters:
+<ul>
+<li>Binding: must be <code>HTTP Post</code></li>
+<li>URL: it is the instance URL + <code>/saml/SSO</code>, e.g. <code>https://iam.example.com/saml/SSO</code></li>
+<li>Index: should be set to 0</li>
+</ul>
+</li>
+<li>X509 SAML certificate: the generated <code>self-signed</code> certificate</li>
+</ul>
+<p>Other, generally optional, parameters include the requested attribute. It is a good
+practice to declare as mandatory one of the attribute listed in
+<code>IAM_SAML_ID_RESOLVERS</code>.</p>
+<h2 id="customizing-saml-login-button-text">Customizing SAML login button text</h2>
+<p>You can customize the SAML login button text shown in the IAM login page with
+the <code>IAM_SAML_LOGIN_BUTTON_TEXT</code> environment variable.</p>
+<h2 id="minimal-saml-configuration-example">Minimal SAML configuration example</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-env" data-lang="env"><span style="color:#000">IAM_SAML_ENTITY_ID</span><span style="color:#ce5c00;font-weight:bold">=</span>urn:example:iam-saml-example
+<span style="color:#000">IAM_SAML_KEYSTORE</span><span style="color:#ce5c00;font-weight:bold">=</span>file:///self-signed.jks
+<span style="color:#000">IAM_SAML_KEYSTORE_PASSWORD</span><span style="color:#ce5c00;font-weight:bold">=</span>xxxxxx
+<span style="color:#000">IAM_SAML_KEY_ID</span><span style="color:#ce5c00;font-weight:bold">=</span>self-signed
+<span style="color:#000">IAM_SAML_KEY_PASSWORD</span><span style="color:#ce5c00;font-weight:bold">=</span>xxxxxx
+<span style="color:#000">IAM_SAML_IDP_METADATA</span><span style="color:#ce5c00;font-weight:bold">=</span>http://www.garr.it/idem-metadata/idem-metadata-sha256.xml
+<span style="color:#000">IAM_SAML_METADATA_REQUIRE_VALID_SIGNATURE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">true</span>
+<span style="color:#000">IAM_SAML_METADATA_LOOKUP_SERVICE_REFRESH_PERIOD_SEC</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">3600</span>
+<span style="color:#000">IAM_SAML_LOGIN_BUTTON_TEXT</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;Sign in with IDEM&#34;</span>
+</code></pre></div><h2 id="custom-saml-configuration">Custom SAML configuration</h2>
+<p>The configuration based on environment variables relies on a <a href="https://raw.githubusercontent.com/indigo-iam/iam/v1.8.2/iam-login-service/src/main/resources/application-saml.yml">configuration
+template</a> that fits most use cases embedded in the IAM war
+file.</p>
+<p>To have full control on the SAML configuration, provide a custom
+<code>application-saml.yml</code> file in the IAM configuration directory.</p>
+<p>See the <a href="/v/v1.8.2/docs/reference/configuration/">configuration reference</a> for more SAML metadata options and
+instructions on how to override the default IAM configuration.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-86d359d1731c5e164863d1bbe93a7bcf">8.3 - X.509 authentication</h1>
+    
+	<p>X509 authentication in IAM doesn&rsquo;t require any specific configuration in IAM itself.
+It is enabled as soon as the proper options have been set in the Nginx configuration.</p>
+<p>For the X509 authentication to work, it is critical that the user certificate CA
+is known to Nginx. If it is not part of the CAs configured in <code>/etc/ssl</code>, you may need
+to add the following line to your Nginx configuration:</p>
+<pre><code>ssl_client_certificate  CA_certificates_file;
+</code></pre><p>where <code>CA_certificates_file</code> is the path to a file containing the certificates (in PEM
+format) of the CAs that must be accepted by Nginx.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+
+    
+	
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-4 text-xs-center order-sm-2">
+        
+        
+        
+      </div>
+      <div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://github.com/indigo-iam/iam">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
+    <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://indigo-iam.slack.com">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+        <small class="text-white">&copy; 2023 INFN All Rights Reserved</small>
+        
+	
+		
+	
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/v/v1.8.2/js/main.min.63db3e552bd0543be17ce4a79a18b744e9cb72256bec42b540e3ab0cd43722d0.js" integrity="sha256-Y9s&#43;VSvQVDvhfOSnmhi3ROnLciVr7EK1QOOrDNQ3ItA=" crossorigin="anonymous"></script>
+
+
+
+
+  </body>
+</html>
