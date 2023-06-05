@@ -13,6 +13,31 @@
     
     
     <item>
+      <title>Blog: IAM v1.8.2</title>
+      <link>/v/v1.8.2/blog/2023/06/05/iam-v1.8.2/</link>
+      <pubDate>Mon, 05 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/v/v1.8.2/blog/2023/06/05/iam-v1.8.2/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The IAM development team is pleased to announce the release of INDIGO IAM v.1.8.1.&lt;/p&gt;
+&lt;p&gt;This release provides bug fixes and enhancements, as can be seen in the &lt;a href=&#34;https://github.com/indigo-iam/iam/releases/tag/v1.8.2&#34;&gt;release notes&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The major highlights include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;addition of new admin scopes in order to access IAM API endpoints
+&lt;ul&gt;
+&lt;li&gt;an administrator access token is not enough to have full access to IAM API endpoints; &lt;code&gt;iam:admin.read&lt;/code&gt; and &lt;code&gt;iam:admin.write&lt;/code&gt; scopes are required&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Spring-Boot update to version 2.6.14&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As usual, the IAM docker image can be obtained from &lt;a href=&#34;https://hub.docker.com/r/indigoiam/iam-login-service/tags&#34;&gt;DockerHub&lt;/a&gt;.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Blog: IAM v1.8.1</title>
       <link>/v/v1.8.2/blog/2023/02/28/iam-v1.8.1/</link>
       <pubDate>Tue, 28 Feb 2023 00:00:00 +0000</pubDate>
