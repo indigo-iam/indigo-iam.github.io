@@ -122,7 +122,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.2/offline-search-index.d8d4bac4506eae9cfdbbd79ee6d890fd.json"
+  data-offline-search-index-json-src="/v/v1.8.2/offline-search-index.973853a3644205ea0ad8aadf733bc062.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -2759,7 +2759,7 @@ Remember that there are three roles in Indigo IAM: Amdin, User, Group Manager.</
 <h2 id="user-attributes">User attributes</h2>
 <h3 id="get-iamaccountidattributes">GET <code>/iam/account/{id}/attributes</code></h3>
 <p>Retrieves user attributes. The {id} refers to the account identifier.</p>
-<p>Requires that the user has <code>ROLE_ADMIN</code>, <code>ROLE_GM</code>, or is the one represented by the {id}.</p>
+<p>Requires that the Access Token contains the restricted System Scope <code>iam:admin.read</code>, or the token subject is the one represented by the {id}.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -s -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/attributes <span style="color:#000;font-weight:bold">|</span> jq
 <span style="color:#ce5c00;font-weight:bold">[</span>
@@ -2770,7 +2770,7 @@ Remember that there are three roles in Indigo IAM: Amdin, User, Group Manager.</
 <span style="color:#ce5c00;font-weight:bold">]</span>
 </code></pre></div><h3 id="put-iamaccountidattributes">PUT <code>/iam/account/{id}/attributes</code></h3>
 <p>Adds attributes to the user account. It can be done directly through the IAM dashboard by clicking on &ldquo;Set attribute&rdquo; button in <em>Attributes</em> section of the user homepage.</p>
-<p>Requires <code>ROLE_ADMIN</code>.</p>
+<p>Requires <code>iam:admin.write</code> scope.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -X PUT -H <span style="color:#4e9a06">&#34;Accept: application/json&#34;</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  -H <span style="color:#4e9a06">&#34;Content-Type: application/json&#34;</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> -d @attribute.json <span style="color:#4e9a06">\
@@ -2782,13 +2782,13 @@ Remember that there are three roles in Indigo IAM: Amdin, User, Group Manager.</
 <span style="color:#000;font-weight:bold">}</span>
 </code></pre></div><h3 id="delete-iamaccountidattributes">DELETE <code>/iam/account/{id}/attributes</code></h3>
 <p>Deletes user attribute by adding the query parameter at the end of the endpoint.</p>
-<p>Requires <code>ROLE_ADMIN</code>.</p>
+<p>Requires <code>iam:admin.write</code> scope.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -X DELETE -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/attributes?name<span style="color:#ce5c00;font-weight:bold">=</span>Nickname
 </code></pre></div><h2 id="user-roles">User roles</h2>
 <h3 id="get-iamaccountidauthorities">GET <code>/iam/account/{id}/authorities</code></h3>
 <p>Retrieves user roles.</p>
-<p>Requires <code>ROLE_ADMIN</code> or <code>ROLE_GM</code>.</p>
+<p>Requires <code>iam:admin.read</code> scope.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -s -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/authorities <span style="color:#000;font-weight:bold">|</span> jq
 <span style="color:#ce5c00;font-weight:bold">{</span>
@@ -2800,13 +2800,13 @@ Remember that there are three roles in Indigo IAM: Amdin, User, Group Manager.</
 </code></pre></div><p>The above example shows that the Test User is also a group manager (of group with <code>c617d586-54e6-411d-8e38-649677980001</code> id).</p>
 <h3 id="post-iamaccountidauthorities">POST <code>/iam/account/{id}/authorities</code></h3>
 <p>Adds an authority to the user.</p>
-<p>Requires <code>ROLE_ADMIN</code>.</p>
+<p>Requires <code>iam:admin.write</code> scope.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -X POST -H <span style="color:#4e9a06">&#34;Content-Type: application/x-www-form-urlencoded&#34;</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> -d <span style="color:#4e9a06">&#34;authority=ROLE_ADMIN&#34;</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/authorities
 </code></pre></div><h3 id="delete-iamaccountidauthorities">DELETE <code>/iam/account/{id}/authorities</code></h3>
 <p>Revokes user authority by specifying the query parameter.</p>
-<p>Requires <code>ROLE_ADMIN</code>.</p>
+<p>Requires <code>iam:admin.write</code> scope.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -X DELETE -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/authorities?authority<span style="color:#ce5c00;font-weight:bold">=</span>ROLE_ADMIN
 </code></pre></div><h2 id="managed-clients">Managed clients</h2>
@@ -2834,7 +2834,7 @@ Remember that there are three roles in Indigo IAM: Amdin, User, Group Manager.</
 </code></pre></div><h2 id="account-filtering">Account filtering</h2>
 <h3 id="get-iamaccountfindoption">GET <code>/iam/account/find/{option}</code></h3>
 <p>Filters user information by label, e-mail, username, certificate subject or group/notingroup.</p>
-<p>Requires <code>ROLE_ADMIN</code>.</p>
+<p>Requires <code>iam:admin.read</code> scope.</p>
 <table>
 <thead>
 <tr>
@@ -2920,19 +2920,19 @@ Remember that there are three roles in Indigo IAM: Amdin, User, Group Manager.</
 <h2 id="group-members">Group members</h2>
 <h3 id="post-iamaccountidgroupsgroupid">POST <code>/iam/account/{id}/groups/{groupId}</code></h3>
 <p>Adds user to a group. It can be done directly through the IAM dashboard as explained <a href="/v/v1.8.2/docs/tasks/administration/group-management/#managing-membership-for-a-group">here</a>.</p>
-<p>Requires <code>ROLE_ADMIN</code> or <code>ROLE_GM</code>.</p>
+<p>Requires <code>iam:admin.write</code> scope.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -X POST -H <span style="color:#4e9a06">&#34;Content-Type: application/x-www-form-urlencoded&#34;</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/groups/c617d586-54e6-411d-8e38-649677980004
 </code></pre></div><h3 id="delete-iamaccountidgroupsgroupid">DELETE <code>/iam/account/{id}/groups/{groupId}</code></h3>
 <p>Removes user from a specific group.</p>
-<p>Requires <code>ROLE_ADMIN</code> or <code>ROLE_GM</code>.</p>
+<p>Requires <code>iam:admin.write</code> scope.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -X DELETE -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/groups/c617d586-54e6-411d-8e38-649677980004
 </code></pre></div><h2 id="group-managers">Group managers</h2>
 <h3 id="get-iamaccountidmanaged-groups">GET <code>/iam/account/{id}/managed-groups</code></h3>
 <p>Lists the user&rsquo;s managed and not managed groups.</p>
-<p>Requires that the user has <code>ROLE_ADMIN</code> or is the one represented by the {id}.</p>
+<p>Requires that the Access Token contains the restricted System Scope <code>iam:admin.read</code>, or the token subject is the one represented by the {id}.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -s -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/managed-groups <span style="color:#000;font-weight:bold">|</span> jq
 <span style="color:#ce5c00;font-weight:bold">{</span>
@@ -2952,18 +2952,18 @@ Remember that there are three roles in Indigo IAM: Amdin, User, Group Manager.</
 <span style="color:#ce5c00;font-weight:bold">}</span>
 </code></pre></div><h3 id="post-iamaccountidmanaged-groupsgroupid">POST <code>/iam/account/{id}/managed-groups/{groupId}</code></h3>
 <p>Gives a user represented by {id} <code>ROLE_GM</code> privileges of the group identified by {groupId}.</p>
-<p>Requires <code>ROLE_ADMIN</code>.</p>
+<p>Requires <code>iam:admin.write</code> scope.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -X POST -H <span style="color:#4e9a06">&#34;Content-Type: application/x-www-form-urlencoded&#34;</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/managed-groups/c617d586-54e6-411d-8e38-649677980004
 </code></pre></div><h3 id="delete-iamaccountidmanaged-groupsgroupid">DELETE <code>/iam/account/{id}/managed-groups/{groupId}</code></h3>
 <p>Removes a group manager from a certain group.</p>
-<p>Requires <code>ROLE_ADMIN</code>.</p>
+<p>Requires <code>iam:admin.write</code> scope.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -X DELETE -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/managed-groups/c617d586-54e6-411d-8e38-649677980004
 </code></pre></div><h3 id="get-iamgroupgroupidgroup-managers">GET <code>/iam/group/{groupId}/group-managers</code></h3>
 <p>Shows the information of managers in a certain group.</p>
-<p>Requires <code>ROLE_ADMIN</code> or <code>ROLE_GM</code> privileges of the group identified by {groupId}.</p>
+<p>Requires that the Access Token contains the restricted System Scope <code>iam:admin.read</code>, or <code>ROLE_GM</code> privileges of the group identified by {groupId}.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -s -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/group/c617d586-54e6-411d-8e38-649677980004/group-managers
 <span style="color:#ce5c00;font-weight:bold">[</span>
@@ -2991,7 +2991,7 @@ Remember that there are three roles in Indigo IAM: Amdin, User, Group Manager.</
 </code></pre></div><h2 id="account-labels">Account labels</h2>
 <h3 id="get-iamaccountidlabels">GET <code>/iam/account/{id}/labels</code></h3>
 <p>Shows the user account labels.</p>
-<p>Requires that the user has <code>ROLE_ADMIN</code>, <code>ROLE_GM</code>, or is the one represented by the {id}.</p>
+<p>Requires that the Access Token contains the restricted System Scope <code>iam:admin.read</code>, or the token subject is the one represented by the {id}.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -s -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/labels
 <span style="color:#ce5c00;font-weight:bold">[</span>
@@ -3002,7 +3002,7 @@ Remember that there are three roles in Indigo IAM: Amdin, User, Group Manager.</
 <span style="color:#ce5c00;font-weight:bold">]</span>
 </code></pre></div><h3 id="put-iamaccountidlabels">PUT <code>/iam/account/{id}/labels</code></h3>
 <p>Adds labels to user account.</p>
-<p>Requires <code>ROLE_ADMIN</code>.</p>
+<p>Requires <code>iam:admin.write</code> scope.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -X PUT -H <span style="color:#4e9a06">&#34;Content-Type: application/json&#34;</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> -d @labels.json <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/labels
@@ -3013,7 +3013,7 @@ Remember that there are three roles in Indigo IAM: Amdin, User, Group Manager.</
 <span style="color:#000;font-weight:bold">}</span>
 </code></pre></div><h3 id="delete-iamaccountidlabels">DELETE <code>/iam/account/{id}/labels</code></h3>
 <p>Deletes an account label by specifying the label name and the label prefix (if present).</p>
-<p>Requires <code>ROLE_ADMIN</code>.</p>
+<p>Requires <code>iam:admin.write</code> scope.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -X DELETE -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/labels <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  -d <span style="color:#000">name</span><span style="color:#ce5c00;font-weight:bold">=</span>ignore -d <span style="color:#000">prefix</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;hr.cern&#34;</span>
@@ -3021,7 +3021,7 @@ Remember that there are three roles in Indigo IAM: Amdin, User, Group Manager.</
 <h3 id="put-iamaccountidendtime">PUT <code>/iam/account/{id}/endTime</code></h3>
 <p>Adds/changes the membership end time of the user. It can be done directly through the IAM dashboard
 by clicking on &ldquo;Change membership end time&rdquo; button in the user homepage.</p>
-<p>Requires <code>ROLE_ADMIN</code>.</p>
+<p>Requires <code>iam:admin.write</code> scope.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -X PUT -d @endTime.json <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  -H <span style="color:#4e9a06">&#34;Content-Type: application/json&#34;</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
@@ -3035,6 +3035,7 @@ by clicking on &ldquo;Change membership end time&rdquo; button in the user homep
 <p>Adds user proxy certificate. It can be done directly through the IAM dashboard
 by clicking on &ldquo;Add managed proxy certificate&rdquo; button
 appearing on the user homepage after uploading the X.509 certificate.</p>
+<p>When using curl commands, it requires the restricted System Scope <code>iam:admin.write</code> in the Access Token.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -i -X PUT -d @proxy.json <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  -H <span style="color:#4e9a06">&#34;Content-Type: application&#34;</span> <span style="color:#4e9a06">\
@@ -3044,7 +3045,7 @@ appearing on the user homepage after uploading the X.509 certificate.</p>
 </code></pre></div><h2 id="list-accounts-and-groups">List accounts and groups</h2>
 <h3 id="get-iamaccountsearch">GET <code>/iam/account/search</code></h3>
 <p>Shows the list of IAM accounts.</p>
-<p>Requires <code>ROLE_ADMIN</code>, <code>ROLE_GM</code> or <code>scim:read</code> scope.</p>
+<p>Requires <code>iam:admin.read</code> scope.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -s -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/search
 <span style="color:#ce5c00;font-weight:bold">{</span>
@@ -3079,7 +3080,7 @@ appearing on the user homepage after uploading the X.509 certificate.</p>
     ...
 </code></pre></div><h3 id="get-iamgroupsearch">GET <code>/iam/group/search</code></h3>
 <p>Shows the list of IAM groups.</p>
-<p>Access granted to all IAM users or <code>scim:read</code> scope.</p>
+<p>Access granted to all IAM users or <code>iam:admin.read</code> scope.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -s -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/group/search
 <span style="color:#ce5c00;font-weight:bold">{</span>
@@ -3134,9 +3135,8 @@ appearing on the user homepage after uploading the X.509 certificate.</p>
     
 	<p>The IAM server has a RESTful API used to list and revoke active access and
 refresh tokens.</p>
-<p>Access to the API is limited to users with administrator privileges (either
-authenticated via a web session or through OAuth). If using OAuth,
-be sure that the access token is obtained with an authorization code/device flow.<br>
+<p>Access to the API is limited to users with administrator privileges authenticated via a web session or
+to access token containing predefined restricted System Scopes.<br>
 All examples assume authorization via OAuth2 bearer token; e.g.</p>
 <pre><code>GET /iam/api/access-tokens/13 HTTP/1.1
 Host: example.com
@@ -3148,15 +3148,21 @@ Authorization: Bearer h480djs93hd8
 <li><a href="#get-iamapiaccess-tokensid">GET /iam/api/access-tokens/:id</a></li>
 <li><a href="#get-iamapirefresh-tokens">GET /iam/api/refresh-tokens</a></li>
 <li><a href="#get-iamapirefresh-tokensid">GET /iam/api/refresh-tokens/:id</a></li>
+<li><a href="#delete-iamapiaccess-tokensid">DELETE /iam/api/access-tokens/:id</a></li>
+<li><a href="#delete-iamapirefresh-tokensid">DELETE /iam/api/refresh-tokens/:id</a></li>
 </ul>
 <p><strong>Deleting tokens</strong>:</p>
 <ul>
+<li><a href="#get-iamapiaccess-tokens">GET /iam/api/access-tokens</a></li>
+<li><a href="#get-iamapiaccess-tokensid">GET /iam/api/access-tokens/:id</a></li>
+<li><a href="#get-iamapirefresh-tokens">GET /iam/api/refresh-tokens</a></li>
+<li><a href="#get-iamapirefresh-tokensid">GET /iam/api/refresh-tokens/:id</a></li>
 <li><a href="#delete-iamapiaccess-tokensid">DELETE /iam/api/access-tokens/:id</a></li>
 <li><a href="#delete-iamapirefresh-tokensid">DELETE /iam/api/refresh-tokens/:id</a></li>
 </ul>
 <h2 id="get-iamapiaccess-tokens">GET /iam/api/access-tokens</h2>
 <p>Retrieves the paginated list of all the active access tokens. Returns results in <em>application/json</em>.</p>
-<p>Requires <strong>ROLE_ADMIN</strong>.</p>
+<p>Requires <code>iam:admin.read</code> scope.</p>
 <p>Parameters:</p>
 <table>
 <thead>
@@ -3224,7 +3230,7 @@ Authorization: Bearer h480djs93hd8
 <span style="color:#000;font-weight:bold">}</span>
 </code></pre></div><h2 id="get-iamapiaccess-tokensid">GET /iam/api/access-tokens/:id</h2>
 <p>Retrieves all the information about the access token identified by <strong>id</strong> and returns results in <em>application/json</em>.</p>
-<p>Requires <strong>ROLE_ADMIN</strong>.</p>
+<p>Requires <code>iam:admin.read</code> scope.</p>
 <pre><code>GET http://example.com:8080/iam/api/access-tokens/6
 </code></pre><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
   <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">6</span><span style="color:#000;font-weight:bold">,</span>
@@ -3257,7 +3263,7 @@ Authorization: Bearer h480djs93hd8
 <span style="color:#000;font-weight:bold">}</span>
 </code></pre></div><h2 id="get-iamapirefresh-tokens">GET /iam/api/refresh-tokens</h2>
 <p>Retrieves the paginated list of all the active refresh tokens. Returns results in <em>application/json</em>.</p>
-<p>Requires <strong>ROLE_ADMIN</strong>.</p>
+<p>Requires <code>iam:admin.read</code> scope.</p>
 <p>Parameters:</p>
 <table>
 <thead>
@@ -3321,7 +3327,7 @@ Authorization: Bearer h480djs93hd8
 <span style="color:#000;font-weight:bold">}</span>
 </code></pre></div><h2 id="get-iamapirefresh-tokensid">GET /iam/api/refresh-tokens/:id</h2>
 <p>Retrieves all the information about the refresh token identified by <strong>id</strong> and returns results in <em>application/json</em>.</p>
-<p>Requires <strong>ROLE_ADMIN</strong>.</p>
+<p>Requires <code>iam:admin.read</code> scope.</p>
 <pre><code>GET http://example.com:8080/iam/api/refresh-tokens/1083
 </code></pre><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
   <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1083</span><span style="color:#000;font-weight:bold">,</span>
@@ -3350,12 +3356,12 @@ Authorization: Bearer h480djs93hd8
 <span style="color:#000;font-weight:bold">}</span>
 </code></pre></div><h2 id="delete-iamapiaccess-tokensid">DELETE /iam/api/access-tokens/:id</h2>
 <p>Revoke the access token identified by <strong>id</strong>.</p>
-<p>Requires <strong>ROLE_ADMIN</strong>.</p>
+<p>Requires <code>iam:admin.write</code> scope.</p>
 <pre><code>DELETE http://example.com:8080/iam/api/access-tokens/6
 </code></pre><pre><code>204  AccessToken revoked
 </code></pre><h2 id="delete-iamapirefresh-tokensid">DELETE /iam/api/refresh-tokens/:id</h2>
 <p>Revoke the access token identified by <strong>id</strong>.</p>
-<p>Requires <strong>ROLE_ADMIN</strong>.</p>
+<p>Requires <code>iam:admin.write</code> scope.</p>
 <pre><code>DELETE http://example.com:8080/iam/api/refresh-tokens/1083
 </code></pre><pre><code>204  RefreshToken revoked
 </code></pre>
@@ -3820,8 +3826,8 @@ X-XSS-Protection: 1; mode=block
 Identity Management (SCIM) standard</a>, that
 can be used to manage users, change their personal information, manage their
 group membership, etc.</p>
-<p>Access to the API is restricted to administrator users or OAuth clients that
-have access to the <code>scim:read</code> (for read access) or <code>scim:write</code> (for write
+<p>Access to the API is restricted to administrator users authenticated via web interface
+or OAuth clients that have access to the <code>scim:read</code> (for read access) or <code>scim:write</code> (for write
 access) OAuth scopes.
 Note that these scopes are restricted in the default IAM configuration, i.e.
 can be assigned to clients only by IAM administrators.</p>
@@ -4334,7 +4340,7 @@ schema.</p>
 
 </code></pre></div><h2 id="get-scimusersid">GET <code>/scim/Users/{id}</code></h2>
 <p>Retrieves all the information about the user identified by <code>id</code> and returns results in application/json.</p>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:read</code>.</p>
+<p>Requires <code>scim:read</code> scope.</p>
 <pre><code>GET http://localhost:8080/scim/Users/2cb10ac5-5b1a-47a0-8f60-48995999f18d
 </code></pre>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
@@ -4367,7 +4373,7 @@ schema.</p>
 <span style="color:#000;font-weight:bold">}</span>
 </code></pre></div><h2 id="post-scimusers">POST <code>/scim/Users</code></h2>
 <p>Creates a new user, using the info specified within the request body, sent as application/json.</p>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:write</code>.</p>
+<p>Requires <code>scim:write</code> scope.</p>
 <pre><code>POST http://localhost:8080/scim/Users/
 </code></pre>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
@@ -4416,7 +4422,7 @@ Upon successful creation, the response body contains the newly created User.</p>
     <span style="color:#000;font-weight:bold">]</span>
 <span style="color:#000;font-weight:bold">}</span>
 </code></pre></div><h2 id="get-scimusers">GET <code>/scim/Users</code></h2>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:read</code>.</p>
+<p>Requires <code>scim:read</code> scope.</p>
 <p>SCIM defines a standard set of operations that can be used to filter, sort, and
 paginate response results. The operations are specified by adding query
 parameters to the Resource&rsquo;s endpoint.</p>
@@ -4597,7 +4603,7 @@ needed attribute(s). The below example returns only the userName for all Users:<
 <span style="color:#000;font-weight:bold">}</span>
 </code></pre></div><p>SCIM <strong>Filtering</strong> and <strong>sorting</strong> of results are currently not supported.</p>
 <h2 id="put-scimusersid">PUT <code>/scim/Users/{id}</code></h2>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:write</code>.</p>
+<p>Requires <code>scim:write</code> scope.</p>
 <p>PUT performs a full update. Clients should retrieve the entire resource and
 then PUT the desired modifications as the operation overwrites all previously
 stored data. A successful PUT operation returns a 200 OK response code and the
@@ -4680,7 +4686,7 @@ Content-Type: application/scim+json;charset=UTF-8
 }
 </code></pre>
 <h2 id="patch-scimusersid">PATCH <code>/scim/Users/{id}</code></h2>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:write</code>.</p>
+<p>Requires <code>scim:write</code> scope.</p>
 <p>PATCH enables consumers to send only the attributes requiring modification,
 reducing network and processing overhead. Attributes may be deleted, replaced,
 merged, or added in a single request. The body of a PATCH request MUST contain
@@ -4737,7 +4743,7 @@ Body:
 }
 </code></pre>
 <h2 id="delete-scimusersid">DELETE <code>/scim/Users/{id}</code></h2>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:write</code>.</p>
+<p>Requires <code>scim:write</code> scope.</p>
 <p>Clients request user removal via DELETE.</p>
 <pre><code>DELETE /scim/Users/4380e98c-02f2-4d10-85ba-9fbbdb819ed8
 
@@ -4756,7 +4762,7 @@ HTTP/1.1 200 OK
 <h2 id="get-scimgroupsid">GET <code>/scim/Groups/{id}</code></h2>
 <p>Retrieves information about the group identified by <code>id</code> and returns results in
 application/json.</p>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:read</code>.</p>
+<p>Requires <code>scim:read</code> scope.</p>
 <pre><code>GET /scim/Groups/c617d586-54e6-411d-8e38-64967798fa8a
 </code></pre>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
@@ -4789,7 +4795,7 @@ currently describe a way to implement pagination on group members.</p>
 <p>Returns a paginated list of user accounts, ordered by username, which are
 members of the group identified by <code>id</code>. To know about more about pagination
 parameters, see the <a href="#pagination">Pagination section</a>.</p>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:read</code>.</p>
+<p>Requires <code>scim:read</code> scope.</p>
 <pre><code>GET https://wlcg.cloud.cnaf.infn.it/scim/Groups/b86a9e99-9f0e-478f-999c-2046c764aa14/members?count=5
 </code></pre>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
@@ -4831,7 +4837,7 @@ parameters, see the <a href="#pagination">Pagination section</a>.</p>
 <p>Returns a paginated list of groups, ordered by name, which are direct sub-groups of the group
 identified by <code>id</code>. To know about more about pagination parameters, see the
 <a href="#pagination">Pagination section</a>.</p>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:read</code>.</p>
+<p>Requires <code>scim:read</code> scope.</p>
 <pre><code>GET https://wlcg.cloud.cnaf.infn.it/scim/Groups/b86a9e99-9f0e-478f-999c-2046c764aa14/subgroups?count=10
 </code></pre>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
@@ -4861,7 +4867,7 @@ identified by <code>id</code>. To know about more about pagination parameters, s
 <span style="color:#000;font-weight:bold">}</span>
 </code></pre></div><h2 id="post-scimgroups">POST <code>/scim/Groups</code></h2>
 <p>Creates a new group, using the info specified within the request body, sent as application/json.</p>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:write</code>.</p>
+<p>Requires <code>scim:write</code> scope.</p>
 <pre><code>POST http://localhost:8080/scim/Groups/
 
 {
@@ -4888,7 +4894,7 @@ identified by <code>id</code>. To know about more about pagination parameters, s
 }
 </code></pre>
 <h2 id="get-scimgroups">GET <code>/scim/Groups</code></h2>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:read</code>.</p>
+<p>Requires <code>scim:read</code> scope.</p>
 <p>The pagination seen for users can be applied also to groups:</p>
 <p>Example: retrieve the 22nd group</p>
 <pre><code>GET http://localhost:8080/scim/Groups?startIndex=22&amp;count=1
@@ -4918,7 +4924,7 @@ identified by <code>id</code>. To know about more about pagination parameters, s
 }
 </code></pre>
 <h2 id="put-scimgroupsid">PUT <code>/scim/Groups/{id}</code></h2>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:write</code>.</p>
+<p>Requires <code>scim:write</code> scope.</p>
 <p>PUT performs a full update. Clients should retrieve the entire resource and
 then PUT the desired modifications as the operation overwrites all previously
 stored data. A successful PUT operation returns a 200 OK response code and the
@@ -4948,7 +4954,7 @@ entire resource within the response body.</p>
 }
 </code></pre>
 <h2 id="patch-scimgroupsid">PATCH <code>/scim/Groups/{id}</code></h2>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:write</code>.</p>
+<p>Requires <code>scim:write</code> scope.</p>
 <p>The following example shows how to add member to a group:</p>
 <pre><code>PATCH http://localhost:8080/scim/Groups/4ca7fa98-0875-4eb3-a71f-0f88ce5632cf
 {
@@ -4971,7 +4977,7 @@ entire resource within the response body.</p>
 }
 </code></pre>
 <h2 id="delete-scimgroupsid">DELETE <code>/scim/Groups/{id}</code></h2>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:write</code>.</p>
+<p>Requires <code>scim:write</code> scope.</p>
 <p>Clients request group removal via DELETE.</p>
 <pre><code>DELETE /scim/Groups/5bae2407-08e3-4171-b180-4b4a0196e7b6
 
@@ -5223,12 +5229,14 @@ determine whether a scope is allowed for a given client or user.</p>
 the scope <code>wlcg.groups:/a/group</code> or any other group name matching the regexp.</p>
 <h2 id="the-scope-policy-api">The Scope policy API</h2>
 <p>The Scope Policy API is a REST API that allows to manage scope policies.
-API requires IAM administrator privileges.</p>
+Access to the API is restricted to administrator users authenticated via web interface
+or OAuth clients that have access to the <code>iam:admin.read</code> (for read access) or <code>iam:admin.write</code> (for write
+access) OAuth scopes.</p>
 <h3 id="get-iamscope_policies">GET /iam/scope_policies</h3>
 <p>Returns a JSON representation of the Scope Policies defined for the
 organization.</p>
 <p><strong>Authentication required</strong>: yes</p>
-<p><strong>Authorization required</strong>: ROLE_ADMIN</p>
+<p><strong>Authorization required</strong>: <code>iam:admin.read</code> scope</p>
 <p><strong>Command example</strong></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ curl -i -H <span style="color:#4e9a06">&#34;Accept: application/json&#34;</span> -H <span style="color:#4e9a06">&#34;Content-Type: application/json&#34;</span> -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#000">$TOKEN</span><span style="color:#4e9a06">&#34;</span> -X GET https://example.com/iam/scope_policies/
 </code></pre></div><h4 id="success-response">Success response</h4>
@@ -5264,7 +5272,7 @@ the organization</p>
 <h3 id="get-iamscope_policiesid">GET /iam/scope_policies/{id}</h3>
 <p>Returns the JSON representation for the scope policy identified by <code>id</code>.</p>
 <p><strong>Authentication required</strong>: yes</p>
-<p><strong>Authorization required</strong>: ROLE_ADMIN</p>
+<p><strong>Authorization required</strong>: <code>iam:admin.read</code> scope</p>
 <p><strong>Command example</strong></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ curl -i -H <span style="color:#4e9a06">&#34;Accept: application/json&#34;</span> -H <span style="color:#4e9a06">&#34;Content-Type: application/json&#34;</span> -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#000">$TOKEN</span><span style="color:#4e9a06">&#34;</span> -X GET https://example.com/iam/scope_policies/1
 </code></pre></div><h4 id="success-response-1">Success response</h4>
@@ -5305,7 +5313,7 @@ the organization</p>
 </code></pre></div><h3 id="put-iamscope_policiesid">PUT /iam/scope_policies/{id}</h3>
 <p>Changes an existing Scope Policy.</p>
 <p><strong>Authentication required</strong>: yes</p>
-<p><strong>Authorization required</strong>: ROLE_ADMIN</p>
+<p><strong>Authorization required</strong>: <code>iam:admin.write</code> scope</p>
 <p><strong>Data constraints</strong></p>
 <p>Provide a representation of the Scope Policy to be modified.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
@@ -5351,7 +5359,7 @@ the organization</p>
 </code></pre></div><h3 id="post-iamscope_policies">POST /iam/scope_policies</h3>
 <p>Creates a Scope Policy for the organization</p>
 <p><strong>Authentication required</strong>: yes</p>
-<p><strong>Authorization required</strong>: ROLE_ADMIN</p>
+<p><strong>Authorization required</strong>: <code>iam:admin.write</code> scope</p>
 <p><strong>Data constraints</strong></p>
 <p>Provide a representation of the Scope Policy to be created</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
@@ -5406,7 +5414,7 @@ the organization</p>
 </code></pre></div><h3 id="delete-iamscope_policiesid">DELETE /iam/scope_policies/{id}</h3>
 <p>Deletes the Scope Policy for the organization.</p>
 <p><strong>Authentication required</strong>: yes</p>
-<p><strong>Authorization required</strong>: ROLE_ADMIN</p>
+<p><strong>Authorization required</strong>: <code>iam:admin.write</code> scope</p>
 <p><strong>Command example</strong></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ curl -i -H <span style="color:#4e9a06">&#34;Accept: application/json&#34;</span> -H <span style="color:#4e9a06">&#34;Content-Type: application/json&#34;</span> -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#000">$TOKEN</span><span style="color:#4e9a06">&#34;</span> -X DELETE https://example.com/iam/scope_policies/<span style="color:#ce5c00;font-weight:bold">{</span>id<span style="color:#ce5c00;font-weight:bold">}</span>
 </code></pre></div><p>Where {id} is the Scope Policy id number</p>

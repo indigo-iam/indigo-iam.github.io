@@ -122,7 +122,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.2/offline-search-index.d8d4bac4506eae9cfdbbd79ee6d890fd.json"
+  data-offline-search-index-json-src="/v/v1.8.2/offline-search-index.973853a3644205ea0ad8aadf733bc062.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -382,12 +382,14 @@ determine whether a scope is allowed for a given client or user.</p>
 the scope <code>wlcg.groups:/a/group</code> or any other group name matching the regexp.</p>
 <h2 id="the-scope-policy-api">The Scope policy API</h2>
 <p>The Scope Policy API is a REST API that allows to manage scope policies.
-API requires IAM administrator privileges.</p>
+Access to the API is restricted to administrator users authenticated via web interface
+or OAuth clients that have access to the <code>iam:admin.read</code> (for read access) or <code>iam:admin.write</code> (for write
+access) OAuth scopes.</p>
 <h3 id="get-iamscope_policies">GET /iam/scope_policies</h3>
 <p>Returns a JSON representation of the Scope Policies defined for the
 organization.</p>
 <p><strong>Authentication required</strong>: yes</p>
-<p><strong>Authorization required</strong>: ROLE_ADMIN</p>
+<p><strong>Authorization required</strong>: <code>iam:admin.read</code> scope</p>
 <p><strong>Command example</strong></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ curl -i -H <span style="color:#4e9a06">&#34;Accept: application/json&#34;</span> -H <span style="color:#4e9a06">&#34;Content-Type: application/json&#34;</span> -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#000">$TOKEN</span><span style="color:#4e9a06">&#34;</span> -X GET https://example.com/iam/scope_policies/
 </code></pre></div><h4 id="success-response">Success response</h4>
@@ -423,7 +425,7 @@ the organization</p>
 <h3 id="get-iamscope_policiesid">GET /iam/scope_policies/{id}</h3>
 <p>Returns the JSON representation for the scope policy identified by <code>id</code>.</p>
 <p><strong>Authentication required</strong>: yes</p>
-<p><strong>Authorization required</strong>: ROLE_ADMIN</p>
+<p><strong>Authorization required</strong>: <code>iam:admin.read</code> scope</p>
 <p><strong>Command example</strong></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ curl -i -H <span style="color:#4e9a06">&#34;Accept: application/json&#34;</span> -H <span style="color:#4e9a06">&#34;Content-Type: application/json&#34;</span> -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#000">$TOKEN</span><span style="color:#4e9a06">&#34;</span> -X GET https://example.com/iam/scope_policies/1
 </code></pre></div><h4 id="success-response-1">Success response</h4>
@@ -464,7 +466,7 @@ the organization</p>
 </code></pre></div><h3 id="put-iamscope_policiesid">PUT /iam/scope_policies/{id}</h3>
 <p>Changes an existing Scope Policy.</p>
 <p><strong>Authentication required</strong>: yes</p>
-<p><strong>Authorization required</strong>: ROLE_ADMIN</p>
+<p><strong>Authorization required</strong>: <code>iam:admin.write</code> scope</p>
 <p><strong>Data constraints</strong></p>
 <p>Provide a representation of the Scope Policy to be modified.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
@@ -510,7 +512,7 @@ the organization</p>
 </code></pre></div><h3 id="post-iamscope_policies">POST /iam/scope_policies</h3>
 <p>Creates a Scope Policy for the organization</p>
 <p><strong>Authentication required</strong>: yes</p>
-<p><strong>Authorization required</strong>: ROLE_ADMIN</p>
+<p><strong>Authorization required</strong>: <code>iam:admin.write</code> scope</p>
 <p><strong>Data constraints</strong></p>
 <p>Provide a representation of the Scope Policy to be created</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
@@ -565,7 +567,7 @@ the organization</p>
 </code></pre></div><h3 id="delete-iamscope_policiesid">DELETE /iam/scope_policies/{id}</h3>
 <p>Deletes the Scope Policy for the organization.</p>
 <p><strong>Authentication required</strong>: yes</p>
-<p><strong>Authorization required</strong>: ROLE_ADMIN</p>
+<p><strong>Authorization required</strong>: <code>iam:admin.write</code> scope</p>
 <p><strong>Command example</strong></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ curl -i -H <span style="color:#4e9a06">&#34;Accept: application/json&#34;</span> -H <span style="color:#4e9a06">&#34;Content-Type: application/json&#34;</span> -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#000">$TOKEN</span><span style="color:#4e9a06">&#34;</span> -X DELETE https://example.com/iam/scope_policies/<span style="color:#ce5c00;font-weight:bold">{</span>id<span style="color:#ce5c00;font-weight:bold">}</span>
 </code></pre></div><p>Where {id} is the Scope Policy id number</p>
