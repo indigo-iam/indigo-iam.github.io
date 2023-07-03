@@ -122,7 +122,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.2/offline-search-index.973853a3644205ea0ad8aadf733bc062.json"
+  data-offline-search-index-json-src="/v/v1.8.2/offline-search-index.dc91ffc008d1a0f2791c39e548efa155.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -154,7 +154,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.2/offline-search-index.973853a3644205ea0ad8aadf733bc062.json"
+  data-offline-search-index-json-src="/v/v1.8.2/offline-search-index.dc91ffc008d1a0f2791c39e548efa155.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -1988,9 +1988,9 @@ used for validating the tokens. Keystore location is set using the <code>IAM_KEY
 environment variable, e.g.:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-env" data-lang="env"><span style="color:#000">IAM_KEY_STORE_LOCATION</span><span style="color:#ce5c00;font-weight:bold">=</span>file:///secrets/jwk/keystore.jwks
 </code></pre></div><h3 id="default-key-id-kid">Default Key ID (kid)</h3>
-<p>If there are multiple JWKs in the keystore, <code>IAM_JWK_DEFAULT_KEY</code> environment variable
+<p>If there are multiple JWKs in the keystore, <code>IAM_JWK_DEFAULT_KEY_ID</code> environment variable
 can be set to choose the key that signs the tokens, e.g.:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-env" data-lang="env"><span style="color:#000">IAM_JWK_DEFAULT_KEY</span><span style="color:#ce5c00;font-weight:bold">=</span>rsa2
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-env" data-lang="env"><span style="color:#000">IAM_JWK_DEFAULT_KEY_ID</span><span style="color:#ce5c00;font-weight:bold">=</span>rsa2
 </code></pre></div><p>If this variable is not set it will use the default value <code>rsa1</code>.</p>
 <h3 id="default-jwe-keys">Default JWE Keys</h3>
 <p>JSON Web Encryption (JWE) represents encrypted content using JSON-based data structures.
@@ -2031,7 +2031,7 @@ update or because of a security instance, etc.). For example:</p>
 </code></pre></div><ul>
 <li>
 <p>Firstly, new JWK should be added to the keystore using the file in the <code>IAM_KEY_STORE_LOCATION</code>.
-The <code>IAM_JWK_DEFAULT_KEY</code> should still be left as the key id of the old key. This way all the
+The <code>IAM_JWK_DEFAULT_KEY_ID</code> should still be left as the key id of the old key. This way all the
 clients can cache the new public key. Before the next step, waiting as long as the agreed policy for
 key caching for the infrastructure would be enough to make sure every client cached the new
 key.</p>
@@ -2064,15 +2064,15 @@ key.</p>
     <span style="color:#000;font-weight:bold">}</span>
   <span style="color:#000;font-weight:bold">]</span>
 <span style="color:#000;font-weight:bold">}</span>
-</code></pre></div><p>In this example <code>IAM_JWK_DEFAULT_KEY=rsa1</code> is kept unchanged.</p>
+</code></pre></div><p>In this example <code>IAM_JWK_DEFAULT_KEY_ID=rsa1</code> is kept unchanged.</p>
 </li>
 <li>
 <p>Secondly, after the new key is cached by all of the clients, the signing key should be changed as the
-new key via the <code>IAM_JWK_DEFAULT_KEY</code> variable. The old key should still be kept in
+new key via the <code>IAM_JWK_DEFAULT_KEY_ID</code> variable. The old key should still be kept in
 the keystore, otherwise all the current tokens would stop working. Before removing it from the
 key store, waiting as long the longest allowed token lifetime would be enough for the old tokens to expire
 and the clients will be left with only tokens that are signed with new key.</p>
-<p>So in the example default key should be set as <code>IAM_JWK_DEFAULT_KEY=rsa2</code>.</p>
+<p>So in the example default key should be set as <code>IAM_JWK_DEFAULT_KEY_ID=rsa2</code>.</p>
 </li>
 <li>
 <p>As the last step, old key can be removed from the keystore. So only the tokens that were signed with the new
@@ -2247,7 +2247,7 @@ key will be valid after this.</p>
 
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified May 4, 2023: <a  href="https://github.com/indigo-iam/iam-website/commit/d0e57d01e94b6405c74a581d5c839bf48163c849">Added documentation page for JWK and rotating keys (#74) (d0e57d0)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified July 3, 2023: <a  href="https://github.com/indigo-iam/iam-website/commit/5d606bfea02e9738b4dadbe09cbe880720d8062a">Fix env variable name (5d606bf)</a>
 </div>
 </div>
 
