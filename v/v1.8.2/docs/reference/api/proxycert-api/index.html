@@ -122,7 +122,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.2/offline-search-index.dc91ffc008d1a0f2791c39e548efa155.json"
+  data-offline-search-index-json-src="/v/v1.8.2/offline-search-index.4136d00c3e6cbf120a9f5194ba57065c.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -154,7 +154,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.2/offline-search-index.dc91ffc008d1a0f2791c39e548efa155.json"
+  data-offline-search-index-json-src="/v/v1.8.2/offline-search-index.4136d00c3e6cbf120a9f5194ba57065c.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -1967,7 +1967,7 @@
 	
 	<p>IAM provides a RESTful API that can be used to download the X.509 proxy certificate previously uploaded in IAM dashboard by the user.<br>
 This is a plain proxy obtained by running <code>voms-proxy-init</code> command.</p>
-<p>The API has been added mainly for the integration of IAM with the <a href="http://rcauth.eu/">RCAuth.eu</a> online certificate authority. The X.509 proxy certificate can be uploaded using the <a href="/docs/reference/api/account-api/#proxy-certificate">IAM Account Proxy Certificate API</a>.</p>
+<p>The API has been added mainly for the integration of IAM with the <a href="http://rcauth.eu/">RCAuth.eu</a> online certificate authority. The X.509 proxy certificate can be uploaded using the <a href="../../api/account-api/#proxy-certificate">IAM Account Proxy Certificate API</a>.</p>
 <p>The <code>proxy:generate</code> OAuth scope is required to access this API.<br>
 Note that this scope is restricted in the default IAM configuration,
 i.e. can be assigned to clients only by IAM administrators.</p>
@@ -1981,7 +1981,7 @@ i.e. can be assigned to clients only by IAM administrators.</p>
 </code></pre></div><p>The user can request a specific lifetime of the proxy
 that is less than or equal to the maximum lifetime of the proxy itself
 and also limited by IAM configuration options <code>max-ac-lifetime-in-seconds</code>
-(as shown in <a href="/docs/tasks/deployment/voms/#voms-aa-configuration">VOMS AA configuration</a>).</p>
+(as shown in <a href="../../../../docs/tasks/deployment/voms/#voms-aa-configuration">VOMS AA configuration</a>).</p>
 <p>IAM response:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
   <span style="color:#204a87;font-weight:bold">&#34;subject&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;CN=2050153474,CN=813462308,CN=John Doe jdoe@infn.it,O=Istituto Nazionale di Fisica Nucleare,C=IT,DC=tcs,DC=terena,DC=org&#34;</span><span style="color:#000;font-weight:bold">,</span>
@@ -2140,7 +2140,7 @@ and also limited by IAM configuration options <code>max-ac-lifetime-in-seconds</
 
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified May 4, 2023: <a  href="https://github.com/indigo-iam/iam-website/commit/909c01ecf0c07cb015aacba88ec5e93b30eafb23">Small fixes (909c01e)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified October 20, 2023: <a  href="https://github.com/indigo-iam/iam-website/commit/caf6ac5837d23788111368d538a3926d1a7793df">Fix links in proxy cert api (caf6ac5)</a>
 </div>
 </div>
 
