@@ -124,7 +124,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.3/offline-search-index.4e9028140074d351113d130827482408.json"
+  data-offline-search-index-json-src="/v/v1.8.3/offline-search-index.fb30e5722f17f602927d4e39c374dec4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -196,6 +196,7 @@ relying on different profiles.</p>
 <li>the <code>iam</code> profile</li>
 <li>the <code>wlcg</code> WLCG profile</li>
 <li>the <code>aarc</code> profile</li>
+<li>the <code>kc</code> profile</li>
 </ul>
 <h2 id="setting-the-default-profile">Setting the default profile</h2>
 <p>The IAM JWT default profile is set using the <code>IAM_JWT_DEFAULT_PROFILE</code>
@@ -209,7 +210,8 @@ in the list of scopes authorized for a client:</p>
 <ul>
 <li><code>iam</code>, for the IAM profile</li>
 <li><code>wlcg</code>, for the WLCG profile</li>
-<li><code>aarc</code> profile, for the AARC profile</li>
+<li><code>aarc</code>, for the AARC profile</li>
+<li><code>kc</code>, for the Keycloak profile</li>
 </ul>
 <p>Clients should only link to one profile. When multiple profiles are linked to a
 client, IAM falls back to the default profile configured for the IAM instance.</p>
@@ -240,16 +242,16 @@ environment variable;</p>
 <li>
 <p>the <code>nbf</code> (not before) claim is not set in access tokens; this behaviour
 can be changed by setting the <code>IAM_ACCESS_TOKEN_INCLUDE_NBF=true</code>
-environment variable;</p>
+environment variable.</p>
 </li>
 </ul>
-<p>This profile is assigned to clients using the <code>iam</code>  scope.</p>
+<p>This profile is assigned to clients using the <code>iam</code> scope.</p>
 <h3 id="the-wlcg-profile">The WLCG profile</h3>
 <p>This profile implements the <a href="https://zenodo.org/record/3460258">Common JWT Token profile</a>.</p>
 <p>In particular:</p>
 <ul>
 <li>the <code>scope</code> claim is always included in access tokens;</li>
-<li>groups are not included by default in access and ID tokens;</li>
+<li>groups are not included by default in access and ID tokens.</li>
 </ul>
 <p>This profile is assigned to clients using the <code>wlcg</code> scope.</p>
 <p>With this profile:</p>
@@ -263,14 +265,14 @@ of are included in the wlcg.groups claim;</p>
 included in access tokens; this behaviour can be changed by setting the
 <code>IAM_ACCESS_TOKEN_INCLUDE_AUTHN_INFO=true</code> environment variable and by requesting</p>
 <ul>
-<li><code>email</code> scope to include the <code>email</code> claim in access tokens</li>
-<li><code>profile</code> scope to include the <code>name</code> and <code>preferred_username</code> claims in access tokens</li>
+<li><code>email</code> scope to include the <code>email</code> claim in access tokens;</li>
+<li><code>profile</code> scope to include the <code>name</code> and <code>preferred_username</code> claims in access tokens;</li>
 </ul>
 </li>
 <li>
 <p>the <code>nbf</code> (not before) claim is not set in access tokens; this behaviour
 can be changed by setting the <code>IAM_ACCESS_TOKEN_INCLUDE_NBF=true</code>
-environment variable;</p>
+environment variable.</p>
 </li>
 </ul>
 <h4 id="requesting-groups-with-the-wlcg-profile">Requesting groups with the WLCG profile</h4>
@@ -291,10 +293,19 @@ by the <a href="https://aarc-project.eu/guidelines/aarc-g002/">AARC G002</a> pro
 <ul>
 <li>groups and organisation name are not included by default in access and ID tokens;</li>
 <li>organisation name can be requested using the <code>eduperson_scoped_affiliation</code> scope and it&rsquo;s encoded in the <code>eduperson_scoped_affiliation</code> claim;</li>
-<li>groups can be requested using the <code>eduperson_entitlement</code> scope and they&rsquo;re encoded as URN in the <code>eduperson_entitlement</code> claim;</li>
+<li>groups can be requested using the <code>eduperson_entitlement</code> scope and they&rsquo;re encoded as URN in the <code>eduperson_entitlement</code> claim.</li>
 </ul>
 <p>All the mapping rules are described in the <a href="https://docs.google.com/document/d/1b-Mlet3Lq7qKLEf1BnHJ4nL1fq-vMe7fzpXyrq2wp08/edit">White Paper for implementation mappings between SAML 2.0 and OpenID Connect in Research and Education</a>.</p>
 <p>This profile is assigned to clients using the <code>aarc</code> scope.</p>
+<h3 id="the-keycloak-profile">The Keycloak profile</h3>
+<p>This profile allows the integration with a Keycloak environment.</p>
+<p>With this profile:</p>
+<ul>
+<li>the <code>scope</code> claim is always included in access tokens;</li>
+<li>groups are always included in access and ID tokens; they are encoded in the <code>roles</code> claim.</li>
+</ul>
+<p>Having <strong>roles</strong> claim instead of <strong>groups</strong> allows integration with the OIDC client - a conteinerised MISP deployment - which requires them to map IAM users.</p>
+<p>This profile is assigned to clients using the <code>kc</code> scope.</p>
 
 </div>
 </div>
