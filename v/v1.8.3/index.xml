@@ -13,6 +13,34 @@
     
     
     <item>
+      <title>Blog: IAM v1.8.3</title>
+      <link>/v/v1.8.3/blog/2023/10/30/iam-v1.8.3/</link>
+      <pubDate>Mon, 30 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/v/v1.8.3/blog/2023/10/30/iam-v1.8.3/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The IAM development team is pleased to announce the release of INDIGO IAM v1.8.3.&lt;/p&gt;
+&lt;p&gt;This release provides bug fixes and enhancements, as can be seen in the &lt;a href=&#34;https://github.com/indigo-iam/iam/releases/tag/v1.8.3&#34;&gt;release notes&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The major highlights include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;save an access token value as a hash and add missing foreign keys to the database
+&lt;ul&gt;
+&lt;li&gt;because of this change, we &lt;strong&gt;strongly&lt;/strong&gt; recommend to &lt;strong&gt;make a backup of your database&lt;/strong&gt; before upgrading to v1.8.3. The migration will take an amount of time which will be proportional to the amount of currently active access tokens, which could be very long&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;enable caching of scope matchers and of the contents of the well-known endpoint on a Redis server&lt;/li&gt;
+&lt;li&gt;match custom scopes based on string equality&lt;/li&gt;
+&lt;li&gt;fix CERN workflow for restored accounts&lt;/li&gt;
+&lt;li&gt;fix authorization on IAM APIs such to avoid cases where access is granted to already approved scopes instead of effective token scopes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As usual, the IAM docker image can be obtained from &lt;a href=&#34;https://hub.docker.com/r/indigoiam/iam-login-service/tags&#34;&gt;DockerHub&lt;/a&gt;.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Blog: IAM v1.8.2</title>
       <link>/v/v1.8.3/blog/2023/06/05/iam-v1.8.2/</link>
       <pubDate>Mon, 05 Jun 2023 00:00:00 +0000</pubDate>
