@@ -127,7 +127,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.3/offline-search-index.42688fa6c00ff454a6fed6bc994b54db.json"
+  data-offline-search-index-json-src="/v/v1.8.3/offline-search-index.224ee5109fe66467a7a37d7c82ae09e3.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -1069,6 +1069,14 @@ and also limited by IAM configuration options <code>max-ac-lifetime-in-seconds</
   <span style="color:#204a87;font-weight:bold">&#34;not_after&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;1663991299000&#34;</span><span style="color:#000;font-weight:bold">,</span>
   <span style="color:#204a87;font-weight:bold">&#34;certificate_chain&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;-----BEGIN CERTIFICATE-----\nMI...lCU=\n-----END CERTIFICATE-----\n&#34;</span>
 <span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><p>N.B. The first proxy certificate found is downloaded.</p>
+<p>If one account has two or more associated proxy certificates, the issuerDn (e.g. <code>CN=Test CA,O=IGI,C=IT</code>) should be specified in the request to download a specific one:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -s -X POST -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">BT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -d <span style="color:#000">client_id</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">${</span><span style="color:#000">CLIENT_ID</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -d <span style="color:#000">client_secret</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">${</span><span style="color:#000">CLIENT_SECRET</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -d <span style="color:#000">lifetimeSecs</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">${</span><span style="color:#000">PROXY_CERT_LIFETIME_SECS</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -d <span style="color:#000">issuerDn</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">${</span><span style="color:#000">ISSUER_DN</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/proxycert
 </code></pre></div>
 </div>
 
