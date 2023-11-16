@@ -90,7 +90,9 @@
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 	
-	<a class="dropdown-item" href="https://indigo-iam.github.io/v/current">v1.8.2</a>
+	<a class="dropdown-item" href="https://indigo-iam.github.io/v/current">v1.8.3</a>
+	
+	<a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.2">v1.8.2</a>
 	
 	<a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.1">v1.8.1</a>
 	
@@ -122,7 +124,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.2/offline-search-index.4136d00c3e6cbf120a9f5194ba57065c.json"
+  data-offline-search-index-json-src="/v/v1.8.2/offline-search-index.bb2cc3710b9260bab527a3d2706e3cbf.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -217,6 +219,16 @@ This the multi-page printable view of this section.
   
   
 
+  
+    
+    
+	
+
+    <li><a href="#pg-6ef5ee5245cd1e2fa3527b820ba7f0fd">IAM v1.8.3</a></li>
+
+
+
+    
   
     
     
@@ -416,6 +428,48 @@ Github account, just see the tab on the right of each page.</p>
   
 
 <div class="td-content" style="">
+    <h1 id="pg-6ef5ee5245cd1e2fa3527b820ba7f0fd">IAM v1.8.3</h1>
+	<div class="lead">The v1.8.3 release introduces several database migrations to increase IAM performance</div>
+	<div class="td-byline mb-4">
+		By <b>IAM development team</b> |
+        
+		<time datetime="2023-10-30" class="text-muted">Monday, October 30, 2023</time>
+        
+	</div>
+	<p>The IAM development team is pleased to announce the release of INDIGO IAM v1.8.3.</p>
+<p>This release provides bug fixes and enhancements, as can be seen in the <a href="https://github.com/indigo-iam/iam/releases/tag/v1.8.3">release notes</a>.</p>
+<p>The major highlights include:</p>
+<ul>
+<li>save an access token value as a hash and add missing foreign keys to the database
+<ul>
+<li>because of this change, we <strong>strongly</strong> recommend to <strong>make a backup of your database</strong> before upgrading to v1.8.3. The migration will take an amount of time which will be proportional to the amount of currently active access tokens, which could be very long</li>
+</ul>
+</li>
+<li>enable caching of scope matchers and of the contents of the well-known endpoint on a Redis server</li>
+<li>match custom scopes based on string equality</li>
+<li>fix CERN workflow for restored accounts</li>
+<li>fix authorization on IAM APIs such to avoid cases where access is granted to already approved scopes instead of effective token scopes.</li>
+</ul>
+<p>As usual, the IAM docker image can be obtained from <a href="https://hub.docker.com/r/indigoiam/iam-login-service/tags">DockerHub</a>.</p>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
     <h1 id="pg-fae9fa3ac6f3a1bc6fa82a2de868c61b">IAM v1.8.2</h1>
 	<div class="lead">The v1.8.2 release introduces new admin scopes in order to access IAM API endpoints</div>
 	<div class="td-byline mb-4">

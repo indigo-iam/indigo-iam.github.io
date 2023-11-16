@@ -93,7 +93,9 @@
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 	
-	<a class="dropdown-item" href="https://indigo-iam.github.io/v/current">v1.8.2</a>
+	<a class="dropdown-item" href="https://indigo-iam.github.io/v/current">v1.8.3</a>
+	
+	<a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.2">v1.8.2</a>
 	
 	<a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.1">v1.8.1</a>
 	
@@ -125,7 +127,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.2/offline-search-index.4136d00c3e6cbf120a9f5194ba57065c.json"
+  data-offline-search-index-json-src="/v/v1.8.2/offline-search-index.bb2cc3710b9260bab527a3d2706e3cbf.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -404,7 +406,7 @@ Currently the following profiles are defined:</p>
 <tr>
 <td>prod</td>
 <td>no</td>
-<td>This is the profile you should enable when using IAM</td>
+<td>Sets up the environment for IAM in production</td>
 </tr>
 <tr>
 <td>h2-test</td>
@@ -419,7 +421,7 @@ Currently the following profiles are defined:</p>
 <tr>
 <td>oidc</td>
 <td>no</td>
-<td>Enables Google authentication</td>
+<td>Enables OIDC authentication (e.g. Google)</td>
 </tr>
 <tr>
 <td>saml</td>
@@ -434,7 +436,7 @@ Currently the following profiles are defined:</p>
 <tr>
 <td>wlcg-scopes</td>
 <td>no</td>
-<td>This is the profile you should enable when you want to support WLCG token encoding</td>
+<td>Enables WLCG token encoding</td>
 </tr>
 </tbody>
 </table>
@@ -811,6 +813,7 @@ relying on different profiles.</p>
 <li>the <code>iam</code> profile</li>
 <li>the <code>wlcg</code> WLCG profile</li>
 <li>the <code>aarc</code> profile</li>
+<li>the <code>kc</code> profile</li>
 </ul>
 <h2 id="setting-the-default-profile">Setting the default profile</h2>
 <p>The IAM JWT default profile is set using the <code>IAM_JWT_DEFAULT_PROFILE</code>
@@ -824,7 +827,8 @@ in the list of scopes authorized for a client:</p>
 <ul>
 <li><code>iam</code>, for the IAM profile</li>
 <li><code>wlcg</code>, for the WLCG profile</li>
-<li><code>aarc</code> profile, for the AARC profile</li>
+<li><code>aarc</code>, for the AARC profile</li>
+<li><code>kc</code>, for the Keycloak profile</li>
 </ul>
 <p>Clients should only link to one profile. When multiple profiles are linked to a
 client, IAM falls back to the default profile configured for the IAM instance.</p>
@@ -855,33 +859,37 @@ environment variable;</p>
 <li>
 <p>the <code>nbf</code> (not before) claim is not set in access tokens; this behaviour
 can be changed by setting the <code>IAM_ACCESS_TOKEN_INCLUDE_NBF=true</code>
-environment variable;</p>
+environment variable.</p>
 </li>
 </ul>
-<p>This profile is assigned to clients using the <code>iam</code>  scope.</p>
+<p>This profile is assigned to clients using the <code>iam</code> scope.</p>
 <h3 id="the-wlcg-profile">The WLCG profile</h3>
 <p>This profile implements the <a href="https://zenodo.org/record/3460258">Common JWT Token profile</a>.</p>
 <p>In particular:</p>
 <ul>
 <li>the <code>scope</code> claim is always included in access tokens;</li>
-<li>groups are not included by default in access and ID tokens;</li>
+<li>groups are not included by default in access and ID tokens.</li>
 </ul>
 <p>This profile is assigned to clients using the <code>wlcg</code> scope.</p>
 <p>With this profile:</p>
 <ul>
 <li>
-<p>groups are encoded in the <code>wlcg-groups</code> claim; all the non-optional groups the user is member
-of are included in the wlcg-groups claim;</p>
+<p>groups are encoded in the <code>wlcg.groups</code> claim; all the non-optional groups the user is member
+of are included in the wlcg.groups claim;</p>
 </li>
 <li>
-<p>authentication information (username, email, groups) is not by default
+<p>authentication information (name, preferred username and email) is not by default
 included in access tokens; this behaviour can be changed by setting the
-<code>IAM_ACCESS_TOKEN_INCLUDE_AUTHN_INFO=true</code> environment variable;</p>
+<code>IAM_ACCESS_TOKEN_INCLUDE_AUTHN_INFO=true</code> environment variable and by requesting</p>
+<ul>
+<li><code>email</code> scope to include the <code>email</code> claim in access tokens;</li>
+<li><code>profile</code> scope to include the <code>name</code> and <code>preferred_username</code> claims in access tokens;</li>
+</ul>
 </li>
 <li>
 <p>the <code>nbf</code> (not before) claim is not set in access tokens; this behaviour
 can be changed by setting the <code>IAM_ACCESS_TOKEN_INCLUDE_NBF=true</code>
-environment variable;</p>
+environment variable.</p>
 </li>
 </ul>
 <h4 id="requesting-groups-with-the-wlcg-profile">Requesting groups with the WLCG profile</h4>
@@ -902,10 +910,19 @@ by the <a href="https://aarc-project.eu/guidelines/aarc-g002/">AARC G002</a> pro
 <ul>
 <li>groups and organisation name are not included by default in access and ID tokens;</li>
 <li>organisation name can be requested using the <code>eduperson_scoped_affiliation</code> scope and it&rsquo;s encoded in the <code>eduperson_scoped_affiliation</code> claim;</li>
-<li>groups can be requested using the <code>eduperson_entitlement</code> scope and they&rsquo;re encoded as URN in the <code>eduperson_entitlement</code> claim;</li>
+<li>groups can be requested using the <code>eduperson_entitlement</code> scope and they&rsquo;re encoded as URN in the <code>eduperson_entitlement</code> claim.</li>
 </ul>
 <p>All the mapping rules are described in the <a href="https://docs.google.com/document/d/1b-Mlet3Lq7qKLEf1BnHJ4nL1fq-vMe7fzpXyrq2wp08/edit">White Paper for implementation mappings between SAML 2.0 and OpenID Connect in Research and Education</a>.</p>
 <p>This profile is assigned to clients using the <code>aarc</code> scope.</p>
+<h3 id="the-keycloak-profile">The Keycloak profile</h3>
+<p>This profile allows the integration with a Keycloak environment.</p>
+<p>With this profile:</p>
+<ul>
+<li>the <code>scope</code> claim is always included in access tokens;</li>
+<li>groups are always included in access and ID tokens; they are encoded in the <code>roles</code> claim.</li>
+</ul>
+<p>Having <strong>roles</strong> claim instead of <strong>groups</strong> allows integration with the OIDC client - a conteinerised MISP deployment - which requires them to map IAM users.</p>
+<p>This profile is assigned to clients using the <code>kc</code> scope.</p>
 
 </div>
 
@@ -1751,7 +1768,7 @@ the <code>IAM_SAML_LOGIN_BUTTON_TEXT</code> environment variable.</p>
 <span style="color:#000">IAM_SAML_METADATA_LOOKUP_SERVICE_REFRESH_PERIOD_SEC</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">3600</span>
 <span style="color:#000">IAM_SAML_LOGIN_BUTTON_TEXT</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;Sign in with IDEM&#34;</span>
 </code></pre></div><h2 id="custom-saml-configuration">Custom SAML configuration</h2>
-<p>The configuration based on environment variables relies on a <a href="https://raw.githubusercontent.com/indigo-iam/iam/v1.8.2/iam-login-service/src/main/resources/application-saml.yml">configuration
+<p>The configuration based on environment variables relies on a <a href="https://raw.githubusercontent.com/indigo-iam/iam/v1.8.3/iam-login-service/src/main/resources/application-saml.yml">configuration
 template</a> that fits most use cases embedded in the IAM war
 file.</p>
 <p>To have full control on the SAML configuration, provide a custom
