@@ -124,7 +124,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.3/offline-search-index.224ee5109fe66467a7a37d7c82ae09e3.json"
+  data-offline-search-index-json-src="/v/v1.8.3/offline-search-index.c15513628c235b0c5402f47f34acad11.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -181,8 +181,8 @@ This the multi-page printable view of this section.
 Identity Management (SCIM) standard</a>, that
 can be used to manage users, change their personal information, manage their
 group membership, etc.</p>
-<p>Access to the API is restricted to administrator users or OAuth clients that
-have access to the <code>scim:read</code> (for read access) or <code>scim:write</code> (for write
+<p>Access to the API is restricted to administrator users authenticated via web interface
+or OAuth clients that have access to the <code>scim:read</code> (for read access) or <code>scim:write</code> (for write
 access) OAuth scopes.
 Note that these scopes are restricted in the default IAM configuration, i.e.
 can be assigned to clients only by IAM administrators.</p>
@@ -695,7 +695,7 @@ schema.</p>
 
 </code></pre></div><h2 id="get-scimusersid">GET <code>/scim/Users/{id}</code></h2>
 <p>Retrieves all the information about the user identified by <code>id</code> and returns results in application/json.</p>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:read</code>.</p>
+<p>Requires <code>scim:read</code> scope.</p>
 <pre><code>GET http://localhost:8080/scim/Users/2cb10ac5-5b1a-47a0-8f60-48995999f18d
 </code></pre>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
@@ -728,7 +728,7 @@ schema.</p>
 <span style="color:#000;font-weight:bold">}</span>
 </code></pre></div><h2 id="post-scimusers">POST <code>/scim/Users</code></h2>
 <p>Creates a new user, using the info specified within the request body, sent as application/json.</p>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:write</code>.</p>
+<p>Requires <code>scim:write</code> scope.</p>
 <pre><code>POST http://localhost:8080/scim/Users/
 </code></pre>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
@@ -777,7 +777,7 @@ Upon successful creation, the response body contains the newly created User.</p>
     <span style="color:#000;font-weight:bold">]</span>
 <span style="color:#000;font-weight:bold">}</span>
 </code></pre></div><h2 id="get-scimusers">GET <code>/scim/Users</code></h2>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:read</code>.</p>
+<p>Requires <code>scim:read</code> scope.</p>
 <p>SCIM defines a standard set of operations that can be used to filter, sort, and
 paginate response results. The operations are specified by adding query
 parameters to the Resource&rsquo;s endpoint.</p>
@@ -958,7 +958,7 @@ needed attribute(s). The below example returns only the userName for all Users:<
 <span style="color:#000;font-weight:bold">}</span>
 </code></pre></div><p>SCIM <strong>Filtering</strong> and <strong>sorting</strong> of results are currently not supported.</p>
 <h2 id="put-scimusersid">PUT <code>/scim/Users/{id}</code></h2>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:write</code>.</p>
+<p>Requires <code>scim:write</code> scope.</p>
 <p>PUT performs a full update. Clients should retrieve the entire resource and
 then PUT the desired modifications as the operation overwrites all previously
 stored data. A successful PUT operation returns a 200 OK response code and the
@@ -1041,7 +1041,7 @@ Content-Type: application/scim+json;charset=UTF-8
 }
 </code></pre>
 <h2 id="patch-scimusersid">PATCH <code>/scim/Users/{id}</code></h2>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:write</code>.</p>
+<p>Requires <code>scim:write</code> scope.</p>
 <p>PATCH enables consumers to send only the attributes requiring modification,
 reducing network and processing overhead. Attributes may be deleted, replaced,
 merged, or added in a single request. The body of a PATCH request MUST contain
@@ -1098,7 +1098,7 @@ Body:
 }
 </code></pre>
 <h2 id="delete-scimusersid">DELETE <code>/scim/Users/{id}</code></h2>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:write</code>.</p>
+<p>Requires <code>scim:write</code> scope.</p>
 <p>Clients request user removal via DELETE.</p>
 <pre><code>DELETE /scim/Users/4380e98c-02f2-4d10-85ba-9fbbdb819ed8
 
@@ -1117,7 +1117,7 @@ HTTP/1.1 200 OK
 <h2 id="get-scimgroupsid">GET <code>/scim/Groups/{id}</code></h2>
 <p>Retrieves information about the group identified by <code>id</code> and returns results in
 application/json.</p>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:read</code>.</p>
+<p>Requires <code>scim:read</code> scope.</p>
 <pre><code>GET /scim/Groups/c617d586-54e6-411d-8e38-64967798fa8a
 </code></pre>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
@@ -1150,7 +1150,7 @@ currently describe a way to implement pagination on group members.</p>
 <p>Returns a paginated list of user accounts, ordered by username, which are
 members of the group identified by <code>id</code>. To know about more about pagination
 parameters, see the <a href="#pagination">Pagination section</a>.</p>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:read</code>.</p>
+<p>Requires <code>scim:read</code> scope.</p>
 <pre><code>GET https://wlcg.cloud.cnaf.infn.it/scim/Groups/b86a9e99-9f0e-478f-999c-2046c764aa14/members?count=5
 </code></pre>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
@@ -1192,7 +1192,7 @@ parameters, see the <a href="#pagination">Pagination section</a>.</p>
 <p>Returns a paginated list of groups, ordered by name, which are direct sub-groups of the group
 identified by <code>id</code>. To know about more about pagination parameters, see the
 <a href="#pagination">Pagination section</a>.</p>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:read</code>.</p>
+<p>Requires <code>scim:read</code> scope.</p>
 <pre><code>GET https://wlcg.cloud.cnaf.infn.it/scim/Groups/b86a9e99-9f0e-478f-999c-2046c764aa14/subgroups?count=10
 </code></pre>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
@@ -1222,7 +1222,7 @@ identified by <code>id</code>. To know about more about pagination parameters, s
 <span style="color:#000;font-weight:bold">}</span>
 </code></pre></div><h2 id="post-scimgroups">POST <code>/scim/Groups</code></h2>
 <p>Creates a new group, using the info specified within the request body, sent as application/json.</p>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:write</code>.</p>
+<p>Requires <code>scim:write</code> scope.</p>
 <pre><code>POST http://localhost:8080/scim/Groups/
 
 {
@@ -1249,7 +1249,7 @@ identified by <code>id</code>. To know about more about pagination parameters, s
 }
 </code></pre>
 <h2 id="get-scimgroups">GET <code>/scim/Groups</code></h2>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:read</code>.</p>
+<p>Requires <code>scim:read</code> scope.</p>
 <p>The pagination seen for users can be applied also to groups:</p>
 <p>Example: retrieve the 22nd group</p>
 <pre><code>GET http://localhost:8080/scim/Groups?startIndex=22&amp;count=1
@@ -1279,7 +1279,7 @@ identified by <code>id</code>. To know about more about pagination parameters, s
 }
 </code></pre>
 <h2 id="put-scimgroupsid">PUT <code>/scim/Groups/{id}</code></h2>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:write</code>.</p>
+<p>Requires <code>scim:write</code> scope.</p>
 <p>PUT performs a full update. Clients should retrieve the entire resource and
 then PUT the desired modifications as the operation overwrites all previously
 stored data. A successful PUT operation returns a 200 OK response code and the
@@ -1309,7 +1309,7 @@ entire resource within the response body.</p>
 }
 </code></pre>
 <h2 id="patch-scimgroupsid">PATCH <code>/scim/Groups/{id}</code></h2>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:write</code>.</p>
+<p>Requires <code>scim:write</code> scope.</p>
 <p>The following example shows how to add member to a group:</p>
 <pre><code>PATCH http://localhost:8080/scim/Groups/4ca7fa98-0875-4eb3-a71f-0f88ce5632cf
 {
@@ -1332,7 +1332,7 @@ entire resource within the response body.</p>
 }
 </code></pre>
 <h2 id="delete-scimgroupsid">DELETE <code>/scim/Groups/{id}</code></h2>
-<p>Requires <code>ROLE_ADMIN</code> or scope <code>scim:write</code>.</p>
+<p>Requires <code>scim:write</code> scope.</p>
 <p>Clients request group removal via DELETE.</p>
 <pre><code>DELETE /scim/Groups/5bae2407-08e3-4171-b180-4b4a0196e7b6
 

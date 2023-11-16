@@ -124,7 +124,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.3/offline-search-index.224ee5109fe66467a7a37d7c82ae09e3.json"
+  data-offline-search-index-json-src="/v/v1.8.3/offline-search-index.c15513628c235b0c5402f47f34acad11.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -156,7 +156,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v/v1.8.3/offline-search-index.224ee5109fe66467a7a37d7c82ae09e3.json"
+  data-offline-search-index-json-src="/v/v1.8.3/offline-search-index.c15513628c235b0c5402f47f34acad11.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -2005,9 +2005,8 @@
 	
 	<p>The IAM server has a RESTful API used to list and revoke active access and
 refresh tokens.</p>
-<p>Access to the API is limited to users with administrator privileges (either
-authenticated via a web session or through OAuth). If using OAuth,
-be sure that the access token is obtained with an authorization code/device flow.<br>
+<p>Access to the API is limited to users with administrator privileges authenticated via a web session or
+to access token containing predefined restricted System Scopes.<br>
 All examples assume authorization via OAuth2 bearer token; e.g.</p>
 <pre><code>GET /iam/api/access-tokens/13 HTTP/1.1
 Host: example.com
@@ -2019,15 +2018,21 @@ Authorization: Bearer h480djs93hd8
 <li><a href="#get-iamapiaccess-tokensid">GET /iam/api/access-tokens/:id</a></li>
 <li><a href="#get-iamapirefresh-tokens">GET /iam/api/refresh-tokens</a></li>
 <li><a href="#get-iamapirefresh-tokensid">GET /iam/api/refresh-tokens/:id</a></li>
+<li><a href="#delete-iamapiaccess-tokensid">DELETE /iam/api/access-tokens/:id</a></li>
+<li><a href="#delete-iamapirefresh-tokensid">DELETE /iam/api/refresh-tokens/:id</a></li>
 </ul>
 <p><strong>Deleting tokens</strong>:</p>
 <ul>
+<li><a href="#get-iamapiaccess-tokens">GET /iam/api/access-tokens</a></li>
+<li><a href="#get-iamapiaccess-tokensid">GET /iam/api/access-tokens/:id</a></li>
+<li><a href="#get-iamapirefresh-tokens">GET /iam/api/refresh-tokens</a></li>
+<li><a href="#get-iamapirefresh-tokensid">GET /iam/api/refresh-tokens/:id</a></li>
 <li><a href="#delete-iamapiaccess-tokensid">DELETE /iam/api/access-tokens/:id</a></li>
 <li><a href="#delete-iamapirefresh-tokensid">DELETE /iam/api/refresh-tokens/:id</a></li>
 </ul>
 <h2 id="get-iamapiaccess-tokens">GET /iam/api/access-tokens</h2>
 <p>Retrieves the paginated list of all the active access tokens. Returns results in <em>application/json</em>.</p>
-<p>Requires <strong>ROLE_ADMIN</strong>.</p>
+<p>Requires <code>iam:admin.read</code> scope.</p>
 <p>Parameters:</p>
 <table>
 <thead>
@@ -2095,7 +2100,7 @@ Authorization: Bearer h480djs93hd8
 <span style="color:#000;font-weight:bold">}</span>
 </code></pre></div><h2 id="get-iamapiaccess-tokensid">GET /iam/api/access-tokens/:id</h2>
 <p>Retrieves all the information about the access token identified by <strong>id</strong> and returns results in <em>application/json</em>.</p>
-<p>Requires <strong>ROLE_ADMIN</strong>.</p>
+<p>Requires <code>iam:admin.read</code> scope.</p>
 <pre><code>GET http://example.com:8080/iam/api/access-tokens/6
 </code></pre><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
   <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">6</span><span style="color:#000;font-weight:bold">,</span>
@@ -2128,7 +2133,7 @@ Authorization: Bearer h480djs93hd8
 <span style="color:#000;font-weight:bold">}</span>
 </code></pre></div><h2 id="get-iamapirefresh-tokens">GET /iam/api/refresh-tokens</h2>
 <p>Retrieves the paginated list of all the active refresh tokens. Returns results in <em>application/json</em>.</p>
-<p>Requires <strong>ROLE_ADMIN</strong>.</p>
+<p>Requires <code>iam:admin.read</code> scope.</p>
 <p>Parameters:</p>
 <table>
 <thead>
@@ -2192,7 +2197,7 @@ Authorization: Bearer h480djs93hd8
 <span style="color:#000;font-weight:bold">}</span>
 </code></pre></div><h2 id="get-iamapirefresh-tokensid">GET /iam/api/refresh-tokens/:id</h2>
 <p>Retrieves all the information about the refresh token identified by <strong>id</strong> and returns results in <em>application/json</em>.</p>
-<p>Requires <strong>ROLE_ADMIN</strong>.</p>
+<p>Requires <code>iam:admin.read</code> scope.</p>
 <pre><code>GET http://example.com:8080/iam/api/refresh-tokens/1083
 </code></pre><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
   <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1083</span><span style="color:#000;font-weight:bold">,</span>
@@ -2221,16 +2226,15 @@ Authorization: Bearer h480djs93hd8
 <span style="color:#000;font-weight:bold">}</span>
 </code></pre></div><h2 id="delete-iamapiaccess-tokensid">DELETE /iam/api/access-tokens/:id</h2>
 <p>Revoke the access token identified by <strong>id</strong>.</p>
-<p>Requires <strong>ROLE_ADMIN</strong>.</p>
+<p>Requires <code>iam:admin.write</code> scope.</p>
 <pre><code>DELETE http://example.com:8080/iam/api/access-tokens/6
 </code></pre><pre><code>204  AccessToken revoked
 </code></pre><h2 id="delete-iamapirefresh-tokensid">DELETE /iam/api/refresh-tokens/:id</h2>
 <p>Revoke the access token identified by <strong>id</strong>.</p>
-<p>Requires <strong>ROLE_ADMIN</strong>.</p>
+<p>Requires <code>iam:admin.write</code> scope.</p>
 <pre><code>DELETE http://example.com:8080/iam/api/refresh-tokens/1083
 </code></pre><pre><code>204  RefreshToken revoked
-</code></pre><p>More details can be read at the <a href="tokens_api/index.html">complete API Reference</a>.</p>
-
+</code></pre>
         <div class="section-index">
     
     
@@ -2382,7 +2386,7 @@ Authorization: Bearer h480djs93hd8
 
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified March 31, 2022: <a  href="https://github.com/indigo-iam/iam-website/commit/81165d78f836831f6befc7902b63d5ad3afce457">Fix filter name of the Token management API (81165d7)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified June 22, 2023: <a  href="https://github.com/indigo-iam/iam-website/commit/c94a2b29362ffcd56eeb15929daa6decf88866a9">Update access to IAM APIs (#79) (c94a2b2)</a>
 </div>
 </div>
 
