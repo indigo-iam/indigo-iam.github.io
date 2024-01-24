@@ -1,0 +1,1232 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" type="text/html" href="/v/v1.8.4/docs/tasks/user/">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/v/v1.8.4/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/v/v1.8.4/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/v/v1.8.4/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/v/v1.8.4/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/v/v1.8.4/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/v/v1.8.4/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/v/v1.8.4/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/v/v1.8.4/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/v/v1.8.4/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/v/v1.8.4/favicons/android-192x192.png" sizes="192x192">
+
+<title>User | INDIGO IAM</title>
+<meta name="description" content="Common user tasks
+">
+<meta property="og:title" content="User" />
+<meta property="og:description" content="Common user tasks
+" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/v/v1.8.4/docs/tasks/user/" />
+
+<meta itemprop="name" content="User">
+<meta itemprop="description" content="Common user tasks
+"><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="User"/>
+<meta name="twitter:description" content="Common user tasks
+"/>
+
+
+
+
+<link rel="preload" href="/v/v1.8.4/scss/main.min.e9f00d658600a3771563e0817cd4c2207faaa30acef603b6df2b83a656edb364.css" as="style">
+<link href="/v/v1.8.4/scss/main.min.e9f00d658600a3771563e0817cd4c2207faaa30acef603b6df2b83a656edb364.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.6.3.min.js"
+  integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section">
+    <header>
+      <nav class="td-navbar navbar-dark js-navbar-scroll">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/v/v1.8.4/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">INDIGO IAM</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="/v/v1.8.4/docs/"><span>Documentation</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/v/v1.8.4/blog/"><span>Blog</span></a>
+      </li>
+      <li class="nav-item dropdown d-none d-lg-block">
+        <div class="dropdown">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Releases</a>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/current">v1.8.4</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.3">v1.8.3</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.2">v1.8.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.1">v1.8.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.0">v1.8.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.2">v1.7.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.1">v1.7.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.0">v1.7.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/docs/v/current/">older releases</a></li>
+    </ul>
+</div></li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/v/v1.8.4/offline-search-index.9bbb9bfe83f2534d2df2e05cc2cdeea2.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/v/v1.8.4/docs/tasks/user/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">User</h1>
+<div class="lead">Common user tasks</div>
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>1: <a href="#pg-fc4a8820c0610ad9186b42bb179cd4bf">Joining an IAM-managed organization</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>2: <a href="#pg-afefc91265853008615d0ff910cb6bb9">Obtaining an IAM access token from a CLI</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>3: <a href="#pg-9a8717b724b3cc965f31246cbdd60946">Registering a client</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>4: <a href="#pg-5f7a8f5e4030289ede0cce345878ff5f">Change account information</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>5: <a href="#pg-9425af354278fe0b0806e2532bbb465a">Changing the account password</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>6: <a href="#pg-606d8ee94cbe5ccb53556270df85092f">JWT client authentication</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>7: <a href="#pg-e361335b1cc62574d28cc081294326a2">Linking an external account</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>8: <a href="#pg-93f6e460a9484b5a1f15cf389f229f2c">Linking an X.509 certificate</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>9: <a href="#pg-725f368abb7a0345d6635f33b8848b53">Managing active tokens</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>10: <a href="#pg-56a163f5aefc17b464cd248874936cf9">Managing approved sites</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>11: <a href="#pg-c0adc169e351e3ffdad1a9ceff1b6c19">Managing SSH keys</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>12: <a href="#pg-b4fb7a916a4b238a27bb4f7882cb6eb6">Reset an account password</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+
+    </ul>
+
+
+<div class="content">
+      
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="">
+    
+	<h1 id="pg-fc4a8820c0610ad9186b42bb179cd4bf">1 - Joining an IAM-managed organization</h1>
+    
+	<p>IAM provides a registration service that allows to have managed enrollment for
+the organization under control. This mean that access to the organization is
+only granted after explicit approval by a IAM administrator for the
+organization.</p>
+<h2 id="submitting-a-registration-request">Submitting a registration request</h2>
+<p>Users can submit a registration request from the IAM login page in two ways:</p>
+<ul>
+<li>By clicking the <em>Register a new account</em> button:</li>
+</ul>
+<p><img src="../images/IAM-registration-1.png" alt="INDIGO IAM Registration button"></p>
+<ul>
+<li>By attempting a login with an external authentication provider such as Google
+or a configured SAML IdP: in this case if the external authentication
+succeeds and the authenticated user is not registered in the IAM the user is
+taken to the registration form to confirm the registration requests.</li>
+</ul>
+<p><img src="../images/IAM-registration-2.png" alt="INDIGO IAM Registration form"></p>
+<p>All the fields in the registration form are mandatory. The <em>notes</em> field can
+used to include extra information targeted at IAM administrators to clarify the
+reasons behind a registration request.</p>
+<h2 id="confirming-a-registration-request">Confirming a registration request</h2>
+<p>If the submission ends successfully, an email verification link is sent to the
+user email address with a request to confirm his registration request.</p>
+<p><img src="../images/IAM-registration-3.png" alt="INDIGO IAM Registration validation page"></p>
+<p>Once the request is confirmed, IAM administrators are notified with an email.</p>
+<h2 id="choosing-a-password">Choosing a password</h2>
+<p>Once the submitteed request is approved by an IAM administrator, an email is
+sent to the user with a reset password link. This URL points to page where the
+user can choose a password for the IAM account.</p>
+<p><img src="../images/IAM-registration-5.png" alt="INDIGO IAM Registration change password form"></p>
+<p>Once the password is set, users can login to the IAM using the username chosen
+at registration time and the password.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-afefc91265853008615d0ff910cb6bb9">2 - Obtaining an IAM access token from a CLI</h1>
+    
+	<p>A token can be obtained from a command-line interface (CLI) in two ways:</p>
+<ul>
+<li>using <code>oidc-agent</code></li>
+<li>using scripts linked to this page, using the resource-owner password
+credentials flow or the OAuth device flow</li>
+</ul>
+<p>In this section we recommend the installations of a set of tools that can help
+in managing tokens.</p>
+<h2 id="obtaining-a-token-using-oidc-agent">Obtaining a token using <code>oidc-agent</code></h2>
+<p><a href="https://github.com/indigo-dc/oidc-agent">oidc-agent</a> is a useful tool to easily get and manage access
+tokens for command-line applications.</p>
+<h3 id="installing-oidc-agent">Installing oidc-agent</h3>
+<p>See <a href="https://indigo-dc.gitbook.io/oidc-agent/installation/install">oidc-agent installation
+instructions</a>.</p>
+<h4 id="quick-centos7-installation-instructions">Quick CENTOS7 installation instructions</h4>
+<p>This recipe shows how to quickly install <code>oidc-agent</code> on CENTOS 7.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ yum -y install epel-release
+</span></span><span style="display:flex;"><span>$ yum -y install https://github.com/indigo-dc/oidc-agent/releases/download/v3.3.1/oidc-agent-3.3.1-1.el7.x86_64.rpm
+</span></span></code></pre></div><h3 id="bootstrapping-oidc-agent">Bootstrapping oidc-agent</h3>
+<p>The first thing to do is to start <code>oidc-agent</code>.
+This can be done issuing the following command:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ <span style="color:#204a87">eval</span> <span style="color:#204a87;font-weight:bold">$(</span>oidc-agent<span style="color:#204a87;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>Agent pid <span style="color:#0000cf;font-weight:bold">62088</span>
+</span></span></code></pre></div><h3 id="registering-a-client">Registering a client</h3>
+<p>In order to obtain a token out of IAM, a user needs a client registered.
+<code>oidc-agent</code> can automate this step and store client credentials securely
+on the user machine. This is a one-time operation, you do not need a new
+client every time you need a token.</p>
+<p>A new client can be registered using the <code>oidc-gen</code> command, as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ oidc-gen -w device wlcg
+</span></span></code></pre></div><p>The <code>-w device</code> instructs <code>oidc-agent</code> to use the device code flow for the
+authentication, which is the recommended way with IAM.</p>
+<p>oidc-agent will display a list of different providers that can be used for
+registration:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">[</span>1<span style="color:#ce5c00;font-weight:bold">]</span> https://wlcg.cloud.cnaf.infn.it/
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">[</span>2<span style="color:#ce5c00;font-weight:bold">]</span> https://iam-test.indigo-datacloud.eu/
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">[</span>20<span style="color:#ce5c00;font-weight:bold">]</span> https://oidc.scc.kit.edu/auth/realms/kit/
+</span></span></code></pre></div><p>Select one of the registered providers, or type a custom issuer (for IAM, the
+last character of the issuer string is always a <code>/</code>, e.g.
+<code>https://wlcg.cloud.cnaf.infn.it/</code>).</p>
+<p>Then oidc-agent asks for the scopes, typing <code>max</code> (without quotes) allows to
+get all the allowed scopes.</p>
+<p>oidc-agent will register a new client and store the client credentials and a
+refresh token locally in encrypted form (the agent will ask for a password from
+the user).</p>
+<p>As mentioned, <code>oidc-gen</code> is meant to be used only once, when you need a client registered.</p>
+<h3 id="managing-oidc-agent-account-configurations">Managing oidc-agent account configurations</h3>
+<p>To see the list of locally configured accounts use the following command:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; oidc-add -l
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>The following account configurations are usable:
+</span></span><span style="display:flex;"><span>DEEP-ac
+</span></span><span style="display:flex;"><span>XDC
+</span></span><span style="display:flex;"><span>atlas
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>cms-voms-importer
+</span></span><span style="display:flex;"><span>escape
+</span></span><span style="display:flex;"><span>escape-monitoring
+</span></span><span style="display:flex;"><span>iam-test
+</span></span><span style="display:flex;"><span>infn-cloud
+</span></span><span style="display:flex;"><span>wlcg
+</span></span></code></pre></div><p>You can then load an account in the agent again with the oidc-add command, as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oidc-add wlcg
+</span></span></code></pre></div><p>Once you&rsquo;ve loaded the account, you can use <code>oidc-token</code> to get tokens for that account.</p>
+<h3 id="getting-tokens-with-oidc-token">Getting tokens with <code>oidc-token</code></h3>
+<p>Tokens can be obtained using the <code>oidc-token</code> command, as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oidc-token wlcg
+</span></span></code></pre></div><p>This will request a token with all the scopes requested at client registration
+time. To limit the scopes included in the token, the <code>-s</code> flag can be used, as
+follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oidc-token -s storage.read:/ wlcg
+</span></span></code></pre></div><p>The token audience can be limited using the <code>--aud</code> flag,</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oidc-token --aud example.audience -s storage.read:/ wlcg
+</span></span></code></pre></div><h3 id="accessing-oidc-agent-client-configuration">Accessing oidc-agent client configuration</h3>
+<p>Often is useful to get details about the client configuration generated
+by oidc-agent. This can be done with the <code>oidc-gen -p</code> command, that is
+used to print a client configuration, as in the following example:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>❯ oidc-gen -p wlcg
+</span></span><span style="display:flex;"><span>Enter decryption password <span style="color:#204a87;font-weight:bold">for</span> account config <span style="color:#4e9a06">&#39;wlcg&#39;</span>:******
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;name&#34;</span>:	<span style="color:#4e9a06">&#34;wlcg&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;client_name&#34;</span>:	<span style="color:#4e9a06">&#34;oidc-agent:wlcg&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;issuer_url&#34;</span>:	<span style="color:#4e9a06">&#34;https://wlcg.cloud.cnaf.infn.it/&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;device_authorization_endpoint&#34;</span>:	<span style="color:#4e9a06">&#34;https://wlcg.cloud.cnaf.infn.it/devicecode&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;daeSetByUser&#34;</span>:	0,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;client_id&#34;</span>:	<span style="color:#4e9a06">&#34;*****&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;client_secret&#34;</span>:	<span style="color:#4e9a06">&#34;*****&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;refresh_token&#34;</span>:	<span style="color:#4e9a06">&#34;****.*****.&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;cert_path&#34;</span>:	<span style="color:#4e9a06">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;scope&#34;</span>:	<span style="color:#4e9a06">&#34;storage.create:/ openid offline_access storage.read:/ eduperson_scoped_affiliation storage.modify:/ wlcg wlcg.groups eduperson_entitlement&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;audience&#34;</span>:	<span style="color:#4e9a06">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;redirect_uris&#34;</span>:	<span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#4e9a06">&#34;edu.kit.data.oidc-agent:/redirect&#34;</span>, <span style="color:#4e9a06">&#34;http://localhost:8080&#34;</span>, <span style="color:#4e9a06">&#34;http://localhost:47947&#34;</span>, <span style="color:#4e9a06">&#34;http://localhost:4242&#34;</span><span style="color:#ce5c00;font-weight:bold">]</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;username&#34;</span>:	<span style="color:#4e9a06">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;password&#34;</span>:	<span style="color:#4e9a06">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;client_id_issued_at&#34;</span>:	1600444894,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;registration_access_token&#34;</span>:	<span style="color:#4e9a06">&#34;****&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;registration_client_uri&#34;</span>:	<span style="color:#4e9a06">&#34;https://wlcg.cloud.cnaf.infn.it/register/****&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;token_endpoint_auth_method&#34;</span>:	<span style="color:#4e9a06">&#34;client_secret_basic&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;grant_types&#34;</span>:	<span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#4e9a06">&#34;urn:ietf:params:oauth:grant-type:device_code&#34;</span>, <span style="color:#4e9a06">&#34;refresh_token&#34;</span><span style="color:#ce5c00;font-weight:bold">]</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;response_types&#34;</span>:	<span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#4e9a06">&#34;token&#34;</span><span style="color:#ce5c00;font-weight:bold">]</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;application_type&#34;</span>:	<span style="color:#4e9a06">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;cert_path&#34;</span>:	<span style="color:#4e9a06">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;audience&#34;</span>:	<span style="color:#4e9a06">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span></code></pre></div><h2 id="obtaining-a-token-with-the-password-flow">Obtaining a token with the password flow</h2>
+<p>The <a href="https://tools.ietf.org/html/rfc6749#section-4.3">password flow</a> allows a user to get a token from the
+IAM by using the IAM local credentials (i.e. the username/password credentials
+setup at IAM registration time).</p>
+<p>In order to use the password flow, a non-privileged user has to:</p>
+<ol>
+<li>register a client following the instructions given in [the client
+registration][client-registration] section</li>
+<li>Note down the <code>client_id</code> of the generated client and ask an IAM
+administrator to enable the password flow for such client</li>
+<li>Wait until the client as the password flow enabled</li>
+<li>Use a script similar to the one given <a href="https://gist.github.com/andreaceccanti/7d863db5ce3f43c74123a2cea8b8f9ff">here</a> (or write
+your own following the recommendations of the <a href="https://tools.ietf.org/html/rfc6749#section-4.3">RFC</a>) to
+obtain a token out of the IAM</li>
+</ol>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Warning</h4>
+
+    <p>While this approach is viable, it is <strong>deprecated</strong> since:</p>
+<ul>
+<li>it forces the user to request the activation of the password flow for the
+client (it is disabled by default for dynamically registered clients)</li>
+<li>it forces the user to authenticate with the local IAM credentials (external
+authentication mechanisms such as Google or SAML cannot be used)</li>
+<li>it exposes the user credentials to the client application</li>
+</ul>
+<p>The device code flow, described in the next section, does not have these
+limitations and should be preferred over the password flow.</p>
+
+
+</div>
+
+<h2 id="obtaining-a-token-with-the-device-code-flow">Obtaining a token with the device code flow</h2>
+<p>The <a href="https://tools.ietf.org/html/draft-ietf-oauth-device-flow-09">device code flow</a> allows a user to get a token
+from the IAM from a CLI interface while using an external browser for the
+authentication step. This is convenient since:</p>
+<ul>
+<li>it does not require any authorization from administrators (the device code
+flow can be requested by the user at client registration time)</li>
+<li>it allows the user to authenticate with any of the authentication mechanisms
+supported by the IAM</li>
+<li>it <strong>does not</strong> expose the user credentials to the client application</li>
+</ul>
+<p>For nitty and gritty details on how the flow works, see the
+<a href="https://tools.ietf.org/html/draft-ietf-oauth-device-flow-09">RFC</a>.</p>
+<p>After having registered a client with the device flow enabled (see <a href="/v/v1.8.4/docs/tasks/user/client-registration/">client
+registration section</a>), the device code flow can be
+used to obtain a token using a script like the one <a href="https://gist.github.com/andreaceccanti/5b69323b89ce08321e7b5236de503600">here</a>
+which does the following:</p>
+<ul>
+<li>contacts the device flow endpoint to start a device flow authentication and
+authorization</li>
+<li>prints code information on the terminal</li>
+<li>waits for user input to proceed and obtain the token(s)</li>
+</ul>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-9a8717b724b3cc965f31246cbdd60946">3 - Registering a client</h1>
+    
+	<p>IAM exposes the OpenID Connect/OAuth dynamic client registration functionality
+on its own dashboard (it has been migrated by <a href="https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server/wiki">MitreID</a> dashboard).</p>
+<p>In OAuth terminology, a client is an application or service that can interact
+with an authorization server for authentication/authorization purposes.</p>
+<p>A new client can be registered in the IAM in two ways:</p>
+<ul>
+<li>using the <a href="/v/v1.8.4/docs/reference/api/oidc-client-registration/">dynamic client registration API</a>;</li>
+<li>via the IAM dashboard (which simply acts as a client to the API mentioned
+above).</li>
+</ul>
+<h2 id="registering-a-client-using-the-dashboard">Registering a client using the dashboard</h2>
+<p>Log into the service and click on the <em>My Clients</em> link on the left
+navigation bar:</p>
+<p><img src="../images/my_client-dashboard.png" alt="dashboard"></p>
+<p>From the <em>My client</em> link, select <em>New client</em>:</p>
+<p><img src="../images/new-client-reg-0.png" alt="client reg"></p>
+<p>A form will open that enable you to configure your client:</p>
+<p><img src="../images/new-client-reg-1.png" alt="client reg"></p>
+<p>The minimum information you have to provide is:</p>
+<ul>
+<li><em>Client name</em>: choose a name for your client</li>
+<li><em>Redirect URI(s)</em>: one or more redirect URIs for your client; these are
+required if you choose to enable the authorization code flow;</li>
+</ul>
+<p><img src="../images/new-client-reg-2.png" alt="client reg"></p>
+<p>Remember to select the <code>offline_access</code> scope from the <strong>Scopes</strong> tab if you
+want to request refresh tokens for the client being created:</p>
+<p><img src="../images/new-client-reg-3.png" alt="client reg"></p>
+<p>You can then click the <strong>Save</strong> button at the bottom of the page:</p>
+<p><img src="../images/new-client-reg-4.png" alt="client reg"></p>
+<p>IAM will then generate client credentials for your client and other information
+that will be displayed as follows:</p>
+<p><img src="../images/new-client-reg-5.png" alt="client reg"></p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-5f7a8f5e4030289ede0cce345878ff5f">4 - Change account information</h1>
+    
+	<p>Once logged in, you can change information in your account (if allowed by the
+IAM configuration) by clicking the &ldquo;Edit Details&rdquo; from your home page:</p>
+<p><img src="../images/change-details.png" alt="Change details"></p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-9425af354278fe0b0806e2532bbb465a">5 - Changing the account password</h1>
+    
+	<p>Once logged in you can change your account password by clicking on the &ldquo;Change
+password&rdquo; button in your home page:</p>
+<p><img src="../images/change-password.png" alt="Change password"></p>
+<p>Note that the &ldquo;Change password&rdquo; functionality is only useful if you remember
+your IAM account password. In case you forgot it, logout from the IAM and
+follow the instructions in the <a href="../reset-password">Reset account password</a>
+section.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-606d8ee94cbe5ccb53556270df85092f">6 - JWT client authentication</h1>
+    
+	<p>IAM supports several methods to authenticate an OAuth2 client to the token endpoint.</p>
+<p>The authentication via JWT assertion is defined in <a href="https://datatracker.ietf.org/doc/html/rfc7523#section-2.2">RFC7523</a>.
+It can be used to request an access token when a client wishes to utilize an
+existing trust relationship, expressed through the semantics of the JWT, without a direct user-approval step at the authorization server.
+Client authentication using a JWT is nothing more than an alternative way for a client to authenticate to the token endpoint
+and must be used in conjunction with some grant type to form a complete and meaningful protocol request,
+for instance the <em>authorization code</em> flow (when a user has to approve the client in order to access to their resources),
+the <em>client credential</em> flow (when a client is acting on its own behalf), etc.</p>
+<h2 id="jwt-assertion-validation">JWT assertion validation</h2>
+<p>The IAM Authorization Server validates the JWT assertion and issues an access token if
+the following conditions are satisfied.</p>
+<p><strong>JWT assertion header</strong></p>
+<ul>
+<li>the &ldquo;alg&rdquo; (algorithm) claim must be present to indicate the algorithm used to sign the token;</li>
+<li>the &ldquo;kid&rdquo; (key ID) claim must be present in the asymmetrically signed assertions to identify the public key.</li>
+</ul>
+<p><strong>JWT assertion body</strong></p>
+<ul>
+<li>the &ldquo;iss&rdquo; (issuer) and &ldquo;sub&rdquo; (subject) claims must be equal to the <code>client_id</code>;</li>
+<li>the &ldquo;aud&rdquo; (audience) claim must be equal to the token endpoint URL;</li>
+<li>the &ldquo;exp&rdquo; (expiration) claim must be present to limit the JWT assertion lifetime;</li>
+<li>the &ldquo;jti&rdquo; (JWT ID) claim must be present and provides a unique identifier for the token.</li>
+</ul>
+<h2 id="client-settings">Client settings</h2>
+<p>You need to configure an OAuth2 client in IAM which is used to issue a JWT assertion and get an access token.</p>
+<p>Follow the instruction on <a href="../client-registration">how to register a new client</a>, or edit an existing client
+(click on the <em>My clients</em> link on the left navigation bar of the IAM dashboard and select the client name).
+From the <em>Credentials</em> tab you can choose the authentication method to the token endpoint:</p>
+<ul>
+<li>client secret with symmetrically signed JWT assertion;</li>
+<li>asymmetrically signed JWT assertion.</li>
+</ul>
+<h3 id="symmetrically-signed-jwt-assertion">Symmetrically signed JWT assertion</h3>
+<p>This authentication mechanism is used when your JWT assertion is signed with a symmetric key.</p>
+<p>To use this mechanism, select <em>Client secret with symmetrically signed JWT assertion</em>;
+the <em>Client secret</em> generated by IAM must be used as symmetric key to sign your JWT assertion.</p>
+<p><img src="../images/jwt-authn-symm.png" alt="Symmetrically signed JWT"></p>
+<p>A symmetrically signed JWT assertion looks like</p>
+<pre tabindex="0"><code>## Header
+{
+  &#34;alg&#34;: &#34;HS256&#34;
+}
+## Payload
+{
+  &#34;sub&#34;: &#34;181f26f9-4562-4919-b718-759241485335&#34;,
+  &#34;aud&#34;: &#34;https://iam.local.io/token&#34;,
+  &#34;nbf&#34;: 1649162752,
+  &#34;iss&#34;: &#34;181f26f9-4562-4919-b718-759241485335&#34;,
+  &#34;exp&#34;: 1651754752,
+  &#34;iat&#34;: 1649162752,
+  &#34;jti&#34;: &#34;120240aa-e389-4a55-8384-f4d7a54c2633&#34;
+}
+</code></pre><h3 id="asymmetrically-signed-jwt-assertion">Asymmetrically signed JWT assertion</h3>
+<p>This authentication mechanism is used when your JWT assertion is signed with a private key.</p>
+<p>To use this mechanism, select <em>Asymmetrically signed JWT assertion</em> and then choose how IAM can get the public
+key used to validate your JWT assertion.
+Into the section <em>Public key set</em> below, choose between:</p>
+<ul>
+<li><em>By URI</em> and provide a valid <em>JSON Web Keyset URI</em> in the corresponding box,</li>
+<li>or <em>By value</em> and provide a <em>JSON Web Keyset value</em> in the corresponding box.</li>
+</ul>
+<p><img src="../images/jwt-authn-asymm.png" alt="Asymmetrically signed JWT by value"></p>
+<p>An asymmetrically signed JWT assertion looks like</p>
+<pre tabindex="0"><code>## Header
+{
+  &#34;alg&#34;: &#34;RS256&#34;,
+  &#34;kid&#34;: &#34;rsa1&#34;
+}
+## Payload
+{
+  &#34;sub&#34;: &#34;bdb6ca15-be9c-470a-81dc-69d30dabb340&#34;,
+  &#34;aud&#34;: &#34;https://iam.local.io/token&#34;,
+  &#34;nbf&#34;: 1649162752,
+  &#34;iss&#34;: &#34;bdb6ca15-be9c-470a-81dc-69d30dabb340&#34;,
+  &#34;exp&#34;: 1651754752,
+  &#34;iat&#34;: 1649162752,
+  &#34;jti&#34;: &#34;f4392c1e-6d6a-423e-8e5e-5d114585f750&#34;
+}
+</code></pre><h2 id="getting-an-access-token">Getting an access token</h2>
+<p>Here is an example of an HTTP POST request to the token endpoint where the client is authenticated
+with JWT assertion and is authorized via the client credential OAuth2 flow.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ curl -d <span style="color:#000">client_assertion</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">${</span><span style="color:#000">JWTA</span><span style="color:#4e9a06">}</span> -d <span style="color:#000">client_assertion_type</span><span style="color:#ce5c00;font-weight:bold">=</span>urn:ietf:params:oauth:client-assertion-type:jwt-bearer -d <span style="color:#000">grant_type</span><span style="color:#ce5c00;font-weight:bold">=</span>client_credentials https://iam.local.io/token <span style="color:#000;font-weight:bold">|</span> jq
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;access_token&#34;</span>: <span style="color:#4e9a06">&#34;eyJraWQiOiJyc2ExIiwiY...&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;token_type&#34;</span>: <span style="color:#4e9a06">&#34;Bearer&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;expires_in&#34;</span>: 3599,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;scope&#34;</span>: <span style="color:#4e9a06">&#34;storage.read:/ storage.create:/ storage.modify:/&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span></code></pre></div><p>If not explicitly requested in the payload, the scopes returned
+in the access token are all the ones registered for your client.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-e361335b1cc62574d28cc081294326a2">7 - Linking an external account</h1>
+    
+	<p>A user can link an external account from the IAM dashboard (i.e., the user must
+be logged in the IAM service). The following sets of screenshots show the
+process followed to link a Google account.</p>
+<p><img src="../images/account-linking-google-1.png" alt="IAM link google account"></p>
+<p>Clicking on the &ldquo;Link Google account&rdquo; opens a confirmation dialog:</p>
+<p><img src="../images/account-linking-google-2.png" alt="IAM link google account"></p>
+<p>When the user clicks on the <strong>Link</strong>, button is redirected to Google for
+authentication:</p>
+<p><img src="../images/account-linking-google-3.png" alt="IAM link google account"></p>
+<p>After a succesfull authentication the user is redirected to the IAM page, and a
+confirmation dialog shows that the account was linked succesfully:
+<img src="../images/account-linking-google-4.png" alt="IAM link google account"></p>
+<p>Now the user can logout from the IAM and login using the <strong>Sign in with
+Google</strong> button.</p>
+<p>A similar process is implemented for SAML external accounts.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-93f6e460a9484b5a1f15cf389f229f2c">8 - Linking an X.509 certificate</h1>
+    
+	<p>IAM provides the ability to link X.509 certificates to a user account. X.509
+account linking works if:</p>
+<ul>
+<li>X.509 certificate authentication is enabled for the IAM instance in use; for
+more information on this see the <a href="/v/v1.8.4/docs/getting-started/nginx/">Getting started guide</a></li>
+<li>The certificate is correctly installed in the browser used to access the IAM;</li>
+<li>The certificate is trusted by the IAM (i.e. is signed by a certificate
+authority known and trusted by the IAM)</li>
+</ul>
+<h2 id="authenticating-with-an-x509-certificate">Authenticating with an X.509 certificate</h2>
+<p>If a certificate is correctly configured in the browser, the browser will show
+a dialog to select whether to authenticate with the certificate or not as in the
+following screenshot:</p>
+<p><img src="../images/account-link-x509-1.png" alt="INDIGO IAM Registration button"></p>
+<p>Note that this happens when enstabilishing the connection to the IAM. If no
+dialog is shown, either:</p>
+<ul>
+<li>there&rsquo;s no certificate in the browser that is trusted by the IAM (either the
+certificate is expired or signed by a CA not trusted by the IAM)</li>
+<li>a certificate was selected automatically by the browser when authenticating
+to the IAM</li>
+</ul>
+<p>In case the certificate used for the authentication is linked to an
+organization account, the IAM login page will display a &ldquo;Sign in with your
+certificate&rdquo; button:</p>
+<p><img src="../images/account-link-x509-5.png" alt="Login page with cert recognized"></p>
+<h2 id="linking-a-certificate">Linking a certificate</h2>
+<p>If a certificate was recognized but is not linked to any membership in the IAM,
+the user will have to authenticate with other credentials (local username &amp;
+password, or external authentication mechanisms (e.g. Google)).</p>
+<p>After having logged in, the user can link a certificate by clickin on the
+<strong>Link Certificate</strong> button:</p>
+<p><img src="../images/account-link-x509-2.png" alt="INDIGO IAM Registration button"></p>
+<p>Note that the <strong>Link certificate</strong> button will be shown in the page <strong>only if a
+valid and trusted certificate was detected by the IAM during the TLS handshake</strong>.</p>
+<p>Clicking the <strong>Link certificate</strong> button opens a dialog that shows information
+about the certificate that should be linked to the account:</p>
+<p><img src="../images/account-link-x509-3.png" alt="INDIGO IAM Registration button"></p>
+<p>If the linking completes succesfully, the linked certificate information will
+be shown in the X.509 certificates panel:</p>
+<p><img src="../images/account-link-x509-4.png" alt="INDIGO IAM Registration button"></p>
+<p>To check that the linking actually works, the user can logout from the IAM and
+login again with the certificate.</p>
+<h2 id="unlinking-a-certificate">Unlinking a certificate</h2>
+<p>A user can unlink a certificate by clicking on the <strong>Unlink</strong> button shown in
+the certificate panel (see the image above).</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-725f368abb7a0345d6635f33b8848b53">9 - Managing active tokens</h1>
+    
+	<p>You can see which access and refresh tokens bound to your identity are
+currently active from the MitreID dashboard following the &ldquo;Manage Active
+Tokens&rdquo; link:</p>
+<p><img src="../images/manage-active-tokens.png" alt="Manage access tokens"></p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-56a163f5aefc17b464cd248874936cf9">10 - Managing approved sites</h1>
+    
+	<p>You can manage approved sites (i.e. sites and services that you approved when
+authenticating at the IAM) from the MitreID dashboard following the &ldquo;Manage Approved Sites&rdquo; link:</p>
+<p><img src="../images/manage-approved-sites.png" alt="Manage approved sites"></p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-c0adc169e351e3ffdad1a9ceff1b6c19">11 - Managing SSH keys</h1>
+    
+	<p>Starting with version <code>v1.7.0</code>, IAM allows users to link SSH public keys to
+their accounts.</p>
+<p>SSH keys are then exposed to relying parties in two ways:</p>
+<ul>
+<li>through the IAM <a href="/v/v1.8.4/docs/reference/api/scim-api/">SCIM APIs</a>;</li>
+<li>as a claim in the OpenID Connect <code>userinfo</code> endpoint response, if the token
+has the <code>ssh-keys</code> scope.</li>
+</ul>
+<h2 id="managing-account-ssh-keys">Managing account SSH keys</h2>
+<p>The IAM dashboard allows a user to link one or more SSH keys to their account,
+as shown below:</p>
+<p><img src="../images/ssh-keys-0.png" alt="ssh key management"></p>
+<h2 id="accessing-account-ssh-keys-via-scim-apis">Accessing account SSH keys via SCIM APIs</h2>
+<p>As clarified in the <a href="/v/v1.8.4/docs/reference/api/scim-api/">SCIM APIs documentation</a>, ssh keys are exposed
+in the user information returned to authorized clients, as in the following
+fragment:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;80e5fb8d-b7c8-451a-89ba-346ae278a66f&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a40000">...</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;userName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;test&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;urn:indigo-dc:scim:schemas:IndigoUser&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;sshKeys&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;display&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;my-key&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;primary&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">true</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ssh-rsa AAAAB...&#34;</span><span style="color:#000;font-weight:bold">,</span> 
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;fingerprint&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;M9vqQeuPrPI0wiaT6sftgfxu1/kowbb37fcLU2+R7yk=&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;created&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-08-25T15:18:45.978+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;lastModified&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-08-25T15:18:45.978+02:00&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">],</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><h2 id="accessing-account-ssh-keys-via-the-userinfo-endpoint">Accessing account SSH keys via the userinfo endpoint</h2>
+<p>SSH keys linked to a user account are returned in the userinfo endpoint
+response if the token used to access the endpoint has the <code>ssh-keys</code> scope, as
+in the following example:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#000;font-style:italic">❯ curl -s -L -H &#34;Authorization: Bearer ${AT}&#34; https://iam.local.io/userinfo | jq .
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">{
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">  &#34;sub&#34;: &#34;80e5fb8d-b7c8-451a-89ba-346ae278a66f&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">  &#34;ssh_keys&#34;: [
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">    {
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">      &#34;fingerprint&#34;: &#34;M9vqQeuPrPI0wiaT6sftgfxu1/kowbb37fcLU2+R7yk=&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">      &#34;value&#34;: &#34;ssh-rsa AAAAB3NzaC1yc2E...&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">  ]
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">}
+</span></span></span></code></pre></div><p>Note that the <code>ssh-keys</code> scope is a <strong>restricted</strong> scope, i.e., it can be
+assigned to client registered in IAM only by IAM administrators.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-b4fb7a916a4b238a27bb4f7882cb6eb6">12 - Reset an account password</h1>
+    
+	<p>Users can reset their password from the IAM login page by clicking on the
+<em>Forgot your password?</em> link, which opens a dialog where users can then enter
+their email address, and if the entered email address is linked to a registered
+user a reset password link will be sent to such email address.</p>
+<p><img src="../images/IAM-forgot-password.png" alt="INDIGO IAM Forgot Password submission form"></p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="col-6 col-sm-4 text-xs-center order-sm-2">
+        
+        
+        
+      </div>
+      <div class="col-6 col-sm-4 text-end text-xs-center order-sm-3">
+        
+        
+        
+<ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="GitHub" aria-label="GitHub">
+    <a target="_blank" rel="noopener" href="https://github.com/indigo-iam/iam" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Slack" aria-label="Slack">
+    <a target="_blank" rel="noopener" href="https://indigo-iam.slack.com" aria-label="Slack">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="td-footer__copyright-etc col-12 col-sm-4 text-center py-2 order-sm-2">
+        <span>&copy; 2024 INFN All Rights Reserved</span>
+        
+        
+      </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <script src="/v/v1.8.4/js/main.min.71ce084bcf13abbf1fcd942047313f25a70594ce26ec4a6a93ab9a359a8cbf66.js" integrity="sha256-cc4IS88Tq78fzZQgRzE/JacFlM4m7Epqk6uaNZqMv2Y=" crossorigin="anonymous"></script>
+<script defer src="/v/v1.8.4/js/click-to-copy.min.f724d3de49218995223b7316aa2e53e2b34bf42026bf399ebb21bb02212402d1.js" integrity="sha256-9yTT3kkhiZUiO3MWqi5T4rNL9CAmvzmeuyG7AiEkAtE=" crossorigin="anonymous"></script>
+<script src='/v/v1.8.4/js/tabpane-persist.js'></script>
+
+  </body>
+</html>
