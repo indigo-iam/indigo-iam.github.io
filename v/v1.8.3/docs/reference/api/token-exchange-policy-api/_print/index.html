@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.86.0" /><link rel="canonical" type="text/html" href="/v/v1.8.3/docs/reference/api/token-exchange-policy-api/">
-<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<link rel="canonical" type="text/html" href="/v/v1.8.3/docs/reference/api/token-exchange-policy-api/">
+<meta name="robots" content="noindex, nofollow">
 
 
 <link rel="shortcut icon" href="/v/v1.8.3/favicons/favicon.ico" >
@@ -18,129 +18,85 @@
 <link rel="icon" type="image/png" href="/v/v1.8.3/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/v/v1.8.3/favicons/android-192x192.png" sizes="192x192">
 
-<title>Token exchange policy API | INDIGO IAM</title><meta property="og:title" content="Token exchange policy API" />
+<title>Token exchange policy API | INDIGO IAM</title>
+<meta name="description" content="The INDIGO Identity and Access Management (IAM) Service">
+<meta property="og:title" content="Token exchange policy API" />
 <meta property="og:description" content="The INDIGO Identity and Access Management (IAM) Service" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="/v/v1.8.3/docs/reference/api/token-exchange-policy-api/" /><meta property="og:site_name" content="INDIGO IAM" />
+<meta property="og:url" content="/v/v1.8.3/docs/reference/api/token-exchange-policy-api/" />
 
 <meta itemprop="name" content="Token exchange policy API">
-<meta itemprop="description" content="The INDIGO Identity and Access Management (IAM) Service"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Token exchange policy API"/>
+<meta itemprop="description" content="The INDIGO Identity and Access Management (IAM) Service"><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Token exchange policy API"/>
 <meta name="twitter:description" content="The INDIGO Identity and Access Management (IAM) Service"/>
 
 
 
 
-
-
-
-<link rel="preload" href="/v/v1.8.3/scss/main.min.8c56a5db29a8a7bfd7c31c587d450fd15c23c45c8cd6e72142c8ed5b2ef43bd5.css" as="style">
-<link href="/v/v1.8.3/scss/main.min.8c56a5db29a8a7bfd7c31c587d450fd15c23c45c8cd6e72142c8ed5b2ef43bd5.css" rel="stylesheet" integrity="">
-
+<link rel="preload" href="/v/v1.8.3/scss/main.min.e9f00d658600a3771563e0817cd4c2207faaa30acef603b6df2b83a656edb364.css" as="style">
+<link href="/v/v1.8.3/scss/main.min.e9f00d658600a3771563e0817cd4c2207faaa30acef603b6df2b83a656edb364.css" rel="stylesheet" integrity="">
 
 <script
-  src="https://code.jquery.com/jquery-3.5.1.min.js"
-  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  src="https://code.jquery.com/jquery-3.6.3.min.js"
+  integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
   crossorigin="anonymous"></script>
-
-<script
-  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
-  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
   crossorigin="anonymous"></script>
-
-
-
 
   </head>
   <body class="td-section">
     <header>
-      
-<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
-        <a class="navbar-brand" href="/v/v1.8.3/">
-		<span class="navbar-logo"></span><span class="text-uppercase font-weight-bold">INDIGO IAM</span>
-	</a>
-	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
-		<ul class="navbar-nav mt-2 mt-lg-0">
-			
-			
-			<li class="nav-item mr-4 mb-2 mb-lg-0">
-				
-				
-				
-				
-				
-				
-				<a  class="nav-link active" href="/v/v1.8.3/docs/" ><span class="active">Documentation</span></a>
-			</li>
-			
-			<li class="nav-item mr-4 mb-2 mb-lg-0">
-				
-				
-				
-				
-				
-				
-				<a  class="nav-link" href="/v/v1.8.3/blog/" ><span>Blog</span></a>
-			</li>
-			
-			
-			<li class="nav-item dropdown d-none d-lg-block">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	Releases
-</a>
-<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-	
-	<a class="dropdown-item" href="https://indigo-iam.github.io/v/current">v1.8.3</a>
-	
-	<a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.2">v1.8.2</a>
-	
-	<a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.1">v1.8.1</a>
-	
-	<a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.0">v1.8.0</a>
-	
-	<a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.2">v1.7.2</a>
-	
-	<a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.1">v1.7.1</a>
-	
-	<a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.0">v1.7.0</a>
-	
-	<a class="dropdown-item" href="https://indigo-iam.github.io/docs/v/current/">older releases</a>
-	
+      <nav class="td-navbar navbar-dark js-navbar-scroll">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/v/v1.8.3/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">INDIGO IAM</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="/v/v1.8.3/docs/"><span>Documentation</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/v/v1.8.3/blog/"><span>Blog</span></a>
+      </li>
+      <li class="nav-item dropdown d-none d-lg-block">
+        <div class="dropdown">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Releases</a>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/current">v1.8.3</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.2">v1.8.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.1">v1.8.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.0">v1.8.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.2">v1.7.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.1">v1.7.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.0">v1.7.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/docs/v/current/">older releases</a></li>
+    </ul>
+</div></li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/v/v1.8.3/offline-search-index.e860e1e15406a3fd5187f830d50f64f1.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
 </div>
-
-			</li>
-			
-			
-		</ul>
-	</div>
-	<div class="navbar-nav d-none d-lg-block">
-
-
-
-<input
-  type="search"
-  class="form-control td-search-input"
-  placeholder="&#xf002; Search this site…"
-  aria-label="Search this site…"
-  autocomplete="off"
-  
-  data-offline-search-index-json-src="/v/v1.8.3/offline-search-index.c15513628c235b0c5402f47f34acad11.json"
-  data-offline-search-base-href="/"
-  data-offline-search-max-results="10"
->
-
+  </div>
 </div>
 </nav>
-
     </header>
     <div class="container-fluid td-outer">
       <div class="td-main">
         <div class="row flex-xl-nowrap">
-          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
-          </div>
-          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
-          </div>
-          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
             
 
 
@@ -149,7 +105,7 @@
 <div class="td-content">
 <div class="pageinfo pageinfo-primary d-print-none">
 <p>
-This the multi-page printable view of this section.
+This is the multi-page printable view of this section.
 <a href="#" onclick="print();return false;">Click here to print</a>.
 </p><p>
 <a href="/v/v1.8.3/docs/reference/api/token-exchange-policy-api/">Return to the regular view of this page</a>.
@@ -185,20 +141,20 @@ control:</p>
 </ul>
 <h2 id="token-exchange-policies">Token exchange policies</h2>
 <p>By default IAM comes with a permissive default token exchange policy:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
-    <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span>
-    <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Allow all exchanges&#34;</span><span style="color:#000;font-weight:bold">,</span>
-    <span style="color:#204a87;font-weight:bold">&#34;creationTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-08-05T14:38:52.000+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
-    <span style="color:#204a87;font-weight:bold">&#34;lastUpdateTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-08-05T14:38:52.000+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
-    <span style="color:#204a87;font-weight:bold">&#34;rule&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PERMIT&#34;</span><span style="color:#000;font-weight:bold">,</span>
-    <span style="color:#204a87;font-weight:bold">&#34;originClient&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
-      <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ANY&#34;</span>
-    <span style="color:#000;font-weight:bold">},</span>
-    <span style="color:#204a87;font-weight:bold">&#34;destinationClient&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
-      <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ANY&#34;</span>
-    <span style="color:#000;font-weight:bold">}</span>
-<span style="color:#000;font-weight:bold">}</span>
-</code></pre></div><p>The policy above will allow exchanges among all clients that have the token
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Allow all exchanges&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;creationTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-08-05T14:38:52.000+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;lastUpdateTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-08-05T14:38:52.000+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;rule&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PERMIT&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;originClient&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ANY&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">},</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;destinationClient&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ANY&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><p>The policy above will allow exchanges among all clients that have the token
 exchange grant type enabled.</p>
 <p>As can be seen by the above example a token exchange policy specifies:</p>
 <ul>
@@ -215,33 +171,33 @@ selector will match ANY client.</li>
 all scopes allowed by the origin and destination client configurations could be
 exchanged among the clients.</p>
 <p>Let&rsquo;s see a policy which limits the scopes exchanged:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
-    <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span>
-    <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Allow exchanges for openid and offline_access scopes for client token-exchange-actor&#34;</span><span style="color:#000;font-weight:bold">,</span>
-    <span style="color:#204a87;font-weight:bold">&#34;creationTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-08-05T14:46:58.000+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
-    <span style="color:#204a87;font-weight:bold">&#34;lastUpdateTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-08-05T14:46:58.000+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
-    <span style="color:#204a87;font-weight:bold">&#34;rule&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PERMIT&#34;</span><span style="color:#000;font-weight:bold">,</span>
-    <span style="color:#204a87;font-weight:bold">&#34;originClient&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
-      <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ANY&#34;</span>
-    <span style="color:#000;font-weight:bold">},</span>
-    <span style="color:#204a87;font-weight:bold">&#34;destinationClient&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
-      <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;BY_ID&#34;</span><span style="color:#000;font-weight:bold">,</span>
-      <span style="color:#204a87;font-weight:bold">&#34;matchParam&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;token-exchange-actor&#34;</span>
-    <span style="color:#000;font-weight:bold">},</span>
-    <span style="color:#204a87;font-weight:bold">&#34;scopePolicies&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
-      <span style="color:#000;font-weight:bold">{</span>
-        <span style="color:#204a87;font-weight:bold">&#34;rule&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PERMIT&#34;</span><span style="color:#000;font-weight:bold">,</span>
-        <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;EQ&#34;</span><span style="color:#000;font-weight:bold">,</span>
-        <span style="color:#204a87;font-weight:bold">&#34;matchParam&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;openid&#34;</span>
-      <span style="color:#000;font-weight:bold">},</span>
-      <span style="color:#000;font-weight:bold">{</span>
-        <span style="color:#204a87;font-weight:bold">&#34;rule&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PERMIT&#34;</span><span style="color:#000;font-weight:bold">,</span>
-        <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;EQ&#34;</span><span style="color:#000;font-weight:bold">,</span>
-        <span style="color:#204a87;font-weight:bold">&#34;matchParam&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;offline_access&#34;</span>
-      <span style="color:#000;font-weight:bold">}</span>
-    <span style="color:#000;font-weight:bold">]</span>
-<span style="color:#000;font-weight:bold">}</span>
-</code></pre></div><p>The policy above allows all exchanges for the scopes openid and offline_access
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Allow exchanges for openid and offline_access scopes for client token-exchange-actor&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;creationTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-08-05T14:46:58.000+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;lastUpdateTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-08-05T14:46:58.000+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;rule&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PERMIT&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;originClient&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ANY&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">},</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;destinationClient&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;BY_ID&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;matchParam&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;token-exchange-actor&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">},</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;scopePolicies&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;rule&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PERMIT&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;EQ&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;matchParam&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;openid&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">},</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;rule&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PERMIT&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;EQ&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;matchParam&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;offline_access&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><p>The policy above allows all exchanges for the scopes openid and offline_access
 between any origin client and the <code>token-exchange-actor</code> client. We see a new
 type of client selector, which is used to target the policy to a specific
 client selected by clientId.</p>
@@ -255,17 +211,17 @@ only for the <code>openid</code> and <code>offline_access</code> scopes.</p>
 passed as a parameter</li>
 <li><code>BY_ID</code>: which will a client by clientId</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">  <span style="color:#a40000">...</span>
-    <span style="color:#4e9a06">&#34;originClient&#34;</span><span style="color:#a40000">:</span> <span style="color:#000;font-weight:bold">{</span>
-      <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;BY_ID&#34;</span><span style="color:#000;font-weight:bold">,</span>
-      <span style="color:#204a87;font-weight:bold">&#34;matchParam&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;origin-client&#34;</span>
-    <span style="color:#000;font-weight:bold">}</span><span style="color:#a40000">,</span>
-    <span style="color:#4e9a06">&#34;destinationClient&#34;</span><span style="color:#a40000">:</span> <span style="color:#000;font-weight:bold">{</span>
-      <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;BY_SCOPE&#34;</span><span style="color:#000;font-weight:bold">,</span>
-      <span style="color:#204a87;font-weight:bold">&#34;matchParam&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;storage.write:/&#34;</span>
-    <span style="color:#000;font-weight:bold">}</span><span style="color:#a40000">,</span>
-  <span style="color:#a40000">...</span>
-</code></pre></div><p>For example, the policy fragment above would apply to any token exchange
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>  <span style="color:#a40000">...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;originClient&#34;</span><span style="color:#a40000">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;BY_ID&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;matchParam&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;origin-client&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">}</span><span style="color:#a40000">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;destinationClient&#34;</span><span style="color:#a40000">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;BY_SCOPE&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;matchParam&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;storage.write:/&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">}</span><span style="color:#a40000">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a40000">...</span>
+</span></span></code></pre></div><p>For example, the policy fragment above would apply to any token exchange
 started by a client allowed to request the <code>storage.write:/</code> scope when
 exchanging a token issued to <code>origin-client</code>.</p>
 <h3 id="token-exchange-scope-policies">Token exchange scope policies</h3>
@@ -281,19 +237,19 @@ client configurations are allowed for an exchange.</p>
 <li>a <code>matchParam</code>, which specifies the scope to be matched</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">    <span style="color:#4e9a06">&#34;scopePolicies&#34;</span><span style="color:#a40000">:</span> <span style="color:#000;font-weight:bold">[</span>
-      <span style="color:#000;font-weight:bold">{</span>
-        <span style="color:#204a87;font-weight:bold">&#34;rule&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PERMIT&#34;</span><span style="color:#000;font-weight:bold">,</span>
-        <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;REGEXP&#34;</span><span style="color:#000;font-weight:bold">,</span>
-        <span style="color:#204a87;font-weight:bold">&#34;matchParam&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;compute.*&#34;</span>
-      <span style="color:#000;font-weight:bold">},</span>
-      <span style="color:#000;font-weight:bold">{</span>
-        <span style="color:#204a87;font-weight:bold">&#34;rule&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;DENY&#34;</span><span style="color:#000;font-weight:bold">,</span>
-        <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;REGEXP&#34;</span><span style="color:#000;font-weight:bold">,</span>
-        <span style="color:#204a87;font-weight:bold">&#34;matchParam&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;storage.*&#34;</span>
-      <span style="color:#000;font-weight:bold">}</span>
-    <span style="color:#000;font-weight:bold">]</span>
-</code></pre></div><p>The two scope policies above combined will allow any exchange of scopes that
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;scopePolicies&#34;</span><span style="color:#a40000">:</span> <span style="color:#000;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;rule&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PERMIT&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;REGEXP&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;matchParam&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;compute.*&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">},</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;rule&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;DENY&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;REGEXP&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;matchParam&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;storage.*&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">]</span>
+</span></span></code></pre></div><p>The two scope policies above combined will allow any exchange of scopes that
 would match the regular expression <code>compute.*</code> and will block exchanges of
 scopes matching regular expression <code>storage.*</code>.
 Important scope policy evaulation rules:</p>
@@ -361,52 +317,52 @@ following table:</p>
 </table>
 <p>The rank of a policy <code>P</code> is computed as the sum of rank of the origin and
 destination client selectors:</p>
-<pre><code>rank(P) = rank(origin) + rank(destination)
+<pre tabindex="0"><code>rank(P) = rank(origin) + rank(destination)
 </code></pre><p>At the same rank, DENY policies will win.
 Let&rsquo;s assume we have two exchange policies defined:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">[</span>
-  <span style="color:#000;font-weight:bold">{</span>
-      <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span>
-      <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;All all exchanges just for the openid scope&#34;</span><span style="color:#000;font-weight:bold">,</span>
-      <span style="color:#204a87;font-weight:bold">&#34;creationTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-08-05T14:38:52.000+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
-      <span style="color:#204a87;font-weight:bold">&#34;lastUpdateTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-08-05T14:38:52.000+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
-      <span style="color:#204a87;font-weight:bold">&#34;rule&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PERMIT&#34;</span><span style="color:#000;font-weight:bold">,</span>
-      <span style="color:#204a87;font-weight:bold">&#34;originClient&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
-        <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ANY&#34;</span>
-      <span style="color:#000;font-weight:bold">},</span>
-      <span style="color:#204a87;font-weight:bold">&#34;destinationClient&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
-        <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ANY&#34;</span>
-      <span style="color:#000;font-weight:bold">},</span>
-      <span style="color:#204a87;font-weight:bold">&#34;scopePolicies&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
-        <span style="color:#000;font-weight:bold">{</span>
-          <span style="color:#204a87;font-weight:bold">&#34;rule&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PERMIT&#34;</span><span style="color:#000;font-weight:bold">,</span>
-          <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;EQ&#34;</span><span style="color:#000;font-weight:bold">,</span>
-          <span style="color:#204a87;font-weight:bold">&#34;matchParam&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;openid&#34;</span>
-        <span style="color:#000;font-weight:bold">}</span>
-      <span style="color:#000;font-weight:bold">]</span>
-  <span style="color:#000;font-weight:bold">},</span>
-  <span style="color:#000;font-weight:bold">{</span>
-      <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span>
-      <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Allow any exchange among clients A and B&#34;</span><span style="color:#000;font-weight:bold">,</span>
-      <span style="color:#204a87;font-weight:bold">&#34;creationTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-08-05T14:38:52.000+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
-      <span style="color:#204a87;font-weight:bold">&#34;lastUpdateTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-08-05T14:38:52.000+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
-      <span style="color:#204a87;font-weight:bold">&#34;rule&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PERMIT&#34;</span><span style="color:#000;font-weight:bold">,</span>
-      <span style="color:#204a87;font-weight:bold">&#34;originClient&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
-        <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;BY_ID&#34;</span><span style="color:#000;font-weight:bold">,</span>
-        <span style="color:#204a87;font-weight:bold">&#34;matchParam&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;A&#34;</span>
-      <span style="color:#000;font-weight:bold">},</span>
-      <span style="color:#204a87;font-weight:bold">&#34;destinationClient&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
-        <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;BY_ID&#34;</span><span style="color:#000;font-weight:bold">,</span>
-        <span style="color:#204a87;font-weight:bold">&#34;matchParam&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;B&#34;</span>
-      <span style="color:#000;font-weight:bold">}</span>
-  <span style="color:#000;font-weight:bold">}</span>
-<span style="color:#000;font-weight:bold">]</span>
-</code></pre></div><p>Also let&rsquo;s assume client <code>B</code> requests a token exchange for scopes <code>openid storage.read:/</code> presenting an access token issued to client <code>A</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;All all exchanges just for the openid scope&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;creationTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-08-05T14:38:52.000+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;lastUpdateTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-08-05T14:38:52.000+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;rule&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PERMIT&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;originClient&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ANY&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">},</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;destinationClient&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ANY&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">},</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;scopePolicies&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#204a87;font-weight:bold">&#34;rule&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PERMIT&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;EQ&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#204a87;font-weight:bold">&#34;matchParam&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;openid&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">},</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Allow any exchange among clients A and B&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;creationTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-08-05T14:38:52.000+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;lastUpdateTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-08-05T14:38:52.000+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;rule&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PERMIT&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;originClient&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;BY_ID&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;matchParam&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;A&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">},</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;destinationClient&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;BY_ID&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;matchParam&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;B&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">]</span>
+</span></span></code></pre></div><p>Also let&rsquo;s assume client <code>B</code> requests a token exchange for scopes <code>openid storage.read:/</code> presenting an access token issued to client <code>A</code>.</p>
 <p>IAM would cycle through the exchange policies and select the ones that would
 apply to the exchange, in this case both policy <code>2</code> and <code>3</code>.</p>
 <p>Then IAM would rank the policy according to the specificity of the client
 selectors, which would be</p>
-<pre><code>rank(p_2)=0
+<pre tabindex="0"><code>rank(p_2)=0
 rank(p_3)=4
 </code></pre><p>so policy <code>3</code> would be selected, which would allow the exchange.</p>
 
@@ -429,29 +385,28 @@ rank(p_3)=4
           </main>
         </div>
       </div>
-      
-<footer class="bg-dark py-5 row d-print-none">
-  <div class="container-fluid mx-sm-5">
-    <div class="row">
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
       <div class="col-6 col-sm-4 text-xs-center order-sm-2">
         
         
         
       </div>
-      <div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+      <div class="col-6 col-sm-4 text-end text-xs-center order-sm-3">
         
         
         
-<ul class="list-inline mb-0">
+<ul class="td-footer__links-list">
   
-  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
-    <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://github.com/indigo-iam/iam">
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="GitHub" aria-label="GitHub">
+    <a target="_blank" rel="noopener" href="https://github.com/indigo-iam/iam" aria-label="GitHub">
       <i class="fab fa-github"></i>
     </a>
   </li>
   
-  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
-    <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://indigo-iam.slack.com">
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Slack" aria-label="Slack">
+    <a target="_blank" rel="noopener" href="https://indigo-iam.slack.com" aria-label="Slack">
       <i class="fab fa-slack"></i>
     </a>
   </li>
@@ -461,39 +416,19 @@ rank(p_3)=4
         
         
       </div>
-      <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
-        <small class="text-white">&copy; 2023 INFN All Rights Reserved</small>
+      <div class="td-footer__copyright-etc col-12 col-sm-4 text-center py-2 order-sm-2">
+        <span>&copy; 2024 INFN All Rights Reserved</span>
         
-	
-		
-	
+        
       </div>
     </div>
   </div>
 </footer>
-
-
     </div>
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script src="/v/v1.8.3/js/main.min.63db3e552bd0543be17ce4a79a18b744e9cb72256bec42b540e3ab0cd43722d0.js" integrity="sha256-Y9s&#43;VSvQVDvhfOSnmhi3ROnLciVr7EK1QOOrDNQ3ItA=" crossorigin="anonymous"></script>
-
-
-
+  <script src="/v/v1.8.3/js/main.min.71ce084bcf13abbf1fcd942047313f25a70594ce26ec4a6a93ab9a359a8cbf66.js" integrity="sha256-cc4IS88Tq78fzZQgRzE/JacFlM4m7Epqk6uaNZqMv2Y=" crossorigin="anonymous"></script>
+<script defer src="/v/v1.8.3/js/click-to-copy.min.f724d3de49218995223b7316aa2e53e2b34bf42026bf399ebb21bb02212402d1.js" integrity="sha256-9yTT3kkhiZUiO3MWqi5T4rNL9CAmvzmeuyG7AiEkAtE=" crossorigin="anonymous"></script>
+<script src='/v/v1.8.3/js/tabpane-persist.js'></script>
 
   </body>
 </html>
