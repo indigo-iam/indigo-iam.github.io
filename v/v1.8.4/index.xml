@@ -14,6 +14,23 @@
     
     
     <item>
+      <title>Blog: IAM v1.8.4</title>
+      <link>/v/v1.8.4/blog/2024/03/25/iam-v1.8.4/</link>
+      <pubDate>Mon, 25 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/v/v1.8.4/blog/2024/03/25/iam-v1.8.4/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The IAM development team is pleased to announce the release of INDIGO IAM v1.8.4.&lt;/p&gt;
+&lt;p&gt;This release is mainly focused on the limitation of the client_credentials grant type, which can be set only by registered IAM users (admins or normal users) in a Client registration/update request.&lt;/p&gt;
+&lt;p&gt;This release also provides bug fixes and enhancements, as can be seen in the &lt;a href=&#34;https://github.com/indigo-iam/iam/releases/tag/v1.8.4&#34;&gt;release notes&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As usual, the IAM docker image can be obtained from &lt;a href=&#34;https://hub.docker.com/r/indigoiam/iam-login-service/tags&#34;&gt;DockerHub&lt;/a&gt;.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Blog: IAM v1.8.3</title>
       <link>/v/v1.8.4/blog/2023/10/30/iam-v1.8.3/</link>
       <pubDate>Mon, 30 Oct 2023 00:00:00 +0000</pubDate>
