@@ -89,7 +89,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.8.4/offline-search-index.0c80e93f690558c038c1c2ec4a72643b.json"
+    data-offline-search-index-json-src="/v/v1.8.4/offline-search-index.92c56f58094469182a6d275b4a8ee2ce.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -147,20 +147,20 @@ This is the multi-page printable view of this section.
 and other attributes in a standard VOMS attribute certificate. This means in
 practice that IAM can act both as an OAuth/OpenID Connect authorization server
 and as a VOMS server for a given organization. TLS termination and client VOMS
-atttribute certificate parsing and validation is delegated to <a href="https://github.com/indigo-iam/openresty-voms">OpenResty
-VOMS</a>, which can de deployed as a sidecar service that just protects the
+atttribute certificate parsing and validation is delegated to an <a href="https://baltig.infn.it/cnafsd/ngx_http_voms_module">NGINX VOMS module</a>,
+which can de deployed as a sidecar service that just protects the
 VOMS AA or also in front of the IAM backend application. The two scenarios are
 depicted above.</p>
 <p>In order to deploy a VOMS attribute authority, you can use the following docker
 images:</p>
 <ul>
-<li><code>indigoiam/openresty-voms</code>, for the OpenResty VOMS service</li>
+<li><code>cnafsd/nginx-httpg-voms</code>, for the NGINX VOMS module (which replaces <a href="https://github.com/indigo-iam/openresty-voms">OpenResty VOMS</a>)</li>
 <li><code>indigoiam/voms-aa:v1.8.4</code>, for the VOMS AA service</li>
 </ul>
 <p>Deployment from packages is not currently supported for the VOMS attribute
 authority.</p>
-<h4 id="openresty-voms-configuration">OpenResty VOMS configuration</h4>
-<p>OpenResty VOMS requires:</p>
+<h4 id="nginx-voms-module-configuration">NGINX VOMS module configuration</h4>
+<p>The NGINX VOMS module requires:</p>
 <ul>
 <li>IGTF trust anchors properly configured; see the <a href="https://github.com/indigo-iam/egi-trust-anchors-container/">EGI trust anchors
 container</a> container</li>
@@ -168,7 +168,7 @@ container</a> container</li>
 the VOMS attribute authority X.509 credential</li>
 </ul>
 <h5 id="voms-lsc-configuration">VOMS LSC configuration</h5>
-<p>Let&rsquo;s assume that the IAM VOMS AA will answer on <code>voms.local.io</code> for the VO
+<p>Let&rsquo;s assume that the IAM VOMS AA will answer on <code>voms.test.example</code> for the VO
 <code>example.vo</code>, to generate the LSC you need to get the subject and issuer of the
 VOMS AA X.509 credential and put them in a file named as the fully qualified
 domain name of the VOMS attribute authority with the <code>.lsc</code> extension.</p>
@@ -177,9 +177,9 @@ directory where you have writing privileges):</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#8f5902">&gt;</span> mkdir -p <span style="color:#4e9a06">${</span><span style="color:#000">X509_VOMS_DIR</span><span style="color:#4e9a06">}</span>/example.vo
 </span></span><span style="display:flex;"><span><span style="color:#8f5902">&gt;</span> openssl x509 -in voms_local_io.cert.pem -noout -subject -issuer -nameopt compat <span style="color:#000;font-weight:bold">|</span> <span style="color:#4e9a06">\
 </span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span><span style="color:#000;font-style:italic">  gsed -e &#39;s/^subject=//&#39; -e &#39;s/^issuer=//&#39; &gt; \
-</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">  ${X509_VOMS_DIR}/example.vo/voms.local.io.lsc
-</span></span></span></code></pre></div><p>For an example nginx configuration, see the <a href="https://github.com/indigo-iam/voms-aa/blob/master/compose/assets/openresty-voms/conf.d/voms.local.io.conf">VOMS AA docker compose
-file</a>.</p>
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">  ${X509_VOMS_DIR}/example.vo/voms.test.example.lsc
+</span></span></span></code></pre></div><p>For an example nginx configuration, see the <a href="https://github.com/indigo-iam/iam/blob/master/compose/voms-deploy/assets/nginx/conf.d/voms.test.example.conf">VOMS AA docker compose
+configuration</a>.</p>
 <h4 id="voms-aa-configuration">VOMS AA configuration</h4>
 <p>The VOMS AA is a spring boot application that shares the persistence
 layer implementation with IAM, and as such can inspect the IAM database.</p>
@@ -255,7 +255,7 @@ to explain the meaning of the parameters:</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># &#34;optional group&#34; in IAM via the dedicated button, users belonging to</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># it can request the &#34;pilot&#34; VOMS role.</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">optional-group-label</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">voms.role</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span></code></pre></div><p>For an example configuration, see the <a href="https://github.com/indigo-iam/voms-aa/blob/master/compose/docker-compose.yml">VOMS AA docker compose
+</span></span></span></code></pre></div><p>For an example configuration, see the <a href="https://github.com/indigo-iam/iam/blob/master/compose/voms-deploy/docker-compose.yml">VOMS AA docker compose
 file</a>.</p>
 
 </div>
