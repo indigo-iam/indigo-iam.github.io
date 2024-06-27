@@ -90,7 +90,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.9.0/offline-search-index.4380a77598b7faf357d36be12311d287.json"
+    data-offline-search-index-json-src="/v/v1.9.0/offline-search-index.2fdc77e7b7dcf2f0fcf8aa2199b4bf70.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -4925,6 +4925,10 @@ section</a>.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Should account linking be disabled? When set to true users cannot</span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># link external accounts (Google, SAML) to their local IAM account</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_ACCOUNT_LINKING_DISABLE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">false</span> 
+</span></span></code></pre></div><h2 id="client-lifecycle">Client lifecycle</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Record the last date when each client was used to create or refresh a token</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># This is used to determine which clients are considered active/inactive</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_CLIENT_TRACK_LAST_USED</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">false</span>
 </span></span></code></pre></div><h2 id="privacy-policy-settings">Privacy policy settings</h2>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># An URL pointing to a privacy policy document which applies</span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># to this IAM instance. When left blank, no privacy policy link </span>
