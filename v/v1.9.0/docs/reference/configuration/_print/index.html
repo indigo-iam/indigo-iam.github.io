@@ -90,7 +90,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.9.0/offline-search-index.72c26ba991c6dd84fa6389be7c430bad.json"
+    data-offline-search-index-json-src="/v/v1.9.0/offline-search-index.5a074f1557721844e10233243d38365f.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -1110,9 +1110,9 @@ string is set to <em>true</em> (as in the image above).</p>
     
 	<h1 id="pg-2501923ff9f1258a5dc95b7435579a75">5 - Registration &amp; Enrollment</h1>
     
-	<p>IAM implements a basic registration service that requires the intervention
-of an IAM admin. In when, users apply for membership in an
-organization, and administrators are asked to validate membership requests.</p>
+	<p>IAM implements a basic registration service that implements an
+administrator-vetted registration flow, where users apply for membership in an
+organization and administrators are asked to validate membership requests.</p>
 <h2 id="registration-with-external-idp">Registration with external IdP</h2>
 <p>When an external OIDC or SAML IdP is used to authenticate users, IAM allows to configure:</p>
 <ul>
@@ -1128,8 +1128,8 @@ a volume providing this file must be mapped into the container.</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">registration</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span></code></pre></div><h3 id="requiring-external-authentication">Requiring external authentication</h3>
-<p>To require that users must authenticate through an external IdP, you need to set the
-parameter <code>require-external-authentication=true</code>. You can also specify the type of external
+<p>To require that users must authenticate through an external IdP, you need to define the
+parameter <code>require-external-authentication</code>. You can also specify the type of external
 IdP required (<code>oidc</code> or <code>saml</code>) and require one specific issuer.</p>
 <p>The following fragment requires authentication with the
 (OIDC-based) CERN SSO.</p>
@@ -1163,11 +1163,9 @@ i.e. that the value provided by the IdP cannot be changed.</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">read-only</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">external-auth-attribute</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">preferred_username</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span></code></pre></div><p><code>read-only</code> can be set to <code>true</code> if you want to prevent that the  value provided supplied by the ID is modified by the user.
-<strong>Note that if a field is defined as <code>read-only=true</code> and now value is not provided
-by the IdP, it may result that the user cannot submit the account creation form if the field,
-when it is required.</strong></p>
-<p><code>external-auth-attribue</code> must be the name of the IdP attribute, or token claim (when provided by SAML IdPs,
-or OIDC Providers, respectively) to use for the mentioned account creation form field.</p>
+<strong>Note that if a field is defined as read-only and now value is provided
+by the IdP, it may result that the user cannot submit the account creation form if the field is required.</strong></p>
+<p><code>external-auth-attribue</code> must be the name of the IdP attribute to use for the mentioned account creation form field.</p>
 <h2 id="user-editable-fields">User editable fields</h2>
 <p>Starting with version 1.6.0, IAM allows to limit which fields of the user profile are editable by users.</p>
 <p>The default, backward-compatible settings that allow users to edit all their
@@ -1185,20 +1183,6 @@ profile fields are defined as follows:</p>
 <p>External configuration can be managed by placing directives as shown above in a
 <a href="/v/v1.9.0/docs/reference/configuration/#overriding-default-configuration-templates">custom configuration
 file</a></p>
-<h2 id="automatic-enrollment-trough-saml-idps">Automatic enrollment trough SAML IdPs</h2>
-<p>In case of registration trough an external SAML Identity Provider, IAM offers
-a flexible user enrollment flow, also without IAM admin intervention. The default IAM
-behavior is that the user enrollment requires an administrator approval step.</p>
-<p>In order to enable an automatic enrollment flow trough an external IdP, one
-should set the following properties, under the <code>saml</code> hierarchy:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">saml</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">jit-account-provisioning</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">enabled</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># this will consider as trusted all the IdPs declared in your</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># application-saml.yml file</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">trusted-idps</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">all</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span></code></pre></div><p>In order to directly declare the list of trusted SAML IdPs, a comma separated list of
-entity IDs have to be set, e.g. <code>saml.jit-account-provisioning.trusted-idps=idp1,idp2,idp3</code>.</p>
 
 </div>
 
