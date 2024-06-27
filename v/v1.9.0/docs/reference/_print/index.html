@@ -90,7 +90,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.9.0/offline-search-index.86e724c98c741cc644fd1bb84de8e128.json"
+    data-offline-search-index-json-src="/v/v1.9.0/offline-search-index.360f6af9a3a6a06085ea381db1bcdd20.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -5319,13 +5319,27 @@ string is set to <em>true</em> (as in the image above).</p>
 	<p>IAM implements a basic registration service that implements an
 administrator-vetted registration flow, where users apply for membership in an
 organization and administrators are asked to validate membership requests.</p>
-<h2 id="requiring-external-authentication">Requiring external authentication</h2>
-<p>Starting with version 1.6.0, IAM allows to request that users are authenticated
-from a trusted identity provider (SAML or OIDC) in order to apply for
-membership. It&rsquo;s also possible to control how information in authentication
-tokens and assertions is mapped to IAM registration fields.</p>
-<p>For example, see the following fragment that requires authentication with the
-CERN SSO and defines how information from identity tokens issued by CERN SSO is
+<h2 id="registration-with-external-idp">Registration with external IdP</h2>
+<p>When an external OIDC or SAML IdP is used to authenticate users, IAM allows to configure:</p>
+<ul>
+<li>Whether users are required to authenticate through an external IdP and optionally
+which ones</li>
+<li>Which information must be retrieved from the IdP to fill the account creation form</li>
+</ul>
+<p>This is done by creating a YAML file in <code>/indigo-iam/config</code>, for example
+<code>/indigo-iam/config/application-registration.yaml</code>. When deploying IAM with a container,
+a volume providing this file must be mapped into the container.</p>
+<p>The contents in this file must be under the following hierarchy:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">registration</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><h3 id="requiring-external-authentication">Requiring external authentication</h3>
+<p>To require that users must authenticate through an external IdP, you need to define the
+parameter <code>require-external-authentication</code>. You can also specify the type of external
+IdP required (<code>oidc</code> or <code>saml</code>) and require one specific issuer.</p>
+<p>The following fragment requires authentication with the
+(OIDC-based) CERN SSO.</p>
+<p>and defines how information from identity tokens issued by CERN SSO is
 mapped to IAM membership information</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -5333,20 +5347,32 @@ mapped to IAM membership information</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">require-external-authentication</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">oidc-issuer</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://auth.cern.ch/auth/realms/cern</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">authentication-type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">oidc</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><h3 id="filling-information-from-idp">Filling information from IdP</h3>
+<p>The first time a user authenticates in IAM instance, the account creation form will be displayed. It is possible to request
+that some of the fields are filled with the value of an IdP attribute and to define that some of these fields are read-only,
+i.e. that the value provided by the IdP cannot be changed.</p>
+<p>To enable filling the creation form with values provided by the IdP, you need to create a YAML file in <code>/indigo-iam/config</code>, for example
+<code>/indigo-iam/config/application-registration.yaml</code>. The contents should be something similar to:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">registration</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">fields</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">read-only</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># When false, allows user to override what comes from the authentication information</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">external-auth-attribute</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">given_name</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">surname</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">read-only</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">external-auth-attribute</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">family_name</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">email</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">read-only</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">external-auth-attribute</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">email</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">read-only</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">external-auth-attribute</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">given_name</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">surname</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">read-only</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">external-auth-attribute</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">family_name</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">username</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">read-only</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">external-auth-attribute</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">preferred_username</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span></code></pre></div><h2 id="user-editable-fields">User editable fields</h2>
+</span></span></span></code></pre></div><p><code>read-only</code> can be set to <code>true</code> if you want to prevent that the  value provided supplied by the ID is modified by the user.
+<strong>Note that if a field is defined as read-only and now value is provided
+by the IdP, it may result that the user cannot submit the account creation form if the field is required.</strong></p>
+<p><code>external-auth-attribue</code> must be the name of the IdP attribute to use for the mentioned account creation form field.</p>
+<h2 id="user-editable-fields">User editable fields</h2>
 <p>Starting with version 1.6.0, IAM allows to limit which fields of the user profile are editable by users.</p>
 <p>The default, backward-compatible settings that allow users to edit all their
 profile fields are defined as follows:</p>
@@ -5714,6 +5740,8 @@ the <code>EGI CheckIn</code> provider, with a custom button configuration for th
 provider.</p>
 <p>See the <a href="/v/v1.9.0/docs/reference/configuration/#overriding-default-configuration-templates">configuration reference</a> for instructions on how to override
 the default IAM configuration.</p>
+<h2 id="registration-form-filling-information-from-idp">Registration form: filling information from IdP</h2>
+<p>See <a href="/v/v1.9.0/docs/reference/configuration/registration/#registration-with-external-idp">registration configuration</a></p>
 
 </div>
 
@@ -5940,6 +5968,8 @@ file.</p>
 <code>application-saml.yml</code> file in the IAM configuration directory.</p>
 <p>See the <a href="/v/v1.9.0/docs/reference/configuration/">configuration reference</a> for more SAML metadata options and
 instructions on how to override the default IAM configuration.</p>
+<h2 id="registration-form-filling-information-from-idp">Registration form: filling information from IdP</h2>
+<p>See <a href="/v/v1.9.0/docs/reference/configuration/registration/#registration-with-external-idp">registration configuration</a></p>
 
 </div>
 
