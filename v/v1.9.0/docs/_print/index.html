@@ -86,7 +86,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.9.0/offline-search-index.64e0cd48a6ae9162619fe15e1923cf3c.json"
+    data-offline-search-index-json-src="/v/v1.9.0/offline-search-index.4380a77598b7faf357d36be12311d287.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -6612,8 +6612,8 @@ string is set to <em>true</em> (as in the image above).</p>
 	<h1 id="pg-2501923ff9f1258a5dc95b7435579a75">3.2.5 - Registration &amp; Enrollment</h1>
     
 	<p>IAM implements a basic registration service that requires the intervention
-of an IAM admin. In when, users apply for membership in an
-organization, and administrators are asked to validate membership requests.</p>
+of an IAM admin. In fact, when users apply for membership in an
+organization, administrators are asked to validate membership requests.</p>
 <h2 id="registration-with-external-idp">Registration with external IdP</h2>
 <p>When an external OIDC or SAML IdP is used to authenticate users, IAM allows to configure:</p>
 <ul>
@@ -6631,10 +6631,10 @@ a volume providing this file must be mapped into the container.</p>
 </span></span></span></code></pre></div><h3 id="requiring-external-authentication">Requiring external authentication</h3>
 <p>To require that users must authenticate through an external IdP, you need to set the
 parameter <code>require-external-authentication=true</code>. You can also specify the type of external
-IdP required (<code>oidc</code> or <code>saml</code>) and require one specific issuer.</p>
-<p>The following fragment requires authentication with the
-(OIDC-based) CERN SSO.</p>
-<p>and defines how information from identity tokens issued by CERN SSO is
+IdP (<code>oidc</code> or <code>saml</code>) and require one specific issuer.</p>
+<p>The following fragment is an example of authentication with the
+(OIDC-based) CERN SSO required before being redirected to the registration page.
+It also defines how information from identity tokens issued by CERN SSO is
 mapped to IAM membership information</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -6643,7 +6643,7 @@ mapped to IAM membership information</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">oidc-issuer</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://auth.cern.ch/auth/realms/cern</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">authentication-type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">oidc</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span></code></pre></div><h3 id="filling-information-from-idp">Filling information from IdP</h3>
-<p>The first time a user authenticates in IAM instance, the account creation form will be displayed. It is possible to request
+<p>The first time a user authenticates in an IAM instance, the account creation form will be displayed. It is possible to request
 that some of the fields are filled with the value of an IdP attribute and to define that some of these fields are read-only,
 i.e. that the value provided by the IdP cannot be changed.</p>
 <p>To enable filling the creation form with values provided by the IdP, you need to create a YAML file in <code>/indigo-iam/config</code>, for example
@@ -7052,7 +7052,7 @@ provider.</p>
 <p>See the <a href="/v/v1.9.0/docs/reference/configuration/#overriding-default-configuration-templates">configuration reference</a> for instructions on how to override
 the default IAM configuration.</p>
 <h2 id="registration-form-filling-information-from-idp">Registration form: filling information from IdP</h2>
-<p>See <a href="/v/v1.9.0/docs/reference/configuration/registration/#registration-with-external-idp">registration configuration</a></p>
+<p>See <a href="/v/v1.9.0/docs/reference/configuration/registration/#registration-with-external-idp">registration configuration</a>.</p>
 
 </div>
 
@@ -7280,7 +7280,7 @@ file.</p>
 <p>See the <a href="/v/v1.9.0/docs/reference/configuration/">configuration reference</a> for more SAML metadata options and
 instructions on how to override the default IAM configuration.</p>
 <h2 id="registration-form-filling-information-from-idp">Registration form: filling information from IdP</h2>
-<p>See <a href="/v/v1.9.0/docs/reference/configuration/registration/#registration-with-external-idp">registration configuration</a></p>
+<p>See <a href="/v/v1.9.0/docs/reference/configuration/registration/#registration-with-external-idp">registration configuration</a>.</p>
 
 </div>
 
