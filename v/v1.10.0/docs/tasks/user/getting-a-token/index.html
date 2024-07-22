@@ -1,0 +1,564 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="alternate" type="text/html" href="/v/v1.10.0/docs/tasks/user/getting-a-token/_print/">
+<meta name="robots" content="index, follow">
+
+
+<link rel="shortcut icon" href="/v/v1.10.0/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/v/v1.10.0/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/v/v1.10.0/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/v/v1.10.0/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/v/v1.10.0/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/v/v1.10.0/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/v/v1.10.0/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/v/v1.10.0/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/v/v1.10.0/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/v/v1.10.0/favicons/android-192x192.png" sizes="192x192">
+
+<title>Obtaining an IAM access token from a CLI | INDIGO IAM</title>
+<meta name="description" content="The INDIGO Identity and Access Management (IAM) Service">
+<meta property="og:title" content="Obtaining an IAM access token from a CLI" />
+<meta property="og:description" content="The INDIGO Identity and Access Management (IAM) Service" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/v/v1.10.0/docs/tasks/user/getting-a-token/" />
+
+<meta itemprop="name" content="Obtaining an IAM access token from a CLI">
+<meta itemprop="description" content="The INDIGO Identity and Access Management (IAM) Service"><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Obtaining an IAM access token from a CLI"/>
+<meta name="twitter:description" content="The INDIGO Identity and Access Management (IAM) Service"/>
+
+
+
+
+<link rel="preload" href="/v/v1.10.0/scss/main.min.8b15a284065632327b8c02a701e1c2297b5d1c084085e061cb33bbd46e6313e8.css" as="style">
+<link href="/v/v1.10.0/scss/main.min.8b15a284065632327b8c02a701e1c2297b5d1c084085e061cb33bbd46e6313e8.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/v/v1.10.0/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">INDIGO IAM</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="/v/v1.10.0/docs/"><span>Documentation</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/v/v1.10.0/blog/"><span>Blog</span></a>
+      </li>
+      <li class="nav-item dropdown d-none d-lg-block">
+        <div class="dropdown">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Releases</a>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/current">v1.10.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/current">v1.9.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.4">v1.8.4</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.3">v1.8.3</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.2">v1.8.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.1">v1.8.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.0">v1.8.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.2">v1.7.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.1">v1.7.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.0">v1.7.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/docs/v/current/">older releases</a></li>
+    </ul>
+</div></li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/v/v1.10.0/offline-search-index.cbedcaadc7bcd68e5cc1786e74217071.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            <div id="td-sidebar-menu" class="td-sidebar__inner">
+  <div id="content-mobile">
+  <form class="td-sidebar__search d-flex align-items-center">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/v/v1.10.0/offline-search-index.cbedcaadc7bcd68e5cc1786e74217071.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ms-3 fas fa-bars" type="button" data-bs-toggle="collapse" data-bs-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  </div>
+  <div id="content-desktop"></div>
+  <nav class="td-sidebar-nav collapse td-sidebar-nav--search-disabled" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pe-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-vv1100docs-li">
+  <a href="/v/v1.10.0/docs/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-vv1100docs"><span class="">Documentation</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsoverview-li">
+  <a href="/v/v1.10.0/docs/overview/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsoverview"><span class="">Overview</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-vv1100docsgetting-started-li">
+  <a href="/v/v1.10.0/docs/getting-started/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsgetting-started"><span class="">Getting Started</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsgetting-startednginx-li">
+  <a href="/v/v1.10.0/docs/getting-started/nginx/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsgetting-startednginx"><span class="">NGINX configuration</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsgetting-startedmariadb-li">
+  <a href="/v/v1.10.0/docs/getting-started/mariadb/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsgetting-startedmariadb"><span class="">Database configuration</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsgetting-startedjwk-li">
+  <a href="/v/v1.10.0/docs/getting-started/jwk/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsgetting-startedjwk"><span class="">JSON Web Keys configuration</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsgetting-starteddocker-li">
+  <a href="/v/v1.10.0/docs/getting-started/docker/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsgetting-starteddocker"><span class="">Deployment with Docker</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsgetting-startedpackages-li">
+  <a href="/v/v1.10.0/docs/getting-started/packages/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsgetting-startedpackages"><span class="">Deployment with packages</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsgetting-startedbasic_setup-li">
+  <a href="/v/v1.10.0/docs/getting-started/basic_setup/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsgetting-startedbasic_setup"><span class="">Basic IAM setup</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-vv1100docsreference-li">
+  <a href="/v/v1.10.0/docs/reference/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsreference"><span class="">Reference</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-vv1100docsreferenceapi-li">
+  <a href="/v/v1.10.0/docs/reference/api/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsreferenceapi"><span class="">APIs</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsreferenceapiaup-api-li">
+  <a href="/v/v1.10.0/docs/reference/api/aup-api/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsreferenceapiaup-api"><span class="">AUP management API</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsreferenceapiaup-sign-api-li">
+  <a href="/v/v1.10.0/docs/reference/api/aup-sign-api/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsreferenceapiaup-sign-api"><span class="">AUP signature API</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsreferenceapiproxycert-api-li">
+  <a href="/v/v1.10.0/docs/reference/api/proxycert-api/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsreferenceapiproxycert-api"><span class="">Proxy certificate API</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsreferenceapigroup-requests-li">
+  <a href="/v/v1.10.0/docs/reference/api/group-requests/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsreferenceapigroup-requests"><span class="">Group requests API</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsreferenceapihealth_endpoints-li">
+  <a href="/v/v1.10.0/docs/reference/api/health_endpoints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsreferenceapihealth_endpoints"><span class="">Health checks</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsreferenceapiaccount-api-li">
+  <a href="/v/v1.10.0/docs/reference/api/account-api/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsreferenceapiaccount-api"><span class="">IAM account API</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsreferenceapitokens-api-li">
+  <a href="/v/v1.10.0/docs/reference/api/tokens-api/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsreferenceapitokens-api"><span class="">IAM Token management API</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsreferenceapioauth-token-exchange-li">
+  <a href="/v/v1.10.0/docs/reference/api/oauth-token-exchange/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsreferenceapioauth-token-exchange"><span class="">OAuth token exchange API</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsreferenceapioauth-token-introspection-li">
+  <a href="/v/v1.10.0/docs/reference/api/oauth-token-introspection/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsreferenceapioauth-token-introspection"><span class="">OAuth token introspection API</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsreferenceapioidc-client-management-li">
+  <a href="/v/v1.10.0/docs/reference/api/oidc-client-management/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsreferenceapioidc-client-management"><span class="">OpenID Connect client management API</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsreferenceapioidc-client-registration-li">
+  <a href="/v/v1.10.0/docs/reference/api/oidc-client-registration/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsreferenceapioidc-client-registration"><span class="">OpenID Connect client registration API</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsreferenceapiscim-api-li">
+  <a href="/v/v1.10.0/docs/reference/api/scim-api/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsreferenceapiscim-api"><span class="">SCIM API</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsreferenceapiscope-policy-api-li">
+  <a href="/v/v1.10.0/docs/reference/api/scope-policy-api/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsreferenceapiscope-policy-api"><span class="">Scope Policy API</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsreferenceapitoken-exchange-policy-api-li">
+  <a href="/v/v1.10.0/docs/reference/api/token-exchange-policy-api/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsreferenceapitoken-exchange-policy-api"><span class="">Token exchange policy API</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-vv1100docsreferenceconfiguration-li">
+  <a href="/v/v1.10.0/docs/reference/configuration/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsreferenceconfiguration"><span class="">Configuration</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsreferenceconfigurationjwt-profiles-li">
+  <a href="/v/v1.10.0/docs/reference/configuration/jwt-profiles/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsreferenceconfigurationjwt-profiles"><span class="">JWT profiles support</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsreferenceconfigurationsystem-scopes-li">
+  <a href="/v/v1.10.0/docs/reference/configuration/system-scopes/" title="MitreID System Scopes" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsreferenceconfigurationsystem-scopes"><span class="">System scopes</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsreferenceconfigurationlifecycle-li">
+  <a href="/v/v1.10.0/docs/reference/configuration/lifecycle/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsreferenceconfigurationlifecycle"><span class="">Membership lifecycle</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsreferenceconfigurationrcauth-li">
+  <a href="/v/v1.10.0/docs/reference/configuration/rcauth/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsreferenceconfigurationrcauth"><span class="">Integration with RCAuth</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsreferenceconfigurationregistration-li">
+  <a href="/v/v1.10.0/docs/reference/configuration/registration/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsreferenceconfigurationregistration"><span class="">Registration &amp; Enrollment</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsreferenceconfigurationjwk-li">
+  <a href="/v/v1.10.0/docs/reference/configuration/jwk/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsreferenceconfigurationjwk"><span class="">JSON Web Keys (JWK)</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsreferenceconfigurationlocal_authn-li">
+  <a href="/v/v1.10.0/docs/reference/configuration/local_authn/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsreferenceconfigurationlocal_authn"><span class="">Local authentication</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-vv1100docsreferenceconfigurationexternal-authentication-li">
+  <a href="/v/v1.10.0/docs/reference/configuration/external-authentication/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsreferenceconfigurationexternal-authentication"><span class="">External authentication</span></a>
+  <ul class="ul-4 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsreferenceconfigurationexternal-authenticationoidc-li">
+  <a href="/v/v1.10.0/docs/reference/configuration/external-authentication/oidc/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsreferenceconfigurationexternal-authenticationoidc"><span class="">OpenID-Connect authentication</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsreferenceconfigurationexternal-authenticationsaml-li">
+  <a href="/v/v1.10.0/docs/reference/configuration/external-authentication/saml/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsreferenceconfigurationexternal-authenticationsaml"><span class="">SAML authentication</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsreferenceconfigurationexternal-authenticationx509-li">
+  <a href="/v/v1.10.0/docs/reference/configuration/external-authentication/x509/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsreferenceconfigurationexternal-authenticationx509"><span class="">X.509 authentication</span></a>
+</li>
+  </ul>
+</li>
+  </ul>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-vv1100docstasks-li">
+  <a href="/v/v1.10.0/docs/tasks/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docstasks"><span class="">Tasks</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-vv1100docstasksadministration-li">
+  <a href="/v/v1.10.0/docs/tasks/administration/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docstasksadministration"><span class="">IAM organization administration</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docstasksadministrationuser-management-li">
+  <a href="/v/v1.10.0/docs/tasks/administration/user-management/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docstasksadministrationuser-management"><span class="">User management</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docstasksadministrationgroup-management-li">
+  <a href="/v/v1.10.0/docs/tasks/administration/group-management/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docstasksadministrationgroup-management"><span class="">Group Management</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docstasksadministrationaup-management-li">
+  <a href="/v/v1.10.0/docs/tasks/administration/aup-management/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docstasksadministrationaup-management"><span class="">Acceptable Usage Policy (AUP) management</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-vv1100docstasksdeployment-li">
+  <a href="/v/v1.10.0/docs/tasks/deployment/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docstasksdeployment"><span class="">IAM service deployment</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docstasksdeploymentbackup_restore-li">
+  <a href="/v/v1.10.0/docs/tasks/deployment/backup_restore/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docstasksdeploymentbackup_restore"><span class="">Backup &amp; Restore</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docstasksdeploymentaudit-log-li">
+  <a href="/v/v1.10.0/docs/tasks/deployment/audit-log/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docstasksdeploymentaudit-log"><span class="">Audit log</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docstasksdeploymentupgrade-li">
+  <a href="/v/v1.10.0/docs/tasks/deployment/upgrade/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docstasksdeploymentupgrade"><span class="">Upgrade</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docstasksdeploymentha-li">
+  <a href="/v/v1.10.0/docs/tasks/deployment/ha/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docstasksdeploymentha"><span class="">Deploying IAM in HA</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docstasksdeploymentvoms-li">
+  <a href="/v/v1.10.0/docs/tasks/deployment/voms/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docstasksdeploymentvoms"><span class="">Deploying the IAM VOMS attribute authority</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docstasksdeploymentvoms_importer-li">
+  <a href="/v/v1.10.0/docs/tasks/deployment/voms_importer/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docstasksdeploymentvoms_importer"><span class="">Importing VOMS information into IAM</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docstasksclientapp-li">
+  <a href="/v/v1.10.0/docs/tasks/clientapp/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docstasksclientapp"><span class="">IAM Test Client application</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-vv1100docstasksuser-li">
+  <a href="/v/v1.10.0/docs/tasks/user/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docstasksuser"><span class="">User</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docstasksuserjoining-a-collaboration-li">
+  <a href="/v/v1.10.0/docs/tasks/user/joining-a-collaboration/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docstasksuserjoining-a-collaboration"><span class="">Joining an IAM-managed organization</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-vv1100docstasksusergetting-a-token-li">
+  <a href="/v/v1.10.0/docs/tasks/user/getting-a-token/" class="align-left ps-0 active td-sidebar-link td-sidebar-link__section" id="m-vv1100docstasksusergetting-a-token"><span class="td-sidebar-nav-active-item">Obtaining an IAM access token from a CLI</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docstasksuserclient-registration-li">
+  <a href="/v/v1.10.0/docs/tasks/user/client-registration/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docstasksuserclient-registration"><span class="">Registering a client</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docstasksuserchange-details-li">
+  <a href="/v/v1.10.0/docs/tasks/user/change-details/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docstasksuserchange-details"><span class="">Change account information</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docstasksuserchange-password-li">
+  <a href="/v/v1.10.0/docs/tasks/user/change-password/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docstasksuserchange-password"><span class="">Changing the account password</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docstasksuserjwt-authn-li">
+  <a href="/v/v1.10.0/docs/tasks/user/jwt-authn/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docstasksuserjwt-authn"><span class="">JWT client authentication</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docstasksuserexternal-account-linking-li">
+  <a href="/v/v1.10.0/docs/tasks/user/external-account-linking/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docstasksuserexternal-account-linking"><span class="">Linking an external account</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docstasksuserx509-linking-li">
+  <a href="/v/v1.10.0/docs/tasks/user/x509-linking/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docstasksuserx509-linking"><span class="">Linking an X.509 certificate</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docstasksusermanage-active-tokens-li">
+  <a href="/v/v1.10.0/docs/tasks/user/manage-active-tokens/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docstasksusermanage-active-tokens"><span class="">Managing active tokens</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docstasksusermanage-approved-sites-li">
+  <a href="/v/v1.10.0/docs/tasks/user/manage-approved-sites/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docstasksusermanage-approved-sites"><span class="">Managing approved sites</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docstasksusermanage-ssh-keys-li">
+  <a href="/v/v1.10.0/docs/tasks/user/manage-ssh-keys/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docstasksusermanage-ssh-keys"><span class="">Managing SSH keys</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docstasksuserreset-password-li">
+  <a href="/v/v1.10.0/docs/tasks/user/reset-password/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docstasksuserreset-password"><span class="">Reset an account password</span></a>
+</li>
+  </ul>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-vv1100docsdeveloper-guide-li">
+  <a href="/v/v1.10.0/docs/developer-guide/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsdeveloper-guide"><span class="">Developer guide</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1100docsdeveloper-guidespecs-li">
+  <a href="/v/v1.10.0/docs/developer-guide/specs/" title="Specifications and useful resources" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1100docsdeveloper-guidespecs"><span class="">Specifications</span></a>
+</li>
+  </ul>
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            <div class="td-page-meta ms-2 pb-1 pt-2 mb-0">
+<a href="https://github.com/indigo-iam/iam-website/tree/v1.10.0/content/en/docs/tasks/user/getting-a-token/_index.md" class="td-page-meta--view td-page-meta__view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
+  <a href="https://github.com/indigo-iam/iam-website/edit/v1.10.0/content/en/docs/tasks/user/getting-a-token/_index.md" class="td-page-meta--edit td-page-meta__edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Edit this page</a>
+  <a href="https://github.com/indigo-iam/iam-website/new/v1.10.0/content/en/docs/tasks/user/getting-a-token?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child td-page-meta__child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
+  <a href="https://github.com/indigo-iam/iam-website/issues/new?title=Obtaining%20an%20IAM%20access%20token%20from%20a%20CLI" class="td-page-meta--issue td-page-meta__issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
+  <a href="https://github.com/indigo-iam/iam/issues/new" class="td-page-meta--project td-page-meta__project-issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create project issue</a>
+  <a id="print" href="/v/v1.10.0/docs/tasks/user/getting-a-token/_print/"><i class="fa-solid fa-print fa-fw"></i> Print entire section</a>
+
+</div>
+
+            <div class="td-toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#obtaining-a-token-using-oidc-agent">Obtaining a token using <code>oidc-agent</code></a>
+      <ul>
+        <li><a href="#installing-oidc-agent">Installing oidc-agent</a></li>
+        <li><a href="#bootstrapping-oidc-agent">Bootstrapping oidc-agent</a></li>
+        <li><a href="#registering-a-client">Registering a client</a></li>
+        <li><a href="#managing-oidc-agent-account-configurations">Managing oidc-agent account configurations</a></li>
+        <li><a href="#getting-tokens-with-oidc-token">Getting tokens with <code>oidc-token</code></a></li>
+        <li><a href="#accessing-oidc-agent-client-configuration">Accessing oidc-agent client configuration</a></li>
+      </ul>
+    </li>
+    <li><a href="#obtaining-a-token-with-the-password-flow">Obtaining a token with the password flow</a></li>
+    <li><a href="#obtaining-a-token-with-the-device-code-flow">Obtaining a token with the device code flow</a></li>
+  </ul>
+</nav>
+      </div>
+    
+            
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="td-breadcrumbs">
+  <ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/v/v1.10.0/docs/">Documentation</a></li>
+  <li class="breadcrumb-item">
+    <a href="/v/v1.10.0/docs/tasks/">Tasks</a></li>
+  <li class="breadcrumb-item">
+    <a href="/v/v1.10.0/docs/tasks/user/">User</a></li>
+  <li class="breadcrumb-item active" aria-current="page">
+    Obtaining an IAM access token from a CLI</li>
+  </ol>
+</nav>
+            
+<div class="td-content">
+	<h1>Obtaining an IAM access token from a CLI</h1>
+  
+	<header class="article-meta">
+		
+</header>
+	<p>A token can be obtained from a command-line interface (CLI) in two ways:</p>
+<ul>
+<li>using <code>oidc-agent</code></li>
+<li>using scripts linked to this page, using the resource-owner password
+credentials flow or the OAuth device flow</li>
+</ul>
+<p>In this section we recommend the installations of a set of tools that can help
+in managing tokens.</p>
+<h2 id="obtaining-a-token-using-oidc-agent">Obtaining a token using <code>oidc-agent</code></h2>
+<p><a href="https://github.com/indigo-dc/oidc-agent">oidc-agent</a> is a useful tool to easily get and manage access
+tokens for command-line applications.</p>
+<h3 id="installing-oidc-agent">Installing oidc-agent</h3>
+<p>See <a href="https://indigo-dc.gitbook.io/oidc-agent/installation/install">oidc-agent installation
+instructions</a>.</p>
+<h4 id="quick-centos7-installation-instructions">Quick CENTOS7 installation instructions</h4>
+<p>This recipe shows how to quickly install <code>oidc-agent</code> on CENTOS 7.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ yum -y install epel-release
+</span></span><span style="display:flex;"><span>$ yum -y install https://github.com/indigo-dc/oidc-agent/releases/download/v3.3.1/oidc-agent-3.3.1-1.el7.x86_64.rpm
+</span></span></code></pre></div><h3 id="bootstrapping-oidc-agent">Bootstrapping oidc-agent</h3>
+<p>The first thing to do is to start <code>oidc-agent</code>.
+This can be done issuing the following command:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ <span style="color:#204a87">eval</span> <span style="color:#204a87;font-weight:bold">$(</span>oidc-agent<span style="color:#204a87;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>Agent pid <span style="color:#0000cf;font-weight:bold">62088</span>
+</span></span></code></pre></div><h3 id="registering-a-client">Registering a client</h3>
+<p>In order to obtain a token out of IAM, a user needs a client registered.
+<code>oidc-agent</code> can automate this step and store client credentials securely
+on the user machine. This is a one-time operation, you do not need a new
+client every time you need a token.</p>
+<p>A new client can be registered using the <code>oidc-gen</code> command, as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ oidc-gen -w device wlcg
+</span></span></code></pre></div><p>The <code>-w device</code> instructs <code>oidc-agent</code> to use the device code flow for the
+authentication, which is the recommended way with IAM.</p>
+<p>oidc-agent will display a list of different providers that can be used for
+registration:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">[</span>1<span style="color:#ce5c00;font-weight:bold">]</span> https://wlcg.cloud.cnaf.infn.it/
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">[</span>2<span style="color:#ce5c00;font-weight:bold">]</span> https://iam-test.indigo-datacloud.eu/
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">[</span>20<span style="color:#ce5c00;font-weight:bold">]</span> https://oidc.scc.kit.edu/auth/realms/kit/
+</span></span></code></pre></div><p>Select one of the registered providers, or type a custom issuer (for IAM, the
+last character of the issuer string is always a <code>/</code>, e.g.
+<code>https://wlcg.cloud.cnaf.infn.it/</code>).</p>
+<p>Then oidc-agent asks for the scopes, typing <code>max</code> (without quotes) allows to
+get all the allowed scopes.</p>
+<p>oidc-agent will register a new client and store the client credentials and a
+refresh token locally in encrypted form (the agent will ask for a password from
+the user).</p>
+<p>As mentioned, <code>oidc-gen</code> is meant to be used only once, when you need a client registered.</p>
+<h3 id="managing-oidc-agent-account-configurations">Managing oidc-agent account configurations</h3>
+<p>To see the list of locally configured accounts use the following command:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; oidc-add -l
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>The following account configurations are usable:
+</span></span><span style="display:flex;"><span>DEEP-ac
+</span></span><span style="display:flex;"><span>XDC
+</span></span><span style="display:flex;"><span>atlas
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>cms-voms-importer
+</span></span><span style="display:flex;"><span>escape
+</span></span><span style="display:flex;"><span>escape-monitoring
+</span></span><span style="display:flex;"><span>iam-test
+</span></span><span style="display:flex;"><span>infn-cloud
+</span></span><span style="display:flex;"><span>wlcg
+</span></span></code></pre></div><p>You can then load an account in the agent again with the oidc-add command, as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oidc-add wlcg
+</span></span></code></pre></div><p>Once you&rsquo;ve loaded the account, you can use <code>oidc-token</code> to get tokens for that account.</p>
+<h3 id="getting-tokens-with-oidc-token">Getting tokens with <code>oidc-token</code></h3>
+<p>Tokens can be obtained using the <code>oidc-token</code> command, as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oidc-token wlcg
+</span></span></code></pre></div><p>This will request a token with all the scopes requested at client registration
+time. To limit the scopes included in the token, the <code>-s</code> flag can be used, as
+follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oidc-token -s storage.read:/ wlcg
+</span></span></code></pre></div><p>The token audience can be limited using the <code>--aud</code> flag,</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oidc-token --aud example.audience -s storage.read:/ wlcg
+</span></span></code></pre></div><h3 id="accessing-oidc-agent-client-configuration">Accessing oidc-agent client configuration</h3>
+<p>Often is useful to get details about the client configuration generated
+by oidc-agent. This can be done with the <code>oidc-gen -p</code> command, that is
+used to print a client configuration, as in the following example:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>❯ oidc-gen -p wlcg
+</span></span><span style="display:flex;"><span>Enter decryption password <span style="color:#204a87;font-weight:bold">for</span> account config <span style="color:#4e9a06">&#39;wlcg&#39;</span>:******
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;name&#34;</span>:	<span style="color:#4e9a06">&#34;wlcg&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;client_name&#34;</span>:	<span style="color:#4e9a06">&#34;oidc-agent:wlcg&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;issuer_url&#34;</span>:	<span style="color:#4e9a06">&#34;https://wlcg.cloud.cnaf.infn.it/&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;device_authorization_endpoint&#34;</span>:	<span style="color:#4e9a06">&#34;https://wlcg.cloud.cnaf.infn.it/devicecode&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;daeSetByUser&#34;</span>:	0,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;client_id&#34;</span>:	<span style="color:#4e9a06">&#34;*****&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;client_secret&#34;</span>:	<span style="color:#4e9a06">&#34;*****&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;refresh_token&#34;</span>:	<span style="color:#4e9a06">&#34;****.*****.&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;cert_path&#34;</span>:	<span style="color:#4e9a06">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;scope&#34;</span>:	<span style="color:#4e9a06">&#34;storage.create:/ openid offline_access storage.read:/ eduperson_scoped_affiliation storage.modify:/ wlcg wlcg.groups eduperson_entitlement&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;audience&#34;</span>:	<span style="color:#4e9a06">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;redirect_uris&#34;</span>:	<span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#4e9a06">&#34;edu.kit.data.oidc-agent:/redirect&#34;</span>, <span style="color:#4e9a06">&#34;http://localhost:8080&#34;</span>, <span style="color:#4e9a06">&#34;http://localhost:47947&#34;</span>, <span style="color:#4e9a06">&#34;http://localhost:4242&#34;</span><span style="color:#ce5c00;font-weight:bold">]</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;username&#34;</span>:	<span style="color:#4e9a06">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;password&#34;</span>:	<span style="color:#4e9a06">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;client_id_issued_at&#34;</span>:	1600444894,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;registration_access_token&#34;</span>:	<span style="color:#4e9a06">&#34;****&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;registration_client_uri&#34;</span>:	<span style="color:#4e9a06">&#34;https://wlcg.cloud.cnaf.infn.it/register/****&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;token_endpoint_auth_method&#34;</span>:	<span style="color:#4e9a06">&#34;client_secret_basic&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;grant_types&#34;</span>:	<span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#4e9a06">&#34;urn:ietf:params:oauth:grant-type:device_code&#34;</span>, <span style="color:#4e9a06">&#34;refresh_token&#34;</span><span style="color:#ce5c00;font-weight:bold">]</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;response_types&#34;</span>:	<span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#4e9a06">&#34;token&#34;</span><span style="color:#ce5c00;font-weight:bold">]</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;application_type&#34;</span>:	<span style="color:#4e9a06">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;cert_path&#34;</span>:	<span style="color:#4e9a06">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;audience&#34;</span>:	<span style="color:#4e9a06">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span></code></pre></div><h2 id="obtaining-a-token-with-the-password-flow">Obtaining a token with the password flow</h2>
+<p>The <a href="https://tools.ietf.org/html/rfc6749#section-4.3">password flow</a> allows a user to get a token from the
+IAM by using the IAM local credentials (i.e. the username/password credentials
+setup at IAM registration time).</p>
+<p>In order to use the password flow, a non-privileged user has to:</p>
+<ol>
+<li>register a client following the instructions given in [the client
+registration][client-registration] section</li>
+<li>Note down the <code>client_id</code> of the generated client and ask an IAM
+administrator to enable the password flow for such client</li>
+<li>Wait until the client as the password flow enabled</li>
+<li>Use a script similar to the one given <a href="https://gist.github.com/andreaceccanti/7d863db5ce3f43c74123a2cea8b8f9ff">here</a> (or write
+your own following the recommendations of the <a href="https://tools.ietf.org/html/rfc6749#section-4.3">RFC</a>) to
+obtain a token out of the IAM</li>
+</ol>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Warning</h4>
+
+    <p>While this approach is viable, it is <strong>deprecated</strong> since:</p>
+<ul>
+<li>it forces the user to request the activation of the password flow for the
+client (it is disabled by default for dynamically registered clients)</li>
+<li>it forces the user to authenticate with the local IAM credentials (external
+authentication mechanisms such as Google or SAML cannot be used)</li>
+<li>it exposes the user credentials to the client application</li>
+</ul>
+<p>The device code flow, described in the next section, does not have these
+limitations and should be preferred over the password flow.</p>
+
+
+</div>
+
+<h2 id="obtaining-a-token-with-the-device-code-flow">Obtaining a token with the device code flow</h2>
+<p>The <a href="https://tools.ietf.org/html/draft-ietf-oauth-device-flow-09">device code flow</a> allows a user to get a token
+from the IAM from a CLI interface while using an external browser for the
+authentication step. This is convenient since:</p>
+<ul>
+<li>it does not require any authorization from administrators (the device code
+flow can be requested by the user at client registration time)</li>
+<li>it allows the user to authenticate with any of the authentication mechanisms
+supported by the IAM</li>
+<li>it <strong>does not</strong> expose the user credentials to the client application</li>
+</ul>
+<p>For nitty and gritty details on how the flow works, see the
+<a href="https://tools.ietf.org/html/draft-ietf-oauth-device-flow-09">RFC</a>.</p>
+<p>After having registered a client with the device flow enabled (see <a href="/v/v1.10.0/docs/tasks/user/client-registration/">client
+registration section</a>), the device code flow can be
+used to obtain a token using a script like the one <a href="https://gist.github.com/andreaceccanti/5b69323b89ce08321e7b5236de503600">here</a>
+which does the following:</p>
+<ul>
+<li>contacts the device flow endpoint to start a device flow authentication and
+authorization</li>
+<li>prints code information on the terminal</li>
+<li>waits for user input to proceed and obtain the token(s)</li>
+</ul>
+
+  <div class="section-index">
+    
+    
+    </div>
+<div class="td-page-meta__lastmod">
+  Last modified March 24, 2022: <a href="https://github.com/indigo-iam/iam-website/commit/3f1bfdd2e73c0c7d69bf9005480993e7b174aa33">Fix broken links (3f1bfdd)</a>
+</div>
+</div>
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        <ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="GitHub" aria-label="GitHub">
+    <a target="_blank" rel="noopener" href="https://github.com/indigo-iam/iam" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Slack" aria-label="Slack">
+    <a target="_blank" rel="noopener" href="https://indigo-iam.slack.com" aria-label="Slack">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+</ul>
+
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="td-footer__copyright">&copy;
+    2024
+    <span class="td-footer__authors">INFN</span></span><span class="td-footer__all_rights_reserved">All Rights Reserved</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/v/v1.10.0/js/main.min.dc2c0119076a0df855e55a8044ce0de74b7b9033c20e853e22d7ec7e9bdde965.js" integrity="sha256-3CwBGQdqDfhV5VqARM4N50t7kDPCDoU&#43;Itfsfpvd6WU=" crossorigin="anonymous"></script>
+<script defer src="/v/v1.10.0/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='/v/v1.10.0/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

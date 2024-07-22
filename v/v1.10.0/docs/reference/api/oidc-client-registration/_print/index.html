@@ -1,0 +1,380 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" type="text/html" href="/v/v1.10.0/docs/reference/api/oidc-client-registration/">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/v/v1.10.0/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/v/v1.10.0/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/v/v1.10.0/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/v/v1.10.0/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/v/v1.10.0/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/v/v1.10.0/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/v/v1.10.0/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/v/v1.10.0/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/v/v1.10.0/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/v/v1.10.0/favicons/android-192x192.png" sizes="192x192">
+
+<title>OpenID Connect client registration API | INDIGO IAM</title>
+<meta name="description" content="The INDIGO Identity and Access Management (IAM) Service">
+<meta property="og:title" content="OpenID Connect client registration API" />
+<meta property="og:description" content="The INDIGO Identity and Access Management (IAM) Service" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/v/v1.10.0/docs/reference/api/oidc-client-registration/" />
+
+<meta itemprop="name" content="OpenID Connect client registration API">
+<meta itemprop="description" content="The INDIGO Identity and Access Management (IAM) Service"><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="OpenID Connect client registration API"/>
+<meta name="twitter:description" content="The INDIGO Identity and Access Management (IAM) Service"/>
+
+
+
+
+<link rel="preload" href="/v/v1.10.0/scss/main.min.8b15a284065632327b8c02a701e1c2297b5d1c084085e061cb33bbd46e6313e8.css" as="style">
+<link href="/v/v1.10.0/scss/main.min.8b15a284065632327b8c02a701e1c2297b5d1c084085e061cb33bbd46e6313e8.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/v/v1.10.0/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">INDIGO IAM</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="/v/v1.10.0/docs/"><span>Documentation</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/v/v1.10.0/blog/"><span>Blog</span></a>
+      </li>
+      <li class="nav-item dropdown d-none d-lg-block">
+        <div class="dropdown">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Releases</a>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/current">v1.10.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/current">v1.9.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.4">v1.8.4</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.3">v1.8.3</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.2">v1.8.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.1">v1.8.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.0">v1.8.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.2">v1.7.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.1">v1.7.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.0">v1.7.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/docs/v/current/">older releases</a></li>
+    </ul>
+</div></li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/v/v1.10.0/offline-search-index.cbedcaadc7bcd68e5cc1786e74217071.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/v/v1.10.0/docs/reference/api/oidc-client-registration/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">OpenID Connect client registration API</h1>
+
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+
+    </ul>
+
+
+<div class="content">
+      <p>Starting from version 1.8.0, IAM supports the <a href="https://openid.net/specs/openid-connect-registration-1_0.html">OpenID Connect Dynamic Client Registration
+API</a> at the <code>/iam/api/client-registration</code> endpoint.</p>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Warning</h4>
+
+    Support to the dynamic client registration through the <a href="https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server/wiki">MitreID OpenID Connect server implementation</a>
+at the <code>/register</code> endpoint is deprecated.
+
+</div>
+
+<p>Client registration does not require authentication.</p>
+<h2 id="example-registering-and-deleting-a-client-from-the-command-line">Example: registering and deleting a client from the command line</h2>
+<p>With the following template JSON you can easily register a client in the IAM:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;redirect_uris&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;https://another.client.example/oidc&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">],</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;client_name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;another-example-client&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;contacts&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;test@iam.test&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">],</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;token_endpoint_auth_method&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;client_secret_basic&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;scope&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;address phone openid email profile offline_access&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;grant_types&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;refresh_token&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;authorization_code&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">],</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;response_types&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;code&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><p>Save the above JSON into a file (after changing the relevant fields, like
+contact, rediret_uris, etc&hellip;). We will use the <code>client-req.json</code> file name for
+this example. You can then use <a href="https://httpie.org/">httpie</a> as  follows to generate the
+client on the IAM</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>http https://iam.local.io/iam/api/client-registration &lt; client-req.json &gt; client.json
+</span></span></code></pre></div><p>If the command terminates correctly, you will have the client configuration
+saved in the <code>client.json</code> file. You can use <a href="https://stedolan.github.io/jq/">jq</a> to display in a pretty
+way its contents:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#a40000">$</span> <span style="color:#a40000">jq</span> <span style="color:#a40000">.</span> <span style="color:#a40000">client.json</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;client_id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;9bef3e68-f329-4dbf-9c3e-45647c08dfd5&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;client_secret&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ALMjVauX1tXtU2lZytbxfW7JrEx6-ZhZml8bZcEocYOf1enNdIQaWB0aDUmr-nilGjjrznzbWNNWdh8bP0neyUI&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;client_name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;another-example-client&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;redirect_uris&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;https://another.client.example/oidc&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">],</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;contacts&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;test@iam.test&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">],</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;grant_types&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;authorization_code&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;refresh_token&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">],</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;response_types&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;code&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">],</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;token_endpoint_auth_method&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;client_secret_basic&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;scope&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;address phone openid profile offline_access email&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;reuse_refresh_token&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">true</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;dynamically_registered&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">true</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;clear_access_tokens_on_refresh&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">true</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;require_auth_time&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">false</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;registration_access_token&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;eyJraWQiOiJyc2ExIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODA4MFwvIiwiYXVkIjoiOWJlZjNlNjgtZjMyOS00ZGJmLTljM2UtNDU2NDdjMDhkZmQ1IiwiaWF0IjoxNjQ5MzM4OTcxLCJqdGkiOiJmNTFlZWIzMS1kY2RkLTQ5MDctYThlZC1jZTViMGU3ODRiODAifQ.Ec5PCjaaIveIpMPhTcYvJfsnJc9Ag_n46ICcaDhh8GDXupKAARv_fx4oCQPgomSKAz4j1bVRgzrmQsswR8lKmWQZv5fG2BMaRdh9epENArUbTsaPqdUfoMsqo-rqeN-eOcl4I1NChnfCPdBi2rSg2M5y4o9DSqhtQUUnig3-n77X8QhN8ES2i2MFgLkwBkc88nvPFdtSpNHvKjIlaXx6YRA3F7kqv7LHNP5OKfnfXNAFPhKweRRTXamEu_oN3-u0TQbxkg8YdNo4CN8hfMYMKsaCigND765zxFeRXSgNkpfZdV3d-8K5aU6TQoIOR41_kylbOh6rt6TGD4IIosEn5w&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;registration_client_uri&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://iam.local.io/iam/api/client-registration/9bef3e68-f329-4dbf-9c3e-45647c08dfd5&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;created_at&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1649338971207</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><p>and also to extract information from it conveniently from the command line.
+For example, you can extract the <code>client_id</code> and <code>registration_access_token</code>
+with the following commands:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#204a87">export</span> <span style="color:#000">CID</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">$(</span>jq -r .client_id client.json<span style="color:#204a87;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87">export</span> <span style="color:#000">RAT</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">$(</span>jq -r .registration_access_token client.json<span style="color:#204a87;font-weight:bold">)</span>
+</span></span></code></pre></div><p>and use them to delete the client:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ http DELETE https://iam.local.io/iam/api/client-registration/${CID} Authorization:&#34;Bearer ${RAT}&#34;
+</span></span><span style="display:flex;"><span>HTTP/1.1 204 No Content
+</span></span><span style="display:flex;"><span>Access-Control-Allow-Origin: *
+</span></span><span style="display:flex;"><span>Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+</span></span><span style="display:flex;"><span>Connection: keep-alive
+</span></span><span style="display:flex;"><span>Content-Language: en-US
+</span></span><span style="display:flex;"><span>Date: Thu, 07 Apr 2022 13:51:40 GMT
+</span></span><span style="display:flex;"><span>Expires: 0
+</span></span><span style="display:flex;"><span>Pragma: no-cache
+</span></span><span style="display:flex;"><span>Server: nginx/1.13.1
+</span></span><span style="display:flex;"><span>Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+</span></span><span style="display:flex;"><span>X-Application-Context: INDIGO IAM:mysql,google,registration,saml,mysql-test:8080
+</span></span><span style="display:flex;"><span>X-Content-Type-Options: nosniff
+</span></span><span style="display:flex;"><span>X-Frame-Options: DENY
+</span></span><span style="display:flex;"><span>X-XSS-Protection: 1; mode=block
+</span></span></code></pre></div><p>or get client information:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>http GET https://iam.local.io/iam/api/client-registration/${CID} Authorization:&#34;Bearer ${RAT}&#34;
+</span></span><span style="display:flex;"><span>HTTP/1.1 200
+</span></span><span style="display:flex;"><span>Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+</span></span><span style="display:flex;"><span>Connection: keep-alive
+</span></span><span style="display:flex;"><span>Content-Encoding: gzip
+</span></span><span style="display:flex;"><span>Content-Type: application/json
+</span></span><span style="display:flex;"><span>Date: Fri, 03 Nov 2023 16:54:53 GMT
+</span></span><span style="display:flex;"><span>Expires: 0
+</span></span><span style="display:flex;"><span>Pragma: no-cache
+</span></span><span style="display:flex;"><span>Server: nginx/1.13.12
+</span></span><span style="display:flex;"><span>Strict-Transport-Security: max-age=15724800; includeSubDomains
+</span></span><span style="display:flex;"><span>Transfer-Encoding: chunked
+</span></span><span style="display:flex;"><span>Vary: Accept-Encoding
+</span></span><span style="display:flex;"><span>Vary: Origin
+</span></span><span style="display:flex;"><span>Vary: Access-Control-Request-Method
+</span></span><span style="display:flex;"><span>Vary: Access-Control-Request-Headers
+</span></span><span style="display:flex;"><span>X-Content-Type-Options: nosniff
+</span></span><span style="display:flex;"><span>X-Frame-Options: DENY
+</span></span><span style="display:flex;"><span>X-XSS-Protection: 1; mode=block
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    &#34;clear_access_tokens_on_refresh&#34;: true,
+</span></span><span style="display:flex;"><span>    &#34;client_id&#34;: &#34;9bef3e68-f329-4dbf-9c3e-45647c08dfd5&#34;,
+</span></span><span style="display:flex;"><span>    &#34;client_name&#34;: &#34;another-example-client&#34;,
+</span></span><span style="display:flex;"><span>    &#34;client_secret&#34;: &#34;ALMjVauX1tXtU2lZytbxfW7JrEx6-ZhZml8bZcEocYOf1enNdIQaWB0aDUmr-nilGjjrznzbWNNWdh8bP0neyUI&#34;,
+</span></span><span style="display:flex;"><span>    &#34;contacts&#34;: [
+</span></span><span style="display:flex;"><span>        &#34;test@iam.test&#34;
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    &#34;created_at&#34;: 1699030393000,
+</span></span><span style="display:flex;"><span>    &#34;dynamically_registered&#34;: true,
+</span></span><span style="display:flex;"><span>    &#34;grant_types&#34;: [
+</span></span><span style="display:flex;"><span>        &#34;authorization_code&#34;,
+</span></span><span style="display:flex;"><span>        &#34;refresh_token&#34;
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    &#34;redirect_uris&#34;: [
+</span></span><span style="display:flex;"><span>        &#34;https://another.client.example/oidc&#34;
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    &#34;registration_client_uri&#34;: &#34;https://iam.local.io/iam/api/client-registration/9bef3e68-f329-4dbf-9c3e-45647c08dfd5&#34;,
+</span></span><span style="display:flex;"><span>    &#34;require_auth_time&#34;: false,
+</span></span><span style="display:flex;"><span>    &#34;response_types&#34;: [
+</span></span><span style="display:flex;"><span>        &#34;code&#34;
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    &#34;reuse_refresh_token&#34;: true,
+</span></span><span style="display:flex;"><span>    &#34;scope&#34;: &#34;address phone openid profile offline_access email&#34;,
+</span></span><span style="display:flex;"><span>    &#34;token_endpoint_auth_method&#34;: &#34;client_secret_basic&#34;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>or update the client, e.g. client name:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>http PUT https://iam.local.io/iam/api/client-registration/${CID} Authorization:&#34;Bearer ${RAT}&#34; @update-client.json
+</span></span><span style="display:flex;"><span>HTTP/1.1 200
+</span></span><span style="display:flex;"><span>Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+</span></span><span style="display:flex;"><span>Connection: keep-alive
+</span></span><span style="display:flex;"><span>Content-Encoding: gzip
+</span></span><span style="display:flex;"><span>Content-Type: application/json
+</span></span><span style="display:flex;"><span>Date: Fri, 03 Nov 2023 16:56:15 GMT
+</span></span><span style="display:flex;"><span>Expires: 0
+</span></span><span style="display:flex;"><span>Pragma: no-cache
+</span></span><span style="display:flex;"><span>Server: nginx/1.13.12
+</span></span><span style="display:flex;"><span>Strict-Transport-Security: max-age=15724800; includeSubDomains
+</span></span><span style="display:flex;"><span>Transfer-Encoding: chunked
+</span></span><span style="display:flex;"><span>Vary: Accept-Encoding
+</span></span><span style="display:flex;"><span>Vary: Origin
+</span></span><span style="display:flex;"><span>Vary: Access-Control-Request-Method
+</span></span><span style="display:flex;"><span>Vary: Access-Control-Request-Headers
+</span></span><span style="display:flex;"><span>X-Content-Type-Options: nosniff
+</span></span><span style="display:flex;"><span>X-Frame-Options: DENY
+</span></span><span style="display:flex;"><span>X-XSS-Protection: 1; mode=block
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    &#34;clear_access_tokens_on_refresh&#34;: true,
+</span></span><span style="display:flex;"><span>    &#34;client_id&#34;: &#34;9bef3e68-f329-4dbf-9c3e-45647c08dfd5&#34;,
+</span></span><span style="display:flex;"><span>    &#34;client_name&#34;: &#34;another-client&#34;,
+</span></span><span style="display:flex;"><span>    &#34;client_secret&#34;: &#34;ALMjVauX1tXtU2lZytbxfW7JrEx6-ZhZml8bZcEocYOf1enNdIQaWB0aDUmr-nilGjjrznzbWNNWdh8bP0neyUI&#34;,
+</span></span><span style="display:flex;"><span>    &#34;contacts&#34;: [
+</span></span><span style="display:flex;"><span>        &#34;test@iam.test&#34;
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    &#34;created_at&#34;: 1699030393000,
+</span></span><span style="display:flex;"><span>    &#34;dynamically_registered&#34;: true,
+</span></span><span style="display:flex;"><span>    &#34;grant_types&#34;: [
+</span></span><span style="display:flex;"><span>        &#34;refresh_token&#34;,
+</span></span><span style="display:flex;"><span>        &#34;authorization_code&#34;
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    &#34;redirect_uris&#34;: [
+</span></span><span style="display:flex;"><span>        &#34;https://another.client.example/oidc&#34;
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    &#34;registration_client_uri&#34;: &#34;https://iam.local.io/iam/api/client-registration/9bef3e68-f329-4dbf-9c3e-45647c08dfd5&#34;,
+</span></span><span style="display:flex;"><span>    &#34;require_auth_time&#34;: false,
+</span></span><span style="display:flex;"><span>    &#34;response_types&#34;: [
+</span></span><span style="display:flex;"><span>        &#34;code&#34;
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    &#34;reuse_refresh_token&#34;: true,
+</span></span><span style="display:flex;"><span>    &#34;scope&#34;: &#34;address phone openid profile offline_access email&#34;,
+</span></span><span style="display:flex;"><span>    &#34;token_endpoint_auth_method&#34;: &#34;client_secret_basic&#34;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        <ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="GitHub" aria-label="GitHub">
+    <a target="_blank" rel="noopener" href="https://github.com/indigo-iam/iam" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Slack" aria-label="Slack">
+    <a target="_blank" rel="noopener" href="https://indigo-iam.slack.com" aria-label="Slack">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+</ul>
+
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="td-footer__copyright">&copy;
+    2024
+    <span class="td-footer__authors">INFN</span></span><span class="td-footer__all_rights_reserved">All Rights Reserved</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/v/v1.10.0/js/main.min.dc2c0119076a0df855e55a8044ce0de74b7b9033c20e853e22d7ec7e9bdde965.js" integrity="sha256-3CwBGQdqDfhV5VqARM4N50t7kDPCDoU&#43;Itfsfpvd6WU=" crossorigin="anonymous"></script>
+<script defer src="/v/v1.10.0/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='/v/v1.10.0/js/tabpane-persist.js'></script>
+
+  </body>
+</html>
