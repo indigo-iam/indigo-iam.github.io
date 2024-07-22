@@ -59,6 +59,9 @@
     <loc>/v/v1.9.0/docs/tasks/clientapp/</loc>
     <lastmod>2022-05-20T17:26:23+02:00</lastmod>
   </url><url>
+    <loc>/v/v1.9.0/docs/tasks/user/resign-aup/</loc>
+    <lastmod>2024-07-22T17:10:56+01:00</lastmod>
+  </url><url>
     <loc>/v/v1.9.0/docs/tasks/user/client-registration/</loc>
     <lastmod>2022-06-16T12:52:08+02:00</lastmod>
   </url><url>
@@ -72,7 +75,7 @@
     <lastmod>2023-05-04T18:43:05+02:00</lastmod>
   </url><url>
     <loc>/v/v1.9.0/docs/tasks/administration/aup-management/</loc>
-    <lastmod>2021-09-17T12:03:24+02:00</lastmod>
+    <lastmod>2024-07-22T17:10:56+01:00</lastmod>
   </url><url>
     <loc>/v/v1.9.0/docs/reference/configuration/external-authentication/x509/</loc>
     <lastmod>2022-03-18T18:08:25+01:00</lastmod>
