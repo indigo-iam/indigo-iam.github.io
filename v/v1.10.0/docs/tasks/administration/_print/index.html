@@ -91,7 +91,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.10.0/offline-search-index.cbedcaadc7bcd68e5cc1786e74217071.json"
+    data-offline-search-index-json-src="/v/v1.10.0/offline-search-index.b5004fb9b3ceca1b2cd4e55472ee66f6.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -157,7 +157,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>2: <a href="#pg-e54da204360bf0baa8af45da22015dee">Group Management</a></li>
+<li>2: <a href="#pg-1ff968bff8f6865865a4557b5dcc9bf4">Disable or Enable a client</a></li>
 
 
     
@@ -176,7 +176,26 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3: <a href="#pg-f03d307094fc23ef6cf17d7a8b313135">Acceptable Usage Policy (AUP) management</a></li>
+<li>3: <a href="#pg-e54da204360bf0baa8af45da22015dee">Group Management</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>4: <a href="#pg-f03d307094fc23ef6cf17d7a8b313135">Acceptable Usage Policy (AUP) management</a></li>
 
 
     
@@ -275,7 +294,50 @@ for a local user account from the user home page:</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-e54da204360bf0baa8af45da22015dee">2 - Group Management</h1>
+	<h1 id="pg-1ff968bff8f6865865a4557b5dcc9bf4">2 - Disable or Enable a client</h1>
+    
+	<p>Existing clients can be disabled or enabled by Administrator from dashboard.</p>
+<h2 id="disabling-a-client-using-the-dashboard">Disabling a client using the dashboard</h2>
+<p>Log into the service using admin credentials and click on the <em>Clients</em> link on the left
+navigation bar:</p>
+<p><img src="../images/client-status-change-1.png" alt="dashboard"></p>
+<p>From the <em>Clients</em> link, select <em>Any client</em> you want to disable, for example <em>Test Client</em>:</p>
+<p><img src="../images/client-status-change-2.png" alt="client list"></p>
+<p>To disable the client click on <em>Disable Client</em> button on the bottom of the page:</p>
+<p><img src="../images/client-status-change-3.png" alt="disable client button"></p>
+<p>To confirm your choice click on <em>Disable Client</em> button on the modal window:</p>
+<p><img src="../images/client-status-change-4.png" alt="disable client modal"></p>
+<p>On success you will get a confirmation message and the <em>Disable Client</em> button will change to <em>Restore Client</em>:</p>
+<p><img src="../images/client-status-change-5.png" alt="disable client confirmation"></p>
+<p>Using <em>Restore Client</em> button client status can be changed back to <em>Active</em>.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-e54da204360bf0baa8af45da22015dee">3 - Group Management</h1>
     
 	<p>IAM provides a group management system, that can be used by IAM Administrators
 and Group Managers to create groups, remove existing ones and manage membership in the group.</p>
@@ -374,7 +436,7 @@ end time and labels) is shown.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-f03d307094fc23ef6cf17d7a8b313135">3 - Acceptable Usage Policy (AUP) management</h1>
+	<h1 id="pg-f03d307094fc23ef6cf17d7a8b313135">4 - Acceptable Usage Policy (AUP) management</h1>
     
 	<p>Starting with version 1.2.0, IAM supports defining an <strong>Acceptable Usage Policy
 Document (AUP)</strong> for a managed organization. The AUP is presented to applicants
@@ -425,6 +487,32 @@ at registration time:</p>
 <img src="../images/aup3.png" width="500">
 <p>or at the first login after the AUP creation:</p>
 <img src="../images/aup4.png" width="500">
+<h2 id="request-aup-signature">Request AUP signature</h2>
+<p>Administrator can request user to sign AUP.</p>
+<p>Administrator privileges are required.</p>
+<p>Log into the service using admin credentials and click on the <em>Users</em> link on the left navigation bar:</p>
+<p><img src="../images/request-aup-signature-1.png" alt="dashboard"></p>
+<p>From the <em>Users</em> link, select <em>Any user</em> you want to request AUP signature, for example <em>Test-200 User</em>:</p>
+<p><img src="../images/request-aup-signature-2.png" alt="user"></p>
+<p>To request AUP signature click on <em>Request AUP signature</em> button on <em>User details</em> section on the left of the page:</p>
+<p><img src="../images/request-aup-signature-3.png" alt="request AUP signature button"></p>
+<p>To confirm your choice click on <em>Request AUP signature</em> button on the modal window:</p>
+<p><img src="../images/request-aup-signature-4.png" alt="request AUP signature modal"></p>
+<p>On success you will get a confirmation message:</p>
+<p><img src="../images/request-aup-signature-5.png" alt="request AUP signature confirmation"></p>
+<p>After this operation, if the user logs in, they must sign the AUP again before accessing the service.</p>
+<h2 id="sign-aup-on-behalf-of-the-user">Sign AUP on behalf of the user</h2>
+<p>Administrator can sign AUP on behalf of the user.</p>
+<p>Log into the service using admin credentials and click on the <em>Users</em> link on the left navigation bar:</p>
+<p><img src="../images/request-aup-signature-1.png" alt="dashboard"></p>
+<p>From the <em>Users</em> link, select <em>Any user</em> you want to sign AUP on behalf, for example <em>Test-200 User</em>:</p>
+<p><img src="../images/request-aup-signature-2.png" alt="user"></p>
+<p>To sign AUP on behalf of the user click on <em>Sign AUP on behalf of this user</em> button on <em>User details</em> section on the left of the page:</p>
+<p><img src="../images/sign-aup-on-behalf-1.png" alt="sign AUP on behalf button"></p>
+<p>To confirm your choice click on <em>Sign AUP</em> button on the modal window:</p>
+<p><img src="../images/sign-aup-on-behalf-2.png" alt="sign AUP on behalf modal"></p>
+<p>On success you will get a confirmation message:</p>
+<p><img src="../images/sign-aup-on-behalf-3.png" alt="sign AUP on behalf confirmation"></p>
 
 </div>
 
