@@ -90,7 +90,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.9.0/offline-search-index.55eadb897ea49c6be83e7a22c649ecc8.json"
+    data-offline-search-index-json-src="/v/v1.9.0/offline-search-index.59a6c9c8ac1a9d531d98376dab60a8c1.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -532,7 +532,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>2.6: <a href="#pg-63d7a6556648cdd8622cf2321f13a835">JSON Web Keys (JWK)</a></li>
+<li>2.6: <a href="#pg-2d609fcdcf178cc290f856ec5d527fa9">Handling SCIM response</a></li>
 
 
     
@@ -551,7 +551,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>2.7: <a href="#pg-b153a1aec7140b2aa27a0ba03e8dc3fd">Local authentication</a></li>
+<li>2.7: <a href="#pg-63d7a6556648cdd8622cf2321f13a835">JSON Web Keys (JWK)</a></li>
 
 
     
@@ -570,22 +570,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>2.8: <a href="#pg-359104377f9341d4c326d45fb209b4c2">External authentication</a></li>
-
-
-    
-    <ul>
-        
-  
-  
-  
-  
-
-  
-    
-    
-	
-<li>2.8.1: <a href="#pg-ac3ba36ba3318b338bcbf439e1b79e60">OpenID-Connect authentication</a></li>
+<li>2.8: <a href="#pg-b153a1aec7140b2aa27a0ba03e8dc3fd">Local authentication</a></li>
 
 
     
@@ -604,7 +589,22 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>2.8.2: <a href="#pg-af611b856fca4d6771e3e3ed962701b5">SAML authentication</a></li>
+<li>2.9: <a href="#pg-359104377f9341d4c326d45fb209b4c2">External authentication</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>2.9.1: <a href="#pg-ac3ba36ba3318b338bcbf439e1b79e60">OpenID-Connect authentication</a></li>
 
 
     
@@ -623,7 +623,26 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>2.8.3: <a href="#pg-86d359d1731c5e164863d1bbe93a7bcf">X.509 authentication</a></li>
+<li>2.9.2: <a href="#pg-af611b856fca4d6771e3e3ed962701b5">SAML authentication</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>2.9.3: <a href="#pg-86d359d1731c5e164863d1bbe93a7bcf">X.509 authentication</a></li>
 
 
     
@@ -5444,7 +5463,144 @@ The <em>nickname</em> value will be the same as the username set during the regi
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-63d7a6556648cdd8622cf2321f13a835">2.6 - JSON Web Keys (JWK)</h1>
+	<h1 id="pg-2d609fcdcf178cc290f856ec5d527fa9">2.6 - Handling SCIM response</h1>
+    
+	<p>IAM already supports a set of <a href="../../api/scim-api/_index.md">SCIM APIs</a> based on the System for Cross-domain
+Identity Management standard. Starting from IAM v1.9.0, the API response to GET requests on user details
+(i.e. <code>/scim/Me</code> and <code>/scim/Users</code>) are extended with more information.
+All the new details are included into the <em>IndigoUser</em> field.
+To enable this feature, dedicated properties (or environment variables) must be used to maintain backward compatibility.</p>
+<p>The list of information that may be included into the SCIM response are:</p>
+<ul>
+<li>user&rsquo;s autorities</li>
+<li>set of user-managed groups</li>
+<li>set of user&rsquo;s attributes.</li>
+</ul>
+<h3 id="authorities">Authorities</h3>
+<p>In order to include the list of user&rsquo;s authorities (i.e. <code>ROLE_USER</code>, <code>ROLE_ADMIN</code>, <code>ROLE_GM:&lt;group-uid&gt;</code>, etc.) into the SCIM response,
+one should set the following property (default is false):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">scim</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">include_authorities</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>or the environment variable <code>IAM_SCIM_INCLUDE_AUTHORITIES=true</code>.</p>
+<p>Then, an example of SCIM Me output for an administrator user is the following:</p>
+<pre tabindex="0"><code>{
+  &#34;id&#34;: &#34;73f16d93-2441-4a50-88ff-85360d78c6b5&#34;,
+  &#34;meta&#34;: {  ...  },
+  &#34;schemas&#34;: [
+      &#34;urn:ietf:params:scim:schemas:core:2.0:User&#34;,
+      &#34;urn:indigo-dc:scim:schemas:IndigoUser&#34;
+  ],
+  ...
+  &#34;userName&#34;: &#34;admin&#34;,
+  ...
+  &#34;active&#34;: true,
+  &#34;urn:indigo-dc:scim:schemas:IndigoUser&#34;: {
+    &#34;oidcIds&#34;: [ ... ],
+    &#34;samlIds&#34;: [ ... ],
+    &#34;certificates&#34;: [ ... ],
+    &#34;authorities&#34;: [
+      &#34;ROLE_ADMIN&#34;,
+      &#34;ROLE_USER&#34;
+    ]
+  }
+}
+</code></pre><h3 id="managed-groups">Managed groups</h3>
+<p>In order to include the list of user-managed groups into the SCIM response,
+one should set the following property (default is false):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">scim</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">include_managed_groups</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>or the environment variable <code>IAM_SCIM_INCLUDE_MANAGED_GROUPS=true</code>.</p>
+<p>Then, an example of SCIM Me output for a group manager is the following:</p>
+<pre tabindex="0"><code>{
+  &#34;id&#34;:&#34;80e5fb8d-b7c8-451a-89ba-346ae278a66f&#34;,
+  &#34;meta&#34;:{ ... },
+  &#34;schemas&#34;:[
+     &#34;urn:ietf:params:scim:schemas:core:2.0:User&#34;,
+     &#34;urn:indigo-dc:scim:schemas:IndigoUser&#34;
+  ],
+  ...
+  &#34;userName&#34;: &#34;gm-user&#34;,
+  ...
+  &#34;active&#34;: &#34;true&#34;,
+  &#34;urn&#34;:&#34;indigo-dc:scim:schemas:IndigoUser&#34;:{
+     &#34;oidcIds&#34;:[ ... ]
+     &#34;samlIds&#34;:[ ... ],
+     &#34;endTime&#34;: &#34;2024-08-06T02:00:00.000+02:00&#34;,
+     &#34;managedGroups&#34;:[
+        {
+           &#34;display&#34;:&#34;Analysis&#34;,
+           &#34;value&#34;:&#34;6a384bcd-d4b3-4b7f-a2fe-7d897ada0dd1&#34;,
+           &#34;$ref&#34;:&#34;http://localhost:8080/scim/Groups/6a384bcd-d4b3-4b7f-a2fe-7d897ada0dd1&#34;
+        },
+        {
+           &#34;display&#34;:&#34;Production&#34;,
+           &#34;value&#34;:&#34;c617d586-54e6-411d-8e38-64967798fa8a&#34;,
+           &#34;$ref&#34;:&#34;http://localhost:8080/scim/Groups/c617d586-54e6-411d-8e38-64967798fa8a&#34;
+        }
+     ]
+  }
+}
+</code></pre><h3 id="attributes">Attributes</h3>
+<p>In order to include the list of user&rsquo;s attributes, selected by attribute name, into the SCIM response,
+one should set the following property (default is false):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">scim</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">include_attributes</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">nickname</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">another-attribute-name</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>Then, an example of SCIM Me output for an IAM user is the following:</p>
+<pre tabindex="0"><code>{
+  &#34;id&#34;:&#34;d836e5ec-246c-456c-8476-923ee2f831c8&#34;,
+  &#34;meta&#34;:{ ... },
+  &#34;schemas&#34;:[
+     &#34;urn:ietf:params:scim:schemas:core:2.0:User&#34;,
+     &#34;urn:indigo-dc:scim:schemas:IndigoUser&#34;
+  ],
+  ...
+  &#34;userName&#34;: &#34;tester&#34;,
+  ...
+  &#34;active&#34;: &#34;true&#34;,
+  &#34;urn&#34;:&#34;indigo-dc:scim:schemas:IndigoUser&#34;:{
+    &#34;oidcIds&#34;:[ ... ]
+    &#34;samlIds&#34;:[ ... ],
+    &#34;endTime&#34;: &#34;2024-08-06T02:00:00.000+02:00&#34;,
+    &#34;attributes&#34;:[
+       {
+          &#34;name&#34;:&#34;nickname&#34;,
+          &#34;value&#34;:&#34;tester&#34;
+       }
+    ],
+    &#34;endTime&#34;: &#34;2024-08-06T02:00:00.000+02:00&#34;
+  }
+}
+</code></pre><p>In this example the user has only one attribute, named <em>nickname</em>, so the second attribute (<em>another-attribute-name</em>) is not shown into the SCIM response.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-63d7a6556648cdd8622cf2321f13a835">2.7 - JSON Web Keys (JWK)</h1>
     
 	<p>JSON Web Key (JWK) is a JSON data structure that represents a single public key or a set of
 public keys. IAM uses private JWKs to sign tokens, and IAM clients use public JWKs to validate the tokens.
@@ -5591,7 +5747,7 @@ key will be valid after this.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-b153a1aec7140b2aa27a0ba03e8dc3fd">2.7 - Local authentication</h1>
+	<h1 id="pg-b153a1aec7140b2aa27a0ba03e8dc3fd">2.8 - Local authentication</h1>
     
 	<p>IAM has the ability to limit or disable
 authentication with local IAM credentials, so that external, brokered
@@ -5640,7 +5796,7 @@ able to use it doesn&rsquo;t really provide additional security.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-359104377f9341d4c326d45fb209b4c2">2.8 - External authentication</h1>
+	<h1 id="pg-359104377f9341d4c326d45fb209b4c2">2.9 - External authentication</h1>
     
 	<p>IAM supports brokered authentication via standard OpenID-Connect and SAML
 protocols as well as X.509 authentication.</p>
@@ -5667,7 +5823,7 @@ protocols as well as X.509 authentication.</p>
 
 <div class="td-content" style="">
     
-	<h1 id="pg-ac3ba36ba3318b338bcbf439e1b79e60">2.8.1 - OpenID-Connect authentication</h1>
+	<h1 id="pg-ac3ba36ba3318b338bcbf439e1b79e60">2.9.1 - OpenID-Connect authentication</h1>
     
 	<p>IAM supports brokered OpenID Connect authentication to external identity
 providers (e.g., Google).</p>
@@ -5797,7 +5953,7 @@ the default IAM configuration.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-af611b856fca4d6771e3e3ed962701b5">2.8.2 - SAML authentication</h1>
+	<h1 id="pg-af611b856fca4d6771e3e3ed962701b5">2.9.2 - SAML authentication</h1>
     
 	<p>IAM supports brokered SAML authentication. When SAML authentication is turned
 on for an IAM instance, users can log into the service using the home Identity
@@ -6025,7 +6181,7 @@ instructions on how to override the default IAM configuration.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-86d359d1731c5e164863d1bbe93a7bcf">2.8.3 - X.509 authentication</h1>
+	<h1 id="pg-86d359d1731c5e164863d1bbe93a7bcf">2.9.3 - X.509 authentication</h1>
     
 	<p>X509 authentication in IAM doesn&rsquo;t require any specific configuration in IAM itself.
 It is enabled as soon as the proper options have been set in the Nginx configuration.</p>
