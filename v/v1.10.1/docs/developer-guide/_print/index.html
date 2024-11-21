@@ -1,0 +1,354 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" type="text/html" href="/v/v1.10.1/docs/developer-guide/">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/v/v1.10.1/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/v/v1.10.1/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/v/v1.10.1/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/v/v1.10.1/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/v/v1.10.1/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/v/v1.10.1/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/v/v1.10.1/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/v/v1.10.1/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/v/v1.10.1/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/v/v1.10.1/favicons/android-192x192.png" sizes="192x192">
+
+<title>Developer guide | INDIGO IAM</title>
+<meta name="description" content="Build instructions and other information for IAM developers
+">
+<meta property="og:title" content="Developer guide" />
+<meta property="og:description" content="Build instructions and other information for IAM developers
+" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/v/v1.10.1/docs/developer-guide/" />
+
+<meta itemprop="name" content="Developer guide">
+<meta itemprop="description" content="Build instructions and other information for IAM developers
+"><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Developer guide"/>
+<meta name="twitter:description" content="Build instructions and other information for IAM developers
+"/>
+
+
+
+
+<link rel="preload" href="/v/v1.10.1/scss/main.min.8b15a284065632327b8c02a701e1c2297b5d1c084085e061cb33bbd46e6313e8.css" as="style">
+<link href="/v/v1.10.1/scss/main.min.8b15a284065632327b8c02a701e1c2297b5d1c084085e061cb33bbd46e6313e8.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/v/v1.10.1/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">INDIGO IAM</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="/v/v1.10.1/docs/"><span>Documentation</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/v/v1.10.1/blog/"><span>Blog</span></a>
+      </li>
+      <li class="nav-item dropdown d-none d-lg-block">
+        <div class="dropdown">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Releases</a>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/current">v1.10.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.0">v1.10.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.9.0">v1.9.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.4">v1.8.4</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.3">v1.8.3</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.2">v1.8.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.1">v1.8.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.0">v1.8.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.2">v1.7.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.1">v1.7.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.0">v1.7.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/docs/v/current/">older releases</a></li>
+    </ul>
+</div></li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/v/v1.10.1/offline-search-index.866dec57640c969d3b4feed79c79838e.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/v/v1.10.1/docs/developer-guide/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">Developer guide</h1>
+<div class="lead">Build instructions and other information for IAM developers</div>
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>1: <a href="#pg-69f27a09ffee79bd86aeda89b3a9f7db">Specifications and useful resources</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+
+    </ul>
+
+
+<div class="content">
+      <h2 id="iam-build-requirements">IAM build requirements</h2>
+<p>The IAM is a Spring Boot Java application.</p>
+<p>To build it, you will need:</p>
+<ul>
+<li>Java 8</li>
+<li>Maven 3.3.x or greater</li>
+<li>Git</li>
+</ul>
+<h2 id="checking-out-the-iam-code">Checking out the IAM code</h2>
+<p>You can check out the IAM code as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>  git clone https://github.com/indigo-iam/iam.git
+</span></span></code></pre></div><h2 id="building-the-iam">Building the IAM</h2>
+<p>You can build the IAM packages with the following command:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>  mvn package
+</span></span></code></pre></div><h2 id="setting-up-the-docker-based-development-environment">Setting up the docker-based development environment</h2>
+<p>You will need:</p>
+<ul>
+<li>Docker 1.11.1 or greater</li>
+<li>Docker compose 1.7 or greater</li>
+</ul>
+<p>You can start a development/testing environment with the following command:</p>
+<pre tabindex="0"><code>  docker-compose build
+  docker-compose up
+</code></pre><p>The docker-compose.yml file requires that you set some environment variables
+for it to run properly, mainly to provide OAuth client credentials for external
+authentication mechanisms (Google).</p>
+<p>The setup also assumes that you have an entry in your DNS server (complex) or
+/etc/hosts (simpler) that maps iam.local.io to the machine (or VM) where docker
+is running, e.g.:</p>
+<pre tabindex="0"><code>$ cat /etc/hosts
+...
+
+192.168.99.100 iam.local.io
+</code></pre><h2 id="how-to-run-tests-against-the-mysql-database">How to run tests against the mysql database</h2>
+<p>IAM JUnit integration tests can (and should) be run against mysql database.</p>
+<p>To do so, boostrap the database instance with docker-compose:</p>
+<pre tabindex="0"><code>docker-compose up db
+</code></pre><p>And then run the tests with the following command:</p>
+<pre tabindex="0"><code>mvn -Dspring.profiles.active=mysql-test test
+</code></pre><h2 id="building-docker-production-images">Building Docker production images</h2>
+<p>To build the docker images for the iam-service and iam-test client,
+use the following commands:</p>
+<pre tabindex="0"><code>sh iam-login-service/docker/build-prod-image.sh
+sh iam-test-client/docker/build-prod-image.sh
+</code></pre><p>These commands should run <strong>after</strong> war and jar archives have been built, i.e.
+after a <code>mvn package</code>.</p>
+<p>For more details on the image build scripts see the following folders:</p>
+<ul>
+<li><a href="https://github.com/indigo-iam/iam/tree/master/iam-login-service/docker">iam-login-service</a></li>
+<li><a href="https://github.com/indigo-iam/iam/tree/master/iam-test-client/docker">iam-test-client</a></li>
+</ul>
+<h2 id="related-projects">Related projects</h2>
+<p>This project builds upon the following projects/technologies:</p>
+<ul>
+<li><a href="http://projects.spring.io/spring-boot/">Spring Boot</a></li>
+<li><a href="https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server">MitreID OpenID-Connect client and server libraries</a></li>
+</ul>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-69f27a09ffee79bd86aeda89b3a9f7db">1 - Specifications and useful resources</h1>
+    <div class="lead">Specifications and useful resources for IAM development</div>
+	<h2 id="oauth">OAuth</h2>
+<ul>
+<li><a href="https://tools.ietf.org/wg/oauth/">OAuth WG home</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc6749">Main OAuth RFC</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc6750">Bearer token usage</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc6819">OAuth threat model</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics-18">Security recommendations</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc8414">Discovery/AuthZ server metadata</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc8693">Token exchange</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc8628">Device flow</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc7009">Token revocation</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc8707">OAuth resource indicators</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc8252">OAuth for native apps</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc8705">OAuth and MTLS</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc7521">OAuth assertion framework</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc7523">JWT profile for client &amp; authorizationg grants</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc7662">Token introspection</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc7591">Dynamic client registration</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc7592">Dynamic client management</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc9068">Profile for JWT access tokens</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc8176">Authentication method reference values</a></li>
+<li><a href="https://oauth.net/2.1/">OAuth 2.1</a></li>
+</ul>
+<h2 id="openid-connect">OpenID Connect</h2>
+<ul>
+<li><a href="https://openid.net/developers/specs/">OpenID Connect specifications home</a></li>
+<li><a href="https://openid.net/specs/openid-connect-core-1_0.html">OpenID Connect core</a></li>
+<li><a href="https://openid.net/specs/openid-connect-discovery-1_0.html">OpenID Connect discovery</a></li>
+<li><a href="https://openid.net/specs/openid-connect-registration-1_0.html">OpenID Connect dynamic registration</a></li>
+<li><a href="https://openid.net/specs/openid-connect-federation-1_0.html">OpenID Connect federation</a></li>
+</ul>
+<h2 id="json-web-tokens-jwts">JSON Web Tokens (JWTs)</h2>
+<ul>
+<li><a href="https://tools.ietf.org/wg/jose/">JOSE WG homme</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc7519">JWT</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc7520">Examples and use cases</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc7518">JSON Web Algorithms</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc7516">JSON Web Encryption</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc7517">JSON Web Key</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc7515">JSON Web Signature</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc7638">JWT Thumbprint</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc8725">JWT best current practices</a></li>
+</ul>
+<h2 id="aarc">AARC</h2>
+<ul>
+<li><a href="https://aarc-project.eu/architecture/">AARC Blueprint architecture</a></li>
+<li><a href="https://aarc-project.eu/guidelines/">AARC guidelines</a></li>
+</ul>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        <ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="GitHub" aria-label="GitHub">
+    <a target="_blank" rel="noopener" href="https://github.com/indigo-iam/iam" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Slack" aria-label="Slack">
+    <a target="_blank" rel="noopener" href="https://indigo-iam.slack.com" aria-label="Slack">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+</ul>
+
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="td-footer__copyright">&copy;
+    2024
+    <span class="td-footer__authors">INFN</span></span><span class="td-footer__all_rights_reserved">All Rights Reserved</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/v/v1.10.1/js/main.min.dc2c0119076a0df855e55a8044ce0de74b7b9033c20e853e22d7ec7e9bdde965.js" integrity="sha256-3CwBGQdqDfhV5VqARM4N50t7kDPCDoU&#43;Itfsfpvd6WU=" crossorigin="anonymous"></script>
+<script defer src="/v/v1.10.1/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='/v/v1.10.1/js/tabpane-persist.js'></script>
+
+  </body>
+</html>
