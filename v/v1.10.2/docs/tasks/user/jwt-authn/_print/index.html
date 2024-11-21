@@ -1,0 +1,288 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" type="text/html" href="/v/v1.10.2/docs/tasks/user/jwt-authn/">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/v/v1.10.2/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/v/v1.10.2/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/v/v1.10.2/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/v/v1.10.2/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/v/v1.10.2/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/v/v1.10.2/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/v/v1.10.2/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/v/v1.10.2/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/v/v1.10.2/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/v/v1.10.2/favicons/android-192x192.png" sizes="192x192">
+
+<title>JWT client authentication | INDIGO IAM</title>
+<meta name="description" content="The INDIGO Identity and Access Management (IAM) Service">
+<meta property="og:title" content="JWT client authentication" />
+<meta property="og:description" content="The INDIGO Identity and Access Management (IAM) Service" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/v/v1.10.2/docs/tasks/user/jwt-authn/" />
+
+<meta itemprop="name" content="JWT client authentication">
+<meta itemprop="description" content="The INDIGO Identity and Access Management (IAM) Service"><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="JWT client authentication"/>
+<meta name="twitter:description" content="The INDIGO Identity and Access Management (IAM) Service"/>
+
+
+
+
+<link rel="preload" href="/v/v1.10.2/scss/main.min.8b15a284065632327b8c02a701e1c2297b5d1c084085e061cb33bbd46e6313e8.css" as="style">
+<link href="/v/v1.10.2/scss/main.min.8b15a284065632327b8c02a701e1c2297b5d1c084085e061cb33bbd46e6313e8.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/v/v1.10.2/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">INDIGO IAM</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="/v/v1.10.2/docs/"><span>Documentation</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/v/v1.10.2/blog/"><span>Blog</span></a>
+      </li>
+      <li class="nav-item dropdown d-none d-lg-block">
+        <div class="dropdown">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Releases</a>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/current">v1.10.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.1">v1.10.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.0">v1.10.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.9.0">v1.9.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.4">v1.8.4</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.3">v1.8.3</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.2">v1.8.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.1">v1.8.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.0">v1.8.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.2">v1.7.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.1">v1.7.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.0">v1.7.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/docs/v/current/">older releases</a></li>
+    </ul>
+</div></li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/v/v1.10.2/offline-search-index.e9a83f1c086cc29986664d0eeef27395.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/v/v1.10.2/docs/tasks/user/jwt-authn/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">JWT client authentication</h1>
+
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+
+    </ul>
+
+
+<div class="content">
+      <p>IAM supports several methods to authenticate an OAuth2 client to the token endpoint.</p>
+<p>The authentication via JWT assertion is defined in <a href="https://datatracker.ietf.org/doc/html/rfc7523#section-2.2">RFC7523</a>.
+It can be used to request an access token when a client wishes to utilize an
+existing trust relationship, expressed through the semantics of the JWT, without a direct user-approval step at the authorization server.
+Client authentication using a JWT is nothing more than an alternative way for a client to authenticate to the token endpoint
+and must be used in conjunction with some grant type to form a complete and meaningful protocol request,
+for instance the <em>authorization code</em> flow (when a user has to approve the client in order to access to their resources),
+the <em>client credential</em> flow (when a client is acting on its own behalf), etc.</p>
+<h2 id="jwt-assertion-validation">JWT assertion validation</h2>
+<p>The IAM Authorization Server validates the JWT assertion and issues an access token if
+the following conditions are satisfied.</p>
+<p><strong>JWT assertion header</strong></p>
+<ul>
+<li>the &ldquo;alg&rdquo; (algorithm) claim must be present to indicate the algorithm used to sign the token;</li>
+<li>the &ldquo;kid&rdquo; (key ID) claim must be present in the asymmetrically signed assertions to identify the public key.</li>
+</ul>
+<p><strong>JWT assertion body</strong></p>
+<ul>
+<li>the &ldquo;iss&rdquo; (issuer) and &ldquo;sub&rdquo; (subject) claims must be equal to the <code>client_id</code>;</li>
+<li>the &ldquo;aud&rdquo; (audience) claim must be equal to the token endpoint URL;</li>
+<li>the &ldquo;exp&rdquo; (expiration) claim must be present to limit the JWT assertion lifetime;</li>
+<li>the &ldquo;jti&rdquo; (JWT ID) claim must be present and provides a unique identifier for the token.</li>
+</ul>
+<h2 id="client-settings">Client settings</h2>
+<p>You need to configure an OAuth2 client in IAM which is used to issue a JWT assertion and get an access token.</p>
+<p>Follow the instruction on <a href="../client-registration">how to register a new client</a>, or edit an existing client
+(click on the <em>My clients</em> link on the left navigation bar of the IAM dashboard and select the client name).
+From the <em>Credentials</em> tab you can choose the authentication method to the token endpoint:</p>
+<ul>
+<li>client secret with symmetrically signed JWT assertion;</li>
+<li>asymmetrically signed JWT assertion.</li>
+</ul>
+<h3 id="symmetrically-signed-jwt-assertion">Symmetrically signed JWT assertion</h3>
+<p>This authentication mechanism is used when your JWT assertion is signed with a symmetric key.</p>
+<p>To use this mechanism, select <em>Client secret with symmetrically signed JWT assertion</em>;
+the <em>Client secret</em> generated by IAM must be used as symmetric key to sign your JWT assertion.</p>
+<p><img src="../images/jwt-authn-symm.png" alt="Symmetrically signed JWT"></p>
+<p>A symmetrically signed JWT assertion looks like</p>
+<pre tabindex="0"><code>## Header
+{
+  &#34;alg&#34;: &#34;HS256&#34;
+}
+## Payload
+{
+  &#34;sub&#34;: &#34;181f26f9-4562-4919-b718-759241485335&#34;,
+  &#34;aud&#34;: &#34;https://iam.local.io/token&#34;,
+  &#34;nbf&#34;: 1649162752,
+  &#34;iss&#34;: &#34;181f26f9-4562-4919-b718-759241485335&#34;,
+  &#34;exp&#34;: 1651754752,
+  &#34;iat&#34;: 1649162752,
+  &#34;jti&#34;: &#34;120240aa-e389-4a55-8384-f4d7a54c2633&#34;
+}
+</code></pre><h3 id="asymmetrically-signed-jwt-assertion">Asymmetrically signed JWT assertion</h3>
+<p>This authentication mechanism is used when your JWT assertion is signed with a private key.</p>
+<p>To use this mechanism, select <em>Asymmetrically signed JWT assertion</em> and then choose how IAM can get the public
+key used to validate your JWT assertion.
+Into the section <em>Public key set</em> below, choose between:</p>
+<ul>
+<li><em>By URI</em> and provide a valid <em>JSON Web Keyset URI</em> in the corresponding box,</li>
+<li>or <em>By value</em> and provide a <em>JSON Web Keyset value</em> in the corresponding box.</li>
+</ul>
+<p><img src="../images/jwt-authn-asymm.png" alt="Asymmetrically signed JWT by value"></p>
+<p>An asymmetrically signed JWT assertion looks like</p>
+<pre tabindex="0"><code>## Header
+{
+  &#34;alg&#34;: &#34;RS256&#34;,
+  &#34;kid&#34;: &#34;rsa1&#34;
+}
+## Payload
+{
+  &#34;sub&#34;: &#34;bdb6ca15-be9c-470a-81dc-69d30dabb340&#34;,
+  &#34;aud&#34;: &#34;https://iam.local.io/token&#34;,
+  &#34;nbf&#34;: 1649162752,
+  &#34;iss&#34;: &#34;bdb6ca15-be9c-470a-81dc-69d30dabb340&#34;,
+  &#34;exp&#34;: 1651754752,
+  &#34;iat&#34;: 1649162752,
+  &#34;jti&#34;: &#34;f4392c1e-6d6a-423e-8e5e-5d114585f750&#34;
+}
+</code></pre><h2 id="getting-an-access-token">Getting an access token</h2>
+<p>Here is an example of an HTTP POST request to the token endpoint where the client is authenticated
+with JWT assertion and is authorized via the client credential OAuth2 flow.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ curl -d <span style="color:#000">client_assertion</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">${</span><span style="color:#000">JWTA</span><span style="color:#4e9a06">}</span> -d <span style="color:#000">client_assertion_type</span><span style="color:#ce5c00;font-weight:bold">=</span>urn:ietf:params:oauth:client-assertion-type:jwt-bearer -d <span style="color:#000">grant_type</span><span style="color:#ce5c00;font-weight:bold">=</span>client_credentials https://iam.local.io/token <span style="color:#000;font-weight:bold">|</span> jq
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;access_token&#34;</span>: <span style="color:#4e9a06">&#34;eyJraWQiOiJyc2ExIiwiY...&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;token_type&#34;</span>: <span style="color:#4e9a06">&#34;Bearer&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;expires_in&#34;</span>: 3599,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;scope&#34;</span>: <span style="color:#4e9a06">&#34;storage.read:/ storage.create:/ storage.modify:/&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span></code></pre></div><p>If not explicitly requested in the payload, the scopes returned
+in the access token are all the ones registered for your client.</p>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        <ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="GitHub" aria-label="GitHub">
+    <a target="_blank" rel="noopener" href="https://github.com/indigo-iam/iam" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Slack" aria-label="Slack">
+    <a target="_blank" rel="noopener" href="https://indigo-iam.slack.com" aria-label="Slack">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+</ul>
+
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="td-footer__copyright">&copy;
+    2024
+    <span class="td-footer__authors">INFN</span></span><span class="td-footer__all_rights_reserved">All Rights Reserved</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/v/v1.10.2/js/main.min.dc2c0119076a0df855e55a8044ce0de74b7b9033c20e853e22d7ec7e9bdde965.js" integrity="sha256-3CwBGQdqDfhV5VqARM4N50t7kDPCDoU&#43;Itfsfpvd6WU=" crossorigin="anonymous"></script>
+<script defer src="/v/v1.10.2/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='/v/v1.10.2/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

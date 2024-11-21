@@ -1,0 +1,747 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" type="text/html" href="/v/v1.10.2/blog/releases/">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/v/v1.10.2/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/v/v1.10.2/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/v/v1.10.2/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/v/v1.10.2/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/v/v1.10.2/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/v/v1.10.2/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/v/v1.10.2/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/v/v1.10.2/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/v/v1.10.2/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/v/v1.10.2/favicons/android-192x192.png" sizes="192x192">
+
+<title>Releases | INDIGO IAM</title>
+<meta name="description" content="The INDIGO Identity and Access Management (IAM) Service">
+<meta property="og:title" content="Releases" />
+<meta property="og:description" content="The INDIGO Identity and Access Management (IAM) Service" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/v/v1.10.2/blog/releases/" />
+
+<meta itemprop="name" content="Releases">
+<meta itemprop="description" content="The INDIGO Identity and Access Management (IAM) Service"><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Releases"/>
+<meta name="twitter:description" content="The INDIGO Identity and Access Management (IAM) Service"/>
+
+
+
+
+<link rel="preload" href="/v/v1.10.2/scss/main.min.8b15a284065632327b8c02a701e1c2297b5d1c084085e061cb33bbd46e6313e8.css" as="style">
+<link href="/v/v1.10.2/scss/main.min.8b15a284065632327b8c02a701e1c2297b5d1c084085e061cb33bbd46e6313e8.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section td-blog">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/v/v1.10.2/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">INDIGO IAM</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/v/v1.10.2/docs/"><span>Documentation</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/v/v1.10.2/blog/"><span>Blog</span></a>
+      </li>
+      <li class="nav-item dropdown d-none d-lg-block">
+        <div class="dropdown">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Releases</a>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/current">v1.10.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.1">v1.10.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.0">v1.10.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.9.0">v1.9.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.4">v1.8.4</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.3">v1.8.3</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.2">v1.8.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.1">v1.8.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.0">v1.8.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.2">v1.7.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.1">v1.7.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.0">v1.7.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/docs/v/current/">older releases</a></li>
+    </ul>
+</div></li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/v/v1.10.2/offline-search-index.e9a83f1c086cc29986664d0eeef27395.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5 pe-md-4" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/v/v1.10.2/blog/releases/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">Releases</h1>
+
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+    
+    
+	
+
+    <li><a href="#pg-6600179aec539021e69592905b908494">IAM v1.10.1</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-3022441b6e4975a0373f6e0856cd8298">IAM v1.10.0</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-cad55f2d7afb4905608559c78f7ce89e">IAM v1.9.0</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-ad0b33467a9c7492de525e71e89e9dc1">IAM v1.8.4</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-6ef5ee5245cd1e2fa3527b820ba7f0fd">IAM v1.8.3</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-fae9fa3ac6f3a1bc6fa82a2de868c61b">IAM v1.8.2</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-d1ad9cb7d81ee1014cd2dc215910ac4d">IAM v1.8.1</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-1213eaabc8a68e0d6f87e7755384427c">IAM v1.8.0</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-ed7e2e2992d402c6b71a1228e6d976cc">IAM v1.7.2</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-a8ae29fff226e8cf12ba56b846dc1fd1">IAM v1.7.1</a></li>
+
+
+
+    
+  
+    
+    
+	
+
+    <li><a href="#pg-40f1261f1506d775161b3e4e229cf43b">IAM v1.7.0</a></li>
+
+
+
+    
+  
+
+    </ul>
+
+
+<div class="content">
+      
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="">
+    <h1 id="pg-6600179aec539021e69592905b908494">IAM v1.10.1</h1>
+	<div class="lead">The v1.10.1 release includes bug fixes</div>
+	<div class="td-byline mb-4">
+		By <b>IAM development team</b> |
+        
+		<time datetime="2024-08-22" class="text-body-secondary">Thursday, August 22, 2024</time>
+        
+	</div>
+	<p>The IAM development team is pleased to announce a fast release of INDIGO IAM v1.10.1.</p>
+<p>This release mainly provides bug fixes, as can be seen in the <a href="https://github.com/indigo-iam/iam/releases/tag/v1.10.1">release notes</a>.</p>
+<p>The fast release is motivated by the need of fixing the lifecycle user suspension.</p>
+<p>As usual, the IAM docker image can be obtained from <a href="https://hub.docker.com/r/indigoiam/iam-login-service/tags">DockerHub</a>.</p>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-3022441b6e4975a0373f6e0856cd8298">IAM v1.10.0</h1>
+	<div class="lead">The v1.10.0 release focuses on improving the management of the Virtual Organization (VO)</div>
+	<div class="td-byline mb-4">
+		By <b>IAM development team</b> |
+        
+		<time datetime="2024-08-07" class="text-body-secondary">Wednesday, August 07, 2024</time>
+        
+	</div>
+	<p>The IAM development team is pleased to announce the release of INDIGO IAM v1.10.0.</p>
+<p>This release provides bug fixes and enhancements, as can be seen in the <a href="https://github.com/indigo-iam/iam/releases/tag/v1.10.0">release notes</a>.</p>
+<p>The major highlights include:</p>
+<ul>
+<li>E-mail notification for AUP reminder/expiration, account suspension/restoration and client disabled/enabled events</li>
+<li>Add a statistical endpoint which shows the number of IAM users</li>
+<li>Allow for a definition of a set of default groups, automatically linked to newly registered users</li>
+<li>Mandate the usage of a stronger user password (during the password reset step)</li>
+<li>Allow to set a property which disables any kind of IAM cache</li>
+</ul>
+<p>As usual, the IAM docker image can be obtained from <a href="https://hub.docker.com/r/indigoiam/iam-login-service/tags">DockerHub</a>.</p>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-cad55f2d7afb4905608559c78f7ce89e">IAM v1.9.0</h1>
+	<div class="lead">The v1.9.0 release focuses on better management of the Virtual Organization (VO)</div>
+	<div class="td-byline mb-4">
+		By <b>IAM development team</b> |
+        
+		<time datetime="2024-06-19" class="text-body-secondary">Wednesday, June 19, 2024</time>
+        
+	</div>
+	<p>The IAM development team is pleased to announce the release of INDIGO IAM v1.9.0.</p>
+<p>This release introduces new features, including:</p>
+<ul>
+<li>Administrators have the ability to disable a client</li>
+<li>VO members can re-sign the AUP whenever they choose</li>
+<li>Clients now have a <em>last used</em> property to find out when was the last time it was used</li>
+<li>It is now possible to add a <em>nickname</em> as an attribute during the registration process</li>
+</ul>
+<p>This release also provides bug fixes and enhancements, as can be seen in the <a href="https://github.com/indigo-iam/iam/releases/tag/v1.9.0">release notes</a>.</p>
+<p>As usual, the IAM docker image can be obtained from <a href="https://hub.docker.com/r/indigoiam/iam-login-service/tags">DockerHub</a>.</p>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-ad0b33467a9c7492de525e71e89e9dc1">IAM v1.8.4</h1>
+	<div class="lead">The v1.8.4 release restricts the selection of client_credentials grant type for an OAuth Client</div>
+	<div class="td-byline mb-4">
+		By <b>IAM development team</b> |
+        
+		<time datetime="2024-03-25" class="text-body-secondary">Monday, March 25, 2024</time>
+        
+	</div>
+	<p>The IAM development team is pleased to announce the release of INDIGO IAM v1.8.4.</p>
+<p>This release is mainly focused on the limitation of the client_credentials grant type, which can be set only by registered IAM users (admins or normal users) in a Client registration/update request.</p>
+<p>This release also provides bug fixes and enhancements, as can be seen in the <a href="https://github.com/indigo-iam/iam/releases/tag/v1.8.4">release notes</a>.</p>
+<p>As usual, the IAM docker image can be obtained from <a href="https://hub.docker.com/r/indigoiam/iam-login-service/tags">DockerHub</a>.</p>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-6ef5ee5245cd1e2fa3527b820ba7f0fd">IAM v1.8.3</h1>
+	<div class="lead">The v1.8.3 release introduces several database migrations to increase IAM performance</div>
+	<div class="td-byline mb-4">
+		By <b>IAM development team</b> |
+        
+		<time datetime="2023-10-30" class="text-body-secondary">Monday, October 30, 2023</time>
+        
+	</div>
+	<p>The IAM development team is pleased to announce the release of INDIGO IAM v1.8.3.</p>
+<p>This release provides bug fixes and enhancements, as can be seen in the <a href="https://github.com/indigo-iam/iam/releases/tag/v1.8.3">release notes</a>.</p>
+<p>The major highlights include:</p>
+<ul>
+<li>save an access token value as a hash and add missing foreign keys to the database
+<ul>
+<li>because of this change, we <strong>strongly</strong> recommend to <strong>make a backup of your database</strong> before upgrading to v1.8.3. The migration will take an amount of time which will be proportional to the amount of currently active access tokens, which could be very long</li>
+</ul>
+</li>
+<li>enable caching of scope matchers and of the contents of the well-known endpoint on a Redis server</li>
+<li>match custom scopes based on string equality</li>
+<li>fix CERN workflow for restored accounts</li>
+<li>fix authorization on IAM APIs such to avoid cases where access is granted to already approved scopes instead of effective token scopes.</li>
+</ul>
+<p>As usual, the IAM docker image can be obtained from <a href="https://hub.docker.com/r/indigoiam/iam-login-service/tags">DockerHub</a>.</p>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-fae9fa3ac6f3a1bc6fa82a2de868c61b">IAM v1.8.2</h1>
+	<div class="lead">The v1.8.2 release introduces new admin scopes in order to access IAM API endpoints</div>
+	<div class="td-byline mb-4">
+		By <b>CNAF SD team</b> |
+        
+		<time datetime="2023-06-05" class="text-body-secondary">Monday, June 05, 2023</time>
+        
+	</div>
+	<p>The IAM development team is pleased to announce the release of INDIGO IAM v.1.8.2.</p>
+<p>This release provides bug fixes and enhancements, as can be seen in the <a href="https://github.com/indigo-iam/iam/releases/tag/v1.8.2">release notes</a>.</p>
+<p>The major highlights include:</p>
+<ul>
+<li>addition of new admin scopes in order to access IAM API endpoints
+<ul>
+<li>an administrator access token is not enough to have full access to IAM API endpoints; <code>iam:admin.read</code> and <code>iam:admin.write</code> scopes are required</li>
+</ul>
+</li>
+<li>Spring-Boot update to version 2.6.14</li>
+</ul>
+<p>As usual, the IAM docker image can be obtained from <a href="https://hub.docker.com/r/indigoiam/iam-login-service/tags">DockerHub</a>.</p>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-d1ad9cb7d81ee1014cd2dc215910ac4d">IAM v1.8.1</h1>
+	<div class="lead">The v1.8.1 release includes new Managed groups and Scope pages</div>
+	<div class="td-byline mb-4">
+		By <b>CNAF SD team</b> |
+        
+		<time datetime="2023-02-28" class="text-body-secondary">Tuesday, February 28, 2023</time>
+        
+	</div>
+	<p>The IAM development team is pleased to announce the release of INDIGO IAM v.1.8.1.</p>
+<p>This release provides bug fixes and enhancements, as can be seen in the <a href="https://github.com/indigo-iam/iam/releases/tag/v1.8.1">release notes</a>.</p>
+<p>The major highlights are:</p>
+<ul>
+<li>Add a <strong>Scopes</strong> tab to the <em>Organization Management</em> section of the IAM dashboard, that basically replaces the functionality of the <strong>System Scope</strong> tab on the <em>ADMINISTRATIVE</em> section of the MitreID dashboard (only visible by Admins);</li>
+<li>Add a <strong>Managed groups</strong> tab to the <em>Organization Management</em> section of the IAM dashboard (visible by Group Managers), that allows to list the groups a user is manager of, their subgroups, their members, etc. Group Managers can also remove members from groups, but the ability to invite/add users to their managed groups will be included in future release;</li>
+<li>The default Refresh Token lifetime is set to 30 days for every newly registered client (it does not change the lifetime of old clients). This default can be overridden from configuration, e.g. <code>client-registration.client-defaults.default-refresh-token-validity-seconds=-1</code> reverts to the previous behavior where the RT does not expire;</li>
+<li>When a user lets the Acceptable Usage Policy expire, IAM no longer issues refresh tokens and VOMS proxies;</li>
+<li>When a IAM account has been disabled, a user can no longer login with x509 certificates and request access tokens through the refresh token flow;</li>
+<li>IAM is more compliant with the guideline <a href="https://aarc-project.eu/guidelines/aarc-g069/">AARC-G069</a>, i.e., groups and roles membership information can be requested with the <code>entitlements</code> scope and appears in the <code>entitlements</code> claim of the access token.</li>
+</ul>
+<p>As usual, the IAM docker image can be obtained from <a href="https://hub.docker.com/r/indigoiam/iam-login-service/tags">DockerHub</a>.</p>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Warning</h4>
+
+    Starting from this release, the forward to the old <code>/health</code> endpoints used to show the service status has been removed.
+
+</div>
+
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-1213eaabc8a68e0d6f87e7755384427c">IAM v1.8.0</h1>
+	<div class="lead">The v1.8.0 release includes a spring boot upgrade and a new client management page</div>
+	<div class="td-byline mb-4">
+		By <b>CNAF SD team</b> |
+        
+		<time datetime="2022-09-09" class="text-body-secondary">Friday, September 09, 2022</time>
+        
+	</div>
+	<p>The IAM development team is pleased to announce the release of INDIGO IAM v.1.8.0.</p>
+<p>This release provides many bug fixes and enchancements, but the major highlightes are:</p>
+<ul>
+<li>Spring Boot migration to 2.6.6 version and Flyway upgrade to 7.15.0 version</li>
+<li>New clients management and registration pages on IAM dashboard migrated away from MitreID</li>
+<li>New consent page in IAM migrated away from MitreID</li>
+<li>Support for JWT-based client authentication</li>
+<li>Compliance with some AARC guidelines, in particular G025 for expressing affiliation information and G021 on the exchange of specific assurance information between Infrastructures</li>
+<li>Persistence layer migrations for Multi-Factor Authentication support</li>
+</ul>
+<p>Significant changes and other details are described in the <a href="https://github.com/indigo-iam/iam/releases/tag/v1.8.0">release notes</a>.</p>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-ed7e2e2992d402c6b71a1228e6d976cc">IAM v1.7.2</h1>
+	<div class="lead">The v1.7.2 release prepares the migration to IAM v1.8.0</div>
+	<div class="td-byline mb-4">
+		By <b>Andrea Ceccanti</b> |
+        
+		<time datetime="2021-12-03" class="text-body-secondary">Friday, December 03, 2021</time>
+        
+	</div>
+	<p>The IAM development team is pleased to announce the release of <a href="https://github.com/indigo-iam/iam/releases/tag/v1.7.2">INDIGO IAM
+v.1.7.2</a>.</p>
+<p>This release paves the way for the upgrade to v1.8.0 which will provide an
+update of the core Spring dependencies IAM is built upon.</p>
+<p>In order to enable a smooth transition without requiring manual interventions
+from deployers, we need to issue an intermediate release that just updates the
+version of the <a href="https://flywaydb.org/">flyway library</a> that is used to manage the database
+schema updates.</p>
+<p>No other change is introduced with this release.</p>
+<p>As usual, the IAM docker images can be obtained from DockerHub, while RPM
+packages for CENTOS 7 can be obtained from our <a href="https://indigo-iam.github.io/repo/">package repository</a>.</p>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-a8ae29fff226e8cf12ba56b846dc1fd1">IAM v1.7.1</h1>
+	<div class="lead">The v1.7.1 fixes a problem in the IAM test client application</div>
+	<div class="td-byline mb-4">
+		By <b>Andrea Ceccanti</b> |
+        
+		<time datetime="2021-09-13" class="text-body-secondary">Monday, September 13, 2021</time>
+        
+	</div>
+	<p>The IAM development team is pleased to announce the release of INDIGO IAM v.1.7.1.</p>
+<p>This release fixes a problem introduced in v1.7.0 of the IAM test client
+application released last week that prevented its correct behaviour.</p>
+<p>Also starting with this release IAM test client does not expose received tokens
+in the default configuration. In order to restore the previous behaviour, set
+the following envirnoment variable:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">IAM_CLIENT_HIDE_TOKENS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">false</span>
+</span></span></code></pre></div><p>or, in the <code>application.yml</code> file use:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">hide-tokens</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>More information in the <a href="https://github.com/indigo-iam/iam/releases/tag/v1.7.1">release notes</a>.</p>
+<p>This release provide updates only for the iam-test-client application, which is
+only released as a Docker image on DockerHub.</p>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
+    <h1 id="pg-40f1261f1506d775161b3e4e229cf43b">IAM v1.7.0</h1>
+	<div class="lead">The v1.7.0 release provides numerous bug fixes and enhancements</div>
+	<div class="td-byline mb-4">
+		By <b>Andrea Ceccanti</b> |
+        
+		<time datetime="2021-09-07" class="text-body-secondary">Tuesday, September 07, 2021</time>
+        
+	</div>
+	<p>The IAM development team is pleased to announce the release of INDIGO IAM v.1.7.0.</p>
+<p>This release provides many bug fixes and enhancements, as can be seen in the <a href="https://github.com/indigo-iam/iam/releases/tag/v1.7.0">release notes</a>.</p>
+<p>The highlights of this release are:</p>
+<ul>
+<li><strong>Scalability improvements</strong>: the group membership persistence management has
+been refactored to improve scalability; SCIM APIs have also been changed to
+support pagination over group members (see the new <a href="/v/v1.10.2/docs/reference/api/scim-api/">SCIM API</a>
+documentation for more information);</li>
+<li><strong>Improved token exchange flexibility</strong>: token exchange can now be controlled
+in more detail using <a href="/v/v1.10.2/docs/reference/api/scope-policy-api/">scope</a> and <a href="/v/v1.10.2/docs/reference/api/token-exchange-policy-api/">token
+exchange</a> policies;</li>
+<li><strong>SSH key management</strong>: IAM now allows users to link SSH keys to their account;
+ssh keys are then exposed to relying parties either via the SCIM APIs or via
+the OpenID connect userinfo endpoint; see the <a href="/v/v1.10.2/docs/tasks/user/manage-ssh-keys/">documentation</a>.</li>
+</ul>
+<p>As usual, the IAM docker images can be obtained from DockerHub, while RPM
+packages for CENTOS 7can be obtained from our <a href="https://indigo-iam.github.io/repo/">package repository</a>.</p>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Warning</h4>
+
+    Starting from this release, we no longer provide packages for the Ubuntu platform.
+
+</div>
+
+
+</div>
+
+
+
+
+
+    
+	
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        <ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="GitHub" aria-label="GitHub">
+    <a target="_blank" rel="noopener" href="https://github.com/indigo-iam/iam" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Slack" aria-label="Slack">
+    <a target="_blank" rel="noopener" href="https://indigo-iam.slack.com" aria-label="Slack">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+</ul>
+
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="td-footer__copyright">&copy;
+    2024
+    <span class="td-footer__authors">INFN</span></span><span class="td-footer__all_rights_reserved">All Rights Reserved</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/v/v1.10.2/js/main.min.dc2c0119076a0df855e55a8044ce0de74b7b9033c20e853e22d7ec7e9bdde965.js" integrity="sha256-3CwBGQdqDfhV5VqARM4N50t7kDPCDoU&#43;Itfsfpvd6WU=" crossorigin="anonymous"></script>
+<script defer src="/v/v1.10.2/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='/v/v1.10.2/js/tabpane-persist.js'></script>
+
+  </body>
+</html>
