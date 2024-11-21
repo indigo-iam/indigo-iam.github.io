@@ -1,0 +1,317 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" type="text/html" href="/v/v1.10.3/docs/reference/configuration/jwk/">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/v/v1.10.3/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/v/v1.10.3/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/v/v1.10.3/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/v/v1.10.3/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/v/v1.10.3/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/v/v1.10.3/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/v/v1.10.3/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/v/v1.10.3/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/v/v1.10.3/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/v/v1.10.3/favicons/android-192x192.png" sizes="192x192">
+
+<title>JSON Web Keys (JWK) | INDIGO IAM</title>
+<meta name="description" content="The INDIGO Identity and Access Management (IAM) Service">
+<meta property="og:title" content="JSON Web Keys (JWK)" />
+<meta property="og:description" content="The INDIGO Identity and Access Management (IAM) Service" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/v/v1.10.3/docs/reference/configuration/jwk/" />
+
+<meta itemprop="name" content="JSON Web Keys (JWK)">
+<meta itemprop="description" content="The INDIGO Identity and Access Management (IAM) Service"><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="JSON Web Keys (JWK)"/>
+<meta name="twitter:description" content="The INDIGO Identity and Access Management (IAM) Service"/>
+
+
+
+
+<link rel="preload" href="/v/v1.10.3/scss/main.min.8b15a284065632327b8c02a701e1c2297b5d1c084085e061cb33bbd46e6313e8.css" as="style">
+<link href="/v/v1.10.3/scss/main.min.8b15a284065632327b8c02a701e1c2297b5d1c084085e061cb33bbd46e6313e8.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/v/v1.10.3/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">INDIGO IAM</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="/v/v1.10.3/docs/"><span>Documentation</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/v/v1.10.3/blog/"><span>Blog</span></a>
+      </li>
+      <li class="nav-item dropdown d-none d-lg-block">
+        <div class="dropdown">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Releases</a>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.3">v1.10.3</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.2">v1.10.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.1">v1.10.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.0">v1.10.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.9.0">v1.9.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.4">v1.8.4</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.3">v1.8.3</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.2">v1.8.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.1">v1.8.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.0">v1.8.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.2">v1.7.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.1">v1.7.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.0">v1.7.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/docs/v/current/">older releases</a></li>
+    </ul>
+</div></li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/v/v1.10.3/offline-search-index.569ac643e9107aadbe6c5f6c5a3489a0.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/v/v1.10.3/docs/reference/configuration/jwk/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">JSON Web Keys (JWK)</h1>
+
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+
+    </ul>
+
+
+<div class="content">
+      <p>JSON Web Key (JWK) is a JSON data structure that represents a single public key or a set of
+public keys. IAM uses private JWKs to sign tokens, and IAM clients use public JWKs to validate the tokens.
+A <a href="/v/v1.10.3/docs/getting-started/jwk/">JWK Generator</a> can be used to generate new keys.</p>
+<h3 id="keystore-location">Keystore Location</h3>
+<p>JWKs are stored in a file that is called keystore. All the keys in this file will be
+used for validating the tokens. Keystore location is set using the <code>IAM_KEY_STORE_LOCATION</code>
+environment variable, e.g.:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-env" data-lang="env"><span style="display:flex;"><span><span style="color:#000">IAM_KEY_STORE_LOCATION</span><span style="color:#ce5c00;font-weight:bold">=</span>file:///secrets/jwk/keystore.jwks
+</span></span></code></pre></div><h3 id="default-key-id-kid">Default Key ID (kid)</h3>
+<p>If there are multiple JWKs in the keystore, <code>IAM_JWK_DEFAULT_KEY_ID</code> environment variable
+can be set to choose the key that signs the tokens, e.g.:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-env" data-lang="env"><span style="display:flex;"><span><span style="color:#000">IAM_JWK_DEFAULT_KEY_ID</span><span style="color:#ce5c00;font-weight:bold">=</span>rsa2
+</span></span></code></pre></div><p>If this variable is not set it will use the default value <code>rsa1</code>.</p>
+<h3 id="default-jwe-keys">Default JWE Keys</h3>
+<p>JSON Web Encryption (JWE) represents encrypted content using JSON-based data structures.
+JWE allows to encrypt the JWT tokens so that only the intended recipient can decrypt
+and see the content.</p>
+<p>Default JWE decrypt key and encrypt key id can be set using the
+<code>IAM_JWK_DEFAULT_JWE_DECRYPT_KEY_ID</code> and <code>IAM_JWK_DEFAULT_JWE_ENCRYPT_KEY_ID</code>
+environment variables respectively, e.g.:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-env" data-lang="env"><span style="display:flex;"><span><span style="color:#000">IAM_JWK_DEFAULT_JWE_DECRYPT_KEY_ID</span><span style="color:#ce5c00;font-weight:bold">=</span>jwe-decrypt
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_JWK_DEFAULT_JWE_ENCRYPT_KEY_ID</span><span style="color:#ce5c00;font-weight:bold">=</span>jwe-encrypt
+</span></span></code></pre></div><h3 id="default-algorithms">Default Algorithms</h3>
+<p>Default alorithms used for signing and encrypting the key can be set using
+<code>IAM_JWK_DEFAULT_JWS_ALGORITHM</code> and <code>IAM_JWT_DEFAULT_JWE_ALGORITHM</code> environment variables
+respectively, default algorithms are like following:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-env" data-lang="env"><span style="display:flex;"><span><span style="color:#000">IAM_JWK_DEFAULT_JWS_ALGORITHM</span><span style="color:#ce5c00;font-weight:bold">=</span>RS256
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_JWT_DEFAULT_JWE_ALGORITHM</span><span style="color:#ce5c00;font-weight:bold">=</span>RSA_OAEP_256
+</span></span></code></pre></div><h2 id="rotating-keys">Rotating Keys</h2>
+<p>To change the JWKs without any interruption on the service, a rolling update can be done
+using these configurations. Below is an example of a rolling update.</p>
+<p>At the beginning there is one JWK in the keystore but it needs to be changed (e.g. regular
+update or because of a security instance, etc.). For example:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;keys&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;p&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;7IsuNM1T2G83isHFmV8zNUri2x3xLBBT3gbA5905owUTqzqHsj7QJw8GqnadNse9G3FRFLB-ShNq64yvr7hXPO35E5HSrRsWKxYgzdPKPdl-M5xc6O-QQlKmkmje_r82M5KGbDpV_uBjoQHPGMxME6MlFaYtCFSd_keKvzpkev8&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;kty&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;RSA&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;q&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;6Q5OunfOfXqkvKdh-mUysuS5jJY4t18MAO9KLcH5wIH4iV2FmasEeqB0g0LSNrgitv9icGhQiRUVR8dqpATBgrhZiQlB1KneUdIe8W_QQQVhA_tqJgEuAb_kl8QDHvIyXAs8onYCSDtgSD6gw-qDivGpf7TzXZcosWrgSQDYi9k&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;d&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;DUSnJ_OYFqBG9gDzcj20RLPJj-CT6kqH0nh4zQIRV9mB2XkVsWk0mlo4tauqBXT8lrTN5ACyaIhFMItDqkApJeBtvyMf3E8G3tBEQnwEa8HABcCd54ZzC94t-U-pazXvoqpNxEfu6qCFFdV7u-0OgDmYbTT6_c4jDQ9jTZozuzxoh_qv6iOijBJ62yJLf4kvIOB-ghYwig6Cz1OLSgh_Y8EIO-6wk-aSZWXS7l7xnM7_8BBOzKxVG73YfPQi-9fPVnee8Cijd3RU5_uUw4yh5I87wYZzPzN3gK6Pazf6BZ-9vs1SboEyeVtd3TiOB2aBOyS4Ntohj6eljsfXEHYN4Q&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;e&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;AQAB&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;kid&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;rsa1&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;qi&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;oMPC-4NyoDZge2bOL5SHaSNKyrcnpC1XKctcxN64lRql5zETC30Nuq0zJWwFQQfVgkS8fiMRV1NEMy98EbTAj8k63PBfp5jywIx5atQFjZ101tYEsxHG4bfAuTxIwUFALS3KLIHyGAlTognRZ3UWNX0FHwH2AJUS0LJdbCuHqGA&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;dp&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;fn0Kj1fA3zrRw5RMuvAKbRQHbU58mah9gHuyCgrleEQNuYGJ8IngOxKw6NSWyyVR_WvCBMNANRJfGWhYxilYFQ_YIlvXAZQ7bXzeu9HmEt7LuoOBt1nrlVunESGdJTJQpJFU6mjjdXC-NenGuab9g365JPOAnzTIa6IMEqgB9Tc&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;dq&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;134JQdXBsriSVnYW3GZySIPBJcNJUhSqjrqzxjeT7XLAEpPNEtfU3mY7FZvVsA722mqt5O4veXFrKeG0M1DKdUpsT4-ltTQUg2dcgTY4Q8bre7ke32E73xZGEiaGFDkyY3VobXfciFmOn355PG49j14AsjroxGMel14RYK9Ni5E&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;n&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;11flaUmrserMifKmz8ONBbWWfCRAFjerniHvW1kIXP62hVI8xDWipojhLo7Ai-tV0jA4WSyodlfaA1NRXzZbbAC8pOOpPGkwLBHyOhcB4zpwTykvz5Ype3Mex20XIdBAc0DR4i8d9ZEpnIBqmPcmwP0gANmX82RZd3gZKxQ-umfDXZdNJqy2g1kawRjIP_CpznYzX8MY1OCfjZYXXsZvVeC2v0pRRre9tJEilCZEBY42jJyf6bY2cZhu2KTIpIx1_8Y2JB6AAAdnPsEgNRxMe0g5ShCmDvc93m9GsLZSy4Nm0pOWWVbx7-JK6-QWBdaiG_fAT_2OOndDL-hL1Ry3Jw&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><ul>
+<li>
+<p>Firstly, new JWK should be added to the keystore using the file in the <code>IAM_KEY_STORE_LOCATION</code>.
+The <code>IAM_JWK_DEFAULT_KEY_ID</code> should still be left as the key id of the old key. This way all the
+clients can cache the new public key. Before the next step, waiting as long as the agreed policy for
+key caching for the infrastructure would be enough to make sure every client cached the new
+key.</p>
+<p>So new keystore in the example would be:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;keys&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;p&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;7IsuNM1T2G83isHFmV8zNUri2x3xLBBT3gbA5905owUTqzqHsj7QJw8GqnadNse9G3FRFLB-ShNq64yvr7hXPO35E5HSrRsWKxYgzdPKPdl-M5xc6O-QQlKmkmje_r82M5KGbDpV_uBjoQHPGMxME6MlFaYtCFSd_keKvzpkev8&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;kty&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;RSA&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;q&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;6Q5OunfOfXqkvKdh-mUysuS5jJY4t18MAO9KLcH5wIH4iV2FmasEeqB0g0LSNrgitv9icGhQiRUVR8dqpATBgrhZiQlB1KneUdIe8W_QQQVhA_tqJgEuAb_kl8QDHvIyXAs8onYCSDtgSD6gw-qDivGpf7TzXZcosWrgSQDYi9k&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;d&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;DUSnJ_OYFqBG9gDzcj20RLPJj-CT6kqH0nh4zQIRV9mB2XkVsWk0mlo4tauqBXT8lrTN5ACyaIhFMItDqkApJeBtvyMf3E8G3tBEQnwEa8HABcCd54ZzC94t-U-pazXvoqpNxEfu6qCFFdV7u-0OgDmYbTT6_c4jDQ9jTZozuzxoh_qv6iOijBJ62yJLf4kvIOB-ghYwig6Cz1OLSgh_Y8EIO-6wk-aSZWXS7l7xnM7_8BBOzKxVG73YfPQi-9fPVnee8Cijd3RU5_uUw4yh5I87wYZzPzN3gK6Pazf6BZ-9vs1SboEyeVtd3TiOB2aBOyS4Ntohj6eljsfXEHYN4Q&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;e&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;AQAB&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;kid&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;rsa1&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;qi&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;oMPC-4NyoDZge2bOL5SHaSNKyrcnpC1XKctcxN64lRql5zETC30Nuq0zJWwFQQfVgkS8fiMRV1NEMy98EbTAj8k63PBfp5jywIx5atQFjZ101tYEsxHG4bfAuTxIwUFALS3KLIHyGAlTognRZ3UWNX0FHwH2AJUS0LJdbCuHqGA&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;dp&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;fn0Kj1fA3zrRw5RMuvAKbRQHbU58mah9gHuyCgrleEQNuYGJ8IngOxKw6NSWyyVR_WvCBMNANRJfGWhYxilYFQ_YIlvXAZQ7bXzeu9HmEt7LuoOBt1nrlVunESGdJTJQpJFU6mjjdXC-NenGuab9g365JPOAnzTIa6IMEqgB9Tc&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;dq&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;134JQdXBsriSVnYW3GZySIPBJcNJUhSqjrqzxjeT7XLAEpPNEtfU3mY7FZvVsA722mqt5O4veXFrKeG0M1DKdUpsT4-ltTQUg2dcgTY4Q8bre7ke32E73xZGEiaGFDkyY3VobXfciFmOn355PG49j14AsjroxGMel14RYK9Ni5E&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;n&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;11flaUmrserMifKmz8ONBbWWfCRAFjerniHvW1kIXP62hVI8xDWipojhLo7Ai-tV0jA4WSyodlfaA1NRXzZbbAC8pOOpPGkwLBHyOhcB4zpwTykvz5Ype3Mex20XIdBAc0DR4i8d9ZEpnIBqmPcmwP0gANmX82RZd3gZKxQ-umfDXZdNJqy2g1kawRjIP_CpznYzX8MY1OCfjZYXXsZvVeC2v0pRRre9tJEilCZEBY42jJyf6bY2cZhu2KTIpIx1_8Y2JB6AAAdnPsEgNRxMe0g5ShCmDvc93m9GsLZSy4Nm0pOWWVbx7-JK6-QWBdaiG_fAT_2OOndDL-hL1Ry3Jw&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">},</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;p&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;04huYoKFVGrsAaJ2djo8YUnmdbz4_Dt5a3A1r32dZhcY6gJYLtQmLzzSt1m7Z3p8UsZ8eerDBYFQYWlMIDhmsNCeKw5kE6LuSi1JGE3boveKcIpBrI5oxIduZUTr8QBltcKuklzR_Nra-JIrR_Nkgd6nA7C7VPC3MDSmQpbAyx8&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;kty&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;RSA&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;q&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;0wOm2SerufATV0ZWKOZmAgWlQ9qPATVn-FuZsEKMw4LOjlYba63iuHPWhcvgEJEgqP4DKrCn49HI95eDbYpoCpfYDCBNN8K7Q_k3P8T7a_FN-xNc9OtG80lNiFb93CSwJndGhsXoaLjGFcTpIC9RnPzi_tC3OSvdHaXgymkwEyU&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;d&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;F02mbTRlQ9J5DKkCfCgkkE_KLOmAr5VTkh2fhOZwsZ78_CNlK1NBr1a0tNpdZbn0Rt31oKLHKhfw6DcV2koso3IZVJynHHvlX3DPI8f6csXLJZGKhG7Zh6X-WnibD65h9nZo8QUd_uRdEfx6aqxPNzVKxeAX6lh7pkvkSRB7zoX_H5Vf7pn9fWXzLDB1BQacFRtdqnEpiLur-Z1CcjC68DcRGrl-EqA37ZohnVPD7T7Lw14V_nfz5rrQZGqLImCOy5Daz4ZuRBXaiR47fkWfyy7PSLnwIAHIe24328zDygNSYohw84iY0440xlAutU8wSWhrMpn4PWB_fWKiFnbiCQ&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;e&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;AQAB&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;kid&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;rsa2&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;qi&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;CnkIYAjTvJ7FS0uQgzTDtdMhi87s5r2wbGjg82HUWyRDsb7Xadf85K0aqgc5UKiM-ZHA-uc9PMDyxxnxAz4MrxVr12Gx2SS_dPFoPYVnr2jE9nQLWDUqitES1NMozhTsngmfVfgux9Rr4-rJFHP10jU9hjh9ELyv4BGoopFaFYU&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;dp&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PKRMIOmSF5Vfe0h79YDUdn-dFfvK1WSndmmAuoKkcPQGLG_nn-Up3Tjun6mV1CCFK6XDYaAvsJBV3tc0_7ermNz1uxoxDoATGCjLX7BSWvHkOkcodLOOzWiV-Wo8yaZ3ghgBu-voNzj2tXQR_FqGYcTW1HQCAGPR4Hv3ffeB5bk&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;dq&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;T0fM9UPJane_3IeJsZ4270WNvTuthQe6w34u9SFb380SrDm_3aocR68GB4j861yLh9K__9cVjSvxtMyRTaO1yV0ZiBzOxkd8smI9FtF8oSatZMr2nvKS2q9M2Q_OG1sRb7JapiJPWqEpk15DNJtyr2f4JULnxCwtzIjZN1NkA50&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;n&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;rlx3cmO8jN3q32ndXusuoWb7MrMXgEcsJVQiU_BhgNpYEJyyA5QBmH01y04_itbCvBzGHll8y768Zv76ohgcOOW_XtdlPyF1-GgBxVg-Ro-tj5zdP4znFXfNRn6ZGY60lvCFfh3XX-eQp7EZQbHI-wRask991d2-56PzorrJWHiYLza-C87MG-i2hxyQUs5vsdl92J1pqm8_4mjRZhARBQWGXlB-80TdsG3Tl5MliaHdWNJWQ_f43TfG0OfbiCtFITIoHMESL4IO9AxygnYznPXWIoWMsXpsEKUcOgzNqhngQWe9rvJKG5Cy0O0Y0-IJexTEuF68CZpwGra75cCoew&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><p>In this example <code>IAM_JWK_DEFAULT_KEY_ID=rsa1</code> is kept unchanged.</p>
+</li>
+<li>
+<p>Secondly, after the new key is cached by all of the clients, the signing key should be changed as the
+new key via the <code>IAM_JWK_DEFAULT_KEY_ID</code> variable. The old key should still be kept in
+the keystore, otherwise all the current tokens would stop working. Before removing it from the
+key store, waiting as long the longest allowed token lifetime would be enough for the old tokens to expire
+and the clients will be left with only tokens that are signed with new key.</p>
+<p>So in the example default key should be set as <code>IAM_JWK_DEFAULT_KEY_ID=rsa2</code>.</p>
+</li>
+<li>
+<p>As the last step, old key can be removed from the keystore. So only the tokens that were signed with the new
+key will be valid after this.</p>
+<p>So the keystore would be like following:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;keys&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;p&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;04huYoKFVGrsAaJ2djo8YUnmdbz4_Dt5a3A1r32dZhcY6gJYLtQmLzzSt1m7Z3p8UsZ8eerDBYFQYWlMIDhmsNCeKw5kE6LuSi1JGE3boveKcIpBrI5oxIduZUTr8QBltcKuklzR_Nra-JIrR_Nkgd6nA7C7VPC3MDSmQpbAyx8&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;kty&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;RSA&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;q&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;0wOm2SerufATV0ZWKOZmAgWlQ9qPATVn-FuZsEKMw4LOjlYba63iuHPWhcvgEJEgqP4DKrCn49HI95eDbYpoCpfYDCBNN8K7Q_k3P8T7a_FN-xNc9OtG80lNiFb93CSwJndGhsXoaLjGFcTpIC9RnPzi_tC3OSvdHaXgymkwEyU&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;d&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;F02mbTRlQ9J5DKkCfCgkkE_KLOmAr5VTkh2fhOZwsZ78_CNlK1NBr1a0tNpdZbn0Rt31oKLHKhfw6DcV2koso3IZVJynHHvlX3DPI8f6csXLJZGKhG7Zh6X-WnibD65h9nZo8QUd_uRdEfx6aqxPNzVKxeAX6lh7pkvkSRB7zoX_H5Vf7pn9fWXzLDB1BQacFRtdqnEpiLur-Z1CcjC68DcRGrl-EqA37ZohnVPD7T7Lw14V_nfz5rrQZGqLImCOy5Daz4ZuRBXaiR47fkWfyy7PSLnwIAHIe24328zDygNSYohw84iY0440xlAutU8wSWhrMpn4PWB_fWKiFnbiCQ&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;e&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;AQAB&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;kid&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;rsa2&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;qi&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;CnkIYAjTvJ7FS0uQgzTDtdMhi87s5r2wbGjg82HUWyRDsb7Xadf85K0aqgc5UKiM-ZHA-uc9PMDyxxnxAz4MrxVr12Gx2SS_dPFoPYVnr2jE9nQLWDUqitES1NMozhTsngmfVfgux9Rr4-rJFHP10jU9hjh9ELyv4BGoopFaFYU&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;dp&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PKRMIOmSF5Vfe0h79YDUdn-dFfvK1WSndmmAuoKkcPQGLG_nn-Up3Tjun6mV1CCFK6XDYaAvsJBV3tc0_7ermNz1uxoxDoATGCjLX7BSWvHkOkcodLOOzWiV-Wo8yaZ3ghgBu-voNzj2tXQR_FqGYcTW1HQCAGPR4Hv3ffeB5bk&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;dq&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;T0fM9UPJane_3IeJsZ4270WNvTuthQe6w34u9SFb380SrDm_3aocR68GB4j861yLh9K__9cVjSvxtMyRTaO1yV0ZiBzOxkd8smI9FtF8oSatZMr2nvKS2q9M2Q_OG1sRb7JapiJPWqEpk15DNJtyr2f4JULnxCwtzIjZN1NkA50&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;n&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;rlx3cmO8jN3q32ndXusuoWb7MrMXgEcsJVQiU_BhgNpYEJyyA5QBmH01y04_itbCvBzGHll8y768Zv76ohgcOOW_XtdlPyF1-GgBxVg-Ro-tj5zdP4znFXfNRn6ZGY60lvCFfh3XX-eQp7EZQbHI-wRask991d2-56PzorrJWHiYLza-C87MG-i2hxyQUs5vsdl92J1pqm8_4mjRZhARBQWGXlB-80TdsG3Tl5MliaHdWNJWQ_f43TfG0OfbiCtFITIoHMESL4IO9AxygnYznPXWIoWMsXpsEKUcOgzNqhngQWe9rvJKG5Cy0O0Y0-IJexTEuF68CZpwGra75cCoew&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div></li>
+</ul>
+<p>With this update method, the service is not interrupted for any user and the key is replaced with a new one.</p>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        <ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="GitHub" aria-label="GitHub">
+    <a target="_blank" rel="noopener" href="https://github.com/indigo-iam/iam" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Slack" aria-label="Slack">
+    <a target="_blank" rel="noopener" href="https://indigo-iam.slack.com" aria-label="Slack">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+</ul>
+
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="td-footer__copyright">&copy;
+    2024
+    <span class="td-footer__authors">INFN</span></span><span class="td-footer__all_rights_reserved">All Rights Reserved</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/v/v1.10.3/js/main.min.dc2c0119076a0df855e55a8044ce0de74b7b9033c20e853e22d7ec7e9bdde965.js" integrity="sha256-3CwBGQdqDfhV5VqARM4N50t7kDPCDoU&#43;Itfsfpvd6WU=" crossorigin="anonymous"></script>
+<script defer src="/v/v1.10.3/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='/v/v1.10.3/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

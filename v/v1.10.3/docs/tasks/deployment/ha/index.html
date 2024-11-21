@@ -1,0 +1,521 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="alternate" type="text/html" href="/v/v1.10.3/docs/tasks/deployment/ha/_print/">
+<meta name="robots" content="index, follow">
+
+
+<link rel="shortcut icon" href="/v/v1.10.3/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/v/v1.10.3/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/v/v1.10.3/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/v/v1.10.3/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/v/v1.10.3/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/v/v1.10.3/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/v/v1.10.3/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/v/v1.10.3/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/v/v1.10.3/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/v/v1.10.3/favicons/android-192x192.png" sizes="192x192">
+
+<title>Deploying IAM in HA | INDIGO IAM</title>
+<meta name="description" content="Instructions on how to deploy the IAM service in High Availability on k8s
+">
+<meta property="og:title" content="Deploying IAM in HA" />
+<meta property="og:description" content="Instructions on how to deploy the IAM service in High Availability on k8s
+" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/v/v1.10.3/docs/tasks/deployment/ha/" />
+
+<meta itemprop="name" content="Deploying IAM in HA">
+<meta itemprop="description" content="Instructions on how to deploy the IAM service in High Availability on k8s
+"><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Deploying IAM in HA"/>
+<meta name="twitter:description" content="Instructions on how to deploy the IAM service in High Availability on k8s
+"/>
+
+
+
+
+<link rel="preload" href="/v/v1.10.3/scss/main.min.8b15a284065632327b8c02a701e1c2297b5d1c084085e061cb33bbd46e6313e8.css" as="style">
+<link href="/v/v1.10.3/scss/main.min.8b15a284065632327b8c02a701e1c2297b5d1c084085e061cb33bbd46e6313e8.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/v/v1.10.3/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">INDIGO IAM</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="/v/v1.10.3/docs/"><span>Documentation</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/v/v1.10.3/blog/"><span>Blog</span></a>
+      </li>
+      <li class="nav-item dropdown d-none d-lg-block">
+        <div class="dropdown">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Releases</a>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.3">v1.10.3</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.2">v1.10.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.1">v1.10.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.0">v1.10.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.9.0">v1.9.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.4">v1.8.4</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.3">v1.8.3</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.2">v1.8.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.1">v1.8.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.0">v1.8.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.2">v1.7.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.1">v1.7.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.0">v1.7.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/docs/v/current/">older releases</a></li>
+    </ul>
+</div></li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/v/v1.10.3/offline-search-index.569ac643e9107aadbe6c5f6c5a3489a0.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            <div id="td-sidebar-menu" class="td-sidebar__inner">
+  <div id="content-mobile">
+  <form class="td-sidebar__search d-flex align-items-center">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/v/v1.10.3/offline-search-index.569ac643e9107aadbe6c5f6c5a3489a0.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ms-3 fas fa-bars" type="button" data-bs-toggle="collapse" data-bs-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  </div>
+  <div id="content-desktop"></div>
+  <nav class="td-sidebar-nav collapse td-sidebar-nav--search-disabled" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pe-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-vv1103docs-li">
+  <a href="/v/v1.10.3/docs/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-vv1103docs"><span class="">Documentation</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsoverview-li">
+  <a href="/v/v1.10.3/docs/overview/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsoverview"><span class="">Overview</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-vv1103docsgetting-started-li">
+  <a href="/v/v1.10.3/docs/getting-started/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsgetting-started"><span class="">Getting Started</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsgetting-startednginx-li">
+  <a href="/v/v1.10.3/docs/getting-started/nginx/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsgetting-startednginx"><span class="">NGINX configuration</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsgetting-startedmariadb-li">
+  <a href="/v/v1.10.3/docs/getting-started/mariadb/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsgetting-startedmariadb"><span class="">Database configuration</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsgetting-startedjwk-li">
+  <a href="/v/v1.10.3/docs/getting-started/jwk/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsgetting-startedjwk"><span class="">JSON Web Keys configuration</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsgetting-starteddocker-li">
+  <a href="/v/v1.10.3/docs/getting-started/docker/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsgetting-starteddocker"><span class="">Deployment with Docker</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsgetting-startedpackages-li">
+  <a href="/v/v1.10.3/docs/getting-started/packages/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsgetting-startedpackages"><span class="">Deployment with packages</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsgetting-startedbasic_setup-li">
+  <a href="/v/v1.10.3/docs/getting-started/basic_setup/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsgetting-startedbasic_setup"><span class="">Basic IAM setup</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-vv1103docsreference-li">
+  <a href="/v/v1.10.3/docs/reference/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreference"><span class="">Reference</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-vv1103docsreferenceapi-li">
+  <a href="/v/v1.10.3/docs/reference/api/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceapi"><span class="">APIs</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsreferenceapiaup-api-li">
+  <a href="/v/v1.10.3/docs/reference/api/aup-api/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceapiaup-api"><span class="">AUP management API</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsreferenceapiaup-sign-api-li">
+  <a href="/v/v1.10.3/docs/reference/api/aup-sign-api/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceapiaup-sign-api"><span class="">AUP signature API</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsreferenceapiproxycert-api-li">
+  <a href="/v/v1.10.3/docs/reference/api/proxycert-api/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceapiproxycert-api"><span class="">Proxy certificate API</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsreferenceapigroup-requests-li">
+  <a href="/v/v1.10.3/docs/reference/api/group-requests/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceapigroup-requests"><span class="">Group requests API</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsreferenceapihealth_endpoints-li">
+  <a href="/v/v1.10.3/docs/reference/api/health_endpoints/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceapihealth_endpoints"><span class="">Health checks</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsreferenceapiaccount-api-li">
+  <a href="/v/v1.10.3/docs/reference/api/account-api/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceapiaccount-api"><span class="">IAM account API</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsreferenceapitokens-api-li">
+  <a href="/v/v1.10.3/docs/reference/api/tokens-api/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceapitokens-api"><span class="">IAM Token management API</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsreferenceapioauth-token-exchange-li">
+  <a href="/v/v1.10.3/docs/reference/api/oauth-token-exchange/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceapioauth-token-exchange"><span class="">OAuth token exchange API</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsreferenceapioauth-token-introspection-li">
+  <a href="/v/v1.10.3/docs/reference/api/oauth-token-introspection/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceapioauth-token-introspection"><span class="">OAuth token introspection API</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsreferenceapioidc-client-management-li">
+  <a href="/v/v1.10.3/docs/reference/api/oidc-client-management/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceapioidc-client-management"><span class="">OpenID Connect client management API</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsreferenceapioidc-client-registration-li">
+  <a href="/v/v1.10.3/docs/reference/api/oidc-client-registration/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceapioidc-client-registration"><span class="">OpenID Connect client registration API</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsreferenceapiscim-api-li">
+  <a href="/v/v1.10.3/docs/reference/api/scim-api/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceapiscim-api"><span class="">SCIM API</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsreferenceapiscope-policy-api-li">
+  <a href="/v/v1.10.3/docs/reference/api/scope-policy-api/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceapiscope-policy-api"><span class="">Scope Policy API</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsreferenceapitoken-exchange-policy-api-li">
+  <a href="/v/v1.10.3/docs/reference/api/token-exchange-policy-api/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceapitoken-exchange-policy-api"><span class="">Token exchange policy API</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-vv1103docsreferenceconfiguration-li">
+  <a href="/v/v1.10.3/docs/reference/configuration/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceconfiguration"><span class="">Configuration</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsreferenceconfigurationjwt-profiles-li">
+  <a href="/v/v1.10.3/docs/reference/configuration/jwt-profiles/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceconfigurationjwt-profiles"><span class="">JWT profiles support</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsreferenceconfigurationsystem-scopes-li">
+  <a href="/v/v1.10.3/docs/reference/configuration/system-scopes/" title="MitreID System Scopes" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceconfigurationsystem-scopes"><span class="">System scopes</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsreferenceconfigurationlifecycle-li">
+  <a href="/v/v1.10.3/docs/reference/configuration/lifecycle/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceconfigurationlifecycle"><span class="">Membership lifecycle</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsreferenceconfigurationrcauth-li">
+  <a href="/v/v1.10.3/docs/reference/configuration/rcauth/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceconfigurationrcauth"><span class="">Integration with RCAuth</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsreferenceconfigurationregistration-li">
+  <a href="/v/v1.10.3/docs/reference/configuration/registration/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceconfigurationregistration"><span class="">Registration &amp; Enrollment</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsreferenceconfigurationscim-response-li">
+  <a href="/v/v1.10.3/docs/reference/configuration/scim-response/" title="Handling SCIM response" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceconfigurationscim-response"><span class="">SCIM response</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsreferenceconfigurationclient-registration-li">
+  <a href="/v/v1.10.3/docs/reference/configuration/client-registration/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceconfigurationclient-registration"><span class="">Client registration</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsreferenceconfigurationjwk-li">
+  <a href="/v/v1.10.3/docs/reference/configuration/jwk/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceconfigurationjwk"><span class="">JSON Web Keys (JWK)</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsreferenceconfigurationlocal_authn-li">
+  <a href="/v/v1.10.3/docs/reference/configuration/local_authn/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceconfigurationlocal_authn"><span class="">Local authentication</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-vv1103docsreferenceconfigurationexternal-authentication-li">
+  <a href="/v/v1.10.3/docs/reference/configuration/external-authentication/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceconfigurationexternal-authentication"><span class="">External authentication</span></a>
+  <ul class="ul-4 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsreferenceconfigurationexternal-authenticationoidc-li">
+  <a href="/v/v1.10.3/docs/reference/configuration/external-authentication/oidc/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceconfigurationexternal-authenticationoidc"><span class="">OpenID-Connect authentication</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsreferenceconfigurationexternal-authenticationsaml-li">
+  <a href="/v/v1.10.3/docs/reference/configuration/external-authentication/saml/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceconfigurationexternal-authenticationsaml"><span class="">SAML authentication</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsreferenceconfigurationexternal-authenticationx509-li">
+  <a href="/v/v1.10.3/docs/reference/configuration/external-authentication/x509/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsreferenceconfigurationexternal-authenticationx509"><span class="">X.509 authentication</span></a>
+</li>
+  </ul>
+</li>
+  </ul>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-vv1103docstasks-li">
+  <a href="/v/v1.10.3/docs/tasks/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docstasks"><span class="">Tasks</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-vv1103docstasksadministration-li">
+  <a href="/v/v1.10.3/docs/tasks/administration/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docstasksadministration"><span class="">IAM organization administration</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docstasksadministrationuser-management-li">
+  <a href="/v/v1.10.3/docs/tasks/administration/user-management/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docstasksadministrationuser-management"><span class="">User management</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docstasksadministrationclient-status-change-li">
+  <a href="/v/v1.10.3/docs/tasks/administration/client-status-change/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docstasksadministrationclient-status-change"><span class="">Disable or Enable a client</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docstasksadministrationgroup-management-li">
+  <a href="/v/v1.10.3/docs/tasks/administration/group-management/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docstasksadministrationgroup-management"><span class="">Group Management</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docstasksadministrationaup-management-li">
+  <a href="/v/v1.10.3/docs/tasks/administration/aup-management/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docstasksadministrationaup-management"><span class="">Acceptable Usage Policy (AUP) management</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-vv1103docstasksdeployment-li">
+  <a href="/v/v1.10.3/docs/tasks/deployment/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docstasksdeployment"><span class="">IAM service deployment</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docstasksdeploymentbackup_restore-li">
+  <a href="/v/v1.10.3/docs/tasks/deployment/backup_restore/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docstasksdeploymentbackup_restore"><span class="">Backup &amp; Restore</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docstasksdeploymentaudit-log-li">
+  <a href="/v/v1.10.3/docs/tasks/deployment/audit-log/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docstasksdeploymentaudit-log"><span class="">Audit log</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docstasksdeploymentupgrade-li">
+  <a href="/v/v1.10.3/docs/tasks/deployment/upgrade/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docstasksdeploymentupgrade"><span class="">Upgrade</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-vv1103docstasksdeploymentha-li">
+  <a href="/v/v1.10.3/docs/tasks/deployment/ha/" class="align-left ps-0 active td-sidebar-link td-sidebar-link__section" id="m-vv1103docstasksdeploymentha"><span class="td-sidebar-nav-active-item">Deploying IAM in HA</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docstasksdeploymentvoms-li">
+  <a href="/v/v1.10.3/docs/tasks/deployment/voms/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docstasksdeploymentvoms"><span class="">Deploying the IAM VOMS attribute authority</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docstasksdeploymentvoms_importer-li">
+  <a href="/v/v1.10.3/docs/tasks/deployment/voms_importer/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docstasksdeploymentvoms_importer"><span class="">Importing VOMS information into IAM</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docstasksclientapp-li">
+  <a href="/v/v1.10.3/docs/tasks/clientapp/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docstasksclientapp"><span class="">IAM Test Client application</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-vv1103docstasksuser-li">
+  <a href="/v/v1.10.3/docs/tasks/user/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docstasksuser"><span class="">User</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docstasksuserjoining-a-collaboration-li">
+  <a href="/v/v1.10.3/docs/tasks/user/joining-a-collaboration/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docstasksuserjoining-a-collaboration"><span class="">Joining an IAM-managed organization</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docstasksusergetting-a-token-li">
+  <a href="/v/v1.10.3/docs/tasks/user/getting-a-token/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docstasksusergetting-a-token"><span class="">Obtaining an IAM access token from a CLI</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docstasksuserresign-aup-li">
+  <a href="/v/v1.10.3/docs/tasks/user/resign-aup/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docstasksuserresign-aup"><span class="">Re-sign AUP</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docstasksuserclient-registration-li">
+  <a href="/v/v1.10.3/docs/tasks/user/client-registration/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docstasksuserclient-registration"><span class="">Registering a client</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docstasksuserchange-details-li">
+  <a href="/v/v1.10.3/docs/tasks/user/change-details/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docstasksuserchange-details"><span class="">Change account information</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docstasksuserchange-password-li">
+  <a href="/v/v1.10.3/docs/tasks/user/change-password/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docstasksuserchange-password"><span class="">Changing the account password</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docstasksuserjwt-authn-li">
+  <a href="/v/v1.10.3/docs/tasks/user/jwt-authn/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docstasksuserjwt-authn"><span class="">JWT client authentication</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docstasksuserexternal-account-linking-li">
+  <a href="/v/v1.10.3/docs/tasks/user/external-account-linking/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docstasksuserexternal-account-linking"><span class="">Linking an external account</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docstasksuserx509-linking-li">
+  <a href="/v/v1.10.3/docs/tasks/user/x509-linking/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docstasksuserx509-linking"><span class="">Linking an X.509 certificate</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docstasksusermanage-active-tokens-li">
+  <a href="/v/v1.10.3/docs/tasks/user/manage-active-tokens/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docstasksusermanage-active-tokens"><span class="">Managing active tokens</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docstasksusermanage-approved-sites-li">
+  <a href="/v/v1.10.3/docs/tasks/user/manage-approved-sites/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docstasksusermanage-approved-sites"><span class="">Managing approved sites</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docstasksusermanage-ssh-keys-li">
+  <a href="/v/v1.10.3/docs/tasks/user/manage-ssh-keys/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docstasksusermanage-ssh-keys"><span class="">Managing SSH keys</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docstasksuserreset-password-li">
+  <a href="/v/v1.10.3/docs/tasks/user/reset-password/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docstasksuserreset-password"><span class="">Reset an account password</span></a>
+</li>
+  </ul>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-vv1103docsdeveloper-guide-li">
+  <a href="/v/v1.10.3/docs/developer-guide/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsdeveloper-guide"><span class="">Developer guide</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1103docsdeveloper-guidespecs-li">
+  <a href="/v/v1.10.3/docs/developer-guide/specs/" title="Specifications and useful resources" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1103docsdeveloper-guidespecs"><span class="">Specifications</span></a>
+</li>
+  </ul>
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            <div class="td-page-meta ms-2 pb-1 pt-2 mb-0">
+<a href="https://github.com/indigo-iam/iam-website/tree/v1.10.3/content/en/docs/tasks/deployment/ha/_index.md" class="td-page-meta--view td-page-meta__view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
+  <a href="https://github.com/indigo-iam/iam-website/edit/v1.10.3/content/en/docs/tasks/deployment/ha/_index.md" class="td-page-meta--edit td-page-meta__edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Edit this page</a>
+  <a href="https://github.com/indigo-iam/iam-website/new/v1.10.3/content/en/docs/tasks/deployment/ha?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child td-page-meta__child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
+  <a href="https://github.com/indigo-iam/iam-website/issues/new?title=Deploying%20IAM%20in%20HA" class="td-page-meta--issue td-page-meta__issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
+  <a href="https://github.com/indigo-iam/iam/issues/new" class="td-page-meta--project td-page-meta__project-issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create project issue</a>
+  <a id="print" href="/v/v1.10.3/docs/tasks/deployment/ha/_print/"><i class="fa-solid fa-print fa-fw"></i> Print entire section</a>
+
+</div>
+
+            <div class="td-toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#iam-deployment-in-ha">IAM Deployment in HA</a></li>
+        <li><a href="#redis-service-deployment">Redis service Deployment</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    
+            
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="td-breadcrumbs">
+  <ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/v/v1.10.3/docs/">Documentation</a></li>
+  <li class="breadcrumb-item">
+    <a href="/v/v1.10.3/docs/tasks/">Tasks</a></li>
+  <li class="breadcrumb-item">
+    <a href="/v/v1.10.3/docs/tasks/deployment/">IAM service deployment</a></li>
+  <li class="breadcrumb-item active" aria-current="page">
+    Deploying IAM in HA</li>
+  </ol>
+</nav>
+            
+<div class="td-content">
+	<h1>Deploying IAM in HA</h1>
+  <div class="lead">Instructions on how to deploy the IAM service in High Availability on k8s</div>
+	<header class="article-meta">
+		
+</header>
+	<p>Starting from version 1.8.0, the IAM service can be deployed in High Availability mode.<br>
+It relies on <a href="https://redis.io/">redis</a> as external component used for storing the
+log-in sessions, which has to be deployed as well.</p>
+<p>Here is an example on how to deploy three IAM replicas on a <a href="https://kubernetes.io/">kubernetes</a> cluster.</p>
+<h3 id="iam-deployment-in-ha">IAM Deployment in HA</h3>
+<p>An example of three replicas of the IAM service deployment on k8s is the following:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">apps/v1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Deployment</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">iam-login-service</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">selector</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">matchLabels</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">app</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">iam</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">tier</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">login-service</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">replicas</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">strategy</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">RollingUpdate</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">rollingUpdate</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">maxSurge</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">maxUnavailable</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">template</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">labels</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">app</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">iam</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">tier</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">login-service</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">affinity</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">podAntiAffinity</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">requiredDuringSchedulingIgnoredDuringExecution</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span>- <span style="color:#204a87;font-weight:bold">labelSelector</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">                </span><span style="color:#204a87;font-weight:bold">matchExpressions</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">                </span>- <span style="color:#204a87;font-weight:bold">key</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">tier</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">                  </span><span style="color:#204a87;font-weight:bold">operator</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">In</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">                  </span><span style="color:#204a87;font-weight:bold">values</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">                    </span>- <span style="color:#000">login-service</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">topologyKey</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kubernetes.io/hostname</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">volumes</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">json-keystore-secret-vol</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">secret</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">secretName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">json-keystore-secret</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">containers</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">iam-login-service</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">image</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">indigoiam/iam-login-service:v1.8.0</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">imagePullPolicy</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Always</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">ports</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span>- <span style="color:#204a87;font-weight:bold">containerPort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">iam</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span>- <span style="color:#204a87;font-weight:bold">containerPort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1044</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">iam-debug</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">volumeMounts</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">json-keystore-secret-vol</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">mountPath</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/secrets/json-keystore</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">readOnly</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">readinessProbe</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">httpGet</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">path</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/actuator/health</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">port</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">initialDelaySeconds</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">90</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">timeoutSeconds</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">10</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">resources</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">requests</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">cpu</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">500m</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">memory</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1Gi</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">limits</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">cpu</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">memory</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">2Gi</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">env</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">IAM_BASE_URL</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">value</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://iam.example</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">IAM_ISSUER</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">value</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://iam.example/</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">envFrom</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span>- <span style="color:#204a87;font-weight:bold">configMapRef</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">                </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">login-service-env</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span>- <span style="color:#204a87;font-weight:bold">secretRef</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">                </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">db-secret-env</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>Here a <a href="https://kubernetes.io/docs/concepts/configuration/configmap/">configMap</a> for the <code>login-service-env</code> file is used.<br>
+You can set there the <a href="../../../reference/configuration/#redis-configuration">Configuration properties</a>
+used to enable Redis. The minimal ones required, for a password less Redis service are</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">IAM_SPRING_SESSION_STORE_TYPE</span><span style="color:#ce5c00;font-weight:bold">=</span>redis
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_SPRING_REDIS_HOST</span><span style="color:#ce5c00;font-weight:bold">=</span>redis.example
+</span></span></code></pre></div><h3 id="redis-service-deployment">Redis service Deployment</h3>
+<p>A basic example of the Redis deployment on k8s (without replicas)
+based on the <code>redis</code> <a href="https://hub.docker.com/_/redis">docker image</a> is the following:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">apps/v1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Deployment</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">redis</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">selector</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">matchLabels</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">app</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">redis</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">template</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">labels</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">app</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">redis</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">containers</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">redis</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">image</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">redis:6</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">resources</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">requests</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">memory</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;512Mi&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">cpu</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;2&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">limits</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">memory</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;512Mi&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">cpu</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;2&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">ports</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span>- <span style="color:#204a87;font-weight:bold">containerPort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">6379</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div>
+  <div class="section-index">
+    
+    
+    </div>
+<div class="td-page-meta__lastmod">
+  Last modified May 12, 2022: <a href="https://github.com/indigo-iam/iam-website/commit/7df3fe3ad33f811ddd62ad091a73ac94a4f50a47">Explain the actuator role (7df3fe3)</a>
+</div>
+</div>
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        <ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="GitHub" aria-label="GitHub">
+    <a target="_blank" rel="noopener" href="https://github.com/indigo-iam/iam" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Slack" aria-label="Slack">
+    <a target="_blank" rel="noopener" href="https://indigo-iam.slack.com" aria-label="Slack">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+</ul>
+
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="td-footer__copyright">&copy;
+    2024
+    <span class="td-footer__authors">INFN</span></span><span class="td-footer__all_rights_reserved">All Rights Reserved</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/v/v1.10.3/js/main.min.dc2c0119076a0df855e55a8044ce0de74b7b9033c20e853e22d7ec7e9bdde965.js" integrity="sha256-3CwBGQdqDfhV5VqARM4N50t7kDPCDoU&#43;Itfsfpvd6WU=" crossorigin="anonymous"></script>
+<script defer src="/v/v1.10.3/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='/v/v1.10.3/js/tabpane-persist.js'></script>
+
+  </body>
+</html>
