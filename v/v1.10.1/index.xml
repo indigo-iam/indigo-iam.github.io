@@ -8,6 +8,13 @@
     <language>en</language>
     <atom:link href="/v/v1.10.1/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>IAM v1.10.1</title>
+      <link>/v/v1.10.1/blog/2024/08/22/iam-v1.10.1/</link>
+      <pubDate>Thu, 22 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>/v/v1.10.1/blog/2024/08/22/iam-v1.10.1/</guid>
+      <description>The IAM development team is pleased to announce a fast release of INDIGO IAM v1.10.1.&#xA;This release mainly provides bug fixes, as can be seen in the release notes.&#xA;The fast release is motivated by the need of fixing the lifecycle user suspension.&#xA;As usual, the IAM docker image can be obtained from DockerHub.</description>
+    </item>
+    <item>
       <title>IAM v1.10.0</title>
       <link>/v/v1.10.1/blog/2024/08/07/iam-v1.10.0/</link>
       <pubDate>Wed, 07 Aug 2024 00:00:00 +0000</pubDate>
