@@ -1,0 +1,296 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" type="text/html" href="/v/v1.11.0/docs/reference/configuration/registration/">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/v/v1.11.0/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/v/v1.11.0/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/v/v1.11.0/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/v/v1.11.0/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/v/v1.11.0/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/v/v1.11.0/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/v/v1.11.0/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/v/v1.11.0/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/v/v1.11.0/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/v/v1.11.0/favicons/android-192x192.png" sizes="192x192">
+
+<title>Registration &amp; Enrollment | INDIGO IAM</title>
+<meta name="description" content="The INDIGO Identity and Access Management (IAM) Service">
+<meta property="og:title" content="Registration &amp; Enrollment" />
+<meta property="og:description" content="The INDIGO Identity and Access Management (IAM) Service" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/v/v1.11.0/docs/reference/configuration/registration/" />
+
+<meta itemprop="name" content="Registration &amp; Enrollment">
+<meta itemprop="description" content="The INDIGO Identity and Access Management (IAM) Service"><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Registration &amp; Enrollment"/>
+<meta name="twitter:description" content="The INDIGO Identity and Access Management (IAM) Service"/>
+
+
+
+
+<link rel="preload" href="/v/v1.11.0/scss/main.min.8b15a284065632327b8c02a701e1c2297b5d1c084085e061cb33bbd46e6313e8.css" as="style">
+<link href="/v/v1.11.0/scss/main.min.8b15a284065632327b8c02a701e1c2297b5d1c084085e061cb33bbd46e6313e8.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/v/v1.11.0/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">INDIGO IAM</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="/v/v1.11.0/docs/"><span>Documentation</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/v/v1.11.0/blog/"><span>Blog</span></a>
+      </li>
+      <li class="nav-item dropdown d-none d-lg-block">
+        <div class="dropdown">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Releases</a>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.3">v1.10.3</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.2">v1.10.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.1">v1.10.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.0">v1.10.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.9.0">v1.9.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.4">v1.8.4</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.3">v1.8.3</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.2">v1.8.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.1">v1.8.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.0">v1.8.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.2">v1.7.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.1">v1.7.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.0">v1.7.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/docs/v/current/">older releases</a></li>
+    </ul>
+</div></li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/v/v1.11.0/offline-search-index.ecee11fab6efe721eed3872953c17c42.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/v/v1.11.0/docs/reference/configuration/registration/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">Registration &amp; Enrollment</h1>
+
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+
+    </ul>
+
+
+<div class="content">
+      <p>IAM implements a basic registration service that requires the intervention
+of an IAM admin. In fact, when users apply for membership in an
+organization, administrators are asked to validate membership requests.</p>
+<h2 id="registration-with-external-idp">Registration with external IdP</h2>
+<p>When an external OIDC or SAML IdP is used to authenticate users, IAM allows to configure:</p>
+<ul>
+<li>Whether users are required to authenticate through an external IdP and optionally
+which ones</li>
+<li>Which information must be retrieved from the IdP to fill the account creation form</li>
+</ul>
+<p>This is done by creating a YAML file in <code>/indigo-iam/config</code>, for example
+<code>/indigo-iam/config/application-registration.yaml</code>. When deploying IAM with a container,
+a volume providing this file must be mapped into the container.</p>
+<p>The contents in this file must be under the following hierarchy:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">registration</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><h3 id="requiring-external-authentication">Requiring external authentication</h3>
+<p>To require that users must authenticate through an external IdP, you need to set the
+parameter <code>require-external-authentication=true</code>. You can also specify the type of external
+IdP (<code>oidc</code> or <code>saml</code>) and require one specific issuer.</p>
+<p>The following fragment is an example of authentication with the
+(OIDC-based) CERN SSO required before being redirected to the registration page.
+It also defines how information from identity tokens issued by CERN SSO is
+mapped to IAM membership information</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">registration</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">require-external-authentication</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">oidc-issuer</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://auth.cern.ch/auth/realms/cern</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">authentication-type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">oidc</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><h3 id="filling-information-from-idp">Filling information from IdP</h3>
+<p>The first time a user authenticates in an IAM instance, the account creation form will be displayed. It is possible to request
+that some of the fields are filled with the value of an IdP attribute and to define that some of these fields are read-only,
+i.e. that the value provided by the IdP cannot be changed.</p>
+<p>To enable filling the creation form with values provided by the IdP, you need to create a YAML file in <code>/indigo-iam/config</code>, for example
+<code>/indigo-iam/config/application-registration.yaml</code>. The contents should be something similar to:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">registration</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">fields</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">email</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">read-only</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">external-auth-attribute</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">email</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">read-only</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">external-auth-attribute</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">given_name</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">surname</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">read-only</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">external-auth-attribute</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">family_name</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">username</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">read-only</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">external-auth-attribute</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">preferred_username</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p><code>read-only</code> can be set to <code>true</code> if you want to prevent that the  value provided supplied by the ID is modified by the user.
+<strong>Note that if a field is defined as <code>read-only=true</code> and now value is not provided
+by the IdP, it may result that the user cannot submit the account creation form if the field,
+when it is required.</strong></p>
+<p><code>external-auth-attribue</code> must be the name of the IdP attribute, or token claim (when provided by SAML IdPs,
+or OIDC Providers, respectively) to use for the mentioned account creation form field.</p>
+<h2 id="automatic-enrollment-through-saml-idps">Automatic enrollment through SAML IdPs</h2>
+<p>In case of registration through an external SAML Identity Provider, IAM offers
+a flexible user enrollment flow, also without IAM admin intervention. The default IAM
+behavior is that the user enrollment requires an administrator approval step.</p>
+<p>In order to enable the automatic enrollment flow via an external IdP, one
+should set the following properties, under the <code>saml</code> hierarchy:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">saml</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">jit-account-provisioning</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">enabled</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># this will consider as trusted all the IdPs declared in your</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># application-saml.yml file</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">trusted-idps</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">all</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>In order to directly declare the list of trusted SAML IdPs, a comma separated list of
+entity IDs have to be set, e.g. <code>saml.jit-account-provisioning.trusted-idps=idp1,idp2,idp3</code>.</p>
+<h2 id="user-editable-fields">User editable fields</h2>
+<p>Starting with version 1.6.0, IAM allows to limit which fields of the user profile are editable by users.</p>
+<p>The default, backward-compatible settings that allow users to edit all their
+profile fields are defined as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">user-profile</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">editable-fields</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#000">email</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#000">name</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#000">picture</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#000">surname</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>To prevent modifications to any of the fields remove the field name from
+<code>editable-fields</code> list.</p>
+<p>External configuration can be managed by placing directives as shown above in a
+<a href="/v/v1.11.0/docs/reference/configuration/#overriding-default-configuration-templates">custom configuration
+file</a></p>
+<h2 id="automatically-set-the-nickname-as-attribute">Automatically set the nickname as attribute</h2>
+<p>Since IAM v1.9.0, during a registration request the username can be automatically added as an attribute named <em>nickname</em>. This process happens both for login with external provider, or when one directly clicks on the
+<em>Apply for an account</em> button.
+The <em>nickname</em> value will be the same as the username set during the registration request.</p>
+<p>This behavior does not appear by default. To enable it, add to your config file</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">registration</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">add-nickname-as-attribute</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>or set the environment variable <code>IAM_ADD_NICKNAME_AS_ATTRIBUTE=true</code>.</p>
+<p>Once the new IAM user has been created, the <em>Attributes</em> view from the dashboard looks like the following</p>
+<p><img src="./nickname-attribute.png" alt="Attributes view"></p>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        <ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="GitHub" aria-label="GitHub">
+    <a target="_blank" rel="noopener" href="https://github.com/indigo-iam/iam" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Slack" aria-label="Slack">
+    <a target="_blank" rel="noopener" href="https://indigo-iam.slack.com" aria-label="Slack">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+</ul>
+
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="td-footer__copyright">&copy;
+    2025
+    <span class="td-footer__authors">INFN</span></span><span class="td-footer__all_rights_reserved">All Rights Reserved</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/v/v1.11.0/js/main.min.dc2c0119076a0df855e55a8044ce0de74b7b9033c20e853e22d7ec7e9bdde965.js" integrity="sha256-3CwBGQdqDfhV5VqARM4N50t7kDPCDoU&#43;Itfsfpvd6WU=" crossorigin="anonymous"></script>
+<script defer src="/v/v1.11.0/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='/v/v1.11.0/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

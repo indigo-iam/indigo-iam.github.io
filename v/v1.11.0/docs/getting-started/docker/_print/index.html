@@ -1,0 +1,268 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" type="text/html" href="/v/v1.11.0/docs/getting-started/docker/">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/v/v1.11.0/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/v/v1.11.0/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/v/v1.11.0/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/v/v1.11.0/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/v/v1.11.0/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/v/v1.11.0/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/v/v1.11.0/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/v/v1.11.0/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/v/v1.11.0/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/v/v1.11.0/favicons/android-192x192.png" sizes="192x192">
+
+<title>Deployment with Docker | INDIGO IAM</title>
+<meta name="description" content="The INDIGO Identity and Access Management (IAM) Service">
+<meta property="og:title" content="Deployment with Docker" />
+<meta property="og:description" content="The INDIGO Identity and Access Management (IAM) Service" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/v/v1.11.0/docs/getting-started/docker/" />
+
+<meta itemprop="name" content="Deployment with Docker">
+<meta itemprop="description" content="The INDIGO Identity and Access Management (IAM) Service"><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Deployment with Docker"/>
+<meta name="twitter:description" content="The INDIGO Identity and Access Management (IAM) Service"/>
+
+
+
+
+<link rel="preload" href="/v/v1.11.0/scss/main.min.8b15a284065632327b8c02a701e1c2297b5d1c084085e061cb33bbd46e6313e8.css" as="style">
+<link href="/v/v1.11.0/scss/main.min.8b15a284065632327b8c02a701e1c2297b5d1c084085e061cb33bbd46e6313e8.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/v/v1.11.0/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">INDIGO IAM</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="/v/v1.11.0/docs/"><span>Documentation</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/v/v1.11.0/blog/"><span>Blog</span></a>
+      </li>
+      <li class="nav-item dropdown d-none d-lg-block">
+        <div class="dropdown">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Releases</a>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.3">v1.10.3</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.2">v1.10.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.1">v1.10.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.0">v1.10.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.9.0">v1.9.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.4">v1.8.4</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.3">v1.8.3</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.2">v1.8.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.1">v1.8.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.0">v1.8.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.2">v1.7.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.1">v1.7.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.0">v1.7.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/docs/v/current/">older releases</a></li>
+    </ul>
+</div></li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/v/v1.11.0/offline-search-index.ecee11fab6efe721eed3872953c17c42.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/v/v1.11.0/docs/getting-started/docker/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">Deployment with Docker</h1>
+
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+
+    </ul>
+
+
+<div class="content">
+      <p>The IAM service is provided on the following DockerHub repositories:</p>
+<ul>
+<li><a href="https://hub.docker.com/r/indigoiam/iam-login-service/">indigoiam/iam-login-service</a></li>
+</ul>
+<p>The docker image tag corresponding to this version of the documentation is:</p>
+
+
+<div class="pageinfo pageinfo-primary">
+<p>indigoiam/iam-login-service:v1.10.3</p>
+
+</div>
+
+<p>The IAM image has been tested to run properly with either Docker or Podman. The configuration for the
+IAM service container is the same but the details to run the container slightly differ. Differences
+are covered in the next sections. In both cases, it is <strong>highly</strong> recommended to enable SELinux for
+increased security.</p>
+<h2 id="configuring-the-iam-service">Configuring the IAM service</h2>
+<p>Prepare an environment file that will contain the environment variables
+settings for the IAM service container. See <a href="/v/v1.11.0/docs/reference/configuration/">the configuration
+reference</a> for a description of the variables.</p>
+<p>This environment file will be passed to the container with the <code>--env-file</code> option of the
+container engine. You can choose whatever file path/name you want.</p>
+<h2 id="running-the-container">Running the container</h2>
+<h3 id="docker">Docker</h3>
+<p>First create a Docker network for the IAM service with the command (the example uses
+the network name <code>iam</code> but you are free to use another name as long as you use the same
+one in the <code>run</code>command). It has to be done once (not at every restart of the container):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ docker network create iam
+</span></span></code></pre></div><p>When using Docker the IAM service is run starting container with the following command:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ docker run -d <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  --name iam-login-service <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  --net<span style="color:#ce5c00;font-weight:bold">=</span>iam -p 8080:8080 <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  --env-file<span style="color:#ce5c00;font-weight:bold">=</span>/path/to/iam-login-service/env <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  -v /path/to/keystore.jks:/keystore.jks:ro <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  --restart unless-stopped <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  indigoiam/iam-login-service:v1.10.3
+</span></span></code></pre></div><p><em>Note: <code>--restart</code> is recommended if you want the IAM service to restart automatically
+when the server running Docker is restarted.</em></p>
+<p>Check the logs with:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Adapt the container name to the value you provided to --name in previous command</span>
+</span></span><span style="display:flex;"><span>$ docker logs -f iam-login-service
+</span></span></code></pre></div><h3 id="podman">Podman</h3>
+<p>When using Podman, the <code>docker</code> command must be replaced by <code>podman</code> with the following
+differences in options:</p>
+<ul>
+<li>
+<p><code>--restart</code> is silently ignored as start/stop of the container at boot time is controlled
+with <code>systemd</code> (see Podman documentation, <a href="https://docs.podman.io/en/latest/markdown/podman-generate-systemd.1.html">here</a>).</p>
+</li>
+<li>
+<p>You need to add option <code>Z</code> to third field of <code>-v</code> option so that the SELinux context
+type is properly managed and the use of the volume by another container is prevented.</p>
+</li>
+<li>
+<p>Ensure that the directories containing the environment file and the keystore are
+labeled. It can be checked with <code>stat</code> command. If they are unlabeled use the following
+command to fix it:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ chcon -R -t default_t /path/to/directory
+</span></span></code></pre></div></li>
+</ul>
+<p>The required commands to start the container then become:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ podman network create iam      <span style="color:#8f5902;font-style:italic"># First time only</span>
+</span></span><span style="display:flex;"><span>$ podman run -d <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  --name iam-login-service <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  --net<span style="color:#ce5c00;font-weight:bold">=</span>iam -p 8080:8080 <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  --env-file<span style="color:#ce5c00;font-weight:bold">=</span>/path/to/iam-login-service/env <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  -v /path/to/keystore.jks:/keystore.jks:ro,Z <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  indigoiam/iam-login-service:v1.10.3
+</span></span><span style="display:flex;"><span>$ podman logs -f iam-login-service
+</span></span></code></pre></div>
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        <ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="GitHub" aria-label="GitHub">
+    <a target="_blank" rel="noopener" href="https://github.com/indigo-iam/iam" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Slack" aria-label="Slack">
+    <a target="_blank" rel="noopener" href="https://indigo-iam.slack.com" aria-label="Slack">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+</ul>
+
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="td-footer__copyright">&copy;
+    2025
+    <span class="td-footer__authors">INFN</span></span><span class="td-footer__all_rights_reserved">All Rights Reserved</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/v/v1.11.0/js/main.min.dc2c0119076a0df855e55a8044ce0de74b7b9033c20e853e22d7ec7e9bdde965.js" integrity="sha256-3CwBGQdqDfhV5VqARM4N50t7kDPCDoU&#43;Itfsfpvd6WU=" crossorigin="anonymous"></script>
+<script defer src="/v/v1.11.0/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='/v/v1.11.0/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

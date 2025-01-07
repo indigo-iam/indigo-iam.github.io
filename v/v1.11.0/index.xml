@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>INDIGO IAM</title>
+    <link>/v/v1.11.0/</link>
+    <description>Recent content on INDIGO IAM</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <atom:link href="/v/v1.11.0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>IAM v1.10.2</title>
+      <link>/v/v1.11.0/blog/2024/09/27/iam-v1.10.2/</link>
+      <pubDate>Fri, 27 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>/v/v1.11.0/blog/2024/09/27/iam-v1.10.2/</guid>
+      <description>The IAM development team is pleased to announce the release of INDIGO IAM v1.10.2.&#xA;This release mainly provides bug fixes and enhancements, as can be seen in the release notes.&#xA;The major highlight includes a stronger password quality check, which needs to meet the following criteria:&#xA;at least 8 characters long include at least one uppercase letter include at least one lowercase letter include at least one number include at least one special character (e.</description>
+    </item>
+    <item>
+      <title>IAM v1.10.1</title>
+      <link>/v/v1.11.0/blog/2024/08/22/iam-v1.10.1/</link>
+      <pubDate>Thu, 22 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>/v/v1.11.0/blog/2024/08/22/iam-v1.10.1/</guid>
+      <description>The IAM development team is pleased to announce a fast release of INDIGO IAM v1.10.1.&#xA;This release mainly provides bug fixes, as can be seen in the release notes.&#xA;The fast release is motivated by the need of fixing the lifecycle user suspension.&#xA;As usual, the IAM docker image can be obtained from DockerHub.</description>
+    </item>
+    <item>
+      <title>IAM v1.10.0</title>
+      <link>/v/v1.11.0/blog/2024/08/07/iam-v1.10.0/</link>
+      <pubDate>Wed, 07 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>/v/v1.11.0/blog/2024/08/07/iam-v1.10.0/</guid>
+      <description>The IAM development team is pleased to announce the release of INDIGO IAM v1.10.0.&#xA;This release provides bug fixes and enhancements, as can be seen in the release notes.&#xA;The major highlights include:&#xA;E-mail notification for AUP reminder/expiration, account suspension/restoration and client disabled/enabled events Add a statistical endpoint which shows the number of IAM users Allow for a definition of a set of default groups, automatically linked to newly registered users Mandate the usage of a stronger user password (during the password reset step) Allow to set a property which disables any kind of IAM cache As usual, the IAM docker image can be obtained from DockerHub.</description>
+    </item>
+    <item>
+      <title>IAM v1.9.0</title>
+      <link>/v/v1.11.0/blog/2024/06/19/iam-v1.9.0/</link>
+      <pubDate>Wed, 19 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>/v/v1.11.0/blog/2024/06/19/iam-v1.9.0/</guid>
+      <description>The IAM development team is pleased to announce the release of INDIGO IAM v1.9.0.&#xA;This release introduces new features, including:&#xA;Administrators have the ability to disable a client VO members can re-sign the AUP whenever they choose Clients now have a last used property to find out when was the last time it was used It is now possible to add a nickname as an attribute during the registration process This release also provides bug fixes and enhancements, as can be seen in the release notes.</description>
+    </item>
+    <item>
+      <title>IAM v1.8.4</title>
+      <link>/v/v1.11.0/blog/2024/03/25/iam-v1.8.4/</link>
+      <pubDate>Mon, 25 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>/v/v1.11.0/blog/2024/03/25/iam-v1.8.4/</guid>
+      <description>The IAM development team is pleased to announce the release of INDIGO IAM v1.8.4.&#xA;This release is mainly focused on the limitation of the client_credentials grant type, which can be set only by registered IAM users (admins or normal users) in a Client registration/update request.&#xA;This release also provides bug fixes and enhancements, as can be seen in the release notes.&#xA;As usual, the IAM docker image can be obtained from DockerHub.</description>
+    </item>
+    <item>
+      <title>IAM v1.8.3</title>
+      <link>/v/v1.11.0/blog/2023/10/30/iam-v1.8.3/</link>
+      <pubDate>Mon, 30 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>/v/v1.11.0/blog/2023/10/30/iam-v1.8.3/</guid>
+      <description>The IAM development team is pleased to announce the release of INDIGO IAM v1.8.3.&#xA;This release provides bug fixes and enhancements, as can be seen in the release notes.&#xA;The major highlights include:&#xA;save an access token value as a hash and add missing foreign keys to the database because of this change, we strongly recommend to make a backup of your database before upgrading to v1.8.3. The migration will take an amount of time which will be proportional to the amount of currently active access tokens, which could be very long enable caching of scope matchers and of the contents of the well-known endpoint on a Redis server match custom scopes based on string equality fix CERN workflow for restored accounts fix authorization on IAM APIs such to avoid cases where access is granted to already approved scopes instead of effective token scopes.</description>
+    </item>
+    <item>
+      <title>IAM v1.8.2</title>
+      <link>/v/v1.11.0/blog/2023/06/05/iam-v1.8.2/</link>
+      <pubDate>Mon, 05 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>/v/v1.11.0/blog/2023/06/05/iam-v1.8.2/</guid>
+      <description>The IAM development team is pleased to announce the release of INDIGO IAM v.1.8.2.&#xA;This release provides bug fixes and enhancements, as can be seen in the release notes.&#xA;The major highlights include:&#xA;addition of new admin scopes in order to access IAM API endpoints an administrator access token is not enough to have full access to IAM API endpoints; iam:admin.read and iam:admin.write scopes are required Spring-Boot update to version 2.</description>
+    </item>
+    <item>
+      <title>IAM v1.8.1</title>
+      <link>/v/v1.11.0/blog/2023/02/28/iam-v1.8.1/</link>
+      <pubDate>Tue, 28 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>/v/v1.11.0/blog/2023/02/28/iam-v1.8.1/</guid>
+      <description>The IAM development team is pleased to announce the release of INDIGO IAM v.1.8.1.&#xA;This release provides bug fixes and enhancements, as can be seen in the release notes.&#xA;The major highlights are:&#xA;Add a Scopes tab to the Organization Management section of the IAM dashboard, that basically replaces the functionality of the System Scope tab on the ADMINISTRATIVE section of the MitreID dashboard (only visible by Admins); Add a Managed groups tab to the Organization Management section of the IAM dashboard (visible by Group Managers), that allows to list the groups a user is manager of, their subgroups, their members, etc.</description>
+    </item>
+    <item>
+      <title>IAM v1.8.0</title>
+      <link>/v/v1.11.0/blog/2022/09/09/iam-v1.8.0/</link>
+      <pubDate>Fri, 09 Sep 2022 00:00:00 +0000</pubDate>
+      <guid>/v/v1.11.0/blog/2022/09/09/iam-v1.8.0/</guid>
+      <description>The IAM development team is pleased to announce the release of INDIGO IAM v.1.8.0.&#xA;This release provides many bug fixes and enchancements, but the major highlightes are:&#xA;Spring Boot migration to 2.6.6 version and Flyway upgrade to 7.15.0 version New clients management and registration pages on IAM dashboard migrated away from MitreID New consent page in IAM migrated away from MitreID Support for JWT-based client authentication Compliance with some AARC guidelines, in particular G025 for expressing affiliation information and G021 on the exchange of specific assurance information between Infrastructures Persistence layer migrations for Multi-Factor Authentication support Significant changes and other details are described in the release notes.</description>
+    </item>
+    <item>
+      <title>IAM v1.7.2</title>
+      <link>/v/v1.11.0/blog/2021/12/03/iam-v1.7.2/</link>
+      <pubDate>Fri, 03 Dec 2021 00:00:00 +0000</pubDate>
+      <guid>/v/v1.11.0/blog/2021/12/03/iam-v1.7.2/</guid>
+      <description>The IAM development team is pleased to announce the release of INDIGO IAM v.1.7.2.&#xA;This release paves the way for the upgrade to v1.8.0 which will provide an update of the core Spring dependencies IAM is built upon.&#xA;In order to enable a smooth transition without requiring manual interventions from deployers, we need to issue an intermediate release that just updates the version of the flyway library that is used to manage the database schema updates.</description>
+    </item>
+    <item>
+      <title>IAM v1.7.1</title>
+      <link>/v/v1.11.0/blog/2021/09/13/iam-v1.7.1/</link>
+      <pubDate>Mon, 13 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>/v/v1.11.0/blog/2021/09/13/iam-v1.7.1/</guid>
+      <description>The IAM development team is pleased to announce the release of INDIGO IAM v.1.7.1.&#xA;This release fixes a problem introduced in v1.7.0 of the IAM test client application released last week that prevented its correct behaviour.&#xA;Also starting with this release IAM test client does not expose received tokens in the default configuration. In order to restore the previous behaviour, set the following envirnoment variable:&#xA;IAM_CLIENT_HIDE_TOKENS=false or, in the application.yml file use:</description>
+    </item>
+    <item>
+      <title>New IAM website!</title>
+      <link>/v/v1.11.0/blog/2021/09/07/new-iam-website/</link>
+      <pubDate>Tue, 07 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>/v/v1.11.0/blog/2021/09/07/new-iam-website/</guid>
+      <description>The IAM website and documentation has moved, and if you&amp;rsquo;re reading this you already know.&#xA;The new IAM website is powered by Docsy, a Hugo theme for creating technical documentation sites, which is increasingly popular in Open Source projects.&#xA;The new site provides new and improved documentation.&#xA;If you find something is missing or broken, let us know by opening an issue or suggest changes. The new Docsy website makes this very easy to anyone with a Github account, just see the tab on the right of each page.</description>
+    </item>
+    <item>
+      <title>IAM v1.7.0</title>
+      <link>/v/v1.11.0/blog/2021/09/07/iam-v1.7.0/</link>
+      <pubDate>Tue, 07 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>/v/v1.11.0/blog/2021/09/07/iam-v1.7.0/</guid>
+      <description>The IAM development team is pleased to announce the release of INDIGO IAM v.1.7.0.&#xA;This release provides many bug fixes and enhancements, as can be seen in the release notes.&#xA;The highlights of this release are:&#xA;Scalability improvements: the group membership persistence management has been refactored to improve scalability; SCIM APIs have also been changed to support pagination over group members (see the new SCIM API documentation for more information); Improved token exchange flexibility: token exchange can now be controlled in more detail using scope and token exchange policies; SSH key management: IAM now allows users to link SSH keys to their account; ssh keys are then exposed to relying parties either via the SCIM APIs or via the OpenID connect userinfo endpoint; see the documentation.</description>
+    </item>
+    <item>
+      <title>Search Results</title>
+      <link>/v/v1.11.0/search/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/v/v1.11.0/search/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
