@@ -90,7 +90,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.11.0/offline-search-index.e9cf505ab3ab72d6fec7724411e59fc6.json"
+    data-offline-search-index-json-src="/v/v1.11.0/offline-search-index.81040c3fa3757298701c49a512d20190.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -465,6 +465,7 @@ Github account, just see the tab on the right of each page.</p>
 	<p>The IAM development team is pleased to announce the release of INDIGO IAM v1.11.0.</p>
 <p>The main feature of this release is the possibility to enable the Multi-Factor Authentication (MFA) through a button in the user homepage. This is an experimental feature and will be enhanced in future releases, based also on user feedback. The <code>mfa</code> Spring profile is used to enable MFA functionality.</p>
 <p>This release also provides bug fixes and enhancements, as can be seen in the <a href="https://github.com/indigo-iam/iam/releases/tag/v1.11.0">release notes</a>.</p>
+<p>Among them, it worth mentioning that only admin users can delegate clients to use a list of powerful scopes:<code>iam:admin.read</code>, <code>iam:admin.write</code>, <code>scim:read</code> and <code>scim:write</code>. Client credential clients may still obtain access tokens with these scopes.</p>
 <p>As usual, the IAM docker image can be obtained from <a href="https://hub.docker.com/r/indigoiam/iam-login-service/tags">DockerHub</a>.</p>
 
 </div>
