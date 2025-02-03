@@ -94,7 +94,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.11.0/offline-search-index.fa4514789fde667c6b0588bd4d4a2ad7.json"
+    data-offline-search-index-json-src="/v/v1.11.0/offline-search-index.20f19246b721a864b3039f03049b8cbe.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -1999,6 +1999,15 @@ required if you choose to enable the authorization code flow;</li>
 <p>Remember to select the <code>offline_access</code> scope from the <strong>Scopes</strong> tab if you
 want to request refresh tokens for the client being created:</p>
 <p><img src="../images/new-client-reg-3.png" alt="client reg"></p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Info</h4>
+
+    Restricted scopes can only be assigned to clients by admin users. As for the <strong>admin</strong> (<code>iam:admin.read</code> and <code>iam:admin.write</code>) and <strong>SCIM</strong> (<code>scim:read</code> and <code>scim:write</code>) scopes, only admin users can delegate clients to use them. <em>Client credentials</em> clients may obtain access tokens with these privileged/restricted scopes if and only if they have been previously assigned by the administrator.
+
+</div>
+
 <p>You can then click the <strong>Save</strong> button at the bottom of the page:</p>
 <p><img src="../images/new-client-reg-4.png" alt="client reg"></p>
 <p>IAM will then generate client credentials for your client and other information
