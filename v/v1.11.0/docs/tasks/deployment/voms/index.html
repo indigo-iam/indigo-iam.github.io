@@ -94,7 +94,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.11.0/offline-search-index.b9be40c3d8e1d4d7704d3de26c72ca12.json"
+    data-offline-search-index-json-src="/v/v1.11.0/offline-search-index.fa4514789fde667c6b0588bd4d4a2ad7.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -119,7 +119,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.11.0/offline-search-index.b9be40c3d8e1d4d7704d3de26c72ca12.json"
+    data-offline-search-index-json-src="/v/v1.11.0/offline-search-index.fa4514789fde667c6b0588bd4d4a2ad7.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -459,26 +459,26 @@ to the container as <code>/workspace/config/application.yml</code>.</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">port</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${VOMS_AA_PORT}</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">vo-name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${VOMS_AA_VO}</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">use-legacy-fqan-encoding</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${VOMS_AA_USE_LEGACY_FQAN_ENCODING:true}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span></code></pre></div><p>To map this file (in the example below, <code>voms-aa.yml</code>as <code>/workspace/config/application.yml</code>, you
-typically need to add the following volume definition the VOMS AA section of your Podman/Docker
+</span></span></span></code></pre></div><p>To map this file (in the example below, <code>voms-aa.yml</code>as <code>/workspace/config/application.yml</code>), you
+typically need to add the following volume definition to the VOMS AA section of your Podman/Docker
 compose file:</p>
-<pre tabindex="0"><code>        volumes:
-            - /path/to/voms-aa.yml:/workspace/config/application.yml:ro,Z
-</code></pre><p><em>Note: <code>Z</code> at the end of the line is required only if you use SELinux</em></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">volumes</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span>- <span style="color:#000">/path/to/voms-aa.yml:/workspace/config/application.yml:ro,Z</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p><em>Note: <code>Z</code> at the end of the line is required only if you use SELinux</em></p>
 <p>In addition, you need to configure the EGI trust anchors and the VOMS AA certificate and
 private key, as described below.</p>
 <h3 id="configuration-of-egi-trust-anchors-and-voms-aa-certificate">Configuration of EGI trust anchors and VOMS AA certificate</h3>
 <p>Both the VOMS-enabled NGINX service and the VOMS AA service require the proper configuration
-of the container the certificate and private key to use and the EGI trust anchors. If using
-Podman/Docker Compose, itt is typically done with:</p>
-<pre tabindex="0"><code>        volumes:
-            - /path/to/certs/voms.test.example.cert.pem:/certs/hostcert.pem:ro,Z
-            - /path/to/certs/voms.test.example.cert.key:/certs/hostkey.pem:ro,Z
-            - /etc/grid-security/certificates:/etc/grid-security/certificates:ro,Z
-</code></pre><p>The line to map EGI trust anchor may be different if you use <a href="https://github.com/indigo-iam/egi-trust-anchors-container/">EGI trust anchors</a>
+of the container, the certificate and private key to use and the EGI trust anchors. If using
+Podman/Docker Compose, it is typically done with:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">volumes</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span>- <span style="color:#000">/path/to/certs/voms.test.example.cert.pem:/certs/hostcert.pem:ro,Z</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span>- <span style="color:#000">/path/to/certs/voms.test.example.cert.key:/certs/hostkey.pem:ro,Z</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span>- <span style="color:#000">/etc/grid-security/certificates:/etc/grid-security/certificates:ro,Z</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>The line to map EGI trust anchor may be different if you use <a href="https://github.com/indigo-iam/egi-trust-anchors-container/">EGI trust anchors</a>
 container. See the Podman/Docker Compose example for more information.</p>
 <p>Note that the private key must be readable by the user running the service. As it is not a good
-practice to make it world readable, it may be necessary to adjust its owner.</p>
+practice to make it world readable, it may be necessary to adjust its ownership.</p>
 <h3 id="podmandocker-compose-example">Podman/Docker Compose example</h3>
 <p>For an example of the container configurations, see the <a href="https://github.com/indigo-iam/iam/blob/master/compose/voms-deploy/docker-compose.yml">VOMS AA Docker compose
 file</a>.</p>
@@ -488,7 +488,7 @@ file</a>.</p>
     
     </div>
 <div class="td-page-meta__lastmod">
-  Last modified February 3, 2025: <a href="https://github.com/indigo-iam/iam-website/commit/b4cf7e064e6dbaceeabceeeb440a801346278362">Improve voms deployment description (#140) (b4cf7e0)</a>
+  Last modified February 3, 2025: <a href="https://github.com/indigo-iam/iam-website/commit/754da85b7611e50fdac1524e7a7e7fd250e5a67b">Small fixes (754da85)</a>
 </div>
 </div>
 
