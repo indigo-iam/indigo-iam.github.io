@@ -8,6 +8,13 @@
     <language>en</language>
     <atom:link href="/v/v1.11.0/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>IAM v1.11.0</title>
+      <link>/v/v1.11.0/blog/2025/02/03/iam-v1.11.0/</link>
+      <pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>/v/v1.11.0/blog/2025/02/03/iam-v1.11.0/</guid>
+      <description>The IAM development team is pleased to announce the release of INDIGO IAM v1.11.0.&#xA;The main feature of this release is the possibility to enable the Multi-Factor Authentication (MFA) through a button in the user homepage. This is an experimental feature and will be enhanced in future releases, based also on user feedback. The mfa Spring profile is used to enable MFA functionality.&#xA;This release also provides bug fixes and enhancements, as can be seen in the release notes.</description>
+    </item>
+    <item>
       <title>IAM v1.10.2</title>
       <link>/v/v1.11.0/blog/2024/09/27/iam-v1.10.2/</link>
       <pubDate>Fri, 27 Sep 2024 00:00:00 +0000</pubDate>
