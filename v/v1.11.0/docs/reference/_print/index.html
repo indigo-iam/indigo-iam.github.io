@@ -94,7 +94,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.11.0/offline-search-index.b3f0b915d32e0922fc1ec66700eb311d.json"
+    data-offline-search-index-json-src="/v/v1.11.0/offline-search-index.0945b9a2c8d152c04c962ea25e701819.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -403,7 +403,26 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>1.14: <a href="#pg-f53010d8ceeb59269840cbdb81da1bbb">Token exchange policy API</a></li>
+<li>1.14: <a href="#pg-83f558d704e9d3d7530c4a49c073584d">Statistical endpoint</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>1.15: <a href="#pg-f53010d8ceeb59269840cbdb81da1bbb">Token exchange policy API</a></li>
 
 
     
@@ -4356,7 +4375,43 @@ the organization</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-f53010d8ceeb59269840cbdb81da1bbb">1.14 - Token exchange policy API</h1>
+	<h1 id="pg-83f558d704e9d3d7530c4a49c073584d">1.14 - Statistical endpoint</h1>
+    
+	<p>Starting from v1.10.0 version, a statistical endpoint showing the number of users in the IAM organization was added.</p>
+<p>The endpoint does not require authentication and is available at <code>/stats</code>. An example:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#a40000">$</span> <span style="color:#a40000">curl</span> <span style="color:#a40000">http:</span><span style="color:#8f5902;font-style:italic">//localhost:8080/stats --silent | jq
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;numberOfUsers&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">255</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><p>The output may be populated with more information in later versions.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-f53010d8ceeb59269840cbdb81da1bbb">1.15 - Token exchange policy API</h1>
     
 	<p>The Token exchange policy API allows to define fine-grained policies to
 control:</p>
