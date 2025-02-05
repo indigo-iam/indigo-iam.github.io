@@ -88,7 +88,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.10.1/offline-search-index.ae0eb3650786e4e5d0eb868de28cc1bb.json"
+    data-offline-search-index-json-src="/v/v1.10.1/offline-search-index.6c38e33c0699ba9d0ff2b9b3439a818b.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -113,7 +113,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.10.1/offline-search-index.ae0eb3650786e4e5d0eb868de28cc1bb.json"
+    data-offline-search-index-json-src="/v/v1.10.1/offline-search-index.6c38e33c0699ba9d0ff2b9b3439a818b.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -179,6 +179,8 @@
   <a href="/v/v1.10.1/docs/reference/api/scim-api/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1101docsreferenceapiscim-api"><span class="">SCIM API</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1101docsreferenceapiscope-policy-api-li">
   <a href="/v/v1.10.1/docs/reference/api/scope-policy-api/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1101docsreferenceapiscope-policy-api"><span class="">Scope Policy API</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1101docsreferenceapistats-endpoint-li">
+  <a href="/v/v1.10.1/docs/reference/api/stats-endpoint/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1101docsreferenceapistats-endpoint"><span class="">Statistical endpoint</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1101docsreferenceapitoken-exchange-policy-api-li">
   <a href="/v/v1.10.1/docs/reference/api/token-exchange-policy-api/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1101docsreferenceapitoken-exchange-policy-api"><span class="">Token exchange policy API</span></a>
 </li>
@@ -371,7 +373,7 @@ management page (that can be reached clicking the &ldquo;AUP&rdquo; link in the 
 Management navigation bar):</p>
 <p><img src="../images/aup0.png" alt="AUP management 0"></p>
 <p>A dialog is shown:</p>
-<p><img src="../images/aup1.png" alt="AUP management 1"></p>
+<p><img src="../images/aup-window.png" alt="Aup window"></p>
 <p>where the administrator can enter the AUP URL and define how frequently the
 AUP should be accepted by users.</p>
 <p>If the AUP signature validity is set to 0, a signature on the AUP will be
@@ -382,6 +384,35 @@ does not expire.</p>
 the signature will expire after that number of days. As an example, an
 administrator that wants the AUP to signed each year by users should put 365 in
 the &ldquo;AUP signature validity&rdquo; field.</p>
+<p>Since version 1.10.0, a new cron task has been added that runs every four hours to check the expiration status of each user&rsquo;s AUP (Acceptable Usage Policy) signature. If a signature has expired or is about to expire, an email notification is sent to the relevant user.</p>
+<p>Administrators can configure AUP reminders, which notify users of the remaining days until their AUP expires. These reminders can be set up directly from the dashboard.
+If the AUP signature validity is set to 0, AUP reminders will not be displayed. If the AUP signature validity is set to a value greater than 0, the AUP reminders will become mandatory.</p>
+<p><img src="../images/aup-reminders.png" alt="Aup reminders"></p>
+<h4 id="successful-aup-creation-criteria">Successful AUP creation criteria</h4>
+<ul>
+<li><strong>Valid AUP URL</strong>
+<ul>
+<li>The AUP URL must be a properly formatted, valid URL</li>
+</ul>
+</li>
+<li><strong>AUP signature validity</strong>
+<ul>
+<li>The signature validity period (in days) must be an integer value greater than or equal to 0</li>
+</ul>
+</li>
+<li><strong>AUP reminders</strong>
+<ul>
+<li>The reminder period(s) (in days) must be one or more numbers, separated by commas if multiple, that satisfy the following conditions:
+<ul>
+<li>Each reminder must be greater than 0</li>
+<li>Each reminder must be less than the AUP signature validity period</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="../images/aup-created.png" alt="Aup creation"></p>
+<p>Based on the screenshot above, the user will receive three AUP signature reminder emails at 30 days, 15 days, and 1 day prior to the expiration date. Additionally, one AUP expiration email will be sent one year after the AUP is signed.</p>
 <h3 id="editing-and-deleting-the-aup">Editing and deleting the AUP</h3>
 <p>The AUP can be edited and deleted from the AUP management page:</p>
 <p><img src="../images/aup2.png" alt="AUP management 2"></p>
@@ -437,7 +468,7 @@ at registration time:</p>
     
     </div>
 <div class="td-page-meta__lastmod">
-  Last modified July 22, 2024: <a href="https://github.com/indigo-iam/iam-website/commit/9a80609bd2e643962942e36657236d1f6f9ef869">Add description of client registration variables/properties (#122) (9a80609)</a>
+  Last modified August 30, 2024: <a href="https://github.com/indigo-iam/iam-website/commit/024cbb3c62fe08aafebd7234ea9dcb2964f2901d">Add example (024cbb3)</a>
 </div>
 </div>
 
@@ -468,7 +499,7 @@ at registration time:</p>
 
       </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
         <span class="td-footer__copyright">&copy;
-    2024
+    2025
     <span class="td-footer__authors">INFN</span></span><span class="td-footer__all_rights_reserved">All Rights Reserved</span>
       </div>
     </div>
