@@ -90,7 +90,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.11.0/offline-search-index.5ba9707e7fe66d585ca4c141f2985995.json"
+    data-offline-search-index-json-src="/v/v1.11.0/offline-search-index.b3f0b915d32e0922fc1ec66700eb311d.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -144,7 +144,7 @@ and Group Managers to create groups, remove existing ones and manage membership 
 <p>Groups can be organized in a hierarchical structure, with the following constraints:</p>
 <ul>
 <li>a group can have only a parent group;</li>
-<li>a group can have many childrens.</li>
+<li>a group can have many children.</li>
 </ul>
 <h2 id="manage-groups-as-iam-admin">Manage groups as IAM Admin</h2>
 <p>The simplest way to manage groups is using the IAM dashboard.</p>
@@ -153,7 +153,7 @@ and Group Managers to create groups, remove existing ones and manage membership 
 <p><img src="../images/IAM-groups-01.png" alt="INDIGO IAM Add Group button"></p>
 <p>To create a group, specify a group name.</p>
 <p><img src="../images/IAM-groups-02.png" alt="INDIGO IAM Root group creation"></p>
-<p>A new children group can be created from the parent group details page,
+<p>A new child group can be created from the parent group details page,
 clicking on the <em>Add a subgroup</em> button of the <em>Subgroups</em> upper tab.</p>
 <p><img src="../images/IAM-groups-04.png" alt="INDIGO IAM Add Subgroup button"></p>
 <h3 id="deleting-a-group">Deleting a group</h3>
@@ -169,11 +169,11 @@ In the <em>Groups</em> section, click on the <em>Add to group</em> button:</p>
 <p><img src="../images/IAM-groups-06.png" alt="INDIGO IAM Add group to user button"></p>
 <p>Choose one or more groups and confirm the operation:</p>
 <p><img src="../images/IAM-groups-07.png" alt="INDIGO IAM Add group membership"></p>
-<p>Starting with version 1.7.0, when a user is added as member of the children group <code>A/B</code>, IAM
+<p>Starting with version 1.7.0, when a user is added as member of the child group <code>A/B</code>, IAM
 takes care of adding them also to the parent group <code>A</code> that
 they are not already a members of.  In previous versions this had to be done
 manually by the IAM administrator. Following the same rationale, when a user is
-removed from the parent group <code>A</code>, it is also automatically removed from any children groups
+removed from the parent group <code>A</code>, it is also automatically removed from any child groups
 (e.g. <code>A/B</code>) they are members of.</p>
 <p>To remove a user from a group, click the <em>Remove</em> button.</p>
 <p>Members can also be removed from the group details page, clicking on the corresponding <em>X</em> button
@@ -193,7 +193,7 @@ that lists the groups they are group managers of appears in the homepage.</p>
 <p>Once the Group Manager clicks on a group, what they can see in the upper tabs is</p>
 <ul>
 <li>detailed view of group information (<em>Group information</em>)</li>
-<li>list of children groups, if any (<em>Subgroups</em>)</li>
+<li>list of child groups, if any (<em>Subgroups</em>)</li>
 <li>list of Group Managers (<em>Managers</em>)</li>
 <li>list of group members, if any (<em>Members</em>)</li>
 </ul>
