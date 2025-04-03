@@ -90,7 +90,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.11.0/offline-search-index.f3208b4b6ec4df7b90110dd63bd5662c.json"
+    data-offline-search-index-json-src="/v/v1.11.0/offline-search-index.6584367da620fcc2292160969811b323.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -8773,16 +8773,11 @@ available to synchronize one-way their VOMS instance with their IAM instance.</p
 </li>
 </ul>
 <p>The script needs admininistrative privileges on both VOMS and IAM, represented
-respectively by a VOMS proxy and an IAM access token.</p>
-<p>A typical run is as follows:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#204a87">export</span> <span style="color:#000">REQUESTS_CA_BUNDLE</span><span style="color:#ce5c00;font-weight:bold">=</span>/etc/grid-security/certificates
-</span></span><span style="display:flex;"><span><span style="color:#204a87">export</span> <span style="color:#000">BEARER_TOKEN</span><span style="color:#ce5c00;font-weight:bold">=</span>...
-</span></span><span style="display:flex;"><span><span style="color:#204a87">export</span> <span style="color:#000">X509_USER_PROXY</span><span style="color:#ce5c00;font-weight:bold">=</span>...
-</span></span><span style="display:flex;"><span>python vomsimporter.py --vo test.vo --voms-host vgrid02.cnaf.infn.it --iam-host iam-dev.cloud.cnaf.infn.it
-</span></span></code></pre></div><p>The script can be run with many different options. <code>python vomsimporter.py --help</code> gives all the details.</p>
-<p>The script is currently deployed only for LHC VOs and includes some CERN
-specificities, but it is general enough that can be easily adapted to other
-situations.</p>
+respectively by a VOMS proxy and an IAM access token. As it synchronizes INDIGO
+IAM information with VOMS information (rather than overwriting it), it can be run
+multiple times to fix problems in previous runs.</p>
+<p>The documentation on how to run the <code>vomsimporter.py</code> script is available at
+<a href="https://github.com/indigo-iam/voms-importer">https://github.com/indigo-iam/voms-importer</a>.</p>
 <h2 id="migration-of-groups-and-roles">Migration of groups and roles</h2>
 <p>Both IAM and VOMS support the concepts of <em>group</em> and <em>role</em>.</p>
 <p>Groups are very similar in both contexts. They differ slightly in the
@@ -8800,10 +8795,14 @@ optional group <code>atlas/VO-Admin</code>.</p>
 <p>Groups and roles can be created directly in IAM without any corresponding group
 or role in VOMS; those are not considered by the importer script.</p>
 <h2 id="migration-of-users">Migration of users</h2>
-<p>Only <strong>active</strong> VOMS users are migrated. <strong>A user suspended in VOMS, may not be
-also suspended in IAM.</strong> Since IAM at CERN is also integrated with the CERN
+<p>Only <strong>active</strong> VOMS users are imported: nothing is done on the INDIGO IAM side
+for a user suspended in VOMS, except if you add option <code> --synchronize-activation-status</code>
+to force the synchronization of activation state in INDIGO IAM using the activation
+state in VOMS. <strong>Without this option, a user suspended in VOMS may still be
+active in IAM if the user was imported (and active) before it was suspended in VOMS.</strong></p>
+<p><em>Note about CERN instances: since INDIGO IAM at CERN is also integrated with the CERN
 Human Resource (HR) database, the HR check will ensure that users are
-suspended/removed from the VO when experiment membership is no longer valid.</p>
+suspended/removed from the VO when experiment membership is no longer valid.</em></p>
 <p>When creating a IAM account for a newly-discovered VOMS user, the importer
 script generates a username of the form <code>voms.&lt;voms-id&gt;</code>. There is an option to
 use the value of an attribute (e.g. <code>nickname</code>) from the user entry in VOMS, if
