@@ -91,7 +91,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.12.0/offline-search-index.8c9ce167de1b67956d9a2289fc809a71.json"
+    data-offline-search-index-json-src="/v/v1.12.0/offline-search-index.c044d78164292477bd0eca1b9526456e.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -138,6 +138,16 @@ This is the multi-page printable view of this section.
   
   
 
+  
+    
+    
+	
+
+    <li><a href="#pg-25c6d62056dd9d22db445b5e169510a8">IAM v1.12.0</a></li>
+
+
+
+    
   
     
     
@@ -297,6 +307,49 @@ This is the multi-page printable view of this section.
   
 
 <div class="td-content" style="">
+    <h1 id="pg-25c6d62056dd9d22db445b5e169510a8">IAM v1.12.0</h1>
+	<div class="lead">The v1.12.0 release includes the integration of MFA with external providers (experimentally)</div>
+	<div class="td-byline mb-4">
+		By <b>IAM development team</b> |
+        
+		<time datetime="2025-05-30" class="text-body-secondary">Friday, May 30, 2025</time>
+        
+	</div>
+	<p>The IAM development team is pleased to announce the release of INDIGO IAM v1.12.0.</p>
+<p>This release provides bug fixes and enhancements, as can be seen in the <a href="https://github.com/indigo-iam/iam/releases/tag/v1.12.0">release notes</a>.</p>
+<p>The major highlights include:</p>
+<ul>
+<li>integration of MFA with external OIDC, SAML and x509 providers (<em>experimental</em>)
+<ul>
+<li>skip the IAM MFA phase if the providers already authenticated through the second factor</li>
+</ul>
+</li>
+<li>improve logging of VOMS-AA operations</li>
+<li>allow for PATCH operation to replace groups in SCIM endpoint</li>
+<li>support for <code>resource</code> parameter during an authorization request</li>
+<li>assign <code>oidc-agent</code> clients ownership to whom approved it</li>
+<li>add an IAM <code>READER</code> role that gives read access to users and groups info</li>
+</ul>
+<p>As usual, the IAM docker image can be obtained from <a href="https://hub.docker.com/r/indigoiam/iam-login-service/tags">DockerHub</a>.</p>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
     <h1 id="pg-9a4263b46f8f4b350363cf15a26fcd85">IAM v1.11.0</h1>
 	<div class="lead">The v1.11.0 release includes the possibility to enable Multi-Factor Authentication (experimentally)</div>
 	<div class="td-byline mb-4">
