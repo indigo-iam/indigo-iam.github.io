@@ -66,6 +66,7 @@
         <div class="dropdown">
   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Releases</a>
   <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.12.0">v1.12.0</a></li>
     <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.11.0">v1.11.0</a></li>
     <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.2">v1.10.2</a></li>
     <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.1">v1.10.1</a></li>
@@ -94,7 +95,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.12.0/offline-search-index.b03013277c0bc5264c1c23f6b0c58b6f.json"
+    data-offline-search-index-json-src="/v/v1.12.0/offline-search-index.8c9ce167de1b67956d9a2289fc809a71.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -496,7 +497,7 @@ file, e.g. <code>keystore.jwks</code>.</p>
 
 
 <div class="pageinfo pageinfo-primary">
-<p>indigoiam/iam-login-service:v1.11.0</p>
+<p>indigoiam/iam-login-service:v1.12.0</p>
 
 </div>
 
@@ -523,7 +524,7 @@ one in the <code>run</code>command). It has to be done once (not at every restar
 </span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  --env-file<span style="color:#ce5c00;font-weight:bold">=</span>/path/to/iam-login-service/env <span style="color:#4e9a06">\
 </span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  -v /path/to/keystore.jks:/keystore.jks:ro <span style="color:#4e9a06">\
 </span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  --restart unless-stopped <span style="color:#4e9a06">\
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  indigoiam/iam-login-service:v1.11.0
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  indigoiam/iam-login-service:v1.12.0
 </span></span></code></pre></div><p><em>Note: <code>--restart</code> is recommended if you want the IAM service to restart automatically
 when the server running Docker is restarted.</em></p>
 <p>Check the logs with:</p>
@@ -555,7 +556,7 @@ command to fix it:</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  --net<span style="color:#ce5c00;font-weight:bold">=</span>iam -p 8080:8080 <span style="color:#4e9a06">\
 </span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  --env-file<span style="color:#ce5c00;font-weight:bold">=</span>/path/to/iam-login-service/env <span style="color:#4e9a06">\
 </span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  -v /path/to/keystore.jks:/keystore.jks:ro,Z <span style="color:#4e9a06">\
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  indigoiam/iam-login-service:v1.11.0
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  indigoiam/iam-login-service:v1.12.0
 </span></span><span style="display:flex;"><span>$ podman logs -f iam-login-service
 </span></span></code></pre></div>
 </div>
