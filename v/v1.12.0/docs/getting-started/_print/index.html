@@ -95,7 +95,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.12.0/offline-search-index.c044d78164292477bd0eca1b9526456e.json"
+    data-offline-search-index-json-src="/v/v1.12.0/offline-search-index.399809364badee082097b131d4b91251.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -343,7 +343,7 @@ certificate authentication use a configuration similar to the
 in the IAM development environment.</p>
 <p>In particular, set the <code>ssl_verify_client=Optional</code> option and configure the <code>proxy_set_header</code>
 directory as follows:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">proxy_set_header</span>        <span style="color:#4e9a06">X-SSL-Client-Cert</span> <span style="color:#000">$ssl_client_cert</span><span style="color:#000;font-weight:bold">;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">proxy_set_header</span>        <span style="color:#4e9a06">X-SSL-Client-Cert</span> <span style="color:#000">$ssl_client_escaped_cert</span><span style="color:#000;font-weight:bold">;</span>
 </span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">proxy_set_header</span>        <span style="color:#4e9a06">X-SSL-Client-I-Dn</span> <span style="color:#000">$ssl_client_i_dn</span><span style="color:#000;font-weight:bold">;</span>
 </span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">proxy_set_header</span>        <span style="color:#4e9a06">X-SSL-Client-S-Dn</span> <span style="color:#000">$ssl_client_s_dn</span><span style="color:#000;font-weight:bold">;</span>
 </span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">proxy_set_header</span>        <span style="color:#4e9a06">X-SSL-Client-Serial</span> <span style="color:#000">$ssl_client_serial</span><span style="color:#000;font-weight:bold">;</span>
@@ -352,7 +352,18 @@ directory as follows:</p>
 </span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">proxy_set_header</span>        <span style="color:#4e9a06">X-SSL-Client-Verify</span>  <span style="color:#000">$ssl_client_verify</span><span style="color:#000;font-weight:bold">;</span>
 </span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">proxy_set_header</span>        <span style="color:#4e9a06">X-SSL-Protocol</span> <span style="color:#000">$ssl_protocol</span><span style="color:#000;font-weight:bold">;</span>
 </span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">proxy_set_header</span>        <span style="color:#4e9a06">X-SSL-Server-Name</span> <span style="color:#000">$ssl_server_name</span><span style="color:#000;font-weight:bold">;</span>
-</span></span></code></pre></div>
+</span></span></code></pre></div><h3 id="haproxy">HAProxy</h3>
+<p>To enable X.509 client certificate authentication when using HAProxy, configure it to forward
+the equivalent headers using the following directives:</p>
+<pre tabindex="0"><code>http-request set-header X-SSL-Client-Cert %{+Q}[ssl_c_der,base64]
+http-request set-header X-SSL-Client-S-Dn %{+Q}[ssl_c_s_dn]
+http-request set-header X-SSL-Client-I-Dn %{+Q}[ssl_c_i_dn]
+http-request set-header X-SSL-Client-Serial %{+Q}[ssl_c_serial]
+http-request set-header X-SSL-Client-V-Start %{+Q}[ssl_c_notbefore]
+http-request set-header X-SSL-Client-V-End %{+Q}[ssl_c_notafter]
+http-request set-header X-SSL-Protocol %[ssl_fc_protocol]
+http-request set-header X-SSL-Client-Verify %{+Q}[ssl_c_verify,x509_v_err_str]
+</code></pre>
 </div>
 
 
