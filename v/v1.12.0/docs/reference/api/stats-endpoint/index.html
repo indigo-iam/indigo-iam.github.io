@@ -351,11 +351,11 @@
 </header>
 	<p>Starting from v1.10.0 version, a statistical endpoint showing the number of users in the IAM organization was added.</p>
 <p>The endpoint does not require authentication and is available at <code>/stats</code>. An example:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#a40000">$</span> <span style="color:#a40000">curl</span> <span style="color:#a40000">http:</span><span style="color:#8f5902;font-style:italic">//localhost:8080/stats --silent | jq
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;numberOfUsers&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">255</span><span style="color:#000;font-weight:bold">,</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;activeUsers&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">254</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ curl http://localhost:8080/stats --silent <span style="color:#000;font-weight:bold">|</span> jq
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;numberOfUsers&#34;</span>: 255,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;activeUsers&#34;</span>: <span style="color:#0000cf;font-weight:bold">254</span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
 </span></span></code></pre></div><p>The output may be populated with more information in later versions.</p>
 
   <div class="section-index">
@@ -363,7 +363,7 @@
     
     </div>
 <div class="td-page-meta__lastmod">
-  Last modified June 12, 2025: <a href="https://github.com/indigo-iam/iam-website/commit/a3d3353e36d538cf4ccb63178db6fd43c2489ad0">Update stats endpoint response (a3d3353)</a>
+  Last modified June 12, 2025: <a href="https://github.com/indigo-iam/iam-website/commit/218a93527f213ce459608b33ce5ecc9f98797f1b">Update stats endpoint response (218a935)</a>
 </div>
 </div>
 
