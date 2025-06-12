@@ -91,7 +91,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.12.0/offline-search-index.881b5c1d875e0fb11b6e14b7b36ef740.json"
+    data-offline-search-index-json-src="/v/v1.12.0/offline-search-index.2bc7a06f56800529184b5d4a05886bb8.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -681,7 +681,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3.2.4: <a href="#pg-ee84b111d6aee6b44b8e068e0995e8c2">Membership lifecycle</a></li>
+<li>3.2.4: <a href="#pg-ab6bce1f509bf1a83331caa741e9df1a">Automatic group enrollment</a></li>
 
 
     
@@ -700,7 +700,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3.2.5: <a href="#pg-5fd21a888f7bdca41388e3b3fa887277">Integration with RCAuth</a></li>
+<li>3.2.5: <a href="#pg-ee84b111d6aee6b44b8e068e0995e8c2">Membership lifecycle</a></li>
 
 
     
@@ -719,7 +719,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3.2.6: <a href="#pg-2501923ff9f1258a5dc95b7435579a75">Registration &amp; Enrollment</a></li>
+<li>3.2.6: <a href="#pg-5fd21a888f7bdca41388e3b3fa887277">Integration with RCAuth</a></li>
 
 
     
@@ -738,7 +738,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3.2.7: <a href="#pg-2d609fcdcf178cc290f856ec5d527fa9">Handling SCIM response</a></li>
+<li>3.2.7: <a href="#pg-2501923ff9f1258a5dc95b7435579a75">Registration &amp; Enrollment</a></li>
 
 
     
@@ -757,7 +757,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3.2.8: <a href="#pg-7c4fbefe2df14b07a34f2d3bdea65fc4">Client registration</a></li>
+<li>3.2.8: <a href="#pg-2d609fcdcf178cc290f856ec5d527fa9">Handling SCIM response</a></li>
 
 
     
@@ -776,7 +776,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3.2.9: <a href="#pg-47a2d3402f6d7bf0ca16bc578ce55b0c">IAM Notifications</a></li>
+<li>3.2.9: <a href="#pg-7c4fbefe2df14b07a34f2d3bdea65fc4">Client registration</a></li>
 
 
     
@@ -795,7 +795,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3.2.10: <a href="#pg-63d7a6556648cdd8622cf2321f13a835">JSON Web Keys (JWK)</a></li>
+<li>3.2.10: <a href="#pg-47a2d3402f6d7bf0ca16bc578ce55b0c">IAM Notifications</a></li>
 
 
     
@@ -814,7 +814,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3.2.11: <a href="#pg-b153a1aec7140b2aa27a0ba03e8dc3fd">Local authentication</a></li>
+<li>3.2.11: <a href="#pg-63d7a6556648cdd8622cf2321f13a835">JSON Web Keys (JWK)</a></li>
 
 
     
@@ -833,22 +833,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3.2.12: <a href="#pg-359104377f9341d4c326d45fb209b4c2">External authentication</a></li>
-
-
-    
-    <ul>
-        
-  
-  
-  
-  
-
-  
-    
-    
-	
-<li>3.2.12.1: <a href="#pg-ac3ba36ba3318b338bcbf439e1b79e60">OpenID-Connect authentication</a></li>
+<li>3.2.12: <a href="#pg-b153a1aec7140b2aa27a0ba03e8dc3fd">Local authentication</a></li>
 
 
     
@@ -867,7 +852,22 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3.2.12.2: <a href="#pg-af611b856fca4d6771e3e3ed962701b5">SAML authentication</a></li>
+<li>3.2.13: <a href="#pg-359104377f9341d4c326d45fb209b4c2">External authentication</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>3.2.13.1: <a href="#pg-ac3ba36ba3318b338bcbf439e1b79e60">OpenID-Connect authentication</a></li>
 
 
     
@@ -886,7 +886,26 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3.2.12.3: <a href="#pg-86d359d1731c5e164863d1bbe93a7bcf">X.509 authentication</a></li>
+<li>3.2.13.2: <a href="#pg-af611b856fca4d6771e3e3ed962701b5">SAML authentication</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>3.2.13.3: <a href="#pg-86d359d1731c5e164863d1bbe93a7bcf">X.509 authentication</a></li>
 
 
     
@@ -6793,7 +6812,52 @@ at the registration time, and it will be granted without intervention of IAM adm
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-ee84b111d6aee6b44b8e068e0995e8c2">3.2.4 - Membership lifecycle</h1>
+	<h1 id="pg-ab6bce1f509bf1a83331caa741e9df1a">3.2.4 - Automatic group enrollment</h1>
+    
+	<p>Starting from v1.10.0 version, IAM allows to define a list of group a newly created account will be member of, skipping the group request phase. This is useful for instance for IAM using also VOMS-AA, where every user must belong at least to the primary group equal to the VO name in order to request for a VOMS proxy certificate.</p>
+<p>To include this feature, the <code>application.yml</code> file must contain the following properties</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">registration</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">default-groups</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/&lt;iam-group&gt;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">enrollment</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">INSERT</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>As the <code>iam.registration.default-groups</code> is a list, more than one group may be configured, e.g.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">registration</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">default-groups</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/atlas</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">enrollment</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">INSERT</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/privileged</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">enrollment</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">INSERT</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>In the current IAM version, the only enrollment type supported is <code>INSERT</code>, meaning that when creating a new account, it automatically becomes part of the default group if that group exists.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-ee84b111d6aee6b44b8e068e0995e8c2">3.2.5 - Membership lifecycle</h1>
     
 	<p>Starting with version 1.6.0, IAM introduces support for basic account life
 cycle management.</p>
@@ -6856,7 +6920,7 @@ file</a>:</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-5fd21a888f7bdca41388e3b3fa887277">3.2.5 - Integration with RCAuth</h1>
+	<h1 id="pg-5fd21a888f7bdca41388e3b3fa887277">3.2.6 - Integration with RCAuth</h1>
     
 	<p><a href="https://rcauth.eu">RCAuth.eu</a> has been integrated with IAM in order to provide on-demand X.509
 certificates to users without a certificate.</p>
@@ -6950,7 +7014,7 @@ string is set to <em>true</em> (as in the image above).</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-2501923ff9f1258a5dc95b7435579a75">3.2.6 - Registration &amp; Enrollment</h1>
+	<h1 id="pg-2501923ff9f1258a5dc95b7435579a75">3.2.7 - Registration &amp; Enrollment</h1>
     
 	<p>IAM implements a basic registration service that requires the intervention
 of an IAM admin. In fact, when users apply for membership in an
@@ -7076,7 +7140,7 @@ The <em>nickname</em> value will be the same as the username set during the regi
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-2d609fcdcf178cc290f856ec5d527fa9">3.2.7 - Handling SCIM response</h1>
+	<h1 id="pg-2d609fcdcf178cc290f856ec5d527fa9">3.2.8 - Handling SCIM response</h1>
     
 	<p>IAM already supports a set of <a href="../../api/scim-api/_index.md">SCIM APIs</a> based on the System for Cross-domain
 Identity Management standard. Starting from IAM v1.9.0, the API response to GET requests on user details
@@ -7213,7 +7277,7 @@ one should set the following property (default is false):</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-7c4fbefe2df14b07a34f2d3bdea65fc4">3.2.8 - Client registration</h1>
+	<h1 id="pg-7c4fbefe2df14b07a34f2d3bdea65fc4">3.2.9 - Client registration</h1>
     
 	<p>IAM has the ability to enable or disable the client registration, and
 to limit the registration to certain users.
@@ -7277,7 +7341,7 @@ or API by an IAM administrator.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-47a2d3402f6d7bf0ca16bc578ce55b0c">3.2.9 - IAM Notifications</h1>
+	<h1 id="pg-47a2d3402f6d7bf0ca16bc578ce55b0c">3.2.10 - IAM Notifications</h1>
     
 	<p>The e-mail notifications from the IAM service may be customized with a YAML file. Here are reported the default values of the notification properties:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">notification</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -7352,7 +7416,7 @@ or API by an IAM administrator.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-63d7a6556648cdd8622cf2321f13a835">3.2.10 - JSON Web Keys (JWK)</h1>
+	<h1 id="pg-63d7a6556648cdd8622cf2321f13a835">3.2.11 - JSON Web Keys (JWK)</h1>
     
 	<p>JSON Web Key (JWK) is a JSON data structure that represents a single public key or a set of
 public keys. IAM uses private JWKs to sign tokens, and IAM clients use public JWKs to validate the tokens.
@@ -7499,7 +7563,7 @@ key will be valid after this.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-b153a1aec7140b2aa27a0ba03e8dc3fd">3.2.11 - Local authentication</h1>
+	<h1 id="pg-b153a1aec7140b2aa27a0ba03e8dc3fd">3.2.12 - Local authentication</h1>
     
 	<p>IAM has the ability to limit or disable
 authentication with local IAM credentials, so that external, brokered
@@ -7548,7 +7612,7 @@ able to use it doesn&rsquo;t really provide additional security.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-359104377f9341d4c326d45fb209b4c2">3.2.12 - External authentication</h1>
+	<h1 id="pg-359104377f9341d4c326d45fb209b4c2">3.2.13 - External authentication</h1>
     
 	<p>IAM supports brokered authentication via standard OpenID-Connect and SAML
 protocols as well as X.509 authentication.</p>
@@ -7575,7 +7639,7 @@ protocols as well as X.509 authentication.</p>
 
 <div class="td-content" style="">
     
-	<h1 id="pg-ac3ba36ba3318b338bcbf439e1b79e60">3.2.12.1 - OpenID-Connect authentication</h1>
+	<h1 id="pg-ac3ba36ba3318b338bcbf439e1b79e60">3.2.13.1 - OpenID-Connect authentication</h1>
     
 	<p>IAM supports brokered OpenID Connect authentication to external identity
 providers (e.g., Google).</p>
@@ -7705,7 +7769,7 @@ the default IAM configuration.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-af611b856fca4d6771e3e3ed962701b5">3.2.12.2 - SAML authentication</h1>
+	<h1 id="pg-af611b856fca4d6771e3e3ed962701b5">3.2.13.2 - SAML authentication</h1>
     
 	<p>IAM supports brokered SAML authentication. When SAML authentication is turned
 on for an IAM instance, users can log into the service using the home Identity
@@ -7933,7 +7997,7 @@ instructions on how to override the default IAM configuration.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-86d359d1731c5e164863d1bbe93a7bcf">3.2.12.3 - X.509 authentication</h1>
+	<h1 id="pg-86d359d1731c5e164863d1bbe93a7bcf">3.2.13.3 - X.509 authentication</h1>
     
 	<p>X509 authentication in IAM doesn&rsquo;t require any specific configuration in IAM itself.
 It is enabled as soon as the proper options have been set in the Nginx configuration.</p>

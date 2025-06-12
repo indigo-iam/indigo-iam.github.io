@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="canonical" type="text/html" href="/v/v1.12.0/docs/tasks/user/manage-ssh-keys/">
+<link rel="canonical" type="text/html" href="/v/v1.12.0/docs/reference/configuration/group-enrollment/">
 <meta name="robots" content="noindex, nofollow">
 
 
@@ -18,15 +18,15 @@
 <link rel="icon" type="image/png" href="/v/v1.12.0/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/v/v1.12.0/favicons/android-192x192.png" sizes="192x192">
 
-<title>Managing SSH keys | INDIGO IAM</title>
+<title>Automatic group enrollment | INDIGO IAM</title>
 <meta name="description" content="The INDIGO Identity and Access Management (IAM) Service">
-<meta property="og:title" content="Managing SSH keys" />
+<meta property="og:title" content="Automatic group enrollment" />
 <meta property="og:description" content="The INDIGO Identity and Access Management (IAM) Service" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="/v/v1.12.0/docs/tasks/user/manage-ssh-keys/" />
+<meta property="og:url" content="/v/v1.12.0/docs/reference/configuration/group-enrollment/" />
 
-<meta itemprop="name" content="Managing SSH keys">
-<meta itemprop="description" content="The INDIGO Identity and Access Management (IAM) Service"><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Managing SSH keys"/>
+<meta itemprop="name" content="Automatic group enrollment">
+<meta itemprop="description" content="The INDIGO Identity and Access Management (IAM) Service"><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Automatic group enrollment"/>
 <meta name="twitter:description" content="The INDIGO Identity and Access Management (IAM) Service"/>
 
 
@@ -115,13 +115,13 @@
 This is the multi-page printable view of this section.
 <a href="#" onclick="print();return false;">Click here to print</a>.
 </p><p>
-<a href="/v/v1.12.0/docs/tasks/user/manage-ssh-keys/">Return to the regular view of this page</a>.
+<a href="/v/v1.12.0/docs/reference/configuration/group-enrollment/">Return to the regular view of this page</a>.
 </p>
 </div>
 
 
 
-<h1 class="title">Managing SSH keys</h1>
+<h1 class="title">Automatic group enrollment</h1>
 
 
 
@@ -140,55 +140,22 @@ This is the multi-page printable view of this section.
 
 
 <div class="content">
-      <p>Starting with version <code>v1.7.0</code>, IAM allows users to link SSH public keys to
-their accounts.</p>
-<p>SSH keys are then exposed to relying parties in two ways:</p>
-<ul>
-<li>through the IAM <a href="/v/v1.12.0/docs/reference/api/scim-api/">SCIM APIs</a>;</li>
-<li>as a claim in the OpenID Connect <code>userinfo</code> endpoint response, if the token
-has the <code>ssh-keys</code> scope.</li>
-</ul>
-<h2 id="managing-account-ssh-keys">Managing account SSH keys</h2>
-<p>The IAM dashboard allows a user to link one or more SSH keys to their account,
-as shown below:</p>
-<p><img src="../images/ssh-keys-0.png" alt="ssh key management"></p>
-<h2 id="accessing-account-ssh-keys-via-scim-apis">Accessing account SSH keys via SCIM APIs</h2>
-<p>As clarified in the <a href="/v/v1.12.0/docs/reference/api/scim-api/">SCIM APIs documentation</a>, ssh keys are exposed
-in the user information returned to authorized clients, as in the following
-fragment:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;80e5fb8d-b7c8-451a-89ba-346ae278a66f&#34;</span><span style="color:#000;font-weight:bold">,</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a40000">...</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;userName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;test&#34;</span><span style="color:#000;font-weight:bold">,</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;urn:indigo-dc:scim:schemas:IndigoUser&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;sshKeys&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;display&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;my-key&#34;</span><span style="color:#000;font-weight:bold">,</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;primary&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">true</span><span style="color:#000;font-weight:bold">,</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ssh-rsa AAAAB...&#34;</span><span style="color:#000;font-weight:bold">,</span> 
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;fingerprint&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;M9vqQeuPrPI0wiaT6sftgfxu1/kowbb37fcLU2+R7yk=&#34;</span><span style="color:#000;font-weight:bold">,</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;created&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-08-25T15:18:45.978+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;lastModified&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-08-25T15:18:45.978+02:00&#34;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">],</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span></code></pre></div><h2 id="accessing-account-ssh-keys-via-the-userinfo-endpoint">Accessing account SSH keys via the userinfo endpoint</h2>
-<p>SSH keys linked to a user account are returned in the userinfo endpoint
-response if the token used to access the endpoint has the <code>ssh-keys</code> scope, as
-in the following example:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#000;font-style:italic">❯ curl -s -L -H &#34;Authorization: Bearer ${AT}&#34; https://iam.local.io/userinfo | jq .
-</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">{
-</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">  &#34;sub&#34;: &#34;80e5fb8d-b7c8-451a-89ba-346ae278a66f&#34;,
-</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">  &#34;ssh_keys&#34;: [
-</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">    {
-</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">      &#34;fingerprint&#34;: &#34;M9vqQeuPrPI0wiaT6sftgfxu1/kowbb37fcLU2+R7yk=&#34;,
-</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">      &#34;value&#34;: &#34;ssh-rsa AAAAB3NzaC1yc2E...&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">    }
-</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">  ]
-</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">}
-</span></span></span></code></pre></div><p>Note that the <code>ssh-keys</code> scope is a <strong>restricted</strong> scope, i.e., it can be
-assigned to client registered in IAM only by IAM administrators.</p>
+      <p>Starting from v1.10.0 version, IAM allows to define a list of group a newly created account will be member of, skipping the group request phase. This is useful for instance for IAM using also VOMS-AA, where every user must belong at least to the primary group equal to the VO name in order to request for a VOMS proxy certificate.</p>
+<p>To include this feature, the <code>application.yml</code> file must contain the following properties</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">registration</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">default-groups</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/&lt;iam-group&gt;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">enrollment</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">INSERT</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>As the <code>iam.registration.default-groups</code> is a list, more than one group may be configured, e.g.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">registration</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">default-groups</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/atlas</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">enrollment</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">INSERT</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/privileged</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">enrollment</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">INSERT</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>In the current IAM version, the only enrollment type supported is <code>INSERT</code>, meaning that when creating a new account, it automatically becomes part of the default group if that group exists.</p>
 
 </div>
 </div>
