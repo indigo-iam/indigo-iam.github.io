@@ -95,7 +95,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.12.0/offline-search-index.715c03752ae889a1a461b4b2ed200ad7.json"
+    data-offline-search-index-json-src="/v/v1.12.0/offline-search-index.881b5c1d875e0fb11b6e14b7b36ef740.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -1578,7 +1578,7 @@ In order to enable the external connectivity check, set the environment variable
 <li><code>/iam/account/{id}/attributes</code>, providing access to user attributes</li>
 <li><code>/iam/account/{id}/authorities</code>, providing access to user authorities/roles</li>
 <li><code>/iam/account/me/clients</code>, providing access to clients owned by the user</li>
-<li><code>/iam/account/find/{option}</code>, searching users by username/label/e-mail/group/certificate subject</li>
+<li><code>/iam/account/find/{option}</code>, searching users by username/label/e-mail/group/certificate subject/authority</li>
 <li><code>/iam/account/{id}/groups/{groupId}</code>, providing access to user groups</li>
 <li><code>/iam/account/{id}/managed-groups</code>, providing access to groups to which a user is manager</li>
 <li><code>/iam/group/{groupId}/group-managers</code>, listing managers of a certain group</li>
@@ -1667,7 +1667,7 @@ Remember that there are three roles in Indigo IAM: Amdin, User, Group Manager.</
 </span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
 </span></span></code></pre></div><h2 id="account-filtering">Account filtering</h2>
 <h3 id="get-iamaccountfindoption">GET <code>/iam/account/find/{option}</code></h3>
-<p>Filters user information by label, e-mail, username, certificate subject or group/notingroup.</p>
+<p>Filters user information by label, e-mail, username, certificate subject, autority or group/notingroup.</p>
 <p>Requires <code>iam:admin.read</code> scope.</p>
 <table>
 <thead>
@@ -1697,6 +1697,11 @@ Remember that there are three roles in Indigo IAM: Amdin, User, Group Manager.</
 <td>bycertsubject</td>
 <td>certificateSubject</td>
 <td>URL-encoded</td>
+</tr>
+<tr>
+<td>byauthority</td>
+<td>authority</td>
+<td>String</td>
 </tr>
 </tbody>
 </table>
@@ -1739,6 +1744,11 @@ Remember that there are three roles in Indigo IAM: Amdin, User, Group Manager.</
 <p>bycertsubject</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ curl -s -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#000">$AT</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
 </span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/find/bycertsubject?certificateSubject<span style="color:#ce5c00;font-weight:bold">=</span>CN%3dTest%20User%20test%40infn.it%2cO%3dIstituto%20Nazionale%20di%20Fisica%20Nucleare%2cC%3dIT%2cDC%3dtcs%2cDC%3dterena%2cDC<span style="color:#ce5c00;font-weight:bold">=</span>org
+</span></span></code></pre></div></li>
+<li>
+<p>byauthority (possible authorities are: <code>admin</code>, <code>user</code>, <code>gm:&lt;uuid&gt;</code>, <code>reader</code>, <code>pre_authenticated</code>)</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ curl -s -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#000">$AT</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/find/byauthority?authority<span style="color:#ce5c00;font-weight:bold">=</span>admin
 </span></span></code></pre></div></li>
 <li>
 <p>bygroup/{groupId}</p>
