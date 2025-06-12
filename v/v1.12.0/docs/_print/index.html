@@ -91,7 +91,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.12.0/offline-search-index.7955bf37f1fecc1041a2f2f24ae23e27.json"
+    data-offline-search-index-json-src="/v/v1.12.0/offline-search-index.9fd1a034d075f5da09783a0cd84b3040.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -776,7 +776,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3.2.9: <a href="#pg-63d7a6556648cdd8622cf2321f13a835">JSON Web Keys (JWK)</a></li>
+<li>3.2.9: <a href="#pg-47a2d3402f6d7bf0ca16bc578ce55b0c">IAM Notifications</a></li>
 
 
     
@@ -795,7 +795,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3.2.10: <a href="#pg-b153a1aec7140b2aa27a0ba03e8dc3fd">Local authentication</a></li>
+<li>3.2.10: <a href="#pg-63d7a6556648cdd8622cf2321f13a835">JSON Web Keys (JWK)</a></li>
 
 
     
@@ -814,22 +814,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3.2.11: <a href="#pg-359104377f9341d4c326d45fb209b4c2">External authentication</a></li>
-
-
-    
-    <ul>
-        
-  
-  
-  
-  
-
-  
-    
-    
-	
-<li>3.2.11.1: <a href="#pg-ac3ba36ba3318b338bcbf439e1b79e60">OpenID-Connect authentication</a></li>
+<li>3.2.11: <a href="#pg-b153a1aec7140b2aa27a0ba03e8dc3fd">Local authentication</a></li>
 
 
     
@@ -848,7 +833,22 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3.2.11.2: <a href="#pg-af611b856fca4d6771e3e3ed962701b5">SAML authentication</a></li>
+<li>3.2.12: <a href="#pg-359104377f9341d4c326d45fb209b4c2">External authentication</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>3.2.12.1: <a href="#pg-ac3ba36ba3318b338bcbf439e1b79e60">OpenID-Connect authentication</a></li>
 
 
     
@@ -867,7 +867,26 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3.2.11.3: <a href="#pg-86d359d1731c5e164863d1bbe93a7bcf">X.509 authentication</a></li>
+<li>3.2.12.2: <a href="#pg-af611b856fca4d6771e3e3ed962701b5">SAML authentication</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>3.2.12.3: <a href="#pg-86d359d1731c5e164863d1bbe93a7bcf">X.509 authentication</a></li>
 
 
     
@@ -6397,7 +6416,8 @@ section</a>.</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Retention of delivered messages, in days</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_NOTIFICATION_CLEANUP_AGE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">30</span>
-</span></span></code></pre></div><h2 id="account-linking-settings">Account linking settings</h2>
+</span></span></code></pre></div><p>For more customization of the notification service settings, see the <a href="/v/v1.12.0/docs/reference/configuration/notifications/">IAM Notifications section</a>.</p>
+<h2 id="account-linking-settings">Account linking settings</h2>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Should account linking be disabled? When set to true users cannot</span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># link external accounts (Google, SAML) to their local IAM account</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_ACCOUNT_LINKING_DISABLE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">false</span> 
@@ -7246,7 +7266,82 @@ or API by an IAM administrator.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-63d7a6556648cdd8622cf2321f13a835">3.2.9 - JSON Web Keys (JWK)</h1>
+	<h1 id="pg-47a2d3402f6d7bf0ca16bc578ce55b0c">3.2.9 - IAM Notifications</h1>
+    
+	<p>The e-mail notifications from the IAM service may be customized with a YAML file. Here are reported the default values of the notification properties:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">notification</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># When set to true, the notifications are not sent by the mail server,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># but appears in the log</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">disable</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># Alias for the address of the email sender</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">mailFrom</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">indigo@localhost</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># Time interval in milliseconds between two consecutive runs of IAM notification task</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">taskDelay</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">5000</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># Retention of delivered messages, in days</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">cleanupAge</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">30</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># Address of the recipient of IAM notifications</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">adminAddress</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">indigo-alerts@localhost</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># Notification policy for account requests. Possible values are:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># - notify-address: the notifications are sent to the email address (default)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># - notify-admins: the notification arrives to  all IAM admins</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># - notify-address-and-admins: combine the two behaviors</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">admin-notification-policy</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">notify-address</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># Notification policy for group requests. Default value notifies both</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># admins and group managers. Set to notify-gms if you want to notify only group managers</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">group-manager-notification-policy</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">notify-gms-and-admins</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># The IAM email subject prefix</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">subject-prefix</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;[${iam.organisation.name} IAM]&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># The IAM email subject (after prefix) for</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">subject</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># new registration request</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">adminHandleRequest</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">New ${iam.organisation.name} account request</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># a confirmation of the registration request</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">confirmation</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Confirm your ${iam.organisation.name} registration request</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># account activation</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">activated</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Your ${iam.organisation.name} account is now active</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># reject a registration request</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">rejected</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Your request for a ${iam.organisation.name} account has been rejected</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># reset user&#39;s password</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">resetPassword</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Reset your ${iam.organisation.name} account password</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>In order to indicate the SMTP mail server used to send IAM notifications the following properties have to be modified:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">spring</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">mail</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># SMTP server hostname </span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">host</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">localhost</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># SMTP server port</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">port</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">25</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># SMTP server username</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">username</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># SMTP server password</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">password</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div>
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-63d7a6556648cdd8622cf2321f13a835">3.2.10 - JSON Web Keys (JWK)</h1>
     
 	<p>JSON Web Key (JWK) is a JSON data structure that represents a single public key or a set of
 public keys. IAM uses private JWKs to sign tokens, and IAM clients use public JWKs to validate the tokens.
@@ -7393,7 +7488,7 @@ key will be valid after this.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-b153a1aec7140b2aa27a0ba03e8dc3fd">3.2.10 - Local authentication</h1>
+	<h1 id="pg-b153a1aec7140b2aa27a0ba03e8dc3fd">3.2.11 - Local authentication</h1>
     
 	<p>IAM has the ability to limit or disable
 authentication with local IAM credentials, so that external, brokered
@@ -7442,7 +7537,7 @@ able to use it doesn&rsquo;t really provide additional security.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-359104377f9341d4c326d45fb209b4c2">3.2.11 - External authentication</h1>
+	<h1 id="pg-359104377f9341d4c326d45fb209b4c2">3.2.12 - External authentication</h1>
     
 	<p>IAM supports brokered authentication via standard OpenID-Connect and SAML
 protocols as well as X.509 authentication.</p>
@@ -7469,7 +7564,7 @@ protocols as well as X.509 authentication.</p>
 
 <div class="td-content" style="">
     
-	<h1 id="pg-ac3ba36ba3318b338bcbf439e1b79e60">3.2.11.1 - OpenID-Connect authentication</h1>
+	<h1 id="pg-ac3ba36ba3318b338bcbf439e1b79e60">3.2.12.1 - OpenID-Connect authentication</h1>
     
 	<p>IAM supports brokered OpenID Connect authentication to external identity
 providers (e.g., Google).</p>
@@ -7599,7 +7694,7 @@ the default IAM configuration.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-af611b856fca4d6771e3e3ed962701b5">3.2.11.2 - SAML authentication</h1>
+	<h1 id="pg-af611b856fca4d6771e3e3ed962701b5">3.2.12.2 - SAML authentication</h1>
     
 	<p>IAM supports brokered SAML authentication. When SAML authentication is turned
 on for an IAM instance, users can log into the service using the home Identity
@@ -7827,7 +7922,7 @@ instructions on how to override the default IAM configuration.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-86d359d1731c5e164863d1bbe93a7bcf">3.2.11.3 - X.509 authentication</h1>
+	<h1 id="pg-86d359d1731c5e164863d1bbe93a7bcf">3.2.12.3 - X.509 authentication</h1>
     
 	<p>X509 authentication in IAM doesn&rsquo;t require any specific configuration in IAM itself.
 It is enabled as soon as the proper options have been set in the Nginx configuration.</p>
