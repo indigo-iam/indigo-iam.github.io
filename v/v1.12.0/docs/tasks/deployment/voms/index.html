@@ -95,7 +95,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.12.0/offline-search-index.2bc7a06f56800529184b5d4a05886bb8.json"
+    data-offline-search-index-json-src="/v/v1.12.0/offline-search-index.f6533a11fb5e999a8233812ccf42af65.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -120,7 +120,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.12.0/offline-search-index.2bc7a06f56800529184b5d4a05886bb8.json"
+    data-offline-search-index-json-src="/v/v1.12.0/offline-search-index.f6533a11fb5e999a8233812ccf42af65.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -420,8 +420,9 @@ following variables:</p>
 <ul>
 <li><code>VOMS_AA_HOST</code>: host name used to access the VOMS AA service</li>
 <li><code>VOMS_AA_PORT</code> VOMS AA port</li>
-<li><code>VOMS_AA_VO</code>: VO served by the VOMS AA service</li>
+<li><code>VOMS_AA_VO</code>: VO served by the VOMS AA service (lower case).</li>
 </ul>
+<p>A top level group equal to <code>VOMS_AA_VO</code> must be defined in IAM. The attributes appearing in the VOMS proxy include all the sub-groups of the parent group equal to the VO name. Top level groups different from the VO name may be still be used for group-based authorization with JWTs, but will not appear in the proxy.</p>
 <p>You also need to create a VOMS AA YAML configuration file with the content below (its content should
 be generic as it relies on standard environment variables used to configure the login service) and map it
 to the container as <code>/workspace/config/application.yml</code>.</p>
@@ -495,7 +496,7 @@ file</a>.</p>
     
     </div>
 <div class="td-page-meta__lastmod">
-  Last modified February 6, 2025: <a href="https://github.com/indigo-iam/iam-website/commit/3062b440b82dd16d921c6c8d640cf7df7fa7d913">Fix typo in VOMS AA documentation (#141) (3062b44)</a>
+  Last modified June 12, 2025: <a href="https://github.com/indigo-iam/iam-website/commit/9be2c10a6ee67ca2804227c2683379f5ee85db39">Improve VOMS-AA doc (9be2c10)</a>
 </div>
 </div>
 
