@@ -95,7 +95,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.12.0/offline-search-index.c1d34d68e5709613d2f93064a7d3ae47.json"
+    data-offline-search-index-json-src="/v/v1.12.0/offline-search-index.385cc67bd40e4cd31313c5a85622e785.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -120,7 +120,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.12.0/offline-search-index.c1d34d68e5709613d2f93064a7d3ae47.json"
+    data-offline-search-index-json-src="/v/v1.12.0/offline-search-index.385cc67bd40e4cd31313c5a85622e785.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -369,7 +369,7 @@
 </header>
 	<p>Starting from version 1.8.0, the IAM service can be deployed in High Availability mode.<br>
 It relies on <a href="https://redis.io/">redis</a> as external component used for storing the
-log-in sessions, which has to be deployed as well.</p>
+log-in sessions and the default in-memory IAM cache, which has to be deployed as well.</p>
 <p>Here is an example on how to deploy three IAM replicas on a <a href="https://kubernetes.io/">kubernetes</a> cluster.</p>
 <h3 id="iam-deployment-in-ha">IAM Deployment in HA</h3>
 <p>An example of three replicas of the IAM service deployment on k8s is the following:</p>
@@ -447,8 +447,9 @@ log-in sessions, which has to be deployed as well.</p>
 </span></span></span></code></pre></div><p>Here a <a href="https://kubernetes.io/docs/concepts/configuration/configmap/">configMap</a> for the <code>login-service-env</code> file is used.<br>
 You can set there the <a href="../../../reference/configuration/#redis-configuration">Configuration properties</a>
 used to enable Redis. The minimal ones required, for a password less Redis service are</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">IAM_SPRING_SESSION_STORE_TYPE</span><span style="color:#ce5c00;font-weight:bold">=</span>redis
-</span></span><span style="display:flex;"><span><span style="color:#000">IAM_SPRING_REDIS_HOST</span><span style="color:#ce5c00;font-weight:bold">=</span>redis.example
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">IAM_SPRING_REDIS_HOST</span><span style="color:#ce5c00;font-weight:bold">=</span>redis.example
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_SPRING_SESSION_STORE_TYPE</span><span style="color:#ce5c00;font-weight:bold">=</span>redis
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_CACHE_REDIS_ENABLED</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">true</span>
 </span></span></code></pre></div><h3 id="redis-service-deployment">Redis service Deployment</h3>
 <p>A basic example of the Redis deployment on k8s (without replicas)
 based on the <code>redis</code> <a href="https://hub.docker.com/_/redis">docker image</a> is the following:</p>
@@ -483,7 +484,7 @@ based on the <code>redis</code> <a href="https://hub.docker.com/_/redis">docker 
     
     </div>
 <div class="td-page-meta__lastmod">
-  Last modified May 12, 2022: <a href="https://github.com/indigo-iam/iam-website/commit/7df3fe3ad33f811ddd62ad091a73ac94a4f50a47">Explain the actuator role (7df3fe3)</a>
+  Last modified June 13, 2025: <a href="https://github.com/indigo-iam/iam-website/commit/755681bdecb1b5e1cdbe7ee146f4fa15c1c7eda7">Add documentation on IAM cache (#156) (755681b)</a>
 </div>
 </div>
 
