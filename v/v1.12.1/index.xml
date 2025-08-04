@@ -8,6 +8,13 @@
     <language>en</language>
     <atom:link href="/v/v1.12.1/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>IAM v1.12.1</title>
+      <link>/v/v1.12.1/blog/2025/08/04/iam-v1.12.1/</link>
+      <pubDate>Mon, 04 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>/v/v1.12.1/blog/2025/08/04/iam-v1.12.1/</guid>
+      <description>The IAM development team is pleased to announce the release of INDIGO IAM v1.12.1.&#xA;This release mainly provides bug fixes, as can be seen in the release notes.&#xA;The major highlights include:&#xA;fix MFA with external providers (experimental) fix x509 personal certificate handling validate the read-only registration fields. As usual, the IAM docker image can be obtained from DockerHub.</description>
+    </item>
+    <item>
       <title>IAM v1.12.0</title>
       <link>/v/v1.12.1/blog/2025/05/30/iam-v1.12.0/</link>
       <pubDate>Fri, 30 May 2025 00:00:00 +0000</pubDate>
