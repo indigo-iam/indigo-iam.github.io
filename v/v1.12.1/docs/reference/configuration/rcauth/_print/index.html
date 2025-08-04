@@ -1,0 +1,266 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" type="text/html" href="/v/v1.12.1/docs/reference/configuration/rcauth/">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/v/v1.12.1/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/v/v1.12.1/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/v/v1.12.1/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/v/v1.12.1/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/v/v1.12.1/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/v/v1.12.1/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/v/v1.12.1/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/v/v1.12.1/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/v/v1.12.1/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/v/v1.12.1/favicons/android-192x192.png" sizes="192x192">
+
+<title>Integration with RCAuth | INDIGO IAM</title>
+<meta name="description" content="The INDIGO Identity and Access Management (IAM) Service">
+<meta property="og:title" content="Integration with RCAuth" />
+<meta property="og:description" content="The INDIGO Identity and Access Management (IAM) Service" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/v/v1.12.1/docs/reference/configuration/rcauth/" />
+
+<meta itemprop="name" content="Integration with RCAuth">
+<meta itemprop="description" content="The INDIGO Identity and Access Management (IAM) Service"><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Integration with RCAuth"/>
+<meta name="twitter:description" content="The INDIGO Identity and Access Management (IAM) Service"/>
+
+
+
+
+<link rel="preload" href="/v/v1.12.1/scss/main.min.8b15a284065632327b8c02a701e1c2297b5d1c084085e061cb33bbd46e6313e8.css" as="style">
+<link href="/v/v1.12.1/scss/main.min.8b15a284065632327b8c02a701e1c2297b5d1c084085e061cb33bbd46e6313e8.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/v/v1.12.1/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">INDIGO IAM</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="/v/v1.12.1/docs/"><span>Documentation</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/v/v1.12.1/blog/"><span>Blog</span></a>
+      </li>
+      <li class="nav-item dropdown d-none d-lg-block">
+        <div class="dropdown">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Releases</a>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.12.1">v1.12.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.12.0">v1.12.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.11.0">v1.11.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.2">v1.10.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.1">v1.10.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.0">v1.10.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.9.0">v1.9.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.4">v1.8.4</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.3">v1.8.3</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.2">v1.8.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.1">v1.8.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.0">v1.8.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.2">v1.7.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.1">v1.7.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.0">v1.7.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/docs/v/current/">older releases</a></li>
+    </ul>
+</div></li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/v/v1.12.1/offline-search-index.e7ccd4f45c05eea48ea7577f42535b62.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/v/v1.12.1/docs/reference/configuration/rcauth/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">Integration with RCAuth</h1>
+
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+
+    </ul>
+
+
+<div class="content">
+      <p><a href="https://rcauth.eu">RCAuth.eu</a> has been integrated with IAM in order to provide on-demand X.509
+certificates to users without a certificate.</p>
+<p>RCAuth is basically an online Certificate Authority, which issues certificates
+to end-entities based on a successful authentication to a Federated Identity Provider,
+operated by an academic or research organization.</p>
+<p>In particular, it extends the OAuth/OIDC specification to include the following endpoints:</p>
+<ul>
+<li>GetCert, to retrieve an X.509 end-entity certificate</li>
+<li>GetProxy, to retrieve a <a href="https://datatracker.ietf.org/doc/html/rfc3820">RFC3820</a> Proxy Certificate chain</li>
+</ul>
+<p>on behalf of the authenticated user.</p>
+<h2 id="iam-deployment">IAM deployment</h2>
+<h3 id="configuration">Configuration</h3>
+<p>The basic configuration required on your IAM deployment to enable the integration
+of the service with RCAuth is</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Enable integration with RCAuth. Default to false</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_RCAUTH_ENABLED</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Select the hostname of your certificate authority, e.g. https://eir.nikhef.nl/oauth2</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_RCAUTH_ISSUER</span><span style="color:#ce5c00;font-weight:bold">=</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># A label for the certificate authority (not mandatory)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_RCAUTH_LABEL</span><span style="color:#ce5c00;font-weight:bold">=</span>RCAuth.eu online CA
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Id of IAM client registered on RCAuth</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_RCAUTH_CLIENT_ID</span><span style="color:#ce5c00;font-weight:bold">=</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Secret of IAM client registered on RCAuth</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_RCAUTH_CLIENT_SECRET</span><span style="color:#ce5c00;font-weight:bold">=</span>
+</span></span></code></pre></div><h3 id="client-registration">Client registration</h3>
+<p>An INDIGO IAM OAuth client has to be registered on the RCAuth service that will issue an
+X.509/proxy certificate.</p>
+<p>For instance, in case of the demo RCAuth hosted at <code>https://eir.nikhef.nl</code>,
+one has to follow the next steps:</p>
+<ul>
+<li>
+<p>go to the Client Registration Page <code>https://eir.nikhef.nl/oauth2/register</code> that will be
+shown after a successful login with your institutional Identity Provider (e.g. the INFN AAI);</p>
+</li>
+<li>
+<p>fill the form with the details of your client. Important fields are</p>
+<ul>
+<li>Callback URLs: <em>https://&lt;iam-hostname&gt;/rcauth/cb</em>;</li>
+<li>Scopes: <em>openid</em>, <em>edu.uiuc.ncsa.myproxy.getcert</em>;</li>
+</ul>
+</li>
+<li>
+<p>after the request has been submitted, the service will generate a client ID and
+secret that has to be set in the <code>IAM_RCAUTH_CLIENT_ID</code> and <code>IAM_RCAUTH_CLIENT_SECRET</code> environment
+variables respectively;</p>
+</li>
+<li>
+<p>wait for the manual approval of your client registration.</p>
+</li>
+</ul>
+<h2 id="iam-user-interface">IAM user interface</h2>
+<p>The RCAuth issued certificate is listed in the <strong>X.509 certificates</strong> tab
+of the IAM homepage.</p>
+<p>To add a new certificate click the <em>Request certificate</em> button.</p>
+<p><img src="RCAuth-request-certificate.png" alt="Request certificate to RCAuth"></p>
+<p>The user will be redirected to the RCAuth instance to authenticate and give consent
+for the generation of an X.509 certificate, which will be accessible by IAM.<br>
+Thus, IAM links the certificate to the user&rsquo;s dashboard, as shown in the example below.</p>
+<p><img src="RCAuth-linked-certificate.png" alt="Linked certificate issued by RCAuth"></p>
+<p>A long-lived plain proxy obtained by the linked X.509 certificate is automatically
+stored into the IAM database.<br>
+This is shown in the IAM dashboard when the &ldquo;<strong>Has managed proxy certificate</strong>&rdquo;
+string is set to <em>true</em> (as in the image above).</p>
+<p>The proxy certificate can be downloaded from IAM using the <a href="/docs/reference/api/proxycert-api/">Proxy certificate API</a>.</p>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        <ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="GitHub" aria-label="GitHub">
+    <a target="_blank" rel="noopener" href="https://github.com/indigo-iam/iam" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Slack" aria-label="Slack">
+    <a target="_blank" rel="noopener" href="https://indigo-iam.slack.com" aria-label="Slack">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+</ul>
+
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="td-footer__copyright">&copy;
+    2025
+    <span class="td-footer__authors">INFN</span></span><span class="td-footer__all_rights_reserved">All Rights Reserved</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/v/v1.12.1/js/main.min.dc2c0119076a0df855e55a8044ce0de74b7b9033c20e853e22d7ec7e9bdde965.js" integrity="sha256-3CwBGQdqDfhV5VqARM4N50t7kDPCDoU&#43;Itfsfpvd6WU=" crossorigin="anonymous"></script>
+<script defer src="/v/v1.12.1/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='/v/v1.12.1/js/tabpane-persist.js'></script>
+
+  </body>
+</html>
