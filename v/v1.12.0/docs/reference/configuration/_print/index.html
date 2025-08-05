@@ -95,7 +95,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.12.0/offline-search-index.848108ec2b6fd66af91fff0da7d841d0.json"
+    data-offline-search-index-json-src="/v/v1.12.0/offline-search-index.25e691ea21fd27945b0986c17af77102.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -1057,7 +1057,7 @@ by the <a href="https://aarc-project.eu/guidelines/aarc-g002/">AARC G002</a> pro
 	<h1 id="pg-c742eca373ee24cecce0174648772811">2 - Multi-Factor Authentication (MFA)</h1>
     
 	<p>To enhance account security and align with modern security standards, Multi-Factor Authentication (MFA) has been introduced in the INDIGO IAM service.</p>
-<p>MFA allows users to add an additional layer of security by registering a second authentication factor. Once enabled, a username and password alone will no longer suffice for login access.</p>
+<p>MFA allows users to add an additional layer of security by registering a second authentication factor. Once enabled, a single credential will no longer suffice for login access.</p>
 <p>The primary goals of MFA are:</p>
 <ul>
 <li><strong>Strengthening security</strong>: Reducing the risk of unauthorized access, even if login credentials are compromised</li>
@@ -1066,11 +1066,11 @@ by the <a href="https://aarc-project.eu/guidelines/aarc-g002/">AARC G002</a> pro
 <p>To enable MFA, the <code>mfa</code> profile must be configured.</p>
 
 
-<div class="alert alert-warning" role="alert">
-<h4 class="alert-heading">Warning</h4>
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Info</h4>
 
-    MFA support is experimental and limited.
-In particular, at the moment it is applicable only to <strong>login with username and password</strong>.
+    <strong>MFA support is experimental</strong>.
+It is applicable to login with username and password, login with SAML/OIDC external providers, login with X.509 certificates.
 
 </div>
 
@@ -1097,7 +1097,7 @@ In particular, at the moment it is applicable only to <strong>login with usernam
 <p><strong>Login with MFA</strong></p>
 <p>Once MFA is enabled, each login will require:</p>
 <ul>
-<li>Username and password</li>
+<li>A primary authentication method (e.g., username and password, SSO or X.509 certificate)</li>
 <li>A second factor (the TOTP) entered on a follow-up page</li>
 </ul>
 <p><img src="2FA.png" alt="2FA"></p>
