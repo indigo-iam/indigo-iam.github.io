@@ -95,7 +95,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.12.0/offline-search-index.a9ca82d6c2df53629807c437b86a70c9.json"
+    data-offline-search-index-json-src="/v/v1.12.0/offline-search-index.ff185f1ba8642ff96180a789b1f269f7.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -5453,6 +5453,26 @@ by the <a href="https://aarc-project.eu/guidelines/aarc-g002/">AARC G002</a> pro
 <li>groups can be requested using the <code>eduperson_entitlement</code> scope and they&rsquo;re encoded as URN in the <code>eduperson_entitlement</code> claim.</li>
 </ul>
 <p>All the mapping rules are described in the <a href="https://docs.google.com/document/d/1b-Mlet3Lq7qKLEf1BnHJ4nL1fq-vMe7fzpXyrq2wp08/edit">White Paper for implementation mappings between SAML 2.0 and OpenID Connect in Research and Education</a>.</p>
+<p>Moreover, the unique identifier <code>voPersonID</code> claim is available through this profile and follows the rules defined by the <a href="https://zenodo.org/record/5504407/files/AARC-G026%20-%20Guidelines%20for%20expressing%20community%20user%20identifiers.pdf">AARC G026</a> and the <a href="https://github.com/voperson/voperson/blob/draft-2.0.0/voPerson.md#vopersonid-attribute-definition">voPerson v2.0</a> schema version.</p>
+<p><code>voPersonID</code> is the community unique identifier and it holds the same value as the accountID given by INDIGO IAM.
+This claim is currently present within the following places (given the AARC profile is enabled):</p>
+<ul>
+<li>ID Token</li>
+<li>Access Token</li>
+<li>Userinfo Response</li>
+<li>Introspection Response</li>
+</ul>
+<p>An example of an Access Token (produced via the Test client) is the following:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;sub&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;73f16d93-2441-4a50-88ff-85360d78c6b5&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;voperson_id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;73f16d93-2441-4a50-88ff-85360d78c6b5&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;iss&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;http://localhost:8080&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;exp&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1752744217</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;iat&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1752740617</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;jti&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;b13a5593-2bfc-42c6-9216-9b0a280905a9&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;client_id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;client&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><p>From the example, one can see that the value from the <code>sub</code> and the <code>voperson_id</code> claim is identical.</p>
 <p>This profile is assigned to clients using the <code>aarc</code> scope.</p>
 <h3 id="the-keycloak-profile">The Keycloak profile</h3>
 <p>This profile allows the integration with a Keycloak environment.</p>
