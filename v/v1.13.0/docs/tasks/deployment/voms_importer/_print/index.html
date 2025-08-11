@@ -1,0 +1,270 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" type="text/html" href="/v/v1.13.0/docs/tasks/deployment/voms_importer/">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/v/v1.13.0/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/v/v1.13.0/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/v/v1.13.0/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/v/v1.13.0/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/v/v1.13.0/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/v/v1.13.0/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/v/v1.13.0/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/v/v1.13.0/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/v/v1.13.0/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/v/v1.13.0/favicons/android-192x192.png" sizes="192x192">
+
+<title>Importing VOMS information into IAM | INDIGO IAM</title>
+<meta name="description" content="The INDIGO Identity and Access Management (IAM) Service">
+<meta property="og:title" content="Importing VOMS information into IAM" />
+<meta property="og:description" content="The INDIGO Identity and Access Management (IAM) Service" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/v/v1.13.0/docs/tasks/deployment/voms_importer/" />
+
+<meta itemprop="name" content="Importing VOMS information into IAM">
+<meta itemprop="description" content="The INDIGO Identity and Access Management (IAM) Service"><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Importing VOMS information into IAM"/>
+<meta name="twitter:description" content="The INDIGO Identity and Access Management (IAM) Service"/>
+
+
+
+
+<link rel="preload" href="/v/v1.13.0/scss/main.min.8b15a284065632327b8c02a701e1c2297b5d1c084085e061cb33bbd46e6313e8.css" as="style">
+<link href="/v/v1.13.0/scss/main.min.8b15a284065632327b8c02a701e1c2297b5d1c084085e061cb33bbd46e6313e8.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/v/v1.13.0/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">INDIGO IAM</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="/v/v1.13.0/docs/"><span>Documentation</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/v/v1.13.0/blog/"><span>Blog</span></a>
+      </li>
+      <li class="nav-item dropdown d-none d-lg-block">
+        <div class="dropdown">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Releases</a>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.12.1">v1.12.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.12.0">v1.12.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.11.0">v1.11.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.2">v1.10.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.1">v1.10.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.0">v1.10.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.9.0">v1.9.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.4">v1.8.4</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.3">v1.8.3</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.2">v1.8.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.1">v1.8.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.0">v1.8.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.2">v1.7.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.1">v1.7.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.0">v1.7.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/docs/v/current/">older releases</a></li>
+    </ul>
+</div></li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.0cca8e10bf3ba8000b9903d49fe6cbc1.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/v/v1.13.0/docs/tasks/deployment/voms_importer/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">Importing VOMS information into IAM</h1>
+
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+
+    </ul>
+
+
+<div class="content">
+      <h2 id="the-voms-importer-script">The VOMS importer script</h2>
+<p>For VOs that already use VOMS to manage their organization, a script is
+available to synchronize one-way their VOMS instance with their IAM instance.</p>
+<p>The VOMS information that is synchronized includes:</p>
+<ul>
+<li>VOMS Groups</li>
+<li>VOMS Roles</li>
+<li>VOMS Users
+<ul>
+<li>Personal information</li>
+<li>X.509 certificates</li>
+<li>Group and role membership</li>
+<li>Generic attributes</li>
+</ul>
+</li>
+</ul>
+<p>The script needs admininistrative privileges on both VOMS and IAM, represented
+respectively by a VOMS proxy and an IAM access token. As it synchronizes INDIGO
+IAM information with VOMS information (rather than overwriting it), it can be run
+multiple times to fix problems in previous runs.</p>
+<p>The documentation on how to run the <code>vomsimporter.py</code> script is available at
+<a href="https://github.com/indigo-iam/voms-importer">https://github.com/indigo-iam/voms-importer</a>.</p>
+<h2 id="migration-of-groups-and-roles">Migration of groups and roles</h2>
+<p>Both IAM and VOMS support the concepts of <em>group</em> and <em>role</em>.</p>
+<p>Groups are very similar in both contexts. They differ slightly in the
+representation: a VOMS group has the form <code>/&lt;group&gt;/&lt;subgroup&gt;/...</code>, whereas a
+IAM group has the form <code>&lt;group&gt;/&lt;subgroup&gt;/...</code>, i.e. there is no leading <code>/</code>.</p>
+<p>For example, the VOMS group <code>/atlas/production</code> becomes the IAM group
+<code>atlas/production</code>.</p>
+<p>Roles differ in a more profound way: whereas a VOMS role is a distinct entity
+from a group, in IAM a role is simply a group with the specific labels
+<code>wlcg.optional-group</code> and <code>voms.role</code>. An optional group is included in an OAuth
+token or in a VOMS proxy only if requested.</p>
+<p>For example, the VOMS group with role <code>/atlas/Role=VO-Admin</code> becomes the IAM
+optional group <code>atlas/VO-Admin</code>.</p>
+<p>Groups and roles are imported in IAM only if not already present there.</p>
+<p>Groups and roles can be created directly in IAM without any corresponding group
+or role in VOMS; those are not considered by the importer script.</p>
+<h2 id="migration-of-users">Migration of users</h2>
+<p>Only <strong>active</strong> VOMS users are imported: nothing is done on the INDIGO IAM side
+for a user suspended in VOMS, except if you add option <code> --synchronize-activation-status</code>
+to force the synchronization of activation state in INDIGO IAM using the activation
+state in VOMS. <strong>Without this option, a user suspended in VOMS may still be
+active in IAM if the user was imported (and active) before it was suspended in VOMS.</strong></p>
+<p><em>Note about CERN instances: since INDIGO IAM at CERN is also integrated with the CERN
+Human Resource (HR) database, the HR check will ensure that users are
+suspended/removed from the VO when experiment membership is no longer valid.</em></p>
+<p>When creating a IAM account for a newly-discovered VOMS user, the importer
+script generates a username of the form <code>voms.&lt;voms-id&gt;</code>. There is an option to
+use the value of an attribute (e.g. <code>nickname</code>) from the user entry in VOMS, if
+available.</p>
+<p>The script by default removes a user from groups (including roles) where they do
+not belong any more.</p>
+<h3 id="cern-sso-automatic-linking">CERN SSO automatic linking</h3>
+<p>The importer script can be configured to automatically link the imported account
+to the CERN SSO identity in two ways:</p>
+<ol>
+<li>using the <code>nickname</code> VOMS account generic attribute</li>
+<li>resolving the CERN username from the CERN LDAP</li>
+</ol>
+<h3 id="unique-email-address-for-users-in-iam">Unique email address for users in IAM</h3>
+<p>VOMS allows different users to share an email address. IAM instead requires that
+each user has a unique email address.</p>
+<p>The import script implements an email override mechanism, that maps a VOMS user
+id to another email address; however, a better approach would be to clean up the
+VOMS database in order to avoid multiple accounts sharing email addresses.</p>
+<h2 id="voms-importer-log">VOMS importer log</h2>
+<p>The importer script produces an auditing log, detailing the actions applied to
+groups, roles and users.</p>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        <ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="GitHub" aria-label="GitHub">
+    <a target="_blank" rel="noopener" href="https://github.com/indigo-iam/iam" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Slack" aria-label="Slack">
+    <a target="_blank" rel="noopener" href="https://indigo-iam.slack.com" aria-label="Slack">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+</ul>
+
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="td-footer__copyright">&copy;
+    2025
+    <span class="td-footer__authors">INFN</span></span><span class="td-footer__all_rights_reserved">All Rights Reserved</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/v/v1.13.0/js/main.min.dc2c0119076a0df855e55a8044ce0de74b7b9033c20e853e22d7ec7e9bdde965.js" integrity="sha256-3CwBGQdqDfhV5VqARM4N50t7kDPCDoU&#43;Itfsfpvd6WU=" crossorigin="anonymous"></script>
+<script defer src="/v/v1.13.0/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='/v/v1.13.0/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

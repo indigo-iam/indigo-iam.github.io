@@ -1,0 +1,275 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" type="text/html" href="/v/v1.13.0/docs/reference/configuration/multi-factor-authn/">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/v/v1.13.0/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/v/v1.13.0/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/v/v1.13.0/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/v/v1.13.0/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/v/v1.13.0/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/v/v1.13.0/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/v/v1.13.0/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/v/v1.13.0/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/v/v1.13.0/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/v/v1.13.0/favicons/android-192x192.png" sizes="192x192">
+
+<title>Multi-Factor Authentication (MFA) | INDIGO IAM</title>
+<meta name="description" content="The INDIGO Identity and Access Management (IAM) Service">
+<meta property="og:title" content="Multi-Factor Authentication (MFA)" />
+<meta property="og:description" content="The INDIGO Identity and Access Management (IAM) Service" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/v/v1.13.0/docs/reference/configuration/multi-factor-authn/" />
+
+<meta itemprop="name" content="Multi-Factor Authentication (MFA)">
+<meta itemprop="description" content="The INDIGO Identity and Access Management (IAM) Service"><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Multi-Factor Authentication (MFA)"/>
+<meta name="twitter:description" content="The INDIGO Identity and Access Management (IAM) Service"/>
+
+
+
+
+<link rel="preload" href="/v/v1.13.0/scss/main.min.8b15a284065632327b8c02a701e1c2297b5d1c084085e061cb33bbd46e6313e8.css" as="style">
+<link href="/v/v1.13.0/scss/main.min.8b15a284065632327b8c02a701e1c2297b5d1c084085e061cb33bbd46e6313e8.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/v/v1.13.0/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">INDIGO IAM</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="/v/v1.13.0/docs/"><span>Documentation</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/v/v1.13.0/blog/"><span>Blog</span></a>
+      </li>
+      <li class="nav-item dropdown d-none d-lg-block">
+        <div class="dropdown">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Releases</a>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.12.1">v1.12.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.12.0">v1.12.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.11.0">v1.11.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.2">v1.10.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.1">v1.10.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.0">v1.10.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.9.0">v1.9.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.4">v1.8.4</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.3">v1.8.3</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.2">v1.8.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.1">v1.8.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.0">v1.8.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.2">v1.7.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.1">v1.7.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.0">v1.7.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/docs/v/current/">older releases</a></li>
+    </ul>
+</div></li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.0cca8e10bf3ba8000b9903d49fe6cbc1.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/v/v1.13.0/docs/reference/configuration/multi-factor-authn/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">Multi-Factor Authentication (MFA)</h1>
+
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+
+    </ul>
+
+
+<div class="content">
+      <p>To enhance account security and align with modern security standards, Multi-Factor Authentication (MFA) has been introduced in the INDIGO IAM service.</p>
+<p>MFA allows users to add an additional layer of security by registering a second authentication factor. Once enabled, a single credential will no longer suffice for login access.</p>
+<p>The primary goals of MFA are:</p>
+<ul>
+<li><strong>Strengthening security</strong>: Reducing the risk of unauthorized access, even if login credentials are compromised</li>
+<li><strong>Compliance</strong>: Meeting client security policies that mandate the use of multi-factor authentication</li>
+</ul>
+<p>To enable MFA, the <code>mfa</code> profile must be configured.</p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Info</h4>
+
+    <strong>MFA support is experimental</strong>.
+It is applicable to login with username and password, login with SAML/OIDC external providers, login with X.509 certificates.
+
+</div>
+
+<h2 id="how-to-enable-mfa">How to enable MFA</h2>
+<p>Authenticated users can enable MFA through a button in their homepage.</p>
+<p>Steps to enable MFA:</p>
+<ol>
+<li>
+<p><strong>Click the <em>Enable MFA</em> button</strong></p>
+<p><img src="Enable-MFA.png" alt="Enable MFA"></p>
+<p>Then, click on <em>Enable</em>.</p>
+<p><img src="Click-enable.png" alt="Click Enable"></p>
+</li>
+<li>
+<p><strong>Confirm activation</strong></p>
+<p>A dialogue box will appear, prompting the user to enter a Time-based One-Time Password (TOTP) generated by an authenticator (e.g., <em>Ente Auth</em> app).</p>
+<p><img src="QRCode.png" alt="QR code"></p>
+</li>
+<li>
+<p><strong>Submit the TOTP</strong></p>
+<p>Enter the TOTP into the field provided and click <em>Submit</em>. If the code is correct, MFA will be successfully enabled.</p>
+</li>
+<li>
+<p><strong>Login with MFA</strong></p>
+<p>Once MFA is enabled, each login will require:</p>
+<ul>
+<li>A primary authentication method (e.g., username and password, SSO or X.509 certificate)</li>
+<li>A second factor (the TOTP) entered on a follow-up page</li>
+</ul>
+<p><img src="2FA.png" alt="2FA"></p>
+</li>
+</ol>
+<h2 id="how-to-disable-mfa">How to disable MFA</h2>
+<p>Users can disable MFA by following these steps:</p>
+<ol>
+<li>
+<p><strong>Click on <em>Disable MFA</em> button</strong></p>
+<p><img src="Disable-MFA.png" alt="Disable MFA"></p>
+<p>Then, click on <em>Disable</em>.</p>
+<p><img src="Click-disable.png" alt="Click Disable"></p>
+</li>
+<li>
+<p><strong>Confirm deactivation</strong></p>
+<p>A dialogue box will appear, prompting the user to enter the TOTP.</p>
+<p><img src="Insert-TOTP.png" alt="Enter TOTP"></p>
+</li>
+<li>
+<p><strong>Submit the TOTP</strong></p>
+<p>Enter the TOTP into the field provided and click <em>Submit</em>. If the code is correct, MFA will be successfully disabled.<br>
+From this point forward, the user will no longer need to provide a second authentication factor during login.</p>
+</li>
+</ol>
+<h2 id="in-case-of-problems-with-the-authenticator">In case of problems with the authenticator</h2>
+<p>If users experience issues with their authenticator app, they can request IAM administrators to disable MFA on their behalf.</p>
+<p>Administrators should go to the user’s homepage and click the <em>Disable MFA</em> button.</p>
+<p><img src="Admin-disables-MFA.png" alt="Admin disables MFA for a user"></p>
+<p>A confirmation dialogue will appear. Click <em>Ok</em> to finalize the process.</p>
+<p><img src="Admin-confirmation.png" alt="Confirm MFA deactivation"></p>
+<p>Once completed, MFA will be disabled for the user, allowing them to log in without the second authentication factor.</p>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        <ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="GitHub" aria-label="GitHub">
+    <a target="_blank" rel="noopener" href="https://github.com/indigo-iam/iam" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Slack" aria-label="Slack">
+    <a target="_blank" rel="noopener" href="https://indigo-iam.slack.com" aria-label="Slack">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+</ul>
+
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="td-footer__copyright">&copy;
+    2025
+    <span class="td-footer__authors">INFN</span></span><span class="td-footer__all_rights_reserved">All Rights Reserved</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/v/v1.13.0/js/main.min.dc2c0119076a0df855e55a8044ce0de74b7b9033c20e853e22d7ec7e9bdde965.js" integrity="sha256-3CwBGQdqDfhV5VqARM4N50t7kDPCDoU&#43;Itfsfpvd6WU=" crossorigin="anonymous"></script>
+<script defer src="/v/v1.13.0/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='/v/v1.13.0/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

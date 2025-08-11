@@ -1,0 +1,2598 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" type="text/html" href="/v/v1.13.0/docs/tasks/">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/v/v1.13.0/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/v/v1.13.0/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/v/v1.13.0/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/v/v1.13.0/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/v/v1.13.0/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/v/v1.13.0/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/v/v1.13.0/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/v/v1.13.0/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/v/v1.13.0/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/v/v1.13.0/favicons/android-192x192.png" sizes="192x192">
+
+<title>Tasks | INDIGO IAM</title>
+<meta name="description" content="Common administration &amp; usage tasks
+">
+<meta property="og:title" content="Tasks" />
+<meta property="og:description" content="Common administration &amp; usage tasks
+" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/v/v1.13.0/docs/tasks/" />
+
+<meta itemprop="name" content="Tasks">
+<meta itemprop="description" content="Common administration &amp; usage tasks
+"><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Tasks"/>
+<meta name="twitter:description" content="Common administration &amp; usage tasks
+"/>
+
+
+
+
+<link rel="preload" href="/v/v1.13.0/scss/main.min.8b15a284065632327b8c02a701e1c2297b5d1c084085e061cb33bbd46e6313e8.css" as="style">
+<link href="/v/v1.13.0/scss/main.min.8b15a284065632327b8c02a701e1c2297b5d1c084085e061cb33bbd46e6313e8.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/v/v1.13.0/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">INDIGO IAM</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="/v/v1.13.0/docs/"><span>Documentation</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/v/v1.13.0/blog/"><span>Blog</span></a>
+      </li>
+      <li class="nav-item dropdown d-none d-lg-block">
+        <div class="dropdown">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Releases</a>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.12.1">v1.12.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.12.0">v1.12.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.11.0">v1.11.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.2">v1.10.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.1">v1.10.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.0">v1.10.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.9.0">v1.9.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.4">v1.8.4</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.3">v1.8.3</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.2">v1.8.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.1">v1.8.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.8.0">v1.8.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.2">v1.7.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.1">v1.7.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.7.0">v1.7.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/docs/v/current/">older releases</a></li>
+    </ul>
+</div></li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.0cca8e10bf3ba8000b9903d49fe6cbc1.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/v/v1.13.0/docs/tasks/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">Tasks</h1>
+<div class="lead">Common administration &amp; usage tasks</div>
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>1: <a href="#pg-18193143b4ee08bf7ab15851bbaded55">IAM organization administration</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>1.1: <a href="#pg-f9feafc0e8f5414b97d15e7385f9f5be">User management</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>1.2: <a href="#pg-1ff968bff8f6865865a4557b5dcc9bf4">Disable or Enable a client</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>1.3: <a href="#pg-e54da204360bf0baa8af45da22015dee">Group Management</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>1.4: <a href="#pg-f03d307094fc23ef6cf17d7a8b313135">Acceptable Usage Policy (AUP) management</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>2: <a href="#pg-0d446af92e463090d9e1b94f286038c9">IAM service deployment</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>2.1: <a href="#pg-f9c47943a3e72ee39a36f76a84d7aef8">Backup &amp; Restore</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>2.2: <a href="#pg-20612c101bee3438f511834eec95ece8">Audit log</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>2.3: <a href="#pg-0f3983ccaecafb6944a18b6d8550a571">Upgrade</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>2.4: <a href="#pg-c5846d016af443a2f547d87bba4a3f62">Deploying IAM in HA</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>2.5: <a href="#pg-16b818f0193a0e55e0f1cffd093e8e01">Deploying the IAM VOMS attribute authority</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>2.6: <a href="#pg-cf4d164c71ad46c16dc1a41d06c2a98e">Importing VOMS information into IAM</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>3: <a href="#pg-43bda8bc26d1df36bc9eb8d9739f719e">IAM Test Client application</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>4: <a href="#pg-dbcc046a6c208e0a089e20aecc2dbaec">User</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>4.1: <a href="#pg-fc4a8820c0610ad9186b42bb179cd4bf">Joining an IAM-managed organization</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>4.2: <a href="#pg-afefc91265853008615d0ff910cb6bb9">Obtaining an IAM access token from a CLI</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>4.3: <a href="#pg-e4362ecb7c13c3eefd305731df5f2773">Re-sign AUP</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>4.4: <a href="#pg-9a8717b724b3cc965f31246cbdd60946">Registering a client</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>4.5: <a href="#pg-5f7a8f5e4030289ede0cce345878ff5f">Change account information</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>4.6: <a href="#pg-9425af354278fe0b0806e2532bbb465a">Changing the account password</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>4.7: <a href="#pg-606d8ee94cbe5ccb53556270df85092f">JWT client authentication</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>4.8: <a href="#pg-e361335b1cc62574d28cc081294326a2">Linking an external account</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>4.9: <a href="#pg-93f6e460a9484b5a1f15cf389f229f2c">Linking an X.509 certificate</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>4.10: <a href="#pg-725f368abb7a0345d6635f33b8848b53">Managing active tokens</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>4.11: <a href="#pg-56a163f5aefc17b464cd248874936cf9">Managing approved sites</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>4.12: <a href="#pg-c0adc169e351e3ffdad1a9ceff1b6c19">Managing SSH keys</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>4.13: <a href="#pg-b4fb7a916a4b238a27bb4f7882cb6eb6">Reset an account password</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+
+    </ul>
+    
+  
+
+    </ul>
+
+
+<div class="content">
+      
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="">
+    
+	<h1 id="pg-18193143b4ee08bf7ab15851bbaded55">1 - IAM organization administration</h1>
+    <div class="lead">IAM administration tasks &amp; useful information</div>
+	
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="">
+    
+	<h1 id="pg-f9feafc0e8f5414b97d15e7385f9f5be">1.1 - User management</h1>
+    
+	<p>IAM provides tools to manage users in an organization.
+All the actions described below require administrator privileges.</p>
+<h2 id="creating-a-user-account">Creating a user account</h2>
+<p>A new user account in the organization can be created from the &ldquo;Users&rdquo;
+management panel by clicking on the &ldquo;Add user&rdquo; button at the bottom of the
+page:</p>
+<p><img src="../images/add-user.png" alt="Add user"></p>
+<p>A dialog is shown that allows to set basic user information:</p>
+<p><img src="../images/add-user-2.png" alt="Add user 2"></p>
+<h2 id="deleting-a-user-account">Deleting a user account</h2>
+<p>User accounts can be deleted from the &ldquo;Users management&rdquo; section of the
+dashboard by clicking on the delete button for the users that should be
+deleted:</p>
+<p><img src="../images/delete-users.png" alt="Delete user"></p>
+<h2 id="disabling-a-user-account">Disabling a user account</h2>
+<p>User accounts can be disabled from the user home page by clicking on the
+&ldquo;Disable user&rdquo; button. Disabled users are not allowed to login in the IAM and,
+as such, cannot authenticate at any services that rely on the IAM for
+authentication and authorization.</p>
+<p><img src="../images/disable-user.png" alt="Disable user"></p>
+<h2 id="managing-user-account-privileges">Managing user account privileges</h2>
+<p>Administrator privileges can be assigned to a user from the user home page by
+clickin on the &ldquo;Assign administrator privileges&rdquo; button:</p>
+<p><img src="../images/assign-admin-privileges.png" alt="Assign admin privileges"></p>
+<h2 id="managing-external-user-account-identities">Managing external user account identities</h2>
+<p>Administrators can manually add and remove external accounts and certificates
+for a local user account from the user home page:</p>
+<p><img src="../images/manage-credentials.png" alt="Manage credentials"></p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-1ff968bff8f6865865a4557b5dcc9bf4">1.2 - Disable or Enable a client</h1>
+    
+	<p>Existing clients can be disabled or enabled by Administrator from dashboard.</p>
+<h2 id="disabling-a-client-using-the-dashboard">Disabling a client using the dashboard</h2>
+<p>Log into the service using admin credentials and click on the <em>Clients</em> link on the left
+navigation bar:</p>
+<p><img src="../images/client-status-change-1.png" alt="dashboard"></p>
+<p>From the <em>Clients</em> link, select <em>Any client</em> you want to disable, for example <em>Test Client</em>:</p>
+<p><img src="../images/client-status-change-2.png" alt="client list"></p>
+<p>To disable the client click on <em>Disable Client</em> button on the bottom of the page:</p>
+<p><img src="../images/client-status-change-3.png" alt="disable client button"></p>
+<p>To confirm your choice click on <em>Disable Client</em> button on the modal window:</p>
+<p><img src="../images/client-status-change-4.png" alt="disable client modal"></p>
+<p>On success you will get a confirmation message and the <em>Disable Client</em> button will change to <em>Restore Client</em>:</p>
+<p><img src="../images/client-status-change-5.png" alt="disable client confirmation"></p>
+<p>Using <em>Restore Client</em> button client status can be changed back to <em>Active</em>.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-e54da204360bf0baa8af45da22015dee">1.3 - Group Management</h1>
+    
+	<p>IAM provides a group management system, that can be used by IAM Administrators
+and Group Managers to create groups, remove existing ones and manage membership in the group.</p>
+<p>Groups can be organized in a hierarchical structure, with the following constraints:</p>
+<ul>
+<li>a group can have only a parent group;</li>
+<li>a group can have many children.</li>
+</ul>
+<h2 id="manage-groups-as-iam-admin">Manage groups as IAM Admin</h2>
+<p>The simplest way to manage groups is using the IAM dashboard.</p>
+<h3 id="creating-a-group">Creating a group</h3>
+<p>From the home page, open the <em>Groups</em> section and click the <em>Add Root Group</em> button:</p>
+<p><img src="../images/IAM-groups-01.png" alt="INDIGO IAM Add Group button"></p>
+<p>To create a group, specify a group name.</p>
+<p><img src="../images/IAM-groups-02.png" alt="INDIGO IAM Root group creation"></p>
+<p>A new child group can be created from the parent group details page,
+clicking on the <em>Add a subgroup</em> button of the <em>Subgroups</em> upper tab.</p>
+<p><img src="../images/IAM-groups-04.png" alt="INDIGO IAM Add Subgroup button"></p>
+<h3 id="deleting-a-group">Deleting a group</h3>
+<p>From the groups list page, click on the corresponding <em>X</em> button.
+A confirmation window will be opened, so you can confirm or abort the
+the delete operation.</p>
+<p><img src="../images/IAM-groups-05.png" alt="INDIGO IAM Group removal"></p>
+<p><strong>Only empty groups can be removed. If you try to remove a group
+with a child group or with user members, the operation is aborted.</strong></p>
+<h3 id="managing-membership-for-a-group">Managing membership for a group</h3>
+<p>To add a user to a group open the user details page.
+In the <em>Groups</em> section, click on the <em>Add to group</em> button:</p>
+<p><img src="../images/IAM-groups-06.png" alt="INDIGO IAM Add group to user button"></p>
+<p>Choose one or more groups and confirm the operation:</p>
+<p><img src="../images/IAM-groups-07.png" alt="INDIGO IAM Add group membership"></p>
+<p>Starting with version 1.7.0, when a user is added as member of the child group <code>A/B</code>, IAM
+takes care of adding them also to the parent group <code>A</code> that
+they are not already a members of.  In previous versions this had to be done
+manually by the IAM administrator. Following the same rationale, when a user is
+removed from the parent group <code>A</code>, it is also automatically removed from any child groups
+(e.g. <code>A/B</code>) they are members of.</p>
+<p>To remove a user from a group, click the <em>Remove</em> button.</p>
+<p>Members can also be removed from the group details page, clicking on the corresponding <em>X</em> button
+as shown in the following screenshot:</p>
+<p><img src="../images/IAM-groups-08.png" alt="INDIGO IAM Members list"></p>
+<h3 id="assign-group-manager-privileges">Assign Group Manager privileges</h3>
+<p>Group Managers are IAM users with privileges that allow to manage groups.</p>
+<p>In order to assign Group Manager privileges to a user, you can select the group,
+click on the <em>Managers</em> tab and then on <em>Assign group manager</em>.
+A popup window will appear to search for IAM users: after selecting the
+corresponding user that wants to became Group Manager, click on <em>Add group manager</em>.</p>
+<p><img src="../images/IAM-groups-09.png" alt="INDIGO IAM Members list"></p>
+<h2 id="manage-groups-as-group-manager">Manage groups as Group Manager</h2>
+<p>Starting from IAM version 1.8.1, when a user is a Group Manager a left tab <em>Managed groups</em>
+that lists the groups they are group managers of appears in the homepage.</p>
+<p><img src="../images/IAM-groups-10.png" alt="INDIGO IAM Managed groups tab"></p>
+<p>Once the Group Manager clicks on a group, what they can see in the upper tabs is</p>
+<ul>
+<li>detailed view of group information (<em>Group information</em>)</li>
+<li>list of child groups, if any (<em>Subgroups</em>)</li>
+<li>list of Group Managers (<em>Managers</em>)</li>
+<li>list of group members, if any (<em>Members</em>)</li>
+</ul>
+<p><img src="../images/IAM-groups-11.png" alt="INDIGO IAM groups view from GM"></p>
+<p>The Group Manager has also the possibility to click on group members, where a limited
+view of user information (including name, surname, uuid, username, email, status, created, updated,
+end time and labels) is shown.</p>
+<p><img src="../images/IAM-groups-12.png" alt="INDIGO IAM member view from GM"></p>
+<h3 id="group-manager-actions">Group Manager actions</h3>
+<p>A Group Manager in IAM does not have the same privileges as the IAM Admin in managing groups.</p>
+<p>What they can do, beside being allowed to browse into the group details, is</p>
+<ul>
+<li>approve/reject membership requests</li>
+<li>delete users from their managed groups.</li>
+</ul>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-f03d307094fc23ef6cf17d7a8b313135">1.4 - Acceptable Usage Policy (AUP) management</h1>
+    
+	<p>Starting with version 1.2.0, IAM supports defining an <strong>Acceptable Usage Policy
+Document (AUP)</strong> for a managed organization. The AUP is presented to applicants
+at registration time or periodically.</p>
+<h2 id="managing-the-aup">Managing the AUP</h2>
+<p>The AUP can be managed from the &ldquo;AUP&rdquo; section in the IAM dashboard, or via the
+<a href="/v/v1.13.0/docs/reference/api/aup-api/">AUP management API</a>.</p>
+<p>Administrator privileges are required.</p>
+<h3 id="creating-the-aup">Creating the AUP</h3>
+<p>By default, the AUP is not defined for an organization, i.e. it must be
+explicitly defined by an IAM administrator.</p>
+<p>The AUP can be created by clicking on the &ldquo;Create AUP&rdquo; button in the AUP
+management page (that can be reached clicking the &ldquo;AUP&rdquo; link in the organization
+Management navigation bar):</p>
+<p><img src="../images/aup0.png" alt="AUP management 0"></p>
+<p>A dialog is shown:</p>
+<p><img src="../images/aup-window.png" alt="Aup window"></p>
+<p>where the administrator can enter the AUP URL and define how frequently the
+AUP should be accepted by users.</p>
+<p>If the AUP signature validity is set to 0, a signature on the AUP will be
+requested only once (either at registration time or at the first IAM login
+after the AUP creation). A zero value means basically that the AUP signature
+does not expire.</p>
+<p>A positive value in the AUP signature validity means, on the other hand, that
+the signature will expire after that number of days. As an example, an
+administrator that wants the AUP to signed each year by users should put 365 in
+the &ldquo;AUP signature validity&rdquo; field.</p>
+<p>Since version 1.10.0, a new cron task has been added that runs every four hours to check the expiration status of each user&rsquo;s AUP (Acceptable Usage Policy) signature. If a signature has expired or is about to expire, an email notification is sent to the relevant user.</p>
+<p>Administrators can configure AUP reminders, which notify users of the remaining days until their AUP expires. These reminders can be set up directly from the dashboard.
+If the AUP signature validity is set to 0, AUP reminders will not be displayed. If the AUP signature validity is set to a value greater than 0, the AUP reminders will become mandatory.</p>
+<p><img src="../images/aup-reminders.png" alt="Aup reminders"></p>
+<h4 id="successful-aup-creation-criteria">Successful AUP creation criteria</h4>
+<ul>
+<li><strong>Valid AUP URL</strong>
+<ul>
+<li>The AUP URL must be a properly formatted, valid URL</li>
+</ul>
+</li>
+<li><strong>AUP signature validity</strong>
+<ul>
+<li>The signature validity period (in days) must be an integer value greater than or equal to 0</li>
+</ul>
+</li>
+<li><strong>AUP reminders</strong>
+<ul>
+<li>The reminder period(s) (in days) must be one or more numbers, separated by commas if multiple, that satisfy the following conditions:
+<ul>
+<li>Each reminder must be greater than 0</li>
+<li>Each reminder must be less than the AUP signature validity period</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="../images/aup-created.png" alt="Aup creation"></p>
+<p>Based on the screenshot above, the user will receive three AUP signature reminder emails at 30 days, 15 days, and 1 day prior to the expiration date. Additionally, one AUP expiration email will be sent one year after the AUP is signed.</p>
+<h3 id="editing-and-deleting-the-aup">Editing and deleting the AUP</h3>
+<p>The AUP can be edited and deleted from the AUP management page:</p>
+<p><img src="../images/aup2.png" alt="AUP management 2"></p>
+<p>Since version 1.6.0, the AUP has been converted from text to a URL.
+If you have just upgraded to 1.6.0 and you have already defined a text AUP,
+you should see the following red message below your AUP:</p>
+<p><img src="../images/aup1b.png" alt="AUP management 1b"></p>
+<p>By clicking on &ldquo;Edit AUP&rdquo;, admins are prompted to insert a valid URL.</p>
+<p><img src="../images/aup5.png" alt="AUP management 5"></p>
+<p>As shown in the picture above, editing the AUP will not trigger an AUP signature request.</p>
+<h3 id="request-a-signature-from-users">Request a signature from users</h3>
+<p>If you want to request a signature from users for the updated AUP,
+use the &ldquo;Request AUP signature&rdquo; button in the AUP management page.</p>
+<p>A dialog is shown:</p>
+<p><img src="../images/aup6.png" alt="AUP management 6"></p>
+<p>Confirm by clicking on &ldquo;Request AUP signature&rdquo; and the acceptance of the AUP
+will be requested from ALL users at their next login.</p>
+<h2 id="signing-the-aup">Signing the AUP</h2>
+<p>Once defined the AUP text is shown to users for acceptance either
+at registration time:</p>
+<img src="../images/aup3.png" width="500">
+<p>or at the first login after the AUP creation:</p>
+<img src="../images/aup4.png" width="500">
+<h2 id="request-aup-signature">Request AUP signature</h2>
+<p>Administrator can request user to sign AUP.</p>
+<p>Administrator privileges are required.</p>
+<p>Log into the service using admin credentials and click on the <em>Users</em> link on the left navigation bar:</p>
+<p><img src="../images/request-aup-signature-1.png" alt="dashboard"></p>
+<p>From the <em>Users</em> link, select <em>Any user</em> you want to request AUP signature, for example <em>Test-200 User</em>:</p>
+<p><img src="../images/request-aup-signature-2.png" alt="user"></p>
+<p>To request AUP signature click on <em>Request AUP signature</em> button on <em>User details</em> section on the left of the page:</p>
+<p><img src="../images/request-aup-signature-3.png" alt="request AUP signature button"></p>
+<p>To confirm your choice click on <em>Request AUP signature</em> button on the modal window:</p>
+<p><img src="../images/request-aup-signature-4.png" alt="request AUP signature modal"></p>
+<p>On success you will get a confirmation message:</p>
+<p><img src="../images/request-aup-signature-5.png" alt="request AUP signature confirmation"></p>
+<p>After this operation, if the user logs in, they must sign the AUP again before accessing the service.</p>
+<h2 id="sign-aup-on-behalf-of-the-user">Sign AUP on behalf of the user</h2>
+<p>Administrator can sign AUP on behalf of the user.</p>
+<p>Log into the service using admin credentials and click on the <em>Users</em> link on the left navigation bar:</p>
+<p><img src="../images/request-aup-signature-1.png" alt="dashboard"></p>
+<p>From the <em>Users</em> link, select <em>Any user</em> you want to sign AUP on behalf, for example <em>Test-200 User</em>:</p>
+<p><img src="../images/request-aup-signature-2.png" alt="user"></p>
+<p>To sign AUP on behalf of the user click on <em>Sign AUP on behalf of this user</em> button on <em>User details</em> section on the left of the page:</p>
+<p><img src="../images/sign-aup-on-behalf-1.png" alt="sign AUP on behalf button"></p>
+<p>To confirm your choice click on <em>Sign AUP</em> button on the modal window:</p>
+<p><img src="../images/sign-aup-on-behalf-2.png" alt="sign AUP on behalf modal"></p>
+<p>On success you will get a confirmation message:</p>
+<p><img src="../images/sign-aup-on-behalf-3.png" alt="sign AUP on behalf confirmation"></p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-0d446af92e463090d9e1b94f286038c9">2 - IAM service deployment</h1>
+    <div class="lead">IAM service deployment tasks &amp; information</div>
+	
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="">
+    
+	<h1 id="pg-f9c47943a3e72ee39a36f76a84d7aef8">2.1 - Backup &amp; Restore</h1>
+    
+	<h2 id="backup">Backup</h2>
+<p>The IAM data that needs to saved by a backup is:</p>
+<ul>
+<li>database data;</li>
+<li>service configuration, typically maintained in an environment file: <code>/etc/sysconfig/iam-login-service</code> on CentOS, <code>/etc/default/iam-login-service</code> on Ubuntuu;</li>
+<li>the keystore used to sign JWT tokens: <code>/var/lib/indigo/iam-login-service/keystore.jks</code>;</li>
+<li>the SAML keystore, used when SAML authentication is enabled: <code>/var/lib/indigo/iam/iam-login-service/example.ks</code>.</li>
+</ul>
+<p>The above locations apply when installing from packages on CentOS or Ubuntu.</p>
+<p>An example of backup script is given below:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">timestamp</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">`</span>date +<span style="color:#4e9a06">&#39;%Y-%m-%d_%H%M%S&#39;</span><span style="color:#4e9a06">`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">MYSQL_HOST</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;mydbhost&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">MYSQL_USER</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;iamloginserviceuser&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">MYSQL_PWD</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;iamloginservicepassword&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">MYSQL_DBNAME</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;iamloginservicedb&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">MYSQL_DUMP_OPTS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;-u </span><span style="color:#4e9a06">${</span><span style="color:#000">MYSQL_USER</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06"> -p</span><span style="color:#4e9a06">${</span><span style="color:#000">MYSQL_PWD</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06"> --host </span><span style="color:#4e9a06">${</span><span style="color:#000">MYSQL_HOST</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">dumpfile</span><span style="color:#ce5c00;font-weight:bold">=</span>iam_dump.sql
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mysqldump <span style="color:#4e9a06">${</span><span style="color:#000">MYSQL_DUMP_OPTS</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">${</span><span style="color:#000">MYSQL_DBNAME</span><span style="color:#4e9a06">}</span> &gt; <span style="color:#4e9a06">${</span><span style="color:#000">dumpfile</span><span style="color:#4e9a06">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>tar czf iam_backup.tar.gz <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  <span style="color:#4e9a06">${</span><span style="color:#000">dumpfile</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  /etc/sysconfig/iam-login-service <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  /var/lib/indigo/iam-login-service/keystore.jks <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  /var/lib/indigo/iam/iam-login-service/example.ks
+</span></span></code></pre></div><p>The keystore paths can be customized, so adapt the backup script according your configuration.</p>
+<p>If you are deploying IAM with Docker and use a volume to provide configuration
+to the service, backup the contents of such volume.</p>
+<h2 id="restore">Restore</h2>
+<p>From the backup, import the database data from the SQL dump:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ <span style="color:#204a87">export</span> <span style="color:#000">MYSQL_HOST</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;mydbhost&#34;</span>
+</span></span><span style="display:flex;"><span>$ <span style="color:#204a87">export</span> <span style="color:#000">MYSQL_USER</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;iamloginserviceuser&#34;</span>
+</span></span><span style="display:flex;"><span>$ <span style="color:#204a87">export</span> <span style="color:#000">MYSQL_PWD</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;iamloginservicepassword&#34;</span>
+</span></span><span style="display:flex;"><span>$ <span style="color:#204a87">export</span> <span style="color:#000">MYSQL_DBNAME</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;iamloginservicedb&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ mysql --host <span style="color:#4e9a06">${</span><span style="color:#000">MYSQL_HOST</span><span style="color:#4e9a06">}</span> -u <span style="color:#4e9a06">${</span><span style="color:#000">MYSQL_USER</span><span style="color:#4e9a06">}</span> -p<span style="color:#4e9a06">${</span><span style="color:#000">MYSQL_PWD</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">${</span><span style="color:#000">MYSQL_DBNAME</span><span style="color:#4e9a06">}</span> &lt; iam_backup/iam_dump.sql
+</span></span></code></pre></div><h3 id="deployment-from-packages">Deployment from packages</h3>
+<p>To restore the IAM service from scratch, install the package.</p>
+<p>On CentOS:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sudo yum install -y iam-login-service
+</span></span></code></pre></div><p>Restore the environment file.</p>
+<p>On CentOS:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sudo cp iam_backup/etc/sysconfig/iam-login-service /etc/sysconfig/iam-login-service
+</span></span></code></pre></div><p>On Ubuntu:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sudo cp iam_backup/etc/default/iam-login-service /etc/default/iam-login-service
+</span></span></code></pre></div><p>Copy the keystores in the correct path, according to your configuration:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sudo cp iam_backup/var/lib/indigo/iam-login-service/keystore.jks /var/lib/indigo/iam-login-service/keystore.jks
+</span></span><span style="display:flex;"><span>$ sudo cp iam_backup/var/lib/indigo/iam/iam-login-service/example.ks /var/lib/indigo/iam/iam-login-service/example.ks
+</span></span></code></pre></div><p>Ensure the keystores have the right ownership:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sudo chown -R iam:iam /var/lib/indigo/iam-login-service
+</span></span></code></pre></div><p>Start the IAM Login Service daemon:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sudo systemctl start iam-login-service
+</span></span></code></pre></div><h3 id="deployment-with-docker">Deployment with Docker</h3>
+<p>Copy the files from the backup to the volume location:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ cp iam_backup/iam-login-service/env /path/to/iam-login-service/env
+</span></span><span style="display:flex;"><span>$ cp iam_backup/keystore.jks /path/to/keystore.jks
+</span></span></code></pre></div><p>Start the container:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ docker run <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  --name iam-login-service <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  --net<span style="color:#ce5c00;font-weight:bold">=</span>iam -p 8080:8080 <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  --env-file<span style="color:#ce5c00;font-weight:bold">=</span>/path/to/iam-login-service/env <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  -v /path/to/keystore.jks:/keystore.jks:ro <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  indigoiam/iam-login-service:latest
+</span></span></code></pre></div>
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-20612c101bee3438f511834eec95ece8">2.2 - Audit log</h1>
+    
+	<p>IAM Login Service traces interesting, security related events with an audit log.</p>
+<p>Audit log messages are marked with the tag <code>AUDIT</code> in the Java class name
+field.</p>
+<p>An example of audit log message is the following:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#000;font-style:italic">2017-09-11 09:58:14.560  INFO 13 --- [o-8080-exec-311] AUDIT : {&#34;@type&#34;:&#34;IamAuthenticationSuccessEvent&#34;,&#34;timestamp&#34;:1505116694560,&#34;category&#34;:&#34;AUTHENTICATION&#34;,&#34;principal&#34;:&#34;794fb313-6e93-4d02-9d0a-4ed773ee2c5e&#34;,&#34;message&#34;:&#34;794fb313-6e93-4d02-9d0a-4ed773ee2c5e authenticated succesfully&#34;,&#34;sourceEvent&#34;:{&#34;principal&#34;:&#34;794fb313-6e93-4d02-9d0a-4ed773ee2c5e&#34;,&#34;type&#34;:&#34;InteractiveAuthenticationSuccessEvent&#34;},&#34;source&#34;:&#34;UsernamePasswordAuthenticationToken&#34;}
+</span></span></span></code></pre></div><p>The IAM login service writes logs to standard output in the default
+configuration. When deployed from packages, all logs are collected by the
+system journal.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-0f3983ccaecafb6944a18b6d8550a571">2.3 - Upgrade</h1>
+    
+	<p>This section provides instructions to upgrade the IAM service to the latest
+available version.</p>
+<h3 id="deployment-from-packages">Deployment from packages</h3>
+<p>Stop the service:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ systemctl stop iam-login-service
+</span></span></code></pre></div><p>Update the package:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ yum update -y iam-login-service
+</span></span></code></pre></div><p>Restart the service:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ systemctl start iam-login-service
+</span></span></code></pre></div><h3 id="deployment-with-docker">Deployment with Docker</h3>
+<p>Stop and remove the running container:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ docker stop iam-login-service
+</span></span><span style="display:flex;"><span>$ docker rm iam-login-service
+</span></span></code></pre></div><p>Pull the latest image:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ docker pull indigoiam/iam-login-service:latest
+</span></span></code></pre></div><p>Restart the container:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ docker run <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  --name iam-login-service <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  --net<span style="color:#ce5c00;font-weight:bold">=</span>iam -p 8080:8080 <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  --env-file<span style="color:#ce5c00;font-weight:bold">=</span>/path/to/iam-login-service/env <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  -v /path/to/keystore.jks:/keystore.jks:ro <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  indigoiam/iam-login-service:latest
+</span></span></code></pre></div><p>Otherwise, you can specify the exact tag version. For example, if the latest
+tag is <code>v1.1.0-latest</code>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ docker run <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  --name iam-login-service <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  --net<span style="color:#ce5c00;font-weight:bold">=</span>iam -p 8080:8080 <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  --env-file<span style="color:#ce5c00;font-weight:bold">=</span>/path/to/iam-login-service/env <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  -v /path/to/keystore.jks:/keystore.jks:ro <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  indigoiam/iam-login-service:v1.1.0-latest
+</span></span></code></pre></div>
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-c5846d016af443a2f547d87bba4a3f62">2.4 - Deploying IAM in HA</h1>
+    <div class="lead">Instructions on how to deploy the IAM service in High Availability on k8s</div>
+	<p>Starting from version 1.8.0, the IAM service can be deployed in High Availability mode.<br>
+It relies on <a href="https://redis.io/">redis</a> as external component used for storing the
+log-in sessions and the default in-memory IAM cache, which has to be deployed as well.</p>
+<p>Here is an example on how to deploy three IAM replicas on a <a href="https://kubernetes.io/">kubernetes</a> cluster.</p>
+<h3 id="iam-deployment-in-ha">IAM Deployment in HA</h3>
+<p>An example of three replicas of the IAM service deployment on k8s is the following:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">apps/v1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Deployment</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">iam-login-service</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">selector</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">matchLabels</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">app</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">iam</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">tier</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">login-service</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">replicas</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">strategy</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">RollingUpdate</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">rollingUpdate</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">maxSurge</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">maxUnavailable</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">template</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">labels</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">app</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">iam</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">tier</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">login-service</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">affinity</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">podAntiAffinity</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">requiredDuringSchedulingIgnoredDuringExecution</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span>- <span style="color:#204a87;font-weight:bold">labelSelector</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">                </span><span style="color:#204a87;font-weight:bold">matchExpressions</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">                </span>- <span style="color:#204a87;font-weight:bold">key</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">tier</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">                  </span><span style="color:#204a87;font-weight:bold">operator</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">In</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">                  </span><span style="color:#204a87;font-weight:bold">values</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">                    </span>- <span style="color:#000">login-service</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">topologyKey</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kubernetes.io/hostname</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">volumes</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">json-keystore-secret-vol</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">secret</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">secretName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">json-keystore-secret</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">containers</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">iam-login-service</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">image</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">indigoiam/iam-login-service:v1.8.0</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">imagePullPolicy</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Always</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">ports</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span>- <span style="color:#204a87;font-weight:bold">containerPort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">iam</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span>- <span style="color:#204a87;font-weight:bold">containerPort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1044</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">iam-debug</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">volumeMounts</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">json-keystore-secret-vol</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">mountPath</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/secrets/json-keystore</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">readOnly</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">readinessProbe</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">httpGet</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">path</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/actuator/health</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">port</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">initialDelaySeconds</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">90</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">timeoutSeconds</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">10</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">resources</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">requests</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">cpu</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">500m</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">memory</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">1Gi</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">limits</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">cpu</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">memory</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">2Gi</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">env</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">IAM_BASE_URL</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">value</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://iam.example</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">IAM_ISSUER</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">value</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://iam.example/</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">envFrom</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span>- <span style="color:#204a87;font-weight:bold">configMapRef</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">                </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">login-service-env</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span>- <span style="color:#204a87;font-weight:bold">secretRef</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">                </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">db-secret-env</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>Here a <a href="https://kubernetes.io/docs/concepts/configuration/configmap/">configMap</a> for the <code>login-service-env</code> file is used.<br>
+You can set there the <a href="../../../reference/configuration/#redis-configuration">Configuration properties</a>
+used to enable Redis. The minimal ones required, for a password less Redis service are</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">IAM_SPRING_REDIS_HOST</span><span style="color:#ce5c00;font-weight:bold">=</span>redis.example
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_SPRING_SESSION_STORE_TYPE</span><span style="color:#ce5c00;font-weight:bold">=</span>redis
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_CACHE_REDIS_ENABLED</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">true</span>
+</span></span></code></pre></div><h3 id="redis-service-deployment">Redis service Deployment</h3>
+<p>A basic example of the Redis deployment on k8s (without replicas)
+based on the <code>redis</code> <a href="https://hub.docker.com/_/redis">docker image</a> is the following:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">apps/v1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Deployment</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">redis</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">selector</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">matchLabels</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">app</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">redis</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">template</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">labels</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">app</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">redis</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">containers</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">redis</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">image</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">redis:6</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">resources</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">requests</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">memory</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;512Mi&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">cpu</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;2&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">limits</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">memory</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;512Mi&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">cpu</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;2&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">ports</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span>- <span style="color:#204a87;font-weight:bold">containerPort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">6379</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div>
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-16b818f0193a0e55e0f1cffd093e8e01">2.5 - Deploying the IAM VOMS attribute authority</h1>
+    <div class="lead">Instructions on how to deploy and configure the IAM VOMS attribute authority micro-service</div>
+	<h2 id="the-iam-voms-attribute-authority">The IAM VOMS attribute authority</h2>
+<p>The IAM <a href="https://github.com/indigo-iam/iam/tree/master/iam-voms-aa">VOMS attribute authority</a> (AA) provide a backward-compatible
+<a href="http://italiangrid.github.io/voms/">VOMS</a> support for a Virtual Organization managed with IAM.</p>
+<h3 id="deployment-architecture">Deployment architecture</h3>
+<p><img src="../img/iam-voms-aa.png" alt="VOMS AA deployment"></p>
+<p>The VOMS attribute authority can access the IAM database and encode IAM groups
+and other attributes in a standard VOMS attribute certificate. This means in
+practice that IAM can act both as an OAuth/OpenID Connect authorization server
+and as a VOMS server for a given organization. TLS termination and client VOMS
+atttribute certificate parsing and validation is delegated to an <a href="https://baltig.infn.it/cnafsd/ngx_http_voms_module">NGINX VOMS module</a>,
+which can de deployed as a sidecar service that just protects the
+VOMS AA or also in front of the IAM backend application. The two scenarios are
+depicted above.</p>
+<p>In order to deploy a VOMS attribute authority, you are recommended to use the following
+docker images:</p>
+<ul>
+<li><code>cnafsd/nginx-httpg-voms</code>, for a NGINX server configured with the <a href="https://baltig.infn.it/cnafsd/ngx_http_voms_module">VOMS module</a>,
+which replaces <a href="https://baltig.infn.it/cnafsd/ngx_http_voms_module">OpenResty VOMS</a></li>
+<li><code>indigoiam/voms-aa-bp:v1.12.1</code>, for the VOMS AA service</li>
+</ul>
+<p>Deployment from packages is not currently supported for the VOMS attribute
+authority.</p>
+<h3 id="nginx-voms-module-configuration">NGINX VOMS module configuration</h3>
+<p>The NGINX VOMS module requires:</p>
+<ul>
+<li>the IGTF trust anchors properly configured; see the <a href="https://github.com/indigo-iam/egi-trust-anchors-container/">EGI trust anchors</a>
+container.</li>
+<li>The certificate and private key to use: the certificate issuer must be one of
+the CA present in the EGI trust anchors. See the specific section below.</li>
+<li>the <code>vomsdir</code> folder, with the VOMS LSC configuration generated starting from
+the VOMS attribute authority X.509 credential.</li>
+</ul>
+<p>To generate the LSC configuration, you need to get the subject and issuer of the
+VOMS AA X.509 credential and put them in a file named as the fully qualified
+domain name of the VOMS attribute authority with the <code>.lsc</code> extension.</p>
+<p>Let&rsquo;s assume that the IAM VOMS AA will answer on <code>voms.test.example</code> for the VO
+<code>example.vo</code>.  The following command will generate the appropriate LSC file
+(<code>X509_VOMS_DIR</code> can be set to any directory where you have writing privileges):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#8f5902">&gt;</span> mkdir -p <span style="color:#4e9a06">${</span><span style="color:#000">X509_VOMS_DIR</span><span style="color:#4e9a06">}</span>/example.vo
+</span></span><span style="display:flex;"><span><span style="color:#8f5902">&gt;</span> openssl x509 -in voms_local_io.cert.pem -noout -subject -issuer -nameopt compat <span style="color:#000;font-weight:bold">|</span> <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span><span style="color:#000;font-style:italic">  gsed -e &#39;s/^subject=//&#39; -e &#39;s/^issuer=//&#39; &gt; \
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">  ${X509_VOMS_DIR}/example.vo/voms.test.example.lsc
+</span></span></span></code></pre></div><p>For an example NGINX configuration, see the one use in <a href="https://github.com/indigo-iam/iam/blob/master/compose/voms-deploy/assets/nginx/conf.d/voms.test.example.conf">VOMS-enabled NGINX container</a>.</p>
+<h4 id="voms-aa-configuration">VOMS AA configuration</h4>
+<p>The VOMS AA is a Spring Boot application that shares the persistence
+layer implementation with IAM, and as such can inspect the IAM database. It can share
+the same environment file as the login service it is associated with, with the addition of the
+following variables:</p>
+<ul>
+<li><code>VOMS_AA_HOST</code>: host name used to access the VOMS AA service</li>
+<li><code>VOMS_AA_PORT</code> VOMS AA port</li>
+<li><code>VOMS_AA_VO</code>: VO served by the VOMS AA service (lower case).</li>
+</ul>
+<p>A top level group equal to <code>VOMS_AA_VO</code> must be defined in IAM. The attributes appearing in the VOMS proxy include all the sub-groups of the parent group equal to the VO name. Top level groups different from the VO name may still be used for group-based authorization with JWTs, but will not appear in the proxy.</p>
+<p>You also need to create a VOMS AA YAML configuration file with the content below (its content should
+be generic as it relies on standard environment variables used to configure the login service) and map it
+to the container as <code>/workspace/config/application.yml</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">server</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">address</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0.0.0.0</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">port</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">use-forward-headers</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">max-http-header-size</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">16000</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spring</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">main</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">banner-mode</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;off&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">jpa</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">open-in-view</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">datasource</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">dataSourceClassName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">com.mysql.jdbc.jdbc2.optional.MysqlDataSource</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">url</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">jdbc:mysql://${IAM_DB_HOST}:${IAM_DB_PORT:3306}/${IAM_DB_NAME}?useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;useSSL=false</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">username</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${IAM_DB_USERNAME}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">password</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${IAM_DB_PASSWORD}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">max-active</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${IAM_DB_MAX_ACTIVE:10}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">max-idle</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#000">${IAM_DB_MAX_IDLE:5}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">initial-size</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${IAM_DB_INITIAL_SIZE:1}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">test-while-idle</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${IAM_DB_TEST_WHILE_IDLE:true}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">test-on-borrow</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${IAM_DB_TEST_ON_BORROW:true}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">validation-query</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${IAM_DB_VALIDATION_QUERY:SELECT 1}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">time-between-eviction-runs-millis</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${IAM_DB_TIME_BETWEEN_EVICTION_RUNS_MILLIS:5000}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">min-evictable-idle-time-millis</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${IAM_DB_MIN_EVICTABLE_IDLE_TIME_MILLIS:60000}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">flyway</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">enabled</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">voms</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">tls</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">certificate-path</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/certs/hostcert.pem</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">private-key-path</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/certs/hostkey.pem</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">trust-anchors-dir</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/etc/grid-security/certificates</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">trust-anchors-refresh-interval-secs</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">14400</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">aa</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">host</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${VOMS_AA_HOST:undefined}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">port</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${VOMS_AA_PORT:undefined}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">vo-name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${VOMS_AA_VO:undefined}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">use-legacy-fqan-encoding</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${VOMS_AA_USE_LEGACY_FQAN_ENCODING:true}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>To map this file (in the example below, <code>voms-aa.yml</code>as <code>/workspace/config/application.yml</code>), you
+typically need to add the following volume definition to the VOMS AA section of your Podman/Docker
+compose file:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">volumes</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span>- <span style="color:#000">/path/to/voms-aa.yml:/workspace/config/application.yml:ro,Z</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p><em>Note: <code>Z</code> at the end of the line is required only if you use SELinux</em></p>
+<p>In addition, you need to configure the EGI trust anchors and the VOMS AA certificate and
+private key, as described below.</p>
+<h3 id="configuration-of-egi-trust-anchors-and-voms-aa-certificate">Configuration of EGI trust anchors and VOMS AA certificate</h3>
+<p>Both the VOMS-enabled NGINX service and the VOMS AA service require the proper configuration
+of the container, the certificate and private key to use and the EGI trust anchors. If using
+Podman/Docker Compose, it is typically done with:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">volumes</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span>- <span style="color:#000">/path/to/certs/voms.test.example.cert.pem:/certs/hostcert.pem:ro,Z</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span>- <span style="color:#000">/path/to/certs/voms.test.example.cert.key:/certs/hostkey.pem:ro,Z</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span>- <span style="color:#000">/etc/grid-security/certificates:/etc/grid-security/certificates:ro,Z</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>The line to map EGI trust anchor may be different if you use <a href="https://github.com/indigo-iam/egi-trust-anchors-container/">EGI trust anchors</a>
+container. See the Podman/Docker Compose example for more information.</p>
+<p>Note that the private key must be readable by the user running the service. As it is not a good
+practice to make it world readable, it may be necessary to adjust its ownership.</p>
+<h3 id="podmandocker-compose-example">Podman/Docker Compose example</h3>
+<p>For an example of the container configurations, see the <a href="https://github.com/indigo-iam/iam/blob/master/compose/voms-deploy/docker-compose.yml">VOMS AA Docker compose
+file</a>.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-cf4d164c71ad46c16dc1a41d06c2a98e">2.6 - Importing VOMS information into IAM</h1>
+    
+	<h2 id="the-voms-importer-script">The VOMS importer script</h2>
+<p>For VOs that already use VOMS to manage their organization, a script is
+available to synchronize one-way their VOMS instance with their IAM instance.</p>
+<p>The VOMS information that is synchronized includes:</p>
+<ul>
+<li>VOMS Groups</li>
+<li>VOMS Roles</li>
+<li>VOMS Users
+<ul>
+<li>Personal information</li>
+<li>X.509 certificates</li>
+<li>Group and role membership</li>
+<li>Generic attributes</li>
+</ul>
+</li>
+</ul>
+<p>The script needs admininistrative privileges on both VOMS and IAM, represented
+respectively by a VOMS proxy and an IAM access token. As it synchronizes INDIGO
+IAM information with VOMS information (rather than overwriting it), it can be run
+multiple times to fix problems in previous runs.</p>
+<p>The documentation on how to run the <code>vomsimporter.py</code> script is available at
+<a href="https://github.com/indigo-iam/voms-importer">https://github.com/indigo-iam/voms-importer</a>.</p>
+<h2 id="migration-of-groups-and-roles">Migration of groups and roles</h2>
+<p>Both IAM and VOMS support the concepts of <em>group</em> and <em>role</em>.</p>
+<p>Groups are very similar in both contexts. They differ slightly in the
+representation: a VOMS group has the form <code>/&lt;group&gt;/&lt;subgroup&gt;/...</code>, whereas a
+IAM group has the form <code>&lt;group&gt;/&lt;subgroup&gt;/...</code>, i.e. there is no leading <code>/</code>.</p>
+<p>For example, the VOMS group <code>/atlas/production</code> becomes the IAM group
+<code>atlas/production</code>.</p>
+<p>Roles differ in a more profound way: whereas a VOMS role is a distinct entity
+from a group, in IAM a role is simply a group with the specific labels
+<code>wlcg.optional-group</code> and <code>voms.role</code>. An optional group is included in an OAuth
+token or in a VOMS proxy only if requested.</p>
+<p>For example, the VOMS group with role <code>/atlas/Role=VO-Admin</code> becomes the IAM
+optional group <code>atlas/VO-Admin</code>.</p>
+<p>Groups and roles are imported in IAM only if not already present there.</p>
+<p>Groups and roles can be created directly in IAM without any corresponding group
+or role in VOMS; those are not considered by the importer script.</p>
+<h2 id="migration-of-users">Migration of users</h2>
+<p>Only <strong>active</strong> VOMS users are imported: nothing is done on the INDIGO IAM side
+for a user suspended in VOMS, except if you add option <code> --synchronize-activation-status</code>
+to force the synchronization of activation state in INDIGO IAM using the activation
+state in VOMS. <strong>Without this option, a user suspended in VOMS may still be
+active in IAM if the user was imported (and active) before it was suspended in VOMS.</strong></p>
+<p><em>Note about CERN instances: since INDIGO IAM at CERN is also integrated with the CERN
+Human Resource (HR) database, the HR check will ensure that users are
+suspended/removed from the VO when experiment membership is no longer valid.</em></p>
+<p>When creating a IAM account for a newly-discovered VOMS user, the importer
+script generates a username of the form <code>voms.&lt;voms-id&gt;</code>. There is an option to
+use the value of an attribute (e.g. <code>nickname</code>) from the user entry in VOMS, if
+available.</p>
+<p>The script by default removes a user from groups (including roles) where they do
+not belong any more.</p>
+<h3 id="cern-sso-automatic-linking">CERN SSO automatic linking</h3>
+<p>The importer script can be configured to automatically link the imported account
+to the CERN SSO identity in two ways:</p>
+<ol>
+<li>using the <code>nickname</code> VOMS account generic attribute</li>
+<li>resolving the CERN username from the CERN LDAP</li>
+</ol>
+<h3 id="unique-email-address-for-users-in-iam">Unique email address for users in IAM</h3>
+<p>VOMS allows different users to share an email address. IAM instead requires that
+each user has a unique email address.</p>
+<p>The import script implements an email override mechanism, that maps a VOMS user
+id to another email address; however, a better approach would be to clean up the
+VOMS database in order to avoid multiple accounts sharing email addresses.</p>
+<h2 id="voms-importer-log">VOMS importer log</h2>
+<p>The importer script produces an auditing log, detailing the actions applied to
+groups, roles and users.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-43bda8bc26d1df36bc9eb8d9739f719e">3 - IAM Test Client application</h1>
+    <div class="lead">OpenID Connect client application example</div>
+	<p>IAM Test Client is a simple web application that demonstrates the use of the OpenID Connect client code and configuration.</p>
+<p>It lives at <code>https://your-IAM-instance/iam-test-client</code>.</p>
+<p><img src="images/test-client.png" alt="Test Client App"></p>
+<p>Since Test Client uses OAuth Authorization Code Grant Type, after a successfull login you will be redirected to the consent page that the authorization server displays to confirm if the requested scopes can be shared with the client.</p>
+<p><img src="images/consent-page.png" alt="Consent Page"></p>
+<p>If you authorize, the following information will be shown:</p>
+<p><img src="images/test-client-info.png" alt="App info"></p>
+<p>In order to run the Test Client application you need to setup a minimal <a href="/v/v1.13.0/docs/reference/configuration/#test-client-configuration">configuration</a>.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-dbcc046a6c208e0a089e20aecc2dbaec">4 - User</h1>
+    <div class="lead">Common user tasks</div>
+	
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="">
+    
+	<h1 id="pg-fc4a8820c0610ad9186b42bb179cd4bf">4.1 - Joining an IAM-managed organization</h1>
+    
+	<p>IAM provides a registration service that allows to have managed enrollment for
+the organization under control. This mean that access to the organization is
+only granted after explicit approval by a IAM administrator for the
+organization.</p>
+<h2 id="submitting-a-registration-request">Submitting a registration request</h2>
+<p>Users can submit a registration request from the IAM login page in two ways:</p>
+<ul>
+<li>By clicking the <em>Register a new account</em> button:</li>
+</ul>
+<p><img src="../images/IAM-registration-1.png" alt="INDIGO IAM Registration button"></p>
+<ul>
+<li>By attempting a login with an external authentication provider such as Google
+or a configured SAML IdP: in this case if the external authentication
+succeeds and the authenticated user is not registered in the IAM the user is
+taken to the registration form to confirm the registration requests.</li>
+</ul>
+<p><img src="../images/IAM-registration-2.png" alt="INDIGO IAM Registration form"></p>
+<p>All the fields in the registration form are mandatory. The <em>notes</em> field can
+used to include extra information targeted at IAM administrators to clarify the
+reasons behind a registration request.</p>
+<h2 id="confirming-a-registration-request">Confirming a registration request</h2>
+<p>If the submission ends successfully, an email verification link is sent to the
+user email address with a request to confirm his registration request.</p>
+<p><img src="../images/IAM-registration-3.png" alt="INDIGO IAM Registration validation page"></p>
+<p>Once the request is confirmed, IAM administrators are notified with an email.</p>
+<h2 id="choosing-a-password">Choosing a password</h2>
+<p>Once the submitteed request is approved by an IAM administrator, an email is
+sent to the user with a reset password link. This URL points to page where the
+user can choose a password for the IAM account.</p>
+<p><img src="../images/IAM-registration-5.png" alt="INDIGO IAM Registration change password form"></p>
+<p>Once the password is set, users can login to the IAM using the username chosen
+at registration time and the password.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-afefc91265853008615d0ff910cb6bb9">4.2 - Obtaining an IAM access token from a CLI</h1>
+    
+	<p>A token can be obtained from a command-line interface (CLI) in two ways:</p>
+<ul>
+<li>using <code>oidc-agent</code></li>
+<li>using scripts linked to this page, using the resource-owner password
+credentials flow or the OAuth device flow</li>
+</ul>
+<p>In this section we recommend the installations of a set of tools that can help
+in managing tokens.</p>
+<h2 id="obtaining-a-token-using-oidc-agent">Obtaining a token using <code>oidc-agent</code></h2>
+<p><a href="https://github.com/indigo-dc/oidc-agent">oidc-agent</a> is a useful tool to easily get and manage access
+tokens for command-line applications.</p>
+<h3 id="installing-oidc-agent">Installing oidc-agent</h3>
+<p>See <a href="https://indigo-dc.gitbook.io/oidc-agent/installation/install">oidc-agent installation
+instructions</a>.</p>
+<h4 id="quick-centos7-installation-instructions">Quick CENTOS7 installation instructions</h4>
+<p>This recipe shows how to quickly install <code>oidc-agent</code> on CENTOS 7.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ yum -y install epel-release
+</span></span><span style="display:flex;"><span>$ yum -y install https://github.com/indigo-dc/oidc-agent/releases/download/v3.3.1/oidc-agent-3.3.1-1.el7.x86_64.rpm
+</span></span></code></pre></div><h3 id="bootstrapping-oidc-agent">Bootstrapping oidc-agent</h3>
+<p>The first thing to do is to start <code>oidc-agent</code>.
+This can be done issuing the following command:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ <span style="color:#204a87">eval</span> <span style="color:#204a87;font-weight:bold">$(</span>oidc-agent<span style="color:#204a87;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>Agent pid <span style="color:#0000cf;font-weight:bold">62088</span>
+</span></span></code></pre></div><h3 id="registering-a-client">Registering a client</h3>
+<p>In order to obtain a token out of IAM, a user needs a client registered.
+<code>oidc-agent</code> can automate this step and store client credentials securely
+on the user machine. This is a one-time operation, you do not need a new
+client every time you need a token.</p>
+<p>A new client can be registered using the <code>oidc-gen</code> command, as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ oidc-gen -w device wlcg
+</span></span></code></pre></div><p>The <code>-w device</code> instructs <code>oidc-agent</code> to use the device code flow for the
+authentication, which is the recommended way with IAM.</p>
+<p>oidc-agent will display a list of different providers that can be used for
+registration:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">[</span>1<span style="color:#ce5c00;font-weight:bold">]</span> https://wlcg.cloud.cnaf.infn.it/
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">[</span>2<span style="color:#ce5c00;font-weight:bold">]</span> https://iam-test.indigo-datacloud.eu/
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">[</span>20<span style="color:#ce5c00;font-weight:bold">]</span> https://oidc.scc.kit.edu/auth/realms/kit/
+</span></span></code></pre></div><p>Select one of the registered providers, or type a custom issuer (for IAM, the
+last character of the issuer string is always a <code>/</code>, e.g.
+<code>https://wlcg.cloud.cnaf.infn.it/</code>).</p>
+<p>Then oidc-agent asks for the scopes, typing <code>max</code> (without quotes) allows to
+get all the allowed scopes.</p>
+<p>oidc-agent will register a new client and store the client credentials and a
+refresh token locally in encrypted form (the agent will ask for a password from
+the user).</p>
+<p>As mentioned, <code>oidc-gen</code> is meant to be used only once, when you need a client registered.</p>
+<h3 id="managing-oidc-agent-account-configurations">Managing oidc-agent account configurations</h3>
+<p>To see the list of locally configured accounts use the following command:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; oidc-add -l
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>The following account configurations are usable:
+</span></span><span style="display:flex;"><span>DEEP-ac
+</span></span><span style="display:flex;"><span>XDC
+</span></span><span style="display:flex;"><span>atlas
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>cms-voms-importer
+</span></span><span style="display:flex;"><span>escape
+</span></span><span style="display:flex;"><span>escape-monitoring
+</span></span><span style="display:flex;"><span>iam-test
+</span></span><span style="display:flex;"><span>infn-cloud
+</span></span><span style="display:flex;"><span>wlcg
+</span></span></code></pre></div><p>You can then load an account in the agent again with the oidc-add command, as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oidc-add wlcg
+</span></span></code></pre></div><p>Once you&rsquo;ve loaded the account, you can use <code>oidc-token</code> to get tokens for that account.</p>
+<h3 id="getting-tokens-with-oidc-token">Getting tokens with <code>oidc-token</code></h3>
+<p>Tokens can be obtained using the <code>oidc-token</code> command, as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oidc-token wlcg
+</span></span></code></pre></div><p>This will request a token with all the scopes requested at client registration
+time. To limit the scopes included in the token, the <code>-s</code> flag can be used, as
+follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oidc-token -s storage.read:/ wlcg
+</span></span></code></pre></div><p>The token audience can be limited using the <code>--aud</code> flag,</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oidc-token --aud example.audience -s storage.read:/ wlcg
+</span></span></code></pre></div><h3 id="accessing-oidc-agent-client-configuration">Accessing oidc-agent client configuration</h3>
+<p>Often is useful to get details about the client configuration generated
+by oidc-agent. This can be done with the <code>oidc-gen -p</code> command, that is
+used to print a client configuration, as in the following example:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>❯ oidc-gen -p wlcg
+</span></span><span style="display:flex;"><span>Enter decryption password <span style="color:#204a87;font-weight:bold">for</span> account config <span style="color:#4e9a06">&#39;wlcg&#39;</span>:******
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;name&#34;</span>:	<span style="color:#4e9a06">&#34;wlcg&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;client_name&#34;</span>:	<span style="color:#4e9a06">&#34;oidc-agent:wlcg&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;issuer_url&#34;</span>:	<span style="color:#4e9a06">&#34;https://wlcg.cloud.cnaf.infn.it/&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;device_authorization_endpoint&#34;</span>:	<span style="color:#4e9a06">&#34;https://wlcg.cloud.cnaf.infn.it/devicecode&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;daeSetByUser&#34;</span>:	0,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;client_id&#34;</span>:	<span style="color:#4e9a06">&#34;*****&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;client_secret&#34;</span>:	<span style="color:#4e9a06">&#34;*****&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;refresh_token&#34;</span>:	<span style="color:#4e9a06">&#34;****.*****.&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;cert_path&#34;</span>:	<span style="color:#4e9a06">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;scope&#34;</span>:	<span style="color:#4e9a06">&#34;storage.create:/ openid offline_access storage.read:/ eduperson_scoped_affiliation storage.modify:/ wlcg wlcg.groups eduperson_entitlement&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;audience&#34;</span>:	<span style="color:#4e9a06">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;redirect_uris&#34;</span>:	<span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#4e9a06">&#34;edu.kit.data.oidc-agent:/redirect&#34;</span>, <span style="color:#4e9a06">&#34;http://localhost:8080&#34;</span>, <span style="color:#4e9a06">&#34;http://localhost:47947&#34;</span>, <span style="color:#4e9a06">&#34;http://localhost:4242&#34;</span><span style="color:#ce5c00;font-weight:bold">]</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;username&#34;</span>:	<span style="color:#4e9a06">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;password&#34;</span>:	<span style="color:#4e9a06">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;client_id_issued_at&#34;</span>:	1600444894,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;registration_access_token&#34;</span>:	<span style="color:#4e9a06">&#34;****&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;registration_client_uri&#34;</span>:	<span style="color:#4e9a06">&#34;https://wlcg.cloud.cnaf.infn.it/register/****&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;token_endpoint_auth_method&#34;</span>:	<span style="color:#4e9a06">&#34;client_secret_basic&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;grant_types&#34;</span>:	<span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#4e9a06">&#34;urn:ietf:params:oauth:grant-type:device_code&#34;</span>, <span style="color:#4e9a06">&#34;refresh_token&#34;</span><span style="color:#ce5c00;font-weight:bold">]</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;response_types&#34;</span>:	<span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#4e9a06">&#34;token&#34;</span><span style="color:#ce5c00;font-weight:bold">]</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;application_type&#34;</span>:	<span style="color:#4e9a06">&#34;web&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;cert_path&#34;</span>:	<span style="color:#4e9a06">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;audience&#34;</span>:	<span style="color:#4e9a06">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span></code></pre></div><h2 id="obtaining-a-token-with-the-password-flow">Obtaining a token with the password flow</h2>
+<p>The <a href="https://tools.ietf.org/html/rfc6749#section-4.3">password flow</a> allows a user to get a token from the
+IAM by using the IAM local credentials (i.e. the username/password credentials
+setup at IAM registration time).</p>
+<p>In order to use the password flow, a non-privileged user has to:</p>
+<ol>
+<li>register a client following the instructions given in [the client
+registration][client-registration] section</li>
+<li>Note down the <code>client_id</code> of the generated client and ask an IAM
+administrator to enable the password flow for such client</li>
+<li>Wait until the client as the password flow enabled</li>
+<li>Use a script similar to the one given <a href="https://gist.github.com/andreaceccanti/7d863db5ce3f43c74123a2cea8b8f9ff">here</a> (or write
+your own following the recommendations of the <a href="https://tools.ietf.org/html/rfc6749#section-4.3">RFC</a>) to
+obtain a token out of the IAM</li>
+</ol>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Warning</h4>
+
+    <p>While this approach is viable, it is <strong>deprecated</strong> since:</p>
+<ul>
+<li>it forces the user to request the activation of the password flow for the
+client (it is disabled by default for dynamically registered clients)</li>
+<li>it forces the user to authenticate with the local IAM credentials (external
+authentication mechanisms such as Google or SAML cannot be used)</li>
+<li>it exposes the user credentials to the client application</li>
+</ul>
+<p>The device code flow, described in the next section, does not have these
+limitations and should be preferred over the password flow.</p>
+
+
+</div>
+
+<h2 id="obtaining-a-token-with-the-device-code-flow">Obtaining a token with the device code flow</h2>
+<p>The <a href="https://tools.ietf.org/html/draft-ietf-oauth-device-flow-09">device code flow</a> allows a user to get a token
+from the IAM from a CLI interface while using an external browser for the
+authentication step. This is convenient since:</p>
+<ul>
+<li>it does not require any authorization from administrators (the device code
+flow can be requested by the user at client registration time)</li>
+<li>it allows the user to authenticate with any of the authentication mechanisms
+supported by the IAM</li>
+<li>it <strong>does not</strong> expose the user credentials to the client application</li>
+</ul>
+<p>For nitty and gritty details on how the flow works, see the
+<a href="https://tools.ietf.org/html/draft-ietf-oauth-device-flow-09">RFC</a>.</p>
+<p>After having registered a client with the device flow enabled (see <a href="/v/v1.13.0/docs/tasks/user/client-registration/">client
+registration section</a>), the device code flow can be
+used to obtain a token using a script like the one <a href="https://gist.github.com/andreaceccanti/5b69323b89ce08321e7b5236de503600">here</a>
+which does the following:</p>
+<ul>
+<li>contacts the device flow endpoint to start a device flow authentication and
+authorization</li>
+<li>prints code information on the terminal</li>
+<li>waits for user input to proceed and obtain the token(s)</li>
+</ul>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-e4362ecb7c13c3eefd305731df5f2773">4.3 - Re-sign AUP</h1>
+    
+	<p>Users can re-sign AUP at any time.</p>
+<h2 id="re-sign-aup-using-the-dashboard">Re-sign AUP using the dashboard</h2>
+<p>Log into the service using user credentials:</p>
+<p><img src="../images/re-sign-aup-1.png" alt="dashboard"></p>
+<p>To re-sign AUP click on <em>Re-sign AUP</em> button:</p>
+<p><img src="../images/re-sign-aup-2.png" alt="re-sign aup button"></p>
+<p>To confirm your choice click on <em>I agree with the AUP terms</em> button on the modal window:</p>
+<p><img src="../images/re-sign-aup-3.png" alt="re-sign aup modal"></p>
+<p>On success you will get a confirmation message and <em>AUP expiration</em> will be updated:</p>
+<p><img src="../images/re-sign-aup-4.png" alt="re-sign aup confirmation"></p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-9a8717b724b3cc965f31246cbdd60946">4.4 - Registering a client</h1>
+    
+	<p>IAM exposes the OpenID Connect/OAuth dynamic client registration functionality
+on its own dashboard (it has been migrated by <a href="https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server/wiki">MitreID</a> dashboard).</p>
+<p>In OAuth terminology, a client is an application or service that can interact
+with an authorization server for authentication/authorization purposes.</p>
+<p>A new client can be registered in the IAM in two ways:</p>
+<ul>
+<li>using the <a href="/v/v1.13.0/docs/reference/api/oidc-client-registration/">dynamic client registration API</a>;</li>
+<li>via the IAM dashboard (which simply acts as a client to the API mentioned
+above).</li>
+</ul>
+<h2 id="registering-a-client-using-the-dashboard">Registering a client using the dashboard</h2>
+<p>Log into the service and click on the <em>My Clients</em> link on the left
+navigation bar:</p>
+<p><img src="../images/my_client-dashboard.png" alt="dashboard"></p>
+<p>From the <em>My client</em> link, select <em>New client</em>:</p>
+<p><img src="../images/new-client-reg-0.png" alt="client reg"></p>
+<p>A form will open that enable you to configure your client:</p>
+<p><img src="../images/new-client-reg-1.png" alt="client reg"></p>
+<p>The minimum information you have to provide is:</p>
+<ul>
+<li><em>Client name</em>: choose a name for your client</li>
+<li><em>Redirect URI(s)</em>: one or more redirect URIs for your client; these are
+required if you choose to enable the authorization code flow;</li>
+</ul>
+<p><img src="../images/new-client-reg-2.png" alt="client reg"></p>
+<p>Remember to select the <code>offline_access</code> scope from the <strong>Scopes</strong> tab if you
+want to request refresh tokens for the client being created:</p>
+<p><img src="../images/new-client-reg-3.png" alt="client reg"></p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Info</h4>
+
+    Restricted scopes can only be assigned to clients by admin users. As for the <strong>admin</strong> (<code>iam:admin.read</code> and <code>iam:admin.write</code>) and <strong>SCIM</strong> (<code>scim:read</code> and <code>scim:write</code>) scopes, only admin users can delegate clients to use them. <em>Client credentials</em> clients may obtain access tokens with these privileged/restricted scopes if and only if they have been previously assigned by the administrator.
+
+</div>
+
+<p>You can then click the <strong>Save</strong> button at the bottom of the page:</p>
+<p><img src="../images/new-client-reg-4.png" alt="client reg"></p>
+<p>IAM will then generate client credentials for your client and other information
+that will be displayed as follows:</p>
+<p><img src="../images/new-client-reg-5.png" alt="client reg"></p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-5f7a8f5e4030289ede0cce345878ff5f">4.5 - Change account information</h1>
+    
+	<p>Once logged in, you can change information in your account (if allowed by the
+IAM configuration) by clicking the &ldquo;Edit Details&rdquo; from your home page:</p>
+<p><img src="../images/change-details.png" alt="Change details"></p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-9425af354278fe0b0806e2532bbb465a">4.6 - Changing the account password</h1>
+    
+	<p>Once logged in you can change your account password by clicking on the &ldquo;Change
+password&rdquo; button in your home page:</p>
+<p><img src="../images/change-password.png" alt="Change password"></p>
+<p>Note that the &ldquo;Change password&rdquo; functionality is only useful if you remember
+your IAM account password. In case you forgot it, logout from the IAM and
+follow the instructions in the <a href="../reset-password">Reset account password</a>
+section.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-606d8ee94cbe5ccb53556270df85092f">4.7 - JWT client authentication</h1>
+    
+	<p>IAM supports several methods to authenticate an OAuth2 client to the token endpoint.</p>
+<p>The authentication via JWT assertion is defined in <a href="https://datatracker.ietf.org/doc/html/rfc7523#section-2.2">RFC7523</a>.
+It can be used to request an access token when a client wishes to utilize an
+existing trust relationship, expressed through the semantics of the JWT, without a direct user-approval step at the authorization server.
+Client authentication using a JWT is nothing more than an alternative way for a client to authenticate to the token endpoint
+and must be used in conjunction with some grant type to form a complete and meaningful protocol request,
+for instance the <em>authorization code</em> flow (when a user has to approve the client in order to access to their resources),
+the <em>client credential</em> flow (when a client is acting on its own behalf), etc.</p>
+<h2 id="jwt-assertion-validation">JWT assertion validation</h2>
+<p>The IAM Authorization Server validates the JWT assertion and issues an access token if
+the following conditions are satisfied.</p>
+<p><strong>JWT assertion header</strong></p>
+<ul>
+<li>the &ldquo;alg&rdquo; (algorithm) claim must be present to indicate the algorithm used to sign the token;</li>
+<li>the &ldquo;kid&rdquo; (key ID) claim must be present in the asymmetrically signed assertions to identify the public key.</li>
+</ul>
+<p><strong>JWT assertion body</strong></p>
+<ul>
+<li>the &ldquo;iss&rdquo; (issuer) and &ldquo;sub&rdquo; (subject) claims must be equal to the <code>client_id</code>;</li>
+<li>the &ldquo;aud&rdquo; (audience) claim must be equal to the token endpoint URL;</li>
+<li>the &ldquo;exp&rdquo; (expiration) claim must be present to limit the JWT assertion lifetime;</li>
+<li>the &ldquo;jti&rdquo; (JWT ID) claim must be present and provides a unique identifier for the token.</li>
+</ul>
+<h2 id="client-settings">Client settings</h2>
+<p>You need to configure an OAuth2 client in IAM which is used to issue a JWT assertion and get an access token.</p>
+<p>Follow the instruction on <a href="../client-registration">how to register a new client</a>, or edit an existing client
+(click on the <em>My clients</em> link on the left navigation bar of the IAM dashboard and select the client name).
+From the <em>Credentials</em> tab you can choose the authentication method to the token endpoint:</p>
+<ul>
+<li>client secret with symmetrically signed JWT assertion;</li>
+<li>asymmetrically signed JWT assertion.</li>
+</ul>
+<h3 id="symmetrically-signed-jwt-assertion">Symmetrically signed JWT assertion</h3>
+<p>This authentication mechanism is used when your JWT assertion is signed with a symmetric key.</p>
+<p>To use this mechanism, select <em>Client secret with symmetrically signed JWT assertion</em>;
+the <em>Client secret</em> generated by IAM must be used as symmetric key to sign your JWT assertion.</p>
+<p><img src="../images/jwt-authn-symm.png" alt="Symmetrically signed JWT"></p>
+<p>A symmetrically signed JWT assertion looks like</p>
+<pre tabindex="0"><code>## Header
+{
+  &#34;alg&#34;: &#34;HS256&#34;
+}
+## Payload
+{
+  &#34;sub&#34;: &#34;181f26f9-4562-4919-b718-759241485335&#34;,
+  &#34;aud&#34;: &#34;https://iam.local.io/token&#34;,
+  &#34;nbf&#34;: 1649162752,
+  &#34;iss&#34;: &#34;181f26f9-4562-4919-b718-759241485335&#34;,
+  &#34;exp&#34;: 1651754752,
+  &#34;iat&#34;: 1649162752,
+  &#34;jti&#34;: &#34;120240aa-e389-4a55-8384-f4d7a54c2633&#34;
+}
+</code></pre><h3 id="asymmetrically-signed-jwt-assertion">Asymmetrically signed JWT assertion</h3>
+<p>This authentication mechanism is used when your JWT assertion is signed with a private key.</p>
+<p>To use this mechanism, select <em>Asymmetrically signed JWT assertion</em> and then choose how IAM can get the public
+key used to validate your JWT assertion.
+Into the section <em>Public key set</em> below, choose between:</p>
+<ul>
+<li><em>By URI</em> and provide a valid <em>JSON Web Keyset URI</em> in the corresponding box,</li>
+<li>or <em>By value</em> and provide a <em>JSON Web Keyset value</em> in the corresponding box.</li>
+</ul>
+<p><img src="../images/jwt-authn-asymm.png" alt="Asymmetrically signed JWT by value"></p>
+<p>An asymmetrically signed JWT assertion looks like</p>
+<pre tabindex="0"><code>## Header
+{
+  &#34;alg&#34;: &#34;RS256&#34;,
+  &#34;kid&#34;: &#34;rsa1&#34;
+}
+## Payload
+{
+  &#34;sub&#34;: &#34;bdb6ca15-be9c-470a-81dc-69d30dabb340&#34;,
+  &#34;aud&#34;: &#34;https://iam.local.io/token&#34;,
+  &#34;nbf&#34;: 1649162752,
+  &#34;iss&#34;: &#34;bdb6ca15-be9c-470a-81dc-69d30dabb340&#34;,
+  &#34;exp&#34;: 1651754752,
+  &#34;iat&#34;: 1649162752,
+  &#34;jti&#34;: &#34;f4392c1e-6d6a-423e-8e5e-5d114585f750&#34;
+}
+</code></pre><h2 id="getting-an-access-token">Getting an access token</h2>
+<p>Here is an example of an HTTP POST request to the token endpoint where the client is authenticated
+with JWT assertion and is authorized via the client credential OAuth2 flow.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ curl -d <span style="color:#000">client_assertion</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">${</span><span style="color:#000">JWTA</span><span style="color:#4e9a06">}</span> -d <span style="color:#000">client_assertion_type</span><span style="color:#ce5c00;font-weight:bold">=</span>urn:ietf:params:oauth:client-assertion-type:jwt-bearer -d <span style="color:#000">grant_type</span><span style="color:#ce5c00;font-weight:bold">=</span>client_credentials https://iam.local.io/token <span style="color:#000;font-weight:bold">|</span> jq
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;access_token&#34;</span>: <span style="color:#4e9a06">&#34;eyJraWQiOiJyc2ExIiwiY...&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;token_type&#34;</span>: <span style="color:#4e9a06">&#34;Bearer&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;expires_in&#34;</span>: 3599,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;scope&#34;</span>: <span style="color:#4e9a06">&#34;storage.read:/ storage.create:/ storage.modify:/&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span></code></pre></div><p>If not explicitly requested in the payload, the scopes returned
+in the access token are all the ones registered for your client.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-e361335b1cc62574d28cc081294326a2">4.8 - Linking an external account</h1>
+    
+	<p>A user can link an external account from the IAM dashboard (i.e., the user must
+be logged in the IAM service). The following sets of screenshots show the
+process followed to link a Google account.</p>
+<p><img src="../images/account-linking-google-1.png" alt="IAM link google account"></p>
+<p>Clicking on the &ldquo;Link Google account&rdquo; opens a confirmation dialog:</p>
+<p><img src="../images/account-linking-google-2.png" alt="IAM link google account"></p>
+<p>When the user clicks on the <strong>Link</strong>, button is redirected to Google for
+authentication:</p>
+<p><img src="../images/account-linking-google-3.png" alt="IAM link google account"></p>
+<p>After a succesfull authentication the user is redirected to the IAM page, and a
+confirmation dialog shows that the account was linked succesfully:
+<img src="../images/account-linking-google-4.png" alt="IAM link google account"></p>
+<p>Now the user can logout from the IAM and login using the <strong>Sign in with
+Google</strong> button.</p>
+<p>A similar process is implemented for SAML external accounts.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-93f6e460a9484b5a1f15cf389f229f2c">4.9 - Linking an X.509 certificate</h1>
+    
+	<p>IAM provides the ability to link X.509 certificates to a user account. X.509
+account linking works if:</p>
+<ul>
+<li>X.509 certificate authentication is enabled for the IAM instance in use; for
+more information on this see the <a href="/v/v1.13.0/docs/getting-started/nginx/">Getting started guide</a></li>
+<li>The certificate is correctly installed in the browser used to access the IAM;</li>
+<li>The certificate is trusted by the IAM (i.e. is signed by a certificate
+authority known and trusted by the IAM)</li>
+</ul>
+<h2 id="authenticating-with-an-x509-certificate">Authenticating with an X.509 certificate</h2>
+<p>If a certificate is correctly configured in the browser, the browser will show
+a dialog to select whether to authenticate with the certificate or not as in the
+following screenshot:</p>
+<p><img src="../images/account-link-x509-1.png" alt="INDIGO IAM Registration button"></p>
+<p>Note that this happens when enstabilishing the connection to the IAM. If no
+dialog is shown, either:</p>
+<ul>
+<li>there&rsquo;s no certificate in the browser that is trusted by the IAM (either the
+certificate is expired or signed by a CA not trusted by the IAM)</li>
+<li>a certificate was selected automatically by the browser when authenticating
+to the IAM</li>
+</ul>
+<p>In case the certificate used for the authentication is linked to an
+organization account, the IAM login page will display a &ldquo;Sign in with your
+certificate&rdquo; button:</p>
+<p><img src="../images/account-link-x509-5.png" alt="Login page with cert recognized"></p>
+<h2 id="linking-a-certificate">Linking a certificate</h2>
+<p>If a certificate was recognized but is not linked to any membership in the IAM,
+the user will have to authenticate with other credentials (local username &amp;
+password, or external authentication mechanisms (e.g. Google)).</p>
+<p>After having logged in, the user can link a certificate by clickin on the
+<strong>Link Certificate</strong> button:</p>
+<p><img src="../images/account-link-x509-2.png" alt="INDIGO IAM Registration button"></p>
+<p>Note that the <strong>Link certificate</strong> button will be shown in the page <strong>only if a
+valid and trusted certificate was detected by the IAM during the TLS handshake</strong>.</p>
+<p>Clicking the <strong>Link certificate</strong> button opens a dialog that shows information
+about the certificate that should be linked to the account:</p>
+<p><img src="../images/account-link-x509-3.png" alt="INDIGO IAM Registration button"></p>
+<p>If the linking completes succesfully, the linked certificate information will
+be shown in the X.509 certificates panel:</p>
+<p><img src="../images/account-link-x509-4.png" alt="INDIGO IAM Registration button"></p>
+<p>To check that the linking actually works, the user can logout from the IAM and
+login again with the certificate.</p>
+<h2 id="unlinking-a-certificate">Unlinking a certificate</h2>
+<p>A user can unlink a certificate by clicking on the <strong>Unlink</strong> button shown in
+the certificate panel (see the image above).</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-725f368abb7a0345d6635f33b8848b53">4.10 - Managing active tokens</h1>
+    
+	<p>You can see which access and refresh tokens bound to your identity are
+currently active from the MitreID dashboard following the &ldquo;Manage Active
+Tokens&rdquo; link:</p>
+<p><img src="../images/manage-active-tokens.png" alt="Manage access tokens"></p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-56a163f5aefc17b464cd248874936cf9">4.11 - Managing approved sites</h1>
+    
+	<p>You can manage approved sites (i.e. sites and services that you approved when
+authenticating at the IAM) from the MitreID dashboard following the &ldquo;Manage Approved Sites&rdquo; link:</p>
+<p><img src="../images/manage-approved-sites.png" alt="Manage approved sites"></p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-c0adc169e351e3ffdad1a9ceff1b6c19">4.12 - Managing SSH keys</h1>
+    
+	<p>Starting with version <code>v1.7.0</code>, IAM allows users to link SSH public keys to
+their accounts.</p>
+<p>SSH keys are then exposed to relying parties in two ways:</p>
+<ul>
+<li>through the IAM <a href="/v/v1.13.0/docs/reference/api/scim-api/">SCIM APIs</a>;</li>
+<li>as a claim in the OpenID Connect <code>userinfo</code> endpoint response, if the token
+has the <code>ssh-keys</code> scope.</li>
+</ul>
+<h2 id="managing-account-ssh-keys">Managing account SSH keys</h2>
+<p>The IAM dashboard allows a user to link one or more SSH keys to their account,
+as shown below:</p>
+<p><img src="../images/ssh-keys-0.png" alt="ssh key management"></p>
+<h2 id="accessing-account-ssh-keys-via-scim-apis">Accessing account SSH keys via SCIM APIs</h2>
+<p>As clarified in the <a href="/v/v1.13.0/docs/reference/api/scim-api/">SCIM APIs documentation</a>, ssh keys are exposed
+in the user information returned to authorized clients, as in the following
+fragment:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;80e5fb8d-b7c8-451a-89ba-346ae278a66f&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a40000">...</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;userName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;test&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;urn:indigo-dc:scim:schemas:IndigoUser&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;sshKeys&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;display&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;my-key&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;primary&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">true</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ssh-rsa AAAAB...&#34;</span><span style="color:#000;font-weight:bold">,</span> 
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;fingerprint&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;M9vqQeuPrPI0wiaT6sftgfxu1/kowbb37fcLU2+R7yk=&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;created&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-08-25T15:18:45.978+02:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;lastModified&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-08-25T15:18:45.978+02:00&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">],</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><h2 id="accessing-account-ssh-keys-via-the-userinfo-endpoint">Accessing account SSH keys via the userinfo endpoint</h2>
+<p>SSH keys linked to a user account are returned in the userinfo endpoint
+response if the token used to access the endpoint has the <code>ssh-keys</code> scope, as
+in the following example:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#000;font-style:italic">❯ curl -s -L -H &#34;Authorization: Bearer ${AT}&#34; https://iam.local.io/userinfo | jq .
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">{
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">  &#34;sub&#34;: &#34;80e5fb8d-b7c8-451a-89ba-346ae278a66f&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">  &#34;ssh_keys&#34;: [
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">    {
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">      &#34;fingerprint&#34;: &#34;M9vqQeuPrPI0wiaT6sftgfxu1/kowbb37fcLU2+R7yk=&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">      &#34;value&#34;: &#34;ssh-rsa AAAAB3NzaC1yc2E...&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">  ]
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">}
+</span></span></span></code></pre></div><p>Note that the <code>ssh-keys</code> scope is a <strong>restricted</strong> scope, i.e., it can be
+assigned to client registered in IAM only by IAM administrators.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-b4fb7a916a4b238a27bb4f7882cb6eb6">4.13 - Reset an account password</h1>
+    
+	<p>Users can reset their password from the IAM login page by clicking on the
+<em>Forgot your password?</em> link, which opens a dialog where users can then enter
+their email address, and if the entered email address is linked to a registered
+user a reset password link will be sent to such email address.</p>
+<p><img src="../images/IAM-forgot-password.png" alt="INDIGO IAM Forgot Password submission form"></p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+
+    
+	
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        <ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="GitHub" aria-label="GitHub">
+    <a target="_blank" rel="noopener" href="https://github.com/indigo-iam/iam" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Slack" aria-label="Slack">
+    <a target="_blank" rel="noopener" href="https://indigo-iam.slack.com" aria-label="Slack">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+</ul>
+
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="td-footer__copyright">&copy;
+    2025
+    <span class="td-footer__authors">INFN</span></span><span class="td-footer__all_rights_reserved">All Rights Reserved</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/v/v1.13.0/js/main.min.dc2c0119076a0df855e55a8044ce0de74b7b9033c20e853e22d7ec7e9bdde965.js" integrity="sha256-3CwBGQdqDfhV5VqARM4N50t7kDPCDoU&#43;Itfsfpvd6WU=" crossorigin="anonymous"></script>
+<script defer src="/v/v1.13.0/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='/v/v1.13.0/js/tabpane-persist.js'></script>
+
+  </body>
+</html>
