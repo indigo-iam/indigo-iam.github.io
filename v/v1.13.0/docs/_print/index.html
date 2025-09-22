@@ -62,7 +62,6 @@
         <div class="dropdown">
   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Releases</a>
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.13.0">v1.13.0</a></li>
     <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.12.1">v1.12.1</a></li>
     <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.12.0">v1.12.0</a></li>
     <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.11.0">v1.11.0</a></li>
@@ -93,7 +92,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.febc641c926c1f262c054f441b2f9695.json"
+    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.e3fd6238af2ec8a1547e3f67d72df3fc.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -1510,7 +1509,7 @@ This is the multi-page printable view of this section.
 
 
 <div class="content">
-      <p>for IAM v1.13.0</p>
+      <p>for IAM v1.12.1</p>
 
 </div>
 </div>
@@ -1849,7 +1848,7 @@ file, e.g. <code>keystore.jwks</code>.</p>
 
 
 <div class="pageinfo pageinfo-primary">
-<p>indigoiam/iam-login-service:v1.13.0</p>
+<p>indigoiam/iam-login-service:v1.12.1</p>
 
 </div>
 
@@ -1876,7 +1875,7 @@ one in the <code>run</code>command). It has to be done once (not at every restar
 </span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  --env-file<span style="color:#ce5c00;font-weight:bold">=</span>/path/to/iam-login-service/env <span style="color:#4e9a06">\
 </span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  -v /path/to/keystore.jks:/keystore.jks:ro <span style="color:#4e9a06">\
 </span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  --restart unless-stopped <span style="color:#4e9a06">\
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  indigoiam/iam-login-service:v1.13.0
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  indigoiam/iam-login-service:v1.12.1
 </span></span></code></pre></div><p><em>Note: <code>--restart</code> is recommended if you want the IAM service to restart automatically
 when the server running Docker is restarted.</em></p>
 <p>Check the logs with:</p>
@@ -1908,7 +1907,7 @@ command to fix it:</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  --net<span style="color:#ce5c00;font-weight:bold">=</span>iam -p 8080:8080 <span style="color:#4e9a06">\
 </span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  --env-file<span style="color:#ce5c00;font-weight:bold">=</span>/path/to/iam-login-service/env <span style="color:#4e9a06">\
 </span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  -v /path/to/keystore.jks:/keystore.jks:ro,Z <span style="color:#4e9a06">\
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  indigoiam/iam-login-service:v1.13.0
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  indigoiam/iam-login-service:v1.12.1
 </span></span><span style="display:flex;"><span>$ podman logs -f iam-login-service
 </span></span></code></pre></div>
 </div>
@@ -8340,7 +8339,7 @@ the <code>IAM_SAML_LOGIN_BUTTON_TEXT</code> environment variable.</p>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_SAML_METADATA_LOOKUP_SERVICE_REFRESH_PERIOD_SEC</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">3600</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_SAML_LOGIN_BUTTON_TEXT</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;Sign in with IDEM&#34;</span>
 </span></span></code></pre></div><h2 id="custom-saml-configuration">Custom SAML configuration</h2>
-<p>The configuration based on environment variables relies on a <a href="https://raw.githubusercontent.com/indigo-iam/iam/v1.13.0/iam-login-service/src/main/resources/application-saml.yml">configuration
+<p>The configuration based on environment variables relies on a <a href="https://raw.githubusercontent.com/indigo-iam/iam/v1.12.1/iam-login-service/src/main/resources/application-saml.yml">configuration
 template</a> that fits most use cases embedded in the IAM war
 file.</p>
 <p>To have full control on the SAML configuration, provide a custom
@@ -9187,7 +9186,7 @@ docker images:</p>
 <ul>
 <li><code>cnafsd/nginx-httpg-voms</code>, for a NGINX server configured with the <a href="https://baltig.infn.it/cnafsd/ngx_http_voms_module">VOMS module</a>,
 which replaces <a href="https://baltig.infn.it/cnafsd/ngx_http_voms_module">OpenResty VOMS</a></li>
-<li><code>indigoiam/voms-aa-bp:v1.13.0</code>, for the VOMS AA service</li>
+<li><code>indigoiam/voms-aa-bp:v1.12.1</code>, for the VOMS AA service</li>
 </ul>
 <p>Deployment from packages is not currently supported for the VOMS attribute
 authority.</p>
