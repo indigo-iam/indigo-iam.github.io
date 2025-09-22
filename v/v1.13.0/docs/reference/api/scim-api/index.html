@@ -93,7 +93,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.48ac58e731afba21c9f32811b2aea5f7.json"
+    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.febc641c926c1f262c054f441b2f9695.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -118,7 +118,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.48ac58e731afba21c9f32811b2aea5f7.json"
+    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.febc641c926c1f262c054f441b2f9695.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -1700,6 +1700,32 @@ entire resource within the response body.</p>
     ]
 }
 </code></pre>
+<p>The following example shows how to replace a group with a new list of members:</p>
+<pre><code>PATCH http://localhost:8080/scim/Groups/4ca7fa98-0875-4eb3-a71f-0f88ce5632cf
+{
+    &quot;schemas&quot;: [
+        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
+    ],
+    &quot;operations&quot;: [
+        {
+            &quot;op&quot;: &quot;replace&quot;,
+            &quot;path&quot;: &quot;members&quot;,
+            &quot;value&quot;: [
+                {
+                    &quot;display&quot;: &quot;john_lennon&quot;,
+                    &quot;value&quot;: &quot;e9c8cfca-7158-4a0d-9684-4abdede617cd&quot;,
+                    &quot;$ref&quot;: &quot;http://localhost:8080/scim/Users/e9c8cfca-7158-4a0d-9684-4abdede617cd&quot;
+                }, 
+                {
+                   &quot;display&quot;: &quot;paul_mccartney&quot;,
+                    &quot;value&quot;: &quot;73f16d93-2441-4a50-88ff-85360d78c6b5&quot;,
+                    &quot;$ref&quot;: &quot;http://localhost:8080/scim/Users/73f16d93-2441-4a50-88ff-85360d78c6b5&quot;
+                }
+            ]
+        }
+    ]
+}
+</code></pre>
 <h2 id="delete-scimgroupsid">DELETE <code>/scim/Groups/{id}</code></h2>
 <p>Requires <code>scim:write</code> scope.</p>
 <p>Clients request group removal via DELETE.</p>
@@ -1723,7 +1749,7 @@ HTTP/1.1 200 OK
     
     </div>
 <div class="td-page-meta__lastmod">
-  Last modified August 5, 2025: <a href="https://github.com/indigo-iam/iam-website/commit/a2a909ae01449009610231c8847f788539c6c844">Add Scim/Users/Bulk endpoint documentation (#148) (a2a909a)</a>
+  Last modified September 22, 2025: <a href="https://github.com/indigo-iam/iam-website/commit/7e41a372b3b960f76a0c5a590c6482f7e1c2c4dd">Patch replace example (7e41a37)</a>
 </div>
 </div>
 
