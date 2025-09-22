@@ -96,7 +96,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.e3fd6238af2ec8a1547e3f67d72df3fc.json"
+    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.0cca8e10bf3ba8000b9903d49fe6cbc1.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -3865,32 +3865,6 @@ entire resource within the response body.</p>
                     &quot;display&quot;: &quot;john_lennon&quot;,
                     &quot;value&quot;: &quot;e9c8cfca-7158-4a0d-9684-4abdede617cd&quot;,
                     &quot;$ref&quot;: &quot;http://localhost:8080/scim/Users/e9c8cfca-7158-4a0d-9684-4abdede617cd&quot;
-                }
-            ]
-        }
-    ]
-}
-</code></pre>
-<p>The following example shows how to replace a group with a new list of members:</p>
-<pre><code>PATCH http://localhost:8080/scim/Groups/4ca7fa98-0875-4eb3-a71f-0f88ce5632cf
-{
-    &quot;schemas&quot;: [
-        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
-    ],
-    &quot;operations&quot;: [
-        {
-            &quot;op&quot;: &quot;replace&quot;,
-            &quot;path&quot;: &quot;members&quot;,
-            &quot;value&quot;: [
-                {
-                    &quot;display&quot;: &quot;john_lennon&quot;,
-                    &quot;value&quot;: &quot;e9c8cfca-7158-4a0d-9684-4abdede617cd&quot;,
-                    &quot;$ref&quot;: &quot;http://localhost:8080/scim/Users/e9c8cfca-7158-4a0d-9684-4abdede617cd&quot;
-                }, 
-                {
-                   &quot;display&quot;: &quot;paul_mccartney&quot;,
-                    &quot;value&quot;: &quot;73f16d93-2441-4a50-88ff-85360d78c6b5&quot;,
-                    &quot;$ref&quot;: &quot;http://localhost:8080/scim/Users/73f16d93-2441-4a50-88ff-85360d78c6b5&quot;
                 }
             ]
         }
