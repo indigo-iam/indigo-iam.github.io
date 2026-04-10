@@ -84,7 +84,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.71e5222628c6d833dc70aacacc204630.json"
+    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.cde9cbb54244ba6ff2930365925052ad.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -133,8 +133,9 @@ This is the multi-page printable view of this section.
 
 
 <div class="content">
-      <p>IAM has the ability to enable or disable the client registration, and
-to limit the registration to certain users.
+      <p>IAM has the ability to enable or disable the client registration,
+to limit the registration to certain users and to
+allow only admins to create custom scopes.
 The default behavior is that anyone can register a client, even
 anonymous users.</p>
 <p>To have control over the below properties using the environment
@@ -152,6 +153,12 @@ client registration</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">client-registration</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">allow-for</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">&lt;ANYONE|REGISTERED_USERS|ADMINISTRATORS&gt; </span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span></code></pre></div><p>The client registration is enabled for anyone by default.</p>
+<h3 id="allow-only-admins-to-create-custom-scopes">Allow only Admins to create custom scopes</h3>
+<p>In order to limit the ability to create custom scopes to
+admin users only, please set this variable to true.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">client-registration</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">admin-only-custom-scopes</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>The ability to select custom scopes for a client is enabled to everyone by default.</p>
 <h3 id="default-settings-of-a-new-client">Default settings of a new client</h3>
 <p>For any newly registered client, the default value of the related
 access token, device code, ID token and refresh token lifetimes
