@@ -88,7 +88,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.0557485648696f83197427565a434646.json"
+    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.aae2e642c78a6bfbe5f3ddab30bf0387.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -1368,21 +1368,39 @@ by the IdP, it may result that the user cannot submit the account creation form 
 when it is required.</strong></p>
 <p><code>external-auth-attribue</code> must be the name of the IdP attribute, or token claim (when provided by SAML IdPs,
 or OIDC Providers, respectively) to use for the mentioned account creation form field.</p>
-<h2 id="automatic-enrollment-through-saml-idps">Automatic enrollment through SAML IdPs</h2>
-<p>In case of registration through an external SAML Identity Provider, IAM offers
+<h2 id="automatic-enrollment-through-samloidc-idps">Automatic enrollment through SAML/OIDC IdPs</h2>
+<p>In case of registration through an external SAML/OIDC Identity Provider, IAM offers
 a flexible user enrollment flow, also without IAM admin intervention. The default IAM
 behavior is that the user enrollment requires an administrator approval step.</p>
+<h3 id="saml">SAML</h3>
 <p>In order to enable the automatic enrollment flow via an external IdP, one
 should set the following properties, under the <code>saml</code> hierarchy:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">saml</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">jit-account-provisioning</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">enabled</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># this will consider as trusted all the IdPs declared in your</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># application-saml.yml file</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># this default behavior considers all IdPs declared in your</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># application-saml.yml file as trusted</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">trusted-idps</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">all</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span></code></pre></div><p>In order to directly declare the list of trusted SAML IdPs, a comma separated list of
-entity IDs have to be set, e.g. <code>saml.jit-account-provisioning.trusted-idps=idp1,idp2,idp3</code>.</p>
-<h2 id="user-editable-fields">User editable fields</h2>
+</span></span></span></code></pre></div><p>If one wants to select a subset of trusted SAML IdPs, a comma separated list of entity
+IDs have to be set, e.g.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">saml</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">jit-account-provisioning</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">trusted-idps</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://idp1.test.example,https://idp2.test.example,https://idp3.test.example</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><h3 id="oidc">OIDC</h3>
+<p>In order to enable the automatic enrollment flow via an external OIDC Provider, one
+should set the following properties, under the <code>oidc</code> hierarchy:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">oidc</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">jit-account-provisioning</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">enabled</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># this default behavior considers all IdPs declared in your</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># application-oidc.yml file as trusted</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">trusted-idps</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">all</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>If one wants to select a subset of trusted OIDC Providers, a comma separated list of entity
+IDs have to be set, e.g.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">oidc</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">jit-account-provisioning</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">trusted-idps</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://google.test.example,https://facebook.test.example,https://github.test.example</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><h2 id="user-editable-fields">User editable fields</h2>
 <p>Starting with version 1.6.0, IAM allows to limit which fields of the user profile are editable by users.</p>
 <p>The default, backward-compatible settings that allow users to edit all their
 profile fields are defined as follows:</p>
