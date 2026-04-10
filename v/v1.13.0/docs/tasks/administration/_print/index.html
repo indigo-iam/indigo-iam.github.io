@@ -88,7 +88,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.6ea6d375b7d4a68ed10246304948b779.json"
+    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.0d676f61e32a3e89742da48405dc0aef.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -135,7 +135,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>1: <a href="#pg-f9feafc0e8f5414b97d15e7385f9f5be">User management</a></li>
+<li>1: <a href="#pg-06a5048fb3b0ba85782de79356df4f41">Multi-Factor Authentication</a></li>
 
 
     
@@ -154,7 +154,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>2: <a href="#pg-1ff968bff8f6865865a4557b5dcc9bf4">Disable or Enable a client</a></li>
+<li>2: <a href="#pg-f9feafc0e8f5414b97d15e7385f9f5be">User management</a></li>
 
 
     
@@ -173,7 +173,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3: <a href="#pg-e54da204360bf0baa8af45da22015dee">Group Management</a></li>
+<li>3: <a href="#pg-1ff968bff8f6865865a4557b5dcc9bf4">Disable or Enable a client</a></li>
 
 
     
@@ -192,7 +192,26 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>4: <a href="#pg-f03d307094fc23ef6cf17d7a8b313135">Acceptable Usage Policy (AUP) management</a></li>
+<li>4: <a href="#pg-e54da204360bf0baa8af45da22015dee">Group Management</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>5: <a href="#pg-f03d307094fc23ef6cf17d7a8b313135">Acceptable Usage Policy (AUP) management</a></li>
 
 
     
@@ -234,7 +253,61 @@ This is the multi-page printable view of this section.
 
 <div class="td-content" style="">
     
-	<h1 id="pg-f9feafc0e8f5414b97d15e7385f9f5be">1 - User management</h1>
+	<h1 id="pg-06a5048fb3b0ba85782de79356df4f41">1 - Multi-Factor Authentication</h1>
+    
+	<p>To enhance account security and align with modern security standards, Multi-Factor Authentication (MFA) has been introduced in the INDIGO IAM service.</p>
+<p>MFA allows users to add an additional layer of security by registering a second authentication factor. Once enabled, a single credential will no longer suffice for login access.</p>
+<p>The primary goals of MFA are:</p>
+<ul>
+<li><strong>Strengthening security</strong>: Reducing the risk of unauthorized access, even if login credentials are compromised</li>
+<li><strong>Compliance</strong>: Meeting client security policies that mandate the use of multi-factor authentication</li>
+</ul>
+<p>To enable MFA, the <code>mfa</code> INDIGO IAM profile must be configured.</p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Info</h4>
+
+    <strong>MFA support is experimental</strong>.
+It is applicable to login with username and password, login with SAML/OIDC external providers, login with X.509 certificates.
+
+</div>
+
+<h2 id="problems-with-the-authenticator-app">Problems with the authenticator app</h2>
+<p>If users experience issues with their authenticator app, they can request IAM administrators to disable MFA on their behalf.</p>
+<p>Administrators should go to the user’s homepage and click the <em>Disable MFA</em> button.</p>
+<p><img src="Admin-disables-MFA.png" alt="Admin disables MFA for a user"></p>
+<p>A confirmation dialogue will appear. Click <em>Ok</em> to finalize the process.</p>
+<p><img src="Admin-confirmation.png" alt="Confirm MFA deactivation"></p>
+<p>Once completed, MFA will be disabled for the user, allowing them to log in without the second authentication factor.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-f9feafc0e8f5414b97d15e7385f9f5be">2 - User management</h1>
     
 	<p>IAM provides tools to manage users in an organization.
 All the actions described below require administrator privileges.</p>
@@ -291,7 +364,7 @@ for a local user account from the user home page:</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-1ff968bff8f6865865a4557b5dcc9bf4">2 - Disable or Enable a client</h1>
+	<h1 id="pg-1ff968bff8f6865865a4557b5dcc9bf4">3 - Disable or Enable a client</h1>
     
 	<p>Existing clients can be disabled or enabled by Administrator from dashboard.</p>
 <h2 id="disabling-a-client-using-the-dashboard">Disabling a client using the dashboard</h2>
@@ -334,7 +407,7 @@ navigation bar:</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-e54da204360bf0baa8af45da22015dee">3 - Group Management</h1>
+	<h1 id="pg-e54da204360bf0baa8af45da22015dee">4 - Group Management</h1>
     
 	<p>IAM provides a group management system, that can be used by IAM Administrators
 and Group Managers to create groups, remove existing ones and manage membership in the group.</p>
@@ -433,7 +506,7 @@ end time and labels) is shown.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-f03d307094fc23ef6cf17d7a8b313135">4 - Acceptable Usage Policy (AUP) management</h1>
+	<h1 id="pg-f03d307094fc23ef6cf17d7a8b313135">5 - Acceptable Usage Policy (AUP) management</h1>
     
 	<p>Starting with version 1.2.0, IAM supports defining an <strong>Acceptable Usage Policy
 Document (AUP)</strong> for a managed organization. The AUP is presented to applicants
