@@ -84,7 +84,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.4bc8d925b614e80a63d8cdd978f1c860.json"
+    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.71e5222628c6d833dc70aacacc204630.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -109,7 +109,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.4bc8d925b614e80a63d8cdd978f1c860.json"
+    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.71e5222628c6d833dc70aacacc204630.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -460,7 +460,10 @@ included in access tokens; this behaviour can be changed by setting the
 <li>
 <p>the <code>nbf</code> (not before) claim is not set in access tokens; this behaviour
 can be changed by setting the <code>IAM_ACCESS_TOKEN_INCLUDE_NBF=true</code>
-environment variable.</p>
+environment variable. If the <code>nbf</code> claim is included, you can configure how long before
+the token&rsquo;s issue time it becomes valid by setting the environment variable
+<code>IAM_ACCESS_TOKEN_NBF_OFFSET_SECONDS=60</code>. By default, this value is
+60 seconds, meaning the token will be valid starting 60 seconds before it is issued.</p>
 </li>
 </ul>
 <h4 id="requesting-groups-with-the-wlcg-profile">Requesting groups with the WLCG profile</h4>
@@ -520,7 +523,7 @@ This claim is currently present within the following places (given the AARC prof
     
     </div>
 <div class="td-page-meta__lastmod">
-  Last modified August 5, 2025: <a href="https://github.com/indigo-iam/iam-website/commit/29722ed8880c188e99622d194cd2e665ca0d449b">Support for AARC-G026 guideline (`voPerson_id`) (#157) (29722ed)</a>
+  Last modified April 10, 2026: <a href="https://github.com/indigo-iam/iam-website/commit/840e87f2f77e7f3d5b42762893ca1f84c56fa496">Configurable &#39;nbf&#39; duration for token (#162) (840e87f)</a>
 </div>
 </div>
 
