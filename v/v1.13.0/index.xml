@@ -8,6 +8,13 @@
     <language>en</language>
     <atom:link href="/v/v1.13.0/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>IAM v1.13.0</title>
+      <link>/v/v1.13.0/blog/2025/11/03/iam-v1.13.0/</link>
+      <pubDate>Mon, 03 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>/v/v1.13.0/blog/2025/11/03/iam-v1.13.0/</guid>
+      <description>The IAM development team is pleased to announce the release of INDIGO IAM v1.13.0.&#xA;The main feature of this release is the support for OpenID Federation, a new OIDC specification to federate OpenID Connect Providers (see specification),introduced as an experimental functionality.&#xA;This release also provides bug fixes and enhancements, as can be seen in the release notes.&#xA;The major highlights include:&#xA;add user affiliation information into the home dashboard and tokens allow SCIM bulk operations allow to automatically provision accounts based on trusted external OIDC Providers support for custom JWT expiration during an access token request.</description>
+    </item>
+    <item>
       <title>IAM v1.12.1</title>
       <link>/v/v1.13.0/blog/2025/08/04/iam-v1.12.1/</link>
       <pubDate>Mon, 04 Aug 2025 00:00:00 +0000</pubDate>
