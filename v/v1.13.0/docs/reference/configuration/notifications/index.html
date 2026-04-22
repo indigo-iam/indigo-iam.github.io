@@ -84,7 +84,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.b90e398901ffa1cff90442fff224434d.json"
+    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.31cb9ef21c60e20d0c8912c9648d90df.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -109,7 +109,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.b90e398901ffa1cff90442fff224434d.json"
+    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.31cb9ef21c60e20d0c8912c9648d90df.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -366,6 +366,10 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># - notify-admins: the notification arrives to  all IAM admins</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># - notify-address-and-admins: combine the two behaviors</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">admin-notification-policy</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">notify-address</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># When set to true, email notifications will be made, when a certificate is linked </span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># or unlinked from a profile. The email strategy for this notification follows </span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># the admin-notification-policy</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">certificateUpdate</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># Notification policy for group requests. Default value notifies both</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># admins and group managers. Set to notify-gms if you want to notify only group managers</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">group-manager-notification-policy</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">notify-gms-and-admins</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -400,7 +404,7 @@
     
     </div>
 <div class="td-page-meta__lastmod">
-  Last modified June 12, 2025: <a href="https://github.com/indigo-iam/iam-website/commit/7b7067cf47a7c5f39e5c983244f8e38f84d963b3">Add notification section (#154) (7b7067c)</a>
+  Last modified April 22, 2026: <a href="https://github.com/indigo-iam/iam-website/commit/3721d7b331c37277c0a495c4d06f4da13dc6a8a1">Notify VO Admins when a certificate is added by a profile (#176) (3721d7b)</a>
 </div>
 </div>
 
