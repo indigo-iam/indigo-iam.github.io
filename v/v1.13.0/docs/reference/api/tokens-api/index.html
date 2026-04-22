@@ -84,7 +84,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.31cb9ef21c60e20d0c8912c9648d90df.json"
+    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.397a40a5a5ac29e89d3cb4db7fb9c89e.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -109,7 +109,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.31cb9ef21c60e20d0c8912c9648d90df.json"
+    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.397a40a5a5ac29e89d3cb4db7fb9c89e.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -235,6 +235,8 @@
   <a href="/v/v1.13.0/docs/tasks/administration/client-status-change/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1130docstasksadministrationclient-status-change"><span class="">Disable or Enable a client</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1130docstasksadministrationgroup-management-li">
   <a href="/v/v1.13.0/docs/tasks/administration/group-management/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1130docstasksadministrationgroup-management"><span class="">Group Management</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1130docstasksadministrationclient-reset-li">
+  <a href="/v/v1.13.0/docs/tasks/administration/client-reset/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1130docstasksadministrationclient-reset"><span class="">Revoke Tokens for a Client</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1130docstasksadministrationaup-management-li">
   <a href="/v/v1.13.0/docs/tasks/administration/aup-management/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1130docstasksadministrationaup-management"><span class="">Acceptable Usage Policy (AUP) management</span></a>
 </li>
@@ -375,15 +377,9 @@ Authorization: Bearer h480djs93hd8
 <li><a href="#get-iamapiaccess-tokensid">GET /iam/api/access-tokens/:id</a></li>
 <li><a href="#get-iamapirefresh-tokens">GET /iam/api/refresh-tokens</a></li>
 <li><a href="#get-iamapirefresh-tokensid">GET /iam/api/refresh-tokens/:id</a></li>
-<li><a href="#delete-iamapiaccess-tokensid">DELETE /iam/api/access-tokens/:id</a></li>
-<li><a href="#delete-iamapirefresh-tokensid">DELETE /iam/api/refresh-tokens/:id</a></li>
 </ul>
 <p><strong>Deleting tokens</strong>:</p>
 <ul>
-<li><a href="#get-iamapiaccess-tokens">GET /iam/api/access-tokens</a></li>
-<li><a href="#get-iamapiaccess-tokensid">GET /iam/api/access-tokens/:id</a></li>
-<li><a href="#get-iamapirefresh-tokens">GET /iam/api/refresh-tokens</a></li>
-<li><a href="#get-iamapirefresh-tokensid">GET /iam/api/refresh-tokens/:id</a></li>
 <li><a href="#delete-iamapiaccess-tokensid">DELETE /iam/api/access-tokens/:id</a></li>
 <li><a href="#delete-iamapirefresh-tokensid">DELETE /iam/api/refresh-tokens/:id</a></li>
 </ul>
@@ -597,7 +593,7 @@ Authorization: Bearer h480djs93hd8
     
     </div>
 <div class="td-page-meta__lastmod">
-  Last modified June 22, 2023: <a href="https://github.com/indigo-iam/iam-website/commit/c94a2b29362ffcd56eeb15929daa6decf88866a9">Update access to IAM APIs (#79) (c94a2b2)</a>
+  Last modified April 22, 2026: <a href="https://github.com/indigo-iam/iam-website/commit/7fb8a225c869a45c9edf3a4a6fc8b297929896b4">Revoke all refresh tokens for a client (#169) (7fb8a22)</a>
 </div>
 </div>
 

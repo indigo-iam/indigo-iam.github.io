@@ -88,7 +88,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.31cb9ef21c60e20d0c8912c9648d90df.json"
+    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.397a40a5a5ac29e89d3cb4db7fb9c89e.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -226,7 +226,26 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>1.5: <a href="#pg-f03d307094fc23ef6cf17d7a8b313135">Acceptable Usage Policy (AUP) management</a></li>
+<li>1.5: <a href="#pg-871828e34c4583a75d79fb9c3beafcab">Revoke Tokens for a Client</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>1.6: <a href="#pg-f03d307094fc23ef6cf17d7a8b313135">Acceptable Usage Policy (AUP) management</a></li>
 
 
     
@@ -997,7 +1016,64 @@ end time and labels) is shown.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-f03d307094fc23ef6cf17d7a8b313135">1.5 - Acceptable Usage Policy (AUP) management</h1>
+	<h1 id="pg-871828e34c4583a75d79fb9c3beafcab">1.5 - Revoke Tokens for a Client</h1>
+    
+	<p>Existing clients can have their tokens revoked by an Administrator from dashboard.</p>
+<h2 id="revoke-selected-tokens">Revoke selected tokens</h2>
+<p>Log into the service using Admin credentials and click on the <em>Clients</em> link on the left
+navigation bar:</p>
+<p><img src="../images/client-status-change-1.png" alt="dashboard"></p>
+<p>From the <em>Clients</em> link, select the Client you want to disable, for example <em>Test Client</em>:</p>
+<p><img src="../images/client-status-change-2.png" alt="client list"></p>
+<p>To revoke the client&rsquo;s tokens click on the <em>Revoke tokens</em> button on the bottom of the page:</p>
+<p><img src="../images/client-revoke-1.png" alt="revoke tokens button"></p>
+<p>A pop-up window will appear: to specify which tokens you want to remove, select the corresponding checkbox.
+To confirm your choice click on the <em>Revoke Tokens</em> button on the modal window:</p>
+<p><img src="../images/client-revoke-2.png" alt="revoke tokens modal"></p>
+<p>On success you will get a confirmation message and you will be redirected to the clients page:</p>
+<p><img src="../images/client-revoke-3.png" alt="revoke tokens confirmation"></p>
+<h2 id="security-reset">Security reset</h2>
+<p>A security reset will revoke all the tokens issued to that Client and rotate the Client secret.
+The intention of this is that given one knows the Client has been compromised, then it is easily and quickly possible to reset all access for that given Client.</p>
+<p>Log into the service using Admin credentials and click on the <em>Clients</em> link on the left
+navigation bar:</p>
+<p><img src="../images/client-status-change-1.png" alt="dashboard"></p>
+<p>From the <em>Clients</em> link, select the you want to disable, for example <em>Test Client</em>:</p>
+<p><img src="../images/client-status-change-2.png" alt="client list"></p>
+<p>To revoke all tokens issued to the Client and to rotate the Client secret click on <em>Security Reset</em> button on the bottom of the page:</p>
+<p><img src="../images/client-reset-1.png" alt="reset client button"></p>
+<p>To confirm your choice click on the <em>Reset Client</em> button on the modal window:</p>
+<p><img src="../images/client-reset-2.png" alt="reset client modal"></p>
+<p>On success you will get a confirmation message which displays the new client secret of the client that was reset:</p>
+<p><img src="../images/client-reset-3.png" alt="reset client confirmation"></p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-f03d307094fc23ef6cf17d7a8b313135">1.6 - Acceptable Usage Policy (AUP) management</h1>
     
 	<p>Starting with version 1.2.0, IAM supports defining an <strong>Acceptable Usage Policy
 Document (AUP)</strong> for a managed organization. The AUP is presented to applicants
