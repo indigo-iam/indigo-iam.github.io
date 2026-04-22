@@ -88,7 +88,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.a5c957e2cd013303e855cc53889c00a3.json"
+    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.406efd8859cfc66ce4199b98b5172073.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -1571,6 +1571,7 @@ In order to enable the external connectivity check, set the environment variable
 <li><code>/iam/account/{id}/attributes</code>, providing access to user attributes</li>
 <li><code>/iam/account/{id}/authorities</code>, providing access to user authorities/roles</li>
 <li><code>/iam/account/me/clients</code>, providing access to clients owned by the user</li>
+<li><code>/iam/account/{id}/clients</code>, providing access to clients owned by a specific user</li>
 <li><code>/iam/account/find/{option}</code>, searching users by username/label/e-mail/group/certificate subject/authority</li>
 <li><code>/iam/account/me/groups/</code>, retrieves information about groups associated with the currently authenticated user</li>
 <li><code>/iam/account/{id}/groups/</code>, enable retrieval of groups associated with a specific user</li>
@@ -1657,6 +1658,49 @@ Remember that there are three roles in Indigo IAM: Amdin, User, Group Manager.</
 </span></span><span style="display:flex;"><span>      <span style="color:#ce5c00;font-weight:bold">]</span>,
 </span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;scope&#34;</span>: <span style="color:#4e9a06">&#34;address phone openid profile offline_access read-tasks attr write-tasks email read:/ write:/&#34;</span>,
 </span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;created_at&#34;</span>: <span style="color:#0000cf;font-weight:bold">1658764288643</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ce5c00;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span></code></pre></div><h3 id="get-iamaccountidclients">GET <code>/iam/account/{id}/clients</code></h3>
+<p>Let an admin to retrieve information about clients owned by a different user.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ curl -s -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  <span style="color:#4e9a06">&#34;http://localhost:8080/iam/account/167e359e-7833-4ce2-9f8b-f035cee39505/clients?count=1&amp;startIndex=1&#34;</span> <span style="color:#000;font-weight:bold">|</span> jq
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;totalResults&#34;</span>: 3,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;itemsPerPage&#34;</span>: 1,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;startIndex&#34;</span>: 1,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;Resources&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;client_id&#34;</span>: <span style="color:#4e9a06">&#34;client&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;client_name&#34;</span>: <span style="color:#4e9a06">&#34;Test Client&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;redirect_uris&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#4e9a06">&#34;https://iam.local.io/iam-test-client/openid_connect_login&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#4e9a06">&#34;http://localhost:9090/iam-test-client/openid_connect_login&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ce5c00;font-weight:bold">]</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;contacts&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#4e9a06">&#34;admin@example.com&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ce5c00;font-weight:bold">]</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;grant_types&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#4e9a06">&#34;authorization_code&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#4e9a06">&#34;urn:ietf:params:oauth:grant_type:redelegate&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#4e9a06">&#34;implicit&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#4e9a06">&#34;password&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#4e9a06">&#34;refresh_token&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ce5c00;font-weight:bold">]</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;token_endpoint_auth_method&#34;</span>: <span style="color:#4e9a06">&#34;client_secret_basic&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;scope&#34;</span>: <span style="color:#4e9a06">&#34;address openid profile scim:write write-tasks iam:admin.write read:/ phone offline_access read-tasks scim:read iam:admin.read attr email write:/&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;access_token_validity_seconds&#34;</span>: 3600,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;refresh_token_validity_seconds&#34;</span>: 86400,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;id_token_validity_seconds&#34;</span>: 600,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;reuse_refresh_token&#34;</span>: true,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;dynamically_registered&#34;</span>: false,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;allow_introspection&#34;</span>: true,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;clear_access_tokens_on_refresh&#34;</span>: true,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;require_auth_time&#34;</span>: false,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;created_at&#34;</span>: 1776428339265,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;last_used&#34;</span>: <span style="color:#4e9a06">&#34;1994-03-21&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;active&#34;</span>: true,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;up_scoping_enabled&#34;</span>: <span style="color:#204a87">true</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#ce5c00;font-weight:bold">]</span>
 </span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
