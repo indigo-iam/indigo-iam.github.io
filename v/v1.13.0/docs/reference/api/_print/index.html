@@ -88,7 +88,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.aae2e642c78a6bfbe5f3ddab30bf0387.json"
+    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.a5c957e2cd013303e855cc53889c00a3.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -1224,6 +1224,8 @@ In order to enable the external connectivity check, set the environment variable
 <li><code>/iam/account/{id}/authorities</code>, providing access to user authorities/roles</li>
 <li><code>/iam/account/me/clients</code>, providing access to clients owned by the user</li>
 <li><code>/iam/account/find/{option}</code>, searching users by username/label/e-mail/group/certificate subject/authority</li>
+<li><code>/iam/account/me/groups/</code>, retrieves information about groups associated with the currently authenticated user</li>
+<li><code>/iam/account/{id}/groups/</code>, enable retrieval of groups associated with a specific user</li>
 <li><code>/iam/account/{id}/groups/{groupId}</code>, providing access to user groups</li>
 <li><code>/iam/account/{id}/managed-groups</code>, providing access to groups to which a user is manager</li>
 <li><code>/iam/group/{groupId}/group-managers</code>, listing managers of a certain group</li>
@@ -1406,7 +1408,74 @@ Remember that there are three roles in Indigo IAM: Amdin, User, Group Manager.</
 </span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/find/notingroup/6a384bcd-d4b3-4b7f-a2fe-7d897ada0dd1
 </span></span></code></pre></div></li>
 </ul>
-<h2 id="group-members">Group members</h2>
+<h2 id="group">Group</h2>
+<h3 id="get-iamaccountmegroups">GET <code>/iam/account/me/groups</code></h3>
+<p>Retrieves information about groups associated with the currently authenticated user.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ curl -s -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> http://localhost:8080/iam/account/me/groups <span style="color:#000;font-weight:bold">|</span> jq
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;totalResults&#34;</span>: 2,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;itemsPerPage&#34;</span>: 10,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;startIndex&#34;</span>: 0,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;Resources&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;id&#34;</span>: 2,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;uuid&#34;</span>: <span style="color:#4e9a06">&#34;6a384bcd-d4b3-4b7f-a2fe-7d897ada0dd1&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;name&#34;</span>: <span style="color:#4e9a06">&#34;Analysis&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;description&#34;</span>: <span style="color:#4e9a06">&#34;The analysis group&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;parentGroup&#34;</span>: null,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;childrenGroups&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[]</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;labels&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[]</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;joiningDate&#34;</span>: null,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;scopePoliciesDescription&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;id&#34;</span>: 1,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;uuid&#34;</span>: <span style="color:#4e9a06">&#34;c617d586-54e6-411d-8e38-64967798fa8a&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;name&#34;</span>: <span style="color:#4e9a06">&#34;Production&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;description&#34;</span>: <span style="color:#4e9a06">&#34;The production group&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;parentGroup&#34;</span>: null,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;childrenGroups&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[]</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;labels&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[]</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;joiningDate&#34;</span>: null,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;scopePoliciesDescription&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ce5c00;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span></code></pre></div><h3 id="get-iamaccountidgroups">GET <code>/iam/account/{id}/groups</code></h3>
+<p>Enable Admin to retrieve groups associated with a specific user.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ curl -s -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> http://localhost:8080/iam/account/167e359e-7833-4ce2-9f8b-f035cee39505/groups <span style="color:#000;font-weight:bold">|</span> jq
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;totalResults&#34;</span>: 2,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;itemsPerPage&#34;</span>: 10,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;startIndex&#34;</span>: 0,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;Resources&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;id&#34;</span>: 2,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;uuid&#34;</span>: <span style="color:#4e9a06">&#34;6a384bcd-d4b3-4b7f-a2fe-7d897ada0dd1&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;name&#34;</span>: <span style="color:#4e9a06">&#34;Analysis&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;description&#34;</span>: <span style="color:#4e9a06">&#34;The analysis group&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;parentGroup&#34;</span>: null,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;childrenGroups&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[]</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;labels&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[]</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;joiningDate&#34;</span>: null,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;scopePoliciesDescription&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;id&#34;</span>: 1,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;uuid&#34;</span>: <span style="color:#4e9a06">&#34;c617d586-54e6-411d-8e38-64967798fa8a&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;name&#34;</span>: <span style="color:#4e9a06">&#34;Production&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;description&#34;</span>: <span style="color:#4e9a06">&#34;The production group&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;parentGroup&#34;</span>: null,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;childrenGroups&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[]</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;labels&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[]</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;joiningDate&#34;</span>: null,
+</span></span><span style="display:flex;"><span>      <span style="color:#4e9a06">&#34;scopePoliciesDescription&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ce5c00;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span></code></pre></div><h2 id="group-members">Group members</h2>
 <h3 id="post-iamaccountidgroupsgroupid">POST <code>/iam/account/{id}/groups/{groupId}</code></h3>
 <p>Adds user to a group. It can be done directly through the IAM dashboard as explained <a href="/v/v1.13.0/docs/tasks/administration/group-management/#managing-membership-for-a-group">here</a>.</p>
 <p>Requires <code>iam:admin.write</code> scope.</p>
