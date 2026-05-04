@@ -88,7 +88,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.ecbe11af8f7a0766aede3a7efe421fed.json"
+    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.2e388459d99cde1c2674ab5e6194917d.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -113,7 +113,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.ecbe11af8f7a0766aede3a7efe421fed.json"
+    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.2e388459d99cde1c2674ab5e6194917d.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -190,6 +190,8 @@
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1130docsreferenceconfigurationjwt-profiles-li">
   <a href="/v/v1.13.0/docs/reference/configuration/jwt-profiles/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1130docsreferenceconfigurationjwt-profiles"><span class="">JWT profiles support</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1130docsreferenceconfigurationopenid-federation-li">
+  <a href="/v/v1.13.0/docs/reference/configuration/openid-federation/" title="OpenID Federation 1.0" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1130docsreferenceconfigurationopenid-federation"><span class="">OpenID Federation</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1130docsreferenceconfigurationsystem-scopes-li">
   <a href="/v/v1.13.0/docs/reference/configuration/system-scopes/" title="MitreID System Scopes" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1130docsreferenceconfigurationsystem-scopes"><span class="">System scopes</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1130docsreferenceconfigurationgroup-enrollment-li">
@@ -347,6 +349,7 @@
     <li><a href="#client-lifecycle">Client lifecycle</a></li>
     <li><a href="#privacy-policy-settings">Privacy policy settings</a></li>
     <li><a href="#support-button-settings">Support Button Settings</a></li>
+    <li><a href="#openid-federation">OpenID Federation</a></li>
   </ul>
 </nav>
       </div>
@@ -428,6 +431,11 @@ Currently the following profiles are defined:</p>
 <td>mfa</td>
 <td>no</td>
 <td>Enables Multi-Factor Authentication (MFA) settings</td>
+</tr>
+<tr>
+<td>openid-federation</td>
+<td>no</td>
+<td>Allows IAM to act as an OpenID Provider and Relying Party in the OpenID Federation model</td>
 </tr>
 </tbody>
 </table>
@@ -822,6 +830,22 @@ section</a>.</p>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The text displayed in the login page for the support URL specified above,</span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># if enabled</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_SUPPORT_TEXT</span><span style="color:#ce5c00;font-weight:bold">=</span>Support
+</span></span></code></pre></div><h2 id="openid-federation">OpenID Federation</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># URL of one or more trusted trust anchors. May be a comma-separated list</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_OIDFED_TRUST_ANCHORS</span><span style="color:#ce5c00;font-weight:bold">=</span>https://ta.example.com
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Validity duration (in seconds) of the generated Entity Configuration document</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_OIDFED_ENTITY_CONFIGURATION_EXPIRATION_SECONDS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">86400</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># One or more federation authorities that this entity trusts.</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># May be a comma-separated list</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_OIDFED_ENTITY_CONFIGURATION_AUTHORITY_HINTS</span><span style="color:#ce5c00;font-weight:bold">=</span>https://ta.example.com,https://ia.example.com
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Human-readable name of the organization operating this federation entity.</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Filling this property is not mandatory</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_OIDFED_FEDERATION_ENTITY_ORGANIZATION_NAME</span><span style="color:#ce5c00;font-weight:bold">=</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Contact info of administrators (e.g. email addresses).</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># May be comma-separated. Not mandatory</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_OIDFED_FEDERATION_ENTITY_CONTACTS</span><span style="color:#ce5c00;font-weight:bold">=</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># URI of a logo representing the entity. Not mandatory</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_OIDFED_FEDERATION_ENTITY_LOGO_URI</span><span style="color:#ce5c00;font-weight:bold">=</span>
 </span></span></code></pre></div>
   <div class="section-index">
     
@@ -830,6 +854,12 @@ section</a>.</p>
         <div class="entry">
                 <h5>
                     <a href="/v/v1.13.0/docs/reference/configuration/jwt-profiles/">JWT profiles support</a>
+                </h5>
+                <p></p>
+            </div>
+        <div class="entry">
+                <h5>
+                    <a href="/v/v1.13.0/docs/reference/configuration/openid-federation/">OpenID Federation 1.0</a>
                 </h5>
                 <p></p>
             </div>
@@ -901,7 +931,7 @@ section</a>.</p>
             </div>
         </div>
 <div class="td-page-meta__lastmod">
-  Last modified April 22, 2026: <a href="https://github.com/indigo-iam/iam-website/commit/3721d7b331c37277c0a495c4d06f4da13dc6a8a1">Notify VO Admins when a certificate is added by a profile (#176) (3721d7b)</a>
+  Last modified May 4, 2026: <a href="https://github.com/indigo-iam/iam-website/commit/165030ee84bf55e4371a391b5cad542e067ec33d">Document OpenID Federation (#171) (165030e)</a>
 </div>
 </div>
 
