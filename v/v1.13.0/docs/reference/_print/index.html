@@ -88,7 +88,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.e0e2db354b02884dd6fdd9b69fa1ca09.json"
+    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.56a0d3e187f8dc4b561cba8ee1b47d05.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -6625,6 +6625,15 @@ The <em>nickname</em> value will be the same as the username set during the regi
 </span></span></span></code></pre></div><p>or set the environment variable <code>IAM_ADD_NICKNAME_AS_ATTRIBUTE=true</code>.</p>
 <p>Once the new IAM user has been created, the <em>Attributes</em> view from the dashboard looks like the following</p>
 <p><img src="./nickname-attribute.png" alt="Attributes view"></p>
+<h2 id="configuring-the-registration-button">Configuring the registration button</h2>
+<p>One can configure the visability of the registration button and its text via the following variables in the config file</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">registration</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">show-registration-button-in-login-page</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">registration-button-text</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Apply for an account</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>The defualt configuration is defined as written above and can also be defined via the environment variables <code>IAM_REGISTRATION_SHOW_REGISTRATION_BUTTON_IN_LOGIN_PAGE</code> and <code>IAM_REGISTRATION_BUTTON_TEXT</code>.</p>
+<p>The aforementioned configuration of the registration button would result in it being rendered as seen below.</p>
+<p><img src="./registration-button.png" alt="registration button view"></p>
 
 </div>
 
