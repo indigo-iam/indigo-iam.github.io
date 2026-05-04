@@ -84,7 +84,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.420b854cab5e2240bc4070878a8b3f1a.json"
+    data-offline-search-index-json-src="/v/v1.13.0/offline-search-index.a7ba8aa67c73f88423c024ad9d1c9dad.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -133,24 +133,29 @@ This is the multi-page printable view of this section.
 
 
 <div class="content">
-      <p>A token can be obtained from a command-line interface (CLI) in two ways:</p>
+      <p>A token can be obtained from a command-line interface (CLI) in different ways:</p>
 <ul>
 <li>using <code>oidc-agent</code></li>
-<li>using scripts linked to this page, using the resource-owner password
-credentials flow or the OAuth device flow</li>
+<li>using scripts linked to this page, with the resource-owner password
+credentials flow (<strong>deprecated</strong>) or the device code flow</li>
+<li>using <code>curl</code>.</li>
 </ul>
 <p>In this section we recommend the installations of a set of tools that can help
 in managing tokens.</p>
-<h2 id="obtaining-a-token-using-oidc-agent">Obtaining a token using <code>oidc-agent</code></h2>
-<p><a href="https://github.com/indigo-dc/oidc-agent">oidc-agent</a> is a useful tool to easily get and manage access
+<h2 id="oidc-agent"><code>oidc-agent</code></h2>
+<p><a href="https://indigo-dc.github.io/oidc-agent">oidc-agent</a> is a useful tool to easily get and manage access
 tokens for command-line applications.</p>
 <h3 id="installing-oidc-agent">Installing oidc-agent</h3>
-<p>See <a href="https://indigo-dc.gitbook.io/oidc-agent/installation/install">oidc-agent installation
+<p>See <a href="https://indigo-dc.github.io/oidc-agent/installation/install">oidc-agent installation
 instructions</a>.</p>
-<h4 id="quick-centos7-installation-instructions">Quick CENTOS7 installation instructions</h4>
-<p>This recipe shows how to quickly install <code>oidc-agent</code> on CENTOS 7.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ yum -y install epel-release
-</span></span><span style="display:flex;"><span>$ yum -y install https://github.com/indigo-dc/oidc-agent/releases/download/v3.3.1/oidc-agent-3.3.1-1.el7.x86_64.rpm
+<h4 id="quick-almalinux9-installation-instructions">Quick Almalinux9 installation instructions</h4>
+<p>This recipe shows how to quickly install <code>oidc-agent</code> on Almalinux9.</p>
+<p>Install the <code>oidc-agent</code> repofile</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#204a87">cd</span> /etc/yum.repos.d
+</span></span><span style="display:flex;"><span>wget https://repo.data.kit.edu//data-kit-edu-almalinux9.repo
+</span></span></code></pre></div><p>refresh the cache and install oidc-agent with</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dnf makecache
+</span></span><span style="display:flex;"><span>dnf install oidc-agent
 </span></span></code></pre></div><h3 id="bootstrapping-oidc-agent">Bootstrapping oidc-agent</h3>
 <p>The first thing to do is to start <code>oidc-agent</code>.
 This can be done issuing the following command:</p>
@@ -238,7 +243,18 @@ used to print a client configuration, as in the following example:</p>
 </span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;cert_path&#34;</span>:	<span style="color:#4e9a06">&#34;&#34;</span>,
 </span></span><span style="display:flex;"><span>	<span style="color:#4e9a06">&#34;audience&#34;</span>:	<span style="color:#4e9a06">&#34;&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span></code></pre></div><h2 id="obtaining-a-token-with-the-password-flow">Obtaining a token with the password flow</h2>
+</span></span></code></pre></div><h2 id="scripts">Scripts</h2>
+<h3 id="obtaining-a-token-with-the-password-flow">Obtaining a token with the password flow</h3>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Warning</h4>
+
+    For security reasons, this grant type is <strong>deprecated</strong> in OAuth2.1
+and it may no longer work in INDIGO IAM.
+
+</div>
+
 <p>The <a href="https://tools.ietf.org/html/rfc6749#section-4.3">password flow</a> allows a user to get a token from the
 IAM by using the IAM local credentials (i.e. the username/password credentials
 setup at IAM registration time).</p>
@@ -253,26 +269,7 @@ administrator to enable the password flow for such client</li>
 your own following the recommendations of the <a href="https://tools.ietf.org/html/rfc6749#section-4.3">RFC</a>) to
 obtain a token out of the IAM</li>
 </ol>
-
-
-<div class="alert alert-warning" role="alert">
-<h4 class="alert-heading">Warning</h4>
-
-    <p>While this approach is viable, it is <strong>deprecated</strong> since:</p>
-<ul>
-<li>it forces the user to request the activation of the password flow for the
-client (it is disabled by default for dynamically registered clients)</li>
-<li>it forces the user to authenticate with the local IAM credentials (external
-authentication mechanisms such as Google or SAML cannot be used)</li>
-<li>it exposes the user credentials to the client application</li>
-</ul>
-<p>The device code flow, described in the next section, does not have these
-limitations and should be preferred over the password flow.</p>
-
-
-</div>
-
-<h2 id="obtaining-a-token-with-the-device-code-flow">Obtaining a token with the device code flow</h2>
+<h3 id="obtaining-a-token-with-the-device-code-flow">Obtaining a token with the device code flow</h3>
 <p>The <a href="https://tools.ietf.org/html/draft-ietf-oauth-device-flow-09">device code flow</a> allows a user to get a token
 from the IAM from a CLI interface while using an external browser for the
 authentication step. This is convenient since:</p>
@@ -295,7 +292,38 @@ authorization</li>
 <li>prints code information on the terminal</li>
 <li>waits for user input to proceed and obtain the token(s)</li>
 </ul>
-
+<h2 id="curl">CURL</h2>
+<p>The aforementioned OAuth flows may also be directly performed with the <code>curl</code> command,
+which is exactly the way the scripts obtain a token.</p>
+<p>Here we show the <code>client_credentials</code> flow, specified in section 4.4 of the
+<a href="https://datatracker.ietf.org/doc/html/rfc6749#section-4.4">RFC6749</a>. It is tought for
+service accounts, i.e. for scripts able to secure credentials (NOT public clients)
+and which can be obtain a token with capabilities. The client credential flow does not
+require a user approval step since it is not bounded to any user nor any user attributes,
+such as groups. A typical client credential request could be</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ curl -u client-cred:secret http://localhost:8080/token -d <span style="color:#000">grant_type</span><span style="color:#ce5c00;font-weight:bold">=</span>client_credentials -d <span style="color:#000">scope</span><span style="color:#ce5c00;font-weight:bold">=</span>read-tasks -s <span style="color:#000;font-weight:bold">|</span> jq
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;access_token&#34;</span>: <span style="color:#4e9a06">&#34;eyJraWQiOiJy...&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;token_type&#34;</span>: <span style="color:#4e9a06">&#34;Bearer&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;expires_in&#34;</span>: 3599,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;scope&#34;</span>: <span style="color:#4e9a06">&#34;read-tasks&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span></code></pre></div><h3 id="set-custom-token-expiration">Set custom token expiration</h3>
+<p>INDIGO IAM supports the <code>expires_in</code> request parameter for custom token expiration,
+which is applied when asking for an access token at the <code>/token</code> endpoint.
+The token expiration may only be set <strong>shorter</strong> than the lifetime configured for the
+Client (typically 3600 seconds) &ndash; visible by Administrators. In case a longer
+lifetime is requested, IAM will shorten the token lifetime to the configured one.</p>
+<p>A typical token request with custom lifetime (here 10 seconds) in case of <code>client_credentials</code> flow
+is</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ curl -u client-cred:secret http://localhost:8080/token -d <span style="color:#000">expires_in</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">10</span> -d <span style="color:#000">grant_type</span><span style="color:#ce5c00;font-weight:bold">=</span>client_credentials -d <span style="color:#000">scope</span><span style="color:#ce5c00;font-weight:bold">=</span>read-tasks -s <span style="color:#000;font-weight:bold">|</span> jq
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;access_token&#34;</span>: <span style="color:#4e9a06">&#34;eyJraWQiOiJy...&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;token_type&#34;</span>: <span style="color:#4e9a06">&#34;Bearer&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;expires_in&#34;</span>: 9,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;scope&#34;</span>: <span style="color:#4e9a06">&#34;read-tasks&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span></code></pre></div>
 </div>
 </div>
 
