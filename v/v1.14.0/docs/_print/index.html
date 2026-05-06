@@ -85,7 +85,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.1dfbfd088c5fdd1cc37e3d2cf252fa9c.json"
+    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.9fd8345c6469e1a707abb7cb091a2d25.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -3997,6 +3997,22 @@ impersonation semantics.</p>
 <code>urn:ietf:params:oauth:grant-type:token-exchange</code> grant type enabled. The token
 exchange grant type is <strong>disabled</strong> by default for dynamically registered
 clients, and can be enabled only by users with administrative privileges.</p>
+<p>Furthermore, one can restrict the token exchange actor such that upscoping isn&rsquo;t enabled.
+Here, the definition of upscoping being that one requests for additional scopes that is not present in the original token.
+However, to clarify, both actor and subject must have the requested scopes enabled. <br>
+<strong>In this context the disabling of upscoping restricts the actor to only request scopes present in the token, but the
+scopes requested must be enabled for both subject and actor. For any token exchange, the scopes requested must be present
+on subject- and actor client.</strong></p>
+<p><strong>It&rsquo;s important to note that the disabling of upscoping enforces all the requested scopes to be present in the
+access token, except for the <code>offline_access</code> scope. The disabling of upscoping does not restrict this scope from
+being upscoped (though the <code>offline_access</code> scope would still have to be enabled for both subject and actor client).</strong></p>
+<p>Per default upscoping is enabled, but given administrator privileges one can disable upscoping for a client.<br>
+This can be done in the scope segment, when configuring the client as seen below:</p>
+<p><img src="upscoping.png" alt="upscoping view"></p>
+<p>Lastly, it should be mentioned that the default behaviour is to extract the scopes from the access token.
+If no scopes are present in the access token (which is a possibility given the versatility of the configuration
+of access tokens within Indigo IAM), then token introspection will be used to retrieve the scopes of the token and
+a warning will be produced, signaling this.</p>
 <h2 id="the-token-exchange-request">The token exchange request</h2>
 <p>A client who wants to exchange an access token with a new one (or a couple of
 new tokens, in case a refresh token is requested), must send an authenticated
@@ -4034,7 +4050,8 @@ special way. These scopes, in order to be &ldquo;exchanged&rdquo; across clients
 be</p>
 <ul>
 <li>enabled for the client requesting the token exchange</li>
-<li>linked to the subject token presented for the token exchange</li>
+<li>enabled for the client who is the subject of the token exchange</li>
+<li>linked to the subject token presented for the token exchange (only if the client requesting does not have upscoping enabled)</li>
 </ul>
 <p>The list of system scopes currently defined in the IAM can be obtained by
 registered users by issuing a request to the IAM system scopes API:</p>
@@ -4108,7 +4125,30 @@ following JSON:</p>
 </span></span></code></pre></div><p>And <code>app</code> can use the newly issued access token to invoke services on
 <a href="https://task-app.example.org/api">https://task-app.example.org/api</a> on behalf of user <code>test</code>:</p>
 <pre tabindex="0"><code>$ curl -H &#34;Authorization: Bearer eyJra...&#34; http://tasks.example.org/api
-</code></pre><h3 id="trust">Trust</h3>
+</code></pre><h3 id="upscoping-during-token-exchange-example">Upscoping during Token Exchange example</h3>
+<p>Below is presented a guide on how to do upscoping using the default clients
+enabled in Indigo IAM.<br></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">## The goal</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># To perform a token exchange with a subject to provide initial token with scope X</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># and an actor to use said token to get a new token with scope Y using upscoping</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">## Setting the variables</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87">export</span> <span style="color:#000">IAM_TOKEN_ENDPOINT</span><span style="color:#ce5c00;font-weight:bold">=</span>localhost:8080/token
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">## Getting the access token</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>curl <span style="color:#000">$IAM_TOKEN_ENDPOINT</span> -d <span style="color:#000">grant_type</span><span style="color:#ce5c00;font-weight:bold">=</span>client_credentials -d <span style="color:#000">client_id</span><span style="color:#ce5c00;font-weight:bold">=</span>token-exchange-subject -d <span style="color:#000">client_secret</span><span style="color:#ce5c00;font-weight:bold">=</span>secret -d <span style="color:#000">scope</span><span style="color:#ce5c00;font-weight:bold">=</span>openid
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">## Setting the access token just received</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87">export</span> <span style="color:#000">ACCESS_TOKEN</span><span style="color:#ce5c00;font-weight:bold">=</span>...whatever you just received
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">## Doing the token exchange</span>
+</span></span><span style="display:flex;"><span>curl <span style="color:#000">$IAM_TOKEN_ENDPOINT</span> -u token-exchange-actor:secret -d <span style="color:#000">subject_token</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">$ACCESS_TOKEN</span> -d <span style="color:#000">grant_type</span><span style="color:#ce5c00;font-weight:bold">=</span>urn:ietf:params:oauth:grant-type:token-exchange -d <span style="color:#000">scope</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;profile&#34;</span> -d <span style="color:#000">subject_token_type</span><span style="color:#ce5c00;font-weight:bold">=</span>urn:ietf:params:oauth:token-type:access_token
+</span></span></code></pre></div><h3 id="trust">Trust</h3>
 <p>Clients that have the token exchange grant enabled are considered trusted
 clients i.e., no explicit grant from the user is needed to grant access to
 client scopes. For IAM system scopes, however, these can be &ldquo;exchanged&rdquo; only if
