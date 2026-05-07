@@ -85,7 +85,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.29f61beb13b71414ea5a0822c7369694.json"
+    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.eff44a5d8860f8c5ab52983fb428e55b.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -770,7 +770,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3.2.9: <a href="#pg-7c4fbefe2df14b07a34f2d3bdea65fc4">Client registration</a></li>
+<li>3.2.9: <a href="#pg-7ea71128f09ade8f4f7e5be591b3c320">User editable fields</a></li>
 
 
     
@@ -789,7 +789,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3.2.10: <a href="#pg-47a2d3402f6d7bf0ca16bc578ce55b0c">IAM Notifications</a></li>
+<li>3.2.10: <a href="#pg-7c4fbefe2df14b07a34f2d3bdea65fc4">Client registration</a></li>
 
 
     
@@ -808,7 +808,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3.2.11: <a href="#pg-63d7a6556648cdd8622cf2321f13a835">JSON Web Keys (JWK)</a></li>
+<li>3.2.11: <a href="#pg-47a2d3402f6d7bf0ca16bc578ce55b0c">IAM Notifications</a></li>
 
 
     
@@ -827,7 +827,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3.2.12: <a href="#pg-b153a1aec7140b2aa27a0ba03e8dc3fd">Local authentication</a></li>
+<li>3.2.12: <a href="#pg-63d7a6556648cdd8622cf2321f13a835">JSON Web Keys (JWK)</a></li>
 
 
     
@@ -846,22 +846,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3.2.13: <a href="#pg-359104377f9341d4c326d45fb209b4c2">External authentication</a></li>
-
-
-    
-    <ul>
-        
-  
-  
-  
-  
-
-  
-    
-    
-	
-<li>3.2.13.1: <a href="#pg-ac3ba36ba3318b338bcbf439e1b79e60">OpenID-Connect authentication</a></li>
+<li>3.2.13: <a href="#pg-b153a1aec7140b2aa27a0ba03e8dc3fd">Local authentication</a></li>
 
 
     
@@ -880,7 +865,22 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3.2.13.2: <a href="#pg-af611b856fca4d6771e3e3ed962701b5">SAML authentication</a></li>
+<li>3.2.14: <a href="#pg-359104377f9341d4c326d45fb209b4c2">External authentication</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>3.2.14.1: <a href="#pg-ac3ba36ba3318b338bcbf439e1b79e60">OpenID-Connect authentication</a></li>
 
 
     
@@ -899,7 +899,26 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3.2.13.3: <a href="#pg-86d359d1731c5e164863d1bbe93a7bcf">X.509 authentication</a></li>
+<li>3.2.14.2: <a href="#pg-af611b856fca4d6771e3e3ed962701b5">SAML authentication</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>3.2.14.3: <a href="#pg-86d359d1731c5e164863d1bbe93a7bcf">X.509 authentication</a></li>
 
 
     
@@ -7992,23 +8011,27 @@ string is set to <em>true</em> (as in the image above).</p>
     
 	<h1 id="pg-2501923ff9f1258a5dc95b7435579a75">3.2.7 - Registration &amp; Enrollment</h1>
     
-	<p>IAM implements a basic registration service that requires the intervention
-of an IAM admin. In fact, when users apply for membership in an
+	<p>IAM implements a flexible registration service, either with or without the intervention
+of an IAM admin.
+If IAM is configured such to enable an authomatic user enrollment flow, it must
+login from an external and trusted SAML/OIDC provider (see <a href="https://indigo-iam.github.io/v/current/docs/reference/configuration/registration/#automatic-enrollment-through-samloidc-idps">here</a>).</p>
+<h2 id="admin-moderated-user-enrollment">Admin-moderated user enrollment</h2>
+<p>When the Spring profile <code>registration</code> is enabled, IAM allows users to register into the application
+and set their own username/password, enabling a local authentication to the application.
+By default, when users apply for membership in an
 organization, administrators are asked to validate membership requests.</p>
-<h2 id="registration-with-external-idp">Registration with external IdP</h2>
+<p>Anyway, IAM also allows to registrate users after login with an external provider.</p>
+<h3 id="registration-with-external-idp">Registration with external IdP</h3>
 <p>When an external OIDC or SAML IdP is used to authenticate users, IAM allows to configure:</p>
 <ul>
 <li>Whether users are required to authenticate through an external IdP and optionally
 which ones</li>
 <li>Which information must be retrieved from the IdP to fill the account creation form</li>
 </ul>
-<p>This is done by creating a YAML file in <code>/indigo-iam/config</code>, for example
-<code>/indigo-iam/config/application-registration.yaml</code>. When deploying IAM with a container,
-a volume providing this file must be mapped into the container.</p>
-<p>The contents in this file must be under the following hierarchy:</p>
+<p>The relevant settings must be under the following hierarchy of a [custom configuration file][custom-config-file]:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">registration</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span></code></pre></div><h3 id="requiring-external-authentication">Requiring external authentication</h3>
+</span></span></span></code></pre></div><h4 id="requiring-external-authentication">Requiring external authentication</h4>
 <p>To require that users must authenticate through an external IdP, you need to set the
 parameter <code>require-external-authentication=true</code>. You can also specify the type of external
 IdP (<code>oidc</code> or <code>saml</code>) and require one specific issuer.</p>
@@ -8021,12 +8044,12 @@ mapped to IAM membership information</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">require-external-authentication</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">oidc-issuer</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://auth.cern.ch/auth/realms/cern</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">authentication-type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">oidc</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span></code></pre></div><h3 id="filling-information-from-idp">Filling information from IdP</h3>
+</span></span></span></code></pre></div><h4 id="filling-information-from-idp">Filling information from IdP</h4>
 <p>The first time a user authenticates in an IAM instance, the account creation form will be displayed. It is possible to request
-that some of the fields are filled with the value of an IdP attribute and to define that some of these fields are read-only,
-i.e. that the value provided by the IdP cannot be changed.</p>
-<p>To enable filling the creation form with values provided by the IdP, you need to create a YAML file in <code>/indigo-iam/config</code>, for example
-<code>/indigo-iam/config/application-registration.yaml</code>. The contents should be something similar to:</p>
+that some of the fields are filled with the value of an IdP attribute.</p>
+<p>To enable filling the creation form with values provided by the IdP, the contents
+of the [custom configuration file][custom-config-file] should be something similar to
+(here we show the default configuragtion already in place with the Spring <code>registration</code> profile):</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">registration</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">fields</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -8055,54 +8078,73 @@ i.e. that the value provided by the IdP cannot be changed.</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">certificate</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">read-only</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">field-behaviour</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">hidden</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span></code></pre></div><p><code>read-only</code> can be set to <code>true</code> if you want to prevent that the  value provided supplied by the ID is modified by the user.
+</span></span></span></code></pre></div><p>The <code>read-only</code> key can be set to <code>true</code> if you want to prevent that the  value provided supplied by the ID is modified by the user.
 <strong>Note that if a field is defined as <code>read-only=true</code> and now value is not provided
 by the IdP, it may result that the user cannot submit the account creation form if the field,
 when it is required.</strong></p>
-<p><code>external-auth-attribue</code> must be the name of the IdP attribute, or token claim (when provided by SAML IdPs,
+<p>The <code>external-auth-attribue</code> key must be the name of the IdP attribute, or token claim (when provided by SAML IdPs,
 or OIDC Providers, respectively) to use for the mentioned account creation form field.</p>
-<h2 id="allowing-for-certificate-linking-upon-registration">Allowing for certificate linking upon registration</h2>
-<p>Within the registration fields, is the field <code>certificate</code>. While it may be within the same group as the other fields, its
-behaviour is a bit different from the others. Firstly, it does inherit the same attributes being <code>read-only</code>, <code>field-behaviour</code> and
-<code>external-auth-attribute</code>, but only <code>field-behaviour</code> is to be configured for this field.</p>
-<p>Configuring <code>read-only</code> or <code>external-auth-attribute</code> would be to assume that the IdP provides information of whether the certificate of the user should be linked or not.
-Therefore, it&rsquo;s strongly discouraged to configure <code>read-only</code> to anything but <code>false</code>, given that, as previously mentioned, this could lead to the user
-not being able to register, as this information is not provided by the IdP (and Indigo IAM has currently not been configured to handle this,
-even if provided).</p>
-<p>The <code>field-behaviour</code> can be defined as <code>mandatory</code>, <code>optional</code>, or <code>hidden</code>.
+<h3 id="link-certificate-upon-registration">Link certificate upon registration</h3>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Warning</h4>
+
+    In order to link the certificate upon registration, a certificate needs to be present in the browser. Make sure to have linked one before attempting the registration.
+
+</div>
+
+<p>Within the registration fields, it is also present the <code>certificate</code> one. While it may be within the same group as the other fields, its
+behaviour is a bit different from the others. Basically, it does inherit the same attributes being <code>read-only</code>, <code>field-behaviour</code> and
+<code>external-auth-attribute</code>, but only <code>field-behaviour</code> is to be configured for this field. <strong>Therefore, it&rsquo;s strongly discouraged to add a configuration for <code>read-only</code> and <code>external-auth-attribute</code>.</strong></p>
+<p>The default IAM behaviour enabling
+the Spring <code>registration</code> profile is</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">registration</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">fields</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">certificate</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">read-only</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">field-behaviour</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">hidden</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>The <code>field-behaviour</code> can be defined as <code>mandatory</code>, <code>optional</code>, or <code>hidden</code>.
 Each of the options brings different behaviour to the registration page.</p>
-<p><strong>In general for linking the certificate upon registration, a certificate needs to be present in the browser. Make sure to have linked one before attempting the registration.</strong></p>
-<h3 id="certificate-field-being-mandatory">Certificate field being <code>mandatory</code></h3>
+<h4 id="certificate-field-being-mandatory">Certificate field being <code>mandatory</code></h4>
 <p>If the certificate field is <code>mandatory</code>, then the user must link a certificate upon registration.<br>
-If no certificate is present whilst attempting the registration, then the following error will appear.</p>
-<p><img src="./registration-certificate-not-present.png" alt="registration certificate not present view"></p>
+If no certificate is present whilst attempting the registration, then the following error will appear:</p>
+<p><em>A certificate is required upon<br>
+registration, but noone were presented.<br>
+Please link a certificate to your<br>
+browser.</em></p>
 <p>The error text can change if the certificate is present, but is linked to a suspended account or another account in general.</p>
-<p>Given that the certificate is present and valid, then the following registration page should be rendered.<br>
-Please note the certificate information displayed at the bottom of the page.</p>
-<p><img src="./registration-certificate-mandatory.png" alt="registration certificate mandatory view"></p>
-<h3 id="certificate-field-being-optional">Certificate field being <code>optional</code></h3>
-<p>If the certificate field is <code>optional</code>, then the user may link a certificate upon registration if one is present and valid.</p>
-<p>The following is an example of this. Please take note of the checkbox at the end of the registration form.</p>
-<p><img src="./registration-certificate-optional.png" alt="registration certificate optional view"></p>
-<p>One will only be able to check the checkbox if the certificate is valid.</p>
-<p>If the certificate presented is within 1 month of expiration, then the following pop-up window is shown to the user.<br>
-The <em>almost expired</em> pop-up window is also enabled for the registration field being <code>mandatory</code>.</p>
-<p><img src="./registration-certificate-almost-expired.png" alt="registration certificate almost expired view"></p>
-<h3 id="certificate-field-being-hidden">Certificate field being <code>hidden</code></h3>
+<p>Given that the certificate is present and valid, the registration page will show certificate information
+at the bottom of the page.</p>
+<p>If the certificate presented is within 1 month of expiration, then a worning pop-up window is shown to the user.</p>
+<h4 id="certificate-field-being-optional">Certificate field being <code>optional</code></h4>
+<p>If the certificate field is <code>optional</code>, then the user may link a certificate upon registration if one is present and valid. In this case, a checkbox with the <em>Link your certificate to the account</em> option will be shown
+at the bottom of the registration form.</p>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Warning</h4>
+
+    One will only be able to check the checkbox if the certificate is valid.
+
+</div>
+
+<p>Also with this option, if the certificate presented is within 1 month of expiration, then a worning pop-up window is shown to the user.</p>
+<h4 id="certificate-field-being-hidden">Certificate field being <code>hidden</code></h4>
 <p>If the certificate field is <code>hidden</code>, then the user does not have the option to link their certificate upon the registration request
 (nor does one have to be present upon registration). <br></p>
 <p>The checkbox is hidden from the user and no certificate is required. <br>
-Please note the absence of certificate information at the bottom of the page.</p>
-<p><img src="./registration-certificate-hidden.png" alt="registration certificate hidden view"></p>
-<h2 id="automatic-enrollment-through-samloidc-idps">Automatic enrollment through SAML/OIDC IdPs</h2>
+This will result in an absence of certificate information at the bottom of the page.</p>
+<h2 id="automatic-user-enrollment">Automatic user enrollment</h2>
 <p>In case of registration through an external SAML/OIDC Identity Provider, IAM offers
-a flexible user enrollment flow, also without IAM admin intervention. The default IAM
-behavior is that the user enrollment requires an administrator approval step.</p>
+a flexible user enrollment flow, also without IAM admin intervention.</p>
 <h3 id="saml">SAML</h3>
 <p>In order to enable the automatic enrollment flow via an external IdP, one
-should set the following properties, under the <code>saml</code> hierarchy:</p>
+should set the following properties (which are provided with the Spring <code>saml</code> profile):</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">saml</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">jit-account-provisioning</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># default to false</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">enabled</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># this default behavior considers all IdPs declared in your</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># application-saml.yml file as trusted</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -8113,10 +8155,12 @@ IDs have to be set, e.g.</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">jit-account-provisioning</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">trusted-idps</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://idp1.test.example,https://idp2.test.example,https://idp3.test.example</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span></code></pre></div><h3 id="oidc">OIDC</h3>
-<p>In order to enable the automatic enrollment flow via an external OIDC Provider, one
-should set the following properties, under the <code>oidc</code> hierarchy:</p>
+<p>In order to enable the automatic enrollment flow via an external OIDC Provider
+(which are provided with the Spring <code>oidc</code> profile), one
+should set the following properties:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">oidc</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">jit-account-provisioning</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># default to false</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">enabled</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># this default behavior considers all IdPs declared in your</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># application-oidc.yml file as trusted</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -8126,27 +8170,12 @@ IDs have to be set, e.g.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">oidc</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">jit-account-provisioning</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">trusted-idps</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://google.test.example,https://facebook.test.example,https://github.test.example</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span></code></pre></div><h2 id="user-editable-fields">User editable fields</h2>
-<p>Starting with version 1.6.0, IAM allows to limit which fields of the user profile are editable by users.</p>
-<p>The default, backward-compatible settings that allow users to edit all their
-profile fields are defined as follows:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">user-profile</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">editable-fields</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#000">email</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#000">name</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#000">picture</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#000">surname</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span></code></pre></div><p>To prevent modifications to any of the fields remove the field name from
-<code>editable-fields</code> list.</p>
-<p>External configuration can be managed by placing directives as shown above in a
-<a href="/v/v1.14.0/docs/reference/configuration/#overriding-default-configuration-templates">custom configuration
-file</a></p>
-<h2 id="automatically-set-the-nickname-as-attribute">Automatically set the nickname as attribute</h2>
+</span></span></span></code></pre></div><h2 id="automatically-set-the-nickname-as-attribute">Automatically set the nickname as attribute</h2>
 <p>Since IAM v1.9.0, during a registration request the username can be automatically added as an attribute named <em>nickname</em>. This process happens both for login with external provider, or when one directly clicks on the
 <em>Apply for an account</em> button.
 The <em>nickname</em> value will be the same as the username set during the registration request.</p>
-<p>This behavior does not appear by default. To enable it, add to your config file</p>
+<p>This behavior does not appear by default. To enable it, add to your [custom configuration
+file][custom-config-file]</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">registration</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">add-nickname-as-attribute</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -8326,7 +8355,51 @@ one should set the following property (default is false):</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-7c4fbefe2df14b07a34f2d3bdea65fc4">3.2.9 - Client registration</h1>
+	<h1 id="pg-7ea71128f09ade8f4f7e5be591b3c320">3.2.9 - User editable fields</h1>
+    
+	<p>Starting with version 1.6.0, IAM allows to limit which fields of the user profile are editable by users.</p>
+<p>The default, backward-compatible settings that allow users to edit all their
+profile fields are defined as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">user-profile</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">editable-fields</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#000">email</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#000">name</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#000">picture</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#000">surname</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>To prevent modifications to any of the fields remove the field name from
+<code>editable-fields</code> list.</p>
+<p>External configuration can be managed by placing directives as shown above in a
+<a href="/v/v1.14.0/docs/reference/configuration/#overriding-default-configuration-templates">custom configuration
+file</a>.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-7c4fbefe2df14b07a34f2d3bdea65fc4">3.2.10 - Client registration</h1>
     
 	<p>IAM has the ability to enable or disable the client registration,
 to limit the registration to certain users and to
@@ -8397,7 +8470,7 @@ or API by an IAM administrator.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-47a2d3402f6d7bf0ca16bc578ce55b0c">3.2.10 - IAM Notifications</h1>
+	<h1 id="pg-47a2d3402f6d7bf0ca16bc578ce55b0c">3.2.11 - IAM Notifications</h1>
     
 	<p>The e-mail notifications from the IAM service may be customized with a YAML file. Here are reported the default values of the notification properties:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">notification</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -8476,7 +8549,7 @@ or API by an IAM administrator.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-63d7a6556648cdd8622cf2321f13a835">3.2.11 - JSON Web Keys (JWK)</h1>
+	<h1 id="pg-63d7a6556648cdd8622cf2321f13a835">3.2.12 - JSON Web Keys (JWK)</h1>
     
 	<p>JSON Web Key (JWK) is a JSON data structure that represents a single public key or a set of
 public keys. IAM uses private JWKs to sign tokens, and IAM clients use public JWKs to validate the tokens.
@@ -8623,7 +8696,7 @@ key will be valid after this.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-b153a1aec7140b2aa27a0ba03e8dc3fd">3.2.12 - Local authentication</h1>
+	<h1 id="pg-b153a1aec7140b2aa27a0ba03e8dc3fd">3.2.13 - Local authentication</h1>
     
 	<p>IAM has the ability to limit or disable
 authentication with local IAM credentials, so that external, brokered
@@ -8672,7 +8745,7 @@ able to use it doesn&rsquo;t really provide additional security.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-359104377f9341d4c326d45fb209b4c2">3.2.13 - External authentication</h1>
+	<h1 id="pg-359104377f9341d4c326d45fb209b4c2">3.2.14 - External authentication</h1>
     
 	<p>IAM supports brokered authentication via standard OpenID-Connect and SAML
 protocols as well as X.509 authentication.</p>
@@ -8699,7 +8772,7 @@ protocols as well as X.509 authentication.</p>
 
 <div class="td-content" style="">
     
-	<h1 id="pg-ac3ba36ba3318b338bcbf439e1b79e60">3.2.13.1 - OpenID-Connect authentication</h1>
+	<h1 id="pg-ac3ba36ba3318b338bcbf439e1b79e60">3.2.14.1 - OpenID-Connect authentication</h1>
     
 	<p>IAM supports brokered OpenID Connect authentication to external identity
 providers (e.g., Google).</p>
@@ -8829,7 +8902,7 @@ the default IAM configuration.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-af611b856fca4d6771e3e3ed962701b5">3.2.13.2 - SAML authentication</h1>
+	<h1 id="pg-af611b856fca4d6771e3e3ed962701b5">3.2.14.2 - SAML authentication</h1>
     
 	<p>IAM supports brokered SAML authentication. When SAML authentication is turned
 on for an IAM instance, users can log into the service using the home Identity
@@ -9057,7 +9130,7 @@ instructions on how to override the default IAM configuration.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-86d359d1731c5e164863d1bbe93a7bcf">3.2.13.3 - X.509 authentication</h1>
+	<h1 id="pg-86d359d1731c5e164863d1bbe93a7bcf">3.2.14.3 - X.509 authentication</h1>
     
 	<p>X509 authentication in IAM doesn&rsquo;t require any specific configuration in IAM itself.
 It is enabled as soon as the proper options have been set in the Nginx configuration.</p>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="canonical" type="text/html" href="/v/v1.14.0/docs/reference/api/oauth-token-introspection/">
+<link rel="canonical" type="text/html" href="/v/v1.14.0/docs/reference/configuration/user-profile/">
 <meta name="robots" content="noindex, nofollow">
 
 
@@ -18,15 +18,15 @@
 <link rel="icon" type="image/png" href="/v/v1.14.0/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/v/v1.14.0/favicons/android-192x192.png" sizes="192x192">
 
-<title>OAuth token introspection API | INDIGO IAM</title>
+<title>User editable fields | INDIGO IAM</title>
 <meta name="description" content="The INDIGO Identity and Access Management (IAM) Service">
-<meta property="og:title" content="OAuth token introspection API" />
+<meta property="og:title" content="User editable fields" />
 <meta property="og:description" content="The INDIGO Identity and Access Management (IAM) Service" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="/v/v1.14.0/docs/reference/api/oauth-token-introspection/" />
+<meta property="og:url" content="/v/v1.14.0/docs/reference/configuration/user-profile/" />
 
-<meta itemprop="name" content="OAuth token introspection API">
-<meta itemprop="description" content="The INDIGO Identity and Access Management (IAM) Service"><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="OAuth token introspection API"/>
+<meta itemprop="name" content="User editable fields">
+<meta itemprop="description" content="The INDIGO Identity and Access Management (IAM) Service"><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="User editable fields"/>
 <meta name="twitter:description" content="The INDIGO Identity and Access Management (IAM) Service"/>
 
 
@@ -109,13 +109,13 @@
 This is the multi-page printable view of this section.
 <a href="#" onclick="print();return false;">Click here to print</a>.
 </p><p>
-<a href="/v/v1.14.0/docs/reference/api/oauth-token-introspection/">Return to the regular view of this page</a>.
+<a href="/v/v1.14.0/docs/reference/configuration/user-profile/">Return to the regular view of this page</a>.
 </p>
 </div>
 
 
 
-<h1 class="title">OAuth token introspection API</h1>
+<h1 class="title">User editable fields</h1>
 
 
 
@@ -134,10 +134,21 @@ This is the multi-page printable view of this section.
 
 
 <div class="content">
-      <p>IAM, through the <a href="https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server/wiki">MitreID OpenID Connect server implementation</a>,
-supports the <a href="https://tools.ietf.org/html/rfc7662">OAuth token introspection API</a> API at
-the <code>/introspect</code> endpoint.</p>
-<p>The <code>/introspect</code> endpoint <strong>requires</strong> client authentication.</p>
+      <p>Starting with version 1.6.0, IAM allows to limit which fields of the user profile are editable by users.</p>
+<p>The default, backward-compatible settings that allow users to edit all their
+profile fields are defined as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">user-profile</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">editable-fields</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#000">email</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#000">name</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#000">picture</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#000">surname</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>To prevent modifications to any of the fields remove the field name from
+<code>editable-fields</code> list.</p>
+<p>External configuration can be managed by placing directives as shown above in a
+<a href="/v/v1.14.0/docs/reference/configuration/#overriding-default-configuration-templates">custom configuration
+file</a>.</p>
 
 </div>
 </div>
