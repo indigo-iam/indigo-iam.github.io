@@ -85,7 +85,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.bbf4f8b6f147a7ded18e6b8a97edd928.json"
+    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.dc72272801247ba11b58a0b551915712.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -8031,7 +8031,8 @@ which ones</li>
 <p>The relevant settings must be under the following hierarchy of a <a href="/v/v1.14.0/docs/reference/configuration/#overriding-default-configuration-templates">custom configuration file</a>:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">registration</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span></code></pre></div><h4 id="requiring-external-authentication">Requiring external authentication</h4>
+</span></span></span></code></pre></div><p>Together with the registration properties, the Spring <code>oidc</code> profile must be added to support login with an <a href="https://indigo-iam.github.io/v/current/docs/reference/configuration/external-authentication/oidc/">external OIDC provider</a>, while the <code>saml</code> profile must be used to support login with an <a href="https://indigo-iam.github.io/v/v1.13.0/docs/reference/configuration/external-authentication/saml/">external SAML provider</a>.</p>
+<h4 id="requiring-external-authentication">Requiring external authentication</h4>
 <p>To require that users must authenticate through an external IdP, you need to set the
 parameter <code>require-external-authentication=true</code>. You can also specify the type of external
 IdP (<code>oidc</code> or <code>saml</code>) and require one specific issuer.</p>
@@ -8045,7 +8046,8 @@ mapped to IAM membership information</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">oidc-issuer</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">https://auth.cern.ch/auth/realms/cern</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">authentication-type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">oidc</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span></code></pre></div><h4 id="filling-information-from-idp">Filling information from IdP</h4>
-<p>The first time a user authenticates in an IAM instance, the account creation form will be displayed. It is possible to request
+<p>The first time a user authenticates in an IAM instance through an external provider,
+the account creation form will be displayed. It is possible to request
 that some of the fields are filled with the value of an IdP attribute.</p>
 <p>To enable filling the creation form with values provided by the IdP, the contents
 of the <a href="/v/v1.14.0/docs/reference/configuration/#overriding-default-configuration-templates">custom configuration file</a> should be something similar to
@@ -8072,12 +8074,44 @@ of the <a href="/v/v1.14.0/docs/reference/configuration/#overriding-default-conf
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">affiliation</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">read-only</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">field-behaviour</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">optional</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span></code></pre></div><p>The <code>read-only</code> key can be set to <code>true</code> if you want to prevent that the  value provided supplied by the ID is modified by the user.
-<strong>Note that if a field is defined as <code>read-only=true</code> and now value is not provided
-by the IdP, it may result that the user cannot submit the account creation form if the field,
-when it is required.</strong></p>
-<p>The <code>external-auth-attribue</code> key must be the name of the IdP attribute, or token claim (when provided by SAML IdPs,
-or OIDC Providers, respectively) to use for the mentioned account creation form field.</p>
+</span></span></span></code></pre></div><p>The <code>read-only</code> key can be set to <code>true</code> if you want to prevent that the value provided
+by the IdP can be modified by the user.
+<strong>Note that if a field is defined as <code>read-only=true</code> and the value is not provided
+by the IdP, it may result that the user cannot submit the account creation form when the <code>field-behaviour</code>
+is <em>mandatory</em>.</strong></p>
+<p>The <code>field-behaviour</code> key may be set to</p>
+<ul>
+<li><em>mandatory</em> (default): the corresponding field is present and it MUST be filled with some information</li>
+<li><em>optional</em>: the field is present but it may be let empty</li>
+<li><em>hidden</em>: the field is not present at all.</li>
+</ul>
+<p>The <code>external-auth-attribue</code> key is used to map the name of the IdP attributes (for SAML), or token claims
+(for OIDC), into the mentioned account creation form field.
+More in details, the value of the <code>external-auth-attribute</code> refers to the output of the IAM endpoint
+<code>/iam/authn-info</code>, available only when a user (registered or not) authenticates through
+an external provider. The endpoint returns the user&rsquo;s information retrieved via remote IdP authentication, as an example (with SAML):</p>
+<pre tabindex="0"><code>GET /iam/authn-info
+{
+    &#34;type&#34;: &#34;SAML&#34;,
+    &#34;issuer&#34;: &#34;https://idp.infn.it/saml2/idp/metadata.php&#34;,
+    &#34;subject&#34;: &#34;xxxxx@infn.it&#34;,
+    &#34;subject_attribute&#34;: &#34;urn:oid:1.3.6.1.4.1.5923.1.1.1.13&#34;,
+    &#34;email&#34;: &#34;enrico.vianello@cnaf.infn.it&#34;,
+    &#34;given_name&#34;: &#34;Enrico&#34;,
+    &#34;family_name&#34;: &#34;Vianello&#34;,
+    &#34;suggested_username&#34;: &#34;vianello@infn.it&#34;,
+    &#34;additional_attributes&#34;: {
+        &#34;GIVEN_NAME&#34;: &#34;Enrico&#34;,
+        &#34;urn:oid:2.5.4.11&#34;: &#34;CNAF&#34;,
+        &#34;urn:oid:1.3.6.1.4.1.5923.1.1.1.1&#34;: &#34;staff&#34;,
+        &#34;ORGANIZATION_NAME&#34;: &#34;Istituto Nazionale di Fisica Nucleare&#34;,
+        &#34;groups&#34;: &#34;166_14_26_37264&#34;,
+        &#34;EPPN&#34;: &#34;vianello@infn.it&#34;,
+        &#34;CN&#34;: &#34;Enrico Vianello&#34;,
+        ...
+    }
+}
+</code></pre><p>Here, the map from attributes to form fields is the following: the value of the <code>external-auth-attribute</code> is searched as a key of the above response, and if not found in the first level object, it is searched in the <code>additional_attributes</code> object.</p>
 <h3 id="link-certificate-upon-registration">Link certificate upon registration</h3>
 
 
@@ -8176,9 +8210,9 @@ of the registration form should be shown or not.</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">field-behaviour</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">mandatory</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span></code></pre></div><p>Here we have three possible options for the <code>field-behaviour</code> key (the <code>read-only</code> key should be ignored):</p>
 <ul>
-<li><code>mandatory</code> (default): the <em>Note</em> field is present and the user MUST fill it with some information</li>
-<li><code>optional</code>: the <em>Note</em> field is present but the user may let it empty</li>
-<li><code>hidden</code>: the <em>Note</em> field is not present.</li>
+<li><em>mandatory</em> (default): the <em>Note</em> field is present and the user MUST fill it with some information</li>
+<li><em>optional</em>: the <em>Note</em> field is present but the user may let it empty</li>
+<li><em>hidden</em>: the <em>Note</em> field is not present.</li>
 </ul>
 <h2 id="automatically-set-the-nickname-as-attribute">Automatically set the nickname as attribute</h2>
 <p>Since IAM v1.9.0, during a registration request the username can be automatically added as an attribute named <em>nickname</em>. This process happens both for login with external provider, or when one directly clicks on the
