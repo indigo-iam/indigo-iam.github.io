@@ -89,7 +89,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.b7c009b258554464150b01e1bc7c3ae4.json"
+    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.5c0fb5a3a41198bfbf5fd6cfc5d07fd1.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -592,31 +592,47 @@ command to fix it:</p>
     
 	<h1 id="pg-15a25685d0805dee99efe788f6a68856">5 - Deployment with packages</h1>
     
-	<p>IAM can be deployed from packages on the CentOS 7 platform.
-Packages and repo files are hosted on the <a href="https://indigo-iam.github.io/repo">INDIGO IAM package repository</a>.</p>
+	<p>IAM can be deployed from packages on the RHEL 8 and 9 platforms.
+The RPMs are hosted on the <a href="https://repo.cloud.cnaf.infn.it/service/rest/repository/browse/indigo-iam-rpm-stable/">INDIGO IAM package stable repository</a>.</p>
 
 
 <div class="alert alert-warning" role="alert">
 <h4 class="alert-heading">Warning</h4>
 
-    We no longer maintain packages for the Ubuntu platform.
+    We no longer maintain packages for the CENTOS 7 and Ubuntu platform.
 
 </div>
 
-<h2 id="centos-7">CENTOS 7</h2>
+<h2 id="installation">Installation</h2>
+<p>Since INDIGO IAM v1.14.0 we release signed RPMs.</p>
 <ol>
 <li>Install the INDIGO IAM release key:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sudo rpm --import https://indigo-iam.github.io/repo/gpgkeys/indigo-iam-release.pub.gpg
-</span></span></code></pre></div><ol start="2">
-<li>Install the repo files:</li>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo rpm --import https://indigo-iam.github.io/repo/gpgkeys/indigo-iam-release.pub.gpg
+</span></span></code></pre></div><h3 id="on-almalinux-8">On AlmaLinux 8</h3>
+<ol start="2">
+<li>Install the repo file:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sudo yum-config-manager --add-repo https://indigo-iam.github.io/repo/repofiles/rhel/indigoiam-stable-el7.repo
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo curl -L <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  -o /etc/yum.repos.d/indigoiam-stable-el8.repo <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  https://indigo-iam.github.io/repo/repofiles/rhel/indigoiam-stable-el8.repo
 </span></span></code></pre></div><ol start="3">
-<li>Install packages:</li>
+<li>Clear the package manager cache and install <code>iam-login-service</code> with:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sudo yum makecache
-</span></span><span style="display:flex;"><span>$ sudo yum install -y iam-login-service
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo dnf makecache
+</span></span><span style="display:flex;"><span>sudo dnf install -y iam-login-service
+</span></span></code></pre></div><h3 id="on-almalinux-9">On AlmaLinux 9</h3>
+<ol start="2">
+<li>Install the repo file:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo curl -L <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  -o /etc/yum.repos.d/indigoiam-stable-el9.repo <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  https://indigo-iam.github.io/repo/repofiles/rhel/indigoiam-stable-el9.repo
+</span></span></code></pre></div><ol start="3">
+<li>Clear the package manager cache and install <code>iam-login-service</code> with:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo dnf makecache
+</span></span><span style="display:flex;"><span>sudo dnf install -y iam-login-service
 </span></span></code></pre></div><h2 id="iam-service-configuration">IAM service configuration</h2>
 <p>The IAM service is configured via a configuration file named <code>iam-login-service</code>
 which holds the settings for the environment variables that drive its
@@ -627,23 +643,23 @@ section</a>).</p>
 </code></pre><h2 id="run-the-service">Run the service</h2>
 <p>The IAM login service is managed by <code>systemd</code>.</p>
 <p>To enable the service use the following command:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sudo systemctl <span style="color:#204a87">enable</span> iam-login-service
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo systemctl <span style="color:#204a87">enable</span> iam-login-service
 </span></span></code></pre></div><p>To start the service use the following command:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sudo systemctl start iam-login-service
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo systemctl start iam-login-service
 </span></span></code></pre></div><p>To access the service logs, use the following command:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sudo journalctl -fu iam-login-service
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo journalctl -fu iam-login-service
 </span></span></code></pre></div><h3 id="deployment-tips">Deployment Tips</h3>
 <p>In headless servers, running <code>haveged</code> daemon is recommended to generate more entropy.
 Before running the IAM login service, check the available entropy with:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ cat /proc/sys/kernel/random/entropy_avail
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat /proc/sys/kernel/random/entropy_avail
 </span></span></code></pre></div><p>If the obtained value is less than 1000, then <code>haveged</code> daemon is mandatory.</p>
 <p>Install EPEL repository:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sudo yum install -y epel-release
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo dnf install -y epel-release
 </span></span></code></pre></div><p>Install Haveged:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sudo yum install -y haveged
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo dnf install -y haveged
 </span></span></code></pre></div><p>Enable and run the <code>haveged</code> daemon with:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sudo systemctl <span style="color:#204a87">enable</span> haveged
-</span></span><span style="display:flex;"><span>$ sudo systemctl start haveged
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo systemctl <span style="color:#204a87">enable</span> haveged
+</span></span><span style="display:flex;"><span>sudo systemctl start haveged
 </span></span></code></pre></div>
 </div>
 
