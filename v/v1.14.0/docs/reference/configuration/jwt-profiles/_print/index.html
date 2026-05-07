@@ -85,7 +85,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.9fd8345c6469e1a707abb7cb091a2d25.json"
+    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.29f61beb13b71414ea5a0822c7369694.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -281,6 +281,33 @@ This claim is currently present within the following places (given the AARC prof
 </span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
 </span></span></code></pre></div><p>From the example, one can see that the value from the <code>voperson_id</code> claim is a scoped version of <code>sub</code>.<br>
 The scope is defined by the issuing authority, in this case <code>indigo-dc</code> being an identifier of the issuing system.</p>
+<h4 id="aarc-idp-hint">AARC IdP hint</h4>
+<p>Lastly, it should be mentioned that <code>aarc_idp_hint</code> has been implemented according to the <a href="https://aarc-community.org/guidelines/aarc-g061/">AARC-G061 guidelines</a>.</p>
+<p>To make use of the <code>aarc_idp_hint</code>, the following must be configured:</p>
+<ul>
+<li>OIDC or SAML</li>
+<li>A client enabled with the proper redirect URI.</li>
+</ul>
+<p>To make use of the example below, Google has been configured as an OIDC Identity Provider and the test client has been modified to have the redirect URI: <em>http://localhost:8080/</em>.<br>
+The access point is <code>/authorize</code>; authentication will be initiated according to the hint.</p>
+<pre><code>http://localhost:8080/authorize?response_type=code&amp;client_id=client&amp;scope=openid&amp;redirect_uri=http://localhost:8080/&amp;aarc_idp_hint=https%3A%2F%2Faccounts.google.com
+</code></pre>
+<p>If we dissect the call we have the following:</p>
+<ul>
+<li><code>http://localhost:8080/authorize?</code> is the base of the call and the endpoint to which we can use the <code>aarc_idp_hint</code> parameter.</li>
+<li><code>response_type=code</code> is specifying that it is the <a href="https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow">Authorization Code Flow</a> that is desired.</li>
+<li><code>client_id=client</code> is the client who acts on behalf of the user. Hence, why it needs to have the proper redirect enabled and the correct scopes.</li>
+<li><code>scope=openid</code> is the minimum requirement, as it signals an OpenID Connect authentication request.</li>
+<li><code>redirect_uri=http://localhost:8080/</code> is where the Authorization Server redirects the user after successful authentication..</li>
+<li><code>aarc_idp_hint=https%3A%2F%2Faccounts.google.com</code> is the AARC hint indicating which IdP is preferred for authentication.</li>
+</ul>
+<p>Furthermore, the implementation follows specifically the rule set in the guidelines at point 3.3.13.b, that the IAM may disregard any nested hints, and in this implementation it always will.<br></p>
+<p>From 3.3.13.d it states that if it were to handle the nested hints, then</p>
+<blockquote>
+<p>the consumer MUST send this nested
+hint using a protocol understood by the next consumer.</p>
+</blockquote>
+<p>For this reason, nested hint handling has not implemented.</p>
 <p>This profile is assigned to clients using the <code>aarc</code> scope.</p>
 <h3 id="the-keycloak-profile">The Keycloak profile</h3>
 <p>This profile allows the integration with a Keycloak environment.</p>
