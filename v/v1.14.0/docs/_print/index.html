@@ -85,7 +85,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.d64d65eeea3432fb43b8994304646773.json"
+    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.bbf4f8b6f147a7ded18e6b8a97edd928.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -8028,7 +8028,7 @@ organization, administrators are asked to validate membership requests.</p>
 which ones</li>
 <li>Which information must be retrieved from the IdP to fill the account creation form</li>
 </ul>
-<p>The relevant settings must be under the following hierarchy of a [custom configuration file][custom-config-file]:</p>
+<p>The relevant settings must be under the following hierarchy of a <a href="/v/v1.14.0/docs/reference/configuration/#overriding-default-configuration-templates">custom configuration file</a>:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">registration</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span></code></pre></div><h4 id="requiring-external-authentication">Requiring external authentication</h4>
@@ -8048,7 +8048,7 @@ mapped to IAM membership information</p>
 <p>The first time a user authenticates in an IAM instance, the account creation form will be displayed. It is possible to request
 that some of the fields are filled with the value of an IdP attribute.</p>
 <p>To enable filling the creation form with values provided by the IdP, the contents
-of the [custom configuration file][custom-config-file] should be something similar to
+of the <a href="/v/v1.14.0/docs/reference/configuration/#overriding-default-configuration-templates">custom configuration file</a> should be something similar to
 (here we show the default configuragtion already in place with the Spring <code>registration</code> profile):</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">registration</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -8184,8 +8184,8 @@ of the registration form should be shown or not.</p>
 <p>Since IAM v1.9.0, during a registration request the username can be automatically added as an attribute named <em>nickname</em>. This process happens both for login with external provider, or when one directly clicks on the
 <em>Apply for an account</em> button.
 The <em>nickname</em> value will be the same as the username set during the registration request.</p>
-<p>This behavior does not appear by default. To enable it, add to your [custom configuration
-file][custom-config-file]</p>
+<p>This behavior does not appear by default. To enable it, add to your <a href="/v/v1.14.0/docs/reference/configuration/#overriding-default-configuration-templates">custom configuration
+file</a></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">registration</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">add-nickname-as-attribute</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -10054,10 +10054,9 @@ based on the <code>redis</code> <a href="https://hub.docker.com/_/redis">docker 
     
 	<h1 id="pg-16b818f0193a0e55e0f1cffd093e8e01">4.2.5 - Deploying the IAM VOMS attribute authority</h1>
     <div class="lead">Instructions on how to deploy and configure the IAM VOMS attribute authority micro-service</div>
-	<h2 id="the-iam-voms-attribute-authority">The IAM VOMS attribute authority</h2>
-<p>The IAM <a href="https://github.com/indigo-iam/iam/tree/master/iam-voms-aa">VOMS attribute authority</a> (AA) provide a backward-compatible
+	<p>The IAM <a href="https://github.com/indigo-iam/iam/tree/master/iam-voms-aa">VOMS attribute authority</a> (AA) provide a backward-compatible
 <a href="http://italiangrid.github.io/voms/">VOMS</a> support for a Virtual Organization managed with IAM.</p>
-<h3 id="deployment-architecture">Deployment architecture</h3>
+<h2 id="deployment-architecture">Deployment architecture</h2>
 <p><img src="../img/iam-voms-aa.png" alt="VOMS AA deployment"></p>
 <p>The VOMS attribute authority can access the IAM database and encode IAM groups
 and other attributes in a standard VOMS attribute certificate. This means in
@@ -10072,11 +10071,11 @@ docker images:</p>
 <ul>
 <li><code>cnafsd/nginx-httpg-voms</code>, for a NGINX server configured with the <a href="https://baltig.infn.it/cnafsd/ngx_http_voms_module">VOMS module</a>,
 which replaces <a href="https://baltig.infn.it/cnafsd/ngx_http_voms_module">OpenResty VOMS</a></li>
-<li><code>indigoiam/voms-aa-bp:v1.14.0</code>, for the VOMS AA service</li>
+<li><code>indigoiam/iam-voms-aa:v1.14.0</code>, for the VOMS AA service</li>
 </ul>
 <p>Deployment from packages is not currently supported for the VOMS attribute
 authority.</p>
-<h3 id="nginx-voms-module-configuration">NGINX VOMS module configuration</h3>
+<h2 id="nginx-voms-module-configuration">NGINX VOMS module configuration</h2>
 <p>The NGINX VOMS module requires:</p>
 <ul>
 <li>the IGTF trust anchors properly configured; see the <a href="https://github.com/indigo-iam/egi-trust-anchors-container/">EGI trust anchors</a>
@@ -10097,20 +10096,150 @@ domain name of the VOMS attribute authority with the <code>.lsc</code> extension
 </span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span><span style="color:#000;font-style:italic">  gsed -e &#39;s/^subject=//&#39; -e &#39;s/^issuer=//&#39; &gt; \
 </span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">  ${X509_VOMS_DIR}/example.vo/voms.test.example.lsc
 </span></span></span></code></pre></div><p>For an example NGINX configuration, see the one use in <a href="https://github.com/indigo-iam/iam/blob/master/compose/voms-deploy/assets/nginx/conf.d/voms.test.example.conf">VOMS-enabled NGINX container</a>.</p>
-<h4 id="voms-aa-configuration">VOMS AA configuration</h4>
+<h2 id="voms-aa-configuration">VOMS AA configuration</h2>
 <p>The VOMS AA is a Spring Boot application that shares the persistence
 layer implementation with IAM, and as such can inspect the IAM database. It can share
-the same environment file as the login service it is associated with, with the addition of the
-following variables:</p>
-<ul>
-<li><code>VOMS_AA_HOST</code>: host name used to access the VOMS AA service</li>
-<li><code>VOMS_AA_PORT</code> VOMS AA port</li>
-<li><code>VOMS_AA_VO</code>: VO served by the VOMS AA service (lower case).</li>
-</ul>
-<p>A top level group equal to <code>VOMS_AA_VO</code> must be defined in IAM. The attributes appearing in the VOMS proxy include all the sub-groups of the parent group equal to the VO name. Top level groups different from the VO name may still be used for group-based authorization with JWTs, but will not appear in the proxy.</p>
-<p>You also need to create a VOMS AA YAML configuration file with the content below (its content should
-be generic as it relies on standard environment variables used to configure the login service) and map it
-to the container as <code>/workspace/config/application.yml</code>.</p>
+the same environment file as the login service it is associated with.</p>
+<h3 id="using-environment-variables">Using environment variables</h3>
+<p>The following table shows the environment variables for VOMS AA configuration in common with IAM
+login service, related with the access to the database:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IAM_DB_HOST</td>
+<td>Hostname of database server</td>
+<td>localhost</td>
+</tr>
+<tr>
+<td>IAM_DB_PORT</td>
+<td>Port of database server</td>
+<td>3306</td>
+</tr>
+<tr>
+<td>IAM_DB_NAME</td>
+<td>IAM database name</td>
+<td>iam</td>
+</tr>
+<tr>
+<td>IAM_DB_URL_PARAMS</td>
+<td>The custom list of URL connection parameters. It must start with &ldquo;?&rdquo; character, if defined. The default value overrides the session time zone setting on the server to &ldquo;UTC&rdquo; and disables SSL usage</td>
+<td>(*)</td>
+</tr>
+<tr>
+<td>IAM_DB_USERNAME</td>
+<td>Username for accessing the database</td>
+<td>iam</td>
+</tr>
+<tr>
+<td>IAM_DB_PASSWORD</td>
+<td>Password for accessing the database</td>
+<td>pwd</td>
+</tr>
+<tr>
+<td>IAM_DB_MAX_ACTIVE</td>
+<td>The default maximum database connection pool size</td>
+<td>50</td>
+</tr>
+<tr>
+<td>IAM_DB_MIN_IDLE</td>
+<td>The minimum number of idle connections the pool attempts to maintain</td>
+<td>8</td>
+</tr>
+<tr>
+<td>IAM_DB_VALIDATION_QUERY</td>
+<td>A configuration property used to validate the health of a database connection before it is handed out from the pool</td>
+<td>SELECT 1</td>
+</tr>
+</tbody>
+</table>
+<p>(*) ?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true</p>
+<p>Moreover, the VOMS AA related environment variables are:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VOMS_AA_BINDING_ADDRESS</td>
+<td>Address the server binds to (network interface)</td>
+<td>0.0.0.0</td>
+</tr>
+<tr>
+<td>VOMS_AA_PORT</td>
+<td>Port the server listens on</td>
+<td>8080</td>
+</tr>
+<tr>
+<td>VOMS_AA_VONAME</td>
+<td>Name of the Virtual Organization (VO)</td>
+<td>test</td>
+</tr>
+<tr>
+<td>VOMS_AA_FORWARD_HEADERS_STRATEGY</td>
+<td>Strategy for handling forwarded HTTP headers (e.g. from proxies). Set &ldquo;native&rdquo; if you&rsquo;re behind a proxy</td>
+<td>none</td>
+</tr>
+<tr>
+<td>VOMS_AA_TLS_CERTIFICATE_PATH</td>
+<td>Path to the TLS server certificate file</td>
+<td>/certs/hostcert.pem</td>
+</tr>
+<tr>
+<td>VOMS_AA_TLS_PRIVATE_KEY_PATH</td>
+<td>Path to the TLS private key file</td>
+<td>/certs/hostkey.pem</td>
+</tr>
+<tr>
+<td>VOMS_AA_TLS_TRUST_ANCHORS_DIR</td>
+<td>Directory containing trusted CA certificates</td>
+<td>/etc/grid-security/certificates</td>
+</tr>
+<tr>
+<td>VOMS_AA_TLS_TRUST_ANCHORS_REFRESH_INTERVAL_SECS</td>
+<td>Interval (in seconds) to reload trusted CA certificates</td>
+<td>14400</td>
+</tr>
+<tr>
+<td>VOMS_AA_OPTIONAL_GROUP_LABEL</td>
+<td>Attribute name used for optional group membership</td>
+<td>wlcg.optional-group</td>
+</tr>
+<tr>
+<td>VOMS_AA_VOMS_ROLE_LABEL</td>
+<td>Label name used for VOMS roles</td>
+<td>voms.role</td>
+</tr>
+<tr>
+<td>VOMS_AA_USE_LEGACY_FQAN_ENCODING</td>
+<td>Enable legacy encoding format for FQAN attributes</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Warning</h4>
+
+    A top level group equal to <code>VOMS_AA_VO</code> must be defined in IAM. The attributes appearing in the VOMS proxy include all the sub-groups of the parent group equal to the VO name. Top level groups different from the VO name may still be used for group-based authorization with JWTs, but will not appear in the proxy.
+
+</div>
+
+<h3 id="using-yaml-file">Using YAML file</h3>
+<p>In order to configure VOMS AA through a YAML file, you need to place the file
+at <code>/workspace/config/application.yml</code> in the container.
+The file content is shown below, together with the default value of the properties.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">server</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">address</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0.0.0.0</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">port</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -10122,24 +10251,18 @@ to the container as <code>/workspace/config/application.yml</code>.</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">banner-mode</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;off&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">jpa</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">open-in-view</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">datasource</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">dataSourceClassName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">com.mysql.jdbc.jdbc2.optional.MysqlDataSource</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">url</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">jdbc:mysql://${IAM_DB_HOST}:${IAM_DB_PORT:3306}/${IAM_DB_NAME}?useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;useSSL=false</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">username</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${IAM_DB_USERNAME}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">password</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${IAM_DB_PASSWORD}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">max-active</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${IAM_DB_MAX_ACTIVE:10}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">max-idle</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#000">${IAM_DB_MAX_IDLE:5}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">initial-size</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${IAM_DB_INITIAL_SIZE:1}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">test-while-idle</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${IAM_DB_TEST_WHILE_IDLE:true}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">test-on-borrow</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${IAM_DB_TEST_ON_BORROW:true}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">validation-query</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${IAM_DB_VALIDATION_QUERY:SELECT 1}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">time-between-eviction-runs-millis</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${IAM_DB_TIME_BETWEEN_EVICTION_RUNS_MILLIS:5000}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">min-evictable-idle-time-millis</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${IAM_DB_MIN_EVICTABLE_IDLE_TIME_MILLIS:60000}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">open-in-view</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">flyway</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">enabled</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">datasource</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">url</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">jdbc:mysql://db:3306/iam?useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;useSSL=false</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">username</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">iam</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">password</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">pwd</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">max-active</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">50</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">minimum-idle</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">validation-query</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">SELECT 1</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">voms</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">tls</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -10148,19 +10271,21 @@ to the container as <code>/workspace/config/application.yml</code>.</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">trust-anchors-dir</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/etc/grid-security/certificates</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">trust-anchors-refresh-interval-secs</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">14400</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">aa</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">host</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${VOMS_AA_HOST:undefined}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">port</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${VOMS_AA_PORT:undefined}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">vo-name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${VOMS_AA_VO:undefined}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">use-legacy-fqan-encoding</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">${VOMS_AA_USE_LEGACY_FQAN_ENCODING:true}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span></code></pre></div><p>To map this file (in the example below, <code>voms-aa.yml</code>as <code>/workspace/config/application.yml</code>), you
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">host</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0.0.0.0</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">port</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">vo-name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">optional-group-label</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">wlcg.optional-group</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">voms-role-label</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">voms.role</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">use-legacy-fqan-encoding</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>Assuming that the configuration file is locally named as <code>voms-aa.yml</code>, you
 typically need to add the following volume definition to the VOMS AA section of your Podman/Docker
-compose file:</p>
+compose file, in order to map it into the proper application file:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">volumes</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span>- <span style="color:#000">/path/to/voms-aa.yml:/workspace/config/application.yml:ro,Z</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span></code></pre></div><p><em>Note: <code>Z</code> at the end of the line is required only if you use SELinux</em></p>
 <p>In addition, you need to configure the EGI trust anchors and the VOMS AA certificate and
 private key, as described below.</p>
-<h3 id="configuration-of-egi-trust-anchors-and-voms-aa-certificate">Configuration of EGI trust anchors and VOMS AA certificate</h3>
+<h2 id="configuration-of-egi-trust-anchors-and-voms-aa-certificate">Configuration of EGI trust anchors and VOMS AA certificate</h2>
 <p>Both the VOMS-enabled NGINX service and the VOMS AA service require the proper configuration
 of the container, the certificate and private key to use and the EGI trust anchors. If using
 Podman/Docker Compose, it is typically done with:</p>
@@ -10172,7 +10297,7 @@ Podman/Docker Compose, it is typically done with:</p>
 container. See the Podman/Docker Compose example for more information.</p>
 <p>Note that the private key must be readable by the user running the service. As it is not a good
 practice to make it world readable, it may be necessary to adjust its ownership.</p>
-<h3 id="podmandocker-compose-example">Podman/Docker Compose example</h3>
+<h2 id="podmandocker-compose-example">Podman/Docker Compose example</h2>
 <p>For an example of the container configurations, see the <a href="https://github.com/indigo-iam/iam/blob/master/compose/voms-deploy/docker-compose.yml">VOMS AA Docker compose
 file</a>.</p>
 

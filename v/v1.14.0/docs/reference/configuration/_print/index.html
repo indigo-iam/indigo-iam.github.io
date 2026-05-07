@@ -89,7 +89,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.d64d65eeea3432fb43b8994304646773.json"
+    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.bbf4f8b6f147a7ded18e6b8a97edd928.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -1681,7 +1681,7 @@ organization, administrators are asked to validate membership requests.</p>
 which ones</li>
 <li>Which information must be retrieved from the IdP to fill the account creation form</li>
 </ul>
-<p>The relevant settings must be under the following hierarchy of a [custom configuration file][custom-config-file]:</p>
+<p>The relevant settings must be under the following hierarchy of a <a href="/v/v1.14.0/docs/reference/configuration/#overriding-default-configuration-templates">custom configuration file</a>:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">registration</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span></code></pre></div><h4 id="requiring-external-authentication">Requiring external authentication</h4>
@@ -1701,7 +1701,7 @@ mapped to IAM membership information</p>
 <p>The first time a user authenticates in an IAM instance, the account creation form will be displayed. It is possible to request
 that some of the fields are filled with the value of an IdP attribute.</p>
 <p>To enable filling the creation form with values provided by the IdP, the contents
-of the [custom configuration file][custom-config-file] should be something similar to
+of the <a href="/v/v1.14.0/docs/reference/configuration/#overriding-default-configuration-templates">custom configuration file</a> should be something similar to
 (here we show the default configuragtion already in place with the Spring <code>registration</code> profile):</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">registration</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -1837,8 +1837,8 @@ of the registration form should be shown or not.</p>
 <p>Since IAM v1.9.0, during a registration request the username can be automatically added as an attribute named <em>nickname</em>. This process happens both for login with external provider, or when one directly clicks on the
 <em>Apply for an account</em> button.
 The <em>nickname</em> value will be the same as the username set during the registration request.</p>
-<p>This behavior does not appear by default. To enable it, add to your [custom configuration
-file][custom-config-file]</p>
+<p>This behavior does not appear by default. To enable it, add to your <a href="/v/v1.14.0/docs/reference/configuration/#overriding-default-configuration-templates">custom configuration
+file</a></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">registration</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">add-nickname-as-attribute</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
