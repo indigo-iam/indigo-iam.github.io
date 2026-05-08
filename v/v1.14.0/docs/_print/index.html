@@ -85,7 +85,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.2332e784f7ec236b615f4e14fdf5cf8f.json"
+    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.811a7b27a2f7376e3f87a251d6041528.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -7141,7 +7141,20 @@ Authentication section</a>.</p>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># List of attribute aliases that are looked up in assertion to identify the </span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># user authenticated with SAML</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_SAML_ID_RESOLVERS</span><span style="color:#ce5c00;font-weight:bold">=</span>eduPersonUniqueId,eduPersonTargetedId,eduPersonPrincipalName
-</span></span></code></pre></div><p>For more information and examples, see the <a href="/v/v1.14.0/docs/reference/configuration/external-authentication/saml/">SAML Authentication
+</span></span></code></pre></div>
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Warning</h4>
+
+    In case you configure IAM such to support a SAML federation, the polling and
+refreshing of the federation metadata (specified by the environment variable
+<code>IAM_SAML_IDP_METADATA</code>) may encounter an out of memory issue.
+Then, we reccomend to increase the heap space to 3 GB through the JVM options:
+<code>IAM_JAVA_OPTS=-Xms3000m -Xmx3000m</code>.
+
+</div>
+
+<p>For more information and examples, see the <a href="/v/v1.14.0/docs/reference/configuration/external-authentication/saml/">SAML Authentication
 section</a>.</p>
 <h3 id="notification-service-settings">Notification service settings</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">## SMTP mail server settings </span>
@@ -9088,6 +9101,18 @@ in SAML terms, which authentication flows are enabled and providing access to
 cryptographic material and other information that make the federated
 authentication schemes work reliably and securely. For more information on SAML
 metadata, see <a href="https://wiki.shibboleth.net/confluence/display/CONCEPT/Metadata">the Shibboleth metadata documentation</a>.</p>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Warning</h4>
+
+    In case you configure IAM such to support a SAML federation, the polling and
+refreshing of the federation metadata may encounter an out of memory issue.
+Then, we reccomend to increase the heap space to 3 GB through the JVM options:
+<code>IAM_JAVA_OPTS=-Xms3000m -Xmx3000m</code>.
+
+</div>
+
 <h3 id="signed-metadata-advice">Signed metadata advice</h3>
 <p>Typically identity federations sign the SAML metadata for security reasons, and
 provide a certificate (and linked public key) that can be used to verify
