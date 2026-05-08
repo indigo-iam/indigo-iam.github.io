@@ -8,6 +8,13 @@
     <language>en</language>
     <atom:link href="/v/v1.14.0/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>IAM v1.14.0</title>
+      <link>/v/v1.14.0/blog/2026/05/08/iam-v1.14.0/</link>
+      <pubDate>Fri, 08 May 2026 00:00:00 +0000</pubDate>
+      <guid>/v/v1.14.0/blog/2026/05/08/iam-v1.14.0/</guid>
+      <description>The IAM development team is pleased to announce the release of INDIGO IAM v1.14.0.&#xA;Warning Please note that the VOMS AA Docker image name indigoiam/voms-aa-bp is deprecated. It has been changed into indigoiam/iam-voms-aa. The main feature of this release is to disable storing access tokens in the database (from configuration). You can enable this feature by adding the environment variable IAM_ACCESS_TOKEN_STORE_ON_DATABASE=false, or the YAML property&#xA;iam: access_token: store_on_database: false Moreover, many bug fixes and enhancements are included in this release, as can be seen in the release notes.</description>
+    </item>
+    <item>
       <title>IAM v1.13.0</title>
       <link>/v/v1.14.0/blog/2025/11/03/iam-v1.13.0/</link>
       <pubDate>Mon, 03 Nov 2025 00:00:00 +0000</pubDate>

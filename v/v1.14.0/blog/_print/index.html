@@ -85,7 +85,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.5c0fb5a3a41198bfbf5fd6cfc5d07fd1.json"
+    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.79560aeb7308e04ef2ee2bd33f906abc.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -180,6 +180,16 @@ This is the multi-page printable view of this section.
   
   
 
+  
+    
+    
+	
+
+    <li><a href="#pg-61982fdde2f0752dcb2b89e279264f07">IAM v1.14.0</a></li>
+
+
+
+    
   
     
     
@@ -479,6 +489,60 @@ Github account, just see the tab on the right of each page.</p>
   
 
 <div class="td-content" style="">
+    <h1 id="pg-61982fdde2f0752dcb2b89e279264f07">IAM v1.14.0</h1>
+	<div class="lead">The v1.14.0 release includes an option to stop storing access tokens in database</div>
+	<div class="td-byline mb-4">
+		By <b>IAM development team</b> |
+        
+		<time datetime="2026-05-08" class="text-body-secondary">Friday, May 08, 2026</time>
+        
+	</div>
+	<p>The IAM development team is pleased to announce the release of INDIGO IAM v1.14.0.</p>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Warning</h4>
+
+    Please note that the VOMS AA Docker image name <code>indigoiam/voms-aa-bp</code> is deprecated. It
+has been changed into <a href="https://hub.docker.com/r/indigoiam/iam-voms-aa/tags">indigoiam/iam-voms-aa</a>.
+
+</div>
+
+<p>The main feature of this release is to disable storing access tokens in the database (from configuration). You can enable this feature by adding the environment variable <code>IAM_ACCESS_TOKEN_STORE_ON_DATABASE=false</code>, or the YAML
+property</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">access_token</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">store_on_database</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>Moreover, many bug fixes and enhancements are included in this release, as can be seen in the <a href="https://github.com/indigo-iam/iam/releases/tag/v1.14.0">release notes</a>.</p>
+<p>The major highlights are:</p>
+<ul>
+<li>add support for AARC-G061 IDP hinting guidelines</li>
+<li>add support for X.509 linking during a user&rsquo;s registration request</li>
+<li>allow to disable upscoping during token exchange through an option</li>
+<li>force the usage of MFA for all users</li>
+<li>support for AARC-G052 Proxied Token Introspection implementation</li>
+<li>support for OpenID Federation automatic client registration.</li>
+</ul>
+<p>As usual, the IAM docker image can be obtained from <a href="https://hub.docker.com/r/indigoiam/iam-login-service/tags">DockerHub</a>.</p>
+
+</div>
+
+
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+
+  
+
+<div class="td-content" style="page-break-before: always">
     <h1 id="pg-ca96e1d0d26226c55c41a081158fd3a8">IAM v1.13.0</h1>
 	<div class="lead">The v1.13.0 release includes a first support to OpenID Fedration (experimental)</div>
 	<div class="td-byline mb-4">
