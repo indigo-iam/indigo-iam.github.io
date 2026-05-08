@@ -85,7 +85,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.60685f34038078fd57461eefc610fd26.json"
+    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.44381d018cc3fd9ec47cb7b7dd709b9c.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -7308,7 +7308,64 @@ service</a>.</p>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Use forwarded headers from reverse proxy. Set this to native when deploying the</span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># service behind a reverse proxy</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_CLIENT_FORWARD_HEADERS_STRATEGY</span><span style="color:#ce5c00;font-weight:bold">=</span>none
+</span></span></code></pre></div><h2 id="voms-aa">VOMS AA</h2>
+<p>The following environment variables for VOMS AA configuration (related to the access to the database)
+are in common with IAM login service:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Hostname of database server</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_HOST</span><span style="color:#ce5c00;font-weight:bold">=</span>localhost
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Port of database server</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_PORT</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">3306</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># IAM database name</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_NAME</span><span style="color:#ce5c00;font-weight:bold">=</span>iam
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The custom list of URL connection parameters. It must start with &#34;?&#34; character,</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># if defined. The default value overrides the session time zone setting on the</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># server to &#34;UTC&#34; and disables SSL usage</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_URL_PARAMS</span><span style="color:#ce5c00;font-weight:bold">=</span>?useSSL<span style="color:#ce5c00;font-weight:bold">=</span>false<span style="color:#000;font-weight:bold">&amp;</span><span style="color:#000">serverTimezone</span><span style="color:#ce5c00;font-weight:bold">=</span>UTC<span style="color:#000;font-weight:bold">&amp;</span><span style="color:#000">allowPublicKeyRetrieval</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Username for accessing the database</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_USERNAME</span><span style="color:#ce5c00;font-weight:bold">=</span>iam
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Password for accessing the database</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_PASSWORD</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">pwd</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The default maximum database connection pool size</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_MAX_ACTIVE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">50</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The minimum number of idle connections the pool attempts to maintain</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_MIN_IDLE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">8</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># A configuration property used to validate the health of a database connection</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># before it is handed out from the pool</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_VALIDATION_QUERY</span><span style="color:#ce5c00;font-weight:bold">=</span>SELECT <span style="color:#0000cf;font-weight:bold">1</span>
+</span></span></code></pre></div><p>Moreover, the VOMS AA related environment variables are:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Address the server binds to (network interface)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">VOMS_AA_BINDING_ADDRESS</span><span style="color:#ce5c00;font-weight:bold">=</span>0.0.0.0
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Port the server listens on</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">VOMS_AA_PORT</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">8080</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Name of the Virtual Organization (VO)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">VOMS_AA_VONAME</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">test</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Strategy for handling forwarded HTTP headers (e.g. from proxies).</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Set &#34;native&#34; if you&#39;re behind a proxy</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">VOMS_AA_FORWARD_HEADERS_STRATEGY</span><span style="color:#ce5c00;font-weight:bold">=</span>none
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Path to the TLS server certificate file</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">VOMS_AA_TLS_CERTIFICATE_PATH</span><span style="color:#ce5c00;font-weight:bold">=</span>/certs/hostcert.pem
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Path to the TLS private key file</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">VOMS_AA_TLS_PRIVATE_KEY_PATH</span><span style="color:#ce5c00;font-weight:bold">=</span>/certs/hostkey.pem
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Directory containing trusted CA certificates</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">VOMS_AA_TLS_TRUST_ANCHORS_DIR</span><span style="color:#ce5c00;font-weight:bold">=</span>/etc/grid-security/certificates
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Interval (in seconds) to reload trusted CA certificates</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">VOMS_AA_TLS_TRUST_ANCHORS_REFRESH_INTERVAL_SECS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">14400</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Attribute name used for optional group membership</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">VOMS_AA_OPTIONAL_GROUP_LABEL</span><span style="color:#ce5c00;font-weight:bold">=</span>wlcg.optional-group
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Label name used for VOMS roles</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">VOMS_AA_VOMS_ROLE_LABEL</span><span style="color:#ce5c00;font-weight:bold">=</span>voms.role
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Enable legacy encoding format for FQAN attributes</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">VOMS_AA_USE_LEGACY_FQAN_ENCODING</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">false</span>
 </span></span></code></pre></div>
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Warning</h4>
+
+    A top level group equal to <code>VOMS_AA_VONAME</code> must be defined in IAM. The attributes appearing in the VOMS proxy include all the sub-groups of the parent group equal to the VO name. Top level groups different from the VO name may still be used for group-based authorization with JWTs, but will not appear in the proxy.
+
+</div>
+
+
 </div>
 
 
@@ -10165,145 +10222,12 @@ domain name of the VOMS attribute authority with the <code>.lsc</code> extension
 </span></span></span><span style="display:flex;"><span><span style="color:#000;font-style:italic">  ${X509_VOMS_DIR}/example.vo/voms.test.example.lsc
 </span></span></span></code></pre></div><p>For an example NGINX configuration, see the one use in <a href="https://github.com/indigo-iam/iam/blob/master/compose/voms-deploy/assets/nginx/conf.d/voms.test.example.conf">VOMS-enabled NGINX container</a>.</p>
 <h2 id="voms-aa-configuration">VOMS AA configuration</h2>
+<h3 id="using-environment-variables">Using environment variables</h3>
 <p>The VOMS AA is a Spring Boot application that shares the persistence
 layer implementation with IAM, and as such can inspect the IAM database. It can share
 the same environment file as the login service it is associated with.</p>
-<h3 id="using-environment-variables">Using environment variables</h3>
-<p>The following table shows the environment variables for VOMS AA configuration in common with IAM
-login service, related with the access to the database:</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>IAM_DB_HOST</td>
-<td>Hostname of database server</td>
-<td>localhost</td>
-</tr>
-<tr>
-<td>IAM_DB_PORT</td>
-<td>Port of database server</td>
-<td>3306</td>
-</tr>
-<tr>
-<td>IAM_DB_NAME</td>
-<td>IAM database name</td>
-<td>iam</td>
-</tr>
-<tr>
-<td>IAM_DB_URL_PARAMS</td>
-<td>The custom list of URL connection parameters. It must start with &ldquo;?&rdquo; character, if defined. The default value overrides the session time zone setting on the server to &ldquo;UTC&rdquo; and disables SSL usage</td>
-<td>(*)</td>
-</tr>
-<tr>
-<td>IAM_DB_USERNAME</td>
-<td>Username for accessing the database</td>
-<td>iam</td>
-</tr>
-<tr>
-<td>IAM_DB_PASSWORD</td>
-<td>Password for accessing the database</td>
-<td>pwd</td>
-</tr>
-<tr>
-<td>IAM_DB_MAX_ACTIVE</td>
-<td>The default maximum database connection pool size</td>
-<td>50</td>
-</tr>
-<tr>
-<td>IAM_DB_MIN_IDLE</td>
-<td>The minimum number of idle connections the pool attempts to maintain</td>
-<td>8</td>
-</tr>
-<tr>
-<td>IAM_DB_VALIDATION_QUERY</td>
-<td>A configuration property used to validate the health of a database connection before it is handed out from the pool</td>
-<td>SELECT 1</td>
-</tr>
-</tbody>
-</table>
-<p>(*) ?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true</p>
-<p>Moreover, the VOMS AA related environment variables are:</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>VOMS_AA_BINDING_ADDRESS</td>
-<td>Address the server binds to (network interface)</td>
-<td>0.0.0.0</td>
-</tr>
-<tr>
-<td>VOMS_AA_PORT</td>
-<td>Port the server listens on</td>
-<td>8080</td>
-</tr>
-<tr>
-<td>VOMS_AA_VONAME</td>
-<td>Name of the Virtual Organization (VO)</td>
-<td>test</td>
-</tr>
-<tr>
-<td>VOMS_AA_FORWARD_HEADERS_STRATEGY</td>
-<td>Strategy for handling forwarded HTTP headers (e.g. from proxies). Set &ldquo;native&rdquo; if you&rsquo;re behind a proxy</td>
-<td>none</td>
-</tr>
-<tr>
-<td>VOMS_AA_TLS_CERTIFICATE_PATH</td>
-<td>Path to the TLS server certificate file</td>
-<td>/certs/hostcert.pem</td>
-</tr>
-<tr>
-<td>VOMS_AA_TLS_PRIVATE_KEY_PATH</td>
-<td>Path to the TLS private key file</td>
-<td>/certs/hostkey.pem</td>
-</tr>
-<tr>
-<td>VOMS_AA_TLS_TRUST_ANCHORS_DIR</td>
-<td>Directory containing trusted CA certificates</td>
-<td>/etc/grid-security/certificates</td>
-</tr>
-<tr>
-<td>VOMS_AA_TLS_TRUST_ANCHORS_REFRESH_INTERVAL_SECS</td>
-<td>Interval (in seconds) to reload trusted CA certificates</td>
-<td>14400</td>
-</tr>
-<tr>
-<td>VOMS_AA_OPTIONAL_GROUP_LABEL</td>
-<td>Attribute name used for optional group membership</td>
-<td>wlcg.optional-group</td>
-</tr>
-<tr>
-<td>VOMS_AA_VOMS_ROLE_LABEL</td>
-<td>Label name used for VOMS roles</td>
-<td>voms.role</td>
-</tr>
-<tr>
-<td>VOMS_AA_USE_LEGACY_FQAN_ENCODING</td>
-<td>Enable legacy encoding format for FQAN attributes</td>
-<td>false</td>
-</tr>
-</tbody>
-</table>
-
-
-<div class="alert alert-warning" role="alert">
-<h4 class="alert-heading">Warning</h4>
-
-    A top level group equal to <code>VOMS_AA_VO</code> must be defined in IAM. The attributes appearing in the VOMS proxy include all the sub-groups of the parent group equal to the VO name. Top level groups different from the VO name may still be used for group-based authorization with JWTs, but will not appear in the proxy.
-
-</div>
-
+<p>In order to configure VOMS AA using environment variables, please refer to the
+<a href="/docs/reference/configuration/#voms-aa">Configuration</a> section.</p>
 <h3 id="using-yaml-file">Using YAML file</h3>
 <p>In order to configure VOMS AA through a YAML file, you need to place the file
 at <code>/workspace/config/application.yml</code> in the container.
