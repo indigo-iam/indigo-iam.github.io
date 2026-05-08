@@ -89,7 +89,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.44381d018cc3fd9ec47cb7b7dd709b9c.json"
+    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.f7e00fae31fb94bb65cc9dcd3c1f67e6.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -114,7 +114,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.44381d018cc3fd9ec47cb7b7dd709b9c.json"
+    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.f7e00fae31fb94bb65cc9dcd3c1f67e6.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -481,14 +481,18 @@ directory, which depends on how you deployed IAM:</p>
 default configuration <strong>only if you know what you are doing</strong>, and for those
 scenarios not served by the default templates.</p>
 <h2 id="iam-login-service">IAM login service</h2>
+<p>The value of the below environment variables are the default one configured into IAM and allows
+to quickly run the application in development mode. They are not intended for a production environment.</p>
 <h3 id="basic-service-configuration">Basic service configuration</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The IAM service will list for requests on this host</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The IAM service will list for requests on this host.</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># In a production environment it could be someting like &#39;iam.test.example&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_HOST</span><span style="color:#ce5c00;font-weight:bold">=</span>localhost
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The IAM service webapp will bind on this port</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_PORT</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">8080</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The IAM web application base URL</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The IAM web application base URL.</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># We highly recommend to use https in production.</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_BASE_URL</span><span style="color:#ce5c00;font-weight:bold">=</span>http://<span style="color:#4e9a06">${</span><span style="color:#000">IAM_HOST</span><span style="color:#4e9a06">}</span>:8080
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The OpenID Connect issuer configured for this IAM instance.</span>
@@ -497,7 +501,7 @@ scenarios not served by the default templates.</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The path to the JSON keystore that holds the keys IAM will use to sign and</span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># verify token signatures</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IAM_KEY_STORE_LOCATION</span><span style="color:#ce5c00;font-weight:bold">=</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_KEY_STORE_LOCATION</span><span style="color:#ce5c00;font-weight:bold">=</span>classpath:keystore.jwks
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># HTTP caching header setting public key lifetime (in seconds).</span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The recommended lifetime according to the WLCG profile* is 6 hours</span>
@@ -562,7 +566,7 @@ scenarios not served by the default templates.</p>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_TOPBAR_TITLE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;INDIGO IAM for </span><span style="color:#4e9a06">${</span><span style="color:#000">IAM_ORGANISATION_NAME</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span>
 </span></span></code></pre></div><h3 id="database-configuration">Database configuration</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The host where the MariaDB/MySQL daemon is running</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_HOST</span><span style="color:#ce5c00;font-weight:bold">=</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_HOST</span><span style="color:#ce5c00;font-weight:bold">=</span>localhost
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The database port</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_PORT</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">3306</span>
@@ -642,7 +646,7 @@ For more information, see the <a href="local_authn/">Local Authentication sectio
 Authentication section</a>.</p>
 <h3 id="saml-authentication-settings">SAML authentication settings</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The SAML entity ID for this IAM instance</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IAM_SAML_ENTITY_ID</span><span style="color:#ce5c00;font-weight:bold">=</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_SAML_ENTITY_ID</span><span style="color:#ce5c00;font-weight:bold">=</span>urn:iam:iam-devel
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Text shown in the SAML login button on the IAM login page</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_SAML_LOGIN_BUTTON_TEXT</span><span style="color:#ce5c00;font-weight:bold">=</span>Sign in with SAML
@@ -650,21 +654,21 @@ Authentication section</a>.</p>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">## SAML keystore settings</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The keystore holding certificates and keys used for SAML crypto</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IAM_SAML_KEYSTORE</span><span style="color:#ce5c00;font-weight:bold">=</span> 
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_SAML_KEYSTORE</span><span style="color:#ce5c00;font-weight:bold">=</span>classpath:/saml/samlKeystore.jks
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The SAML keystore password</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IAM_SAML_KEYSTORE_PASSWORD</span><span style="color:#ce5c00;font-weight:bold">=</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_SAML_KEYSTORE_PASSWORD</span><span style="color:#ce5c00;font-weight:bold">=</span>password
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The identifier of the key that should be used to sign requests/assertions</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IAM_SAML_KEY_ID</span><span style="color:#ce5c00;font-weight:bold">=</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_SAML_KEY_ID</span><span style="color:#ce5c00;font-weight:bold">=</span>iam
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The password of the SAML key that will be used to sign requests/assertions</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IAM_SAML_KEY_PASSWORD</span><span style="color:#ce5c00;font-weight:bold">=</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_SAML_KEY_PASSWORD</span><span style="color:#ce5c00;font-weight:bold">=</span>password
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">## Metadata settings</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># a URL pointing to the SAML federation or IdP metadata</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IAM_SAML_IDP_METADATA</span><span style="color:#ce5c00;font-weight:bold">=</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_SAML_IDP_METADATA</span><span style="color:#ce5c00;font-weight:bold">=</span>classpath:/saml/idp-metadata.xml
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Metadata refresh period (in seconds)</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_SAML_METADATA_LOOKUP_SERVICE_REFRESH_PERIOD_SEC</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">600</span>
@@ -1011,7 +1015,7 @@ are in common with IAM login service:</p>
             </div>
         </div>
 <div class="td-page-meta__lastmod">
-  Last modified May 8, 2026: <a href="https://github.com/indigo-iam/iam-website/commit/6a9965d5c7337aa030b536cc00ea02332cf21183">Move VOMS configuration with environment variables (6a9965d)</a>
+  Last modified May 8, 2026: <a href="https://github.com/indigo-iam/iam-website/commit/56933a0d0d225f7af68a1282c07923bee0565425">Highlight that the config example is not for production (56933a0)</a>
 </div>
 </div>
 
