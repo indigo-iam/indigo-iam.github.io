@@ -85,7 +85,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.79560aeb7308e04ef2ee2bd33f906abc.json"
+    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.60685f34038078fd57461eefc610fd26.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -136,6 +136,16 @@ This is the multi-page printable view of this section.
 <div class="content">
       <p>The IAM server has a RESTful API used to list and revoke active access and
 refresh tokens.</p>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Warning</h4>
+
+    When IAM is configured such to <a href="/docs/reference/configuration/#persisting-access-tokens">not store access tokens in database</a>, the following description is not anymore valid and the endpoints
+will not respond as per description.
+
+</div>
+
 <p>Access to the API is limited to users with administrator privileges authenticated via a web session or
 to access token containing predefined restricted System Scopes.<br>
 All examples assume authorization via OAuth2 bearer token; e.g.</p>

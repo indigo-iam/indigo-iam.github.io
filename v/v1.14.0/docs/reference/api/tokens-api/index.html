@@ -85,7 +85,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.79560aeb7308e04ef2ee2bd33f906abc.json"
+    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.60685f34038078fd57461eefc610fd26.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -110,7 +110,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.79560aeb7308e04ef2ee2bd33f906abc.json"
+    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.60685f34038078fd57461eefc610fd26.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -369,6 +369,16 @@
 </header>
 	<p>The IAM server has a RESTful API used to list and revoke active access and
 refresh tokens.</p>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Warning</h4>
+
+    When IAM is configured such to <a href="/docs/reference/configuration/#persisting-access-tokens">not store access tokens in database</a>, the following description is not anymore valid and the endpoints
+will not respond as per description.
+
+</div>
+
 <p>Access to the API is limited to users with administrator privileges authenticated via a web session or
 to access token containing predefined restricted System Scopes.<br>
 All examples assume authorization via OAuth2 bearer token; e.g.</p>
@@ -598,7 +608,7 @@ Authorization: Bearer h480djs93hd8
     
     </div>
 <div class="td-page-meta__lastmod">
-  Last modified April 22, 2026: <a href="https://github.com/indigo-iam/iam-website/commit/7fb8a225c869a45c9edf3a4a6fc8b297929896b4">Revoke all refresh tokens for a client (#169) (7fb8a22)</a>
+  Last modified May 8, 2026: <a href="https://github.com/indigo-iam/iam-website/commit/6f32af72562bb5d8ff9b78bf37e0d64c8d641c5c">Add warning to token management API (6f32af7)</a>
 </div>
 </div>
 
