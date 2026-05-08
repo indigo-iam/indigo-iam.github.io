@@ -89,7 +89,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.811a7b27a2f7376e3f87a251d6041528.json"
+    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.aa1c1dec0b271baf1cfa2d45300319c5.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -390,11 +390,12 @@ http-request set-header X-SSL-Client-Verify %{+Q}[ssl_c_verify,x509_v_err_str]
 user that has read/write/schema change privileges on such database.</p>
 <p>IAM has been tested successfully against:</p>
 <ul>
-<li>MySQL v. 5.5.5</li>
+<li>MySQL v. 5.5.5 and 8</li>
 <li>MariaDB v. 10.1.22</li>
 </ul>
 <p>For more instructions on how to create a database schema and a user with
-administrator privileges on it, see the <a href="https://mariadb.com/kb/en/">MariaDB documentation</a>.</p>
+administrator privileges on it, see the <a href="https://mariadb.com/kb/en/">MariaDB documentation</a>
+or <a href="https://downloads.mysql.com/docs/refman-8.0-en.pdf">MySQL8 reference manual</a>.</p>
 <p>Assuming the organization that IAM will manage is called <code>test</code>, the following
 commands can be used  to create a database and a user for the IAM application:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">DATABASE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">iam_test_db</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">CHARACTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">SET</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">latin1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">COLLATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">latin1_swedish_ci</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -402,6 +403,12 @@ commands can be used  to create a database and a user for the IAM application:</
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">GRANT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">ALL</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">PRIVILEGES</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">on</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">iam_test_db</span><span style="color:#000;font-weight:bold">.</span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">to</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;iam_test&#39;</span><span style="color:#ce5c00;font-weight:bold">@</span><span style="color:#4e9a06">&#39;%&#39;</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span></code></pre></div><p>You may want to restrict the set of hosts from which a mysql client can connect
 to the database with the above credentials according to your deployment needs.</p>
+<h3 id="mysql8">MySQL8</h3>
+<p>For MySQL8 or more recent databases, we recommend to set a more modern unicode, e.g.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">DATABASE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">iam_test_db</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">CHARACTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">SET</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">latin1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">COLLATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">utf8</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>Moreover, by migrating from a older db version to MySQL8, the connection to the database
+requires to set the <code>allowPublicKeyRetrieval</code> URL parameters, which is included by default
+since IAM v1.14.0 (see <a href="/docs/reference/configuration/#database-configuration">Database Configuration section</a>).</p>
 
 </div>
 
