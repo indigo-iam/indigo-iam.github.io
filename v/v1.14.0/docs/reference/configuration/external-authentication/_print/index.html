@@ -85,7 +85,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.37a7aa5ed2c76f656b9219c8bd31265b.json"
+    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.2fa2bd5b6d2aba79b5bf2fbabc7c8be2.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -547,7 +547,47 @@ the <code>IAM_SAML_LOGIN_BUTTON_TEXT</code> environment variable.</p>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_SAML_METADATA_REQUIRE_VALID_SIGNATURE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">true</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_SAML_METADATA_LOOKUP_SERVICE_REFRESH_PERIOD_SEC</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">3600</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_SAML_LOGIN_BUTTON_TEXT</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;Sign in with IDEM&#34;</span>
-</span></span></code></pre></div><h2 id="custom-saml-configuration">Custom SAML configuration</h2>
+</span></span></code></pre></div><h2 id="configuring-the-authncontext-class-references">Configuring the AuthnContext class references</h2>
+<p>When IAM issues a SAML <code>AuthnRequest</code>, it can include a
+<code>RequestedAuthnContext</code> element listing the authentication context class
+references (AuthnContext class-refs) that the Identity Provider (IdP) is
+expected to satisfy.</p>
+<p>Starting from IAM v1.14.0 the list is fully configurable via the
+<code>saml.authn-context.class-refs</code> property in <code>application-saml.yml</code>, and IAM
+can also be configured to omit the <code>RequestedAuthnContext</code> element from
+outgoing requests altogether.</p>
+<h3 id="default-configuration">Default configuration</h3>
+<p>The default <code>application-saml.yml</code> embedded in the IAM file now ships
+with the following AuthnContext block:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">saml</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># ...</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">authn-context</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># Edit class-refs to customise the AuthnContextClassRef values sent in SAML requests.</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># Set to an empty list to send no AuthnContext at all (IdP decides):</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># class-refs: []</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># (or)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">class-refs</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#000">https://refeds.org/profile/mfa</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#000">https://refeds.org/profile/sfa</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#000">urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#000">urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><h3 id="common-scenarios">Common scenarios</h3>
+<p>The simplest interoperability fix is to drop the <code>RequestedAuthnContext</code>
+element entirely and let the IdP choose whatever authentication method it
+considers acceptable. To do this, override the list with an empty value in
+your custom <code>application-saml.yml</code>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">saml</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">authn-context</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">class-refs</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">[]</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><h4 id="request-a-specific-authentication-method">Request a specific authentication method</h4>
+<p>To ask the IdP for a specific authentication context — for example, MFA
+only — list the URI(s) you want to request:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">saml</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">authn-context</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">class-refs</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#000">https://refeds.org/profile/mfa</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>You can list as many class references as you need. The IdP will be asked to satisfy any one of them.</p>
+<h2 id="custom-saml-configuration">Custom SAML configuration</h2>
 <p>The configuration based on environment variables relies on a <a href="https://raw.githubusercontent.com/indigo-iam/iam/current/iam-login-service/src/main/resources/application-saml.yml">configuration
 template</a> that fits most use cases embedded in the IAM war
 file.</p>
