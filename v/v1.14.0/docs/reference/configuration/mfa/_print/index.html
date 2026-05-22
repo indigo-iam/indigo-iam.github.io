@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="canonical" type="text/html" href="/v/v1.14.0/docs/reference/configuration/group-enrollment/">
+<link rel="canonical" type="text/html" href="/v/v1.14.0/docs/reference/configuration/mfa/">
 <meta name="robots" content="noindex, nofollow">
 
 
@@ -18,15 +18,15 @@
 <link rel="icon" type="image/png" href="/v/v1.14.0/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/v/v1.14.0/favicons/android-192x192.png" sizes="192x192">
 
-<title>Automatic group enrollment | INDIGO IAM</title>
+<title>Configuration to enforce MFA for all users | INDIGO IAM</title>
 <meta name="description" content="The INDIGO Identity and Access Management (IAM) Service">
-<meta property="og:title" content="Automatic group enrollment" />
+<meta property="og:title" content="Configuration to enforce MFA for all users" />
 <meta property="og:description" content="The INDIGO Identity and Access Management (IAM) Service" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="/v/v1.14.0/docs/reference/configuration/group-enrollment/" />
+<meta property="og:url" content="/v/v1.14.0/docs/reference/configuration/mfa/" />
 
-<meta itemprop="name" content="Automatic group enrollment">
-<meta itemprop="description" content="The INDIGO Identity and Access Management (IAM) Service"><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Automatic group enrollment"/>
+<meta itemprop="name" content="Configuration to enforce MFA for all users">
+<meta itemprop="description" content="The INDIGO Identity and Access Management (IAM) Service"><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Configuration to enforce MFA for all users"/>
 <meta name="twitter:description" content="The INDIGO Identity and Access Management (IAM) Service"/>
 
 
@@ -109,13 +109,13 @@
 This is the multi-page printable view of this section.
 <a href="#" onclick="print();return false;">Click here to print</a>.
 </p><p>
-<a href="/v/v1.14.0/docs/reference/configuration/group-enrollment/">Return to the regular view of this page</a>.
+<a href="/v/v1.14.0/docs/reference/configuration/mfa/">Return to the regular view of this page</a>.
 </p>
 </div>
 
 
 
-<h1 class="title">Automatic group enrollment</h1>
+<h1 class="title">Configuration to enforce MFA for all users</h1>
 
 
 
@@ -134,22 +134,12 @@ This is the multi-page printable view of this section.
 
 
 <div class="content">
-      <p>Starting from v1.10.0 version, IAM allows to define a list of group a newly created account will be member of, skipping the group request phase. This is useful for instance for IAM using also VOMS-AA, where every user must belong at least to the primary group equal to the VO name in order to request for a VOMS proxy certificate.</p>
-<p>To include this feature, the <code>application.yml</code> file must contain the following properties</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">registration</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">default-groups</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">&lt;iam-group&gt;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">enrollment</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">INSERT</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span></code></pre></div><p>As the <code>iam.registration.default-groups</code> is a list, more than one group may be configured, e.g.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">iam</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">registration</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">default-groups</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">atlas</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">enrollment</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">INSERT</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">privileged</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">enrollment</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">INSERT</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span></code></pre></div><p>In the current IAM version, the only enrollment type supported is <code>INSERT</code>, meaning that when creating a new account, it automatically becomes part of the default group if that group exists.</p>
+      <p>Administrators can configure IAM to enforce multi-factor authentication (MFA) for all users.
+In the application-mfa.yaml file, the following property should be configured. By default, it is set to false:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">multi-factor-mandatory</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#000">${IAM_MULTI_FACTOR_MANDATORY:true}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>When <code>multi-factor-mandatory</code> is set to <code>true</code>, users will be prompted to set up MFA during login.</p>
+<img width="1025" height="1042" alt="image" src="https://github.com/user-attachments/assets/d4060f37-70b5-4322-9ea2-3967dcf14f99" />
+<p>After successfully enabling MFA, the user will be redirected to the logout page. To access the application again, the user must log in using MFA.</p>
 
 </div>
 </div>
