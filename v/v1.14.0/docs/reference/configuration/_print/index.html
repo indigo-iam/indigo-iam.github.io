@@ -89,7 +89,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.2fa2bd5b6d2aba79b5bf2fbabc7c8be2.json"
+    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.049309654db9da2ec647dd8e05267526.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -1301,7 +1301,8 @@ An example here:</p>
 </span></span><span style="display:flex;"><span>        <span style="color:#4e9a06">&#34;token&#34;</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">],</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;client_registration_types_supported&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#4e9a06">&#34;explicit&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#4e9a06">&#34;explicit&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#4e9a06">&#34;automatic&#34;</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">],</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;federation_registration_endpoint&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;http://iam.example.org/iam/api/oid-fed/client-registration&#34;</span><span style="color:#000;font-weight:bold">,</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;request_uri_parameter_supported&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">false</span><span style="color:#000;font-weight:bold">,</span>
@@ -1414,7 +1415,7 @@ An example here:</p>
 <h4 class="alert-heading">Info</h4>
 
     In the current implementation, <strong>Explicit Client Registration is based solely on the RP’s self-signed Entity Configuration</strong>.<br>
-Support for Explicit Client Registration with RP&rsquo;s Trust Chain and Automatic Client Registration will be introduced in future versions.
+Support for Explicit Client Registration with RP&rsquo;s Trust Chain will be introduced in future versions.
 
 </div>
 
@@ -1474,7 +1475,20 @@ This Entity Statement represents the OP’s signed assertion about the RP and in
 </span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;aud&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://rp.example.org&#34;</span><span style="color:#000;font-weight:bold">,</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;trust-anchor&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://ta.example.org&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span></code></pre></div><h2 id="configuration">Configuration</h2>
+</span></span></code></pre></div><h3 id="automatic-registration">Automatic registration</h3>
+<p>Automatic registration is triggered when the RP sends an Authorization Request to IAM (OP)’s Authorization Endpoint.
+In this flow, IAM automatically registers the RP if it is able to successfully resolve and validate the RP’s trust chain and if a common Trust Anchor exists between the two parties.</p>
+<p>IAM may obtain the RP’s trust information either:</p>
+<ul>
+<li>by resolving the RP’s Entity Configuration starting from its <code>client_id</code>/<code>entity_id</code>, or</li>
+<li>through a <code>trust_chain</code> explicitly provided by the RP.</li>
+</ul>
+<p>The Authorization Request is conveyed as a signed Request Object passed through the <code>request</code> parameter.
+The Request Object MUST contain the claims required by OpenID Federation, including <code>iss</code>, <code>sub</code>, <code>aud</code>, <code>client_id</code>, <code>jti</code>, and MAY additionally include <code>iat</code>, <code>exp</code> and <code>trust_chain</code>.<br>
+If the trust evaluation succeeds, IAM automatically creates a Client registration for the RP.</p>
+<p>Unlike Explicit Client Registration, where the <code>client_id</code> is assigned by IAM, in Automatic Client Registration the <code>client_id</code> corresponds to the RP’s <code>entity_id</code>.
+No <code>client_secret</code> is issued. The RP is authenticated via proof of possession of a private key corresponding to one of the public keys advertised in its Entity Configuration.</p>
+<h2 id="configuration">Configuration</h2>
 <p>To enable OpenID Federation support, activate the <code>openid-federation</code> profile, for example <code>-Dspring.profiles.active=openid-federation</code>.</p>
 <p>The configuration expects the following properties:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">openid-federation</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
