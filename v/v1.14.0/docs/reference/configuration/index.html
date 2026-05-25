@@ -89,7 +89,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.049309654db9da2ec647dd8e05267526.json"
+    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.1adc881b33d5d27a7cbb0375bb804543.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -114,7 +114,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.049309654db9da2ec647dd8e05267526.json"
+    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.1adc881b33d5d27a7cbb0375bb804543.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -567,13 +567,13 @@ to quickly run the application in development mode. They are not intended for a 
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># String displayed into the brower top bar when accessing the IAM dashboard</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_TOPBAR_TITLE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;INDIGO IAM for </span><span style="color:#4e9a06">${</span><span style="color:#000">IAM_ORGANISATION_NAME</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span>
 </span></span></code></pre></div><h3 id="database-configuration">Database configuration</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The host where the MariaDB/MySQL daemon is running</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Hostname of database server</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_HOST</span><span style="color:#ce5c00;font-weight:bold">=</span>localhost
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The database port</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Port of database server</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_PORT</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">3306</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The database name</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># IAM database name</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_NAME</span><span style="color:#ce5c00;font-weight:bold">=</span>iam
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The custom list of URL connection parameters. It must start with &#34;?&#34; character,</span>
@@ -581,38 +581,21 @@ to quickly run the application in development mode. They are not intended for a 
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># server to &#34;UTC&#34; and disables SSL usage</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_URL_PARAMS</span><span style="color:#ce5c00;font-weight:bold">=</span>?useSSL<span style="color:#ce5c00;font-weight:bold">=</span>false<span style="color:#000;font-weight:bold">&amp;</span><span style="color:#000">serverTimezone</span><span style="color:#ce5c00;font-weight:bold">=</span>UTC<span style="color:#000;font-weight:bold">&amp;</span><span style="color:#000">allowPublicKeyRetrieval</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">true</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The database username</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Username for accessing the database</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_USERNAME</span><span style="color:#ce5c00;font-weight:bold">=</span>iam
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The database password </span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Password for accessing the database</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_PASSWORD</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">pwd</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">## Database connection pool options</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Maximum number of active connections to the database</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The default maximum database connection pool size</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_MAX_ACTIVE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">50</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Maximum number of idle connections in the pool </span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_MAX_IDLE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">5</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The minimum number of idle connections the pool attempts to maintain</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_MIN_IDLE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">8</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Initial size of the database connection pool</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_INITIAL_SIZE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">8</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Should idle connections in the pool be tested?</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_TEST_WHILE_IDLE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">true</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Should connections in the pool be tested when borrowed?</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_TEST_ON_BORROW</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">true</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Which SQL query should be used to test connections?</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># A configuration property used to validate the health of a database connection</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># before it is handed out from the pool</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_VALIDATION_QUERY</span><span style="color:#ce5c00;font-weight:bold">=</span>SELECT <span style="color:#0000cf;font-weight:bold">1</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Time between database connection pool eviction runs (in msec)</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_TIME_BETWEEN_EVICTION_RUNS_MILLIS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">5000</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The minimum amount of time a connection may be idle in the pool</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># before it is considered for eviction (in msec)</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_MIN_EVICTABLE_IDLE_TIME_MILLIS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">60000</span>
 </span></span></code></pre></div><h3 id="access-token-contents-configuration">Access token contents configuration</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">## Token content settings </span>
 </span></span><span style="display:flex;"><span>
@@ -626,7 +609,8 @@ to quickly run the application in development mode. They are not intended for a 
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_ACCESS_TOKEN_INCLUDE_NBF</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">false</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Configures how long before the token&#39;s issue time it becomes valid</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The default value of 60 configures the token to be valid starting 60 seconds before it is issued</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The default value of 60 configures the token to be valid starting 60</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># seconds before it is issued</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_ACCESS_TOKEN_NBF_OFFSET_SECONDS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">60</span>
 </span></span></code></pre></div><h3 id="persisting-access-tokens">Persisting access tokens</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Set to &#39;true&#39; if you want to store access tokens on the database</span>
@@ -640,6 +624,7 @@ to quickly run the application in development mode. They are not intended for a 
 For more information, see the <a href="local_authn/">Local Authentication section</a>.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Set to &#39;hidden&#39; if you want to hide the local login form</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_LOCAL_AUTHN_LOGIN_PAGE_VISIBILITY</span><span style="color:#ce5c00;font-weight:bold">=</span>visible
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Enables local login form to all users.</span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># It can be restricted, changing the value to &#39;vo-admins&#39; or &#39;none&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_LOCAL_AUTHN_ENABLED_FOR</span><span style="color:#ce5c00;font-weight:bold">=</span>all
@@ -757,12 +742,12 @@ section</a>.</p>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># from a profile. It follows the notifcation strategy of notification policy.</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_NOTIFICATION_CERTIFICATE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">false</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Notification policy for group requests. Default value notifies both</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># admins and group managers. Set to notify-gms if you want to notify only group managers</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Notification policy for group requests. Default value notifies both admins and</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># group managers. Set to notify-gms if you want to notify only group managers</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_NOTIFICATION_GROUP_MANAGER_NOTIFICATION_POLICY</span><span style="color:#ce5c00;font-weight:bold">=</span>notify-gms-and-admins
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Time interval, in milliseconds, between two consecutive runs of IAM notification </span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># dispatch task </span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Time interval, in milliseconds, between two consecutive runs</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># of IAM notification dispatch task </span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_NOTIFICATION_TASK_DELAY</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">30000</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Retention of delivered messages, in days</span>
@@ -777,24 +762,31 @@ section</a>.</p>
 the related default settings.</p>
 <p>For more information see the <a href="/v/v1.14.0/docs/reference/configuration/client-registration/">Client registration
 section</a>.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Specifies who can register a client. Default is anyone, so also not registered users.</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Other possible values are: REGISTERED_USERS and ADMINISTRATORS</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Specifies who can register a client. Default is anyone, so also not registered</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#  users. Other possible values are: REGISTERED_USERS and ADMINISTRATORS</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_CLIENT_REGISTRATION_ALLOW_FOR</span><span style="color:#ce5c00;font-weight:bold">=</span>ANYONE
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Set to false if you do not want to enable client registration (default is true)</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_CLIENT_REGISTRATION_ENABLE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">true</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Set to true if you want only admin users to be able to create custom scopes (default is false)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Set to true if you want only admin users to be able to create custom scopes</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># (default is false)</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_CLIENT_ADMIN_ONLY_CUSTOM_SCOPES</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">false</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Set the default validity in seconds of an AT requested by any newly registered client.</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Default is 1 hour, but it can be changed per client</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Set the default validity in seconds of an AT requested by any newly</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># registered client. Default is 1 hour, but it can be changed per client</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_DEFAULT_ACCESS_TOKEN_VALIDITY_SECONDS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">3600</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Set the default validity in seconds of a device code requested by any newly registered client.</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Default is 10 minutes, but it can be changed per client</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Set the default validity in seconds of a device code requested by any newly</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># registered client. Default is 10 minutes, but it can be changed per client</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_DEFAULT_DEVICE_CODE_VALIDITY_SECONDS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">600</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Set the default validity in seconds of an ID token requested by any newly registered client.</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Default is 10 minutes, but it can be changed per client</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Set the default validity in seconds of an ID token requested by any newly</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># registered client. Default is 10 minutes, but it can be changed per client</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_DEFAULT_ID_TOKEN_VALIDITY_SECONDS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">600</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Set the default validity in seconds of an RT requested by any newly registered client.</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Default is 30 days, but it can be changed per client</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Set the default validity in seconds of an RT requested by any newly</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># registered client. Default is 30 days, but it can be changed per client</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_DEFAULT_REFRESH_TOKEN_VALIDITY_SECONDS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">2592000</span>
 </span></span></code></pre></div><h3 id="client-lifecycle">Client lifecycle</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Record the last date when each client was used to create or refresh a token</span>
@@ -806,8 +798,8 @@ section</a>.</p>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># is displayed in the login page</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_PRIVACY_POLICY_URL</span><span style="color:#ce5c00;font-weight:bold">=</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The text displayed in the login page for the privacy policy URL specified</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># above</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The text displayed in the login page for the privacy</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># policy URL specified above</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_PRIVACY_POLICY_TEXT</span><span style="color:#ce5c00;font-weight:bold">=</span>Privacy policy
 </span></span></code></pre></div><h3 id="support-button-settings">Support Button Settings</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># A URL that directs users to the page where they can open a support ticket </span>
@@ -821,17 +813,22 @@ section</a>.</p>
 </span></span></code></pre></div><h3 id="openid-federation">OpenID Federation</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># URL of one or more trusted trust anchors. May be a comma-separated list</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_OIDFED_TRUST_ANCHORS</span><span style="color:#ce5c00;font-weight:bold">=</span>https://ta.example.com
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Validity duration (in seconds) of the generated Entity Configuration document</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_OIDFED_ENTITY_CONFIGURATION_EXPIRATION_SECONDS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">86400</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># One or more federation authorities that this entity trusts.</span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># May be a comma-separated list</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_OIDFED_ENTITY_CONFIGURATION_AUTHORITY_HINTS</span><span style="color:#ce5c00;font-weight:bold">=</span>https://ta.example.com,https://ia.example.com
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Human-readable name of the organization operating this federation entity.</span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Filling this property is not mandatory</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_OIDFED_FEDERATION_ENTITY_ORGANIZATION_NAME</span><span style="color:#ce5c00;font-weight:bold">=</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Contact info of administrators (e.g. email addresses).</span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># May be comma-separated. Not mandatory</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_OIDFED_FEDERATION_ENTITY_CONTACTS</span><span style="color:#ce5c00;font-weight:bold">=</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># URI of a logo representing the entity. Not mandatory</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_OIDFED_FEDERATION_ENTITY_LOGO_URI</span><span style="color:#ce5c00;font-weight:bold">=</span>
 </span></span></code></pre></div><h3 id="redis-configuration">Redis configuration</h3>
@@ -884,55 +881,46 @@ service</a>.</p>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Default scopes allowed to the client application (optional)</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_CLIENT_SCOPES</span><span style="color:#ce5c00;font-weight:bold">=</span>openid profile email
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Use forwarded headers from reverse proxy. Set this to native when deploying the</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># service behind a reverse proxy</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Use forwarded headers from reverse proxy. Set this to native when</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># deploying the service behind a reverse proxy</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_CLIENT_FORWARD_HEADERS_STRATEGY</span><span style="color:#ce5c00;font-weight:bold">=</span>none
 </span></span></code></pre></div><h2 id="voms-aa">VOMS AA</h2>
-<p>The following environment variables for VOMS AA configuration (related to the access to the database)
-are in common with IAM login service:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Hostname of database server</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_HOST</span><span style="color:#ce5c00;font-weight:bold">=</span>localhost
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Port of database server</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_PORT</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">3306</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># IAM database name</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_NAME</span><span style="color:#ce5c00;font-weight:bold">=</span>iam
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The custom list of URL connection parameters. It must start with &#34;?&#34; character,</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># if defined. The default value overrides the session time zone setting on the</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># server to &#34;UTC&#34; and disables SSL usage</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_URL_PARAMS</span><span style="color:#ce5c00;font-weight:bold">=</span>?useSSL<span style="color:#ce5c00;font-weight:bold">=</span>false<span style="color:#000;font-weight:bold">&amp;</span><span style="color:#000">serverTimezone</span><span style="color:#ce5c00;font-weight:bold">=</span>UTC<span style="color:#000;font-weight:bold">&amp;</span><span style="color:#000">allowPublicKeyRetrieval</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">true</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Username for accessing the database</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_USERNAME</span><span style="color:#ce5c00;font-weight:bold">=</span>iam
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Password for accessing the database</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_PASSWORD</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">pwd</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The default maximum database connection pool size</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_MAX_ACTIVE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">50</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The minimum number of idle connections the pool attempts to maintain</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_MIN_IDLE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">8</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># A configuration property used to validate the health of a database connection</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># before it is handed out from the pool</span>
-</span></span><span style="display:flex;"><span><span style="color:#000">IAM_DB_VALIDATION_QUERY</span><span style="color:#ce5c00;font-weight:bold">=</span>SELECT <span style="color:#0000cf;font-weight:bold">1</span>
-</span></span></code></pre></div><p>Moreover, the VOMS AA related environment variables are:</p>
+<p>The environment variables for VOMS AA which tune the access to the database
+are in common with IAM login service, even if they are sourced through a separated <code>mysql</code> profile
+(i.e. they need to be defined for both IAM login service and VOMS AA when they run in different
+container/machines). See <a href="/docs/reference/configuration/#database-configuration">here</a> in order to set the proper variables.</p>
+<p>Moreover, the VOMS AA-only environment variables are:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Address the server binds to (network interface)</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">VOMS_AA_BINDING_ADDRESS</span><span style="color:#ce5c00;font-weight:bold">=</span>0.0.0.0
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Port the server listens on</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">VOMS_AA_PORT</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">8080</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Name of the Virtual Organization (VO)</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">VOMS_AA_VONAME</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">test</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Strategy for handling forwarded HTTP headers (e.g. from proxies).</span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Set &#34;native&#34; if you&#39;re behind a proxy</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">VOMS_AA_FORWARD_HEADERS_STRATEGY</span><span style="color:#ce5c00;font-weight:bold">=</span>none
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Path to the TLS server certificate file</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">VOMS_AA_TLS_CERTIFICATE_PATH</span><span style="color:#ce5c00;font-weight:bold">=</span>/certs/hostcert.pem
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Path to the TLS private key file</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">VOMS_AA_TLS_PRIVATE_KEY_PATH</span><span style="color:#ce5c00;font-weight:bold">=</span>/certs/hostkey.pem
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Directory containing trusted CA certificates</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">VOMS_AA_TLS_TRUST_ANCHORS_DIR</span><span style="color:#ce5c00;font-weight:bold">=</span>/etc/grid-security/certificates
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Interval (in seconds) to reload trusted CA certificates</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">VOMS_AA_TLS_TRUST_ANCHORS_REFRESH_INTERVAL_SECS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">14400</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Attribute name used for optional group membership</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">VOMS_AA_OPTIONAL_GROUP_LABEL</span><span style="color:#ce5c00;font-weight:bold">=</span>wlcg.optional-group
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Label name used for VOMS roles</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">VOMS_AA_VOMS_ROLE_LABEL</span><span style="color:#ce5c00;font-weight:bold">=</span>voms.role
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Enable legacy encoding format for FQAN attributes</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">VOMS_AA_USE_LEGACY_FQAN_ENCODING</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">false</span>
 </span></span></code></pre></div>
@@ -1041,7 +1029,7 @@ are in common with IAM login service:</p>
             </div>
         </div>
 <div class="td-page-meta__lastmod">
-  Last modified May 8, 2026: <a href="https://github.com/indigo-iam/iam-website/commit/e1bad9b279854bd707d54d13e675e935d30d8fdf">Update description for MySQL8 (#211) (e1bad9b)</a>
+  Last modified May 25, 2026: <a href="https://github.com/indigo-iam/iam-website/commit/3c93ea757cf0f566850e9e2f8aeffbafa544bf96">Common env variables for iam-login-service and VOMS AA (3c93ea7)</a>
 </div>
 </div>
 
