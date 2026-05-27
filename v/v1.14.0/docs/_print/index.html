@@ -85,7 +85,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.1adc881b33d5d27a7cbb0375bb804543.json"
+    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.e9848cdadc36d964285d6b058b627553.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -865,7 +865,22 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3.2.14: <a href="#pg-ba8777b470d086736bbc96ac84f2e95c">Configuration to enforce MFA for all users</a></li>
+<li>3.2.14: <a href="#pg-359104377f9341d4c326d45fb209b4c2">External authentication</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>3.2.14.1: <a href="#pg-ac3ba36ba3318b338bcbf439e1b79e60">OpenID-Connect authentication</a></li>
 
 
     
@@ -884,22 +899,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3.2.15: <a href="#pg-359104377f9341d4c326d45fb209b4c2">External authentication</a></li>
-
-
-    
-    <ul>
-        
-  
-  
-  
-  
-
-  
-    
-    
-	
-<li>3.2.15.1: <a href="#pg-ac3ba36ba3318b338bcbf439e1b79e60">OpenID-Connect authentication</a></li>
+<li>3.2.14.2: <a href="#pg-af611b856fca4d6771e3e3ed962701b5">SAML authentication</a></li>
 
 
     
@@ -918,7 +918,45 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3.2.15.2: <a href="#pg-af611b856fca4d6771e3e3ed962701b5">SAML authentication</a></li>
+<li>3.2.14.3: <a href="#pg-86d359d1731c5e164863d1bbe93a7bcf">X.509 authentication</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>3.2.15: <a href="#pg-ba8777b470d086736bbc96ac84f2e95c">Multi-factor authentication</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>3.2.15.1: <a href="#pg-8f5ac058c4f7d91aa26725400fc4955e">Configuration to enforce MFA for all users</a></li>
 
 
     
@@ -937,7 +975,7 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>3.2.15.3: <a href="#pg-86d359d1731c5e164863d1bbe93a7bcf">X.509 authentication</a></li>
+<li>3.2.15.2: <a href="#pg-2eb3905398d3ff22282397a7e04ce702">Rotate TOTP symmetric key</a></li>
 
 
     
@@ -7279,6 +7317,21 @@ section</a>.</p>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The text displayed in the login page for the support URL specified above,</span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># if enabled</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_SUPPORT_TEXT</span><span style="color:#ce5c00;font-weight:bold">=</span>Support
+</span></span></code></pre></div><h3 id="mfa">mfa</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># If set to &#39;false&#39;, users cannot enroll in MFA because</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># the &#39;Enable MFA&#39; button will NOT be shown.</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_TOTP_MFA_ENABLE_MFA_SETTINGS_BUTTON</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The current password used to encrypt and decrypt TOTP secrets.</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The default password MUST be changed from `define_me_please` to a preferred strong password.</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_TOTP_MFA_PASSWORD_TO_ENCRYPT_AND_DECRYPT</span><span style="color:#ce5c00;font-weight:bold">=</span>define_me_please
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The previous password, used ONLY to decrypt existing secrets during rotation.</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Leave this blank when no rotation is in progress.</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_TOTP_MFA_OLD_PASSWORD_TO_DECRYPT</span><span style="color:#ce5c00;font-weight:bold">=</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># If set to &#39;true&#39;, users will be forced to enroll in MFA.</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_MULTI_FACTOR_MANDATORY</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">false</span>
 </span></span></code></pre></div><h3 id="openid-federation">OpenID Federation</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># URL of one or more trusted trust anchors. May be a comma-separated list</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_OIDFED_TRUST_ANCHORS</span><span style="color:#ce5c00;font-weight:bold">=</span>https://ta.example.com
@@ -8930,42 +8983,7 @@ able to use it doesn&rsquo;t really provide additional security.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-ba8777b470d086736bbc96ac84f2e95c">3.2.14 - Configuration to enforce MFA for all users</h1>
-    
-	<p>Administrators can configure IAM to enforce multi-factor authentication (MFA) for all users.
-In the application-mfa.yaml file, the following property should be configured. By default, it is set to false:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">multi-factor-mandatory</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#000">${IAM_MULTI_FACTOR_MANDATORY:true}</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span></code></pre></div><p>When <code>multi-factor-mandatory</code> is set to <code>true</code>, users will be prompted to set up MFA during login.</p>
-<img width="1025" height="1042" alt="image" src="https://github.com/user-attachments/assets/d4060f37-70b5-4322-9ea2-3967dcf14f99" />
-<p>After successfully enabling MFA, the user will be redirected to the logout page. To access the application again, the user must log in using MFA.</p>
-
-</div>
-
-
-
-    
-      
-  
-  
-  
-  
-
-  
-  
-
-  
-
-    
-	
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-359104377f9341d4c326d45fb209b4c2">3.2.15 - External authentication</h1>
+	<h1 id="pg-359104377f9341d4c326d45fb209b4c2">3.2.14 - External authentication</h1>
     
 	<p>IAM supports brokered authentication via standard OpenID-Connect and SAML
 protocols as well as X.509 authentication.</p>
@@ -8992,7 +9010,7 @@ protocols as well as X.509 authentication.</p>
 
 <div class="td-content" style="">
     
-	<h1 id="pg-ac3ba36ba3318b338bcbf439e1b79e60">3.2.15.1 - OpenID-Connect authentication</h1>
+	<h1 id="pg-ac3ba36ba3318b338bcbf439e1b79e60">3.2.14.1 - OpenID-Connect authentication</h1>
     
 	<p>IAM supports brokered OpenID Connect authentication to external identity
 providers (e.g., Google).</p>
@@ -9122,7 +9140,7 @@ the default IAM configuration.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-af611b856fca4d6771e3e3ed962701b5">3.2.15.2 - SAML authentication</h1>
+	<h1 id="pg-af611b856fca4d6771e3e3ed962701b5">3.2.14.2 - SAML authentication</h1>
     
 	<p>IAM supports brokered SAML authentication. When SAML authentication is turned
 on for an IAM instance, users can log into the service using the home Identity
@@ -9402,7 +9420,7 @@ instructions on how to override the default IAM configuration.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-86d359d1731c5e164863d1bbe93a7bcf">3.2.15.3 - X.509 authentication</h1>
+	<h1 id="pg-86d359d1731c5e164863d1bbe93a7bcf">3.2.14.3 - X.509 authentication</h1>
     
 	<p>X509 authentication in IAM doesn&rsquo;t require any specific configuration in IAM itself.
 It is enabled as soon as the proper options have been set in the Nginx configuration.</p>
@@ -9412,6 +9430,191 @@ to add the following line to your Nginx configuration:</p>
 <pre tabindex="0"><code>ssl_client_certificate  CA_certificates_file;
 </code></pre><p>where <code>CA_certificates_file</code> is the path to a file containing the certificates (in PEM
 format) of the CAs that must be accepted by Nginx.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-ba8777b470d086736bbc96ac84f2e95c">3.2.15 - Multi-factor authentication</h1>
+    
+	<p>IAM supports Multi-Factor Authentication (MFA) via Time-based One-Time
+Passwords (TOTP). When MFA is enabled, the TOTP secret associated with each
+account is stored in the IAM database encrypted with a symmetric key derived
+from a password that the administrator provides at IAM startup.</p>
+<p>To enable MFA, activate the <code>mfa</code> Spring profile. The encryption password is
+read from <code>IAM_TOTP_MFA_PASSWORD_TO_ENCRYPT_AND_DECRYPT</code> (which maps to the
+<code>mfa.password-to-encrypt-and-decrypt</code> property).</p>
+<blockquote>
+<p><strong>Important.</strong> The default value of
+<code>IAM_TOTP_MFA_PASSWORD_TO_ENCRYPT_AND_DECRYPT</code> is <code>define_me_please</code>. <strong>Any
+production deployment must override it</strong> with a strong, randomly generated
+password before enabling MFA. If MFA has already been enabled with the
+default value in place, follow the rotation procedure below to move to a
+proper secure key</p>
+</blockquote>
+<p>Store the encryption password securely (for example in a secret manager): if
+you lose it, the TOTP secrets already stored in the database cannot be
+decrypted and the affected users will need to re-enroll their authenticator.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-8f5ac058c4f7d91aa26725400fc4955e">3.2.15.1 - Configuration to enforce MFA for all users</h1>
+    
+	<p>Administrators can configure IAM to enforce multi-factor authentication (MFA) for all users.
+In the application-mfa.yaml file, the following property should be configured. By default, it is set to false:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">multi-factor-mandatory</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#000">${IAM_MULTI_FACTOR_MANDATORY:true}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>When <code>multi-factor-mandatory</code> is set to <code>true</code>, users will be prompted to set up MFA during login.</p>
+<img width="1025" height="1042" alt="image" src="https://github.com/user-attachments/assets/d4060f37-70b5-4322-9ea2-3967dcf14f99" />
+<p>After successfully enabling MFA, the user will be redirected to the logout page. To access the application again, the user must log in using MFA.</p>
+
+</div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-2eb3905398d3ff22282397a7e04ce702">3.2.15.2 - Rotate TOTP symmetric key</h1>
+    
+	<p>IAM provides a built-in mechanism to rotate the encryption password used to
+protect TOTP secrets.</p>
+<p>The rotation is driven by two properties:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Environment variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mfa.password-to-encrypt-and-decrypt</code></td>
+<td><code>IAM_TOTP_MFA_PASSWORD_TO_ENCRYPT_AND_DECRYPT</code></td>
+<td>The <strong>new</strong> password you want to use for encrypting and decrypting TOTP secrets.</td>
+</tr>
+<tr>
+<td><code>mfa.old-password-to-decrypt</code></td>
+<td><code>IAM_TOTP_MFA_OLD_PASSWORD_TO_DECRYPT</code></td>
+<td>The <strong>previous</strong> password, used only to decrypt existing secrets during rotation. Leave blank when no rotation is in progress.</td>
+</tr>
+</tbody>
+</table>
+<p>At startup, IAM compares the current password persisted in the database with
+the value of <code>IAM_TOTP_MFA_PASSWORD_TO_ENCRYPT_AND_DECRYPT</code>. If they differ
+and <code>IAM_TOTP_MFA_OLD_PASSWORD_TO_DECRYPT</code> is set, IAM will:</p>
+<ol>
+<li>Decrypt every existing TOTP secret using <code>IAM_TOTP_MFA_OLD_PASSWORD_TO_DECRYPT</code>.</li>
+<li>Re-encrypt each secret using <code>IAM_TOTP_MFA_PASSWORD_TO_ENCRYPT_AND_DECRYPT</code>.</li>
+<li>Persist the new password as the current encryption key.</li>
+</ol>
+<p>Once the migration has completed successfully,
+<code>IAM_TOTP_MFA_OLD_PASSWORD_TO_DECRYPT</code> is no longer needed and <strong>MUST BE
+REMOVED</strong> from the configuration on the next restart.</p>
+<h3 id="step-by-step-rotation-procedure">Step-by-step rotation procedure</h3>
+<ol>
+<li>
+<p><strong>Stop the IAM service.</strong></p>
+<p>The following procedure assumes IAM is currently running with an encryption
+password <code>IAM_TOTP_MFA_PASSWORD_TO_ENCRYPT_AND_DECRYPT</code>. Please set that to <code>IAM_TOTP_MFA_OLD_PASSWORD_TO_DECRYPT</code>.</p>
+</li>
+<li>
+<p><strong>Back up the IAM database.</strong> Rotation re-writes the encrypted TOTP secret
+on every MFA-enabled account. A backup lets you roll back if anything goes
+wrong.</p>
+</li>
+<li>
+<p><strong>Choose a NEW password.</strong></p>
+</li>
+<li>
+<p><strong>Update the configuration</strong> so that the old password is exposed via
+<code>IAM_TOTP_MFA_OLD_PASSWORD_TO_DECRYPT</code> and the new one via
+<code>IAM_TOTP_MFA_PASSWORD_TO_ENCRYPT_AND_DECRYPT</code>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-env" data-lang="env"><span style="display:flex;"><span><span style="color:#000">IAM_TOTP_MFA_PASSWORD_TO_ENCRYPT_AND_DECRYPT</span><span style="color:#ce5c00;font-weight:bold">=</span>&lt;strong_random_password&gt;
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_TOTP_MFA_OLD_PASSWORD_TO_DECRYPT</span><span style="color:#ce5c00;font-weight:bold">=</span>&lt;define_me_please&gt;
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Start IAM.</strong> Re-encryption runs automatically during startup. Inspect
+the application logs to confirm that the rotation completed without
+errors. A failure here typically means
+<code>IAM_TOTP_MFA_OLD_PASSWORD_TO_DECRYPT</code> does not match the password
+originally used to encrypt the secrets.</p>
+</li>
+<li>
+<p><strong>Verify MFA login</strong> with at least one test account that already had MFA
+enabled before the rotation.</p>
+</li>
+<li>
+<p><strong>Remove <code>IAM_TOTP_MFA_OLD_PASSWORD_TO_DECRYPT</code> from the configuration</strong>
+and restart IAM. Leaving the old password in the environment after
+rotation is unnecessary.</p>
+</li>
+</ol>
 
 </div>
 

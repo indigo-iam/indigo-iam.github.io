@@ -18,15 +18,15 @@
 <link rel="icon" type="image/png" href="/v/v1.14.0/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/v/v1.14.0/favicons/android-192x192.png" sizes="192x192">
 
-<title>Configuration to enforce MFA for all users | INDIGO IAM</title>
+<title>Multi-factor authentication | INDIGO IAM</title>
 <meta name="description" content="The INDIGO Identity and Access Management (IAM) Service">
-<meta property="og:title" content="Configuration to enforce MFA for all users" />
+<meta property="og:title" content="Multi-factor authentication" />
 <meta property="og:description" content="The INDIGO Identity and Access Management (IAM) Service" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="/v/v1.14.0/docs/reference/configuration/mfa/" />
 
-<meta itemprop="name" content="Configuration to enforce MFA for all users">
-<meta itemprop="description" content="The INDIGO Identity and Access Management (IAM) Service"><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Configuration to enforce MFA for all users"/>
+<meta itemprop="name" content="Multi-factor authentication">
+<meta itemprop="description" content="The INDIGO Identity and Access Management (IAM) Service"><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Multi-factor authentication"/>
 <meta name="twitter:description" content="The INDIGO Identity and Access Management (IAM) Service"/>
 
 
@@ -85,7 +85,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.1adc881b33d5d27a7cbb0375bb804543.json"
+    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.e9848cdadc36d964285d6b058b627553.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -115,7 +115,7 @@ This is the multi-page printable view of this section.
 
 
 
-<h1 class="title">Configuration to enforce MFA for all users</h1>
+<h1 class="title">Multi-factor authentication</h1>
 
 
 
@@ -129,12 +129,91 @@ This is the multi-page printable view of this section.
   
 
   
+    
+    
+	
+<li>1: <a href="#pg-8f5ac058c4f7d91aa26725400fc4955e">Configuration to enforce MFA for all users</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
+    
+    
+	
+<li>2: <a href="#pg-2eb3905398d3ff22282397a7e04ce702">Rotate TOTP symmetric key</a></li>
+
+
+    
+    <ul>
+        
+  
+  
+  
+  
+
+  
+
+    </ul>
+    
+  
 
     </ul>
 
 
 <div class="content">
-      <p>Administrators can configure IAM to enforce multi-factor authentication (MFA) for all users.
+      <p>IAM supports Multi-Factor Authentication (MFA) via Time-based One-Time
+Passwords (TOTP). When MFA is enabled, the TOTP secret associated with each
+account is stored in the IAM database encrypted with a symmetric key derived
+from a password that the administrator provides at IAM startup.</p>
+<p>To enable MFA, activate the <code>mfa</code> Spring profile. The encryption password is
+read from <code>IAM_TOTP_MFA_PASSWORD_TO_ENCRYPT_AND_DECRYPT</code> (which maps to the
+<code>mfa.password-to-encrypt-and-decrypt</code> property).</p>
+<blockquote>
+<p><strong>Important.</strong> The default value of
+<code>IAM_TOTP_MFA_PASSWORD_TO_ENCRYPT_AND_DECRYPT</code> is <code>define_me_please</code>. <strong>Any
+production deployment must override it</strong> with a strong, randomly generated
+password before enabling MFA. If MFA has already been enabled with the
+default value in place, follow the rotation procedure below to move to a
+proper secure key</p>
+</blockquote>
+<p>Store the encryption password securely (for example in a secret manager): if
+you lose it, the TOTP secrets already stored in the database cannot be
+decrypted and the affected users will need to re-enroll their authenticator.</p>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-8f5ac058c4f7d91aa26725400fc4955e">1 - Configuration to enforce MFA for all users</h1>
+    
+	<p>Administrators can configure IAM to enforce multi-factor authentication (MFA) for all users.
 In the application-mfa.yaml file, the following property should be configured. By default, it is set to false:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">multi-factor-mandatory</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#000">${IAM_MULTI_FACTOR_MANDATORY:true}</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span></code></pre></div><p>When <code>multi-factor-mandatory</code> is set to <code>true</code>, users will be prompted to set up MFA during login.</p>
@@ -142,9 +221,114 @@ In the application-mfa.yaml file, the following property should be configured. B
 <p>After successfully enabling MFA, the user will be redirected to the logout page. To access the application again, the user must log in using MFA.</p>
 
 </div>
+
+
+
+    
+      
+  
+  
+  
+  
+
+  
+  
+
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-2eb3905398d3ff22282397a7e04ce702">2 - Rotate TOTP symmetric key</h1>
+    
+	<p>IAM provides a built-in mechanism to rotate the encryption password used to
+protect TOTP secrets.</p>
+<p>The rotation is driven by two properties:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Environment variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mfa.password-to-encrypt-and-decrypt</code></td>
+<td><code>IAM_TOTP_MFA_PASSWORD_TO_ENCRYPT_AND_DECRYPT</code></td>
+<td>The <strong>new</strong> password you want to use for encrypting and decrypting TOTP secrets.</td>
+</tr>
+<tr>
+<td><code>mfa.old-password-to-decrypt</code></td>
+<td><code>IAM_TOTP_MFA_OLD_PASSWORD_TO_DECRYPT</code></td>
+<td>The <strong>previous</strong> password, used only to decrypt existing secrets during rotation. Leave blank when no rotation is in progress.</td>
+</tr>
+</tbody>
+</table>
+<p>At startup, IAM compares the current password persisted in the database with
+the value of <code>IAM_TOTP_MFA_PASSWORD_TO_ENCRYPT_AND_DECRYPT</code>. If they differ
+and <code>IAM_TOTP_MFA_OLD_PASSWORD_TO_DECRYPT</code> is set, IAM will:</p>
+<ol>
+<li>Decrypt every existing TOTP secret using <code>IAM_TOTP_MFA_OLD_PASSWORD_TO_DECRYPT</code>.</li>
+<li>Re-encrypt each secret using <code>IAM_TOTP_MFA_PASSWORD_TO_ENCRYPT_AND_DECRYPT</code>.</li>
+<li>Persist the new password as the current encryption key.</li>
+</ol>
+<p>Once the migration has completed successfully,
+<code>IAM_TOTP_MFA_OLD_PASSWORD_TO_DECRYPT</code> is no longer needed and <strong>MUST BE
+REMOVED</strong> from the configuration on the next restart.</p>
+<h3 id="step-by-step-rotation-procedure">Step-by-step rotation procedure</h3>
+<ol>
+<li>
+<p><strong>Stop the IAM service.</strong></p>
+<p>The following procedure assumes IAM is currently running with an encryption
+password <code>IAM_TOTP_MFA_PASSWORD_TO_ENCRYPT_AND_DECRYPT</code>. Please set that to <code>IAM_TOTP_MFA_OLD_PASSWORD_TO_DECRYPT</code>.</p>
+</li>
+<li>
+<p><strong>Back up the IAM database.</strong> Rotation re-writes the encrypted TOTP secret
+on every MFA-enabled account. A backup lets you roll back if anything goes
+wrong.</p>
+</li>
+<li>
+<p><strong>Choose a NEW password.</strong></p>
+</li>
+<li>
+<p><strong>Update the configuration</strong> so that the old password is exposed via
+<code>IAM_TOTP_MFA_OLD_PASSWORD_TO_DECRYPT</code> and the new one via
+<code>IAM_TOTP_MFA_PASSWORD_TO_ENCRYPT_AND_DECRYPT</code>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-env" data-lang="env"><span style="display:flex;"><span><span style="color:#000">IAM_TOTP_MFA_PASSWORD_TO_ENCRYPT_AND_DECRYPT</span><span style="color:#ce5c00;font-weight:bold">=</span>&lt;strong_random_password&gt;
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_TOTP_MFA_OLD_PASSWORD_TO_DECRYPT</span><span style="color:#ce5c00;font-weight:bold">=</span>&lt;define_me_please&gt;
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Start IAM.</strong> Re-encryption runs automatically during startup. Inspect
+the application logs to confirm that the rotation completed without
+errors. A failure here typically means
+<code>IAM_TOTP_MFA_OLD_PASSWORD_TO_DECRYPT</code> does not match the password
+originally used to encrypt the secrets.</p>
+</li>
+<li>
+<p><strong>Verify MFA login</strong> with at least one test account that already had MFA
+enabled before the rotation.</p>
+</li>
+<li>
+<p><strong>Remove <code>IAM_TOTP_MFA_OLD_PASSWORD_TO_DECRYPT</code> from the configuration</strong>
+and restart IAM. Leaving the old password in the environment after
+rotation is unnecessary.</p>
+</li>
+</ol>
+
 </div>
 
 
+
+    
+      
   
   
   
@@ -153,6 +337,10 @@ In the application-mfa.yaml file, the following property should be configured. B
   
   
 
+  
+
+    
+	
   
 
 
