@@ -89,7 +89,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.264c2babcd7dfb2f1f6b10f10cd84d60.json"
+    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.cba9a4b9c2b1648cf26b05bd6effb9d6.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -2424,10 +2424,36 @@ the authorization server;</li>
     
 	<h1 id="pg-e7c3f1c0aafd5433deea6bb5120198f0">9 - OAuth token introspection API</h1>
     
-	<p>IAM, through the <a href="https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server/wiki">MitreID OpenID Connect server implementation</a>,
-supports the <a href="https://tools.ietf.org/html/rfc7662">OAuth token introspection API</a> API at
-the <code>/introspect</code> endpoint.</p>
-<p>The <code>/introspect</code> endpoint <strong>requires</strong> client authentication.</p>
+	<p>IAM supports the <a href="https://tools.ietf.org/html/rfc7662">OAuth token introspection</a> specification,
+at the <code>/introspect</code> endpoint.</p>
+<p>The <code>/introspect</code> endpoint <strong>requires</strong> client authentication (e.g. Basic authentication).<br>
+In INDIGO IAM, the introspection response includes all the fields listed in the specification, also
+the OPTIONAL ones.</p>
+<p>A typical call to the introspection endpoint is the following:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ curl -u <span style="color:#000">$CLIENT_ID</span>:<span style="color:#000">$CLIENT_SECRET</span> https://iam.test.example/introspect -d <span style="color:#000">token</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">$AT</span> -s <span style="color:#000;font-weight:bold">|</span> jq.
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;active&#34;</span>: true,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;sub&#34;</span>: <span style="color:#4e9a06">&#34;73f16d93-2441-4a50-88ff-85360d78c6b5&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;iss&#34;</span>: <span style="color:#4e9a06">&#34;https://iam.test.example/&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;token_type&#34;</span>: <span style="color:#4e9a06">&#34;ACCESS_TOKEN&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;client_id&#34;</span>: <span style="color:#4e9a06">&#34;client&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;aud&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;http://example1.com&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;http://example2.com&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;http://example3.com&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ce5c00;font-weight:bold">]</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;nbf&#34;</span>: 1779705640,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;scope&#34;</span>: <span style="color:#4e9a06">&#34;openid email profile offline_access&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;exp&#34;</span>: 1779709300,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;iat&#34;</span>: 1779705700,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;jti&#34;</span>: <span style="color:#4e9a06">&#34;afff71ea-a755-4abd-b02b-ba77f6ee9ee0&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#4e9a06">&#34;username&#34;</span>: <span style="color:#4e9a06">&#34;test&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span></code></pre></div><h2 id="proxied-token-introspection">Proxied token introspection</h2>
+<p>INDIGO IAM also supports Proxied token introspection at the <code>/introspection</code> endpoint,
+as described in <a href="https://zenodo.org/records/10205863">AARC-G052</a>.</p>
+<p>In order to enable the Proxied token introspection one has to configure IAM as per
+<a href="/docs/reference/configuration/proxied-token-introspection">documentation</a>.</p>
 
 </div>
 

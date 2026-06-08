@@ -8,6 +8,13 @@
     <language>en</language>
     <atom:link href="/v/v1.14.0/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Proxied token introspection</title>
+      <link>/v/v1.14.0/docs/reference/configuration/proxied-token-introspection/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/v/v1.14.0/docs/reference/configuration/proxied-token-introspection/</guid>
+      <description>INDIGO IAM implements the Proxied token introspection specification, described in AARC-G052. Basically, it returns an introspection response for tokens issued by another, trusted Authorization Server (AS) &amp;ndash; by default IAM can only introspect its own issued tokens.&#xA;Trust IAM trusting another Authorization Server means that the IAM operator has registered an OAuth Client into the external AS, and that Client is allowed to make requests to the introspection endpoint of the external AS via Basic authentication.</description>
+    </item>
+    <item>
       <title>IAM v1.14.0</title>
       <link>/v/v1.14.0/blog/2026/05/08/iam-v1.14.0/</link>
       <pubDate>Fri, 08 May 2026 00:00:00 +0000</pubDate>

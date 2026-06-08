@@ -89,7 +89,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.264c2babcd7dfb2f1f6b10f10cd84d60.json"
+    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.cba9a4b9c2b1648cf26b05bd6effb9d6.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -114,7 +114,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.264c2babcd7dfb2f1f6b10f10cd84d60.json"
+    data-offline-search-index-json-src="/v/v1.14.0/offline-search-index.cba9a4b9c2b1648cf26b05bd6effb9d6.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -201,6 +201,8 @@
   <a href="/v/v1.14.0/docs/reference/configuration/lifecycle/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1140docsreferenceconfigurationlifecycle"><span class="">Membership lifecycle</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1140docsreferenceconfigurationrcauth-li">
   <a href="/v/v1.14.0/docs/reference/configuration/rcauth/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1140docsreferenceconfigurationrcauth"><span class="">Integration with RCAuth</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1140docsreferenceconfigurationproxied-token-introspection-li">
+  <a href="/v/v1.14.0/docs/reference/configuration/proxied-token-introspection/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-vv1140docsreferenceconfigurationproxied-token-introspection"><span class="">Proxied token introspection</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1140docsreferenceconfigurationregistration-li">
   <a href="/v/v1.14.0/docs/reference/configuration/registration/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-vv1140docsreferenceconfigurationregistration"><span class="">Registration &amp; Enrollment</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-vv1140docsreferenceconfigurationscim-response-li">
@@ -856,7 +858,7 @@ section</a>.</p>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_OIDFED_FEDERATION_ENTITY_LOGO_URI</span><span style="color:#ce5c00;font-weight:bold">=</span>
 </span></span></code></pre></div><h3 id="redis-configuration">Redis configuration</h3>
 <p>IAM supports storing HTTP session information and its in-memory cache
-(for the well-known endpoint and scope matchers) in an external <a href="https://redis.io/">redis</a> server.</p>
+(for the well-known endpoint, scope matchers, etc.) in an external <a href="https://redis.io/">redis</a> server.</p>
 <p>This can be useful when <a href="../../../docs/tasks/deployment/ha">deploying multiple replicas of the IAM
 service</a>.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">## Redis server settings</span>
@@ -891,8 +893,12 @@ service</a>.</p>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The default behavior is an in-memory cache</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_CACHE_ENABLED</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">true</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Allow to cache the IAM information (i.e. well-known endpoint and</span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># scope matchers) into an external Redis service</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Refresh period for the external OIDC providers well-known</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># endpoint cache (in seconds). Used during Proxied token introspection</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># (disabled by default)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">IAM_OIDC_DISCOVERY_CLEANUP_PERIOD_SECS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">86400</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Allow to cache the IAM information into an external Redis service</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">IAM_CACHE_REDIS_ENABLED</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">false</span>
 </span></span></code></pre></div><h2 id="test-client-configuration">Test Client configuration</h2>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Public identifier for client application</span>
@@ -998,6 +1004,12 @@ container/machines). See <a href="/docs/reference/configuration/#database-config
             </div>
         <div class="entry">
                 <h5>
+                    <a href="/v/v1.14.0/docs/reference/configuration/proxied-token-introspection/">Proxied token introspection</a>
+                </h5>
+                <p></p>
+            </div>
+        <div class="entry">
+                <h5>
                     <a href="/v/v1.14.0/docs/reference/configuration/registration/">Registration &amp; Enrollment</a>
                 </h5>
                 <p></p>
@@ -1052,7 +1064,7 @@ container/machines). See <a href="/docs/reference/configuration/#database-config
             </div>
         </div>
 <div class="td-page-meta__lastmod">
-  Last modified May 27, 2026: <a href="https://github.com/indigo-iam/iam-website/commit/e11fa406990aa117b94e9d964dfc27c56b21a90c">Document how to rotate totp encryption key (#219) (e11fa40)</a>
+  Last modified June 8, 2026: <a href="https://github.com/indigo-iam/iam-website/commit/98998e50dc9ce49a0b5d1ec314123479dc9b1425">Proxied token introspection according with AARC-G052 (#218) (98998e5)</a>
 </div>
 </div>
 
