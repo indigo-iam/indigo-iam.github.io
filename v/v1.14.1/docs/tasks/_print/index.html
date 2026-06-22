@@ -90,7 +90,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.14.1/offline-search-index.0c9552f3396b68fa1a3bbd7264fb894a.json"
+    data-offline-search-index-json-src="/v/v1.14.1/offline-search-index.ce461a01aa711f298318b557877eb187.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -2309,6 +2309,20 @@ navigation bar:</p>
 <li><em>Redirect URI(s)</em>: one or more redirect URIs for your client; these are
 required if you choose to enable the authorization code flow;</li>
 </ul>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Info</h4>
+
+    <p>Redirect URIs MUST satisfy the following requirements:</p>
+<ul>
+<li>The URI scheme MUST be either <code>http</code> or <code>https</code>, except for <code>edu.kit.data.oidc-agent:/redirect</code>, which is allowed for oidc-agent</li>
+<li><code>http</code> redirect URIs MUST use a loopback address, as defined in <a href="https://datatracker.ietf.org/doc/html/rfc8252">RFC 8252</a></li>
+<li>Redirect URIs MUST NOT contain a fragment component</li>
+</ul>
+
+</div>
+
 <p><img src="../images/new-client-reg-2.png" alt="client reg"></p>
 <p>Remember to select the <code>offline_access</code> scope from the <strong>Scopes</strong> tab if you
 want to request refresh tokens for the client being created:</p>
