@@ -90,7 +90,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.14.1/offline-search-index.106f14ad0de18daf497075991831d057.json"
+    data-offline-search-index-json-src="/v/v1.14.1/offline-search-index.caed3ab066703e0a540a92d03edf959c.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -139,40 +139,60 @@ This is the multi-page printable view of this section.
 
 
 <div class="content">
-      <p>The INDIGO Identity and Access Management (IAM) Service provides a layer where
-identities, enrollment, group membership and other attributes and authorization
-policies on distributed resources can be managed in an homogeneous way,
-supporting identity federations and other authentication mechanisms (X.509
-certificates and social logins).</p>
-<p>IAM implements the Virtual Organization (VO) concept and was originally developed
-by the same team behind <a href="https://italiangrid.github.io/voms">VOMS</a>.</p>
-<p>IAM is the AAI solution chosen to power the next generation <a href="https://wlcg.web.cern.ch/">WLCG</a>
-Authentication and Authorization infrastructure.</p>
-<h2 id="functions">Functions</h2>
+      <p>The INDIGO Identity and Access Management (IAM) Service is an <strong>identity and access management</strong> solution designed to support distributed scientific infrastructures and research communities.</p>
+<p>IAM provides a central service where identities, enrollment, group membership, attributes and authorization information can be managed consistently across distributed resources and services.</p>
+<p><img src="images/iam-schema-2026.png" alt="IAM functions overview"></p>
+<p>IAM implements the <strong>Virtual Organization</strong> (VO) concept and builds on more than twenty years of experience with <a href="https://italiangrid.github.io/voms">VOMS</a> (Virtual Organization Membership Service), which has traditionally provided membership and authorization information to Grid infrastructures using X.509 certificates and VOMS Attribute Certificates.</p>
+<p>While preserving interoperability with existing X.509/VOMS-based infrastructures, IAM enables the transition towards modern, token-based Authentication and Authorization Infrastructures (AAIs).</p>
+<p>IAM is the AAI solution chosen to power the next generation <a href="https://wlcg.web.cern.ch/">WLCG</a> Authentication and Authorization Infrastructure.</p>
+<h2 id="core-capabilities">Core capabilities</h2>
+<p>IAM acts as an <strong>OAuth 2.0 Authorization Server</strong> and <strong>OpenID Connect Provider</strong>, issuing tokens that applications and services can use for authentication and authorization.</p>
+<p>It supports the integration of web applications, APIs and command-line tools, allowing the same IAM-managed identity and authorization information to be consumed across different environments.</p>
+<p>IAM supports different token profiles to address the interoperability requirements of different infrastructures and communities, including:</p>
 <ul>
-<li><strong>Flexible authentication</strong>: The IAM supports user authentication via local
-username and password credentials as well as SAML Identity Federations,
-OpenID Connect providers and X.509.</li>
-<li><strong>Enrollment</strong>: The IAM provides VO enrollment and registration functionalities,
-so that users can join groups/collaborations according to well-defined flows.</li>
-<li><strong>Attribute and identity management</strong>: The IAM provides services to manage
-group membership, attributes assignment and account linking functionality.</li>
-<li><strong>User provisioning</strong>: the IAM provides endpoints to provision information
-about users identities to other services, so that consistent local account
-provisioning, for example, can be implemented.</li>
+<li>the native IAM profile;</li>
+<li>the WLCG JWT profile;</li>
+<li>the AARC profile;</li>
+<li>a Keycloak-oriented profile.</li>
 </ul>
+<p>These profiles determine how identity, authentication, group membership and authorization information is represented in tokens and related OAuth/OpenID Connect responses.</p>
+<h2 id="authentication-and-identity-brokering">Authentication and identity brokering</h2>
+<p>IAM provides <strong>flexible authentication</strong> and can act as an authentication broker between users, external Identity Providers and relying services.</p>
+<p>Users can authenticate using:</p>
+<ul>
+<li>local username and password credentials;</li>
+<li>SAML Identity Providers and identity federations;</li>
+<li>external OpenID Connect Providers;</li>
+<li>X.509 certificates.</li>
+</ul>
+<p>Multiple authentication credentials can be linked to the same IAM account. This allows users to access the same identity and VO membership regardless of the authentication mechanism used.</p>
+<p>IAM also supports <strong>Multi-Factor Authentication</strong> (MFA), providing stronger authentication when required by the IAM organization or by the services consuming IAM identities.</p>
+<h2 id="enrollment-and-membership-management">Enrollment and membership management</h2>
+<p>IAM provides both <strong>moderated</strong> and <strong>automatic enrollment</strong> mechanisms for joining an IAM-managed organization.</p>
+<p>Once enrolled, IAM manages the user&rsquo;s membership information, including:</p>
+<ul>
+<li>groups;</li>
+<li>roles;</li>
+<li>attributes and labels;</li>
+<li>organization-specific authorization information.</li>
+</ul>
+<p>IAM can also enforce the acceptance of an <strong>Acceptable Usage Policy</strong> (AUP) as part of the membership lifecycle.</p>
+<p>Together, these capabilities allow IAM to represent not only who a <em>user</em> is, but also <em>which organization or groups the user belongs</em> to and <em>which capabilities should be exposed to relying services</em>.</p>
+<h2 id="token-based-and-x509-infrastructures">Token-based and X.509 infrastructures</h2>
+<p>IAM is designed to support the transition from traditional X.509/VOMS-based infrastructures to OAuth 2.0 and OpenID Connect token-based authorization.</p>
+<p>For OAuth/OIDC-aware services, IAM issues <strong>JWT access tokens</strong> carrying identity, membership and authorization information.</p>
+<p>For services that still rely on X.509 and VOMS credentials, IAM can integrate with a <strong>VOMS Attribute Authority</strong> to expose IAM membership information through standard VOMS Attribute Certificates.</p>
+<p>IAM can also integrate with an <strong>online Certificate Authority</strong> to support on-demand X.509 certificate generation.</p>
+<p>This allows the same IAM-managed identity and membership information to be consumed by both modern token-based services and legacy X.509/VOMS-aware services.</p>
+<h2 id="user-provisioning-and-apis">User provisioning and APIs</h2>
+<p>IAM exposes a rich set of REST APIs for managing and retrieving information about users, groups, memberships, clients, tokens and authorization policies.</p>
+<p>It also provides a <strong><a href="scim">SCIM</a> interface</strong> that can be used to provision IAM identity and membership information to external services. This enables, for example, the creation or synchronization of local accounts based on centrally managed IAM information.</p>
 <h2 id="integrations">Integrations</h2>
-<p>The IAM service has been succesfully integrated with many off-the-shelf
-components like Openstack, Kubernetes, Atlassian JIRA and Confluence, Grafana
-and with key Grid computing middleware services (e.g., <a href="https://rucio.cern.ch/">RUCIO</a>,
-<a href="https://fts.web.cern.ch/fts/">FTS</a>, <a href="https://www.dcache.org/">dCache</a>, <a href="https://italiangrid.github.io/storm">StoRM</a>, <a href="https://xrootd.slac.stanford.edu/index.html">XRootD</a>,
-<a href="https://research.cs.wisc.edu/htcondor/">HTCondor</a>).</p>
-<h2 id="service-access-options">Service access options</h2>
-<h3 id="on-premise-deployment">On-premise deployment</h3>
-<p>IAM is an Apache-licensed identity solution, for which we provide a Docker
-image on dockerhub and RPM packages.</p>
-<p>IAM can be deployed on-premises following the advice in the <a href="/v/v1.14.1/docs/getting-started/">Deployment
-guide</a>.</p>
+<p>IAM has been successfully integrated with many off-the-shelf components such as OpenStack, Kubernetes, Atlassian JIRA and Confluence, and Grafana, as well as with key scientific and Grid computing services including <a href="https://rucio.cern.ch/">RUCIO</a>, <a href="https://fts.web.cern.ch/fts/">FTS</a>, <a href="https://www.dcache.org/">dCache</a>, <a href="https://italiangrid.github.io/storm">StoRM</a>, <a href="https://xrootd.slac.stanford.edu/index.html">XRootD</a> and <a href="https://research.cs.wisc.edu/htcondor/">HTCondor</a>.</p>
+<h2 id="service-deployment">Service deployment</h2>
+<p>IAM is an <strong>Apache-licensed Java application</strong> based on the <strong>Spring Boot</strong> framework.</p>
+<p>The service is typically deployed using containers and can run in Kubernetes environments. High-availability deployments are supported, allowing multiple IAM instances to serve the same organization.</p>
+<p>Docker images and RPM packages are provided for deploying IAM on premises. See the <a href="/v/v1.14.1/docs/getting-started/">Deployment guide</a> for additional information.</p>
 
 </div>
 </div>
