@@ -86,7 +86,7 @@
     aria-label="Search this site…"
     autocomplete="off"
     
-    data-offline-search-index-json-src="/v/v1.14.1/offline-search-index.8ac395f1b63166e4f9c7b22001f0153c.json"
+    data-offline-search-index-json-src="/v/v1.14.1/offline-search-index.b9c837f428f1446672f86ac2f3eb8d06.json"
     data-offline-search-base-href="/"
     data-offline-search-max-results="10"
   >
@@ -3504,7 +3504,8 @@ Remember that there are three roles in Indigo IAM: Amdin, User, Group Manager.</
 </span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">[</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#ce5c00;font-weight:bold">{</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;prefix&#34;</span>: <span style="color:#4e9a06">&#34;hr.cern&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;name&#34;</span>: <span style="color:#4e9a06">&#34;ignore&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;name&#34;</span>: <span style="color:#4e9a06">&#34;status&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;value&#34;</span>: <span style="color:#4e9a06">&#34;VO_MEMBER&#34;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#ce5c00;font-weight:bold">}</span>
 </span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">]</span>
 </span></span></code></pre></div><h3 id="put-iamaccountidlabels">PUT <code>/iam/account/{id}/labels</code></h3>
@@ -3516,14 +3517,31 @@ Remember that there are three roles in Indigo IAM: Amdin, User, Group Manager.</
 </span></span></code></pre></div><p>where <code>labels.json</code> is:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;prefix&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;hr.cern&#34;</span><span style="color:#000;font-weight:bold">,</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ignore&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;status&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;VO_MEMBER&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span></code></pre></div><h3 id="delete-iamaccountidlabels">DELETE <code>/iam/account/{id}/labels</code></h3>
+</span></span></code></pre></div><p>Only the <code>name</code> is <strong>required</strong> and must</p>
+<ul>
+<li>start with a letter</li>
+<li>contain only letters, digits, <code>.</code>, <code>_</code> or <code>-</code></li>
+</ul>
+<p>The <code>prefix</code>, instead, must</p>
+<ul>
+<li>consist of one or more labels separated by dots; each label must
+<ul>
+<li>start and end with a letter or digit</li>
+<li>contain only letters, digits or <code>-</code></li>
+<li>be between 1 and 63 characters long</li>
+</ul>
+</li>
+<li>end with a dot followed by 2 to 6 letters (e.g. <code>.org</code>, <code>.it</code>, etc.)</li>
+</ul>
+<h3 id="delete-iamaccountidlabels">DELETE <code>/iam/account/{id}/labels</code></h3>
 <p>Deletes an account label by specifying the label name and the label prefix (if present).</p>
 <p>Requires <code>iam:admin.write</code> scope.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ curl -X DELETE -H <span style="color:#4e9a06">&#34;Authorization: Bearer </span><span style="color:#4e9a06">${</span><span style="color:#000">AT</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06">&#34;</span> <span style="color:#4e9a06">\
 </span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  http://localhost:8080/iam/account/80e5fb8d-b7c8-451a-89ba-346ae278a66f/labels <span style="color:#4e9a06">\
-</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  -d <span style="color:#000">name</span><span style="color:#ce5c00;font-weight:bold">=</span>ignore -d <span style="color:#000">prefix</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;hr.cern&#34;</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  -d <span style="color:#000">name</span><span style="color:#ce5c00;font-weight:bold">=</span>status -d <span style="color:#000">prefix</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;hr.cern&#34;</span>
 </span></span></code></pre></div><h2 id="user-account-expiration-time">User account expiration time</h2>
 <h3 id="put-iamaccountidendtime">PUT <code>/iam/account/{id}/endTime</code></h3>
 <p>Adds/changes the membership end time of the user. It can be done directly through the IAM dashboard
