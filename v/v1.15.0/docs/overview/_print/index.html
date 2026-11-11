@@ -1,0 +1,253 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" type="text/html" href="/v/v1.15.0/docs/overview/">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/v/v1.15.0/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/v/v1.15.0/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/v/v1.15.0/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/v/v1.15.0/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/v/v1.15.0/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/v/v1.15.0/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/v/v1.15.0/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/v/v1.15.0/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/v/v1.15.0/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/v/v1.15.0/favicons/android-192x192.png" sizes="192x192">
+
+<title>Overview | INDIGO IAM</title>
+<meta name="description" content="A brief overview of the INDIGO IAM service
+">
+<meta property="og:title" content="Overview" />
+<meta property="og:description" content="A brief overview of the INDIGO IAM service
+" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/v/v1.15.0/docs/overview/" />
+
+<meta itemprop="name" content="Overview">
+<meta itemprop="description" content="A brief overview of the INDIGO IAM service
+"><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Overview"/>
+<meta name="twitter:description" content="A brief overview of the INDIGO IAM service
+"/>
+
+
+
+
+<link rel="preload" href="/v/v1.15.0/scss/main.min.8b15a284065632327b8c02a701e1c2297b5d1c084085e061cb33bbd46e6313e8.css" as="style">
+<link href="/v/v1.15.0/scss/main.min.8b15a284065632327b8c02a701e1c2297b5d1c084085e061cb33bbd46e6313e8.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+<script defer
+  src="https://unpkg.com/lunr@2.3.9/lunr.min.js"
+  integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/v/v1.15.0/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">INDIGO IAM</span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="/v/v1.15.0/docs/"><span>Documentation</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/v/v1.15.0/blog/"><span>Blog</span></a>
+      </li>
+      <li class="nav-item dropdown d-none d-lg-block">
+        <div class="dropdown">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Releases</a>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.14.1">v1.14.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.14.0">v1.14.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.13.0">v1.13.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.12.1">v1.12.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.12.0">v1.12.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.11.0">v1.11.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.2">v1.10.2</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.1">v1.10.1</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/v1.10.0">v1.10.0</a></li>
+    <li><a class="dropdown-item" href="https://indigo-iam.github.io/v/current/docs/older-releases">older releases</a></li>
+    </ul>
+</div></li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search td-search--offline">
+  <div class="td-search__icon"></div>
+  <input
+    type="search"
+    class="td-search__input form-control"
+    placeholder="Search this site…"
+    aria-label="Search this site…"
+    autocomplete="off"
+    
+    data-offline-search-index-json-src="/v/v1.15.0/offline-search-index.1f66e11a34b8fd1db8a9858289cf55d6.json"
+    data-offline-search-base-href="/"
+    data-offline-search-max-results="10"
+  >
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/v/v1.15.0/docs/overview/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">Overview</h1>
+<div class="lead">A brief overview of the INDIGO IAM service</div>
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+
+    </ul>
+
+
+<div class="content">
+      <p>The INDIGO Identity and Access Management (IAM) Service is an <strong>identity and access management</strong> solution designed to support distributed scientific infrastructures and research communities.</p>
+<p>IAM provides a central service where identities, enrollment, group membership, attributes and authorization information can be managed consistently across distributed resources and services.</p>
+<p><img src="images/iam-schema-2026.png" alt="IAM functions overview"></p>
+<p>IAM implements the <strong>Virtual Organization</strong> (VO) concept and builds on more than twenty years of experience with <a href="https://italiangrid.github.io/voms">VOMS</a> (Virtual Organization Membership Service), which has traditionally provided membership and authorization information to Grid infrastructures using X.509 certificates and VOMS Attribute Certificates.</p>
+<p>While preserving interoperability with existing X.509/VOMS-based infrastructures, IAM enables the transition towards modern, token-based Authentication and Authorization Infrastructures (AAIs).</p>
+<p>IAM is the AAI solution chosen to power the next generation <a href="https://wlcg.web.cern.ch/">WLCG</a> Authentication and Authorization Infrastructure.</p>
+<h2 id="core-capabilities">Core capabilities</h2>
+<p>IAM acts as an <strong>OAuth 2.0 Authorization Server</strong> and <strong>OpenID Connect Provider</strong>, issuing tokens that applications and services can use for authentication and authorization.</p>
+<p>It supports the integration of web applications, APIs and command-line tools, allowing the same IAM-managed identity and authorization information to be consumed across different environments.</p>
+<p>IAM supports different token profiles to address the interoperability requirements of different infrastructures and communities, including:</p>
+<ul>
+<li>the native IAM profile;</li>
+<li>the WLCG JWT profile;</li>
+<li>the AARC profile;</li>
+<li>a Keycloak-oriented profile.</li>
+</ul>
+<p>These profiles determine how identity, authentication, group membership and authorization information is represented in tokens and related OAuth/OpenID Connect responses.</p>
+<h2 id="authentication-and-identity-brokering">Authentication and identity brokering</h2>
+<p>IAM provides <strong>flexible authentication</strong> and can act as an authentication broker between users, external Identity Providers and relying services.</p>
+<p>Users can authenticate using:</p>
+<ul>
+<li>local username and password credentials;</li>
+<li>SAML Identity Providers and identity federations;</li>
+<li>external OpenID Connect Providers;</li>
+<li>X.509 certificates.</li>
+</ul>
+<p>Multiple authentication credentials can be linked to the same IAM account. This allows users to access the same identity and VO membership regardless of the authentication mechanism used.</p>
+<p>IAM also supports <strong>Multi-Factor Authentication</strong> (MFA), providing stronger authentication when required by the IAM organization or by the services consuming IAM identities.</p>
+<h2 id="enrollment-and-membership-management">Enrollment and membership management</h2>
+<p>IAM provides both <strong>moderated</strong> and <strong>automatic enrollment</strong> mechanisms for joining an IAM-managed organization.</p>
+<p>Once enrolled, IAM manages the user&rsquo;s membership information, including:</p>
+<ul>
+<li>groups;</li>
+<li>roles;</li>
+<li>attributes and labels;</li>
+<li>organization-specific authorization information.</li>
+</ul>
+<p>IAM can also enforce the acceptance of an <strong>Acceptable Usage Policy</strong> (AUP) as part of the membership lifecycle.</p>
+<p>Together, these capabilities allow IAM to represent not only who a <em>user</em> is, but also <em>which organization or groups the user belongs</em> to and <em>which capabilities should be exposed to relying services</em>.</p>
+<h2 id="token-based-and-x509-infrastructures">Token-based and X.509 infrastructures</h2>
+<p>IAM is designed to support the transition from traditional X.509/VOMS-based infrastructures to OAuth 2.0 and OpenID Connect token-based authorization.</p>
+<p>For OAuth/OIDC-aware services, IAM issues <strong>JWT access tokens</strong> carrying identity, membership and authorization information.</p>
+<p>For services that still rely on X.509 and VOMS credentials, IAM can integrate with a <strong>VOMS Attribute Authority</strong> to expose IAM membership information through standard VOMS Attribute Certificates.</p>
+<p>IAM can also integrate with an <strong>online Certificate Authority</strong> to support on-demand X.509 certificate generation.</p>
+<p>This allows the same IAM-managed identity and membership information to be consumed by both modern token-based services and legacy X.509/VOMS-aware services.</p>
+<h2 id="user-provisioning-and-apis">User provisioning and APIs</h2>
+<p>IAM exposes a rich set of REST APIs for managing and retrieving information about users, groups, memberships, clients, tokens and authorization policies.</p>
+<p>It also provides a <strong><a href="https://datatracker.ietf.org/doc/html/rfc7644">SCIM</a> interface</strong> that can be used to provision IAM identity and membership information to external services. This enables, for example, the creation or synchronization of local accounts based on centrally managed IAM information.</p>
+<h2 id="integrations">Integrations</h2>
+<p>IAM has been successfully integrated with many off-the-shelf components such as OpenStack, Kubernetes, Atlassian JIRA and Confluence, and Grafana, as well as with key scientific and Grid computing services including <a href="https://rucio.cern.ch/">RUCIO</a>, <a href="https://fts.web.cern.ch/fts/">FTS</a>, <a href="https://www.dcache.org/">dCache</a>, <a href="https://italiangrid.github.io/storm">StoRM</a>, <a href="https://xrootd.slac.stanford.edu/index.html">XRootD</a> and <a href="https://research.cs.wisc.edu/htcondor/">HTCondor</a>.</p>
+<h2 id="service-deployment">Service deployment</h2>
+<p>IAM is an <strong>Apache-licensed Java application</strong> based on the <strong>Spring Boot</strong> framework.</p>
+<p>The service is typically deployed using containers and can run in Kubernetes environments. High-availability deployments are supported, allowing multiple IAM instances to serve the same organization.</p>
+<p>Docker images and RPM packages are provided for deploying IAM on premises. See the <a href="/v/v1.15.0/docs/getting-started/">Deployment guide</a> for additional information.</p>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        <ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="GitHub" aria-label="GitHub">
+    <a target="_blank" rel="noopener" href="https://github.com/indigo-iam/iam" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Slack" aria-label="Slack">
+    <a target="_blank" rel="noopener" href="https://indigo-iam.slack.com" aria-label="Slack">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+</ul>
+
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="td-footer__copyright">&copy;
+    2026
+    <span class="td-footer__authors">INFN</span></span><span class="td-footer__all_rights_reserved">All Rights Reserved</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/v/v1.15.0/js/main.min.dc2c0119076a0df855e55a8044ce0de74b7b9033c20e853e22d7ec7e9bdde965.js" integrity="sha256-3CwBGQdqDfhV5VqARM4N50t7kDPCDoU&#43;Itfsfpvd6WU=" crossorigin="anonymous"></script>
+<script defer src="/v/v1.15.0/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
+<script src='/v/v1.15.0/js/tabpane-persist.js'></script>
+
+  </body>
+</html>
